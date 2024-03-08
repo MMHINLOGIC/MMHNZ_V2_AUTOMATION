@@ -317,6 +317,17 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
         click(elmntLocation);
     }
 
+    public void verifyAllLocationDisplayed(List <String> strLocation) {
+        waitForElement(elmntSelectLocation);
+        WebElement elmntLocation = waitForElement(By.xpath(strLocationLocator.replace("<<LOCATION>>", strLocation.get(0))));
+        verifyElement(elmntLocation);
+        WebElement elmntLocation1 = waitForElement(By.xpath(strLocationLocator.replace("<<LOCATION>>", strLocation.get(5))));
+        verifyElement(elmntLocation1);
+        WebElement elmntLocation2 = waitForElement(By.xpath(strLocationLocator.replace("<<LOCATION>>", strLocation.get(6))));
+        verifyElement(elmntLocation2);
+        System.out.println("All Location Displayed");
+    }
+
     public void selectRepeatNewPrescription() {
         waitForSecond(4);
         waitForElement(elmntSelectRepeatNewPrescriptionOption);

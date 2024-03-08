@@ -48,6 +48,9 @@ public class VideoConsultationsSettingPage extends BasePage {
     @FindBy (how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='allowFacetoFaceVC']//input)[1]")
     protected WebElement elmntfacetofaceappointmentVideoConsultationYesButton;
 
+    @FindBy (how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='allowFacetoFaceVC']//input)[2]")
+    protected WebElement elmntfacetofaceappointmentVideoConsultationNoButton;
+
     @FindBy (how = How.XPATH, using = "//span[contains(text(),'Save')]")
     protected WebElement elmntVideoConsultationSaveButton;
 
@@ -66,11 +69,11 @@ public class VideoConsultationsSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='ondemandVCEnable']//input)[1]")
     protected WebElement elmntOnDemandVideoConsultationsYesRadioButton;
 
-    @FindBy(how = How.XPATH, using = "//div[@class='ProseMirror']")
+    @FindBy(how = How.XPATH, using = "//div[@class='ProseMirror']//p")
     protected WebElement EnterMessageText;
 
     @FindBy(how = How.XPATH, using = "//iframe[@class='k-iframe']")
-    protected WebElement elmntiframe;
+    protected WebElement EnterMessageTextIframe;
 
 
 
@@ -215,6 +218,22 @@ click(elmntVideoConsultationSetting);
     }
 
 
+    public boolean DisablefacetofaceappointmentVideoConsultationNoButton(){
+        boolean blresult = false;
+        try{
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntfacetofaceappointmentVideoConsultationNoButton);
+            waitForElement(elmntfacetofaceappointmentVideoConsultationNoButton);
+            jsClick(elmntfacetofaceappointmentVideoConsultationNoButton);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blresult =   verifyElement(elmntfacetofaceappointmentVideoConsultationNoButton);
+        }catch (Exception e){
+
+            e.printStackTrace();
+        }
+        return blresult;
+    }
+
     public boolean clickVideoConsultationSaveButton(){
         boolean blresult = false;
         try{
@@ -298,18 +317,17 @@ click(elmntVideoConsultationSetting);
         boolean blresult = false;
         try{
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForSeconds(3);
-            driver.switchTo().frame(elmntiframe);
+            driver.switchTo().frame(EnterMessageTextIframe);
 //            jsScrollIntoView(EnterMessageText);
-            waitForElement(EnterMessageText);
-           mouseClick(EnterMessageText);
-            driver.switchTo().activeElement().clear();
+            waitForSeconds(3);
+      click(EnterMessageText);
+            waitForSeconds(2);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+          driver.switchTo().activeElement().clear();
             waitForSeconds(2);
             driver.switchTo().activeElement().sendKeys(strdata);
-            waitForSeconds(2);
+            blresult =   verifyElement(EnterMessageText);
             driver.switchTo().defaultContent();
-//            enterValue(EnterMessageText,strdata);
-            blresult =   true;
         }catch (Exception e){
 
             e.printStackTrace();

@@ -640,4 +640,69 @@ public class MobileSteps {
 
 
     }
+    @And("I select the {string} for {string} based on Rule A")
+    public void iSelectTheForBasedOnRuleA(String strMedicationDetails) {
+        List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
+            demoScreenContainer.repeatRequestPrescriptionScreen.verifyAllLocationDisplayed(TestDataUtil.getListOfValue(strMedicationDetails));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectLocation(lstMedicationDetails.get(0));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectProvider(lstMedicationDetails.get(1));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectMedications(lstMedicationDetails.get(2));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethod(lstMedicationDetails.get(3));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectUrgency(lstMedicationDetails.get(4));
+        } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectLocationIOS(lstMedicationDetails.get(0));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectProviderIOS(lstMedicationDetails.get(1));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectMedicationsIOS(lstMedicationDetails.get(2));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethodIOS(lstMedicationDetails.get(3));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectUrgencyIOS(lstMedicationDetails.get(4));
+        }
+
+
+
+
+    }
+
+    @And("I select the {string} for {string} based on Rule B")
+    public void iSelectTheForBasedOnRuleB(String strMedicationDetails) {
+        List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
+//            Assert.assertTrue(demoScreenContainer.repeatRequestPrescriptionScreen.verifyDefaultLocationDisplayed(TestDataUtil.getListOfValue(strMedicationDetails)));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectLocation(lstMedicationDetails.get(0));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectProvider(lstMedicationDetails.get(1));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectMedications(lstMedicationDetails.get(2));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethod(lstMedicationDetails.get(3));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectUrgency(lstMedicationDetails.get(4));
+        } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectLocationIOS(lstMedicationDetails.get(0));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectProviderIOS(lstMedicationDetails.get(1));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectMedicationsIOS(lstMedicationDetails.get(2));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethodIOS(lstMedicationDetails.get(3));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectUrgencyIOS(lstMedicationDetails.get(4));
+        }
+
+
+    }
+
+    @And("I select the {string} for {string} based on Rule C")
+    public void iSelectTheForBasedOnRuleC(String strMedicationDetails) {
+        List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
+//            Assert.assertTrue(demoScreenContainer.repeatRequestPrescriptionScreen.verifyDefaultLocationDisplayed(TestDataUtil.getListOfValue(strMedicationDetails)));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectLocation(lstMedicationDetails.get(0));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectProvider(lstMedicationDetails.get(1));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectMedications(lstMedicationDetails.get(2));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethod(lstMedicationDetails.get(3));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectUrgency(lstMedicationDetails.get(4));
+        } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectLocationIOS(lstMedicationDetails.get(0));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectProviderIOS(lstMedicationDetails.get(1));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectMedicationsIOS(lstMedicationDetails.get(2));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethodIOS(lstMedicationDetails.get(3));
+            demoScreenContainer.repeatRequestPrescriptionScreen.selectUrgencyIOS(lstMedicationDetails.get(4));
+        }
+    }
 }

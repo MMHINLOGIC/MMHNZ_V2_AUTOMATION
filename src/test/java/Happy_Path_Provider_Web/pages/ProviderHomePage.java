@@ -72,15 +72,15 @@ public class ProviderHomePage extends BasePage {
 
 
     @FindAll({
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),' Timprefer')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),' Timprefer!')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Gp2White!')]")
     })
     protected WebElement txtProviderPortalWelcomePage;
 
 
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Harry Harry!')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto Autochrisc1')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Auto Autochrisc1!')]")
     })
     protected WebElement txtHarryHarryWelcome;
 
@@ -102,7 +102,7 @@ public class ProviderHomePage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Repeat Prescriptions')]")
     protected WebElement elmtRepeatScriptSettings;
 
-    @FindBy(xpath = "//span[contains(text(),'SMS Credits')]")
+    @FindBy(xpath = "//span[contains(text(),'SMS Credit Facility')]")
     protected WebElement elmtSMSCreditFacility;
 
     @FindBy(xpath = "//button//span[contains(text(),'Edit')]")
@@ -174,10 +174,25 @@ public class ProviderHomePage extends BasePage {
     @FindBy (how = How.XPATH, using = "//span[text()='Appointments']")
     protected WebElement elmntAppointments;
 
-    @FindBy (how = How.XPATH, using = "//h1[contains(text(),'Appointment Message')]")
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Appointment Settings')]")
+    protected WebElement elmntAppointmentSettingHeader;
+
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Appointment Message')]")
+    protected WebElement elmntAppointmentMessageHeader;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Edit')]")
+    protected WebElement elmntAppointmentSettingEditButton;
+
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Appointment Settings')]")
+    protected WebElement txtAppointmentSettingHeader;
+
+    @FindBy(how = How.XPATH, using = "//div[text()='Appointment Settings']")
+    protected WebElement elmntAppointmentSetting;
+
+    @FindBy (how = How.XPATH, using = "//div[contains(text(),'Appointment Message')]")
     protected WebElement elmntAppoitmentMssgHeading;
 
-    @FindBy (how = How.XPATH, using = "//*[contains(text(),'Home')and contains(text(),'My Home page') or contains(text(),'Start managing your health today')]")
+    @FindBy (how = How.XPATH, using = "//*[contains(text(),'Home')and contains(text(),'My Home page') or contains(text(),'Start managing your health, today')]")
     protected WebElement verifyPatientHomePage;
 
     @FindBy (how = How.XPATH, using = "//span[text()='Appointments']")
@@ -411,7 +426,7 @@ public class ProviderHomePage extends BasePage {
             click(element);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(txtRepeatScriptSettings);
-            takeScreenshot(driver);
+//            takeScreenshot(driver);
             blResult = verifyElement(txtRepeatScriptSettings);
         } catch (Exception e) {
             e.printStackTrace();
@@ -476,7 +491,8 @@ public class ProviderHomePage extends BasePage {
     public boolean  navigateToProviderHomepage() {
         boolean blResult = false;
         try{
-        if (isElementDisplayed(txtProviderPortalWelcomePage)) {
+
+        if (verifyElement(txtProviderPortalWelcomePage)) {
             verifyElement(txtProviderPortalWelcomePage);
             waitForElement(elmtMMHLogo);
             waitForElementClickable(elmtMMHLogo);
@@ -484,7 +500,7 @@ public class ProviderHomePage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = verifyElement(txtProviderPortalWelcomePage);
         }
-            if (!isElementDisplayed(txtProviderPortalWelcomePage)){
+            if (!verifyElement(txtProviderPortalWelcomePage)){
                 focusWindow(1);
                 System.out.println("Successfully switch to doctor portal");
                 waitForElement(elmtMMHLogo);
@@ -529,36 +545,20 @@ public class ProviderHomePage extends BasePage {
                     ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
                     driver.switchTo().window(tabs.get(1));
                     visit(TestDataUtil.getValue("&URL&"));
-                    driver.manage().deleteAllCookies();
                     waitForSeconds(4);
                     int WindowsCounts = driver.getWindowHandles().size();
                     System.out.println("===============>WindowsCount::" + WindowsCounts);
                     if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-                        if (isElementDisplayed(txtHarryHarryWelcome)) {
-                            driver.manage().deleteAllCookies();
-                            System.out.println("User here in Provider home page");
-                            takeScreenshot(driver);
-                        }
-                        else{
-                            if (verifyElement(btnExitApp)) {
-                                waitForSeconds(3);
-                                waitForElement(btnExitApp);
-                                verifyElement(btnExitApp);
-                                click(btnExitApp);
-                                waitForSeconds(3);
-                                visit(TestDataUtil.getValue("&URL&"));
-                                driver.manage().deleteAllCookies();
-                            }else {
-                                waitForSeconds(3);
-                                visit(TestDataUtil.getValue("&URL&"));
-                                driver.manage().deleteAllCookies();
-
-                            }
+                        if (verifyElement(txtProviderPortalWelcomePage)) {
+                            waitForElement(elmntLogOut);
+                            click(elmntLogOut);
+                            waitForSeconds(2);
+                            visit(TestDataUtil.getValue("&URL&"));
                         }
 
                     }
                     if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-                        if (verifyElement(txtHarryHarryWelcome)) {
+                        if (verifyElement(txtProviderPortalWelcomePage)) {
                             waitForElementClickable(elmntMobileLogOut);
                             jsClick(elmntMobileLogOut);
                             waitForSeconds(2);
@@ -567,7 +567,7 @@ public class ProviderHomePage extends BasePage {
 
                     }
                     if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
-                        if (verifyElement(txtHarryHarryWelcome)) {
+                        if (verifyElement(txtProviderPortalWelcomePage)) {
                             waitForElementClickable(elmntMobileLogOut);
                             jsClick(elmntMobileLogOut);
                             waitForSeconds(2);
@@ -706,24 +706,24 @@ public class ProviderHomePage extends BasePage {
 
 
 
-    public boolean clickAppointmentMessage(){
-        boolean blresult = false;
-        try{
-            jsScrollIntoView(elmntAppointments);
-            waitForElement(elmntAppointments);
-
-            jsClick(elmntAppointments);
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            jsScrollIntoView(elmntAppointmentMessage);
-            waitForElementClickable(elmntAppointmentMessage);
-            jsClick(elmntAppointmentMessage);
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            blresult = verifyElement(elmntAppoitmentMssgHeading);
-        }catch (Exception e){
-            System.out.println("Failed to click Appointment Messages >>> :: ");
-        }
-        return  blresult;
-    }
+//    public boolean clickAppointmentMessage(){
+//        boolean blresult = false;
+//        try{
+//            jsScrollIntoView(elmntAppointments);
+//            waitForElement(elmntAppointments);
+//
+//            jsClick(elmntAppointments);
+//            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            jsScrollIntoView(elmntAppointmentMessage);
+//            waitForElementClickable(elmntAppointmentMessage);
+//            jsClick(elmntAppointmentMessage);
+//            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            blresult = verifyElement(elmntAppoitmentMssgHeading);
+//        }catch (Exception e){
+//            System.out.println("Failed to click Appointment Messages >>> :: ");
+//        }
+//        return  blresult;
+//    }
 
 
     public boolean verifyPatientHomePage(){
@@ -891,6 +891,11 @@ public class ProviderHomePage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntDashboard);
+            waitForElement(elmntDashboard);
+            click(elmntDashboard);
+            waitForSeconds(3);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmtSecureMessaging);
             waitForSeconds(2);
             waitForElementClickable(elmtSecureMessaging);
@@ -948,6 +953,60 @@ public class ProviderHomePage extends BasePage {
             e.printStackTrace();
         }
         return blResult;
+    }
+
+    public boolean clickAppointmentSetting() {
+        boolean blresult = false;
+        try {
+            jsScrollIntoView(elmntAppointments);
+            waitForElement(elmntAppointments);
+            click(elmntAppointments);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntAppointmentSetting);
+            waitForElement(elmntAppointmentSetting);
+            jsClick(elmntAppointmentSetting);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            waitForElement(elmntAppointmentSettingHeader);
+            verifyElement(elmntAppointmentSettingHeader);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntAppointmentSettingEditButton);
+            waitForElementClickable(elmntAppointmentSettingEditButton);
+            jsClick(elmntAppointmentSettingEditButton);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            System.out.println("Successfully see the Appointment Setting");
+            blresult = verifyElement(txtAppointmentSettingHeader);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed to click Appointment Message >>> :: ");
+        }
+        return blresult;
+    }
+
+    public boolean clickAppointmentMessage() {
+        boolean blresult = false;
+        try {
+            jsScrollIntoView(elmntAppointments);
+            waitForElement(elmntAppointments);
+            click(elmntAppointments);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntAppoitmentMssgHeading);
+            waitForElement(elmntAppoitmentMssgHeading);
+            jsClick(elmntAppoitmentMssgHeading);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            waitForElement(elmntAppointmentMessageHeader);
+            verifyElement(elmntAppointmentMessageHeader);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntAppointmentSettingEditButton);
+            waitForElementClickable(elmntAppointmentSettingEditButton);
+            jsClick(elmntAppointmentSettingEditButton);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            System.out.println("Successfully see the Appointment Setting");
+            blresult = verifyElement(elmntAppointmentMessageHeader);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed to click Appointment Message >>> :: ");
+        }
+        return blresult;
     }
 
 

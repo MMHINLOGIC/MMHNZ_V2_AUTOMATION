@@ -335,8 +335,172 @@ Feature: Repeat_Request_Prescription_Scenarios
       | Repeat Prescription Status                     | Card Details   |
       | &RP_DELIVERY_VIA_ZOOM_PHARMACY_STATUS_PAYMENT& | &CARD_DETAILS& |
 
+
+  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE @mm
+  Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
+
+    Given As a user Launch the "<V1 Portal>"
+    And I enter "<Email Address>" and "<Password>"
+    When I click login button
+    Then I should see user successfully logs in to the MMH portal
+
+    Examples:
+      | V1 Portal | Email Address  | Password          |
+      | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
+
   @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Outline: S1- RRP - Rule A (No Restrictions) [Web - MobileApps]
+    Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
+    And I click the edit button and changing the data as per Rule A"<Details>"
+    Examples:
+      | System_Menu            | Details                       |
+      | Repeat Script Settings | &REPEAT_SCRIPT_SETTINGS_DATA& |
+
+
+
+  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Outline:S1- RRP - Rule A (No Restrictions) [Web - MobileApps]
+
+    Given I am on MMH Home screen
+    And I tap on "rrp" option in home screen
+ And I select the "<Medication Details>" for "Patient to collect script" based on Rule A
+    And I enter "<Message>" and accept the terms & conditions
+    When I Send Prescription Request through pay at health centre
+    Then I should see Repeat prescription request sent successfully popup message
+    And I should see "<Repeat Prescription Status>" displayed under Service Tab
+
+    Examples:
+      | Medication Details                  | Message       | Repeat Prescription Status            |
+      | &PATIENT_TO_COLLECT_SCRIPT_DETAILS& | &RPR_MESSAGE& | &RP_PATIENT_TO_COLLECT_SCRIPT_STATUS& |
+
+  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
+
+    Given As a user Launch the "<V1 Portal>"
+    And I enter "<Email Address>" and "<Password>"
+    When I click login button
+    Then I should see user successfully logs in to the MMH portal
+
+    Examples:
+      | V1 Portal | Email Address  | Password          |
+      | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
+
+
+  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Outline: S2- Rule B (Restrict to Default Location) [Web - MobileApps]
+    Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
+    And I click the edit button and changing the data as per Rule B"<Details>"
+
+    Examples:
+      | System_Menu            | Details                       |
+      | Repeat Script Settings | &REPEAT_SCRIPT_SETTINGS_DATA& |
+
+  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Outline: S2 - Rule B (Restrict to Default Location) [Web - MobileApps]
+
+    Given I am on MMH Home screen
+    And I tap on "rrp" option in home screen
+    And I select the "<Medication Details>" for "Send Script by Post" based on Rule B
+    And I enter "<Message>" and accept the terms & conditions
+    When I Send Prescription Request through pay at health centre
+    Then I should see Repeat prescription request sent successfully popup message
+    And I should see "<Repeat Prescription Status>" displayed under Service Tab
+
+    Examples:
+      | Medication Details            | Message       | Repeat Prescription Status      |
+      | &SEND_SCRIPT_BY_POST_DETAILS& | &RPR_MESSAGE& | &RP_SEND_SCRIPT_BY_POST_STATUS& |
+
+  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
+
+    Given As a user Launch the "<V1 Portal>"
+    And I enter "<Email Address>" and "<Password>"
+    When I click login button
+    Then I should see user successfully logs in to the MMH portal
+
+    Examples:
+      | V1 Portal | Email Address  | Password          |
+      | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
+
+  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Outline: S3- Rule C (Restrict to Default Location & Provider) [Web - MobileApps]
+    Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
+    And I click the edit button and changing the data as per Rule C"<Details>"
+    Examples:
+      | System_Menu            | Details                       |
+      | Repeat Script Settings | &REPEAT_SCRIPT_SETTINGS_DATA& |
+
+
+  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Outline:S3- RRP - Rule C (Restrict to Default Location & Provider) [Web - MobileApps]
+
+    Given I am on MMH Home screen
+    And I tap on "rrp" option in home screen
+    And I select the "<Medication Details>" for "Patient to collect script" based on Rule C
+    And I enter "<Message>" and accept the terms & conditions
+    When I Send Prescription Request through pay at health centre
+    Then I should see Repeat prescription request sent successfully popup message
+    And I should see "<Repeat Prescription Status>" displayed under Service Tab
+
+    Examples:
+      | Medication Details                  | Message       | Repeat Prescription Status            |
+      | &PATIENT_TO_COLLECT_SCRIPT_DETAILS& | &RPR_MESSAGE& | &RP_PATIENT_TO_COLLECT_SCRIPT_STATUS& |
+
+  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
+
+    Given As a user Launch the "<V1 Portal>"
+    And I enter "<Email Address>" and "<Password>"
+    When I click login button
+    Then I should see user successfully logs in to the MMH portal
+
+    Examples:
+      | V1 Portal | Email Address  | Password          |
+      | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
+
+  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Outline: S4- RRP Script Settings - Restrict to Named Provider in each Location
+    Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
+    And I click the edit button and changing the data restricting to Named Provider in each Location"<Details>"
+
+    Examples:
+      | System_Menu            | Data_Details                  | Details                       |
+      | Repeat Script Settings | &REPEAT_SCRIPT_SETTINGS_INFO& | &REPEAT_SCRIPT_SETTINGS_DATA& |
+
+  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Outline:S4- RRP - Restrict to Named Provider in each Location [Web - MobileApps]
+
+    Given I am on MMH Home screen
+    And I tap on "rrp" option in home screen
+    And I select the "<Medication Details>" for "Patient to collect script" based on Rule C
+    And I enter "<Message>" and accept the terms & conditions
+    When I Send Prescription Request through pay at health centre
+    Then I should see Repeat prescription request sent successfully popup message
+    And I should see "<Repeat Prescription Status>" displayed under Service Tab
+
+    Examples:
+      | Medication Details                  | Message       | Repeat Prescription Status            |
+      | &PATIENT_TO_COLLECT_SCRIPT_DETAILS& | &RPR_MESSAGE& | &RP_PATIENT_TO_COLLECT_SCRIPT_STATUS& |
+
+  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  Scenario Outline:S5- RRP - Repeat Again with previous consult doctor [Web - MobileApps]
+
+    Given I am on MMH Home screen
+    And I tap on "rrp" option in home screen
+    And I select the "<Medication Details>" for "Patient to collect script" based on Rule C
+    And I enter "<Message>" and accept the terms & conditions
+    When I Send Prescription Request through pay at health centre
+    Then I should see Repeat prescription request sent successfully popup message
+    And I should see "<Repeat Prescription Status>" displayed under Service Tab
+
+    Examples:
+      | Medication Details                  | Message       | Repeat Prescription Status            |
+      | &PATIENT_TO_COLLECT_SCRIPT_DETAILS& | &RPR_MESSAGE& | &RP_PATIENT_TO_COLLECT_SCRIPT_STATUS& |
+
+
+  @MOBILE @Mobile_RRP  @HAPPY_PATH_MOBILE
   Scenario: Pre-Req - Doctor Sending Message
 
     Given I am on MMH Home screen
     Then I tap on logout icon in Home screen
+
