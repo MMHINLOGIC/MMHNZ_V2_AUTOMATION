@@ -26,7 +26,7 @@ public class HomeScreen extends BaseScreen {
     protected WebElement elmntLogoutPopup;
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='notifications outline']")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"notifications outline\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='notifications']")
     protected WebElement iconNotification;
 
     @AndroidFindBy(xpath = "//android.view.View[@text='home Home']")
@@ -111,6 +111,7 @@ public class HomeScreen extends BaseScreen {
 
     public void tapOptionsInHomeScreeniOS(String strOptions) {
         WebElement elmntOption = waitForElement(By.xpath(strOptionsInHomeScreenLocatoriOS.replace("<<OPTION>>", strOptions)));
+        System.out.println("elmntOption"+elmntOption);
         click(elmntOption);
     }
 

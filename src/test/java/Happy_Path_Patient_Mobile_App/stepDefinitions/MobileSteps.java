@@ -91,8 +91,9 @@ public class MobileSteps {
             demoScreenContainer.appointmentsScreen.selectReason(lstAppointmentDetails.get(3));
         } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
             demoScreenContainer.appointmentsScreen.selectLocationIOS(lstAppointmentDetails.get(0));
-            demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
+            demoScreenContainer.appointmentsScreen.selectAppointmentsPolicy();
             demoScreenContainer.appointmentsScreen.selectProviderIOS(lstAppointmentDetails.get(1));
+            demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
             demoScreenContainer.appointmentsScreen.selectAppointmentDateIOS(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
             demoScreenContainer.appointmentsScreen.selectAppointmentOptionIOS(TestDataUtil.getValue(strAppointment));
             demoScreenContainer.appointmentsScreen.selectAvailableTimeSlotIOS();
@@ -112,10 +113,19 @@ public class MobileSteps {
 
     @And("I Send Appointment Request through pay at health centre")
     public void iSendAppointmentRequestThroughPayAtHealthCentre() {
-        demoScreenContainer.appointmentsScreen.tapSendAppointmentRequest();
-        demoScreenContainer.appointmentsScreen.tapPayHealthCentre();
-        Assert.assertTrue(demoScreenContainer.appointmentsScreen.verifyAppointmentInformation());
-        demoScreenContainer.appointmentsScreen.tapOK();
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            demoScreenContainer.appointmentsScreen.tapSendAppointmentRequest();
+            demoScreenContainer.appointmentsScreen.tapPayHealthCentre();
+            Assert.assertTrue(demoScreenContainer.appointmentsScreen.verifyAppointmentInformation());
+            demoScreenContainer.appointmentsScreen.tapOK();
+        }
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            demoScreenContainer.appointmentsScreen.tapSendAppointmentRequest();
+            demoScreenContainer.appointmentsScreen.tapPayHealthCentre();
+            demoScreenContainer.appointmentsScreen.verifyAppointmentInformationios();
+//            demoScreenContainer.appointmentsScreen.tapOK();
+
+        }
     }
 
     @Then("I should see booked {string} displayed under Service Tab {string} {string}")

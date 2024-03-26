@@ -449,11 +449,15 @@ public class BaseScreen {
     }
 
     public void reLaunchAppIOS() {
-        ((AppiumDriver<WebElement>)driver).terminateApp("managemyhealth.co.nz");
+//        ((AppiumDriver<WebElement>)driver).terminateApp("managemyhealth.co.nz");
+        ((AppiumDriver<WebElement>) driver).closeApp();
         System.out.println("App Teriminated");
         waitForSecond(3);
-        ((AppiumDriver<WebElement>)driver).launchApp();
+//        ((AppiumDriver<WebElement>)driver).launchApp();
+        ((AppiumDriver<WebElement>) driver).activateApp("managemyhealth.co.nz");
         System.out.println("App ReLaunched");
+
+
     }
 
 }

@@ -146,12 +146,15 @@ public class HealthRecordsScreen extends BaseScreen {
         waitForElement(elmntHealthRecords);
         waitForElementIgnoreStale(elmntHealthRecords);
         WebElement elmntHealthRecords = waitForElement(By.xpath(strStaticTextLocatorIOS.replace("<<TEXT>>", strHealthRecordOption)));
-        waitForElementClickable(elmntHealthRecords);
+        System.out.println("elmntHealthRecords : :"+elmntHealthRecords);
+        waitForElement(elmntHealthRecords);
         click(elmntHealthRecords);
     }
 
     public boolean verifyRecordsIOS(String strHealthRecordOption, List<String> lstRecords) {
         boolean blResult = false;
+        System.out.println("strHealthRecordOption ::"+strHealthRecordOption);
+        System.out.println("lstRecords ::"+lstRecords);
         waitForElement(By.xpath(strButtonTextLocatorIOS.replace("<<TEXT>>", strHealthRecordOption)));
 
         for (String strRecord : lstRecords) {
@@ -168,18 +171,20 @@ public class HealthRecordsScreen extends BaseScreen {
 
     public void tapRecordViewIOS(List<String> lstRecords) {
 //      WebElement elmntRecord = waitForElement(By.xpath(strRecordsViewLocator.replace("<<TEXT>>", lstRecords.get(0))));
+        waitForSecond(3);
         WebElement elmntRecord = waitForElement(By.xpath(strRecordsViewLocatorIOS
                 .replace("<<TEXT1>>", lstRecords.get(0))
                 .replace(("<<TEXT2>>"), lstRecords.get(1))));
+        System.out.println("elmntRecord :: "+elmntRecord);
         click(elmntRecord);
     }
 
     public boolean verifyRecordDetailsIOS(List<String> lstRecordDetails) {
         boolean blResult = false;
         waitForSecond(3);
-        swipeUpShort();
-        waitForSecond(1);
-        swipeUpShort();
+//        swipeUpShort();
+//        waitForSecond(1);
+//        swipeUpShort();
         for (String strRecordDetail : lstRecordDetails) {
             waitForSecond(3);
             WebElement elmntDetail = waitForElement(By.xpath(strContainsStaticTextLocatorIOS.replace("<<TEXT>>", strRecordDetail)));

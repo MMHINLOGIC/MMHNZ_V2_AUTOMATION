@@ -1,6 +1,6 @@
 Feature: Mobile_Appointments_Scenarios
 
-  @MOBILE @RELAUNCH @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @RELAUNCH @Mobile_Appointment1 @HAPPY_PATH_MOBILE
   Scenario Outline: S1 - User login with valid credential and verifies MMH Home screen
 
     Given I am on MMH Login screen
@@ -102,7 +102,7 @@ Feature: Mobile_Appointments_Scenarios
       | VIDEO       | &CARD_DETAILS& | &FUTURE_DATE_PAYMENT_FOR_VIDEO& | &VIDEO_APPOINTMENT_SUMMARY_USING_CARD_PAYMENT& |
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
   Scenario Outline: S5 - Patient Booking Appointment - Visit Appointment & Pay at Health centre [Mobile]
 
     Given I am on MMH Home screen
