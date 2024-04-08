@@ -253,7 +253,7 @@ Feature: Mobile_Appointments_Scenarios
       | VIDEO       | &BOOK_FACE_TO_FACE_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_VIDEO_FACE_TO_FACE& | &VIDEO_APPOINTMENT_SUMMARY& |
 
 
-  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -265,7 +265,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S2 - Patient Booking Appointment - Rule B (Phone Appointment )[ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -280,7 +280,7 @@ Feature: Mobile_Appointments_Scenarios
 
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S2 - Patient Booking Appointment - Rule B (Phone Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
@@ -296,7 +296,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details             | Details_For_Appointment     | Future_Date              | Appointment_Summary         | Contact Number   |
       | PHONE       | &BOOK_PHONE_APPOINTMENT_RULE_B& | &PHONE_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_A& | &PHONE_APPOINTMENT_SUMMARY& | &CONTACT_NUMBER& |
 
-  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -308,7 +308,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S3 - Patient Booking Appointment - Rule C (Video Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -324,7 +324,7 @@ Feature: Mobile_Appointments_Scenarios
 
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S3 - Patient Booking Appointment - Rule C (Video Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
@@ -339,7 +339,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details             | Details_For_Appointment     | Future_Date              | Appointment_Summary         |
       | VIDEO       | &BOOK_VIDEO_APPOINTMENT_RULE_C& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_C& | &VIDEO_APPOINTMENT_SUMMARY& |
 
-  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -351,7 +351,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S4 - Patient Booking Appointment - Rule D (Book Face to Face ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -366,7 +366,7 @@ Feature: Mobile_Appointments_Scenarios
 
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S4 - Patient Booking Appointment - Video Appointment (Book Face To Face )& Pay at Health centre [Web to Mobile Apps]
 
     Given I am on MMH Home screen
@@ -381,7 +381,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details                   | Details_For_Appointment     | Future_Date                          | Appointment_Summary         |
       | VIDEO       | &BOOK_FACE_TO_FACE_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_VIDEO_FACE_TO_FACE& | &VIDEO_APPOINTMENT_SUMMARY& |
 
-  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -393,7 +393,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S5 - Patient Booking Appointment - Rule E Scenario 1 (Visit Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -409,7 +409,7 @@ Feature: Mobile_Appointments_Scenarios
 
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S5 - Patient Booking Appointment - Rule E Scenario 1 (Visit Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
@@ -424,7 +424,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
       | VISIT       | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
 
-  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -436,7 +436,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S6 - Patient Booking Appointment - Rule E Scenario 2 (Phone Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -452,7 +452,7 @@ Feature: Mobile_Appointments_Scenarios
 
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S6 - Patient Booking Appointment - Rule E Scenario 2 (Phone Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
@@ -468,7 +468,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details             | Details_For_Appointment     | Future_Date              | Appointment_Summary         | Contact Number   |
       | PHONE       | &BOOK_PHONE_APPOINTMENT_RULE_E& | &PHONE_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_C& | &PHONE_APPOINTMENT_SUMMARY& | &CONTACT_NUMBER& |
 
-  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -480,7 +480,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template:S7- Disable Pre-Screening Covid PopUp & verify Patient Side Pre Screening Popup Not Displayed
 
     Given As a Provider I am on HomePage and navigate to  Pre-Screening Settings
@@ -495,7 +495,7 @@ Feature: Mobile_Appointments_Scenarios
       | &PRE_SCREENING_HEALTH_CENTRE& | &PRE_SCREENING& | &BOOK_VISIT_APPOINTMENT& |
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template:S8-Enable Pre-Screening Covid PopUp & verify Patient Side Pre Screening Popup Displayed
 
     Given As a Provider I am on HomePage and navigate to  Pre-Screening Settings
@@ -509,7 +509,7 @@ Feature: Mobile_Appointments_Scenarios
       | Health_Centre                 | Location        | Appointment Details      |
       | &PRE_SCREENING_HEALTH_CENTRE& | &PRE_SCREENING& | &BOOK_VISIT_APPOINTMENT& |
 
-  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -522,7 +522,7 @@ Feature: Mobile_Appointments_Scenarios
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S1 - Patient Booking Appointment - Rule A (Visit Appointment )[ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -537,7 +537,7 @@ Feature: Mobile_Appointments_Scenarios
 
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S1 - Patient Booking Appointment - Rule A (Visit Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
@@ -553,7 +553,7 @@ Feature: Mobile_Appointments_Scenarios
       | VISIT       | &BOOK_VISIT_APPOINTMENT_RULE_A& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_A& | &VISIT_APPOINTMENT_SUMMARY& |
 
 
-  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -565,7 +565,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S9 - Patient Booking Appointment - Reason For Appointment is Mandatory (Book Video Appointment ) [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -577,7 +577,7 @@ Feature: Mobile_Appointments_Scenarios
 
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S9 - Patient Booking Appointment - Video Appointment(Book Video Appointment) & Pay at Health centre [Mobile]
 
     Given I am on MMH Home screen
@@ -592,7 +592,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details             | Details_For_Appointment     | Future_Date              | Appointment_Summary         |
       | VIDEO       | &BOOK_VIDEO_APPOINTMENT_RULE_C& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_C& | &VIDEO_APPOINTMENT_SUMMARY& |
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario Outline: S10 - Patient Booking Appointment - Visit Appointment & Pay at Health centre [Mobile]
 
     Given I am on MMH Home screen
@@ -609,7 +609,7 @@ Feature: Mobile_Appointments_Scenarios
       | VISIT       | &BOOK_VISIT_APPOINTMENT_RULE_C& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_C& | &VISIT_APPOINTMENT_SUMMARY& |
 
 
-  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE1
   Scenario: Pre-Req - Doctor Sending Message
 
     Given I am on MMH Home screen

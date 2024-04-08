@@ -62,9 +62,11 @@ public class HealthRecordsScreen extends BaseScreen {
             .append("<<TEXT>>").append("')]/following::android.widget.TextView[@text='View'])[1]").toString();
 
     String strRecordsViewLocator1 = new StringBuilder()
-            .append("(//android.widget.TextView[contains(@text,'")
-            .append("<<TEXT1>>").append("')]/following::android.widget.TextView[@text='")
-            .append("<<TEXT2>>").append("']/following::android.widget.TextView[@text='View'])[1]").toString();
+            .append("//android.widget.TextView[contains(@text,'")
+            .append("<<TEXT1>>").append("')]//following-sibling::android.widget.TextView[@text='")
+            .append("<<TEXT2>>").append("']").toString();
+
+    //android.widget.TextView[contains(@text,'blood Test')]//following-sibling::android.widget.TextView[@text='03 Nov 2023']
 
     String strRecordsViewLocatorIOS = new StringBuilder()
             .append("(//XCUIElementTypeStaticText[contains(@name,'")
@@ -78,7 +80,7 @@ public class HealthRecordsScreen extends BaseScreen {
         waitForElementIgnoreStale(elmntHealthRecords);
         WebElement elmntHealthRecords = waitForElement(By.xpath(strContainsTextViewLocator.replace("<<TEXT>>", strHealthRecordOption)));
         waitForElementClickable(elmntHealthRecords);
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>"+elmntHealthRecords);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>elmntHealthRecords"+elmntHealthRecords);
         click(elmntHealthRecords);
     }
 

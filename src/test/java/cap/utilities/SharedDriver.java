@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 /** The share driver util is used to determine which Execution Type run in your program receives a run time.Like BROWSER,MOBILEVIEW,MOBILE */
 public class SharedDriver {
 
-    protected static WebDriver driver;
-    protected static WebDriver mobileDriver;
+  protected static WebDriver driver;
+  protected static WebDriver mobileDriver;
     protected static WebDriver windowsDriver;
     public static long randomID;
     public static String strExecutionID;
@@ -43,7 +43,11 @@ public class SharedDriver {
         } else if (strExecutionType.equalsIgnoreCase("MOBILE")) {
             // Mobile Driver
             mobileDriver = DriverUtil.getMobileDriver();
+
             System.out.println("<----------------------Mobile Driver is launched---------------------->");
+
+            driver = DriverUtil.getDriver();
+            System.out.println("<----------------------WebDriver is launched---------------------->");
         } else if (strExecutionType.equalsIgnoreCase("WINDOWS")) {
             // Windows Driver
             windowsDriver = DriverUtil.getWindowDriver();
@@ -58,12 +62,11 @@ public class SharedDriver {
         } else if (strExecutionType.equalsIgnoreCase("WEBMOBILE")) {
             //Launch WebDriver
             driver = DriverUtil.getDriver();
-            System.out.println("<----------------------WebDriver is launched---------------------->");
+//            System.out.println("<----------------------WebDriver is launched---------------------->");
 
             // Mobile Driver
             mobileDriver = DriverUtil.getMobileDriver();
             System.out.println("<----------------------Mobile Driver is launched---------------------->");
-
 
 
         } else if (strExecutionType.equalsIgnoreCase("API")) {
@@ -73,6 +76,8 @@ public class SharedDriver {
             // Mobile Driver
             mobileDriver = DriverUtil.getMobileDriver();
             System.out.println("<----------------------Mobile Driver is launched---------------------->");
+
+            driver = DriverUtil.getDriver();
         }
     }
 
