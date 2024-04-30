@@ -37,32 +37,12 @@ public class DemoScreenContainer {
 
 
     public DemoScreenContainer() {
-//        driver = SharedDriver.getMobileDriver();
-//        initScreens();
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            driver = SharedDriver.getDriver();
-            initPages();
-        }
+        driver = SharedDriver.getMobileDriver();
+        initScreens();
 
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-            driver = SharedDriver.getDriver();
-            driver = SharedDriver.getMobileDriver();
-            initPages();
-        }
-
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
-            driver = SharedDriver.getDriver();
-            initPages();
-        }
-
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("WEBMOBILE")) {
-            driver = SharedDriver.getDriver();
-            driver = SharedDriver.getMobileDriver();
-            initPages();
-        }
     }
 
-    private void initPages() {
+    private void initScreens() {
         // Mobile Application Screens
         loginScreen = new LoginScreen(driver);
         homeScreen = new HomeScreen(driver);

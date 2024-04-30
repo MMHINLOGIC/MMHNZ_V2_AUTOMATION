@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = {"src/test/resources/features/Happy_Path_Patient_Mobile_App"},
         monochrome = true,
-        tags = "@HAPPY_PATH_MOBILE",
+        tags = "@Mobile_Message",
         glue = {"Happy_Path_Patient_Mobile_App", "Happy_Path_Patient_Web_and_MR"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"

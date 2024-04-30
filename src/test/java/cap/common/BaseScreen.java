@@ -193,6 +193,7 @@ public class BaseScreen {
         try {
             waitForElement(element).click();
             waitForElement(element).clear();
+            waitForElement(element).click();
             waitForElement(element).sendKeys(strVlaue);
             return true;
         } catch (Exception e) {
@@ -448,6 +449,13 @@ public class BaseScreen {
         }
     }
 
+//    public void pushFileToIOSDevice(String strImageName) {
+//        try {
+//            ((AppiumDriver<WebElement>) driver).p("/Users/" + strImageName + "", new File(strImageDirectory + strImageName));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
     public void reLaunchAppIOS() {
 //        ((AppiumDriver<WebElement>)driver).terminateApp("managemyhealth.co.nz");
         ((AppiumDriver<WebElement>) driver).closeApp();

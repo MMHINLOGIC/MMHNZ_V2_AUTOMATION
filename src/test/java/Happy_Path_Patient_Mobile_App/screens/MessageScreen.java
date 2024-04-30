@@ -17,15 +17,15 @@ public class MessageScreen extends BaseScreen {
     }
 
     @AndroidFindBy(xpath = "(//android.widget.Button[@text='Inbox'])[1]")
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Inbox'])[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Inbox'])[2]")
     protected WebElement elmntInbox;
 
     @AndroidFindBy(xpath = "//android.widget.TabWidget/preceding::android.widget.Button[1]")
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Inbox'])[1]/following-sibling::XCUIElementTypeButton[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[2]")
     protected WebElement iconCompose;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select Location']")
-    @iOSXCUITFindBy(id = "Select Location")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select Location']")
     protected WebElement elmntSelectLocation;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select a Service']")
@@ -45,7 +45,7 @@ public class MessageScreen extends BaseScreen {
     protected WebElement elmntRequest;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Message*']/following::android.widget.EditText")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Message']/following:: XCUIElementTypeTextView[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]")
     protected WebElement txtMessage;
 
     @AndroidFindBy(xpath = "//android.widget.Button[contains(@text,'ATTACH FILES')]")
@@ -59,10 +59,10 @@ public class MessageScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Photo Library']")
     protected WebElement elmntPhotoLibrary;
 
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage)[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage)[6]")
     protected WebElement imgFirst;
 
-    @iOSXCUITFindBy(id = "Add")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Add']")
     protected WebElement btnAdd;
 
     @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Show roots']")
@@ -84,6 +84,10 @@ public class MessageScreen extends BaseScreen {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select Role']")
     @iOSXCUITFindBy(id = "Select Role")
     protected WebElement elmntSelectRole;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select Role']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Sent']")
+    protected WebElement elmntPatientSent;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select Patient']")
     @iOSXCUITFindBy(id = "Select Patient")
@@ -139,11 +143,13 @@ public class MessageScreen extends BaseScreen {
     String strSentMessageLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeStaticText[@name='")
             .append("<<STAFF>>")
-            .append("']//following::XCUIElementTypeStaticText[@name='")
+            .append("']//following::XCUIElementTypeOther[@name='")
             .append("<<SERVICE>>")
             .append("']//following::XCUIElementTypeStaticText[@name='")
             .append("<<MESSAGE>>")
             .append("']").toString();
+
+    //XCUIElementTypeStaticText[@name='Gp2White']// following::XCUIElementTypeOther[@name='Lab Result enquiry']//following::XCUIElementTypeStaticText[@name='Test-Message-QCGFLGCESignature Testing-JMQFCWWE']
 
     String strReceivedMessageLocator = new StringBuilder()
             .append("//android.widget.TextView[contains(@text,'")
@@ -211,7 +217,7 @@ public class MessageScreen extends BaseScreen {
 
 
     public void tapTabInInbox(String strTab) {
-        waitForSecond(3);
+        waitForSecond(6);
         waitForElement(elmntInbox);
         WebElement elmntTab = null;
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
@@ -325,18 +331,20 @@ public class MessageScreen extends BaseScreen {
     }
 
     public void uploadFileIOS(String strImage) {
-//        pushFileToDeviceIOS(strImage);
+//        pushFileToIOSDevice(strImage);
         waitForElement(lnkAttachFiles);
         click(lnkAttachFiles);
         waitForElement(elmntChooseFromGallery);
         click(elmntChooseFromGallery);
-        waitForElement(btnDone);
-        click(btnDone);
+//        waitForElement(btnDone);
+//        click(btnDone);
         waitForElement(elmntPhotoLibrary);
         click(elmntPhotoLibrary);
         waitForSecond(3);
         waitForElement(imgFirst);
         click(imgFirst);
+//        WebElement elmntImage = waitForElement(By.xpath(strTextViewLocator.replace("<<TEXT>>", strImage)));
+//        click(elmntImage);
         waitForElement(btnAdd);
         click(btnAdd);
     }
@@ -370,6 +378,8 @@ public class MessageScreen extends BaseScreen {
     }
 
     public boolean verifySentMessageIOS(List<String> lstSentMessage) {
+waitForElement(elmntPatientSent);
+click(elmntPatientSent);
         System.out.println("elmntSentMessageInfo>> "+By.xpath(strSentMessageLocatorIOS
                 .replace("<<STAFF>>", lstSentMessage.get(0))
                 .replace("<<SERVICE>>", lstSentMessage.get(1))

@@ -281,7 +281,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | Repeat Prescription Status                  | Card Details   |
       | &RP_SEND_SCRIPT_TO_PHARMACY_STATUS_PAYMENT& | &CARD_DETAILS& |
 
-  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
   Scenario Outline: S9 - Patient Send Prescription Request - Delivery Meds by pharmacy
 
     Given I am on MMH Home screen
@@ -295,7 +295,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | Medication Details                         | Message       | Pharmacy Details                                   |
       | &DELIVERY_MED_BY_PHARMACY_DETAILS_PAYMENT& | &RPR_MESSAGE& | &DELIVERY_MED_BY_PHARMACY_ADDRESS_DETAILS_PAYMENT& |
 
-  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
   Scenario Outline: S9 - Request Repeat Prescription - Deliver med by Pharmacy - Pay online (card) $X Payment
 
     Given I am on Payment Options screen
@@ -336,7 +336,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | &RP_DELIVERY_VIA_ZOOM_PHARMACY_STATUS_PAYMENT& | &CARD_DETAILS& |
 
 
-  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE @mm
+  @WEB  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE @mm
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -348,7 +348,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE
   Scenario Outline: S1- RRP - Rule A (No Restrictions) [Web - MobileApps]
     Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
     And I click the edit button and changing the data as per Rule A"<Details>"

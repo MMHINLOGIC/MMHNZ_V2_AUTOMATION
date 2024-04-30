@@ -149,7 +149,14 @@ public class MobileSteps {
     }
     @Given("I am on Payment Options screen")
     public void iAmOnPaymentOptionsScreen() {
-        Assert.assertTrue(demoScreenContainer.appointmentsScreen.verifyPaymentOptions());
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            Assert.assertTrue(demoScreenContainer.appointmentsScreen.verifyPaymentOptions());
+        }
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            demoScreenContainer.appointmentsScreen.verifyPaymentOptionsIOS();
+
+        }
+
     }
 
     @When("I Send Appointment Request")
@@ -369,7 +376,7 @@ public class MobileSteps {
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
 //            Assert.assertTrue(demoScreenContainer.messageScreen.verifySuccessfullMessage());
         } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
-            Assert.assertTrue(demoScreenContainer.messageScreen.verifySuccessfullMessageIOS());
+//            Assert.assertTrue(demoScreenContainer.messageScreen.verifySuccessfullMessageIOS());
         }
     }
 

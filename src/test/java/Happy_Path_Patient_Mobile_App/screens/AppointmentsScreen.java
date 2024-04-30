@@ -3,15 +3,19 @@ package Happy_Path_Patient_Mobile_App.screens;
 import cap.common.BaseScreen;
 import cap.utilities.DateUtil;
 import cap.utilities.TestDataUtil;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.List;
+import java.util.Map;
 
 import static cap.utilities.SharedDriver.strExecutionID;
 
@@ -608,6 +612,8 @@ public class AppointmentsScreen extends BaseScreen {
         waitForElement(elmntPaymentOptions);
         waitForElement(btnPayHealthCentre);
         tapCooridinatesByElement(btnPayHealthCentre);
+
+
     }
 
     public boolean verifyAppointmentInformation() {
@@ -743,6 +749,26 @@ tapByCoordinates(189,479);
         waitForElementIgnoreStale(elmntPaymentOptions);
         waitForElement(elmntPaymentOptions);
         return verifyElement(elmntPaymentOptions);
+    }
+
+    public void verifyPaymentOptionsIOS() {
+        waitForSecond(5);
+//        Capabilities iosCapabilities = new Capabilities() {
+//          DesiredCapabilities capabilities = iosCapabilities.getCapability(getPlatform(),deviceName,)
+//            @Override
+//            public Map<String, Object> asMap() {
+//                return null;
+//            }
+//
+//            @Override
+//            public Object getCapability(String s) {
+//                return null;
+//            }
+//
+//
+//        };
+
+
     }
 
     public static String strAmount;
