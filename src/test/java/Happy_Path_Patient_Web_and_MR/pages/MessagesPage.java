@@ -127,6 +127,26 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'User settings updated successfully')]")
     protected WebElement txtSettingSuccessPopUp;
 
+    @FindBy(how = How.XPATH, using = "//span[text()='Login']")
+    protected WebElement elmntLoginBtn;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Harry Harry!')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Arnold')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto Autochrisc1')]")
+
+    })
+    protected WebElement txtPatientWelcomePage;
+
+    @FindBy(how = How.XPATH, using = "//img[@class='profile-pic img-fluid']")
+    protected WebElement elmntProfile;
+
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),' Sign Out ')]")
+    protected WebElement elmntSignout;
+
+
+
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Inbox')]")
     protected WebElement elmntInboxDoctor;
 
@@ -2114,6 +2134,80 @@ jsScrollIntoView(txtBoxMessages);
         return blResult;
     }
 
+    public boolean clickBetaLoginButton() {
+        boolean blResult = false;
+
+        try {
+            int WindowsCount = driver.getWindowHandles().size();
+//            System.out.println("===============>WindowsCount::" + WindowsCount);
+
+            if (WindowsCount == 1) {
+                driver.manage().deleteAllCookies();
+                waitForSeconds(10);
+                waitForElement(elmntLoginBtn);
+                click(elmntLoginBtn);
+                driver.manage().deleteAllCookies();
+                blResult =true;
+            }
+            if (WindowsCount == 2) {
+                focusWindow(1);
+                System.out.println("user in Provider Home Page");
+            }
+            System.out.println("Try Block 1 executed");
+        } catch (Exception e) {
+            try {
+                waitForElementClickable(elmntProfile);
+                jsClick(elmntProfile);
+                waitForSeconds(2);
+                waitForElementClickable(elmntSignout);
+                jsClick(elmntSignout);
+                visit();
+                waitForElement(elmntLoginBtn);
+                click(elmntLoginBtn);
+                blResult = true;
+                System.out.println("Catch Block 1 executed");
+            } catch (Exception d) {
+                d.printStackTrace();
+            }
+
+        }
+        return blResult;
+
+    }
+
+    public void visit() {
+        int WindowsCount = driver.getWindowHandles().size();
+        System.out.println("===============>WindowsCount::" + WindowsCount);
+        if (WindowsCount == 2) {
+            focusWindow(1);
+            if (verifyElement(txtPatientWelcomePage)){
+                driver.manage().deleteAllCookies();
+                System.out.println("User here in Provider home page");
+            }else{
+//                System.out.println("Else Part ::::::Window Count 2");
+                driver.manage().deleteAllCookies();
+                visit(TestDataUtil.getValue("&URL&"));
+
+            }
+        }
+        if (WindowsCount == 1) {
+            visit(TestDataUtil.getValue("&URL&"));
+            System.out.println("Enter Windows 1 ");
+            waitForSeconds(3);
+            if (isElementDisplayed(txtPatientWelcomePage)) {
+                driver.manage().deleteAllCookies();
+                System.out.println("User here in Provider home page");
+                takeScreenshot(driver);
+            }
+            else{
+                waitForSeconds(3);
+                visit(TestDataUtil.getValue("&URL&"));
+                driver.manage().deleteAllCookies();
+            }
+
+        }
+    }
+
     public boolean launchInNewTab(String URL) {
         boolean blResult = false;
         try {
@@ -2122,9 +2216,13 @@ jsScrollIntoView(txtBoxMessages);
 //            System.out.println("Before focussed another window");
 //            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 //            driver.switchTo().window(tabs.get(1));
-            visit(URL);
-            waitForSeconds(3);
-            System.out.println("focussed another window");
+
+
+                visit(URL);
+                waitForSeconds(3);
+                System.out.println("focussed another window");
+
+
             blResult = true;
         } catch (Exception e) {
             e.printStackTrace();

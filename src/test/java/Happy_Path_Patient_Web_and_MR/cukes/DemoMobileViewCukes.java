@@ -21,7 +21,7 @@ import static Happy_Path_Patient_Web_and_MR.pages.HomePage.strAppVersion;
         })
 
 
-//clean test -Dapp=Happy_Path_Patient_Web_and_MR -Drunner=DemoMobileViewCukes -Dexecution_type=mobile -Dconfig=local_android_Galaxy_M53_Chrome -Denv=QA -Dbrowser_name=chrome "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/RealDeviceMobile-QAResults.html -Dsysteminfo.AppName=Demo-QA"
+//clean test -Dapp=Happy_Path_Patient_Web_and_MR -Drunner=DemoMobileViewCukes -Dexecution_type=mobile -Dconfig=local_android_Galaxy_M53_Chrome -Denv=PROD -Dbrowser_name=chrome "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/RealDeviceMobile-QAResults.html -Dsysteminfo.AppName=Demo-QA"
 
 //clean test -Dapp=Happy_Path_Patient_Web_and_MR -Drunner=DemoMobileViewCukes -Dexecution_type=tabview -Dconfig=local_android_Galaxy_Tab_A9 -Denv=QA -Dbrowser_name=chrome "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/RealDeviceMobile-QAResults.html -Dsysteminfo.AppName=Demo-QA"
 

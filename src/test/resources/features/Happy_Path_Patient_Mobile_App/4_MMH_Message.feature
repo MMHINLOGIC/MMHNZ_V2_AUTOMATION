@@ -1,6 +1,6 @@
 Feature: Messages_Scenarios
 
-  @WEB @Mobile_Message @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Message @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -13,7 +13,7 @@ Feature: Messages_Scenarios
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
 
-  @WEB @Mobile_Message @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Message @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 2- Preparation for Group Message, Sending a Group of E-Mail's to the Patient from provider login
 
     Given As a user I am on Doctor portal homepage and Navigate to GroupMessage

@@ -28,7 +28,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-
+import static cap.utilities.SharedDriver.driver;
 
 
 public class DriverUtil {
@@ -50,7 +50,10 @@ public class DriverUtil {
         if (strConfig.isEmpty() || strExecutionType.equalsIgnoreCase("WEBMOBILE")) {
             driver = getLocalDriver(strBrowser);
             driver.manage().window().maximize();
-        } else if (strConfig.equalsIgnoreCase("remote")) {
+        } else if(strConfig.isEmpty() || strExecutionType.equalsIgnoreCase("MOBILE")){
+            driver = getLocalDriver(strBrowser);
+            driver.manage().window().maximize();
+        }else if (strConfig.equalsIgnoreCase("remote")) {
             try {
                 URL url = new URL("http://172.25.192.1:4545/wd/hub");
 
@@ -72,6 +75,8 @@ public class DriverUtil {
 
         return driver;
     }
+
+
 
 //    The getMobileDriver method used to
 

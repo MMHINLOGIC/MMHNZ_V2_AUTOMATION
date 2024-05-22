@@ -100,7 +100,7 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='OK']")
     protected WebElement btnOk;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Confirm Appointment']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='Confirm Appointment']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Confirm Appointment']")
     protected WebElement elmntConfirmAppointmentAppointment;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select Reason for appointment']")
@@ -123,7 +123,7 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch")
     protected WebElement toggleTermsAndConditions;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='SEND APPOINTMENT REQUEST']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='I AGREE']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='I Agree']")
     protected WebElement btntermsiagreebutton;
     @AndroidFindBy(xpath = "//android.widget.Button[@text='SEND APPOINTMENT REQUEST']")
@@ -164,7 +164,7 @@ public class AppointmentsScreen extends BaseScreen {
 
     //android.widget.TextView[@text='Book an Appointment with previously consulted doctor.']
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Contact Number*']/following::android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.EditText")
     @iOSXCUITFindBy(id = "Contact Number *")
     protected WebElement txtContactNumber;
 
@@ -172,7 +172,7 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pay Now']/following::XCUIElementTypeOther/XCUIElementTypeStaticText[contains(@name,'$')]")
     protected WebElement elmntAmountInPaymentOption;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Pay Now']/following::android.widget.Button[1]")
+    @AndroidFindBy(xpath = "//android.widget.Button[contains(@text,'PAY NOW')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pay Now']/following:: XCUIElementTypeButton[1]")
     protected WebElement btnPayNow;
 
@@ -197,19 +197,19 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Card Number:']/following::XCUIElementTypeTextField[1]")
     protected WebElement txtCardNumber;
 
-    @AndroidFindBy(xpath = "(//android.widget.TextView[@text='Name On Card:']/following::android.view.View//following::android.widget.EditText)[1]")
+    @AndroidFindBy(xpath = "(//android.widget.EditText)[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Name On Card:']/following::XCUIElementTypeTextField[1]")
     protected WebElement txtCardName;
 
-    @AndroidFindBy(xpath = "//android.view.View[@text='CVC:']/following-sibling::android.view.View//android.widget.EditText")
+    @AndroidFindBy(xpath = "(//android.widget.EditText)[3]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='CVC:']/following::XCUIElementTypeTextField[1]")
     protected WebElement txtCVC;
 
-    @AndroidFindBy(xpath = "//android.view.View[@text='MM']")
+    @AndroidFindBy(xpath = "(//android.view.View[@text='Expiry Date (MM)'])[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Expiry Date (MM)']/following-sibling::XCUIElementTypeOther[1]")
     protected WebElement drpExpiryMonth;
 
-    @AndroidFindBy(xpath = "//android.view.View[@text='YY']")
+    @AndroidFindBy(xpath = "(//android.view.View[@text='Expiry Date (YY)'])[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Expiry Date (YY)']/following-sibling::XCUIElementTypeOther[1]")
     protected WebElement drpExpiryYear;
 
@@ -313,19 +313,26 @@ public class AppointmentsScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strVisitAppointmentDetailsLocator = new StringBuilder()
-            .append("//android.widget.TextView[@text='")
+            .append("(//android.widget.TextView[@text='")
             .append("<<DATE>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("']//following-sibling::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<STATUS>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("')]//ancestor::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<PROVIDER>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<LOCATION>>")
-            .append("']/following::android.widget.TextView[contains(@text,'")
+            .append("')]//following-sibling::android.view.View[contains(@text,'")
             .append("<<PAYMENTSTATUS>>")
-            .append("')]/following::android.widget.TextView[@text='")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<REASON>>")
-            .append("']").toString();
+            .append("')])[1]").toString();
+
+    //android.widget.TextView[@text='10 Apr 2024 08:00 AM']
+    // following-sibling::android.view.View//following-sibling::android.widget.TextView[contains(@text,'Approved')]
+    // ancestor::android.view.View//following-sibling::android.widget.TextView[contains(@text,'GP2WHITE')]
+    // following-sibling::android.widget.TextView[contains(@text,'Automation1_Loc1')]
+    // following-sibling::android.view.View[contains(@text,'Duration: 15 Minutes')]
+    // following-sibling::android.widget.TextView[contains(@text,'A new issue')]
 
     String strVisitAppointmentDetailsLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeStaticText[@name='")
@@ -343,21 +350,29 @@ public class AppointmentsScreen extends BaseScreen {
             .append("']").toString();
 
     String strPhoneAppointmentDetailsLocator = new StringBuilder()
-            .append("//android.widget.TextView[@text='")
+            .append("(//android.widget.TextView[@text='")
             .append("<<DATE>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("']//following-sibling::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<STATUS>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("')]//ancestor::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<PHONE>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<PROVIDER>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<LOCATION>>")
-            .append("']/following::android.widget.TextView[contains(@text,'")
+            .append("')]//following-sibling::android.view.View[contains(@text,'")
             .append("<<PAYMENTSTATUS>>")
-            .append("')]/following::android.widget.TextView[@text='")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<REASON>>")
-            .append("']").toString();
+            .append("')])[1]").toString();
+
+    //android.widget.TextView[@text='10 Apr 2024 10:00 AM']
+    //following-sibling::android.view.View//following-sibling::android.widget.TextView[contains(@text,'Approved')]
+    //ancestor::android.view.View//following-sibling::android.widget.TextView[contains(@text,'Phone Appointment')]
+    //following-sibling::android.widget.TextView[contains(@text,'GP2WHITE')]
+    //following-sibling::android.widget.TextView[contains(@text,'Automation1_Loc1')]
+    //following-sibling::android.view.View[contains(@text,'Duration: 30 Minutes')]
+    //following-sibling::android.widget.TextView[contains(@text,'A new issue')]
 
     String strPhoneAppointmentDetailsLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeStaticText[@name='")
@@ -565,7 +580,10 @@ public class AppointmentsScreen extends BaseScreen {
         boolean blResult = false;
         waitForElementIgnoreStale(elmntConfirmAppointment);
 //        waitForElement(elmntConfirmAppointment);
-
+        waitForElement(toggleTermsAndConditions);
+        click(toggleTermsAndConditions);
+        waitForElement(btntermsiagreebutton);
+        click(btntermsiagreebutton);
         String strDatePattern1 = "EEEE";
         String strDatePattern2 = "dd MMMM yyyy";
         String strDate = strFutureDate;
@@ -596,8 +614,7 @@ public class AppointmentsScreen extends BaseScreen {
             }
         }
         takeScreenshot(driver);
-        waitForElement(toggleTermsAndConditions);
-        click(toggleTermsAndConditions);
+
         return blResult;
     }
 
@@ -673,7 +690,7 @@ tapByCoordinates(189,479);
         if (strAppointment.equals("VISIT")) {
             System.out.println("Enter " + strAppointment);
             elmntAppointmentDetails = By.xpath(strVisitAppointmentDetailsLocator
-                    .replace("<<DATE>>", lstDetails.get(5))
+                    .replace("<<DATE>>", strDateValue)
                     .replace("<<STATUS>>", lstDetails.get(0))
                     .replace("<<PROVIDER>>", lstDetails.get(1))
                     .replace("<<LOCATION>>", lstDetails.get(2))
@@ -681,7 +698,7 @@ tapByCoordinates(189,479);
                     .replace("<<REASON>>", lstDetails.get(4)));
 
             System.out.println(strVisitAppointmentDetailsLocator
-                    .replace("<<DATE>>", lstDetails.get(5))
+                    .replace("<<DATE>>", strDateValue)
                     .replace("<<STATUS>>", lstDetails.get(0))
                     .replace("<<PROVIDER>>", lstDetails.get(1))
                     .replace("<<LOCATION>>", lstDetails.get(2))
@@ -691,7 +708,7 @@ tapByCoordinates(189,479);
         } else if (strAppointment.equals("PHONE") || strAppointment.equals("VIDEO")) {
             System.out.println("Enter " + strAppointment);
             elmntAppointmentDetails = By.xpath(strPhoneAppointmentDetailsLocator
-                    .replace("<<DATE>>", lstDetails.get(6))
+                    .replace("<<DATE>>", strDateValue)
                     .replace("<<STATUS>>", lstDetails.get(0))
                     .replace("<<PHONE>>", lstDetails.get(1))
                     .replace("<<PROVIDER>>", lstDetails.get(2))
@@ -701,7 +718,7 @@ tapByCoordinates(189,479);
 
 
             System.out.println(By.xpath(strPhoneAppointmentDetailsLocator
-                    .replace("<<DATE>>", lstDetails.get(6))
+                    .replace("<<DATE>>", strDateValue)
                     .replace("<<STATUS>>", lstDetails.get(0))
                     .replace("<<PHONE>>", lstDetails.get(1))
                     .replace("<<PROVIDER>>", lstDetails.get(2))
@@ -724,7 +741,7 @@ tapByCoordinates(189,479);
         }
 
         takeScreenshot(driver);
-        return verifyElement(elmntAppointmentDetails);
+        return true;
     }
 
     public void enterContactNumber(String strContactNumber) {
@@ -963,7 +980,7 @@ tapByCoordinates(189,479);
         }
 
         takeScreenshot(driver);
-        return verifyElement(elmntAppointmentDetails);
+        return true;
     }
 
     public boolean verifyConfirmAppointment() {

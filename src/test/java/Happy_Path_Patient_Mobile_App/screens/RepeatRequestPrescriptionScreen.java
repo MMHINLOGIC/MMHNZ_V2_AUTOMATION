@@ -158,19 +158,19 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     @iOSXCUITFindBy(id = "Add Delivery Address")
     protected WebElement elmntAddDeliveryAddress;
 
-    @AndroidFindBy(xpath = "(//android.widget.RadioButton[contains(@text,'Home')])[1]")
+    @AndroidFindBy(xpath = "(//android.widget.RadioButton)[1]")
     @iOSXCUITFindBy(id = "Work")
     protected WebElement rdoHome;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Unit No')]/following::android.widget.EditText[1]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Unit No')]//following-sibling::android.view.View//following-sibling::android.widget.EditText")
     @iOSXCUITFindBy(id = "Unit No *")
     protected WebElement txtUnitNo;
 
-    @AndroidFindBy(xpath = "(//android.widget.TextView[contains(@text,'Street')]/following::android.widget.EditText[1])[2]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Street')]//following-sibling::android.view.View//following-sibling::android.widget.EditText")
     @iOSXCUITFindBy(id = "Street *")
     protected WebElement txtStreet;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'City')]/following::android.widget.EditText[1]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'City')]//following-sibling::android.view.View//following-sibling::android.widget.EditText")
     @iOSXCUITFindBy(id = "City *")
     protected WebElement txtCity;
 
@@ -203,7 +203,7 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Payment Success')]")
     protected WebElement txtPaymentSuccess;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Payment Staus: Approved')]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Payment Status: Approved')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Payment Staus:']/following-sibling::XCUIElementTypeStaticText[@name='Approved']")
     protected WebElement elmntStatusApproved;
 
@@ -221,7 +221,7 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
 
     String strViewPickUpMethodTextLocator = new StringBuilder()
             .append("(//android.widget.TextView[@text='")
-            .append("<<TEXT>>").append("']/following::android.widget.TextView[@text='View'])[1]").toString();
+            .append("<<TEXT>>").append("'])[1]").toString();
 
 
     String strViewPickUpMethodTextLocatorIOS = new StringBuilder()
@@ -312,7 +312,7 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
         attachStepLog("Location", strLocation);
         waitForSecond(4);
 //        waitForElementIgnoreStale(elmntRepeatPrescriptions);
-        waitForElement(elmntSelectLocation);
+//        waitForElement(elmntSelectLocation);
         WebElement elmntLocation = waitForElement(By.xpath(strLocationLocator.replace("<<LOCATION>>", strLocation)));
         click(elmntLocation);
     }
@@ -349,7 +349,7 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     public void selectProvider(String strProvider) {
         System.out.println("Provider: " + strProvider);
         attachStepLog("Provider", strProvider);
-        waitForElement(elmntSelectProvider);
+//        waitForElement(elmntSelectProvider);
         WebElement elmntProvider = waitForElement(By.xpath(strTextViewLocator.replace("<<TEXT>>", strProvider)));
         click(elmntProvider);
     }
@@ -667,6 +667,7 @@ tapByCoordinates(88,1578);
 
     public void selectMedByPharmacy(List<String> lstPharmacy) {
 //        waitForElementIgnoreStale(elmntSelectDeliveryAddress);
+        System.out.println("lstPharmacy >> ::"+lstPharmacy);
         waitForSecond(5);
         click(elmntFindAPharmacy);
 

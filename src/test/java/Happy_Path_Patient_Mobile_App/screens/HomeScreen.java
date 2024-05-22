@@ -25,7 +25,7 @@ public class HomeScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Are you sure you want to logout?\"]")
     protected WebElement elmntLogoutPopup;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='notifications outline']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='notifications']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='notifications']")
     protected WebElement iconNotification;
 
