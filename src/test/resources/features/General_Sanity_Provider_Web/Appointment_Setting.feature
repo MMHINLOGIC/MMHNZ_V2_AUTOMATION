@@ -9,7 +9,7 @@ Feature: Appointment Setting
     And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -21,7 +21,7 @@ Feature: Appointment Setting
       | Upcoming Appointments |
 
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING
   Scenario Template:S0- Verify if location & Provider are displayed based on Rule A
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -35,7 +35,7 @@ Feature: Appointment Setting
       | &ANY_LOCATION_WITH_ANY_PROVIDER_BOOK_VISIT_APPOINTMENT& | Automation1_Loc1 | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &AUTOMATION_PRACTICE1_LOC2_DOCTOR_NAMES& |  |  |  |  |  |  |  |  |
 
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING
   Scenario Template:S1- Verify if location & Provider are displayed based on Rule B
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -48,7 +48,7 @@ Feature: Appointment Setting
       | Default_Location_with_Default_Provider_Appointment_Details      | Location         | Automation_Practice_Loc1_Doctor_Name |
       | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_PHONE_APPOINTMENT& | Automation1_Loc1 | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING
   Scenario Template:S2- Verify if location & Provider are displayed based on Rule C
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -62,7 +62,7 @@ Feature: Appointment Setting
       | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VISIT_APPOINTMENT_RULE_C& | Automation1_Loc1 | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  |
 
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING
   Scenario Template:S3- Verify if location & Provider are displayed based on Rule D
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -75,7 +75,7 @@ Feature: Appointment Setting
       | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VISIT_APPOINTMENT_RULE_C& | Automation1_Loc1 | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  |
 
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING
   Scenario Template:S4- Verify if location & Provider are displayed based on Rule E
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -88,7 +88,7 @@ Feature: Appointment Setting
       | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VISIT_APPOINTMENT_RULE_C& | Automation1_Loc1 | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &NON_RESTRICT_PROVIDER_DATA& |
 
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S5-Verify the no of Appointments allowed per day & Terms Conditions are reflected in the book appointment
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -106,7 +106,7 @@ Feature: Appointment Setting
       |  | Location         | Appointment_Details      | Appointment           | Details_For_Appointment                   | Future_Date   | Appointment_Summary                       | Patient_User_Login   | Password   | Appointment_Cancel_Button        |  |  |
       |  | Automation1_Loc1 | &BOOK_VISIT_APPOINTMENT& | Upcoming Appointments | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | &APPOINTMENT_DETAILS_FOR_CANCEL& |  |  |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S6-Select the Reason Mandatory No Radio Button Provider side verify without Enter Reason Book Appointment From Patient side
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -122,7 +122,7 @@ Feature: Appointment Setting
       |  | Location         | Appointment_Details      | Appointment           | Details_For_Appointment                   | Future_Date   | Appointment_Summary                       | Patient_User_Login   | Password   | Appointment_Cancel_Button        |  |  |
       |  | Automation1_Loc1 | &BOOK_VISIT_APPOINTMENT& | Upcoming Appointments | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | &APPOINTMENT_DETAILS_FOR_CANCEL& |  |  |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S7-Select the Reason Mandatory yes Radio Button Provider side verify without Enter Reason Book Appointment From Patient side
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -138,7 +138,7 @@ Feature: Appointment Setting
       |  | Location         | Appointment_Details      | Appointment           | Details_For_Appointment                   | Future_Date   | Appointment_Summary                       | Patient_User_Login   | Password   | Appointment_Cancel_Button        |  |  |
       |  | Automation1_Loc1 | &BOOK_VISIT_APPOINTMENT& | Upcoming Appointments | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | &APPOINTMENT_DETAILS_FOR_CANCEL& |  |  |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S8-Provider Turn Off Online Appointments verify No Available appointment slot Text is displayed in Appointment Page
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -150,7 +150,7 @@ Feature: Appointment Setting
       | Location         | Provider_Login           | Appointment_Details      | Appointment      | Location1  |
       | Automation1_Loc1 | &PROVIDER_LOGIN_DETAILS& | &BOOK_VISIT_APPOINTMENT& | Book Appointment | Automation |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S9-Provider View Turn Off Appointments Audit verify Check Turn Off Appointments audit grid displayed
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -163,7 +163,7 @@ Feature: Appointment Setting
       | Automation1_Loc1 | &APPOINTMENT_AUDIT_DATA&   |
 
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S10-Provider Enable Phone Appointment Settings - Rule 1 and verify Patient side
 
     Given As a Provider I am on HomePage and navigate to Phone Appointment Setting page
@@ -177,7 +177,7 @@ Feature: Appointment Setting
       | Phone_Appointment_setting_data      | Phone_Appointments_Data  |
       | &PHONE_APPOINTMENT_SETTING_DETAILS& | &BOOK_PHONE_APPOINTMENT& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S11-Provider Enable Phone Appointment Settings - Rule 2 and verify Patient side
 
     Given As a Provider I am on HomePage and navigate to Phone Appointment Setting page
@@ -191,7 +191,7 @@ Feature: Appointment Setting
       | Phone_Appointment_setting_data      | Phone_Appointments_Data  |
       | &PHONE_APPOINTMENT_SETTING_DETAILS& | &BOOK_PHONE_APPOINTMENT& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S12-As a User I have to enable Easy Booking Banner Message to Yes in Appointment Message page
 
     Given As a Provider I am on HomePage and navigate to Appointment Message page
@@ -207,7 +207,7 @@ Feature: Appointment Setting
       | Health_Centre                 | Banner_Heading   | Banner_Message   | Location                 |
       | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& | &PRE_SCREENING_LOCATION& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S13-As a User I have to enable Easy Booking Banner Message to No in Appointment Message page
 
     Given As a Provider I am on HomePage and navigate to Appointment Message page
@@ -223,7 +223,7 @@ Feature: Appointment Setting
       | Health_Centre                 | Banner_Heading   | Banner_Message   | Location                 |
       | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& | &PRE_SCREENING_LOCATION& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S14-As a User I have to enable Patient Portal(Web) Banner Message to yes in Appointment Message page
 
     Given As a Provider I am on HomePage and navigate to Appointment Message page
@@ -238,7 +238,7 @@ Feature: Appointment Setting
       | Health_Centre                 | Banner_Heading   | Banner_Message   |
       | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S15-As a User I have to enable Patient Portal(Web) Banner Message to No in Appointment Message page
 
     Given As a Provider I am on HomePage and navigate to Appointment Message page
@@ -253,7 +253,7 @@ Feature: Appointment Setting
       | Health_Centre                 | Banner_Heading   | Banner_Message   |
       | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S16-Provider Enable Video Consultations No Button Check Video appointment slots are Not displayed in All tab
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -266,7 +266,7 @@ Feature: Appointment Setting
       | Location         | Appointment_Details      |
       | Automation1_Loc1 | &BOOK_VIDEO_APPOINTMENT& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S17-Provider Enable Video Consultations yes Button Check Video appointment slots are displayed in All tab
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -279,7 +279,7 @@ Feature: Appointment Setting
       | Location         | Appointment_Details      |
       | Automation1_Loc1 | &BOOK_VIDEO_APPOINTMENT& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING111
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING111
   Scenario Template:S18-Provider Enable OnDemand Video Consultations Settings
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -291,7 +291,7 @@ Feature: Appointment Setting
       | details                    |
       | &VIDEO_CONSULTATIONS_DATA& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S6-Provider Disable OnDemand Video Consultations Settings
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -303,7 +303,7 @@ Feature: Appointment Setting
       | details                    |
       | &VIDEO_CONSULTATIONS_DATA& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S7-Provider Enable SMS Video Invite Settings
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -316,7 +316,7 @@ Feature: Appointment Setting
       | &VIDEO_CONSULTATIONS_DATA& |
 
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S8-Provider Disable SMS Video Invite Settings
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -328,7 +328,7 @@ Feature: Appointment Setting
       | details                    |
       | &VIDEO_CONSULTATIONS_DATA& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S1-Enable Pre-Screening Covid PopUp Settings in Provider
     Given As a Provider I am on HomePage and navigate to  Pre-Screening Settings
     And I click Systems Menu and I navigating to Pre-Screening Settings page
@@ -342,7 +342,7 @@ Feature: Appointment Setting
       | Health_Centre                 | Location        |
       | &PRE_SCREENING_HEALTH_CENTRE& | &PRE_SCREENING& |
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S2-Disable Pre-Screening Covid PopUp Settings in Provider
 
     Given As a Provider I am on HomePage and navigate to  Pre-Screening Settings
@@ -357,7 +357,7 @@ Feature: Appointment Setting
       | &PRE_SCREENING_HEALTH_CENTRE& | &PRE_SCREENING& |
 
 
-  @WEB @PROVIDER_SANITY @APPOINTMENTS_SETTING1
+  @WEB @GENERAL_SANITY @APPOINTMENTS_SETTING1
   Scenario Template:S13-Set Minimum notice for Cancellation
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page

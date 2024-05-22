@@ -2,7 +2,10 @@ package Happy_Path_Patient_Mobile_App;
 
 
 import Happy_Path_Patient_Mobile_App.screens.*;
+import cap.common.BasePage;
+import cap.common.BaseScreen;
 import cap.helpers.Constants;
+import cap.utilities.DriverUtil;
 import cap.utilities.SharedDriver;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -14,14 +17,16 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Codoidian-pc on 05/03/2022.
  */
-public class DemoScreenContainer {
+public class DemoScreenContainer extends SharedDriver {
     private WebDriver driver;
 
     //Demo Mobile Application Screens
@@ -35,40 +40,43 @@ public class DemoScreenContainer {
     public static Scenario myScenario;
     public static LinkedHashMap<String, String> printTestDataMap = new LinkedHashMap<String, String>();
 
+    String strExecutionType= System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE,"");
+
 
     public DemoScreenContainer() {
-//        driver = SharedDriver.getMobileDriver();
-//        initScreens();
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            driver = SharedDriver.getDriver();
-            initPages();
-        }
-
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-            driver = SharedDriver.getDriver();
-            driver = SharedDriver.getMobileDriver();
-            initPages();
-        }
-
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
-            driver = SharedDriver.getDriver();
-            initPages();
-        }
-
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("WEBMOBILE")) {
-            driver = SharedDriver.getDriver();
-            driver = SharedDriver.getMobileDriver();
-            initPages();
-        }
-
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("TABLETVIEW")) {
-            driver = SharedDriver.getDriver();
-            driver = SharedDriver.getMobileDriver();
-            initPages();
-        }
+        driver = SharedDriver.getMobileDriver();
+        initScreens();
+//        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            driver = SharedDriver.getDriver();
+//            initPages();
+//        }
+//
+//        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+//            driver = SharedDriver.getDriver();
+//            mobileDriver = SharedDriver.getMobileDriver();
+//            initPages();
+//        }
+//
+//        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+//            driver = SharedDriver.getDriver();
+//            initPages();
+//        }
+//
+//        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("WEBMOBILE")) {
+////            DriverUtil.driver=driverUtil.getDriver();
+//            driver = SharedDriver.getDriver();
+//            mobileDriver = SharedDriver.getMobileDriver();
+//            initPages();
+//        }
+//
+//        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("TABLETVIEW")) {
+//            driver = SharedDriver.getDriver();
+//            mobileDriver = SharedDriver.getMobileDriver();
+//            initPages();
+//        }
     }
 
-    private void initPages() {
+    private void initScreens() {
         // Mobile Application Screens
         loginScreen = new LoginScreen(driver);
         homeScreen = new HomeScreen(driver);

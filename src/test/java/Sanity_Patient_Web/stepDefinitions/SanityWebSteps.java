@@ -3576,6 +3576,21 @@ public class SanityWebSteps {
 
     }
 
+    @Given("As a Existing user I am on HomePage and I click the Beating the Blues Option")
+    public void asAExistingUserIAmOnHomePageAndIClickTheBeatingTheBluesOption() {
+        Assert.assertTrue(sanityPageContainer.viewJournal.clickDashBoard());
+        Assert.assertTrue(sanityPageContainer.homePage.verifyHomePageOfMMHPortal());
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBeatingTheBluesOption());
+
+    }
+
+    @When("click on My Health Centres option and verify Patient is Connected the Health centre")
+    public void clickOnMyHealthCentresOptionAndVerifyPatientIsConnectedTheHealthCentre() {
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyAccount());
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyAccount());
+
+    }
+
 
 }
 

@@ -14,11 +14,9 @@ import org.openqa.selenium.WebDriver;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/*
- * Created by Codoidian-pc on 05/03/2022.
- */
+
 public class DemoPageContainer {
-    private WebDriver driver;
+    public WebDriver driver;
     public static Scenario myScenario;
     public static LinkedHashMap<String, String> printTestDataMap = new LinkedHashMap<String, String>();
 
@@ -49,12 +47,10 @@ public class DemoPageContainer {
 
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("WEBMOBILE")) {
             driver = SharedDriver.getDriver();
-            driver = SharedDriver.getMobileDriver();
             initPages();
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("TABLETVIEW")) {
             driver = SharedDriver.getDriver();
-            driver = SharedDriver.getMobileDriver();
             initPages();
         }
 

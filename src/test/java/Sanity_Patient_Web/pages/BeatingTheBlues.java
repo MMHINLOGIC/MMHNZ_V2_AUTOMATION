@@ -46,6 +46,15 @@ public class BeatingTheBlues extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'What are your thoughts about doing weekly projects?')]")
     protected WebElement elmtWhatareyourthoughtsaboutdoingweeklyprojects;
 
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'My Account')]")
+    protected WebElement elmtMyAccount;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Update Profile')]")
+    protected WebElement elmtUpdateProfile;
+
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'View Profile')]")
+    protected WebElement elmtviewProfile;
+
 
 
 
@@ -91,5 +100,35 @@ public class BeatingTheBlues extends BasePage {
         waitForSeconds(3);
         return true;
 
+    }
+
+    public boolean clickBeatingTheBluesOption() {
+        boolean isverified=false;
+        waitForSeconds(3);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        jsScrollIntoView(elmtBeatingTheBlues);
+        isverified=verifyElement(elmtBeatingTheBlues);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForElementClickable(elmtBeatingTheBlues);
+        waitAndClick(elmtBeatingTheBlues);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForSeconds(2);
+//        waitForElement(elmtBeatingTheBluesHeader);
+        return isverified;
+    }
+
+    public boolean clickMyAccount() {
+        boolean isverified=false;
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        jsScrollIntoView(elmtMyAccount);
+        click(elmtMyAccount);
+        jsScrollIntoView(elmtUpdateProfile);
+        isverified=verifyElement(elmtUpdateProfile);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForElementClickable(elmtUpdateProfile);
+        waitAndClick(elmtUpdateProfile);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        isverified=verifyElement(elmtviewProfile);
+        return isverified;
     }
 }

@@ -46,8 +46,8 @@ public class HealthRecordsScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strButtonTextLocator = new StringBuilder()
-            .append("//android.widget.Button[@text='")
-            .append("<<TEXT>>").append("']").toString();
+            .append("//android.widget.Button[contains(@text,'")
+            .append("<<TEXT>>").append("')]").toString();
 
     String strButtonTextLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeButton[@name='")

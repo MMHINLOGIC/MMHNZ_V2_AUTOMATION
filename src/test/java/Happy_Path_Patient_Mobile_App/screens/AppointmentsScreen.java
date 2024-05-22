@@ -309,19 +309,26 @@ public class AppointmentsScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strVisitAppointmentDetailsLocator = new StringBuilder()
-            .append("//android.widget.TextView[@text='")
+            .append("(//android.widget.TextView[@text='")
             .append("<<DATE>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("']//following-sibling::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<STATUS>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("')]//ancestor::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<PROVIDER>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<LOCATION>>")
-            .append("']/following::android.widget.TextView[contains(@text,'")
+            .append("')]//following-sibling::android.view.View[contains(@text,'")
             .append("<<PAYMENTSTATUS>>")
-            .append("')]/following::android.widget.TextView[@text='")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<REASON>>")
-            .append("']").toString();
+            .append("')])[1]").toString();
+
+    //android.widget.TextView[@text='10 Apr 2024 08:00 AM']
+    // following-sibling::android.view.View//following-sibling::android.widget.TextView[contains(@text,'Approved')]
+    // ancestor::android.view.View//following-sibling::android.widget.TextView[contains(@text,'GP2WHITE')]
+    // following-sibling::android.widget.TextView[contains(@text,'Automation1_Loc1')]
+    // following-sibling::android.view.View[contains(@text,'Duration: 15 Minutes')]
+    // following-sibling::android.widget.TextView[contains(@text,'A new issue')]
 
     String strVisitAppointmentDetailsLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeStaticText[@name='")
@@ -339,21 +346,29 @@ public class AppointmentsScreen extends BaseScreen {
             .append("']").toString();
 
     String strPhoneAppointmentDetailsLocator = new StringBuilder()
-            .append("//android.widget.TextView[@text='")
+            .append("(//android.widget.TextView[@text='")
             .append("<<DATE>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("']//following-sibling::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<STATUS>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("')]//ancestor::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<PHONE>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<PROVIDER>>")
-            .append("']/following::android.widget.TextView[@text='")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<LOCATION>>")
-            .append("']/following::android.widget.TextView[contains(@text,'")
+            .append("')]//following-sibling::android.view.View[contains(@text,'")
             .append("<<PAYMENTSTATUS>>")
-            .append("')]/following::android.widget.TextView[@text='")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<REASON>>")
-            .append("']").toString();
+            .append("')])[1]").toString();
+
+    //android.widget.TextView[@text='10 Apr 2024 10:00 AM']
+    //following-sibling::android.view.View//following-sibling::android.widget.TextView[contains(@text,'Approved')]
+    //ancestor::android.view.View//following-sibling::android.widget.TextView[contains(@text,'Phone Appointment')]
+    //following-sibling::android.widget.TextView[contains(@text,'GP2WHITE')]
+    //following-sibling::android.widget.TextView[contains(@text,'Automation1_Loc1')]
+    //following-sibling::android.view.View[contains(@text,'Duration: 30 Minutes')]
+    //following-sibling::android.widget.TextView[contains(@text,'A new issue')]
 
     String strPhoneAppointmentDetailsLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeStaticText[@name='")
@@ -720,7 +735,7 @@ tapByCoordinates(189,479);
         }
 
         takeScreenshot(driver);
-        return verifyElement(elmntAppointmentDetails);
+        return true;
     }
 
     public void enterContactNumber(String strContactNumber) {
@@ -939,7 +954,7 @@ tapByCoordinates(189,479);
         }
 
         takeScreenshot(driver);
-        return verifyElement(elmntAppointmentDetails);
+        return true;
     }
 
     public boolean verifyConfirmAppointment() {

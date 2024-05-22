@@ -20,7 +20,7 @@ public class MessageScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Inbox'])[1]")
     protected WebElement elmntInbox;
 
-    @AndroidFindBy(xpath = "//android.widget.TabWidget/preceding::android.widget.Button[1]")
+    @AndroidFindBy(xpath = "(//android.widget.Button)[1]")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Inbox'])[1]/following-sibling::XCUIElementTypeButton[1]")
     protected WebElement iconCompose;
 
@@ -210,12 +210,15 @@ public class MessageScreen extends BaseScreen {
             .append("<<LOCATION>>").append("'][1]").toString();
 
 
+
+
     public void tapTabInInbox(String strTab) {
         waitForSecond(3);
         waitForElement(elmntInbox);
         WebElement elmntTab = null;
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             elmntTab = waitForElement(By.xpath(strInboxTabLocator.replace("<<TEXT>>", strTab)));
+            System.out.println(">>>>elmntTab"+elmntTab);
         } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
             elmntTab = waitForElement(By.xpath(strInboxTabLocatorIOS.replace("<<TEXT>>", strTab)));
         }
@@ -229,7 +232,7 @@ public class MessageScreen extends BaseScreen {
 
     public void selectLocation(String strLocation) {
         waitForSecond(5);
-        waitForElement(elmntSelectLocation);
+//        waitForElement(elmntSelectLocation);
         WebElement elmntLocation = null;
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             elmntLocation = waitForElement(By.xpath(strLocationLocator.replace("<<LOCATION>>", strLocation)));
