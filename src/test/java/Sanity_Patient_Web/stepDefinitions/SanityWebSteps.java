@@ -3587,7 +3587,7 @@ public class SanityWebSteps {
     @When("click on My Health Centres option and verify Patient is Connected the Health centre")
     public void clickOnMyHealthCentresOptionAndVerifyPatientIsConnectedTheHealthCentre() {
         Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyAccount());
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyAccount());
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyHealthCentre());
 
     }
 

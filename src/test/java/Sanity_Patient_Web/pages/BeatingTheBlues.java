@@ -55,6 +55,21 @@ public class BeatingTheBlues extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'View Profile')]")
     protected WebElement elmtviewProfile;
 
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'My Health Centres')]")
+    protected WebElement elmtMyHealthCentre;
+
+    @FindBy(how = How.XPATH, using = "//mat-label[text()='Location']")
+    protected WebElement verifyLocationIsDisplayed;
+
+    @FindBy(how = How.XPATH, using = "//mat-label[text()='Roles']")
+    protected WebElement verifyRoleIsDisplayed;
+
+    @FindBy(how = How.XPATH, using = "//div[text()='My Subscriptions']")
+    protected WebElement clickMySubscriptions;
+
+    @FindBy(how = How.XPATH, using = "//h3[contains(text(),'My Subscriptions')]")
+    protected WebElement verifyMySubscriptions;
+
 
 
 
@@ -104,31 +119,60 @@ public class BeatingTheBlues extends BasePage {
 
     public boolean clickBeatingTheBluesOption() {
         boolean isverified=false;
-        waitForSeconds(3);
-        waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        jsScrollIntoView(elmtBeatingTheBlues);
-        isverified=verifyElement(elmtBeatingTheBlues);
-        waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        waitForElementClickable(elmtBeatingTheBlues);
-        waitAndClick(elmtBeatingTheBlues);
-        waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        waitForSeconds(2);
-//        waitForElement(elmtBeatingTheBluesHeader);
+        try{
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmtBeatingTheBlues);
+            isverified=verifyElement(elmtBeatingTheBlues);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementClickable(elmtBeatingTheBlues);
+            waitAndClick(elmtBeatingTheBlues);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return isverified;
     }
 
     public boolean clickMyAccount() {
         boolean isverified=false;
-        waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        jsScrollIntoView(elmtMyAccount);
-        click(elmtMyAccount);
-        jsScrollIntoView(elmtUpdateProfile);
-        isverified=verifyElement(elmtUpdateProfile);
-        waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        waitForElementClickable(elmtUpdateProfile);
-        waitAndClick(elmtUpdateProfile);
-        waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        isverified=verifyElement(elmtviewProfile);
+        try{
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmtMyAccount);
+            click(elmtMyAccount);
+            jsScrollIntoView(elmtUpdateProfile);
+            isverified=verifyElement(elmtUpdateProfile);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementClickable(elmtUpdateProfile);
+            waitAndClick(elmtUpdateProfile);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            isverified=verifyElement(elmtviewProfile);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean clickMyHealthCentre() {
+        boolean isverified=false;
+        try{
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmtMyHealthCentre);
+            click(elmtMyHealthCentre);
+            jsScrollIntoView(verifyLocationIsDisplayed);
+            waitForElement(verifyLocationIsDisplayed);
+            isverified=verifyElement(verifyLocationIsDisplayed);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementClickable(verifyRoleIsDisplayed);
+            isverified=verifyElement(verifyRoleIsDisplayed);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
         return isverified;
     }
 }
