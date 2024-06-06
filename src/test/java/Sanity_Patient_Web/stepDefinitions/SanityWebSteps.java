@@ -3592,6 +3592,61 @@ public class SanityWebSteps {
     }
 
 
+    @Then("click on MyHealth Centres Option and Verify Patient is Subscribed to Beating the Blues")
+    public void clickOnMyHealthCentresOptionAndVerifyPatientIsSubscribedToBeatingTheBlues() {
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMySubscriptions());
+
+
+    }
+
+    @And("I Click on Book an Appointment and Verify Patient see book an appointment successfully")
+    public void iClickOnBookAnAppointmentAndVerifyPatientSeeBookAnAppointmentSuccessfully() {
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBookanAppointmentOption());
+    }
+
+    @And("I Click on New Repeat Prescription and Verify Patient see request an RRP Successfully")
+    public void iClickOnNewRepeatPrescriptionAndVerifyPatientSeeRequestAnRRPSuccessfully() {
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickRRPOption());
+    }
+
+    @And("I Click on Health Records and Lab Results details and Verify Patient see view Health Records and Lab Results Records")
+    public void iClickOnHealthRecordsAndLabResultsDetailsAndVerifyPatientSeeViewHealthRecordsAndLabResultsRecords() {
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickHealthRecords());
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickLabResults());
+    }
+
+    @And("I Click on Messages and Verify Patient see send and receive messages successfully")
+    public void iClickOnMessagesAndVerifyPatientSeeSendAndReceiveMessagesSuccessfully() {
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMessages());
+    }
+
+    @And("I click on Home Icon and Verify Patient can see Session Overview")
+    public void iClickOnHomeIconAndVerifyPatientCanSeeSessionOverview() {
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBTBHomeIcon());
+
+    }
+
+    @When("I click Session Overview icon from Home Page and Verify Patient can see all eight Sessions description")
+    public void iClickSessionOverviewIconFromHomePageAndVerifyPatientCanSeeAllEightSessionsDescription() {
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickSessionOverview());
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyEightSessions());
+
+    }
+
+    @And("I Click Resume Session icon from Home page and Verify Patient can attended sessions")
+    public void iClickResumeSessionIconFromHomePageAndVerifyPatientCanAttendedSessions() {
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickResumeSessionIcon());
+
+    }
+
+
+    @Given("As a Existing user I am on HomePage BTB Website and I click the Beating the Blues Option")
+    public void asAExistingUserIAmOnHomePageBTBWebsiteAndIClickTheBeatingTheBluesOption() {
+
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.VerifyBtbWebsiteHomePage());
+    }
+
+
 }
 
 

@@ -3254,7 +3254,7 @@ public class AppointmentsPage extends BasePage {
         boolean isVerified = false;
         try {
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-//            waitForElementToAppear(driver,By.xpath(elmntSpinner));
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(5);    //wait until 'loader'  loading
                 if (verifyElement(elmntCancelAppointments)) {

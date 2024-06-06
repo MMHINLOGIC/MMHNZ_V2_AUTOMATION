@@ -793,6 +793,7 @@ public class MyHealthRecordsPage extends BasePage {
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
+
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
 //            waitForSeconds(3);

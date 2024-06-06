@@ -45,7 +45,7 @@ public class BasePage {
     protected static Long executionID = null;
 
     public BasePage(WebDriver driver) {
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver,Duration.ofSeconds(5)), this);
         this.driver = driver;
         wait = new WebDriverWait(this.driver, WaitTimeUtil.getWaitTime(Constants.OBJECT_WAIT_TIME));
         invisibleWait = new WebDriverWait(this.driver, WaitTimeUtil.getWaitForInvisibilityTime(Constants.OBJECT_WAIT_TIME));

@@ -4756,6 +4756,26 @@ public class WebSteps {
 
         }
     }
+
+    @Given("As a user I am on Beating the Blues Page")
+    public void asAUserIAmOnBeatingTheBluesPage() {
+        demoPageContainer.homePage.BTBvisit();
+        demoPageContainer.homePage.verifyBTBLoginPage();
+    }
+
+    @Then("I should see user successfully logs in to the BTB Portal")
+    public void iShouldSeeUserSuccessfullyLogsInToTheBTBPortal() {
+
+        Assert.assertTrue(demoPageContainer.homePage.verifyHomePageOfBTB());
+    }
+
+    @Given("As a Self Registered user I am on BTB Website Login Page")
+    public void asASelfRegisteredUserIAmOnBTBWebsiteLoginPage() {
+        demoPageContainer.homePage.BTBvisit();
+        demoPageContainer.homePage.verifyBTBLoginPage();
+    }
+
+
 }
 
 

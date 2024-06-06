@@ -6,6 +6,7 @@ import cap.utilities.TestDataUtil;
 import cap.utilities.WindowsProcessUtil;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.How;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomePage extends BasePage {
@@ -39,6 +41,21 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='Login']")
     protected WebElement elmntLoginBtn;
 
+    @FindBy(how = How.XPATH, using = "//button[contains(@class,'btn-primary-pill')]")
+    protected WebElement elmntLoginUIUX;
+
+    @FindBy(how = How.XPATH, using = "//img[@src='assets/images/btb/btb-top-bar-logo.svg']")
+    protected WebElement elmntBtbImg;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Client Sign Up')]")
+    protected WebElement elmntClientSignUp;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Provider Sign Up')]")
+    protected WebElement elmntProviderSignUp;
+
+
+
+
     @FindBy(how = How.XPATH, using = "//span[text()='Login']")
     protected WebElement elmntMobileLoginBtn;
 
@@ -56,6 +73,9 @@ public class HomePage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'My Home page') or contains(text(),'Welcome') or contains(text(),'Start managing your health today')]")
     protected WebElement elmntVerifyHomePage;
+
+    @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Helping you get better and stay well')]")
+    protected WebElement elmntVerifyBTBHomePage;
 
     @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Important Update')]")
     protected WebElement elmntTeamsConditionsHeader;
@@ -208,12 +228,44 @@ public class HomePage extends BasePage {
     }
 
 
-    public void Providervisit() {
+    public void BTBvisit() {
         int WindowsCount = driver.getWindowHandles().size();
         System.out.println("===============>WindowsCount::" + WindowsCount);
-        if (WindowsCount == 2) {
+        if (WindowsCount == 1) {
             focusWindow(1);
-            visit(TestDataUtil.getValue("&URL&"));
+
+            if (verifyElement(elmntLogOut)){
+                waitForElement(elmntLogOut);
+                click(elmntLogOut);
+
+
+            }else {
+                driver.manage().deleteAllCookies();
+                visit(TestDataUtil.getValue("&BTB_WEBSITE&"));
+                System.out.println("User here in Provider home page");
+            }
+
+        }
+
+    }
+
+    public void SelfRegisteredBTBvisit() {
+        int WindowsCount = driver.getWindowHandles().size();
+        System.out.println("===============>WindowsCount::" + WindowsCount);
+        if (WindowsCount == 1) {
+            focusWindow(1);
+
+            if (verifyElement(elmntLogOut)){
+                waitForElement(elmntLogOut);
+                click(elmntLogOut);
+
+
+            }else {
+                driver.manage().deleteAllCookies();
+                visit(TestDataUtil.getValue("&BTB_WEBSITE&"));
+                System.out.println("User here in Provider home page");
+            }
+
         }
 
     }
@@ -308,13 +360,101 @@ public class HomePage extends BasePage {
         return click(btnLogin);
     }
 
+    public boolean verifyBTBLoginPage() {
+        boolean blResult = false;
+
+        try {
+            int WindowsCount = driver.getWindowHandles().size();
+            System.out.println("===============>WindowsCount::" + WindowsCount);
+            if (WindowsCount == 1) {
+                driver.manage().deleteAllCookies();
+                waitForElement(elmntBtbImg);
+                verifyElement(elmntBtbImg);
+                waitForElement(elmntClientSignUp);
+                verifyElement(elmntClientSignUp);
+                waitForElement(elmntProviderSignUp);
+                verifyElement(elmntProviderSignUp);
+                driver.manage().deleteAllCookies();
+                waitForElement(txtBoxEmail);
+                blResult =verifyElement(txtBoxEmail);
+            }
+            if (WindowsCount == 2) {
+                focusWindow(1);
+                System.out.println("user in Provider Home Page");
+            }
+            System.out.println("Try Block 1 executed");
+        } catch (Exception e) {
+            try {
+                waitForElementClickable(elmntProfile);
+                jsClick(elmntProfile);
+                waitForSeconds(2);
+                waitForElementClickable(elmntSignout);
+                jsClick(elmntSignout);
+                visit();
+                waitForElement(elmntLoginBtn);
+                click(elmntLoginBtn);
+                blResult = true;
+                System.out.println("Catch Block 1 executed");
+            } catch (Exception d) {
+                d.printStackTrace();
+            }
+
+        }
+        return blResult;
+
+    }
+
     public boolean clickBetaLoginButton() {
         boolean blResult = false;
 
             try {
                 int WindowsCount = driver.getWindowHandles().size();
-//            System.out.println("===============>WindowsCount::" + WindowsCount);
+            System.out.println("===============>WindowsCount::" + WindowsCount);
+//                if (verifyElement(elmntLoginUIUX)) {
+//                    List<String> data = TestDataUtil.getListOfValue("&LOGINBUTTON_DATA&");
+//                    System.out.println("TestData :: " + data);
+//                    boolean Login = elmntLoginUIUX.isDisplayed();
+//                    System.out.println("LoginButton : " + Login);
+//                    if (data.get(0).equals(Login)) {
+//                        blResult = true;
+//                    }
+//                    String color = driver.findElement(By.xpath("//a[contains(@class,'btn-primary-rect')]")).getCssValue("color");
+//                    String LoginButtonColor = Color.fromString(color).asHex();
+//                    System.out.println("LoginButtonColor :" + LoginButtonColor);
+//                    if (data.get(1).equals(LoginButtonColor)) {
+//                        blResult = true;
+//                    }
+//                    String backgroundcolor = driver.findElement(By.xpath("//a[contains(@class,'btn-primary-rect')]")).getCssValue("background-color");
+//                    String LoginButtonbackgroundcolor = Color.fromString(backgroundcolor).asHex();
+//                    System.out.println("LoginButtonbackgroundcolor :" + LoginButtonbackgroundcolor);
+//                    if (data.get(2).equals(LoginButtonbackgroundcolor)) {
+//                        blResult = true;
+//                    }
+//                    String LoginHeight = driver.findElement(By.xpath("//a[contains(@class,'btn-primary-rect')]")).getCssValue("height");
+//                    System.out.println("LoginHeight :" + LoginHeight);
+//                    if (data.get(3).equals(LoginHeight)) {
+//                        blResult = true;
+//                    }
+//                    String LoginWidth = driver.findElement(By.xpath("//a[contains(@class,'btn-primary-rect')]")).getCssValue("width");
+//                    System.out.println("LoginWidth :" + LoginWidth);
+//                    if (data.get(4).equals(LoginWidth)) {
+//                        blResult = true;
+//                    }
+//                    String LoginText = elmntLoginUIUX.getText();
+//                    if (data.get(6).equals(LoginText)) {
+//                        System.out.println("Enter");
+//                        isverfied = true;
+//                    }else {
+//                        System.out.println("false");
+//                        isverfied = false;
+//                    }
+//                    String LoginAlign = driver.findElement(By.xpath("//div[contains(@class,'btn-align text-right')]")).getCssValue("text-align");
+//                    System.out.println("LoginAlign :" + LoginAlign);
+//                    if (data.get(5).equals(LoginAlign)) {
+//                        isverfied = true;
+//                    }
 
+//                }
                 if (WindowsCount == 1) {
                     driver.manage().deleteAllCookies();
                     waitForSeconds(10);
@@ -418,6 +558,25 @@ public boolean veriflyTeamscondition(){
         }
         takeScreenshot(driver);
         return verifyElement(elmntVerifyHomePage);
+    }
+
+    public boolean verifyHomePageOfBTB() {
+        waitForSeconds(5);
+        waitForElement(elmntVerifyBTBHomePage);
+        if (verifyElement(txtAppVersion)) {
+            strAppVersion = txtAppVersion.getText();
+            System.out.printf("TxtAPPVersion"+strAppVersion);
+        }
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+        strBrowserName = cap.getBrowserName();
+        strBrowserVersion = cap.getVersion();
+        try {
+            strSystemName = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        takeScreenshot(driver);
+        return verifyElement(elmntVerifyBTBHomePage);
     }
 
     public boolean verifyHomePageOfProviderPortal() {
