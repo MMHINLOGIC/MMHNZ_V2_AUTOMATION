@@ -3602,6 +3602,7 @@ public class SanityWebSteps {
     @And("I Click on Book an Appointment and Verify Patient see book an appointment successfully")
     public void iClickOnBookAnAppointmentAndVerifyPatientSeeBookAnAppointmentSuccessfully() {
         Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBookanAppointmentOption());
+        Assert.assertTrue(sanityPageContainer.beatingTheBlues.declineCovidPreScreeningPopup());
     }
 
     @And("I Click on New Repeat Prescription and Verify Patient see request an RRP Successfully")
@@ -3618,6 +3619,7 @@ public class SanityWebSteps {
     @And("I Click on Messages and Verify Patient see send and receive messages successfully")
     public void iClickOnMessagesAndVerifyPatientSeeSendAndReceiveMessagesSuccessfully() {
         Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMessages());
+        sanityPageContainer.beatingTheBlues.clickDashboardFromMenu();
     }
 
     @And("I click on Home Icon and Verify Patient can see Session Overview")

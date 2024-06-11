@@ -44,11 +44,11 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[contains(@class,'btn-primary-pill')]")
     protected WebElement elmntLoginUIUX;
 
-    @FindBy(how = How.XPATH, using = "//img[@src='assets/images/btb/btb-top-bar-logo.svg']")
-    protected WebElement elmntBtbImg;
+    @FindBy(how = How.XPATH, using = "//h2[contains(text(),'Beat Depression and Anxiety')]")
+    protected WebElement elmntBtbLoginPage;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Client Sign Up')]")
-    protected WebElement elmntClientSignUp;
+    @FindBy(how = How.XPATH, using = "(//img[@src='https://btbdevnz.wpenginepowered.com/wp-content/uploads/2023/11/Login-Button2.png'])[1]")
+    protected WebElement elmntClickBTBLoginButton;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Provider Sign Up')]")
     protected WebElement elmntProviderSignUp;
@@ -233,17 +233,18 @@ public class HomePage extends BasePage {
         System.out.println("===============>WindowsCount::" + WindowsCount);
         if (WindowsCount == 1) {
             focusWindow(1);
+//
+//            if (verifyElement(elmntLogOut)){
+//                waitForElement(elmntLogOut);
+//                click(elmntLogOut);
+//
+//
+//            }
 
-            if (verifyElement(elmntLogOut)){
-                waitForElement(elmntLogOut);
-                click(elmntLogOut);
-
-
-            }else {
                 driver.manage().deleteAllCookies();
-                visit(TestDataUtil.getValue("&BTB_WEBSITE&"));
+                visit(TestDataUtil.getValue("&BTB_SELF_REGISTER_URL&"));
                 System.out.println("User here in Provider home page");
-            }
+
 
         }
 
@@ -368,18 +369,20 @@ public class HomePage extends BasePage {
             System.out.println("===============>WindowsCount::" + WindowsCount);
             if (WindowsCount == 1) {
                 driver.manage().deleteAllCookies();
-                waitForElement(elmntBtbImg);
-                verifyElement(elmntBtbImg);
-                waitForElement(elmntClientSignUp);
-                verifyElement(elmntClientSignUp);
-                waitForElement(elmntProviderSignUp);
-                verifyElement(elmntProviderSignUp);
+                waitForElement(elmntBtbLoginPage);
+                verifyElement(elmntBtbLoginPage);
                 driver.manage().deleteAllCookies();
+                waitForElement(elmntClickBTBLoginButton);
+                click(elmntClickBTBLoginButton);
+                waitForSeconds(5);
+                focusWindow(2);
+                waitForSeconds(5);
                 waitForElement(txtBoxEmail);
                 blResult =verifyElement(txtBoxEmail);
+
             }
             if (WindowsCount == 2) {
-                focusWindow(1);
+                focusWindow(2);
                 System.out.println("user in Provider Home Page");
             }
             System.out.println("Try Block 1 executed");

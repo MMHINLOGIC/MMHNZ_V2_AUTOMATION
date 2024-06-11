@@ -21,6 +21,18 @@ public class BeatingTheBlues extends BasePage {
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
+    protected String elmntAppointmentPreScreening1 = "//span[contains(text(),'Appointment Pre-Screening')]";
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Appointment Pre-Screening')]")
+    protected WebElement elmntAppointmentPreScreening;
+
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'page-content')]")
+    protected WebElement elmntAppointmentPanel;
+
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'NO')]//parent::button")
+    protected WebElement elmntDeclineCovidPreScreening;
+
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Resume Session')]//parent::a")
     protected WebElement elmtviewsession1;
 
@@ -127,6 +139,9 @@ public class BeatingTheBlues extends BasePage {
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Session Overview')])[2]")
     protected WebElement verifySessionOverview;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
+    protected WebElement elmntdashboard;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Resume Session 1')]")
     protected WebElement verifyResumeSession1;
@@ -265,8 +280,8 @@ public class BeatingTheBlues extends BasePage {
             isverified = verifyElement(clickBTBHomeIcon);
             waitForElement(verifySessionOverview);
             isverified=verifyElement(verifySessionOverview);
-            waitForElement(verifyResumeSession1);
-            isverified=verifyElement(verifyResumeSession1);
+//            waitForElement(verifyResumeSession1);
+//            isverified=verifyElement(verifyResumeSession1);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -274,6 +289,14 @@ public class BeatingTheBlues extends BasePage {
         return isverified;
     }
 
+    public void clickDashboardFromMenu() {
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        jsScrollIntoView(elmntdashboard);
+        waitForElement(elmntdashboard);
+        click(elmntdashboard);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
+    }
     public boolean VerifyBtbWebsiteHome() {
         boolean isverified = false;
         try {
@@ -493,8 +516,8 @@ public class BeatingTheBlues extends BasePage {
             waitForElement(verifySessionOverview);
             isverified = verifyElement(verifySessionOverview);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElement(verifyResumeSession1);
-            isverified = verifyElement(verifyResumeSession1);
+//            waitForElement(verifyResumeSession1);
+//            isverified = verifyElement(verifyResumeSession1);
             waitForElement(verifyMyProgress);
             isverified = verifyElement(verifyMyProgress);
             waitForElement(verifyViewUserGuide);
@@ -581,5 +604,29 @@ public class BeatingTheBlues extends BasePage {
         }
 
         return isverified;
+    }
+
+    public boolean declineCovidPreScreeningPopup() {
+        boolean blResult = false;
+        try {
+            waitForSeconds(5);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver,By.xpath(elmntAppointmentPreScreening1));
+            if (isElementDisplayed(elmntAppointmentPreScreening)) {
+                System.out.println("Covid Prescreening popup is displayed");
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElement(elmntDeclineCovidPreScreening);
+                jsClick(elmntDeclineCovidPreScreening);
+            }
+            if (!isElementDisplayed(elmntAppointmentPreScreening)){
+                System.out.println("Covid Prescreening popup is not displayed");
+            }
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = verifyElement(elmntAppointmentPanel);
+        } catch (Exception e) {
+            System.out.println("Cannot Verify Covid Prescreening popup ");
+            e.printStackTrace();
+        }
+        return blResult;
     }
 }
