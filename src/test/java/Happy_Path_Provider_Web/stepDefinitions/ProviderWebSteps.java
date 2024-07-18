@@ -116,6 +116,23 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.providerHomePage.clickLogin());
     }
 
+
+
+    @Given("As a user I am on login Provider Portal Page")
+    public void asAUserIAmOnLoginProviderPortalPage() {
+        Assert.assertTrue(providerPageContainer.providerHomePage.launchProviderUrl());
+        Assert.assertTrue(providerPageContainer.providerHomePage.clickLogin());
+
+    }
+
+    @And("I enable Flexible slot display Yes Radio button and I click save button then I see Saved Successfully message{string}")
+    public void iEnableFlexibleSlotDisplayYesRadioButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickFlexibleYesButton());
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.backToHomePage());
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.closewindow());
+    }
+
     @Given("As a user Iam on Provider login and I enter {string} and {string} for Provider")
     public void asAUserIamOnProviderLoginAndIEnterAndForProvider(String strUserName, String strPassword) {
 
@@ -915,7 +932,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @Then("I select {string} and {string} and verify the Covid Pre-Screening popup is Undisplayed")
     public void iSelectAndAndVerifyTheCovidPreScreeningPopupIsUndisplayed(String strHealthCentre, String strLocation) {
         List<String>stsdta=TestDataUtil.getListOfValue(strLocation);
-                Assert.assertTrue(providerPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
+        Assert.assertTrue(providerPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectHealthCenter(TestDataUtil.getValue(strHealthCentre)));
         Assert.assertTrue(providerPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(stsdta.get(0))));
@@ -1785,4 +1802,15 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     }
 
+    @And("I enable RuleA Radio button select the no of appointments and I click save button then I see Saved Successfully message{string}")
+    public void iEnableRuleARadioButtonSelectTheNoOfAppointmentsAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String arg0, String arg1) {
+    }
+
+    @And("I enable Reason Mandatory No Radio button select the no of appointments and I click save button then I see Saved Successfully message{string}")
+    public void iEnableReasonMandatoryNoRadioButtonSelectTheNoOfAppointmentsAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String arg0, String arg1) {
+    }
+
+    @And("I enable Reason Mandatory yes Radio button select the no of appointments and I click save button then I see Saved Successfully message{string}")
+    public void iEnableReasonMandatoryYesRadioButtonSelectTheNoOfAppointmentsAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String arg0, String arg1) {
+    }
 }

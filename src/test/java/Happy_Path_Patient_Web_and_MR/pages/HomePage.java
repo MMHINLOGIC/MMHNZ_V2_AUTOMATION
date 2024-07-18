@@ -4,17 +4,25 @@ import cap.common.BasePage;
 import cap.helpers.Constants;
 import cap.utilities.TestDataUtil;
 import cap.utilities.WindowsProcessUtil;
+import io.restassured.internal.TrustAndKeystoreSpec;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+
+import static cap.utilities.DateUtil.*;
+import static cap.utilities.SharedDriver.strExecutionNumber;
 
 
 public class HomePage extends BasePage {
@@ -29,6 +37,7 @@ public class HomePage extends BasePage {
     public static String strBrowserName;
     public static String strBrowserVersion;
     public static String strSystemName;
+    public static String NewEmailAttribute;
 
     //MMH_v2
 
@@ -54,6 +63,8 @@ public class HomePage extends BasePage {
     protected WebElement elmntProviderSignUp;
 
 
+    @FindBy(how = How.XPATH, using = "(//img[@src='https://btbdevnz.wpenginepowered.com/wp-content/uploads/2023/11/Login-Button2.png'])[3]")
+    protected WebElement elmntMobileClickBTBLoginButton;
 
 
     @FindBy(how = How.XPATH, using = "//span[text()='Login']")
@@ -77,6 +88,9 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Helping you get better and stay well')]")
     protected WebElement elmntVerifyBTBHomePage;
 
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'MANAGE YOUR HEALTH')]")
+    protected WebElement elmntVerifyProviderBTBHomePage;
+
     @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Important Update')]")
     protected WebElement elmntTeamsConditionsHeader;
 
@@ -84,7 +98,8 @@ public class HomePage extends BasePage {
     protected WebElement elmntTeamsConditions;
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Testpreferred')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Vm03Btbstaff1')]")
     })
     protected WebElement txtProviderPortalWelcomePage;
 
@@ -106,6 +121,121 @@ public class HomePage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "(//img[@alt='ManageMyHealth'])[1]")
     protected WebElement elmntMMHLogo;
+
+    @FindBy(how = How.XPATH, using = "(//a[@class='pum-trigger'])[1]")
+    protected WebElement elmntSignLogin;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Create an Individual Account')]")
+    protected WebElement elmntCreateanIndividualAccount;
+
+    @FindBy(how = How.XPATH, using = "//input[@name='Firstname']")
+    protected WebElement elmntEnterFirstName;
+
+    @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Hi! Tell us a bit about you.')]")
+    protected WebElement elmntVerifySelfRegistrationPage;
+
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Well done you are almost there!')]")
+    protected WebElement elmntInformationPopup;
+
+    @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Last name']")
+    protected WebElement elmntEnterLastName;
+
+    @FindBy(how = How.XPATH, using = "//input[@name='email']")
+    protected WebElement elmntEnterEmail;
+
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'It looks like you are already registered with Manage My Health.')]")
+    protected WebElement elmntError;
+
+    @FindBy(how = How.XPATH, using = "//input[@name='password']")
+    protected WebElement elmntEnterPassword;
+
+    @FindBy(how = How.XPATH, using = "//input[@name='confirmPassword']")
+    protected WebElement elmntEnterConfirmPassword;
+
+    @FindBy(how = How.XPATH, using = "(//input[@name='dob']//following::button)[1]")
+    protected WebElement elmntSelectDOB;
+
+    @FindBy(how = How.XPATH, using = "//button[@aria-label='Choose month and year']")
+    protected WebElement elmntMonthAndYear;
+
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'2001')]")
+    protected WebElement elmntYear;
+
+    public String futureDate = new StringBuilder()
+            .append("//td/div[contains(text(),'")
+            .append("<<REPLACEMENT>>")
+            .append("')]").toString();
+
+    @FindBy(how = How.XPATH, using = "//button[@aria-label='Open calendar']")
+    protected WebElement elmntCalendar;
+
+    @FindBy(how = How.XPATH, using = "//mat-select[@name='gender']")
+    protected WebElement elmntSelectGender;
+
+    protected String elmntHealthCenter = new StringBuilder().append("//span[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')]").toString();
+
+    @FindBy(how = How.XPATH, using = "//mat-select[@name='ethnicity']")
+    protected WebElement elmntSelectEthnicity;
+
+    @FindBy(how = How.XPATH, using = "(//mat-select[@name='ethnicity']//following::input)[1]")
+    protected WebElement elmntSelectCheckBox1;
+
+    @FindBy(how = How.XPATH, using = "(//mat-select[@name='ethnicity']//following::input)[2]")
+    protected WebElement elmntSelectCheckBox2;
+
+    @FindBy(how = How.XPATH, using = "(//mat-select[@name='ethnicity']//following::input)[3]")
+    protected WebElement elmntSelectCheckBox3;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'SUBMIT')]")
+    protected WebElement elmntSubmitButton;
+
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'OK')]")
+    protected WebElement elmntokButton;
+
+    @FindBy(how = How.XPATH, using = "//input[@autocomplete='username']")
+    protected WebElement elmntGmailEmail;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Next')]")
+    protected WebElement elmntNextButton;
+
+    @FindBy(how = How.XPATH, using = "//input[@autocomplete='current-password']")
+    protected WebElement elmntGmailPassword;
+
+    @FindBy(how = How.XPATH, using = "//a[@title='Gmail']//img")
+    protected WebElement elmntGmailLogo;
+
+    @FindBy(how = How.XPATH, using = "//input[@aria-label='Search mail']")
+    protected WebElement elmntGmailSearchBox;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Sign in')]")
+    protected WebElement verifyBTBLoginPage;
+    protected String elmntSubmitButtonEnablePage="(//button[@ng-reflect-disabled='false'])[2]";
+
+//    @FindBy(how = How.XPATH, using = "(//mat-select[@name='ethnicity']//following::input)[3]")
+//    protected WebElement elmntSelectCheckBox3;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'I understand that Beating the Blues is not a clinically monitored service and does not provide crisis support.')]")
+    protected WebElement verifyCheckBoxContent;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),' I have read and agree to the patient')]")
+    protected WebElement verifyCheckBox1Content;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'I understand the Beating the Blues is powered by Manage My Health.')]")
+    protected WebElement verifyCheckBox2Content;
+
+    @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Information')]")
+    protected WebElement verifyInformationPopup;
+
+    @FindBy(how = How.XPATH, using = "//iframe[@title='reCAPTCHA']")
+    protected WebElement elmntIframe;
+
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'I understand the Beating the Blues is powered by Manage My Health.')]")
+    protected WebElement elmntCreate;
+
+
 
 //    @FindBy(xpath = "//h1[contains(text(),'Welcome,')]/following::h3[contains(text(),'Start managing your health, today')]")
 //    protected WebElement txtWelcome;
@@ -152,6 +282,12 @@ public class HomePage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//a[contains(@class,'header')]/span[text()='Appointments']")
     protected WebElement btnAppointmentExpand;
+
+    @FindBy(how = How.XPATH, using = "//img[@class='profile-pic bookAppointmentIcon']")
+    protected WebElement VerifyBookAppointmentHeaderIcon;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Book an Appointment')]")
+    protected WebElement VerifyDashboardBookAppointmentIcon;
 
     @FindBy(how = How.XPATH, using = "//a[contains(@class,'header')]/span[text()='Messages']//following-sibling::mat-icon")
     protected WebElement btnMessagesExpand;
@@ -206,6 +342,28 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Email Address' or @data-placeholder='Email address']")
     protected WebElement txtBoxEmail;
 
+        @FindAll({
+            @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Email Address' or @data-placeholder='Email address']"),
+            @FindBy(how = How.XPATH, using = "//input[@Placeholder='Email Address']")
+    })
+    protected WebElement txtInboxPatient;
+
+//    @FindAll({
+//            @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Email Address' or @data-placeholder='Email address']"),
+//            @FindBy(how = How.XPATH, using = "//input[@Placeholder='Email Address']")
+//    })
+//    protected WebElement txtBoxEmail;
+
+
+//    @FindAll({
+//            @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Email Address' or @data-placeholder='Email address']"),
+//            @FindBy(how = How.XPATH, using = "//input[@Placeholder='Password']")
+//    })
+//    protected WebElement txtBoxPassword;
+
+
+
+
 
     @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Password']")
     protected WebElement txtBoxPassword;
@@ -233,43 +391,540 @@ public class HomePage extends BasePage {
         System.out.println("===============>WindowsCount::" + WindowsCount);
         if (WindowsCount == 1) {
             focusWindow(1);
-//
-//            if (verifyElement(elmntLogOut)){
-//                waitForElement(elmntLogOut);
-//                click(elmntLogOut);
-//
-//
-//            }
-
-                driver.manage().deleteAllCookies();
+            driver.manage().deleteAllCookies();
                 visit(TestDataUtil.getValue("&BTB_SELF_REGISTER_URL&"));
                 System.out.println("User here in Provider home page");
-
 
         }
 
     }
 
-    public void SelfRegisteredBTBvisit() {
+    public void SelfRegisteredPateintBTBWebsite() {
         int WindowsCount = driver.getWindowHandles().size();
         System.out.println("===============>WindowsCount::" + WindowsCount);
         if (WindowsCount == 1) {
             focusWindow(1);
+            driver.manage().deleteAllCookies();
+            visit(TestDataUtil.getValue("&BTB_SELF_REGISTER_URL&"));
+            System.out.println("User here in Provider home page");
 
-            if (verifyElement(elmntLogOut)){
-                waitForElement(elmntLogOut);
-                click(elmntLogOut);
+        }
 
+        }
 
-            }else {
-                driver.manage().deleteAllCookies();
-                visit(TestDataUtil.getValue("&BTB_WEBSITE&"));
-                System.out.println("User here in Provider home page");
-            }
+    public void ExistingBTBProvidervisit() {
+        int WindowsCount = driver.getWindowHandles().size();
+        System.out.println("===============>WindowsCount::" + WindowsCount);
+        if (WindowsCount == 1) {
+            focusWindow(1);
+            driver.manage().deleteAllCookies();
+            visit(TestDataUtil.getValue("&BTB_MMH_V2_PORTAL&"));
+            System.out.println("User here in Provider home page");
 
         }
 
     }
+
+
+    public void BTBSignButton() {
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForElement(elmntSignLogin);
+        click(elmntSignLogin);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
+//        jsScrollIntoView(elmntCreate);
+//        jsScrollUp();
+//        waitForSeconds(3);
+//     driver.switchTo().frame(elmntIframe);
+
+//        focusWindow(2);
+//
+//        waitForSeconds(10);
+
+//        ##NotWorking Click
+
+//        driver.switchTo().frame("a-9wt0e8vkopnm");
+//        System.out.println("Switch to Frame");
+//        driver.findElement(By.xpath("//span[@id='recaptcha-anchor']")).click();
+
+
+//        WebDriverWait wait = new WebDriverWait(driver, 30);
+//        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[starts-with(@name,'a-')]")));
+//        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.recaptcha-checkbox-checkmark")));
+//        element.click();
+
+
+//        WebDriverWait wait=new WebDriverWait(driver,25);
+//wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[starts-with(@name, 'a-') and starts-with(@src, 'https://www.google.com/recaptcha')]")));
+//
+//        waitForSeconds(5);
+//
+////        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.recaptcha-checkbox-checkmark"))).click();
+//
+//wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.recaptcha-checkbox-checkmark"))).click();
+//
+//System.out.println("Successfully Clicked");
+
+//        WebDriverWait wait = new WebDriverWait(driver, 15);
+//        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[starts-with(@name,'a-') and starts-with (@src, 'https://www.google.com/recaptcha')]")));
+//        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div [ @class =  'recaptcha-checkbox-border']"))).click( );
+//        driver.switchTo().defaultContent();
+
+
+
+//        WebElement iframe = driver.findElement(By.xpath("//iframe[contains(@src, 'recaptcha')]"));
+//        driver.switchTo().frame(iframe);
+//
+//
+//        WebElement checkbox = driver.findElement(By.cssSelector("div[class='recaptcha-checkbox-border']"));
+//        checkbox.click();
+//
+//        takeScreenshot(driver);
+//        takeScreenshot(driver);
+//
+//        waitForSeconds(10);
+//
+//        driver.switchTo().defaultContent();
+
+
+
+    }
+
+
+
+    public boolean ClickcreateanIndividualAccount() {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntCreateanIndividualAccount);
+            click(elmntCreateanIndividualAccount);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
+
+            focusWindow(2);
+
+            String GetUrl=driver.getCurrentUrl();
+            System.out.println(">>>"+GetUrl);
+
+            String FormURL="https://v2webuat.mmh-demo.com/btb/self-registration";
+            if (GetUrl.equalsIgnoreCase(FormURL)){
+                System.out.println("Check URL True");
+                isverified=true;
+            }else {
+                System.out.println("Check URL False");
+                isverified=false;
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean EnterFirstName(String Data) {
+        boolean isverified = false;
+        try {
+
+            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntEnterFirstName);
+            enterValue(elmntEnterFirstName,Data);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifySelfRegistrationPage);
+            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean EnterLastName(String Data) {
+        boolean isverified = false;
+        try {
+            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntEnterLastName);
+            enterValue(elmntEnterLastName,Data);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifySelfRegistrationPage);
+            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean EnterEmail(List<String> Data) {
+        boolean isverified = false;
+        try {
+
+//            String original = TestDataUtil.getValue(Data.get(2));
+//            String toInsert = strExecutionNumber;
+//            int position = 18;
+//
+//            StringBuilder sb = new StringBuilder(original);
+//            sb.insert(position,Integer.valueOf(toInsert));
+//
+//            String result = sb.toString();
+//            System.out.println(result);
+
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntEnterEmail);
+            enterValue(elmntEnterEmail,Data.get(2));
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
+             NewEmailAttribute= elmntEnterEmail.getAttribute("ng-reflect-model");
+            System.out.println("New Email Attribute :: "+NewEmailAttribute);
+            if (!verifyElement(elmntError)) {
+                upDateEmailToTestData(NewEmailAttribute);
+            }
+
+            waitForElement(elmntVerifySelfRegistrationPage);
+            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public void upDateEmailToTestData(String strNewEmail) {
+        TestDataUtil.updateData("config/testdata/testdata.xlsx", "General_Sanity_Provider_Web", "NEW_EMAIL", strNewEmail);
+    }
+
+    public boolean EnterPassword(String Data) {
+        boolean isverified = false;
+        try {
+            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntEnterPassword);
+            enterValue(elmntEnterPassword,Data);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifySelfRegistrationPage);
+            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean EnterConfirmPassword(String Data) {
+        boolean isverified = false;
+        try {
+            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntEnterConfirmPassword);
+            enterValue(elmntEnterConfirmPassword,Data);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifySelfRegistrationPage);
+            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean SelectDOB(String Data) {
+        boolean isverified = false;
+        try {
+            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
+            jsScrollIntoView(elmntSelectDOB);
+            waitForElement(elmntSelectDOB);
+            mouseClick(elmntSelectDOB);
+            waitForSeconds(3);
+            waitForElement(elmntMonthAndYear);
+            waitForElementClickable(elmntMonthAndYear);
+            jsClick(elmntMonthAndYear);
+
+            waitForSeconds(3);
+//            waitForElement(elmntYear);
+//            jsClick(elmntYear);
+
+
+            String date = getDayAfterTommorrowDate("d");
+            String month = getMonth("MMM").toUpperCase();
+//            String year = g("YYYY");
+
+            System.out.println("getDayAfterTomorrowDate >>> :: " + date);
+            System.out.println("getDayAfterTomorrowDate >>> :: " + month);
+//            System.out.println("getDayAfterTomorrowDate >>> :: " + year);
+
+
+            System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", Data));
+            WebElement selectYear = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", Data)));
+
+            waitForSeconds(3);
+            waitForElement(selectYear);
+            waitForElementClickable(selectYear);
+            jsClick(selectYear);
+//
+            System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", month));
+            WebElement selectMonth = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", month)));
+
+            waitForSeconds(3);
+            waitForElement(selectMonth);
+            waitForElementClickable(selectMonth);
+            jsClick(selectMonth);
+
+            System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", date));
+            WebElement selectDate = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", date)));
+
+            waitForSeconds(3);
+            waitForElement(selectDate);
+            waitForElementClickable(selectDate);
+            jsClick(selectDate);
+
+            System.out.println("Value >>> :: " + elmntCalendar.getAttribute("value"));
+//            waitForElement(elmntCalendar);
+//            String strEnteredDate = elmntCalendar.getAttribute("value");
+//            System.out.println("strEnteredDate >>>> :: "+strEnteredDate);
+            waitForSeconds(2);
+            takeScreenshot(driver);
+
+            isverified=true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+
+
+    public boolean SelectGenderDropDown(String strPraticeName) {
+        boolean isverified = false;
+        try {
+            waitForElement(elmntSelectGender);
+            click(elmntSelectGender);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            WebElement elmntSelectHealthCenter = waitForElement(By.xpath(elmntHealthCenter.replace("<<REPLACEMENT>>", strPraticeName)));
+            System.out.println(">>>>>>>>"+elmntSelectHealthCenter);
+            mouseClick(elmntSelectHealthCenter);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            isverified=true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean SelectEthnicityDropDown(String strPraticeName) {
+        boolean isverified = false;
+        try {
+            waitForElement(elmntSelectEthnicity);
+            click(elmntSelectEthnicity);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            WebElement elmntSelectHealthCenter = waitForElement(By.xpath(elmntHealthCenter.replace("<<REPLACEMENT>>", strPraticeName)));
+            System.out.println(">>>>>>>>"+elmntSelectHealthCenter);
+            mouseClick(elmntSelectHealthCenter);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            isverified=true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean SelectCheckBox1() {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntSelectCheckBox1);
+            jsClick(elmntSelectCheckBox1);
+            waitForElement(verifyCheckBoxContent);
+            isverified=verifyElement(verifyCheckBoxContent);
+            waitForElement(elmntVerifySelfRegistrationPage);
+            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean SelectCheckBox2() {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntSelectCheckBox2);
+            jsClick(elmntSelectCheckBox2);
+            waitForElement(verifyCheckBox1Content);
+            isverified=verifyElement(verifyCheckBox1Content);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifySelfRegistrationPage);
+            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean SelectCheckBox3() {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntSelectCheckBox3);
+            jsClick(elmntSelectCheckBox3);
+            waitForElement(verifyCheckBox2Content);
+            isverified=verifyElement(verifyCheckBox2Content);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifySelfRegistrationPage);
+            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+
+
+
+    public void SelectReCaptcha() {
+//        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//        WebDriverWait wait = new WebDriverWait(driver, 30);
+//        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[starts-with(@name,'a-')]")));
+//        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.recaptcha-checkbox-checkmark")));
+//        waitForSeconds(2);
+//        jsClick(element);
+//        waitForSeconds(2);
+//        driver.switchTo().defaultContent();
+//        waitForSeconds(5);
+        waitForSeconds(50);
+        waitForElementToAppear(driver,By.xpath(elmntSubmitButtonEnablePage));
+
+    }
+
+    public boolean SelectSubmit() {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntSubmitButton);
+            jsClick(elmntSubmitButton);
+            waitForElement(verifyInformationPopup);
+            isverified=verifyElement(verifyInformationPopup);
+//            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            waitForElement(elmntInformationPopup);
+//            isverified=verifyElement(elmntInformationPopup);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean SelectOkButton() {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntokButton);
+            jsClick(elmntokButton);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(verifyBTBLoginPage);
+            isverified=verifyElement(verifyBTBLoginPage);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean VisitGmail(String data) {
+        boolean isverified = false;
+        try {
+            ((JavascriptExecutor) driver).executeScript("window.open()");
+            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(tabs.get(1));
+            focusWindow(3);
+            visit(TestDataUtil.getValue(data));
+            isverified=true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean EnterGmailEmail(String data) {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            waitForElement(elmntGmailEmail);
+           enterValue(elmntGmailEmail,data);
+           waitForSeconds(3);
+           waitForElement(elmntNextButton);
+           click(elmntNextButton);
+           isverified=true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean EnterGmailPassword(String data) {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            waitForElement(elmntGmailPassword);
+            enterValue(elmntGmailPassword,data);
+            waitForSeconds(3);
+            waitForElement(elmntNextButton);
+            click(elmntNextButton);
+            isverified=true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean ClickSearchBox() {
+        boolean isverified = false;
+        try {
+            System.out.println(">>> New Email Id :: "+NewEmailAttribute);
+            String NewEmail= NewEmailAttribute+"com";
+            System.out.println(">>>NewEmail :: "+NewEmail);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            waitForElement(elmntGmailLogo);
+            isverified=verifyElement(elmntGmailLogo);
+            waitForSeconds(3);
+            waitForElement(elmntGmailSearchBox);
+            enterValue(elmntGmailSearchBox,NewEmail);
+            waitForSeconds(3);
+            elmntGmailSearchBox.sendKeys(Keys.ENTER);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+
+
+
 
     public void visit() {
         int WindowsCount = driver.getWindowHandles().size();
@@ -287,6 +942,9 @@ public class HomePage extends BasePage {
             }
         }
         if (WindowsCount == 1) {
+            waitForSeconds(5);
+            focusWindow(1);
+            System.out.println("Enter Windows 1 ");
             visit(TestDataUtil.getValue("&URL&"));
             System.out.println("Enter Windows 1 ");
             waitForSeconds(3);
@@ -337,6 +995,7 @@ public class HomePage extends BasePage {
     public void enterEmailForBeta(String strEmail) {
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(3);
+        System.out.println(">>>  Email :: "+TestDataUtil.getValue(strEmail));
         if (verifyElement(txtBoxEmail)) {
             waitForSeconds(3);
             waitForElementClickable(txtBoxEmail);
@@ -364,6 +1023,7 @@ public class HomePage extends BasePage {
     public boolean verifyBTBLoginPage() {
         boolean blResult = false;
 
+
         try {
             int WindowsCount = driver.getWindowHandles().size();
             System.out.println("===============>WindowsCount::" + WindowsCount);
@@ -374,6 +1034,107 @@ public class HomePage extends BasePage {
                 driver.manage().deleteAllCookies();
                 waitForElement(elmntClickBTBLoginButton);
                 click(elmntClickBTBLoginButton);
+                waitForSeconds(5);
+                focusWindow(2);
+                waitForSeconds(5);
+                String  BTBPageGetURL=driver.getCurrentUrl();
+                System.out.println(">>> :: "+BTBPageGetURL);
+                String  BTBPageURL = "https://v2webuat.mmh-demo.com/authentication/login?rf=btb";
+                System.out.println(">>> :: "+BTBPageURL);
+                Assert.assertEquals(BTBPageGetURL,BTBPageURL);
+                waitForElement(txtBoxEmail);
+                blResult =verifyElement(txtBoxEmail);
+            }
+            if (WindowsCount == 2) {
+                focusWindow(2);
+                System.out.println("user in Provider Home Page");
+            }
+            System.out.println("Try Block 1 executed");
+        } catch (Exception e) {
+            try {
+                waitForElementClickable(elmntProfile);
+                jsClick(elmntProfile);
+                waitForSeconds(2);
+                waitForElementClickable(elmntSignout);
+                jsClick(elmntSignout);
+                visit();
+                waitForElement(elmntLoginBtn);
+                click(elmntLoginBtn);
+                blResult = true;
+                System.out.println("Catch Block 1 executed");
+            } catch (Exception d) {
+                d.printStackTrace();
+            }
+
+        }
+        return blResult;
+
+    }
+
+    public boolean verifyBTBWebsiteLoginPage() {
+        boolean blResult = false;
+
+
+        try {
+            int WindowsCount = driver.getWindowHandles().size();
+            System.out.println("===============>WindowsCount::" + WindowsCount);
+            if (WindowsCount == 1) {
+                driver.manage().deleteAllCookies();
+                waitForElement(elmntBtbLoginPage);
+                verifyElement(elmntBtbLoginPage);
+                driver.manage().deleteAllCookies();
+                waitForElement(elmntClickBTBLoginButton);
+                click(elmntClickBTBLoginButton);
+                waitForSeconds(5);
+                focusWindow(2);
+                waitForSeconds(5);
+                String  BTBPageGetURL=driver.getCurrentUrl();
+                System.out.println(">>> :: "+BTBPageGetURL);
+                String  BTBPageURL = "https://v2webuat.mmh-demo.com/authentication/login?rf=btb";
+                System.out.println(">>> :: "+BTBPageURL);
+                Assert.assertEquals(BTBPageGetURL,BTBPageURL);
+                waitForElement(txtBoxEmail);
+                blResult =verifyElement(txtBoxEmail);
+            }
+            if (WindowsCount == 2) {
+                focusWindow(2);
+                System.out.println("user in Provider Home Page");
+            }
+            System.out.println("Try Block 1 executed");
+        } catch (Exception e) {
+            try {
+                waitForElementClickable(elmntProfile);
+                jsClick(elmntProfile);
+                waitForSeconds(2);
+                waitForElementClickable(elmntSignout);
+                jsClick(elmntSignout);
+                visit();
+                waitForElement(elmntLoginBtn);
+                click(elmntLoginBtn);
+                blResult = true;
+                System.out.println("Catch Block 1 executed");
+            } catch (Exception d) {
+                d.printStackTrace();
+            }
+
+        }
+        return blResult;
+
+    }
+
+    public boolean verifyMobileBTBLoginPage() {
+        boolean blResult = false;
+
+        try {
+            int WindowsCount = driver.getWindowHandles().size();
+            System.out.println("===============>WindowsCount::" + WindowsCount);
+            if (WindowsCount == 1) {
+                driver.manage().deleteAllCookies();
+                waitForElement(elmntBtbLoginPage);
+                verifyElement(elmntBtbLoginPage);
+                driver.manage().deleteAllCookies();
+                waitForElement(elmntMobileClickBTBLoginButton);
+                click(elmntMobileClickBTBLoginButton);
                 waitForSeconds(5);
                 focusWindow(2);
                 waitForSeconds(5);
@@ -406,7 +1167,6 @@ public class HomePage extends BasePage {
         return blResult;
 
     }
-
     public boolean clickBetaLoginButton() {
         boolean blResult = false;
 
@@ -544,9 +1304,52 @@ public boolean veriflyTeamscondition(){
         return blResult;
 }
 
+    public boolean clickPatientDashBoardForMobile() {
+        boolean isVerified=true;
+
+        if (isElementDisplayed(txtPatientWelcomePage)) {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//        waitForElementClickable(btnMobileMenu);
+            waitForElement(btnMobileMenu);
+            jsClick(btnMobileMenu);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntDashboard);
+            waitForElement(elmntDashboard);
+            jsClick(elmntDashboard);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            driver.navigate().refresh();
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            isVerified=verifyElement(elmntVerifyHomePage);
+
+        }
+        if (!isElementDisplayed(txtPatientWelcomePage)) {
+            focusWindow(1);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//        waitForElementClickable(btnMobileMenu);
+            waitForElement(btnMobileMenu);
+            jsClick(btnMobileMenu);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntDashboard);
+            waitForElement(elmntDashboard);
+            jsClick(elmntDashboard);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            driver.navigate().refresh();
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            isVerified=verifyElement(elmntVerifyHomePage);
+
+        }
+        return isVerified;
+    }
+
     public boolean verifyHomePageOfMMHPortal() {
         waitForSeconds(5);
-        waitForElement(elmntVerifyHomePage);
+//        waitForElement(elmntVerifyHomePage);
         if (verifyElement(txtAppVersion)) {
             strAppVersion = txtAppVersion.getText();
             System.out.printf("TxtAPPVersion"+strAppVersion);
@@ -561,6 +1364,42 @@ public boolean veriflyTeamscondition(){
         }
         takeScreenshot(driver);
         return verifyElement(elmntVerifyHomePage);
+    }
+
+    public boolean clickPatientDashBoard() {
+        boolean isVerified = false;
+        jsScrollIntoView(elmntDashboard);
+        waitForElement(elmntDashboard);
+        jsClick(elmntDashboard);
+        if (isElementDisplayed(txtPatientWelcomePage)) {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntDashboard);
+            waitForElement(elmntDashboard);
+            jsClick(elmntDashboard);
+            takeScreenshot(driver);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            driver.navigate().refresh();
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifyHomePage);
+            isVerified = verifyElement(elmntVerifyHomePage);
+        }
+        if(!isElementDisplayed(txtPatientWelcomePage)){
+            focusWindow(1);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntDashboard);
+            waitForElement(elmntDashboard);
+            jsClick(elmntDashboard);
+            takeScreenshot(driver);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            driver.navigate().refresh();
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifyHomePage);
+            isVerified = verifyElement(elmntVerifyHomePage);
+
+        }
+
+
+        return isVerified;
     }
 
     public boolean verifyHomePageOfBTB() {
@@ -580,6 +1419,25 @@ public boolean veriflyTeamscondition(){
         }
         takeScreenshot(driver);
         return verifyElement(elmntVerifyBTBHomePage);
+    }
+
+    public boolean verifyHomePageOfProviderBTB() {
+        waitForSeconds(5);
+        waitForElement(elmntVerifyProviderBTBHomePage);
+        if (verifyElement(txtAppVersion)) {
+            strAppVersion = txtAppVersion.getText();
+            System.out.printf("TxtAPPVersion"+strAppVersion);
+        }
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+        strBrowserName = cap.getBrowserName();
+        strBrowserVersion = cap.getVersion();
+        try {
+            strSystemName = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        takeScreenshot(driver);
+        return verifyElement(elmntVerifyProviderBTBHomePage);
     }
 
     public boolean verifyHomePageOfProviderPortal() {
@@ -778,6 +1636,26 @@ public boolean veriflyTeamscondition(){
         waitForElement(elmntFutureAppointment);
         return verifyElement(elmntFutureAppointment);
     }
+    public boolean DashboardIconsVerification() {
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForElement(elmntDashboard);
+        click(elmntDashboard);
+        waitForElement(VerifyBookAppointmentHeaderIcon);
+        verifyElement(VerifyBookAppointmentHeaderIcon);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForElement(VerifyDashboardBookAppointmentIcon);
+        return verifyElement(VerifyDashboardBookAppointmentIcon);
+    }
+
+    public boolean MobileDashboardIconsVerification() {
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForElement(VerifyBookAppointmentHeaderIcon);
+        verifyElement(VerifyBookAppointmentHeaderIcon);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForElement(VerifyDashboardBookAppointmentIcon);
+        return verifyElement(VerifyDashboardBookAppointmentIcon);
+    }
+
 
     public boolean clickMobileAppointmentsExpandIcon() {
         waitForSeconds(3);

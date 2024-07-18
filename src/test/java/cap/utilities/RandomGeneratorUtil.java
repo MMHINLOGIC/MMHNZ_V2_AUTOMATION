@@ -6,7 +6,9 @@ import java.util.Random;
 
 public class RandomGeneratorUtil {
 
-    /** getRandomString is used to Instantly generate a secure, random password with the LastPass online tool.*/
+    /**
+     * getRandomString is used to Instantly generate a secure, random password with the LastPass online tool.
+     */
 
     public static String getRandomString() {
         int leftLimit = 97; // letter 'a'
@@ -22,30 +24,50 @@ public class RandomGeneratorUtil {
         return strRandomID.toUpperCase();
     }
 
+    public static String getRandomNumber() {
+        Random rand = new Random();
+        int random=rand.nextInt(90)+10;
+        //generates random no. between 10 and 100
+        System.out.println(random);
+        String strRandomID = new StringBuilder("").append(random).toString();
+        return strRandomID;
+    }
+
+
+
+
+
+
 
 
 
 //    public static void main (String[] args) {
-////        Random rand = new Random();
-////
-////        int num1, num2, num3;
-////
-////        num1 = rand.nextInt (64) + 10;
-////        num2 = rand.nextInt (643) + 100;
-////        num3 = rand.nextInt (9000) + 1000;
-////
-////        System.out.println(num1+"-"+num2+"-"+num3);
-////    }
+//        Random rand = new Random();
+//
+//        int num1, num2, num3;
+//
+//        num1 = rand.nextInt (64) + 10;
+//        num2 = rand.nextInt (643) + 100;
+//        num3 = rand.nextInt (9000) + 1000;
+//
+//        System.out.println(num1+"-"+num2+"-"+num3);
+//    }
 //    Random r = new Random();
 //        int i1 = r.nextInt(8);
 //        System.out.println(i1);
 //
 //
 //}
+//
+//    public static void main(String[] args) {
+//        String mobileNumber = generateRandomMobileNumber();
+//        System.out.println("Random New Zealand mobile number: " + mobileNumber);
+//    }
 
-    public static void main(String[] args) {
-        String mobileNumber = generateRandomMobileNumber();
-        System.out.println("Random New Zealand mobile number: " + mobileNumber);
+    public static void main(String[] args){
+        Random rand = new Random();
+        int random=rand.nextInt(90)+10; //generates random no. between 10 and 100
+        System.out.println(random);
     }
 
 

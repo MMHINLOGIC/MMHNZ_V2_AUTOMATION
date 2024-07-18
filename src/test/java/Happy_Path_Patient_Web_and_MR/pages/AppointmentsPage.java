@@ -60,7 +60,11 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'page-content')]")
     protected WebElement elmntAppointmentPanel;
 
+    @FindBy(how = How.XPATH, using = "//input[@formcontrolname='additionalRequirements']")
+    protected WebElement elmntAdditionalRequirements;
 
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'ALL')]")
+    protected WebElement elmntAllTab;
 
     //span[contains(text(),'BOOK APPOINTMENT')]
 
@@ -390,6 +394,16 @@ public class AppointmentsPage extends BasePage {
             .append("<<REPLACEMENT1>>")
             .append("')]/ancestor::mat-card//child::mat-card-actions//p[contains(text(),'")
             .append("<<REPLACEMENT2>>")
+            .append("')]").toString();
+
+    protected String elmntFlexiableAppointmentDetailInFutureAppoinments = new StringBuilder().append("//mat-card//following-sibling::div//mat-card-title[contains(text(),'")
+            .append("<<REPLACEMENT1>>")
+            .append("')]/ancestor::mat-card//child::mat-card-actions//p[contains(text(),'")
+            .append("<<REPLACEMENT2>>")
+            .append("')]/following::span[contains(text(),'")
+            .append("<<REPLACEMENT3>>")
+            .append("')]/ancestor::mat-card//child::div/p[contains(text(),'")
+            .append("<<REPLACEMENT4>>")
             .append("')]").toString();
 
     @FindBy(how = How.XPATH, using = "(//h3[contains(text(),'Upcoming Appointments')])[1]")
@@ -854,6 +868,26 @@ public class AppointmentsPage extends BasePage {
         return blResult;
     }
 
+    public boolean VeriflyAllTabElementIsNotDisplayed() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            if (!verifyElement(elmntAllTab)){
+                System.out.println("FlexibleAppointment Enable Provider Side");
+                blResult=!verifyElement(elmntAllTab);
+            }else {
+                System.out.println("FlexibleAppointment isNot EnableProvider Side");
+                blResult=verifyElement(elmntAllTab);
+            }
+
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
     public boolean clickPatientBookAppointment(){
         boolean blresult = false;
         try{
@@ -888,6 +922,23 @@ public class AppointmentsPage extends BasePage {
             e.printStackTrace();
         }
         return blResult;
+    }
+
+
+    public boolean selectAdditional(String strReason) {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementClickable(elmntAdditionalRequirements);
+            jsClick(elmntAdditionalRequirements);
+            waitForSeconds(2);
+            elmntAdditionalRequirements.sendKeys(strReason);
+            blResult = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return blResult;
+
     }
 
     public boolean selectReasonForBooking(String strReason) {
@@ -1530,6 +1581,172 @@ public class AppointmentsPage extends BasePage {
         return blResult;
     }
 
+    public boolean verifyMobileCreatedFlexibleAppointmentInFutureAppointmentTab(List<String> lstDetails) {
+        boolean blResult = false;
+        try {
+            waitForSeconds(5);
+            if (verifyElement(elmntMobileUpComingAppointmentAdd)) {
+                waitForElement(elmntMobileUpComingAppointmentAdd);
+                verifyElement(elmntMobileUpComingAppointmentAdd);
+                jsClick(elmntMobileUpComingAppointmentAdd);
+            }
+            if (verifyElement(clickMobileFutureAppointmentTab)) {
+                waitForElement(clickMobileFutureAppointmentTab);
+                click(clickMobileFutureAppointmentTab);
+            }else{
+                System.out.println("User Already Upcomming Appointments Page");
+            }
+            waitForSeconds(2);
+
+//            waitForElement(elmntMobileUpComingAppointmentHeader);
+            String strDatePattern1 = "dd MMM yyyy";
+            String strDate = TestDataUtil.getValue(lstDetails.get(2));
+            String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
+            System.out.println("DATE" + strDateValue);
+
+            String strDateMonth = strDateValue;
+            String strTime = strSlotDate;
+
+            String strConvertedTime = strTime;
+
+//            strConvertedTime = "0" + strConvertedTime;
+
+            String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
+
+            System.out.println(strFinalOutDateTime);
+
+            if (verifyElement(elmntMobileUpComingAppointmentAdd)) {
+                waitForElement(elmntMobileUpComingAppointmentAdd);
+                verifyElement(elmntMobileUpComingAppointmentAdd);
+                jsClick(elmntMobileUpComingAppointmentAdd);
+            }
+
+            WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
+            verifyElement(elmntAppointmentDetails);
+            jsScrollIntoView(elmntAppointmentDetails);
+
+            System.out.println("TEST" + lstDetails.get(1));
+            WebElement elmntReservationDetails = waitForElement(By.xpath(elmntFlexiableAppointmentDetailInFutureAppoinments
+                    .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
+                    .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                    .replace("<<REPLACEMENT3>>", lstDetails.get(1))
+                    .replace("<<REPLACEMENT4>>", lstDetails.get(2))));
+            System.out.println("TEST" + lstDetails.get(1));
+            takeScreenshot(driver);
+            blResult = verifyElement(elmntReservationDetails);
+
+
+        } catch (Exception e) {
+            try {
+                waitForSeconds(2);
+                System.out.println("Catch Block 1 executed");
+//                waitForElement(clickMobileFutureAppointmentTab);
+//                click(clickMobileFutureAppointmentTab);
+//                waitForElement(elmntMobileUpComingAppointmentHeader);
+                String strDatePattern1 = "dd MMM yyyy";
+                String strDate = TestDataUtil.getValue(lstDetails.get(2));
+                String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
+                System.out.println("DATE" + strDateValue);
+                String strDateMonth = strDateValue;
+                String strTime = strSlotDate;
+                String strFinalOutDateTime1 = strDateMonth + " " + strTime;
+                System.out.println(strFinalOutDateTime1);
+
+                WebElement elmntAppointmentDetails1 = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime1).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
+                verifyElement(elmntAppointmentDetails1);
+                jsScrollIntoView(elmntAppointmentDetails1);
+
+                System.out.println("TEST" + lstDetails.get(1));
+
+
+                System.out.println("TEST" + lstDetails.get(1));
+                WebElement elmntReservationDetails = waitForElement(By.xpath(elmntAppointmentDetailInFutureAppoinments
+                        .replace("<<REPLACEMENT1>>", strFinalOutDateTime1)
+                        .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                        .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
+                System.out.println("TEST" + lstDetails.get(1));
+                takeScreenshot(driver);
+                blResult = verifyElement(elmntReservationDetails);
+            } catch (Exception d) {
+                e.printStackTrace();
+            }
+
+        }
+        return blResult;
+    }
+
+    public boolean verifyCreatedFlexibleAppointmentInFutureAppointmentTab(List<String> lstDetails) {
+        boolean blResult = false;
+        try {
+            waitForSeconds(2);
+            waitForElement(elmntFutureAppointmentTab);
+            String strDatePattern1 = "dd MMM yyyy";
+            String strDate = TestDataUtil.getValue(lstDetails.get(2));
+            String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
+            System.out.println("DATE" + strDateValue);
+
+            String strDateMonth = strDateValue;
+            String strTime = strSlotDate;
+
+            String strConvertedTime = strTime;
+
+            strConvertedTime = "0" + strConvertedTime;
+
+            String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
+
+            System.out.println(strFinalOutDateTime);
+
+            WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
+            jsScrollIntoView(elmntAppointmentDetails);
+            verifyElement(elmntAppointmentDetails);
+
+
+            System.out.println("TEST" + lstDetails.get(1));
+            WebElement elmntReservationDetails = waitForElement(By.xpath(elmntFlexiableAppointmentDetailInFutureAppoinments
+                    .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
+                    .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                    .replace("<<REPLACEMENT3>>", lstDetails.get(1))
+                    .replace("<<REPLACEMENT4>>", lstDetails.get(3))));
+            System.out.println("TEST" + lstDetails.get(1));
+            takeScreenshot(driver);
+            blResult = verifyElement(elmntReservationDetails);
+
+        } catch (Exception e) {
+            try {
+                waitForSeconds(2);
+                System.out.println("Catch Block 1 executed");
+                waitForElement(elmntFutureAppointmentTab);
+                String strDatePattern1 = "dd MMM yyyy";
+                String strDate = TestDataUtil.getValue(lstDetails.get(2));
+                String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
+                System.out.println("DATE" + strDateValue);
+                String strDateMonth = strDateValue;
+                String strTime = strSlotDate;
+                String strFinalOutDateTime1 = strDateMonth + " " + strTime;
+                System.out.println(strFinalOutDateTime1);
+
+                WebElement elmntAppointmentDetails1 = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime1).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
+                verifyElement(elmntAppointmentDetails1);
+                jsScrollIntoView(elmntAppointmentDetails1);
+
+                System.out.println("TEST" + lstDetails.get(1));
+
+
+                System.out.println("TEST" + lstDetails.get(1));
+                WebElement elmntReservationDetails = waitForElement(By.xpath(elmntAppointmentDetailInFutureAppoinments
+                        .replace("<<REPLACEMENT1>>", strFinalOutDateTime1)
+                        .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                        .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
+                System.out.println("TEST" + lstDetails.get(1));
+                takeScreenshot(driver);
+                blResult = verifyElement(elmntReservationDetails);
+            } catch (Exception d) {
+                e.printStackTrace();
+            }
+
+        }
+        return blResult;
+    }
 
     public boolean clickConfirmYourBookingButton() {
         boolean blResult = false;
@@ -2712,6 +2929,13 @@ public class AppointmentsPage extends BasePage {
         boolean blResult = false;
 
         try {
+waitForSeconds(5);
+            if (verifyElement(clickMobileFutureAppointmentTab)) {
+                waitForElement(clickMobileFutureAppointmentTab);
+                click(clickMobileFutureAppointmentTab);
+            }else{
+                System.out.println("User Already Upcomming Appointments Page");
+            }
 
             String strDatePattern1 = "dd MMM yyyy";
             String strDate = TestDataUtil.getValue(lstDetails.get(2));

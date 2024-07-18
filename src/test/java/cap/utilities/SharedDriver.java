@@ -10,10 +10,14 @@ public class SharedDriver {
     protected static WebDriver driver;
     protected static WebDriver mobileDriver;
     protected static WebDriver windowsDriver;
-    public static long randomID;
-    public static String strExecutionID;
 
-/**  Using this method, get a Windows driver. A run time is assigned to each execution type that runs in your program. Like BROWSER,MOBILEVIEW,MOBILE */
+    public static long randomID;
+
+    public static String strExecutionID;
+    public static String strExecutionNumber;
+
+
+    /**  Using this method, get a Windows driver. A run time is assigned to each execution type that runs in your program. Like BROWSER,MOBILEVIEW,MOBILE */
     public static WebDriver getDriver() {
         return driver;
     }
@@ -29,9 +33,11 @@ public class SharedDriver {
 
     static {
         strExecutionID = RandomGeneratorUtil.getRandomString();
+        strExecutionNumber = RandomGeneratorUtil.getRandomNumber();
         TestDataUtil.loadData(Constants.TESTDATA_PATH, System.getProperty(Constants.ENV_VARIABLE_APPLICATION));
         String strExecutionType = System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "");
         System.out.println("\n >> Execution String: " + strExecutionID);
+        System.out.println("\n >> Execution String: " + strExecutionNumber);
 
         if (strExecutionType.equalsIgnoreCase("BROWSER")
                 || strExecutionType.equalsIgnoreCase("MOBILEVIEW")

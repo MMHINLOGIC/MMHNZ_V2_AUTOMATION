@@ -190,7 +190,21 @@ public class DateUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         //Current Date should be go on Next Month and Year
-        calendar.add(Calendar.DATE, +2);
+        calendar.add(Calendar.DAY_OF_MONTH, +1);
+        String strNextMonthAndYear = Integer.toString(calendar.get(Calendar.DATE)); //To Convert Integer to String (Next Month and Year)
+        Date NextMonthAndYear = calendar.getTime();
+        strNextMonthAndYear = dateFormat.format(NextMonthAndYear);
+        return strNextMonthAndYear;
+    }
+
+
+    public static String getMonth(String strFormat) {
+        DateFormat dateFormat = new SimpleDateFormat(strFormat);
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        //Current Date should be go on Next Month and Year
+        calendar.add(Calendar.DAY_OF_MONTH, +1);
         String strNextMonthAndYear = Integer.toString(calendar.get(Calendar.DATE)); //To Convert Integer to String (Next Month and Year)
         Date NextMonthAndYear = calendar.getTime();
         strNextMonthAndYear = dateFormat.format(NextMonthAndYear);

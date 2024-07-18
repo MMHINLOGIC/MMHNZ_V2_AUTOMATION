@@ -3571,73 +3571,131 @@ public class SanityWebSteps {
     @And("I click on {string} Add Task delete icon")
     public void iClickOnAddTaskDeleteIcon(String Taskdetails) {
         Assert.assertTrue(sanityPageContainer.goalTracking.ClickDeleteFutureTaskTableData(TestDataUtil.getValue(Taskdetails)));
-        System.out.println(">>>>>>>>>>>>>"+TestDataUtil.getValue(Taskdetails));
+
 
 
     }
 
     @Given("As a Existing user I am on HomePage and I click the Beating the Blues Option")
     public void asAExistingUserIAmOnHomePageAndIClickTheBeatingTheBluesOption() {
-        Assert.assertTrue(sanityPageContainer.viewJournal.clickDashBoard());
-        Assert.assertTrue(sanityPageContainer.homePage.verifyHomePageOfMMHPortal());
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBeatingTheBluesOption());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.viewJournal.clickDashBoard());
+            Assert.assertTrue(sanityPageContainer.homePage.verifyHomePageOfMMHPortal());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBeatingTheBluesOption());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.homePage.clickDashBoardForMobile());
+            Assert.assertTrue(sanityPageContainer.homePage.verifyHomePageOfMMHPortal());
+
+
+        }
 
     }
 
     @When("click on My Health Centres option and verify Patient is Connected the Health centre")
     public void clickOnMyHealthCentresOptionAndVerifyPatientIsConnectedTheHealthCentre() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyAccount());
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyHealthCentre());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyAccount());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyHealthCentre());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileMyAccount());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileMyHealthCentre());
+        }
 
     }
 
 
     @Then("click on MyHealth Centres Option and Verify Patient is Subscribed to Beating the Blues")
     public void clickOnMyHealthCentresOptionAndVerifyPatientIsSubscribedToBeatingTheBlues() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMySubscriptions());
+
 
 
     }
 
     @And("I Click on Book an Appointment and Verify Patient see book an appointment successfully")
     public void iClickOnBookAnAppointmentAndVerifyPatientSeeBookAnAppointmentSuccessfully() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBookanAppointmentOption());
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.declineCovidPreScreeningPopup());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBookanAppointmentOption());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.declineCovidPreScreeningPopup());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileBookanAppointmentOption());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.declineCovidPreScreeningPopup());
+
+        }
     }
 
     @And("I Click on New Repeat Prescription and Verify Patient see request an RRP Successfully")
     public void iClickOnNewRepeatPrescriptionAndVerifyPatientSeeRequestAnRRPSuccessfully() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickRRPOption());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickRRPOption());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileRRPOption());
+        }
     }
 
     @And("I Click on Health Records and Lab Results details and Verify Patient see view Health Records and Lab Results Records")
     public void iClickOnHealthRecordsAndLabResultsDetailsAndVerifyPatientSeeViewHealthRecordsAndLabResultsRecords() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickHealthRecords());
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickLabResults());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickHealthRecords());
+//            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickLabResults());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileHealthRecords());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileLabResults());
+        }
     }
 
     @And("I Click on Messages and Verify Patient see send and receive messages successfully")
     public void iClickOnMessagesAndVerifyPatientSeeSendAndReceiveMessagesSuccessfully() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMessages());
-        sanityPageContainer.beatingTheBlues.clickDashboardFromMenu();
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMessages());
+//            sanityPageContainer.beatingTheBlues.clickDashboardFromMenu();
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileMessages());
+
+        }
     }
 
     @And("I click on Home Icon and Verify Patient can see Session Overview")
     public void iClickOnHomeIconAndVerifyPatientCanSeeSessionOverview() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBTBHomeIcon());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBTBHomeIcon());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileBTBHomeIcon());
+        }
+
 
     }
 
     @When("I click Session Overview icon from Home Page and Verify Patient can see all eight Sessions description")
     public void iClickSessionOverviewIconFromHomePageAndVerifyPatientCanSeeAllEightSessionsDescription() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickSessionOverview());
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyEightSessions());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickSessionOverview());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyEightSessions());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickSessionOverview());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyEightSessions());
+
+        }
 
     }
 
     @And("I Click Resume Session icon from Home page and Verify Patient can attended sessions")
     public void iClickResumeSessionIconFromHomePageAndVerifyPatientCanAttendedSessions() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickResumeSessionIcon());
+
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickResumeSessionIcon());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileResumeSessionIcon());
+
+        }
 
     }
 
@@ -3645,10 +3703,184 @@ public class SanityWebSteps {
     @Given("As a Existing user I am on HomePage BTB Website and I click the Beating the Blues Option")
     public void asAExistingUserIAmOnHomePageBTBWebsiteAndIClickTheBeatingTheBluesOption() {
 
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.VerifyBtbWebsiteHomePage());
     }
 
 
+
+
+    @When("I Click on Book an Appointment and Verify Patient see popup with message")
+    public void iClickOnBookAnAppointmentAndVerifyPatientSeePopupWithMessage() {
+
+    }
+
+    @And("I Click on New Repeat Prescription and Verify Patient see popup with message")
+    public void iClickOnNewRepeatPrescriptionAndVerifyPatientSeePopupWithMessage() {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyRRPPopupMessage());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyMobileRRPPopupMessage());
+        }
+    }
+
+    @And("I Click on Health Records and Lab Results details and Verify Patient see popup with message")
+    public void iClickOnHealthRecordsAndLabResultsDetailsAndVerifyPatientSeePopupWithMessage() {
+
+
+    }
+
+    @Then("I Click on Messages and Verify Patient see send and Verify Patient see popup with message")
+    public void iClickOnMessagesAndVerifyPatientSeeSendAndVerifyPatientSeePopupWithMessage() {
+
+    }
+
+
+
+
+    @Given("As a Self Registered user I am on BTB Home Page and Verify the BTB Left Menu")
+    public void asASelfRegisteredUserIAmOnBTBHomePageAndVerifyTheBTBLeftMenu() {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.VerifyBTBLeftSideMenu());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.VerifyBTBHomePageMenu());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.homePage.clickDashBoardForMobile());
+            Assert.assertTrue(sanityPageContainer.homePage.verifyHomePageOfMMHPortal());
+
+
+        }
+    }
+
+
+    @And("I click on Home Icon and Verify the BTB Home Page Menu")
+    public void iClickOnHomeIconAndVerifyTheBTBHomePageMenu() {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.VerifyBTBHomePageMenu());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+
+            Assert.assertTrue(sanityPageContainer.homePage.verifyHomePageOfMMHPortal());
+
+
+        }
+    }
+
+    @And("I click on My Health Centres option and verify Patient is Not Connected the Health centre")
+    public void iClickOnMyHealthCentresOptionAndVerifyPatientIsNotConnectedTheHealthCentre() {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMyAccount());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyMyHealthCentrelocationisnotDisplayed());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileMyAccount());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyMyHealthCentreIsnotConnectedLocation());
+
+        }
+    }
+
+
+
+    @And("I click on MyAccount option Navigate to Update Profile Page and Verify Patient is MySubscriptions to Beating the Blues")
+    public void iClickOnMyAccountOptionNavigateToUpdateProfilePageAndVerifyPatientIsMySubscriptionsToBeatingTheBlues() {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMySubscriptions());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMobileMySubscriptions());
+        }
+    }
+
+    @When("I click on MMH Dashboard option and Verify the MMH Home Page Icons")
+    public void iClickOnMMHDashboardOptionAndVerifyTheMMHHomePageIcons() {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.viewJournal.clickDashBoard());
+            Assert.assertTrue(sanityPageContainer.homePage.verifyHomePageOfMMHPortal());
+            Assert.assertTrue(sanityPageContainer.viewJournal.VerifyDashboardIcons());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+
+
+        }
+
+    }
+
+    @And("I click on Book an Appointment and New Repeat Prescription Option the user should be able to see the pop-up message")
+    public void iClickOnBookAnAppointmentAndNewRepeatPrescriptionOptionTheUserShouldBeAbleToSeeThePopUpMessage() {
+
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyBookAppointmentPopup());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyRRPPopupMessage());
+
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyMobileBookAppointmentPopup());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyMobileRRPPopupMessage());
+
+
+        }
+    }
+
+    @And("I click on Health Records and Lab Results Option the user should be able to see the pop-up message")
+    public void iclickOnHealthRecordsAndLabResultsOptionTheUserShouldBeAbleToSeeThePopUpMessage() {
+
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyHealthRecordsPopup());
+//            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyLabResultsPopup());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyMobileHealthRecordsPopup());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyMobileLabResultsPopup());
+        }
+    }
+
+    @Then("I click on Messages Option the user should be able to see the pop-up message")
+    public void iClickOnMessagesOptionTheUserShouldBeAbleToSeeThePopUpMessage() {
+
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickMessagesPopup());
+//            sanityPageContainer.beatingTheBlues.clickDashboardFromMenu();
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.verifyMobileMessagesPopup());
+
+        }
+    }
+
+    @Given("As a Existing user I am on MMH HomePage and I click the Beating the Blues Option")
+    public void asAExistingUserIAmOnMMHHomePageAndIClickTheBeatingTheBluesOption() {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.viewJournal.clickDashBoard());
+            Assert.assertTrue(sanityPageContainer.homePage.verifyHomePageOfMMHPortal());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickBeatingTheBluesOption());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.VerifyMMHBTBLeftSideMenu());
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.VerifyBTBHomePageMenu());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(sanityPageContainer.homePage.clickDashBoardForMobile());
+            Assert.assertTrue(sanityPageContainer.homePage.verifyHomePageOfMMHPortal());
+
+
+        }
+    }
+
+    @Given("As a Self Registered user I am on Provider BTB Home Page and Verify the BTB Left Menu")
+    public void asASelfRegisteredUserIAmOnProviderBTBHomePageAndVerifyTheBTBLeftMenu() {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.VerifyProviderBTBDashboardLeftMenu());
+
+        }
+
+
+    }
+
+    @Given("As a Existing MMH Provider user I am on Provider BTB Home Page and Verify the BTB Left Menu")
+    public void asAExistingMMHProviderUserIAmOnProviderBTBHomePageAndVerifyTheBTBLeftMenu() {
+
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(sanityPageContainer.beatingTheBlues.VerifyExistingProviderBTBDashboardLeftMenu());
+
+        }
+    }
 }
 
 

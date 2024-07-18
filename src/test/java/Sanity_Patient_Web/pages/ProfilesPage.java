@@ -275,7 +275,7 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Contact')]")
     protected WebElement btnAddContact;
 
-    @FindBy(how = How.XPATH, using = "//mat-error[contains(text(),'Password entered does not match with the New Password.')]")
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'It looks like you are already registered with Manage My Health.')]")
     protected WebElement elmntError;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Day')]")

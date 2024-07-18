@@ -226,3 +226,104 @@ Feature: Appointments
     Examples:
       | Appointments      | Future        |
       | Video invitations | &VIDEO_ICONS& |
+
+
+    ####################################################################################################################################
+
+
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  Scenario Template: User Successfully logs in to the MMH Provider Portal.
+
+    Given As a user I am on login Provider Portal Page
+    And I enter "<Email Address>" and "<Password>" For Beta
+    When I click SignIn button
+    Then I should see user successfully logs in to the MMH portal
+
+    Examples:
+      | Email Address         | Password   |
+      | &PROVIDER_USER_LOGIN& | &PASSWORD& |
+
+
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  Scenario Template: Provider Enable Flexible Slot Display verify Patient Book Visit Appointment based on All Slot time are displayed
+
+    Given As a Provider I am on HomePage and navigate to Appointment Setting page
+    Then I enable Flexible slot display Yes Radio button and I click save button then I see Saved Successfully message"<Location>"
+
+    Examples:
+      | Location         |
+      | Automation1_Loc1 |
+
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  Scenario Template: User Successfully logs in to the MMH Portal.
+
+    Given As a user I am on MMH login Page
+    And I enter "<Email Address>" and "<Password>" For Beta
+    When I click SignIn button
+    Then I should see user successfully logs in to the MMH portal
+    Examples:
+      | Email Address | Password   | ui         |
+      | &EMAIL&       | &PASSWORD& | &UI_EMAIL& |
+
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  Scenario Template: S1 Patient Booking Appointment - Visit Appointment
+
+    Given As a user I am on Patient HomePage
+    And I navigate to the "<Appointment>" page
+    And I enter the Flexible Slot visit appointment details "<Appointment_Details>"
+    When I click confirm button
+    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"
+    And I accept the terms & conditions and confirm my booking
+    And I should see booked Flexible Slot appointment displayed under the future tab "<Appointment_Summary>"
+#    And I logout from the application
+
+    Examples:
+      | Appointment      | Appointment_Details                    | Details_For_Appointment     | Appointment_Summary         | Future_Date   |
+      | Book Appointment | &BOOK_FLEXIBLE_SLOT_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &VISIT_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
+
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  Scenario Template: S2 - Patient Booking Appointment - Video Appointment
+
+    Given As a user I am on HomePage
+    And I navigate to the "<Appointment>" page
+    And I enter the Flexible Slot video appointment details "<Appointment_Details>"
+    When I click confirm button "<Appointment_Details>"
+    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"
+    And I accept the terms & conditions and confirm my booking
+    And I should see booked Flexible Slot appointment displayed under the future tab "<Appointment_Summary>"
+
+
+    Examples:
+      | Appointment      | Appointment_Details                    | Details_For_Appointment     | Appointment_Summary         | Future_Date   |
+      | Book Appointment | &BOOK_FLEXIBLE_SLOT_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &VIDEO_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
+
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  Scenario Template: S3 - Patient Booking Appointment - Visit in video slot Appointment
+
+    Given As a user I am on HomePage
+    And I navigate to the "<Appointment>" page
+    And I enter the Flexible Slot video appointment details "<Appointment_Details>"
+    When I click confirm button "<Appointment_Details>"
+    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"
+    And I accept the terms & conditions and confirm my booking
+    And I should see booked Flexible Slot appointment displayed under the future tab "<Appointment_Summary>"
+
+    Examples:
+      | Appointment      | Appointment_Details                             | Details_For_Appointment              | Appointment_Summary                  | Future_Date   |
+      | Book Appointment | &BOOK_FLEXIBLE_SLOT_VISIT_IN_VIDEO_APPOINTMENT& | &VISIT_IN_VIDEO_APPOINTMENT_DETAILS& | &VISIT_IN_VIDEO_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
+
+
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  Scenario Template: S4 - Patient Booking Appointment - Phone Appointment
+
+    Given As a user I am on HomePage
+    And I navigate to the "<Appointment>" page
+    And I enter the Flexible Slot phone appointment details "<Appointment_Details>"
+    When I click confirm button
+    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"
+    And I accept the terms & conditions and confirm my booking
+    And I should see booked appointment displayed under the future tab "<Appointment_Summary>"
+
+    Examples:
+      | Appointment      | Appointment_Details      | Details_For_Appointment     | Appointment_Summary         | Future_Date   |
+      | Book Appointment | &BOOK_PHONE_APPOINTMENT& | &PHONE_APPOINTMENT_DETAILS& | &PHONE_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |

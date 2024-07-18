@@ -1,6 +1,7 @@
 package Sanity_Patient_Web;
 
 import Sanity_Patient_Web.pages.*;
+import cap.helpers.Constants;
 import cap.utilities.SharedDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -41,8 +42,16 @@ public class SanityPageContainer {
 
 
     public SanityPageContainer() {
-        driver = SharedDriver.getDriver();
-        initPages();
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            driver = SharedDriver.getDriver();
+            initPages();
+        }
+
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            driver = SharedDriver.getDriver();
+            driver = SharedDriver.getMobileDriver();
+            initPages();
+        }
     }
 
     private void initPages() {

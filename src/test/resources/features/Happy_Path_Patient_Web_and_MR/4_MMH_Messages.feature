@@ -21,20 +21,9 @@ Feature: Messages
       | Email Address | Password   |
       | &EMAIL&       | &PASSWORD& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
-  Scenario Template: S1- Patient Sending Message
 
-    Given As a Existing user I am on HomePage and navigate to Compose Message
-    And I enter the "<Compose Details>" to compose an email
-    When I Click Send Message Button
-    Then I should see message sent Successfully popup
-    And I navigate to Patient Sent items and verify the Sent "<Compose Details>"
 
-    Examples:
-      | Compose Details   |
-      | &COMPOSE_MESSAGE& |
-
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE1 @MESSAGES_MOBILE1
   Scenario Template: S2- Patient Save Message as Draft
 
     Given As a Existing user I am on HomePage and navigate to Compose Message
@@ -164,15 +153,7 @@ Feature: Messages
 #      | Time Out Setting   |
 #      | &TIME_OUT_SETTING& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
-  Scenario Outline: S7- Patient Alert Settings
-    Given As a user I am on HomePage and navigate to Messages Setting
-    And I click the Alert Setting and select the "<Alert Type>"
-    Then I click the Save Button
 
-    Examples:
-      | Alert Type   |
-      | &ALERT TYPE& |
 
   @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
   Scenario Outline: S8- Patient Signature Settings
@@ -247,6 +228,42 @@ Feature: Messages
     Examples:
       | Start Date   | End Date   | Message          |
       | &START DATE& | &END DATE& | &OUT OF MESSAGE& |
+
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  Scenario Template: User Successfully logs in to the MMH Portal.
+
+    Given As a user I am on MMH login Page
+    And I enter "<Email Address>" and "<Password>" For Beta
+    When I click SignIn button
+    Then I should see user successfully logs in to the MMH portal
+
+    Examples:
+      | Email Address | Password   |
+      | &EMAIL&       | &PASSWORD& |
+
+
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  Scenario Outline: S7- Patient Alert Settings
+    Given As a user I am on HomePage and navigate to Messages Setting
+    And I click the Alert Setting and select the "<Alert Type>"
+    Then I click the Save Button
+
+    Examples:
+      | Alert Type   |
+      | &ALERT TYPE& |
+
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  Scenario Template: S1- Patient Sending Message
+
+    Given As a Existing user I am on HomePage and navigate to Compose Message
+    And I enter the "<Compose Details>" to compose an email
+    When I Click Send Message Button
+    Then I should see message sent Successfully popup
+    And I navigate to Patient Sent items and verify the Sent "<Compose Details>"
+
+    Examples:
+      | Compose Details   |
+      | &COMPOSE_MESSAGE& |
 
   @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
   Scenario Template: Changing machines timezone

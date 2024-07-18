@@ -25,6 +25,24 @@ public class ViewJournal extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
     protected WebElement elmntDashBoard;
 
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Book an Appointment')]")
+    protected WebElement elmntBookAppointment;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'New Repeat Prescription')]")
+    protected WebElement elmntNewRepeatPrescription;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Health Records')]")
+    protected WebElement elmntHealthRecords;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Lab Results')]")
+    protected WebElement elmntLabResults;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Messages')]")
+    protected WebElement elmntMessages;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Discover Health')]")
+    protected WebElement elmntDiscoverHealth;
+
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Home')and contains(text(),'My Home page') or contains(text(),'Start managing your health today')]")
@@ -167,8 +185,6 @@ public class ViewJournal extends BasePage {
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(4);
         jsScrollIntoView(elmntDashBoard);
-//        waitForElementDisappear(driver,elmntLoadingSpinner);
-//        waitForSeconds(4);
         waitForElement(elmntDashBoard);
         jsClick(elmntDashBoard);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -178,6 +194,33 @@ public class ViewJournal extends BasePage {
         waitForSeconds(8);
         return verifyElement(elmntVerifyHomePage);
     }
+
+    public boolean VerifyDashboardIcons() {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(2);
+            waitForElement(elmntBookAppointment);
+            isverified=verifyElement(elmntBookAppointment);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntNewRepeatPrescription);
+            isverified=verifyElement(elmntNewRepeatPrescription);
+            waitForElement(elmntHealthRecords);
+            isverified=verifyElement(elmntHealthRecords);
+            waitForElement(elmntLabResults);
+            isverified=verifyElement(elmntLabResults);
+            waitForElement(elmntMessages);
+            isverified=verifyElement(elmntMessages);
+            waitForElement(elmntDiscoverHealth);
+            isverified=verifyElement(elmntDiscoverHealth);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return isverified;
+
+
+    }
+
 
     public boolean clickViewJournal() {
         waitForSeconds(4);

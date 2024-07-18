@@ -2,6 +2,7 @@ package General_Sanity_Provider_Web;
 
 import General_Sanity_Provider_Web.pages.Login;
 import Happy_Path_Provider_Web.pages.ProviderHomePage;
+import Sanity_Patient_Web.pages.BeatingTheBlues;
 import cap.helpers.Constants;
 import cap.utilities.SharedDriver;
 import io.cucumber.java.After;
@@ -21,6 +22,8 @@ public class GeneralSanityPageContainer {
 
     public Login login;
 
+    public BeatingTheBlues beatingTheBlues;
+
 
 
     public GeneralSanityPageContainer(){
@@ -35,19 +38,11 @@ public class GeneralSanityPageContainer {
             initPages();
         }
 
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
-            driver = SharedDriver.getDriver();
-            initPages();
-        }
-
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("WEBMOBILE")) {
-            driver = SharedDriver.getDriver();
-            initPages();
-        }
     }
 
     private void initPages() {
         login = new Login(driver);
+        beatingTheBlues = new BeatingTheBlues(driver);
     }
 
     @After("@WEB")

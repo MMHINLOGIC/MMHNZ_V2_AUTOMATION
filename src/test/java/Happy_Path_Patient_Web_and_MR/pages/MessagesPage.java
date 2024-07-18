@@ -667,7 +667,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='Attach ']")
     protected WebElement btndevDone;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Close')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'CLOSE')]")
     protected WebElement btnSentClose;
 
 
@@ -3077,7 +3077,7 @@ jsScrollIntoView(txtBoxMessages);
             waitForSeconds(2);
 //            waitForElement(txtMessage);
 //            waitForSeconds(2);
-            click(txtMessage);
+            mouseClick(txtMessage);
             waitForSeconds(3);
             txtMessage.clear();
             waitForSeconds(2);

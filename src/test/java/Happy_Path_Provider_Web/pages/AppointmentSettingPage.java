@@ -151,6 +151,9 @@ public class AppointmentSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Save')]")
     protected WebElement elmntSaveButton;
 
+    @FindBy(how = How.XPATH, using = "(//input[@value='Yes'])[3]")
+    protected WebElement elmntFlexibleYesButton;
+
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Visit')]")
     protected WebElement elmntVisitAppointmentIcon;
 
@@ -386,6 +389,33 @@ public class AppointmentSettingPage extends BasePage {
         }
         return blresult;
 
+    }
+
+    public boolean clickFlexibleYesButton() {
+        boolean blresult = false;
+        try {
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            jsScrollIntoView(elmntFlexibleYesButton);
+            waitForElement(elmntFlexibleYesButton);
+//            takeScreenshot(driver);
+            jsClick(elmntFlexibleYesButton);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            System.out.println("Successfully Click RuleA Radio Button");
+            jsScrollIntoView(elmntSaveButton);
+            waitForElement(elmntSaveButton);
+            click(elmntSaveButton);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+//            takeScreenshot(driver);
+            waitForElement(txtSuccessfullyMessagePopup);
+            blresult =verifyElement(txtSuccessfullyMessagePopup);
+            System.out.println("Verify Changes saved successfully. Popup");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Cannot Verify Changes saved successfully. Popup");
+
+        }
+        return blresult;
     }
 
     public boolean selectRestrictProviderscheckbox(String strLocation) {
@@ -845,6 +875,14 @@ public class AppointmentSettingPage extends BasePage {
         waitForElement(txtWelcome);
         isVerified = verifyElement(txtWelcome);
         return isVerified;
+    }
+
+    public boolean closewindow() {
+
+        waitForSeconds(2);
+        closeWindow(1);
+        waitForSeconds(2);
+        return true;
     }
 }
 
