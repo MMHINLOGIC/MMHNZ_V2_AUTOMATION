@@ -52,13 +52,13 @@ public class PhoneAppointmentSettingPage extends BasePage {
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc1')]//preceding::input[@aria-checked='true']")
-    protected WebElement elmntPhoneAppointmentVM03Location;
+    protected WebElement elmntPhoneAppointmentAutomationLoc1;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc1')]//preceding::input[@aria-checked='false']")
-    protected WebElement verifyPhoneAppointmentVM03Location;
+    protected WebElement verifyPhoneAppointmentAutomationLocation;
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//preceding::input[@aria-checked='true'])[2]")
-    protected WebElement elmntPhoneAppointmentVM03Location2;
+    protected WebElement elmntPhoneAppointmentAutomationLocation2;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc2')]//preceding::input[@aria-checked='false']")
-    protected WebElement verifyPhoneAppointmentVM03Location2;
+    protected WebElement verifyPhoneAppointmentAutomationLocation2;
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::input[@name='rules0'])[1]")
     protected WebElement clickVM03LocationRule1;
 
@@ -75,11 +75,12 @@ public class PhoneAppointmentSettingPage extends BasePage {
     protected WebElement EnterVM03Location2TextValue;
     @FindBy(how = How.XPATH, using = " //span[contains(text(),'Save')] ")
     protected WebElement ClickSaveButton;
+
     @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Practice')]//preceding::input[@name='phnecallInitiation0'])[1]")
-    protected WebElement clickVM03LocationPraticeRadioButton;
+    protected WebElement clickAutomationLoc1LocationPraticeRadioButton;
 
     @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Practice')]//preceding::input[@name='phnecallInitiation1'])[1]")
-    protected WebElement clickVM03Location2PraticeRadioButton;
+    protected WebElement clickAutomationLocation2PraticeRadioButton;
 
     @FindBy(how = How.XPATH, using = " (//div[contains(text(),'Patient')]//preceding::input[@name='phnecallInitiation0'])[2]")
     protected WebElement clickVM03LocationPatientRadioButton;
@@ -87,8 +88,8 @@ public class PhoneAppointmentSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Patient')]//preceding::input[@name='phnecallInitiation1'])[2]")
     protected WebElement clickVM03Location2PatientRadioButton;
 
-    @FindBy(xpath = "//span[contains(text(),'Setup Modules')]")
-    protected WebElement elmtSecureMessaging;
+    @FindBy(xpath = "(//span[contains(text(),'Setup Modules')]//following::mat-icon)[1]")
+    protected WebElement elmtSetupModules;
 
     @FindBy(xpath = "//span[contains(text(),'Repeat Prescriptions')]")
     protected WebElement elmtRepeatScriptSettings;
@@ -122,20 +123,20 @@ public class PhoneAppointmentSettingPage extends BasePage {
         return blResult;
     }
 
-    public boolean clickSecureMessaging() {
+    public boolean clickSetupModule() {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            jsScrollIntoView(elmtSecureMessaging);
+            jsScrollIntoView(elmtSetupModules);
             waitForSeconds(2);
-            waitForElementClickable(elmtSecureMessaging);
+            waitForElementClickable(elmtSetupModules);
             System.out.println("Systems Menu is available to click");
-            jsClick(elmtSecureMessaging);
+            jsClick(elmtSetupModules);
             jsScrollIntoView(elmtRepeatScriptSettings);
             System.out.println("scrolled ");
             takeScreenshot(driver);
             if (!verifyElement(elmtRepeatScriptSettings)){
-                click(elmtSecureMessaging);
+                click(elmtSetupModules);
             }
             jsScrollIntoView(elmtRepeatScriptSettings);
             blResult = verifyElement(elmtRepeatScriptSettings);
@@ -175,15 +176,17 @@ public class PhoneAppointmentSettingPage extends BasePage {
             jsScrollIntoView(elmtAppointments);
             waitForElement(elmtAppointments);
             click(elmtAppointments);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmntPhoneAppointmentSetting);
             waitForElement(elmntPhoneAppointmentSetting);
-            click(elmntPhoneAppointmentSetting);
+            jsClick(elmntPhoneAppointmentSetting);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntPhoneAppointmentSettingHeader);
             verifyElement(elmntPhoneAppointmentSettingHeader);
             jsScrollIntoView(elmntPhoneAppointmentSettingEditButton);
             waitForElementClickable(elmntPhoneAppointmentSettingEditButton);
             jsClick(elmntPhoneAppointmentSettingEditButton);
-            waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             System.out.println("Successfull see the Appointment Setting");
             waitForElement(elmntPhoneAppointmentSettingHeader);
             blresult = verifyElement(elmntPhoneAppointmentSettingHeader);
@@ -212,18 +215,18 @@ public class PhoneAppointmentSettingPage extends BasePage {
 
     }
 
-    public boolean clickPhoneAppointmentSettingVM03Locationcheckbox() {
+    public boolean clickPhoneAppointmentSettingAutomationLoc1checkbox() {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-         if(verifyElement(elmntPhoneAppointmentVM03Location)){
+         if(verifyElement(elmntPhoneAppointmentAutomationLoc1)){
              System.out.println("AlreadyCheck box checked");
              blresult=true;
          }
-         if(!verifyElement(elmntPhoneAppointmentVM03Location)){
-             waitForElement(verifyPhoneAppointmentVM03Location);
-             jsClick(verifyPhoneAppointmentVM03Location);
-             verifyElement(elmntPhoneAppointmentVM03Location);
+         if(!verifyElement(elmntPhoneAppointmentAutomationLoc1)){
+             waitForElement(verifyPhoneAppointmentAutomationLocation);
+             jsClick(verifyPhoneAppointmentAutomationLocation);
+             verifyElement(elmntPhoneAppointmentAutomationLoc1);
              blresult=true;
          }
 
@@ -236,18 +239,18 @@ public class PhoneAppointmentSettingPage extends BasePage {
     }
 
 
-    public boolean clickPhoneAppointmentSettingVM03Location2checkbox() {
+    public boolean clickPhoneAppointmentSettingAutomationLocation2checkbox() {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            if(verifyElement(elmntPhoneAppointmentVM03Location2)){
+            if(verifyElement(elmntPhoneAppointmentAutomationLocation2)){
                 System.out.println("AlreadyCheck box checked");
                 blresult=true;
             }
-            if(!verifyElement(elmntPhoneAppointmentVM03Location2)){
-                waitForElement(verifyPhoneAppointmentVM03Location2);
-                jsClick(verifyPhoneAppointmentVM03Location2);
-                verifyElement(elmntPhoneAppointmentVM03Location2);
+            if(!verifyElement(elmntPhoneAppointmentAutomationLocation2)){
+                waitForElement(verifyPhoneAppointmentAutomationLocation2);
+                jsClick(verifyPhoneAppointmentAutomationLocation2);
+                verifyElement(elmntPhoneAppointmentAutomationLocation2);
                 blresult=true;
             }
 
@@ -321,14 +324,14 @@ public class PhoneAppointmentSettingPage extends BasePage {
         return blresult;
 
     }
-    public boolean clickVM03LocationPraticeRadioButton() {
+    public boolean clickAutomationLocation1PraticeRadioButton() {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElement(clickVM03LocationPraticeRadioButton);
-            jsClick(clickVM03LocationPraticeRadioButton);
+            waitForElement(clickAutomationLoc1LocationPraticeRadioButton);
+            jsClick(clickAutomationLoc1LocationPraticeRadioButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            blresult=verifyElement(clickVM03LocationPraticeRadioButton);
+            blresult=verifyElement(clickAutomationLoc1LocationPraticeRadioButton);
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -338,7 +341,7 @@ public class PhoneAppointmentSettingPage extends BasePage {
     }
 
 
-    public boolean EnterVM03Locationtextbox(String textboxdata) {
+    public boolean EnterAutomationLoc1textbox(String textboxdata) {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -383,11 +386,11 @@ enterValue(EnterVM03Location2TextValue,textboxdata);
         return blresult;
     }
 
-    public boolean clickVM03Location2PraticeRadioButton() {
+    public boolean clickAutomationLocation2PraticeRadioButton() {
         boolean blresult = false;
         try {
-            waitForElement(clickVM03Location2PraticeRadioButton);
-            jsClick(clickVM03Location2PraticeRadioButton);
+            waitForElement(clickAutomationLocation2PraticeRadioButton);
+            jsClick(clickAutomationLocation2PraticeRadioButton);
             blresult=true;
         } catch (Exception e) {
             e.printStackTrace();

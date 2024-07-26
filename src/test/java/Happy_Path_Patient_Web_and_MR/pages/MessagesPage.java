@@ -71,10 +71,10 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[@class='view-info']")
     protected WebElement txtComposeMail;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Compose']")
+    @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE MESSAGE']")
     protected WebElement elmntComposePatient;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE']")
+    @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE MESSAGE']")
     protected WebElement elmntMobileComposePatient;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Inbox')]")
@@ -83,7 +83,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Sent')]")
     protected WebElement elmntSentPatient;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Compose']")
+    @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE MESSAGE']")
     protected WebElement elmntComposeDoctor;
 
     @FindBy(how = How.XPATH, using = "//mat-panel-title[contains(text(),'Alert Settings')]")
@@ -183,7 +183,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//h1[text()='Sent Messages'])[1]")
     protected WebElement txtSent;
 
-    @FindBy(how = How.XPATH, using = "(//h1[text()=' Compose Email '])[1]")
+    @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'COMPOSE MESSAGE')])[1]")
     protected WebElement txtCompose;
 
     @FindBy(how = How.XPATH, using = "//div[@class='leftside']")
@@ -708,7 +708,7 @@ public class MessagesPage extends BasePage {
     protected WebElement btnReplySendMessageSubject;
 
     @FindBy(how = How.XPATH, using = "(//button[@class='mat-focus-indicator btn-primary-pill mat-button mat-button-base'])[1]")
-    protected WebElement btnReplysendMessage;
+    protected WebElement btnsendMessage;
 //    (//span[contains(text(),'Send message')])[1]
 
     @FindBy(how = How.XPATH, using = "(//button[@class='mat-focus-indicator btn-primary-pill mat-button mat-button-base'])[2]")
@@ -3295,9 +3295,9 @@ jsScrollIntoView(txtBoxMessages);
     public void clickReplySave() {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             waitForSeconds(3);
-            jsScrollIntoView(btnReplysendMessage);
-            waitForElementClickable(btnReplysendMessage);
-            jsClick(btnReplysendMessage);
+            jsScrollIntoView(btnsendMessage);
+            waitForElementClickable(btnsendMessage);
+            jsClick(btnsendMessage);
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {

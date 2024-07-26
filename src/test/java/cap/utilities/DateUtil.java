@@ -8,6 +8,8 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 
@@ -190,10 +192,11 @@ public class DateUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         //Current Date should be go on Next Month and Year
-        calendar.add(Calendar.DAY_OF_MONTH, +1);
+        calendar.add(Calendar.DAY_OF_MONTH, +2);
         String strNextMonthAndYear = Integer.toString(calendar.get(Calendar.DATE)); //To Convert Integer to String (Next Month and Year)
         Date NextMonthAndYear = calendar.getTime();
         strNextMonthAndYear = dateFormat.format(NextMonthAndYear);
+        System.out.println("strNextMonthAndYear  :: "+strNextMonthAndYear);
         return strNextMonthAndYear;
     }
 
@@ -204,10 +207,29 @@ public class DateUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         //Current Date should be go on Next Month and Year
-        calendar.add(Calendar.DAY_OF_MONTH, +1);
+        calendar.add(Calendar.DAY_OF_MONTH, +2);
         String strNextMonthAndYear = Integer.toString(calendar.get(Calendar.DATE)); //To Convert Integer to String (Next Month and Year)
         Date NextMonthAndYear = calendar.getTime();
         strNextMonthAndYear = dateFormat.format(NextMonthAndYear);
+        System.out.println("strNextMonthAndYear  :: "+strNextMonthAndYear);
         return strNextMonthAndYear;
+    }
+
+
+
+    public class Main {
+        public void main(String[] args) {
+            // Get the current date
+            LocalDate currentDate = LocalDate.now();
+
+            // Calculate one year ago
+            LocalDate oneYearAgo = currentDate.minusYears(1);
+
+            // Format the date if needed
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy"); // Adjust format as per your date picker
+            String formattedDate = oneYearAgo.format(formatter);
+
+            System.out.println("One year ago: " + formattedDate);
+        }
     }
 }

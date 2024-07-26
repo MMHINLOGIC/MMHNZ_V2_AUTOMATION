@@ -28,7 +28,7 @@ public class RandomGeneratorUtil {
         Random rand = new Random();
         int random=rand.nextInt(90)+10;
         //generates random no. between 10 and 100
-        System.out.println(random);
+//        System.out.println(random);
         String strRandomID = new StringBuilder("").append(random).toString();
         return strRandomID;
     }

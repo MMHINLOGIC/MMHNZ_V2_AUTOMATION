@@ -5039,7 +5039,7 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.homePage.SelectCheckBox3());
         demoPageContainer.homePage.SelectReCaptcha();
         Assert.assertTrue(demoPageContainer.homePage.SelectSubmit());
-//        Assert.assertTrue(demoPageContainer.homePage.SelectOkButton());
+        Assert.assertTrue(demoPageContainer.homePage.SelectOkButton());
 
 
 
@@ -5071,6 +5071,23 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.homePage.EnterGmailEmail(Data.get(1)));
         Assert.assertTrue(demoPageContainer.homePage.EnterGmailPassword(Data.get(2)));
         Assert.assertTrue(demoPageContainer.homePage.ClickSearchBox());
+//        Assert.assertTrue(demoPageContainer.homePage.SelectBTBConfirmMail());
+        Assert.assertTrue(demoPageContainer.homePage.SelectConfirmyourregistration());
+    }
+
+    @And("After entering the verified email address password user is successfully logged to Manage My Health portal")
+    public void afterEnteringTheVerifiedEmailAddressPasswordUserIsSuccessfullyLoggedToManageMyHealthPortal() {
+
+
+    }
+
+    @And("After entering the verified email address password user is successfully logged to Manage My Health portal {string}")
+    public void afterEnteringTheVerifiedEmailAddressPasswordUserIsSuccessfullyLoggedToManageMyHealthPortal(String Strdata) {
+        List<String> Data=TestDataUtil.getListOfValue(Strdata);
+        Assert.assertTrue(demoPageContainer.homePage.NavigatetoManageMyHealth());
+        demoPageContainer.homePage.BTBNewenterEmail();
+        demoPageContainer.homePage.enterPasswordForBeta(TestDataUtil.getValue(Data.get(1)));
+        demoPageContainer.homePage.clickSignInButton();
     }
 }
 

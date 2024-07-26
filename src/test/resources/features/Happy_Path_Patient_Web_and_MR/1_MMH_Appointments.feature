@@ -31,7 +31,7 @@ Feature: Appointments
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @Mobile  @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S5 - Patient Booking Appointment - Using Card Payment
 
     Given As a user I am on HomePage
@@ -231,7 +231,7 @@ Feature: Appointments
     ####################################################################################################################################
 
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  @WEB @Mobile @APPOINTMENTS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on login Provider Portal Page
@@ -244,7 +244,7 @@ Feature: Appointments
       | &PROVIDER_USER_LOGIN& | &PASSWORD& |
 
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  @WEB @Mobile @APPOINTMENTS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
   Scenario Template: Provider Enable Flexible Slot Display verify Patient Book Visit Appointment based on All Slot time are displayed
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -254,7 +254,7 @@ Feature: Appointments
       | Location         |
       | Automation1_Loc1 |
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  @WEB @Mobile @APPOINTMENTS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
   Scenario Template: User Successfully logs in to the MMH Portal.
 
     Given As a user I am on MMH login Page
@@ -265,7 +265,7 @@ Feature: Appointments
       | Email Address | Password   | ui         |
       | &EMAIL&       | &PASSWORD& | &UI_EMAIL& |
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  @WEB @Mobile @APPOINTMENTS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
   Scenario Template: S1 Patient Booking Appointment - Visit Appointment
 
     Given As a user I am on Patient HomePage
@@ -281,7 +281,7 @@ Feature: Appointments
       | Appointment      | Appointment_Details                    | Details_For_Appointment     | Appointment_Summary         | Future_Date   |
       | Book Appointment | &BOOK_FLEXIBLE_SLOT_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &VISIT_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  @WEB @Mobile @APPOINTMENTS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
   Scenario Template: S2 - Patient Booking Appointment - Video Appointment
 
     Given As a user I am on HomePage
@@ -297,7 +297,7 @@ Feature: Appointments
       | Appointment      | Appointment_Details                    | Details_For_Appointment     | Appointment_Summary         | Future_Date   |
       | Book Appointment | &BOOK_FLEXIBLE_SLOT_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &VIDEO_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  @WEB @Mobile @APPOINTMENTS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
   Scenario Template: S3 - Patient Booking Appointment - Visit in video slot Appointment
 
     Given As a user I am on HomePage
@@ -313,7 +313,7 @@ Feature: Appointments
       | Book Appointment | &BOOK_FLEXIBLE_SLOT_VISIT_IN_VIDEO_APPOINTMENT& | &VISIT_IN_VIDEO_APPOINTMENT_DETAILS& | &VISIT_IN_VIDEO_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
 
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+  @WEB @Mobile @APPOINTMENTS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
   Scenario Template: S4 - Patient Booking Appointment - Phone Appointment
 
     Given As a user I am on HomePage

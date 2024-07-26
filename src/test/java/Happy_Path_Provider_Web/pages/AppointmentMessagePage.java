@@ -62,11 +62,14 @@ public class AppointmentMessagePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='mobileAppointmentBannerHeading']")
     protected WebElement elmntMobileAppsBannerHeading;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Edit')] ")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Edit')]")
     protected WebElement elmntEditbtn;
 
     @FindBy(how = How.XPATH, using = "//span[text()='SIGN OUT']")
     protected WebElement elmntSignOutBtn;
+
+    @FindBy(how = How.XPATH, using = "( //span[contains(text(),'Provider Login')])[1]")
+    protected WebElement elmntProviderLoginBtn;
 
     @FindBy(how = How.XPATH, using = "//label[@for='searchFilter1']/child::span")
     protected WebElement elmntAllRadioBtn;
@@ -186,11 +189,11 @@ public class AppointmentMessagePage extends BasePage {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            jsScrollIntoView(elmntBannerMessage);
+//            jsScrollIntoView(elmntBannerMessage);
             waitForElement(elmntBannerMessage);
             driver.switchTo().frame(frameBannerMessage);
             waitForSeconds(2);
-            click(elmntWriteBannerMessage);
+           mouseClick(elmntWriteBannerMessage);
             waitForSeconds(2);
             driver.switchTo().activeElement().clear();
             waitForSeconds(2);
@@ -211,17 +214,15 @@ public class AppointmentMessagePage extends BasePage {
     public boolean clickEditButton() {
         boolean blresult = false;
         try {
-            System.out.println(">>Click Edit Button");
+            waitForSeconds(5);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-//            jsScrollIntoView(elmntEditbtn);
-
-//            jsScrollIntoView(elmntEditbtn);
-            waitForSeconds(3);
-//waitForElementIgnoreStale(elmntEditbtn);
+            takeScreenshot(driver);
+            jsScrollIntoView(elmntEditbtn);
+            waitForSeconds(5);
             waitForElement(elmntEditbtn);
             jsClick(elmntEditbtn);
+            takeScreenshot(driver);
             waitForSeconds(3);
-            System.out.println(">>Click Edit Button");
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             blresult = true;
         } catch (Exception e) {
@@ -271,6 +272,9 @@ public class AppointmentMessagePage extends BasePage {
     public boolean clickAllRadioButton() {
         boolean blresult = false;
         try {
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            waitForElement(elmntProviderLoginBtn);
+            click(elmntProviderLoginBtn);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             boolean radioBtn = elmntAllRadioBtn.isSelected();
             if (radioBtn == true) {
@@ -362,6 +366,20 @@ public class AppointmentMessagePage extends BasePage {
         return blresult;
     }
 
+    public boolean verifyBannerHeadingIsNotDisplayed(String strHeading) {
+        boolean blresult = false;
+        try {
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            WebElement elmntBannerHeading = waitForElement(By.xpath(elmntVerifyBannerHeading.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strHeading.concat(strExecutionID)))));
+            blresult=!verifyElement(elmntBannerHeading);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+        } catch (Exception e) {
+            System.out.println("Failed To  verify Banner Heading >>> :: ");
+            e.printStackTrace();
+        }
+        return blresult;
+    }
+
 
     public boolean verifyBannerMessage(String strMessage) {
         boolean blresult = false;
@@ -369,6 +387,20 @@ public class AppointmentMessagePage extends BasePage {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             WebElement elmntBannerMessage = waitForElement(By.xpath(elmntVerifyBannerMessage.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage))));
             blresult= verifyElement(elmntBannerMessage);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+        } catch (Exception e) {
+            System.out.println("Failed To  verify Banner Message >>> :: ");
+            e.printStackTrace();
+        }
+        return blresult;
+    }
+
+    public boolean verifyBannerMessageIsNotDisplayed(String strMessage) {
+        boolean blresult = false;
+        try {
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            WebElement elmntBannerMessage = waitForElement(By.xpath(elmntVerifyBannerMessage.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage))));
+            blresult= !verifyElement(elmntBannerMessage);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
         } catch (Exception e) {
             System.out.println("Failed To  verify Banner Message >>> :: ");

@@ -1355,9 +1355,7 @@ public class GoalTracking extends BasePage {
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
             click(elmntDayAfterDate);
         }
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
 
-        }
 
     }
     public boolean ClickReminderSettingIconTableData(String lstDetails) {

@@ -95,6 +95,7 @@ public class PreScreeningPage extends BasePage {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntSelectHealthCentre);
             waitForElementClickable(elmntSelectHealthCentre);
             jsClick(elmntSelectHealthCentre);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));

@@ -361,7 +361,7 @@ public class AppointmentsPage extends BasePage {
             .append("<<REPLACEMENT2>>")
             .append("')]/ancestor::mat-card//child::div/p[contains(text(),'")
             .append("<<REPLACEMENT3>>")
-            .append("')]/ancestor::mat-card/child::mat-card-footer/button").toString();
+            .append("')]/ancestor::mat-card/child::mat-card-footer//button").toString();
 
     @FindBy(how = How.XPATH, using = "//button[@aria-label='Open calendar']")
     protected WebElement elmntCalendar;
@@ -2946,10 +2946,10 @@ waitForSeconds(5);
             String strTime = strSlotDate;
             System.out.println("CANCEL TIME : " + strTime);
             String strConvertedTime = strTime;
-//            strConvertedTime = "0" + strConvertedTime;
-//            String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
-//            System.out.println(strFinalOutDateTime);
-            String strFinalOutDateTime = strDateMonth + " " + strTime;
+            strConvertedTime = "0" + strConvertedTime;
+            String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
+            System.out.println(strFinalOutDateTime);
+//            String strFinalOutDateTime = strDateMonth + " " + strTime;
                 System.out.println(strFinalOutDateTime);
             WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
             verifyElement(elmntAppointmentDetails);
@@ -2977,12 +2977,12 @@ waitForSeconds(5);
                 System.out.println("DATE" + strDateValue);
                 String strDateMonth = strDateValue;
                 String strTime = strSlotDate;
-                String strConvertedTime = strTime;
-            strConvertedTime = "0" + strConvertedTime;
-            String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
-            System.out.println(strFinalOutDateTime);
-//                String strFinalOutDateTime = strDateMonth + " " + strTime;
-//                System.out.println(strFinalOutDateTime);
+//                String strConvertedTime = strTime;
+//            strConvertedTime = "0" + strConvertedTime;
+//            String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
+//            System.out.println(strFinalOutDateTime);
+                String strFinalOutDateTime = strDateMonth + " " + strTime;
+                System.out.println(strFinalOutDateTime);
                 WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
                 verifyElement(elmntAppointmentDetails);
                 jsScrollIntoView(elmntAppointmentDetails);

@@ -73,14 +73,14 @@ public class ProviderHomePage extends BasePage {
 
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),' Timprefer!')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Gp2White!')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
     })
     protected WebElement txtProviderPortalWelcomePage;
 
 
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Harry Harry!')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Auto Autochrisc1!')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto Autochrisc1')]")
     })
     protected WebElement txtHarryHarryWelcome;
 
@@ -114,7 +114,7 @@ public class ProviderHomePage extends BasePage {
     @FindBy(xpath = "//a[contains(text(),'RRP Script Instructions Settings')]")
     protected WebElement txtRRPScriptInstructionsSettings;
 
-    @FindBy(xpath = "//h3[contains(text(),'RRP Script Instructions Settings')]")
+    @FindBy(xpath = "(//h3[contains(text(),'RRP Script Instructions Settings')])[1]")
     protected WebElement txtRRPScriptInstructionsSettingsheader;
 
     @FindBy(xpath = "//h1[contains(text(),'Setup Services')]")
@@ -192,7 +192,7 @@ public class ProviderHomePage extends BasePage {
     @FindBy (how = How.XPATH, using = "//div[contains(text(),'Appointment Message')]")
     protected WebElement elmntAppoitmentMssgHeading;
 
-    @FindBy (how = How.XPATH, using = "//*[contains(text(),'Home')and contains(text(),'My Home page') or contains(text(),'Start managing your health, today')]")
+    @FindBy (how = How.XPATH, using = "//*[contains(text(),'Home')and contains(text(),'My Home page') or contains(text(),'Start managing your health today')]")
     protected WebElement verifyPatientHomePage;
 
     @FindBy (how = How.XPATH, using = "//span[text()='Appointments']")
@@ -214,10 +214,10 @@ public class ProviderHomePage extends BasePage {
             waitForElement(elmtRepeatScriptSettings);
             jsClick(elmtRepeatScriptSettings);
             WebElement element = driver.findElement(By.xpath(elmntModule.replace("<<NAME>>",strName)));
+            System.out.println("element ::"+element);
             jsScrollIntoView(element);
             waitForElement(element);
-//            waitForElementClickable(element);
-            click(element);
+            jsClick(element);
             waitForElement(txtRRPScriptInstructionsSettingsheader);
             takeScreenshot(driver);
             blResult =verifyElement(txtRRPScriptInstructionsSettingsheader);

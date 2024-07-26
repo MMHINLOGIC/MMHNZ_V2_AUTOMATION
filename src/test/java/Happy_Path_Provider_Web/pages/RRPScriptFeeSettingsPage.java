@@ -908,7 +908,8 @@ public class RRPScriptFeeSettingsPage extends BasePage {
             System.out.println("UrgentSameDay Description data    " + firstServiceOptionDescriptionText);
             jsScrollIntoView(txtDeliveryViaZoomPharmacyUrgentSameDayDescription);
             jsClick(txtDeliveryViaZoomPharmacyUrgentSameDayDescription);
-            enterValue(txtDeliveryViaZoomPharmacyUrgentSameDayDescription, firstServiceOptionDescriptionText);
+//            enterValue(txtDeliveryViaZoomPharmacyUrgentSameDayDescription, firstServiceOptionDescriptionText);
+            driver.switchTo().activeElement().sendKeys(firstServiceOptionDescriptionText);
             blResult = verifyElement(txtDeliveryViaZoomPharmacyUrgentSameDayDescription);
         } catch (Exception e) {
             System.out.println("Not able to add the Delivery Via ZoomPharmacy UrgentSameDay Description>>> :: ");
@@ -920,12 +921,21 @@ public class RRPScriptFeeSettingsPage extends BasePage {
     public boolean selectDeliveryMedsByPharmacyUrgentSameDayDescription(String strDescription) {
         boolean blResult = false;
         try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForElement(txtDeliveryViaZoomPharmacyUrgentSameDayDescription);
-            String firstServiceOptionDescriptionText = "Description value "+ strDescription;
+            String firstServiceOptionDescriptionText = "Description value "+ TestDataUtil.getValue(strDescription);
             System.out.println("UrgentSameDay Description data    " + firstServiceOptionDescriptionText);
             jsScrollIntoView(txtDeliveryMedsByPharmacyUrgentSameDayDescription);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
             jsClick(txtDeliveryMedsByPharmacyUrgentSameDayDescription);
-            enterValue(txtDeliveryMedsByPharmacyUrgentSameDayDescription, firstServiceOptionDescriptionText);
+            driver.switchTo().activeElement().clear();
+            waitForSeconds(3);
+            jsClick(txtDeliveryMedsByPharmacyUrgentSameDayDescription);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            enterValue(txtDeliveryMedsByPharmacyUrgentSameDayDescription, firstServiceOptionDescriptionText);
+            driver.switchTo().activeElement().sendKeys(firstServiceOptionDescriptionText);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = verifyElement(txtDeliveryMedsByPharmacyUrgentSameDayDescription);
         } catch (Exception e) {
             System.out.println("Not able to add the Delivery Via ZoomPharmacy UrgentSameDay Description>>> :: ");
@@ -1038,12 +1048,21 @@ public class RRPScriptFeeSettingsPage extends BasePage {
     public boolean selectDeliveryMedsByPharmacyNextDayDescription(String strDescription) {
         boolean blResult = false;
         try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
 //            waitForElement(txtDeliveryViaZoomPharmacyUrgentSameDayDescription);
-            String firstServiceOptionDescriptionText = "Description value "+ strDescription;
+            String firstServiceOptionDescriptionText = "Description value "+ TestDataUtil.getValue(strDescription);
             System.out.println("UrgentSameDay Description data    " + firstServiceOptionDescriptionText);
-            jsScrollIntoView(txtDeliveryMedsByPharmacyNextDayDescription);
-//            jsClick(txtDeliveryViaZoomPharmacyNextDayDescription);
-            enterValue(txtDeliveryMedsByPharmacyNextDayDescription, firstServiceOptionDescriptionText);
+//            jsScrollIntoView(txtDeliveryMedsByPharmacyNextDayDescription);
+            jsClick(txtDeliveryMedsByPharmacyNextDayDescription);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            driver.switchTo().activeElement().clear();
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsClick(txtDeliveryMedsByPharmacyNextDayDescription);
+//            enterValue(txtDeliveryMedsByPharmacyNextDayDescription, firstServiceOptionDescriptionText);
+            driver.switchTo().activeElement().sendKeys(firstServiceOptionDescriptionText);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = verifyElement(txtDeliveryMedsByPharmacyNextDayDescription);
         } catch (Exception e) {
             System.out.println("Not able to add the Delivery Via ZoomPharmacy UrgentSameDay Description>>> :: ");
@@ -1071,13 +1090,21 @@ public class RRPScriptFeeSettingsPage extends BasePage {
 
     public boolean selectDeliveryMedsByPharmacy48HoursDescription(String strDescription) {
         boolean blResult = false;
-        try {
+        try {  waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
 //            waitForElement(txtDeliveryViaZoomPharmacyUrgentSameDayDescription);
-            String firstServiceOptionDescriptionText = "Description value "+ strDescription;
+            String firstServiceOptionDescriptionText = "Description value "+ TestDataUtil.getValue(strDescription);
             System.out.println("UrgentSameDay Description data    " + firstServiceOptionDescriptionText);
-            jsScrollIntoView(txtDeliveryMedsByPharmacy48HoursDescription);
-//            jsClick(txtDeliveryViaZoomPharmacyNextDayDescription);
-            enterValue(txtDeliveryMedsByPharmacy48HoursDescription, firstServiceOptionDescriptionText);
+//            jsScrollIntoView(txtDeliveryMedsByPharmacy48HoursDescription);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsClick(txtDeliveryMedsByPharmacy48HoursDescription);
+            driver.switchTo().activeElement().clear();
+            waitForSeconds(3);
+            jsClick(txtDeliveryMedsByPharmacy48HoursDescription);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            enterValue(txtDeliveryMedsByPharmacy48HoursDescription, firstServiceOptionDescriptionText);
+            driver.switchTo().activeElement().sendKeys(firstServiceOptionDescriptionText);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = verifyElement(txtDeliveryMedsByPharmacy48HoursDescription);
         } catch (Exception e) {
             System.out.println("Not able to add the Delivery Via ZoomPharmacy UrgentSameDay Description>>> :: ");
@@ -1106,12 +1133,22 @@ public class RRPScriptFeeSettingsPage extends BasePage {
     public boolean selectDeliveryMedsByPharmacy72HoursDescription(String strDescription) {
         boolean blResult = false;
         try {
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForElement(txtDeliveryViaZoomPharmacyUrgentSameDayDescription);
-            String firstServiceOptionDescriptionText = "Description value "+ strDescription;
+            String firstServiceOptionDescriptionText = "Description value "+TestDataUtil.getValue(strDescription);
             System.out.println("UrgentSameDay Description data    " + firstServiceOptionDescriptionText);
-            jsScrollIntoView(txtDeliveryMedsByPharmacy72HoursDescription);
-//            jsClick(txtDeliveryViaZoomPharmacyNextDayDescription);
-            enterValue(txtDeliveryMedsByPharmacy72HoursDescription, firstServiceOptionDescriptionText);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            jsScrollIntoView(txtDeliveryMedsByPharmacy72HoursDescription);
+            jsClick(txtDeliveryMedsByPharmacy72HoursDescription);
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            enterValue(txtDeliveryMedsByPharmacy72HoursDescription, firstServiceOptionDescriptionText);
+            driver.switchTo().activeElement().clear();
+            waitForSeconds(3);
+            jsClick(txtDeliveryMedsByPharmacy72HoursDescription);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            driver.switchTo().activeElement().sendKeys(firstServiceOptionDescriptionText);
             blResult = verifyElement(txtDeliveryMedsByPharmacy72HoursDescription);
         } catch (Exception e) {
             System.out.println("Not able to add the Delivery Via ZoomPharmacy UrgentSameDay Description>>> :: ");

@@ -3133,6 +3133,7 @@ jsScrollIntoView(elmntClinicianNotes);
         verifyElement(elmntCheckBox);
     }
 
+
     public void clickMobileCheckBox() {
         waitForSeconds(3);
         verifyElement(elmntMobileCheckBox);

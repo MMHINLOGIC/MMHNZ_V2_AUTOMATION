@@ -2,6 +2,7 @@ package Happy_Path_Patient_Web_and_MR.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;
+import cap.utilities.DateUtil;
 import cap.utilities.TestDataUtil;
 import cap.utilities.WindowsProcessUtil;
 import io.restassured.internal.TrustAndKeystoreSpec;
@@ -20,6 +21,8 @@ import java.net.UnknownHostException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static cap.utilities.DateUtil.*;
 import static cap.utilities.SharedDriver.strExecutionNumber;
@@ -38,6 +41,10 @@ public class HomePage extends BasePage {
     public static String strBrowserVersion;
     public static String strSystemName;
     public static String NewEmailAttribute;
+
+    public static String BTBNewEmail;
+
+
 
     //MMH_v2
 
@@ -134,6 +141,10 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Hi! Tell us a bit about you.')]")
     protected WebElement elmntVerifySelfRegistrationPage;
 
+    protected String strDayAfterDate = new StringBuilder()
+            .append("//table[@class='mat-calendar-table']//tbody//tr//td//div[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')]").toString();
+
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Well done you are almost there!')]")
     protected WebElement elmntInformationPopup;
 
@@ -158,7 +169,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[@aria-label='Choose month and year']")
     protected WebElement elmntMonthAndYear;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'2001')]")
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'2002')]")
     protected WebElement elmntYear;
 
     public String futureDate = new StringBuilder()
@@ -205,6 +216,36 @@ public class HomePage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//a[@title='Gmail']//img")
     protected WebElement elmntGmailLogo;
+
+    @FindBy(how = How.XPATH, using = "(//span[text()='Welcome to Beating the Blues'])[2]")
+    protected WebElement elmntWelcomeMessage;
+
+    @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Success')]")
+    protected WebElement elmntSuccessMessage;
+
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Congratulations! You have successfully completed your verification.')]")
+    protected WebElement elmntSuccessMessageText;
+
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'beatingtheblues@mmh.')])[2]")
+    protected WebElement elmntBtbConfirmYourMail;
+
+    @FindBy(how = How.XPATH, using = "//strong[contains(text(),'Welcome to Beating the Blues')]")
+    protected WebElement verifybtbmailcontent;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'OK')]")
+    protected WebElement selectOkButton;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'- your Account has been created.')]")
+    protected WebElement verifybtbmailcontent1;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Please click the button below to verify your email address and confirm your registration.')]")
+    protected WebElement verifybtbmailcontent2;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'(You will not be able to login to Beating the Blues until your account has been verified).')]")
+    protected WebElement verifybtbmailcontent3;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'CONFIRM YOUR REGISTRATION')]")
+    protected WebElement verifyconfirmyourRegistration;
 
     @FindBy(how = How.XPATH, using = "//input[@aria-label='Search mail']")
     protected WebElement elmntGmailSearchBox;
@@ -272,7 +313,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@id='UserName']")
     protected WebElement txtEmail;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Provider Login']")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Provider Login')])[1]")
     protected WebElement txtProviderPortal;
 
     //p[text()='Login to Manage My Health Patient Portal']
@@ -564,19 +605,19 @@ public class HomePage extends BasePage {
         boolean isverified = false;
         try {
 
-//            String original = TestDataUtil.getValue(Data.get(2));
-//            String toInsert = strExecutionNumber;
-//            int position = 18;
-//
-//            StringBuilder sb = new StringBuilder(original);
-//            sb.insert(position,Integer.valueOf(toInsert));
-//
-//            String result = sb.toString();
-//            System.out.println(result);
+            String original = TestDataUtil.getValue(Data.get(2));
+            String toInsert = strExecutionNumber;
+            int position = 17;
+
+            StringBuilder sb = new StringBuilder(original);
+            sb.insert(position,Integer.valueOf(toInsert));
+
+            String result = sb.toString();
+            System.out.println(result);
 
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntEnterEmail);
-            enterValue(elmntEnterEmail,Data.get(2));
+            enterValue(elmntEnterEmail,result);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
              NewEmailAttribute= elmntEnterEmail.getAttribute("ng-reflect-model");
@@ -637,62 +678,101 @@ public class HomePage extends BasePage {
     public boolean SelectDOB(String Data) {
         boolean isverified = false;
         try {
-            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
             waitForSeconds(3);
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            jsScrollIntoView(elmntSelectDOB);
+//            waitForElement(elmntSelectDOB);
+//            mouseClick(elmntSelectDOB);
 
-            jsScrollIntoView(elmntSelectDOB);
-            waitForElement(elmntSelectDOB);
-            mouseClick(elmntSelectDOB);
-            waitForSeconds(3);
-            waitForElement(elmntMonthAndYear);
-            waitForElementClickable(elmntMonthAndYear);
-            jsClick(elmntMonthAndYear);
 
-            waitForSeconds(3);
+
+//                    LocalDate currentDate = LocalDate.now();
+//
+//                    LocalDate oneYearAgo = currentDate.minusYears(20);
+//
+//
+//                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//
+//                    String formattedDate = oneYearAgo.format(formatter);
+//
+//                    System.out.println("One 20 year ago: " + formattedDate);
+
+
+//
+//            waitForElement(elmntSelectDOB);
+//            mouseClick(elmntSelectDOB);
+//            waitForSeconds(3);
+//            driver.switchTo().activeElement().sendKeys(formattedDate);
+
+//            WebElement datePicker = driver.findElement(By.xpath("//input[@name='dob']")); // Replace with your actual locator strategy
+//            System.out.println("datePicker  :: "+datePicker);
+//            datePicker.sendKeys(formattedDate);
+
+//                        WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", formattedDate)));
+//            click(elmntDayAfterDate);
+
+
+//            waitForSeconds(3);
+//            String strDateFormat = "yyyy";
+//            String strDay = "2001";
+//            String strDate = DateUtil.getDate(strDay, strDateFormat);
+//            System.out.println("Current Day ::>>" + strDate);
+//            WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
+//            click(elmntDayAfterDate);
+//            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+//            waitForSeconds(3);
+//            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//
+
+//            waitForSeconds(3);
+//            waitForElement(elmntMonthAndYear);
+//            waitForElementClickable(elmntMonthAndYear);
+//            jsClick(elmntMonthAndYear);
+//
+//            waitForSeconds(3);
 //            waitForElement(elmntYear);
 //            jsClick(elmntYear);
-
-
-            String date = getDayAfterTommorrowDate("d");
-            String month = getMonth("MMM").toUpperCase();
-//            String year = g("YYYY");
-
-            System.out.println("getDayAfterTomorrowDate >>> :: " + date);
-            System.out.println("getDayAfterTomorrowDate >>> :: " + month);
-//            System.out.println("getDayAfterTomorrowDate >>> :: " + year);
-
-
-            System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", Data));
-            WebElement selectYear = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", Data)));
-
-            waitForSeconds(3);
-            waitForElement(selectYear);
-            waitForElementClickable(selectYear);
-            jsClick(selectYear);
 //
-            System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", month));
-            WebElement selectMonth = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", month)));
+//
+//            String date = getDayAfterTommorrowDate("d");
+//            String month = getMonth("MMM").toUpperCase();
+////            String year = g("YYYY");
+//
+//            System.out.println("getDayAfterTomorrowDate >>> :: " + date);
+//            System.out.println("getDayAfterTomorrowDate >>> :: " + month);
+//            System.out.println("getDayAfterTomorrowDate >>> :: " + year);
+//
+//
+//            System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", Data));
+//            WebElement selectYear = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", Data)));
+//
+//            waitForSeconds(3);
+//            waitForElement(selectYear);
+//            waitForElementClickable(selectYear);
+//            jsClick(selectYear);
+//
+//            System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", month));
+//            WebElement selectMonth = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", month)));
+//
+//            waitForSeconds(3);
+//            waitForElement(selectMonth);
+//            waitForElementClickable(selectMonth);
+//            jsClick(selectMonth);
+//
+//            System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", date));
+//            WebElement selectDate = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", date)));
+//
+//            waitForSeconds(3);
+//            waitForElement(selectDate);
+//            waitForElementClickable(selectDate);
+//            jsClick(selectDate);
 
-            waitForSeconds(3);
-            waitForElement(selectMonth);
-            waitForElementClickable(selectMonth);
-            jsClick(selectMonth);
+//            System.out.println("Value >>> :: " + elmntCalendar.getAttribute("value"));
+////            waitForElement(elmntCalendar);
+////            String strEnteredDate = elmntCalendar.getAttribute("value");
+////            System.out.println("strEnteredDate >>>> :: "+strEnteredDate);
+//            waitForSeconds(2);
+//            takeScreenshot(driver);
 
-            System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", date));
-            WebElement selectDate = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", date)));
-
-            waitForSeconds(3);
-            waitForElement(selectDate);
-            waitForElementClickable(selectDate);
-            jsClick(selectDate);
-
-            System.out.println("Value >>> :: " + elmntCalendar.getAttribute("value"));
-//            waitForElement(elmntCalendar);
-//            String strEnteredDate = elmntCalendar.getAttribute("value");
-//            System.out.println("strEnteredDate >>>> :: "+strEnteredDate);
-            waitForSeconds(2);
-            takeScreenshot(driver);
 
             isverified=true;
         } catch (Exception e) {
@@ -904,15 +984,15 @@ public class HomePage extends BasePage {
         boolean isverified = false;
         try {
             System.out.println(">>> New Email Id :: "+NewEmailAttribute);
-            String NewEmail= NewEmailAttribute+"com";
-            System.out.println(">>>NewEmail :: "+NewEmail);
+             BTBNewEmail= NewEmailAttribute+"om";
+            System.out.println(">>>BTBNewEmail :: "+BTBNewEmail);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElement(elmntGmailLogo);
             isverified=verifyElement(elmntGmailLogo);
             waitForSeconds(3);
             waitForElement(elmntGmailSearchBox);
-            enterValue(elmntGmailSearchBox,NewEmail);
+            enterValue(elmntGmailSearchBox,BTBNewEmail);
             waitForSeconds(3);
             elmntGmailSearchBox.sendKeys(Keys.ENTER);
         } catch (Exception e) {
@@ -922,7 +1002,78 @@ public class HomePage extends BasePage {
         return isverified;
     }
 
+    public boolean SelectBTBConfirmMail() {
+        boolean isverified = false;
+        try {
 
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+//            waitForElement(elmntWelcomeMessage);
+//            isverified=verifyElement(elmntWelcomeMessage);
+            waitForElement(elmntBtbConfirmYourMail);
+            isverified=verifyElement(elmntBtbConfirmYourMail);
+            click(elmntBtbConfirmYourMail);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(verifybtbmailcontent);
+            isverified=verifyElement(verifybtbmailcontent);
+            waitForElement(verifybtbmailcontent1);
+            isverified=verifyElement(verifybtbmailcontent1);
+            waitForElement(verifybtbmailcontent2);
+            isverified=verifyElement(verifybtbmailcontent2);
+            waitForElement(verifybtbmailcontent3);
+            isverified=verifyElement(verifybtbmailcontent3);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+
+    public boolean SelectConfirmyourregistration() {
+        boolean isverified = false;
+        try {
+           waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+//            waitForElement(elmntSuccessMessage);
+//            isverified=verifyElement(elmntSuccessMessage);
+//            waitForElement(elmntSuccessMessageText);
+//            isverified=verifyElement(elmntSuccessMessageText);
+//            waitForElement(verifybtbmailcontent);
+//            isverified=verifyElement(verifybtbmailcontent);
+            waitForElement(verifyconfirmyourRegistration);
+            click(verifyconfirmyourRegistration);
+            waitForElement(selectOkButton);
+            isverified=verifyElement(selectOkButton);
+            click(selectOkButton);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
+    public boolean NavigatetoManageMyHealth() {
+        boolean isverified = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+           String WebprdURL="https://v2webprdfeature.mmh-demo.com/authentication/confirm-account?Validate";
+           String GetWebPrdUrl = driver.getCurrentUrl();
+           if (WebprdURL.equalsIgnoreCase(GetWebPrdUrl)){
+               isverified=true;
+           }else{
+               isverified=false;
+           }
+           waitForElement(txtBoxEmail);
+           verifyElement(txtBoxEmail);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isverified;
+    }
 
 
 
@@ -1000,6 +1151,23 @@ public class HomePage extends BasePage {
             waitForSeconds(3);
             waitForElementClickable(txtBoxEmail);
             enterValue(txtBoxEmail, strEmail);
+        }
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForSeconds(3);
+        if (!verifyElement(txtBoxEmail)) {
+            System.out.println("User here in home page");
+        }
+
+    }
+
+    public void BTBNewenterEmail() {
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForSeconds(3);
+        System.out.println(">>>  Email :: "+TestDataUtil.getValue(BTBNewEmail));
+        if (verifyElement(txtBoxEmail)) {
+            waitForSeconds(3);
+            waitForElementClickable(txtBoxEmail);
+            enterValue(txtBoxEmail, BTBNewEmail);
         }
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(3);
@@ -1173,6 +1341,16 @@ public class HomePage extends BasePage {
             try {
                 int WindowsCount = driver.getWindowHandles().size();
             System.out.println("===============>WindowsCount::" + WindowsCount);
+
+                String Date = getDate("TODAY","dd MMM yyyy");
+                System.out.println(Date);
+
+
+
+                String strTime = getCurrentDate("h:mm aaa");
+                System.out.println(strTime);
+
+
 //                if (verifyElement(elmntLoginUIUX)) {
 //                    List<String> data = TestDataUtil.getListOfValue("&LOGINBUTTON_DATA&");
 //                    System.out.println("TestData :: " + data);

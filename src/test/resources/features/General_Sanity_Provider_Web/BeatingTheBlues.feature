@@ -158,10 +158,13 @@ Feature: Beating_The_Blues
     Given As a Patient Self Registered user I am on BTB Website Login Page
     And I click on Create an Individual Account and Enter the BTB Self Registered form "<BTB_Self_Registered>"
     When I Navigate Gmail and click the Confirm your registration user is navigated to Manage My Health portal "<Gmail_Login_Details>"
+    And After entering the verified email address password user is successfully logged to Manage My Health portal "<New_Email>"
+    Then As a Self Registered user I am on BTB Home Page and Verify the BTB Left Menu
+    And I click on Home Icon and Verify the BTB Home Page Menu
 
     Examples:
-      | BTB_Self_Registered         | Gmail_Login_Details |
-      | &BTB_SELF_REGISTER_DETAILS& | &GMAIL_DETAILS&     |
+      | BTB_Self_Registered         | Gmail_Login_Details | New_Email                 |
+      | &BTB_SELF_REGISTER_DETAILS& | &GMAIL_DETAILS&     | &BTB_NEW_PATIENT_DETAILS& |
 
 
 

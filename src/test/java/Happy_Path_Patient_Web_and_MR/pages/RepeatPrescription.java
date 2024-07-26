@@ -2315,9 +2315,11 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
             verifyElement(txtReferenceDetails);
             waitForElement(referenceDetails);
             System.out.println("reference Details >>>>> " + referenceDetails);
-            waitForElementClickable(btnNextA2A);
-            takeScreenshot(driver);
-            jsClick(btnNextA2A);
+            if (verifyElement(btnNextA2A)) {
+                waitForElementClickable(btnNextA2A);
+                takeScreenshot(driver);
+                jsClick(btnNextA2A);
+            }
             waitForSeconds(5);
             if (verifyElement(btnNextA2A)) {
                 waitForElement(btnNextA2A);
