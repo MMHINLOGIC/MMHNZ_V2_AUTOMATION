@@ -222,6 +222,7 @@ jsScrollIntoView(elmntEditButton);
     public boolean clickAppointmentSetting() {
         boolean blresult = false;
         try {
+            jsScrollIntoView(elmntAppointments);
             waitForElement(elmntAppointments);
             click(elmntAppointments);
             jsScrollIntoView(elmntAppointmentSetting);

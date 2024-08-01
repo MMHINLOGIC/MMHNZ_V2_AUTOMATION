@@ -12,6 +12,8 @@ import Happy_Path_Patient_Web_and_MR.DemoPageContainer;
 
 import java.util.List;
 
+import static cap.utilities.SharedDriver.strExecutionID;
+
 /*
  * Created by Codoidian-pc on 05/03/2022.
  */
@@ -4256,7 +4258,7 @@ public class WebSteps {
     public void iShouldSeeDetailsOfCreatedAppointmentAndIShouldSeeBookedAppointmentDisplayedUnderTheFutureTab(String strAppointmentDetails, String strFutureDate, String strAppointmentSummary) {
         List<String> lstDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
         List<String> lstDetail = TestDataUtil.getListOfValue(strAppointmentSummary);
-
+        Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmButton());
         Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDetailsOfCreatedAppointment(lstDetails, (strFutureDate)));
         Assert.assertTrue(demoPageContainer.appointmentsPage.acceptTermsAndConditionsForAppointment());
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmYourBookingButton());
@@ -5088,6 +5090,45 @@ public class WebSteps {
         demoPageContainer.homePage.BTBNewenterEmail();
         demoPageContainer.homePage.enterPasswordForBeta(TestDataUtil.getValue(Data.get(1)));
         demoPageContainer.homePage.clickSignInButton();
+    }
+
+    @When("I click Provider Inbox Button then create a compose message to provider {string}")
+    public void iClickProviderInboxButtonThenCreateAComposeMessageToProvider(String strMessageDetails) {
+        Assert.assertTrue(demoPageContainer.messagesPage.navigateToComposeMessageForDoctor());
+        List<String> lstMessageDetails = TestDataUtil.getListOfValue(strMessageDetails);
+        System.out.println("List Message Details >>> :: " + lstMessageDetails);
+//       Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
+        Assert.assertTrue(demoPageContainer.messagesPage.ProviderHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(1))));
+        Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenterLocation(TestDataUtil.getValue(lstMessageDetails.get(1))));
+        Assert.assertTrue(demoPageContainer.messagesPage.selectServiceName(TestDataUtil.getValue(lstMessageDetails.get(11)).concat(strExecutionID)));
+        Assert.assertTrue(demoPageContainer.messagesPage.selectRole(TestDataUtil.getValue(lstMessageDetails.get(3))));
+        Assert.assertTrue(demoPageContainer.messagesPage.selectTo(TestDataUtil.getValue(lstMessageDetails.get(4))));
+        Assert.assertTrue(demoPageContainer.messagesPage.enterSubjectDoctor(TestDataUtil.getValue(lstMessageDetails.get(5))));
+        Assert.assertTrue(demoPageContainer.messagesPage.enableTermAndConditions());
+        Assert.assertTrue(demoPageContainer.messagesPage.enterBodyMessage(TestDataUtil.getValue(lstMessageDetails.get(6))));
+        Assert.assertTrue(demoPageContainer.messagesPage.attachTheFile(TestDataUtil.getValue(lstMessageDetails.get(7))));
+        Assert.assertTrue(demoPageContainer.messagesPage.clickSendMessageAndNavigateToHomePage());
+    }
+
+    @When("As a Existing user I am on HomePage and navigate to Patient Compose Message")
+    public void asAExistingUserIAmOnHomePageAndNavigateToPatientComposeMessage() {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(demoPageContainer.homePage.verifyPatientDashBoard());
+//            Assert.assertTrue(demoPageContainer.homePage.navigateToHomePage());
+            Assert.assertTrue(demoPageContainer.messagesPage.navigateToComposeMessage());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+            Assert.assertTrue(demoPageContainer.homePage.clickDashBoardForMobile());
+            Assert.assertTrue(demoPageContainer.homePage.verifyHomePageOfMMHPortal());
+            Assert.assertTrue(demoPageContainer.homePage.clickHamburgerIcon());
+            Assert.assertTrue(demoPageContainer.messagesPage.navigateToMobileComposeMessage());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(demoPageContainer.homePage.clickDashBoardForMobile());
+            Assert.assertTrue(demoPageContainer.homePage.verifyHomePageOfMMHPortal());
+            Assert.assertTrue(demoPageContainer.homePage.clickHamburgerIcon());
+            Assert.assertTrue(demoPageContainer.messagesPage.navigateToMobileComposeMessage());
+        }
     }
 }
 

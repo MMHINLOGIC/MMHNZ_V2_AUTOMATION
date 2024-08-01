@@ -324,6 +324,7 @@ blResult=verifyElement(txtSetupServiceHeader);
         boolean blResult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            waitForSeconds(2);
             waitForElement(elmntDescriptionTextbox);
         enterValue(elmntDescriptionTextbox,strName);
             waitForElement(txtSetupServiceHeader);

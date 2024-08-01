@@ -242,6 +242,7 @@ public class PhoneAppointmentSettingPage extends BasePage {
     public boolean clickPhoneAppointmentSettingAutomationLocation2checkbox() {
         boolean blresult = false;
         try {
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             if(verifyElement(elmntPhoneAppointmentAutomationLocation2)){
                 System.out.println("AlreadyCheck box checked");
@@ -360,9 +361,13 @@ public class PhoneAppointmentSettingPage extends BasePage {
     public boolean EnterVM03Location2textbox(String textboxdata) {
         boolean blresult = false;
         try {
-            jsScrollIntoView(EnterVM03Location2TextValue);
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            jsScrollIntoView(EnterVM03Location2TextValue);
             waitForElement(EnterVM03Location2TextValue);
+            jsClick(EnterVM03Location2TextValue);
 enterValue(EnterVM03Location2TextValue,textboxdata);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
             blresult=true;
         } catch (Exception e) {
@@ -376,8 +381,10 @@ enterValue(EnterVM03Location2TextValue,textboxdata);
     public boolean clickSaveButton() {
         boolean blresult = false;
         try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(ClickSaveButton);
             jsClick(ClickSaveButton);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult=true;
         } catch (Exception e) {
             e.printStackTrace();

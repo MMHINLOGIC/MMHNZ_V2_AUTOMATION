@@ -29,7 +29,7 @@ public class ProviderMessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Enable Out Of Office Reply')]/preceding-sibling::div/input")
     protected WebElement chkboxOutOfOfficeReply;
 
-    @FindBy(how = How.XPATH, using = "(//iframe)[2]")
+    @FindBy(how = How.XPATH, using = "(//iframe)[1]")
     protected WebElement frameOutOfOffice;
 
     @FindBy(how = How.XPATH, using = "//mat-panel-title[contains(text(),'Out of Office Settings')]")

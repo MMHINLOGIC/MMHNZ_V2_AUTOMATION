@@ -387,7 +387,7 @@ public class AppointmentsPage extends BasePage {
             .append("<<REPLACEMENT2>>")
             .append("')]/ancestor::mat-card//child::div/p[contains(text(),'")
             .append("<<REPLACEMENT3>>")
-            .append("')]/ancestor::mat-card/child::mat-card-footer/button)[1]").toString();
+            .append("')]/ancestor::mat-card/child::mat-card-footer//button)[1]").toString();
 
 
     protected String elmntFutureAppointmentDetail = new StringBuilder().append("//mat-card//following-sibling::div//mat-card-title[contains(text(),'")

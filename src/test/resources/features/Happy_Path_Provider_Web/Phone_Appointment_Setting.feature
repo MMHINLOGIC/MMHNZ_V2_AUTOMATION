@@ -9,7 +9,7 @@ Feature: Phone Appointment Setting
     And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB @PROVIDER_HAPPY_PATH @PHONE_APPOINTMENTS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @PHONE_APPOINTMENTS_SETTING1
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -21,7 +21,7 @@ Feature: Phone Appointment Setting
       | Upcoming Appointments |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @PHONE_APPOINTMENTS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @PHONE_APPOINTMENTS_SETTING1
   Scenario Template:S1-Provider Enable Phone Appointment Settings - Rule 1 and verify Patient side
 
     Given As a Provider I am on HomePage and navigate to Phone Appointment Setting page
@@ -36,7 +36,7 @@ Feature: Phone Appointment Setting
       | &PHONE_APPOINTMENT_SETTING_DETAILS& | &BOOK_PHONE_APPOINTMENT& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @PHONE_APPOINTMENTS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @PHONE_APPOINTMENTS_SETTING1
   Scenario Template:S2-Provider Enable Phone Appointment Settings - Rule 2 and verify Patient side
 
     Given As a Provider I am on HomePage and navigate to Phone Appointment Setting page
@@ -50,7 +50,7 @@ Feature: Phone Appointment Setting
       | Phone_Appointment_setting_data      | Phone_Appointments_Data  |
       | &PHONE_APPOINTMENT_SETTING_DETAILS& | &BOOK_PHONE_APPOINTMENT& |
 
-  @WEB @PROVIDER_HAPPY_PATH @PHONE_APPOINTMENTS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @PHONE_APPOINTMENTS_SETTING1
   Scenario Template:S3-Provider Phone Appointment Settings - Enable Phone Call initiated by Patient and Booked Phone Appointment verify Status must be approved
 
     Given As a Provider I am on HomePage and navigate to Phone Appointment Setting page

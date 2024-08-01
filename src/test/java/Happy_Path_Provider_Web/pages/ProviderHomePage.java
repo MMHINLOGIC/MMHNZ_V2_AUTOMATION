@@ -102,7 +102,7 @@ public class ProviderHomePage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Repeat Prescriptions')]")
     protected WebElement elmtRepeatScriptSettings;
 
-    @FindBy(xpath = "//span[contains(text(),'SMS Credit Facility')]")
+    @FindBy(xpath = "//span[contains(text(),'SMS Credit')]")
     protected WebElement elmtSMSCreditFacility;
 
     @FindBy(xpath = "//button//span[contains(text(),'Edit')]")

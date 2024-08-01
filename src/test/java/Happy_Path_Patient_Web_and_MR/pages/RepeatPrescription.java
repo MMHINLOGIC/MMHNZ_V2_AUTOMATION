@@ -836,6 +836,7 @@ public class RepeatPrescription extends BasePage {
     public boolean selectInstructions(String strInstruction) {
         boolean blResult = false;
         try {
+            waitForSeconds(2);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(drpdownInstructions);
             jsClick(drpdownInstructions);
@@ -2933,8 +2934,11 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
             jsClick(SelectRRPScriptInstructionsDoctordrpdown);
 // waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
             WebElement ddlScriptInstruction = waitForElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strLocation)));
+            System.out.println(">>> :: ddlScriptInstruction"+ddlScriptInstruction);
+            waitForElement(ddlScriptInstruction);
             jsScrollIntoView(ddlScriptInstruction);
             verifyElement(ddlScriptInstruction);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             click(ddlScriptInstruction);
             waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
 // String currentLocation = SelectDoctordrpdown.getText();

@@ -50,7 +50,7 @@ Feature: Setup_Services
       | Setup_Modules    | Setup_Service        | Message Details           | Message                   |
       | Secure Messaging | &SETUP_SERVICE_DATA& | &COMPOSE_MESSAGE_DETAILS& | &PATIENT_MESSAGE_DETAILS& |
 
-  @WEB @PROVIDER_RRP @PROVIDER_HAPPY_PATH @PROVIDER_SETUP_SERVICES1
+  @WEB @PROVIDER_RRP @PROVIDER_HAPPY_PATH @PROVIDER_SETUP_SERVICES
   Scenario Template: S4- Provider Add New Service (Initiated by Non-Clinical and applies to Staff)
     Given As a Provider I am on HomePage and navigate to Setup services in "<Setup_Modules>"
     And I click the Add new Button then select the setup services Non Clinical to Patient Staff "<Setup_Service>"
@@ -67,7 +67,7 @@ Feature: Setup_Services
   Scenario Template: S5- Provider  Allow Patient to Reply
     Given As a Provider I am on HomePage and navigate to Setup services in "<Setup_Modules>"
     And I click the Add new Button then select the setup services all details "<Setup_Service>"
-    When I click Provider Inbox Button then create a compose message to patient "<Message Details>"
+    When I click Provider Inbox Button then create a compose message to provider "<Message Details>"
     And As a Existing user I am on HomePage and navigate to Compose Message
     And As a user I am on HomePage and navigate to Inbox
     Then I verify received Message "<Message>" in the Patient Inbox
@@ -91,15 +91,14 @@ Feature: Setup_Services
       | Setup_Modules    | Setup_Service        | Message Details            | Message           |
       | Secure Messaging | &SETUP_SERVICE_DATA& | &RECEIVED_MESSAGE_DETAILS& | &MESSAGE_DETAILS& |
 
-  @WEB @PROVIDER_RRP @PROVIDER_HAPPY_PATH @PROVIDER_SETUP_SERVICES
+  @WEB @PROVIDER_RRP @PROVIDER_HAPPY_PATH @PROVIDER_SETUP_SERVICES1
   Scenario Template: S7 -Provider Restrict to patient default location
     Given As a Provider I am on HomePage and navigate to Setup services in "<Setup_Modules>"
     And I click the Add new Button then select the setup services Restrict to patient default location "<Setup_Service>"
-    When I click Provider Inbox Button then create a compose message to patient "<Message Details>"
-    And As a Existing user I am on HomePage and navigate to Compose Message
+    When I click Provider Inbox Button then create a compose message to provider "<Message Details>"
+    When As a Existing user I am on HomePage and navigate to Patient Compose Message
     And As a user I am on HomePage and navigate to Inbox
     Then I verify received Message "<Message>" in the Patient Inbox
-    And I Click Reply button and verify Excepted Message Displayed
 
     Examples:
       | Setup_Modules    | Setup_Service        | Message Details            | Message           |

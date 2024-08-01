@@ -12,6 +12,8 @@ import org.testng.Assert;
 
 import java.util.List;
 
+import static cap.utilities.SharedDriver.strExecutionID;
+
 public class ProviderWebSteps {
     private ProviderPageContainer providerPageContainer;
 
@@ -1405,7 +1407,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.setupServicesPage.AddNewServices());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectHealthCentre(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCategory(TestDataUtil.getValue(stsdata.get(1))));
-        Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceName(TestDataUtil.getValue(stsdata.get(2))));
+        Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceName(TestDataUtil.getValue(stsdata.get(2)).concat(strExecutionID)));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCode(TestDataUtil.getValue(stsdata.get(3))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceInitiatedByClinicalRadioButton());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectAppliesToStaffRadioButton());
@@ -1550,7 +1552,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.setupServicesPage.AddNewServices());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectHealthCentre(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCategory(TestDataUtil.getValue(stsdata.get(1))));
-        Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceName(TestDataUtil.getValue(stsdata.get(2))));
+        Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceName(TestDataUtil.getValue(stsdata.get(2)).concat(strExecutionID)));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCode(TestDataUtil.getValue(stsdata.get(3))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceInitiatedByClinicalRadioButton());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectAppliesToPatientRadioButton());
