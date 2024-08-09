@@ -112,7 +112,7 @@ Feature: Appointment Setting
     And I enable RuleB Radio button and I click save button then I see Saved Successfully message"<Location>"
     And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
     When I navigate to Book Appointment select Default Location with Default Provider
-    And I enter the phone appointment details "<Default_Location_with_Default_Provider_Appointment_Details>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
+    And I enter the phone appointment details "<Default_Location_with_Default_Provider_Appointment_Details>" and Verify the Rule B Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
     Then I navigate to Book Appointment select Default Location with Any Provider
     And I enter the phone appointment details "<Default_Location_with_Any_Provider_Appointment_Details>" and Verify the Default Location Any ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>" "<Automation_Practice_Loc2_Doctor_Name>"
 
@@ -142,9 +142,9 @@ Feature: Appointment Setting
     And I enable RuleC Radio button and I click save button then I see Saved Successfully message"<Location>"
     And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
     When I navigate to Book Appointment select Default Location with Default Provider
-    And I enter the visit appointment details "<Default_Location_with_Default_Provider_Appointment_Details>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
+    And I enter the visit appointment details "<Default_Location_with_Default_Provider_Appointment_Details>" and Verify the Rule C Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
     And I navigate to Book Appointment select Default Location with Default Provider
-    Then I enter the phone appointment details "<Default_Location_with_Default_Provider_Phone_Appointment_Details_Rule_C>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
+    Then I enter the phone appointment details "<Default_Location_with_Default_Provider_Phone_Appointment_Details_Rule_C>" and Verify the Rule C Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
     And I navigate to Book Appointment select Default Location with Default Provider
     And I enter the video appointment details "<Default_Location_with_Default_Provider_Video_Appointment_Details_Rule_c>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
     Examples:
@@ -159,9 +159,9 @@ Feature: Appointment Setting
     And I enable RuleD Radio button and I click save button then I see Saved Successfully message"<Location>"
     And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
     When I navigate to Book Appointment select Default Location with Default Provider
-    And I enter the visit appointment details "<Default_Location_with_Default_Provider_Appointment_Details>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
+    And I enter the visit appointment details "<Default_Location_with_Default_Provider_Appointment_Details>" and Verify the Rule D Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
     And I navigate to Book Appointment select Default Location with Default Provider
-    Then I enter the phone appointment details "<Default_Location_with_Default_Provider_Phone_Appointment_Details_Rule_C>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
+    Then I enter the phone appointment details "<Default_Location_with_Default_Provider_Phone_Appointment_Details_Rule_C>" and Verify the Rule D Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
     And I navigate to Book Appointment select Default Location with Default Provider
     And I enter the video appointment details "<Default_Location_with_Default_Provider_Video_Appointment_Details_Rule_c>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
     Examples:
@@ -192,7 +192,7 @@ Feature: Appointment Setting
     When I navigate to Book Appointment select Default Location "<Location>"
     And I Check restricted providers are not visible for phone and video appointments made online "<Restrict_Provider_Details>"
     And I navigate to Book Appointment select Default Provider based on Rule E
-    Then I enter the phone appointment details "<Default_Location_with_Default_Provider_Phone_Appointment_Details_Rule_C>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
+    Then I enter the phone appointment details "<Default_Location_with_Default_Provider_Phone_Appointment_Details_Rule_C>" and Verify the Rule E Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
     And I navigate to Book Appointment select Default Location with Default Provider
     And I enter the video appointment details "<Default_Location_with_Default_Provider_Video_Appointment_Details_Rule_c>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
 

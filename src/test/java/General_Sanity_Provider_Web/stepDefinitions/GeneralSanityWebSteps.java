@@ -146,7 +146,7 @@ public class GeneralSanityWebSteps {
             Assert.assertTrue(generalSanityPageContainer.beatingTheBlues.clickRegisterNewClientPraticeNameDropDown(TestDataUtil.getListOfValue(strdata)));
             Assert.assertTrue(generalSanityPageContainer.beatingTheBlues.EnterRegisterNewClientFirstName(TestDataUtil.getListOfValue(strdata)));
             Assert.assertTrue(generalSanityPageContainer.beatingTheBlues.EnterRegisterNewClientLastName(TestDataUtil.getListOfValue(strdata)));
-            Assert.assertTrue(generalSanityPageContainer.beatingTheBlues.SelectDate(TestDataUtil.getListOfValue(strdata)));
+            Assert.assertTrue(generalSanityPageContainer.beatingTheBlues.SelectDate());
             Assert.assertTrue(generalSanityPageContainer.beatingTheBlues.EnterEmailAddress(TestDataUtil.getListOfValue(strdata)));
             Assert.assertTrue(generalSanityPageContainer.beatingTheBlues.EnterVerifyEmailAddress(TestDataUtil.getListOfValue(strdata)));
             Assert.assertTrue(generalSanityPageContainer.beatingTheBlues.clickSendInvitation());

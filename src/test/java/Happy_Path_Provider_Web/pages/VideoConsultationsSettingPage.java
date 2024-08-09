@@ -33,10 +33,10 @@ public class VideoConsultationsSettingPage extends BasePage {
     protected String elmntHealthCentreDrop = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[1]").toString();
 
-    @FindBy (how = How.XPATH, using = "(//i[@class='icon-video'])[2]")
+    @FindBy (how = How.XPATH, using = "//i[@class='icon-video']")
     protected WebElement elmntVideoAppointmentHeader;
 
-    @FindBy (how = How.XPATH, using = "(//i[@class='icon-video'])[3]")
+    @FindBy (how = How.XPATH, using = "//i[@class='icon-video']")
     protected WebElement elmntVideoAppointmentIcons;
 
     @FindBy (how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='enableVC']//input)[1]")
@@ -104,7 +104,7 @@ public class VideoConsultationsSettingPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 jsScrollIntoView(elmntVideoConsultationSetting);
 waitForElement(elmntVideoConsultationSetting);
-click(elmntVideoConsultationSetting);
+jsClick(elmntVideoConsultationSetting);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntVideoConsultationSettingHeader);
             click(elmntVideoConsultationSettingHeader);
@@ -112,7 +112,7 @@ click(elmntVideoConsultationSetting);
             waitForElementClickable(elmntAppointmentSettingEditButton);
             jsClick(elmntAppointmentSettingEditButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            System.out.println("Successfully see the Appointment Setting");
+            System.out.println("Successfully see the VideoConsultation Setting");
             blresult = verifyElement(elmntVideoConsultationSettingHeader);
         } catch (Exception e) {
             e.printStackTrace();

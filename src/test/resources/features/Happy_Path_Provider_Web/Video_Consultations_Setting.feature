@@ -40,7 +40,7 @@ Feature: Video Consultations Setting Page
   Scenario Template:S3-Provider Disable face to face appointment on a Video Consultation slot
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
-    And I enable face to face appointment on a Video Consultation slot by clicking yes button and I click save button then I see Saved Successfully message"<Location>"
+    And I enable face to face appointment on a Video Consultation slot by clicking No button and I click save button then I see Saved Successfully message"<Location>"
     When As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
     And I navigate to Book Appointment Page Enter the Video Appointments Detail then verify Book Appointment Popup is not Displayed "<Appointment_Details>"
     Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"

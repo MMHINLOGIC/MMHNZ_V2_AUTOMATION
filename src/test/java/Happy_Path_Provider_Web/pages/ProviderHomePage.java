@@ -90,7 +90,7 @@ public class ProviderHomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
     protected WebElement btnExitApp;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Provider Login']")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Provider Login')])[1]")
     protected WebElement txtProviderPortal;
 
     @FindBy(how = How.XPATH, using = "(//img[@alt='ManageMyHealth'])[1]")

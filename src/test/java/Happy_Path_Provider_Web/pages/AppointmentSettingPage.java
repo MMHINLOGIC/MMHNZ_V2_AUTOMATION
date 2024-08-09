@@ -105,6 +105,9 @@ public class AppointmentSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@id='SearchText']")
     protected WebElement elmntSearchBox;
 
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Provider Login')])[1]")
+    protected WebElement txtProviderPortal;
+
     @FindBy(how = How.XPATH, using = "//button[text()='SEARCH']")
     protected WebElement clicksearchicon;
 
@@ -699,6 +702,8 @@ public class AppointmentSettingPage extends BasePage {
     public boolean EnterValueinSearchBoxVerifyAppointmentsSlotIsNotDisplayed(String Strdata) {
         boolean blresult = false;
         try {
+            waitForElement(txtProviderPortal);
+          click(txtProviderPortal);
             waitForElement(elmntSearchBox);
             elmntSearchBox.sendKeys(Strdata);
             waitForElement(clicksearchicon);

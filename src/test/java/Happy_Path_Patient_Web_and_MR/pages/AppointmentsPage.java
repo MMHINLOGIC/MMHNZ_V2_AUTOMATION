@@ -829,8 +829,9 @@ public class AppointmentsPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntPatientLocationCenter);
             waitForElementClickable(elmntPatientLocationCenter);
-            click(elmntPatientLocationCenter);
+            jsClick(elmntPatientLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntSelectLocation = waitForElement(By.xpath(elmntHealthCenter.replace("<<REPLACEMENT>>", strLocation)));
             System.out.println(">>>>>>>>>>>>>>"+elmntSelectLocation);
@@ -914,6 +915,8 @@ public class AppointmentsPage extends BasePage {
             waitForElementClickable(elmntFamilyMemberCenter);
             jsClick(elmntFamilyMemberCenter);
             WebElement elmntSelectFamilyMember = waitForElementFewSeconds(By.xpath(elmntFamilyMember.replace("<<REPLACEMENT>>", strFamilyMember)));
+            System.out.println(">>>>>"+elmntSelectFamilyMember);
+            waitForElement(elmntSelectFamilyMember);
             jsClick(elmntSelectFamilyMember);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(elmntAppointmentPanel);
@@ -946,9 +949,10 @@ public class AppointmentsPage extends BasePage {
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(elmntReason);
-            jsClick(elmntReason);
+            click(elmntReason);
             waitForSeconds(2);
-            elmntReason.sendKeys(strReason);
+//            elmntReason.sendKeys(strReason);
+            driver.switchTo().activeElement().sendKeys(strReason);
 
 //
 //            if (strReason.contains(",")) {
@@ -1308,7 +1312,7 @@ public class AppointmentsPage extends BasePage {
         boolean blresult = false;
         try{
             waitForElement(elmntPhoneAppointmentIcon);
-            click(elmntPhoneAppointmentIcon);
+            jsClick(elmntPhoneAppointmentIcon);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmntLocationCenter);
             waitForElement(elmntLocationCenter);
@@ -1322,7 +1326,7 @@ public class AppointmentsPage extends BasePage {
             waitForSeconds(3);
             declineCovidPreScreeningPopup();
             waitForElement(elmntPhoneAppointmentIcon);
-            click(elmntPhoneAppointmentIcon);
+            jsClick(elmntPhoneAppointmentIcon);
             waitForElement(elmntLocationCenter);
             jsClick(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -1337,7 +1341,7 @@ public class AppointmentsPage extends BasePage {
             }else {
                 WebElement elmntSelectLocatio = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(10)))));
                 System.out.println("elmntSelectLocation"+elmntSelectLocatio);
-                click(elmntSelectLocatio);
+                jsClick(elmntSelectLocatio);
                 waitForSeconds(3);
                 declineCovidPreScreeningPopup();
                 System.out.println("Successfully Verified the Rule B");
@@ -3712,7 +3716,7 @@ waitForSeconds(5);
             waitForElement(elmntLocationCenter);
             click(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(8)))));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(0)))));
             System.out.println("elmntSelectLocation"+elmntSelectLocation);
             waitForElement(elmntSelectLocation);
             verifyElement(elmntSelectLocation);
@@ -3724,9 +3728,9 @@ waitForSeconds(5);
             waitForSeconds(3);
             String strdata=getDefaultLocationDoctorName.getText().trim();
             System.out.println("GetTextProviderName::::"+strdata);
-            WebElement elmntProviderName = waitForElement(By.xpath(elmntProviderNames.replace("<<REPLACEMENT>>",TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(2)))));
+            WebElement elmntProviderName = waitForElement(By.xpath(elmntProviderNames.replace("<<REPLACEMENT>>",TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(0)))));
             System.out.println("elmntProviderName"+elmntProviderName);
-            if (strdata.equals(TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(2)))) {
+            if (strdata.equals(TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(0)))) {
                 jsScrollIntoView(elmntProviderName);
                 blresult=verifyElement(elmntProviderName);
                 System.out.println("Successfully Verified the Auto Practice Loc1 Location Default Provider Name");
@@ -3747,17 +3751,165 @@ waitForSeconds(5);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmntLocationCenter);
             waitForElement(elmntLocationCenter);
-            click(elmntLocationCenter);
+            jsClick(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(8)))));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(0)))));
             System.out.println("elmntSelectLocation"+elmntSelectLocation);
             waitForElement(elmntSelectLocation);
             verifyElement(elmntSelectLocation);
-            click(elmntSelectLocation);
+            jsClick(elmntSelectLocation);
             waitForSeconds(3);
             declineCovidPreScreeningPopup();
             waitForElement(elmntVisitAppointmentIcon);
-            click(elmntVisitAppointmentIcon);
+            jsClick(elmntVisitAppointmentIcon);
+            waitForSeconds(3);
+            String strdata=getDefaultLocationDoctorName.getText().trim();
+            System.out.println("GetTextProviderName::::"+strdata);
+            WebElement elmntProviderName = waitForElement(By.xpath(elmntProviderNames.replace("<<REPLACEMENT>>",TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(0)))));
+            System.out.println("elmntProviderName"+elmntProviderName);
+            if (strdata.equals(TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(0)))) {
+                jsScrollIntoView(elmntProviderName);
+                blresult=verifyElement(elmntProviderName);
+                System.out.println("Successfully Verified the Auto Practice Loc1 Location Default Provider Name");
+            }
+
+        }catch (Exception e){
+            System.out.println("Cannot Verified the Auto Practice Loc1 Default Provider Name");
+            e.printStackTrace();
+        }
+        return blresult;
+    }
+
+    public boolean verifyRuleBDoctorNames(List<String> strData,List<String> Auto_Pra_Loc1_DoctorNames){
+        boolean blresult = false;
+        try{
+            System.out.println(">>>strData>>"+strData);
+            System.out.println(">>>Auto_Practice_Loc1_DoctorNames>>"+Auto_Pra_Loc1_DoctorNames);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntLocationCenter);
+            waitForElement(elmntLocationCenter);
+            jsClick(elmntLocationCenter);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(0)))));
+            System.out.println("elmntSelectLocation"+elmntSelectLocation);
+            waitForElement(elmntSelectLocation);
+            verifyElement(elmntSelectLocation);
+            jsClick(elmntSelectLocation);
+            waitForSeconds(3);
+            declineCovidPreScreeningPopup();
+            waitForElement(elmntVisitAppointmentIcon);
+            jsClick(elmntVisitAppointmentIcon);
+            waitForSeconds(3);
+            String strdata=getDefaultLocationDoctorName.getText().trim();
+            System.out.println("GetTextProviderName::::"+strdata);
+            WebElement elmntProviderName = waitForElement(By.xpath(elmntProviderNames.replace("<<REPLACEMENT>>",TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(0)))));
+            System.out.println("elmntProviderName"+elmntProviderName);
+            if (strdata.equals(TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(0)))) {
+                jsScrollIntoView(elmntProviderName);
+                blresult=verifyElement(elmntProviderName);
+                System.out.println("Successfully Verified the Auto Practice Loc1 Location Default Provider Name");
+            }
+
+        }catch (Exception e){
+            System.out.println("Cannot Verified the Auto Practice Loc1 Default Provider Name");
+            e.printStackTrace();
+        }
+        return blresult;
+    }
+
+    public boolean verifyRuleCDoctorNames(List<String> strData,List<String> Auto_Pra_Loc1_DoctorNames){
+        boolean blresult = false;
+        try{
+            System.out.println(">>>strData>>"+strData);
+            System.out.println(">>>Auto_Practice_Loc1_DoctorNames>>"+Auto_Pra_Loc1_DoctorNames);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntLocationCenter);
+            waitForElement(elmntLocationCenter);
+            jsClick(elmntLocationCenter);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(0)))));
+            System.out.println("elmntSelectLocation"+elmntSelectLocation);
+            waitForElement(elmntSelectLocation);
+            verifyElement(elmntSelectLocation);
+            jsClick(elmntSelectLocation);
+            waitForSeconds(3);
+            declineCovidPreScreeningPopup();
+            waitForElement(elmntVisitAppointmentIcon);
+            jsClick(elmntVisitAppointmentIcon);
+            waitForSeconds(3);
+            String strdata=getDefaultLocationDoctorName.getText().trim();
+            System.out.println("GetTextProviderName::::"+strdata);
+            WebElement elmntProviderName = waitForElement(By.xpath(elmntProviderNames.replace("<<REPLACEMENT>>",TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(2)))));
+            System.out.println("elmntProviderName"+elmntProviderName);
+            if (strdata.equals(TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(2)))) {
+                jsScrollIntoView(elmntProviderName);
+                blresult=verifyElement(elmntProviderName);
+                System.out.println("Successfully Verified the Auto Practice Loc1 Location Default Provider Name");
+            }
+
+        }catch (Exception e){
+            System.out.println("Cannot Verified the Auto Practice Loc1 Default Provider Name");
+            e.printStackTrace();
+        }
+        return blresult;
+    }
+
+    public boolean verifyRuleDdoctorNames(List<String> strData,List<String> Auto_Pra_Loc1_DoctorNames){
+        boolean blresult = false;
+        try{
+            System.out.println(">>>strData>>"+strData);
+            System.out.println(">>>Auto_Practice_Loc1_DoctorNames>>"+Auto_Pra_Loc1_DoctorNames);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntLocationCenter);
+            waitForElement(elmntLocationCenter);
+            jsClick(elmntLocationCenter);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(0)))));
+            System.out.println("elmntSelectLocation"+elmntSelectLocation);
+            waitForElement(elmntSelectLocation);
+            verifyElement(elmntSelectLocation);
+            jsClick(elmntSelectLocation);
+            waitForSeconds(3);
+            declineCovidPreScreeningPopup();
+            waitForElement(elmntVisitAppointmentIcon);
+            jsClick(elmntVisitAppointmentIcon);
+            waitForSeconds(3);
+            String strdata=getDefaultLocationDoctorName.getText().trim();
+            System.out.println("GetTextProviderName::::"+strdata);
+            WebElement elmntProviderName = waitForElement(By.xpath(elmntProviderNames.replace("<<REPLACEMENT>>",TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(2)))));
+            System.out.println("elmntProviderName"+elmntProviderName);
+            if (strdata.equals(TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(2)))) {
+                jsScrollIntoView(elmntProviderName);
+                blresult=verifyElement(elmntProviderName);
+                System.out.println("Successfully Verified the Auto Practice Loc1 Location Default Provider Name");
+            }
+
+        }catch (Exception e){
+            System.out.println("Cannot Verified the Auto Practice Loc1 Default Provider Name");
+            e.printStackTrace();
+        }
+        return blresult;
+    }
+
+    public boolean verifyRuleEDoctorNames(List<String> strData,List<String> Auto_Pra_Loc1_DoctorNames){
+        boolean blresult = false;
+        try{
+            System.out.println(">>>strData>>"+strData);
+            System.out.println(">>>Auto_Practice_Loc1_DoctorNames>>"+Auto_Pra_Loc1_DoctorNames);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntLocationCenter);
+            waitForElement(elmntLocationCenter);
+            jsClick(elmntLocationCenter);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(0)))));
+            System.out.println("elmntSelectLocation"+elmntSelectLocation);
+            waitForElement(elmntSelectLocation);
+            verifyElement(elmntSelectLocation);
+            jsClick(elmntSelectLocation);
+            waitForSeconds(3);
+            declineCovidPreScreeningPopup();
+            waitForElement(elmntVisitAppointmentIcon);
+            jsClick(elmntVisitAppointmentIcon);
             waitForSeconds(3);
             String strdata=getDefaultLocationDoctorName.getText().trim();
             System.out.println("GetTextProviderName::::"+strdata);
@@ -3821,7 +3973,7 @@ waitForSeconds(5);
             waitForElement(elmntLocationCenter);
             click(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(9)))));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(0)))));
             System.out.println("elmntSelectLocation"+elmntSelectLocation);
             waitForElement(elmntSelectLocation);
             verifyElement(elmntSelectLocation);
@@ -3859,7 +4011,7 @@ waitForSeconds(5);
             waitForElement(elmntLocationCenter);
             click(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(8)))));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(0)))));
             System.out.println("elmntSelectLocation"+elmntSelectLocation);
             waitForElement(elmntSelectLocation);
             verifyElement(elmntSelectLocation);
@@ -3887,20 +4039,22 @@ waitForSeconds(5);
     public boolean verifyPhoneAppointmentAnyLocationDoctorNames(List<String> strData,List<String> VM03PraticeDoctorNames,List<String> VM03Pratice2DoctorNames){
         boolean blresult = false;
         try{
+            System.out.println(">>>strData>>"+strData);
             System.out.println(">>>VM03PraticeDoctorNames>>"+VM03PraticeDoctorNames);
             System.out.println(">>>VM03Pratice2DoctorNames>>"+VM03Pratice2DoctorNames);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntPhoneAppointmentIcon);
-            click(elmntPhoneAppointmentIcon);
+            jsClick(elmntPhoneAppointmentIcon);
             jsScrollIntoView(elmntLocationCenter);
             waitForElement(elmntLocationCenter);
-            click(elmntLocationCenter);
+            jsClick(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(10)))));
             System.out.println("elmntSelectLocation"+elmntSelectLocation);
+            jsScrollIntoView(elmntSelectLocation);
             waitForElement(elmntSelectLocation);
             verifyElement(elmntSelectLocation);
-            click(elmntSelectLocation);
+            jsClick(elmntSelectLocation);
             waitForSeconds(3);
             declineCovidPreScreeningPopup();
             waitForSeconds(3);
@@ -3913,15 +4067,15 @@ waitForSeconds(5);
                 System.out.println("Successfully Verified the VM03Location Provider Names");
             }
             waitForElement(elmntPhoneAppointmentIcon);
-            click(elmntPhoneAppointmentIcon);
+            jsClick(elmntPhoneAppointmentIcon);
             jsScrollIntoView(elmntLocationCenter);
             waitForElement(elmntLocationCenter);
-            click(elmntLocationCenter);
+            jsClick(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             if (verifyElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(11)))))) {
                 WebElement elmntSelectLocation2 = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(11)))));
                 verifyElement(elmntSelectLocation2);
-                click(elmntSelectLocation2);
+                jsClick(elmntSelectLocation2);
                 waitForSeconds(3);
                 declineCovidPreScreeningPopup();
                 waitForSeconds(3);
@@ -3935,9 +4089,10 @@ waitForSeconds(5);
                     System.out.println("Successfully Verified the VM03Location2 Provider Names");
                 }
             }else {
-                WebElement elmntSelectVM03Location = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(10)))));
+                WebElement elmntSelectVM03Location = waitForElementClickable(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(10)))));
                 System.out.println("elmntSelectVM03Location"+elmntSelectVM03Location);
-                click(elmntSelectVM03Location);
+                jsScrollIntoView(elmntSelectVM03Location);
+                jsClick(elmntSelectVM03Location);
                 waitForSeconds(3);
                 declineCovidPreScreeningPopup();
                 System.out.println("Successfully Verified the Rule B");
@@ -3958,16 +4113,17 @@ waitForSeconds(5);
             System.out.println(">>>VM03Pratice2DoctorNames>>"+VM03Pratice2DoctorNames);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntPhoneAppointmentIcon);
-            click(elmntPhoneAppointmentIcon);
+            jsClick(elmntPhoneAppointmentIcon);
             jsScrollIntoView(elmntLocationCenter);
             waitForElement(elmntLocationCenter);
-            click(elmntLocationCenter);
+            jsClick(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(9)))));
             System.out.println("elmntSelectLocation"+elmntSelectLocation);
+            jsScrollIntoView(elmntSelectLocation);
             waitForElement(elmntSelectLocation);
             verifyElement(elmntSelectLocation);
-            click(elmntSelectLocation);
+            jsClick(elmntSelectLocation);
             waitForSeconds(3);
             declineCovidPreScreeningPopup();
             waitForSeconds(3);
@@ -3980,15 +4136,15 @@ waitForSeconds(5);
                 System.out.println("Successfully Verified the VM03Location Provider Names");
             }
             waitForElement(elmntPhoneAppointmentIcon);
-            click(elmntPhoneAppointmentIcon);
+            jsClick(elmntPhoneAppointmentIcon);
             jsScrollIntoView(elmntLocationCenter);
             waitForElement(elmntLocationCenter);
-            click(elmntLocationCenter);
+            jsClick(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             if (verifyElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(10)))))) {
                 WebElement elmntSelectLocation2 = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(10)))));
                 verifyElement(elmntSelectLocation2);
-                click(elmntSelectLocation2);
+                jsClick(elmntSelectLocation2);
                 waitForSeconds(3);
                 declineCovidPreScreeningPopup();
                 waitForSeconds(3);
@@ -4004,7 +4160,7 @@ waitForSeconds(5);
             }else {
                 WebElement elmntSelectVM03Location = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(9)))));
                 System.out.println("elmntSelectVM03Location"+elmntSelectVM03Location);
-                click(elmntSelectVM03Location);
+                jsClick(elmntSelectVM03Location);
                 waitForSeconds(3);
                 declineCovidPreScreeningPopup();
                 System.out.println("Successfully Verified the Rule B");
@@ -4103,12 +4259,12 @@ waitForSeconds(5);
             }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsClick(elmntFamilyMemberCenter);
-//            WebElement elmntSelectFamilyMember2 = waitForElementFewSeconds(By.xpath(elmntFamilyMember.replace("<<REPLACEMENT>>", strFamilyMember.get(1))));
-//            if (verifyElement(elmntSelectFamilyMember2)){
-//                waitForElement(elmntSelectFamilyMember2);
-//                jsClick(elmntSelectFamilyMember2);
-//                System.out.println("Succcessfully Verified Family/Friends ");
-//            }
+            WebElement elmntSelectFamilyMember2 = waitForElementFewSeconds(By.xpath(elmntFamilyMember.replace("<<REPLACEMENT>>", strFamilyMember.get(1))));
+            if (verifyElement(elmntSelectFamilyMember2)){
+                waitForElement(elmntSelectFamilyMember2);
+                jsClick(elmntSelectFamilyMember2);
+                System.out.println("Succcessfully Verified Family/Friends ");
+            }
 
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(elmntAppointmentPanel);

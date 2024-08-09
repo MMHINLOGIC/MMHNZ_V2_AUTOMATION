@@ -1,6 +1,8 @@
 package Sanity_Patient_Web.pages;
 
 import cap.common.BasePage;
+import cap.utilities.DateUtil;
+import cap.utilities.TestDataUtil;
 import org.apache.commons.math3.analysis.function.Add;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -13,6 +15,9 @@ import org.testng.Assert;
 
 import java.io.File;
 import java.util.List;
+
+import static cap.utilities.SharedDriver.strExecutionID;
+import static cap.utilities.SharedDriver.strExecutionNumber;
 
 public class BeatingTheBlues extends BasePage {
     public BeatingTheBlues(WebDriver driver) {
@@ -331,6 +336,14 @@ public class BeatingTheBlues extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Register New Client for Beating the Blues')]")
     protected WebElement verifyRegisterNewClientPage;
+
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='DateString']//following::button)[1]")
+    protected WebElement verifyRegisterDate;
+
+    protected String strDayAfterDate = new StringBuilder()
+            .append("//table[@class='mat-calendar-table']//tbody//tr//td//div[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')]").toString();
+
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Resources')])[1]")
     protected WebElement clickProviderBTBResources;
 
@@ -1009,9 +1022,18 @@ isverified=true;
     public boolean EnterEmailAddress(List<String> data) {
         boolean isverified = false;
         try {
+            String original = TestDataUtil.getValue(data.get(4));
+            String toInsert = strExecutionNumber;
+            int position = 13;
+
+            StringBuilder sb = new StringBuilder(original);
+            sb.insert(position,Integer.valueOf(toInsert));
+
+            String result = sb.toString();
+            System.out.println(result);
             waitForElement(EnterEmailRegisterNewClient);
 //            jsClick(EnterLastNameRegisterNewClient);
-            enterValue(EnterEmailRegisterNewClient,data.get(3));
+            enterValue(EnterEmailRegisterNewClient,result);
             waitForElement(verifyRegisterNewClientPage);
             isverified=verifyElement(verifyRegisterNewClientPage);
 
@@ -1025,9 +1047,18 @@ isverified=true;
     public boolean EnterVerifyEmailAddress(List<String> data) {
         boolean isverified = false;
         try {
+            String original = TestDataUtil.getValue(data.get(4));
+            String toInsert = strExecutionNumber;
+            int position = 13;
+
+            StringBuilder sb = new StringBuilder(original);
+            sb.insert(position,Integer.valueOf(toInsert));
+
+            String result = sb.toString();
+            System.out.println(result);
             waitForElement(EnterVerifyEmailRegisterNewClient);
 //            jsClick(EnterLastNameRegisterNewClient);
-            enterValue(EnterVerifyEmailRegisterNewClient,data.get(4));
+            enterValue(EnterVerifyEmailRegisterNewClient,result);
             waitForElement(verifyRegisterNewClientPage);
             isverified=verifyElement(verifyRegisterNewClientPage);
 
@@ -1038,13 +1069,19 @@ isverified=true;
         return isverified;
     }
 
-    public boolean SelectDate(List<String> data) {
+    public boolean SelectDate() {
         boolean isverified = false;
         try {
 
-            waitForElement(verifyRegisterNewClientPage);
-            isverified=verifyElement(verifyRegisterNewClientPage);
-
+            waitForElement(verifyRegisterDate);
+            jsClick(verifyRegisterDate);
+            String strDateFormat = "d";
+            String strDay = "TODAY";
+            String strDate = DateUtil.getDate(strDay, strDateFormat);
+            System.out.println("Current Day::>>" + strDate);
+            WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
+            click(elmntDayAfterDate);
+            isverified=true;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1611,11 +1648,11 @@ jsClick(clickBackArrow);
         boolean isverified = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(clickHealthRecords);
-            click(clickHealthRecords);
+            jsClick(clickHealthRecords);
+            waitForSeconds(3);
             waitForElement(elmntclickSummary);
-            click(elmntclickSummary);
+            jsClick(elmntclickSummary);
             waitForSeconds(3);
             waitForElement(verifyHealthSummary);
             isverified = verifyElement(verifyHealthSummary);

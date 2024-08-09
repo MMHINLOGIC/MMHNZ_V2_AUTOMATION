@@ -1703,13 +1703,13 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I enable Video Consultations by clicking No button and I click save button then I see Saved Successfully message{string}")
     public void iEnableVideoConsultationsByClickingNoButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(LocationData));
-        Assert.assertTrue((providerPageContainer.videoConsultationsSettingPage.EnableVideoConsultationNoButton()));
+        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.EnableVideoConsultationNoButton());
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickVideoConsultationSaveButton());
     }
 
     @Then("I should see Video appointment slots are Not displayed in All tab")
     public void iShouldSeeVideoAppointmentSlotsAreNotDisplayedInAllTab() {
-        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.verifyPatientVideoAppointmentNotDisplayedInAllTab());
+        Assert.assertFalse(providerPageContainer.videoConsultationsSettingPage.verifyPatientVideoAppointmentNotDisplayedInAllTab());
     }
 
     @And("I enable face to face appointment on a Video Consultation slot by clicking yes button and I click save button then I see Saved Successfully message{string}")
@@ -1804,15 +1804,12 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     }
 
-    @And("I enable RuleA Radio button select the no of appointments and I click save button then I see Saved Successfully message{string}")
-    public void iEnableRuleARadioButtonSelectTheNoOfAppointmentsAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String arg0, String arg1) {
-    }
 
-    @And("I enable Reason Mandatory No Radio button select the no of appointments and I click save button then I see Saved Successfully message{string}")
-    public void iEnableReasonMandatoryNoRadioButtonSelectTheNoOfAppointmentsAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String arg0, String arg1) {
-    }
 
-    @And("I enable Reason Mandatory yes Radio button select the no of appointments and I click save button then I see Saved Successfully message{string}")
-    public void iEnableReasonMandatoryYesRadioButtonSelectTheNoOfAppointmentsAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String arg0, String arg1) {
+    @And("I enable face to face appointment on a Video Consultation slot by clicking No button and I click save button then I see Saved Successfully message{string}")
+    public void iEnableFaceToFaceAppointmentOnAVideoConsultationSlotByClickingNoButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
+        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue((providerPageContainer.videoConsultationsSettingPage.DisablefacetofaceappointmentVideoConsultationNoButton()));
+        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickVideoConsultationSaveButton());
     }
 }
