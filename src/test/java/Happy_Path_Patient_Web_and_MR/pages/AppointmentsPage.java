@@ -463,7 +463,7 @@ public class AppointmentsPage extends BasePage {
     protected WebElement elmntDownArrow;
 
 
-    @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Video Invitations')]")
+    @FindBy(how = How.XPATH, using = "(//h3[contains(text(),'Video Consultations')])[1]")
     protected WebElement elmntVideoPage;
 
     @FindBy(how = How.XPATH, using = "//td//mat-icon[contains(text(),'videocam')]")
@@ -1472,62 +1472,30 @@ public class AppointmentsPage extends BasePage {
     public boolean verifyDetailsOfCreatedAppointment(List<String> lstDetails, String strFutureDate) {
         boolean blResult = false;
         try {
-            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("autoGrantPermissions", "true");
-                capabilities.setCapability("platformName", "Android");
-                capabilities.setCapability("deviceName", "Galaxy M53");
-                capabilities.setCapability("browser", "Chrome");
-                capabilities.setCapability("real_mobile", "true");
-                capabilities.setCapability("autoGrantPermissions", "true");
-                capabilities.setCapability("disable-popup-blocking", "true");
-                capabilities.setCapability("autoDismissAlerts", true);
-                capabilities.setCapability("unicodeKeyboard", true);
-                capabilities.setCapability("resetKeyboard", true);
-                AppiumDriver appiumDriver = (AppiumDriver) driver;
-                Set<String> contextNames = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames) {
-                    if (strContextName.contains("NATIVE_APP")) {
-                        appiumDriver.context("NATIVE_APP");
-                        break;
-                    }
+            System.out.println(">>>>>>>>>>>>>"+lstDetails);
+            System.out.println(">>>>>>>>>>>>>"+TestDataUtil.getValue(strFutureDate));
+            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForSeconds(2);
+                String strDatePattern1 = "dd MMM yyyy";
+                String strDate = TestDataUtil.getValue(strFutureDate);
+                String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
+                System.out.println("DATE" + strDateValue);
+                WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", strDateValue)));
+                System.out.println(">>>>>>>>>>>>>>>elmntAppointmentDetails" + elmntAppointmentDetails);
+                System.out.println(">>>>>>>>>>>>>>>elmntAppointmentDetails" + elmntAppointmentDetails.getText());
+                jsScrollIntoView(elmntAppointmentDetails);
+                waitForElement(elmntAppointmentDetails);
+                verifyElement(elmntAppointmentDetails);
+
+                WebElement elmntAppointments = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", strSlotDate)));
+                System.out.println(">>>>>>>>>>>>>>>elmntAppointments" + elmntAppointments);
+                verifyElement(elmntAppointments);
+
+                for (String strDetails : lstDetails) {
+                    WebElement elmntReservationDetails = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strDetails))));
+                    blResult = verifyElement(elmntReservationDetails);
                 }
-
-                if (verifyElement(txtCardPopup)) {
-                    waitForElement(txtCardPopup);
-                    click(txtCardPopup);
-                }
-
-                System.out.println("Success Select SAVE Button");
-                Set<String> contextNames1 = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames1) {
-                    if (strContextName.contains("CHROMIUM")) {
-                        appiumDriver.context("CHROMIUM");
-                        break;
-                    }
-                }
-
-            }
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForSeconds(2);
-            String strDatePattern1 = "dd MMM yyyy";
-            String strDate = TestDataUtil.getValue(strFutureDate);
-            String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
-            System.out.println("DATE" + strDateValue);
-            WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", strDateValue)));
-            System.out.println(">>>>>>>>>>>>>>>elmntAppointmentDetails"+elmntAppointmentDetails);
-            System.out.println(">>>>>>>>>>>>>>>elmntAppointmentDetails"+elmntAppointmentDetails.getText());
-            jsScrollIntoView(elmntAppointmentDetails);
-            waitForElement(elmntAppointmentDetails);
-            verifyElement(elmntAppointmentDetails);
-
-            WebElement elmntAppointments = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", strSlotDate)));
-            System.out.println(">>>>>>>>>>>>>>>elmntAppointments"+elmntAppointments);
-            verifyElement(elmntAppointments);
-
-            for (String strDetails : lstDetails) {
-                WebElement elmntReservationDetails = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strDetails))));
-                blResult = verifyElement(elmntReservationDetails);
             }
             takeScreenshot(driver);
             blResult = true;

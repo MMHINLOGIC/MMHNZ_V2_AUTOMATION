@@ -17,8 +17,8 @@ Feature: Recall Setting
     When I enter the number of days recall reminder text box and click save button "<Recall_Reminder_Details>"
     And As a user I am on HomePage and navigate to Book Appointment Page in Appointments
     Examples:
-      | Location         | Recall_Reminder_Details |
-      | Automation1_Loc1 | 1                       |
+      | Location   | Recall_Reminder_Details |
+      | &LOCATION& | 1                       |
 
   @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING
   Scenario Template:S2-Provider Disable Recall Remainder
@@ -29,7 +29,7 @@ Feature: Recall Setting
     And As a user I am on HomePage and navigate to Book Appointment Page in Appointments
     Examples:
       | Location         | Recall_Reminder_Details |
-      | Automation1_Loc1 | 1                       |
+      | &LOCATION& | 1                       |
 
 
   @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING
@@ -41,7 +41,7 @@ Feature: Recall Setting
     And As a user I am on HomePage and navigate to Book Appointment Page in Appointments
     Examples:
       | Location         | Recall_Reminder_Details |
-      | Automation1_Loc1 | 1                       |
+      | &LOCATION& | 1                       |
 
   @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING
   Scenario Template:S4-Patient Book Appointment through Recall Remainder Message
@@ -52,7 +52,7 @@ Feature: Recall Setting
     And As a user I am on HomePage and navigate to Book Appointment Page in Appointments
     Examples:
       | Location         | Recall_Reminder_Details |
-      | Automation1_Loc1 | 1                       |
+      | &LOCATION& | 1                       |
 
 
 

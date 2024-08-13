@@ -91,7 +91,7 @@ Feature: Setup_Services
       | Setup_Modules    | Setup_Service        | Message Details            | Message           |
       | Secure Messaging | &SETUP_SERVICE_DATA& | &RECEIVED_MESSAGE_DETAILS& | &MESSAGE_DETAILS& |
 
-  @WEB @PROVIDER_RRP @PROVIDER_HAPPY_PATH @PROVIDER_SETUP_SERVICES1
+  @WEB @PROVIDER_RRP @PROVIDER_HAPPY_PATH @PROVIDER_SETUP_SERVICES
   Scenario Template: S7 -Provider Restrict to patient default location
     Given As a Provider I am on HomePage and navigate to Setup services in "<Setup_Modules>"
     And I click the Add new Button then select the setup services Restrict to patient default location "<Setup_Service>"

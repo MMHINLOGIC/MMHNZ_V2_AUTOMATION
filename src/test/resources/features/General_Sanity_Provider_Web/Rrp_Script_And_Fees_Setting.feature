@@ -118,5 +118,5 @@ Feature: Repeat Script And Fees Setting
     And I should see the successful message and I navigate to view history of the Prescription
     And I see the status for Patient to collect the Prescription"<Verification Medication Details>"
     Examples:
-      | System_Menu             | Health_Centre    | Medication Details                            | Verification Medication Details                         | Patient to Collect Script DropDown Details   |
-      | RRP Script Fee Settings | Automation1_Loc1 | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION& | &VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
+      | System_Menu             | Health_Centre | Medication Details                            | Verification Medication Details                         | Patient to Collect Script DropDown Details   |
+      | RRP Script Fee Settings | &LOCATION&    | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION& | &VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |

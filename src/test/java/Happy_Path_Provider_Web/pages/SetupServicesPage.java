@@ -4,7 +4,9 @@ import cap.common.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 public class SetupServicesPage extends BasePage {
     public SetupServicesPage(WebDriver driver) {
@@ -62,7 +64,15 @@ public class SetupServicesPage extends BasePage {
     @FindBy(xpath = "(//mat-select[@name='staffRoles'])[1]")
     protected WebElement elmntRecipientRole;
 
-    @FindBy(xpath = "(//span[contains(text(),'Allow Sender to select Recipient Role')])[1]")
+//    @FindBy(xpath = "(//span[contains(text(),'Allow Sender to select Recipient Role')])[1]")
+//    protected WebElement txtRecipientRoledropdown;
+
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Allow Sender to select Recipient Role')])[1]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Allow Patient to select Recipient Role')])[1]")
+
+    })
     protected WebElement txtRecipientRoledropdown;
 
     @FindBy(xpath = "(//mat-select[@name='staffDefaults'])[1]")

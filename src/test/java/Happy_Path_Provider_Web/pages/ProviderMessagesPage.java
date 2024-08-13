@@ -17,7 +17,7 @@ public class ProviderMessagesPage extends BasePage {
     }
 
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Compose']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Compose Message']")
     protected WebElement txtCompose;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Attach Files')]")

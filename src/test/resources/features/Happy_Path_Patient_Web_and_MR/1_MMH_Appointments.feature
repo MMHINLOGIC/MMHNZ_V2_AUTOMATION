@@ -224,8 +224,8 @@ Feature: Appointments
     And I should see Appointment is not for today popup "<Future>"
 
     Examples:
-      | Appointments      | Future        |
-      | Video invitations | &VIDEO_ICONS& |
+      | Appointments        | Future        |
+      | Video Consultations | &VIDEO_ICONS& |
 
 
     ####################################################################################################################################

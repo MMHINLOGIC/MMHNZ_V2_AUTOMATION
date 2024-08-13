@@ -25,7 +25,8 @@ public class PhoneAppointmentSettingPage extends BasePage {
 
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),' Timprefer!')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]")
     })
     protected WebElement txtProviderPortalWelcomePage;
 
@@ -51,28 +52,103 @@ public class PhoneAppointmentSettingPage extends BasePage {
             .append("<<REPLACEMENT>>").append("')])[1]").toString();
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc1')]//preceding::input[@aria-checked='true']")
-    protected WebElement elmntPhoneAppointmentAutomationLoc1;
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc1')]//preceding::input[@aria-checked='false']")
-    protected WebElement verifyPhoneAppointmentAutomationLocation;
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//preceding::input[@aria-checked='true'])[2]")
-    protected WebElement elmntPhoneAppointmentAutomationLocation2;
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc2')]//preceding::input[@aria-checked='false']")
-    protected WebElement verifyPhoneAppointmentAutomationLocation2;
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::input[@name='rules0'])[1]")
-    protected WebElement clickVM03LocationRule1;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::input[@name='rules0'])[2]")
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc1')]//preceding::input[@aria-checked='true']"),
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'VM07 Loc1 Evo Prod')]//preceding::input[@aria-checked='true']")
+
+    })
+    protected WebElement elmntPhoneAppointmentAutomationLoc1;
+
+//    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc1')]//preceding::input[@aria-checked='true']")
+//    protected WebElement elmntPhoneAppointmentAutomationLoc1;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc1')]//preceding::input[@aria-checked='false']"),
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'VM07 Loc1 Evo Prod')]//preceding::input[@aria-checked='false']")
+
+    })
+    protected WebElement verifyPhoneAppointmentAutomationLocation;
+
+//    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc1')]//preceding::input[@aria-checked='false']")
+//    protected WebElement verifyPhoneAppointmentAutomationLocation;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//preceding::input[@aria-checked='true'])[2]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'VM07 Loc2 Evo Prod')]//preceding::input[@aria-checked='true'])[2]")
+
+    })
+    protected WebElement elmntPhoneAppointmentAutomationLocation2;
+//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//preceding::input[@aria-checked='true'])[2]")
+//    protected WebElement elmntPhoneAppointmentAutomationLocation2;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc2')]//preceding::input[@aria-checked='false']"),
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'VM07 Loc2 Evo Prod')]//preceding::input[@aria-checked='false']")
+
+    })
+    protected WebElement verifyPhoneAppointmentAutomationLocation2;
+//    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc2')]//preceding::input[@aria-checked='false']")
+//    protected WebElement verifyPhoneAppointmentAutomationLocation2;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::input[@name='rules0'])[1]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'VM07 Loc1 Evo Prod')]//following::input[@name='rules0'])[1]")
+
+    })
+    protected WebElement clickVM03LocationRule1;
+//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::input[@name='rules0'])[1]")
+//    protected WebElement clickVM03LocationRule1;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::input[@name='rules0'])[2]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'VM07 Loc1 Evo Prod')]//following::input[@name='rules0'])[2]")
+
+    })
     protected WebElement clickVM03LocationRule2;
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::input[@name='rules1'])[1]")
+
+//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::input[@name='rules0'])[2]")
+//    protected WebElement clickVM03LocationRule2;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::input[@name='rules1'])[1]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'VM07 Loc2 Evo Prod')]//following::input[@name='rules0'])[2]")
+
+    })
     protected WebElement clickVM03Location2Rule1;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::input[@name='rules1'])[1]")
+//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::input[@name='rules1'])[1]")
+//    protected WebElement clickVM03Location2Rule1;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::input[@name='rules1'])[1]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'VM07 Loc2 Evo Prod')]//following::input[@name='rules1'])[1]")
+
+    })
     protected WebElement clickVM03Location2Rule2;
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::textarea)[1]")
+
+
+//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::input[@name='rules1'])[1]")
+//    protected WebElement clickVM03Location2Rule2;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::textarea)[1]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'VM07 Loc1 Evo Prod')]//following::textarea)[1]")
+
+    })
     protected WebElement EnterVM03LocationTextValue;
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::textarea)[1]")
+
+//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::textarea)[1]")
+//    protected WebElement EnterVM03LocationTextValue;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::textarea)[1]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'VM07 Loc2 Evo Prod')]//following::textarea)[1]")
+
+    })
     protected WebElement EnterVM03Location2TextValue;
+//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::textarea)[1]")
+//    protected WebElement EnterVM03Location2TextValue;
     @FindBy(how = How.XPATH, using = " //span[contains(text(),'Save')] ")
     protected WebElement ClickSaveButton;
 

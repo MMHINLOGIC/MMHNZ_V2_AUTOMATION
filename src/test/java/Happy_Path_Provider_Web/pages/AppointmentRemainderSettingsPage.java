@@ -32,11 +32,17 @@ public class AppointmentRemainderSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[contains(text(),' Save')]")
     protected WebElement elmntSaveButton;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Automation1_Loc1')]")
+    @FindBy(how = How.XPATH, using = "//mat-label[contains(text(),'Health centre')]//preceding::mat-select")
     protected WebElement elmntHealthCenterDropDown;
 
-    protected String elmntSelectNumberDropDown = new StringBuilder().append("//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]").toString();
+    //    @FindAll({
+//            @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Email Address' or @data-placeholder='Email address']"),
+//            @FindBy(how = How.XPATH, using = "//input[@Placeholder='Email Address']")
+//    })
+//    protected WebElement elmntHealthCenterDropDown;
+
+    protected String elmntSelectNumberDropDown = new StringBuilder().append("(//span[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     protected String elmntHealthCentreDrop = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[2]").toString();
@@ -48,10 +54,10 @@ public class AppointmentRemainderSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-checkbox[@class='mat-checkbox mat-accent ng-valid ng-dirty ng-touched']")
     protected WebElement elmntFirstAppoinmentReminderCheckDisbled;
 
-    @FindBy(how = How.XPATH, using = "(//mat-select[@ng-reflect-placeholder='Select'])[1]")
+    @FindBy(how = How.XPATH, using = "(//mat-label[contains(text(),'Select')]//preceding::mat-select)[2]")
     protected WebElement elmntNumberDropDown;
 
-    @FindBy(how = How.XPATH, using = "(//mat-select[@ng-reflect-placeholder='Select'])[2]")
+    @FindBy(how = How.XPATH, using = "(//mat-label[contains(text(),'Select')]//preceding::mat-select)[3]")
     protected WebElement elmntHoursDropDown;
 
     protected String elmntSelectDaysDropDown = new StringBuilder().append("//span[contains(text(),'")
@@ -75,7 +81,7 @@ public class AppointmentRemainderSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'Appointment reminder settings is saved successfully')]")
     protected WebElement elmntAppointmentReminderSettingSavedPopUp;
 
-    @FindBy(how = How.XPATH, using = "(//mat-select[@ng-reflect-placeholder='Select'])[5]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Your Appointment reminders will start sending during this time frame')]//following::span)[1]")
     protected WebElement elmntReminderTimeDropDown;
 
     @FindBy(how = How.XPATH, using = "(//mat-checkbox[@class='mat-checkbox mat-accent ng-untouched ng-pristine ng-valid mat-checkbox-checked'])[2]")
@@ -84,19 +90,19 @@ public class AppointmentRemainderSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-checkbox[@class='mat-checkbox mat-accent ng-untouched ng-pristine ng-valid']//input")
     protected WebElement elmntSecondAppoinmentReminderCheckDisbled;
 
-    @FindBy(how = How.XPATH, using = "(//mat-select[@ng-reflect-placeholder='Select'])[3]")
+    @FindBy(how = How.XPATH, using = "(//mat-label[contains(text(),'Select')]//preceding::mat-select)[4]")
     protected WebElement elmntSecondNumberDropDown;
 
-    @FindBy(how = How.XPATH, using = "(//mat-select[@ng-reflect-placeholder='Select'])[4]")
+    @FindBy(how = How.XPATH, using = "(//mat-label[contains(text(),'Select')]//preceding::mat-select)[5]")
     protected WebElement elmntSecondHoursDropDown;
 
     @FindBy(how = How.XPATH, using = "(//mat-checkbox[@class='mat-checkbox mat-accent ng-untouched ng-pristine ng-valid mat-checkbox-checked'])[2]")
     protected WebElement elmntSecondAppoinmentReminderEmailCheckEnabled;
 
-    @FindBy(how = How.XPATH, using = "//mat-checkbox[@class='mat-checkbox mat-accent ng-valid mat-checkbox-checked ng-dirty ng-touched']")
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Skip weekends')]//following::mat-checkbox//input[@aria-checked='true']")
     protected WebElement elmntSkipWeekEndsCheckBoxEnabled;
 
-    @FindBy(how = How.XPATH, using = "//mat-checkbox[@class='mat-checkbox mat-accent ng-untouched ng-pristine ng-valid']//input")
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Skip weekends')]//following::mat-checkbox//input[@aria-checked='false']")
     protected WebElement elmntSkipWeekEndsCheckBoxDisabled;
 
 
@@ -190,11 +196,13 @@ public class AppointmentRemainderSettingsPage extends BasePage {
     public boolean SelectNumberFirstAppointmentReminder(String StrNumber) {
         boolean blresult = false;
         try {
+            System.out.println(">>>>>>>>>StrNumber"+StrNumber);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntNumberDropDown);
             click(elmntNumberDropDown);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectNumberDropDown.replace("<<REPLACEMENT>>", StrNumber)));
+            System.out.println(">>>>>>>>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
             waitForSeconds(2);
             mouseClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -210,10 +218,12 @@ public class AppointmentRemainderSettingsPage extends BasePage {
     public boolean SelectHoursFirstAppointmentReminder(String StrHours) {
         boolean blresult = false;
         try {
+            System.out.println(">>>>>>>>>StrHours"+StrHours);
             waitForElement(elmntHoursDropDown);
             click(elmntHoursDropDown);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectHoursDropDown.replace("<<REPLACEMENT>>", StrHours)));
+            System.out.println(">>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
             waitForSeconds(2);
             mouseClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));

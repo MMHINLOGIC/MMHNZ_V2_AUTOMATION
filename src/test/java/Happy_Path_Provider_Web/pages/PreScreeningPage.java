@@ -67,11 +67,13 @@ public class PreScreeningPage extends BasePage {
 
     protected String deselectCovidPreScreeningPopup = new StringBuilder()
             .append("//span[normalize-space(text())='").append("<<REPLACEMENT>>")
-            .append("']//ancestor::mat-checkbox[@ng-reflect-model='false']//input").toString();
+            .append("']//following::mat-checkbox[@name='LocationName']//input[@aria-checked='false']").toString();
 
     protected String selectCovidPreScreeningPopup = new StringBuilder()
             .append("//span[normalize-space(text())='").append("<<REPLACEMENT>>")
-            .append("']//ancestor::mat-checkbox[@ng-reflect-model='true']//input").toString();
+            .append("']//following::mat-checkbox[@name='LocationName']//input[@aria-checked='true']").toString();
+
+    //span[normalize-space(text())='VM07 Loc1 Evo Prod']//following::mat-checkbox[@name='LocationName']//input[@aria-checked='true']
 
 
     public boolean clickPreScreeningEdit() {

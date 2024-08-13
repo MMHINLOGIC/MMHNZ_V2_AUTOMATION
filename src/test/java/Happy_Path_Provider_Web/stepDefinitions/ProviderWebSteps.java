@@ -1204,7 +1204,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I click edit button select the Recall Setting Health centre {string}")
     public void iClickEditButtonSelectTheRecallSettingHealthCentre(String LocationData) {
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickEditButton());
-        Assert.assertTrue(providerPageContainer.recallSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.recallSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickRecallRemindersYesRadioButton());
     }
     @When("I enter the number of days recall reminder text box and click save button {string}")
@@ -1216,7 +1216,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I click edit button select the Recall Setting Health centre {string} Disable Recalls Remainder No button")
     public void iClickEditButtonSelectTheRecallSettingHealthCentreDisableRecallsRemainderNoButton(String LocationData) {
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickEditButton());
-        Assert.assertTrue(providerPageContainer.recallSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.recallSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickRecallRemindersNoRadioButton());
 
     }
@@ -1301,7 +1301,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I Enable Online Payments for Appointments by clicking Yes button and click the save button {string}")
     public void iEnableOnlinePaymentsForAppointmentsByClickingYesButtonAndClickTheSaveButton(String LocationData) {
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickEditButton());
-        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.EnableOnlinePaymentsforAppointments());
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.ClickSaveButton());
     }
@@ -1331,7 +1331,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I Enable Online Payments for RRP by clicking Yes button and click the save button {string}")
     public void iEnableOnlinePaymentsForRRPByClickingYesButtonAndClickTheSaveButton(String LocationData) {
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickEditButton());
-        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.EnableYesOnlinePaymentsforRRP());
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.ClickSaveButton());
 
@@ -1340,7 +1340,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I Enable Online Payments for Appointments by clicking No button and click the save button {string}")
     public void iEnableOnlinePaymentsForAppointmentsByClickingNoButtonAndClickTheSaveButton(String LocationData) {
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickEditButton());
-        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.EnableNoOnlinePaymentsforAppointments());
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.ClickSaveButton());
     }
@@ -1365,7 +1365,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I Enable Online Payments for RRP by clicking No button and click the save button {string}")
     public void iEnableOnlinePaymentsForRRPByClickingNoButtonAndClickTheSaveButton(String LocationData) {
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickEditButton());
-        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.EnableNoOnlinePaymentsforRRP());
         Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.ClickSaveButton());
     }

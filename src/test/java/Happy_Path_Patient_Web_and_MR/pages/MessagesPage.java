@@ -71,7 +71,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[@class='view-info']")
     protected WebElement txtComposeMail;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Compose')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'COMPOSE MESSAGE')]")
     protected WebElement elmntComposePatient;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Compose')]")
@@ -83,7 +83,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Sent')]")
     protected WebElement elmntSentPatient;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Compose')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'COMPOSE MESSAGE')]")
     protected WebElement elmntComposeDoctor;
 
     //span[contains(text(),'Compose')]
@@ -185,7 +185,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//h1[text()='Sent Messages'])[1]")
     protected WebElement txtSent;
 
-    @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Compose Email')])[1]")
+    @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'COMPOSE MESSAGE')])[1]")
     protected WebElement txtCompose;
 
     @FindBy(how = How.XPATH, using = "//div[@class='leftside']")
@@ -208,7 +208,7 @@ public class MessagesPage extends BasePage {
     protected WebElement ProviderLocation;
 
     protected String elmntbyDrop = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[1]").toString();
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     protected String ProviderHealthCentre = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[3]").toString();
@@ -714,7 +714,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='Subject'])[1]")
     protected WebElement btnReplySendMessageSubject;
 
-    @FindBy(how = How.XPATH, using = "(//button[@class='mat-focus-indicator btn-primary-pill mat-button mat-button-base'])[1]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Send message')])[1]")
     protected WebElement btnsendMessage;
 //    (//span[contains(text(),'Send message')])[1]
 
@@ -1112,8 +1112,8 @@ protected WebElement txtWelcome;
             if (PageUrl.contains("Compose")) {
                 blResult = true;
             }
-//            waitForElement(txtComposeMail);
-//            blResult = verifyElement(btnSendMessage);
+            waitForElement(txtComposeMail);
+            blResult = verifyElement(btnSendMessage);
 
             System.out.println("Successfully navigated to Compose message >>>>> :: " );
         } catch (Exception e) {

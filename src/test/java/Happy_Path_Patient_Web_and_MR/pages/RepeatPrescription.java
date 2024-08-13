@@ -38,7 +38,7 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-progress-spinner[@mode='indeterminate']")
     protected WebElement elmntLoadingSpinner;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),' New Repeat Prescription ')]//i")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'REQUEST REPEAT PRESCRIPTION')]//i")
     protected WebElement elmntRequestNewScript;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Request New Script')]")
@@ -2540,11 +2540,11 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
             waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
             if (!verifyElement((By.xpath(selectedDrpDownOption.replace("<<REPLACEMENT>>", strLocation))))) {
                 waitForElementClickable(drpdownLocation);
-                click(drpdownLocation);
+                jsClick(drpdownLocation);
                 WebElement ddlLocation = waitForElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strLocation)));
                 System.out.println(" select Location Locator ::" + ddlLocation);
                 waitForElementClickable(ddlLocation);
-                click(ddlLocation);
+                jsClick(ddlLocation);
                 waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
                 waitForSeconds(2);
                 System.out.println("Now changed the location to it's default location " + strLocation);
