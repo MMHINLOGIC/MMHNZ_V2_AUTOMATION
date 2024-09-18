@@ -42,7 +42,7 @@ public class AppointmentMessagePage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//iframe[@class='k-iframe'])[1]")
     protected WebElement frameBannerMessage;
 
-    @FindBy(how = How.XPATH, using = "(//iframe[@class='k-iframe'])[2]")
+    @FindBy(how = How.XPATH, using = "(//iframe[@class='k-iframe'])[3]")
     protected WebElement frameWebBannerMessage;
 
     @FindBy(how = How.XPATH, using = "//kendo-editor[@formcontrolname='easyBookingBannerMessage']/descendant::div")
@@ -214,14 +214,14 @@ public class AppointmentMessagePage extends BasePage {
     public boolean clickEditButton() {
         boolean blresult = false;
         try {
-            waitForSeconds(5);
+            waitForSeconds(3);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            takeScreenshot(driver);
+//            takeScreenshot(driver);
             jsScrollIntoView(elmntEditbtn);
-            waitForSeconds(5);
-            waitForElement(elmntEditbtn);
+            waitForSeconds(3);
+//            waitForElement(elmntEditbtn);
             jsClick(elmntEditbtn);
-            takeScreenshot(driver);
+//            takeScreenshot(driver);
             waitForSeconds(3);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             blresult = true;

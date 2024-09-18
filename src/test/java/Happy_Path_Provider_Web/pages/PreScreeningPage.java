@@ -132,7 +132,7 @@ public class PreScreeningPage extends BasePage {
             jsScrollDown();
             jsScrollIntoView(elmntUpdate);
             if (verifyElement(By.xpath(deselectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
-                takeScreenshot(driver);
+//                takeScreenshot(driver);
                 System.out.println("Appointment PreScreening CheckBox Already Unchecked");
             }
             else {
@@ -141,7 +141,7 @@ public class PreScreeningPage extends BasePage {
                 jsClick(elmntHealthCentreLocation);
                 waitForElementDisappear(driver,By.xpath(elmntSpinner));
                 verifyElement(By.xpath(deselectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))));
-                takeScreenshot(driver);
+//                takeScreenshot(driver);
                 System.out.println("Appointment PreScreening CheckBox UnChecked::");
             }
             blresult = true;
@@ -159,7 +159,7 @@ public class PreScreeningPage extends BasePage {
             jsScrollIntoView(elmntUpdate);
             waitForSeconds(3);
             if (verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
-                takeScreenshot(driver);
+//                takeScreenshot(driver);
                 System.out.println("Appointment PreScreening CheckBox Already checked");
                 blresult = true;
             }
@@ -170,7 +170,7 @@ public class PreScreeningPage extends BasePage {
             jsClick(elmntHealthCentreLocation2);
                 waitForElementDisappear(driver,By.xpath(elmntSpinner));
             verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))));
-                takeScreenshot(driver);
+//                takeScreenshot(driver);
             System.out.println("Appointment PreScreening CheckBox Checked::");
                 blresult = true;
             }

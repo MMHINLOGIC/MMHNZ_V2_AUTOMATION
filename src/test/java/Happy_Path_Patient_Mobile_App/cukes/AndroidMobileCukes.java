@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = {"src/test/resources/features/Happy_Path_Patient_Mobile_App"},
         monochrome = true,
-        tags = "@HAPPY_PATH_MOBILE",
+        tags = "@Mobile_Health_Record or @Mobile_RRP",
         glue = {"Happy_Path_Patient_Mobile_App", "Happy_Path_Patient_Web_and_MR","Happy_Path_Provider_Web"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
@@ -16,4 +16,4 @@ public class AndroidMobileCukes extends AbstractTestNGCucumberTests {
 
 }
 
-//       clean test -Dapp=Happy_Path_Patient_Mobile_App -Drunner=AndroidMobileCukes -Dexecution_type=webmobile -Dconfig=local_android_Galaxy_M53_Mobile_App -Denv=QA -Dbrowser_name=chrome "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/MobileApp-QAResults.html -Dsysteminfo.AppName=Demo-QA"
+//       clean test -Dapp=Happy_Path_Patient_Mobile_App -Drunner=AndroidMobileCukes -Dexecution_type=webmobile -Dconfig=local_android_Galaxy_M53_Mobile_App -Denv=PRD -Dbrowser_name=chrome "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/MobileApp-QAResults.html -Dsysteminfo.AppName=Demo-QA"

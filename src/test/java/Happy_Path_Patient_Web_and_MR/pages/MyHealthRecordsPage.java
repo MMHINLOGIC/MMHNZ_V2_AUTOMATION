@@ -3095,7 +3095,8 @@ jsScrollIntoView(elmntClinicianNotes);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntCovidImmunisationsDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
             System.out.println(">>>>>>>"+elmntEntriesFromHealthCentre);
-            jsClick(elmntEntriesFromHealthCentre);
+            waitForElement(elmntEntriesFromHealthCentre);
+            mouseClick(elmntEntriesFromHealthCentre);
             blResult = verifyElement(elmntCovidImmunisationsdrop);
         } catch (Exception e) {
             e.printStackTrace();

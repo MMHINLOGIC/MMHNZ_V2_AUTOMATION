@@ -316,6 +316,9 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Provider Login')])[1]")
     protected WebElement txtProviderPortal;
 
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'sign up')])[1]")
+    protected WebElement txtMobileSignUp;
+
     //p[text()='Login to Manage My Health Patient Portal']
 
     @FindBy(how = How.XPATH, using = "//input[@id='EncrySecuredPassword']")
@@ -1951,16 +1954,16 @@ if(!isElementDisplayed(txtPatientWelcomePage)){
             waitForElement(btnExitAppMobile);
             jsClick(btnExitAppMobile);
             waitForSeconds(180);
-            waitForElement(txtProviderPortal);
-            isVerified = verifyElement(txtProviderPortal);
+            waitForElement(txtMobileSignUp);
+            isVerified = verifyElement(txtMobileSignUp);
         }
 
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             waitForElement(btnExitAppMobile);
             click(btnExitAppMobile);
             waitForSeconds(180);
-            waitForElement(txtProviderPortal);
-            isVerified = verifyElement(txtProviderPortal);
+            waitForElement(txtMobileSignUp);
+            isVerified = verifyElement(txtMobileSignUp);
         }
         return isVerified;
     }

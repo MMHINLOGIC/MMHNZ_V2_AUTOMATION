@@ -74,7 +74,7 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Upcoming Appointments')]")
     protected WebElement elmntMobileUpcomingAppointmentPanel;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Video Invitations')]")
+    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Video Consultations')]")
     protected WebElement elmntMobileVideoInvationAppointmentPanel;
 
     //a[contains(text(),'Past Appointments')]
@@ -361,7 +361,7 @@ public class AppointmentsPage extends BasePage {
             .append("<<REPLACEMENT2>>")
             .append("')]/ancestor::mat-card//child::div/p[contains(text(),'")
             .append("<<REPLACEMENT3>>")
-            .append("')]/ancestor::mat-card/child::mat-card-footer//button").toString();
+            .append("')]/ancestor::mat-card/child::mat-card-content/div/button").toString();
 
     @FindBy(how = How.XPATH, using = "//button[@aria-label='Open calendar']")
     protected WebElement elmntCalendar;
@@ -379,7 +379,7 @@ public class AppointmentsPage extends BasePage {
             .append("<<REPLACEMENT2>>")
             .append("')]/ancestor::mat-card//child::div/p[contains(text(),'")
             .append("<<REPLACEMENT3>>")
-            .append("')]/ancestor::mat-card/child::mat-card-content/child::div//button").toString();
+            .append("')]/ancestor::mat-card/child::mat-card-content/child::div//button//following::span[text()='join now']").toString();
 
     protected String elmntDetailsAfterCancelingAppointment = new StringBuilder().append("(//mat-card//following-sibling::div//mat-card-title[contains(text(),'")
             .append("<<REPLACEMENT1>>")
@@ -387,7 +387,7 @@ public class AppointmentsPage extends BasePage {
             .append("<<REPLACEMENT2>>")
             .append("')]/ancestor::mat-card//child::div/p[contains(text(),'")
             .append("<<REPLACEMENT3>>")
-            .append("')]/ancestor::mat-card/child::mat-card-footer//button)[1]").toString();
+            .append("')]/ancestor::mat-card/child::mat-card-content/child::div//button)[1]").toString();
 
 
     protected String elmntFutureAppointmentDetail = new StringBuilder().append("//mat-card//following-sibling::div//mat-card-title[contains(text(),'")
@@ -570,7 +570,7 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[@class='interstitial-close-button']")
     protected WebElement elmntMobileUpComingAppointmentAdd;
 
-    @FindBy(how = How.XPATH, using = "(//button[@class='mat-focus-indicator mat-tooltip-trigger btn mat-button mat-button-base']/span[text()=' Cancel Appointment'])[1]")
+    @FindBy(how = How.XPATH, using = "(//button[@class='mat-focus-indicator mat-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-button mat-button-base']//span[text()=' Cancel Appointment'])[1]")
     protected WebElement elmntCancelAppointments;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Next')]")
@@ -3219,7 +3219,7 @@ waitForSeconds(5);
                     .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
                     .replace("<<REPLACEMENT2>>", lstDetails.get(0))
                     .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
-            System.out.println("TEST" + lstDetails.get(1));
+            System.out.println("TEST" +elmntReservationDetails);
             verifyElement(elmntReservationDetails);
             click(elmntReservationDetails);
             waitForSeconds(3);
@@ -3295,7 +3295,7 @@ waitForSeconds(5);
                     .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
                     .replace("<<REPLACEMENT2>>", lstDetails.get(0))
                     .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
-            System.out.println("TEST" + lstDetails.get(1));
+            System.out.println("TEST" + elmntReservationDetails);
             verifyElement(elmntReservationDetails);
             click(elmntReservationDetails);
             waitForSeconds(3);
@@ -3454,7 +3454,7 @@ waitForSeconds(5);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(5);    //wait until 'loader'  loading
                 if (verifyElement(elmntCancelAppointments)) {
-                    List<WebElement> btnCancel = driver.findElements(By.xpath("//button[@class='mat-focus-indicator mat-tooltip-trigger btn mat-button mat-button-base']/span[text()=' Cancel Appointment']"));
+                    List<WebElement> btnCancel = driver.findElements(By.xpath("//button[@class='mat-focus-indicator mat-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-button mat-button-base']//span[text()=' Cancel Appointment']"));
                     if (btnCancel.size() > 0) {
                         System.out.println("btnCancel exists and size=>" + btnCancel.size());
                         int page_no = btnCancel.size();
@@ -3468,7 +3468,7 @@ waitForSeconds(5);
                             System.out.println("TEST");
                             waitForSeconds(5); //wait until 'loader'  loading
                             waitForElement(elmntFutureAppointment);
-                            WebElement cancelButton = driver.findElement(By.xpath("(//button[@class='mat-focus-indicator mat-tooltip-trigger btn mat-button mat-button-base']/span[text()=' Cancel Appointment'])[1]"));
+                            WebElement cancelButton = driver.findElement(By.xpath("(//button[@class='mat-focus-indicator mat-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-button mat-button-base']//span[text()=' Cancel Appointment'])[1]"));
                             waitForElement(cancelButton);
                             jsScrollIntoView(cancelButton);
                             waitForElement(cancelButton);

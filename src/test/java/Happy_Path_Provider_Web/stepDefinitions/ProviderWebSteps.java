@@ -1787,7 +1787,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I select Health Center {string} and I enable Patient Portal Mobile Apps Banner Message to yes")
     public void iSelectHealthCenterAndIEnablePatientPortalMobileAppsBannerMessageToYes(String strHealthCentre) {
-        providerPageContainer.appointmentMessagePage.clickEditButton();
+//        providerPageContainer.appointmentMessagePage.clickEditButton();
 //        Assert.assertTrue(providerPageContainer.appointmentMessagePage.clickHealthCentreDropDown());
 //        Assert.assertTrue(providerPageContainer.appointmentMessagePage.selectHealthCentre(strHealthCentre));
         Assert.assertTrue(providerPageContainer.appointmentMessagePage.clickPatientMobileAppsBannerMessageYesRadioBtn());
@@ -1811,5 +1811,13 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(LocationData));
         Assert.assertTrue((providerPageContainer.videoConsultationsSettingPage.DisablefacetofaceappointmentVideoConsultationNoButton()));
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickVideoConsultationSaveButton());
+    }
+
+    @And("I enable allow to Reason For Appointment is Mandatory yes radio button{string} and click save button then I see Saved Successfully message")
+    public void iEnableAllowToReasonForAppointmentIsMandatoryYesRadioButtonAndClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickReasonforAppointmentisMandatoryYesButton());
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+
     }
 }

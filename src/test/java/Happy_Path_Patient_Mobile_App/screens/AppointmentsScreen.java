@@ -107,6 +107,14 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select Reason for appointment']")
     protected WebElement elmntAppointmentReason;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select the Appointment reason(s)']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select Reason for appointment']")
+    protected WebElement SelectAppointmentReason;
+
+    @AndroidFindBy(xpath = "(//android.widget.TextView)[6]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select Reason for appointment']")
+    protected WebElement SelectAppointmentReasonCheckbox;
+
     @AndroidFindBy(xpath = "//android.view.View[@text='Select Reason']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Select Reason']")
     protected WebElement elmntAppointmentReasonDropdowm;
@@ -289,7 +297,11 @@ public class AppointmentsScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strLocationLocator = new StringBuilder()
-            .append("//android.widget.Image/preceding-sibling::android.view.View/android.widget.TextView[@text='")
+            .append("(//android.view.View/android.widget.TextView[@text='")
+            .append("<<LOCATION>>").append("'])[2]").toString();
+
+    String strLocationLocator1 = new StringBuilder()
+            .append("//android.view.View/android.widget.TextView[@text='")
             .append("<<LOCATION>>").append("']").toString();
 
     String VeriflyLocation = new StringBuilder()
@@ -305,8 +317,10 @@ public class AppointmentsScreen extends BaseScreen {
             .append("<<LOCATION>>").append("'][1]").toString();
 
     String strRadioButtonTextLocator = new StringBuilder()
-            .append("//android.widget.CheckBox[@text='")
-            .append("<<TEXT>>").append("']").toString();
+            .append("(//android.widget.CheckBox[@text='")
+            .append("<<TEXT>>").append("']//android.widget.TextView)[2]").toString();
+
+//    (//android.widget.CheckBox[@text='A new issue']//android.widget.TextView)[1]
 
     String strOtherTextLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeSwitch[@name='")
@@ -321,7 +335,7 @@ public class AppointmentsScreen extends BaseScreen {
             .append("<<PROVIDER>>")
             .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<LOCATION>>")
-            .append("')]//following-sibling::android.view.View[contains(@text,'")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<PAYMENTSTATUS>>")
             .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<REASON>>")
@@ -355,12 +369,10 @@ public class AppointmentsScreen extends BaseScreen {
             .append("']//following-sibling::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<STATUS>>")
             .append("')]//ancestor::android.view.View//following-sibling::android.widget.TextView[contains(@text,'")
-            .append("<<PHONE>>")
-            .append("//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<PROVIDER>>")
             .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<LOCATION>>")
-            .append("')]//following-sibling::android.view.View[contains(@text,'")
+            .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<PAYMENTSTATUS>>")
             .append("')]//following-sibling::android.widget.TextView[contains(@text,'")
             .append("<<REASON>>")
@@ -427,14 +439,21 @@ public class AppointmentsScreen extends BaseScreen {
         System.out.println("Location: " + strLocation);
         attachStepLog("Location", strLocation);
         waitForElement(elmntSelectLocation);
-        WebElement elmntLocation = waitForElement(By.xpath(strLocationLocator.replace("<<LOCATION>>", strLocation)));
+        if (verifyElement(By.xpath(strLocationLocator.replace("<<LOCATION>>", strLocation)))){
+                    WebElement elmntLocation = waitForElement(By.xpath(strLocationLocator.replace("<<LOCATION>>", strLocation)));
         click(elmntLocation);
+        }
+       if (verifyElement(By.xpath(strLocationLocator1.replace("<<LOCATION>>", strLocation)))){
+                       WebElement elmntLocation1 = waitForElement(By.xpath(strLocationLocator1.replace("<<LOCATION>>", strLocation)));
+            click(elmntLocation1);
+       }
+
     }
 
     public void VerifyBannerMessage(String strBannerMessages) {
         System.out.println("Location: " + strBannerMessages);
         attachStepLog("Location", strBannerMessages);
-        waitForSecond(2);
+        waitForSecond(4);
         String data="information circle outline "+strBannerMessages.concat(strExecutionID);
         WebElement elmntBannerMessage = waitForElement(By.xpath(strBannerMessage.replace("<<BANNERMESSAGE>>", data)));
       verifyElement(elmntBannerMessage);
@@ -490,6 +509,13 @@ public class AppointmentsScreen extends BaseScreen {
         waitForSecond(3);
         waitForElement(btnNO);
         click(btnNO);
+    }
+
+    public void VerifyAppointmentPreScreeningNotDisplayed() {
+        waitForSecond(5);
+        if (!verifyElement(elmntAppointmentPreScreening)) {
+          System.out.println("Appointment Prescreening Not Displayed");
+        }
     }
 
     public void selectProvider(String strProvider) {
@@ -569,8 +595,15 @@ public class AppointmentsScreen extends BaseScreen {
         waitForElementIgnoreStale(elmntAppointmentReason);
         waitForElement(elmntAppointmentReasonDropdowm);
         click(elmntAppointmentReasonDropdowm);
-        WebElement elmntReason = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strReason)));
-        click(elmntReason);
+     waitForElementIgnoreStale(SelectAppointmentReason);
+     verifyElement(SelectAppointmentReason);
+//     waitForElement(SelectAppointmentReasonCheckbox);
+//     click(SelectAppointmentReasonCheckbox);
+//        WebElement elmntReason = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strReason)));
+//        click(elmntReason);
+        waitForSecond(2);
+        tapByCoordinates(354,1055);
+        waitForSecond(2);
         waitForElement(btnOk);
         click(btnOk);
     }
@@ -578,7 +611,7 @@ public class AppointmentsScreen extends BaseScreen {
 
     public boolean verifyDetailsOfConfirmAppointment(List<String> lstDetails, String strFutureDate) {
         boolean blResult = false;
-        waitForElementIgnoreStale(elmntConfirmAppointment);
+         waitForElementIgnoreStale(elmntConfirmAppointment);
 //        waitForElement(elmntConfirmAppointment);
         waitForElement(toggleTermsAndConditions);
         click(toggleTermsAndConditions);
@@ -660,7 +693,9 @@ tapByCoordinates(189,479);
 
     public boolean verifyCreatedAppointmentInServiceTab(List<String> lstDetails, String strFutureDate, String strAppointment) {
 
-
+System.out.println(">>>>"+lstDetails);
+        System.out.println(">>>>"+strFutureDate);
+        System.out.println(">>>>"+strAppointment);
         String strDatePattern1 = "dd MMM yyyy";
         String strDate = strFutureDate;
 
@@ -710,21 +745,21 @@ tapByCoordinates(189,479);
             elmntAppointmentDetails = By.xpath(strPhoneAppointmentDetailsLocator
                     .replace("<<DATE>>", strDateValue)
                     .replace("<<STATUS>>", lstDetails.get(0))
-                    .replace("<<PHONE>>", lstDetails.get(1))
-                    .replace("<<PROVIDER>>", lstDetails.get(2))
-                    .replace("<<LOCATION>>", lstDetails.get(3))
-                    .replace("<<PAYMENTSTATUS>>", lstDetails.get(4))
-                    .replace("<<REASON>>", lstDetails.get(5)));
+                    .replace("<<PROVIDER>>", lstDetails.get(1))
+                    .replace("<<LOCATION>>", lstDetails.get(2))
+                    .replace("<<PAYMENTSTATUS>>", lstDetails.get(3))
+                    .replace("<<REASON>>", lstDetails.get(4)));
+
 
 
             System.out.println(By.xpath(strPhoneAppointmentDetailsLocator
                     .replace("<<DATE>>", strDateValue)
                     .replace("<<STATUS>>", lstDetails.get(0))
-                    .replace("<<PHONE>>", lstDetails.get(1))
-                    .replace("<<PROVIDER>>", lstDetails.get(2))
-                    .replace("<<LOCATION>>", lstDetails.get(3))
-                    .replace("<<PAYMENTSTATUS>>", lstDetails.get(4))
-                    .replace("<<REASON>>", lstDetails.get(5))));
+                    .replace("<<PROVIDER>>", lstDetails.get(1))
+                    .replace("<<LOCATION>>", lstDetails.get(2))
+                    .replace("<<PAYMENTSTATUS>>", lstDetails.get(3))
+                    .replace("<<REASON>>", lstDetails.get(4))));
+
         }
 
         long startTime = System.currentTimeMillis();

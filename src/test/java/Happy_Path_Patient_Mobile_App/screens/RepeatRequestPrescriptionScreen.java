@@ -203,9 +203,20 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Payment Success')]")
     protected WebElement txtPaymentSuccess;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Payment Status: Approved')]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Payment Staus:']/following-sibling::XCUIElementTypeStaticText[@name='Approved']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Payment Status: Approved')]")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Payment Staus:']/following-sibling::XCUIElementTypeStaticText[@name='Approved']")
+//    protected WebElement elmntStatusApproved;
+
+    @AndroidFindAll({
+            @AndroidBy(xpath = " //android.widget.TextView[contains(@text,'Payment Status: APPROVED')]"),
+            @AndroidBy(xpath = "//android.widget.TextView[contains(@text,'Payment Status: Approved')]")
+    })
+    @iOSXCUITFindAll({
+            @iOSXCUITBy(xpath = "//XCUIElementTypeStaticText[@name='Payment Staus:']/following-sibling::XCUIElementTypeStaticText[@name='Approved']"),
+    })
     protected WebElement elmntStatusApproved;
+
+
 
     @AndroidFindBy(xpath = "//android.widget.CheckBox[contains(@text,'I have read and accepted the')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='I have read and accepted the']")
@@ -246,7 +257,7 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strLocationLocator = new StringBuilder()
-            .append("//android.widget.Image/preceding-sibling::android.view.View/android.widget.TextView[@text='")
+            .append("//android.view.View/android.widget.TextView[@text='")
             .append("<<LOCATION>>").append("']").toString();
 
     String strLocationLocatorIOS = new StringBuilder()

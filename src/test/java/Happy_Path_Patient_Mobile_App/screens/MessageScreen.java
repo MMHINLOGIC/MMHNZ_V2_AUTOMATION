@@ -20,7 +20,7 @@ public class MessageScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Inbox'])[2]")
     protected WebElement elmntInbox;
 
-    @AndroidFindBy(xpath = "//android.widget.TabWidget/preceding::android.widget.Button[1]")
+    @AndroidFindBy(xpath = "(//android.widget.Button)[2]")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[2]")
     protected WebElement iconCompose;
 
@@ -44,7 +44,7 @@ public class MessageScreen extends BaseScreen {
     @iOSXCUITFindBy(id = "Request")
     protected WebElement elmntRequest;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Message*']/following::android.widget.EditText")
+    @AndroidFindBy(xpath = "(//android.widget.EditText)[2]")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]")
     protected WebElement txtMessage;
 
@@ -208,8 +208,8 @@ public class MessageScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strLocationLocator = new StringBuilder()
-            .append("//android.widget.Image/preceding-sibling::android.view.View/android.widget.TextView[@text='")
-            .append("<<LOCATION>>").append("']").toString();
+            .append("(//android.widget.TextView[@text='")
+            .append("<<LOCATION>>").append("'])[2]").toString();
 
     String strLocationLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeImage[@name='cart']/preceding::XCUIElementTypeStaticText[@name='")
@@ -303,6 +303,7 @@ public class MessageScreen extends BaseScreen {
     }
 
     public void enterMessage(String strMessage) {
+        waitForSecond(3);
         waitForElement(txtMessage);
         enterValue(txtMessage, strMessage);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
@@ -315,9 +316,11 @@ public class MessageScreen extends BaseScreen {
         pushFileToDevice(strImage);
         waitForElement(lnkAttachFiles);
         click(lnkAttachFiles);
-        waitForSecond(2);
-        waitForElement(elmntChooseFromGallery);
-        click(elmntChooseFromGallery);
+        waitForSecond(4);
+//        waitForElement(elmntChooseFromGallery);
+//        click(elmntChooseFromGallery);
+
+        tapByCoordinates(354,2300);
         waitForSecond(2);
         waitForElement(iconHamburger);
         click(iconHamburger);
@@ -411,6 +414,7 @@ click(elmntPatientSent);
         enterValue(txtPatient, strRole);
         WebElement elmntRole = waitForElement(By.xpath(strContainsTextViewLocator.replace("<<TEXT>>", strRole)));
         click(elmntRole);
+        waitForSecond(3);
     }
 
     public void enterPatientIOS(String strRole) {
@@ -426,9 +430,15 @@ click(elmntPatientSent);
     public boolean verifyReceivedMessage(List<String> lstReceiveMessage) {
         By elmntReceivedMessageInfo = null;
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            System.out.println("elmntReceivedMessageInfo>> "+By.xpath(strReceivedMessageLocator
+                    .replace("<<SERVICE>>", lstReceiveMessage.get(0))
+                    .replace("<<MESSAGE>>", TestDataUtil.getValue(lstReceiveMessage.get(1)))));
+
             elmntReceivedMessageInfo = By.xpath(strReceivedMessageLocator
                     .replace("<<SERVICE>>", lstReceiveMessage.get(0))
                     .replace("<<MESSAGE>>", TestDataUtil.getValue(lstReceiveMessage.get(1))));
+
+
         } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
             System.out.println("elmntReceivedMessageInfo>> "+By.xpath(strReceivedMessageLocatorIOS
                     .replace("<<SERVICE>>", lstReceiveMessage.get(0))
@@ -609,6 +619,7 @@ click(elmntPatientSent);
     }
 
     public void enterReplyMessage(String strReplyMessage) {
+        waitForSecond(2);
         waitForElement(txtReplyMessage);
         enterValue(txtReplyMessage, strReplyMessage);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {

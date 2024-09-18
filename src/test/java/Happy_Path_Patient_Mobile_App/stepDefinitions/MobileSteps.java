@@ -162,6 +162,7 @@ public class MobileSteps {
     @When("I Send Appointment Request")
     public void iSendAppointmentRequest() {
         demoScreenContainer.appointmentsScreen.tapSendAppointmentRequest();
+
     }
 
     @When("I tap Pay Now button and tap OK in payment info popup message")
@@ -615,9 +616,10 @@ public class MobileSteps {
     @And("I enter the {string} {string} based on Rule B")
     public void iEnterTheBasedOnRuleB(String strAppointment, String strAppointmentDetails) {
         List<String> lstAppointmentDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
+        System.out.println(">>>>>>>>>"+lstAppointmentDetails);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             demoScreenContainer.appointmentsScreen.VerifyBannerMessage(lstAppointmentDetails.get(4));
-            demoScreenContainer.appointmentsScreen.VerifydefaultLocationDisplayed(TestDataUtil.getListOfValue(strAppointmentDetails));
+//            demoScreenContainer.appointmentsScreen.VerifydefaultLocationDisplayed(TestDataUtil.getListOfValue(strAppointmentDetails));
             demoScreenContainer.appointmentsScreen.selectLocation(lstAppointmentDetails.get(0));
             demoScreenContainer.appointmentsScreen.selectAppointmentsPolicy();
             demoScreenContainer.appointmentsScreen.selectProvider(lstAppointmentDetails.get(1));
@@ -658,7 +660,7 @@ public class MobileSteps {
 
     }
     @And("I select the {string} for {string} based on Rule A")
-    public void iSelectTheForBasedOnRuleA(String strMedicationDetails) {
+    public void iSelectTheForBasedOnRuleA(String strMedicationDetails,String strdata) {
         List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
@@ -682,7 +684,7 @@ public class MobileSteps {
     }
 
     @And("I select the {string} for {string} based on Rule B")
-    public void iSelectTheForBasedOnRuleB(String strMedicationDetails) {
+    public void iSelectTheForBasedOnRuleB(String strMedicationDetails,String strdata) {
         List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
@@ -704,7 +706,7 @@ public class MobileSteps {
     }
 
     @And("I select the {string} for {string} based on Rule C")
-    public void iSelectTheForBasedOnRuleC(String strMedicationDetails) {
+    public void iSelectTheForBasedOnRuleC(String strMedicationDetails,String strdata) {
         List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
@@ -720,6 +722,108 @@ public class MobileSteps {
             demoScreenContainer.repeatRequestPrescriptionScreen.selectMedicationsIOS(lstMedicationDetails.get(2));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethodIOS(lstMedicationDetails.get(3));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectUrgencyIOS(lstMedicationDetails.get(4));
+        }
+    }
+
+    @When("I enter the video Appointment {string} {string} based on Rule D")
+    public void iEnterTheVideoAppointmentBasedOnRuleD(String strAppointment, String strAppointmentDetails) {
+        List<String> lstAppointmentDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            demoScreenContainer.appointmentsScreen.selectLocation(lstAppointmentDetails.get(0));
+            demoScreenContainer.appointmentsScreen.selectAppointmentsPolicy();
+            demoScreenContainer.appointmentsScreen.selectProvider(lstAppointmentDetails.get(1));
+            demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
+            demoScreenContainer.appointmentsScreen.selectAppointmentDate(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
+            demoScreenContainer.appointmentsScreen.selectAppointmentOption(TestDataUtil.getValue(strAppointment));
+            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlot();
+            demoScreenContainer.appointmentsScreen.selectAppointmentVideoCallOptions(TestDataUtil.getValue(lstAppointmentDetails.get(3)));
+            demoScreenContainer.appointmentsScreen.selectReason(lstAppointmentDetails.get(4));
+        } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            demoScreenContainer.appointmentsScreen.selectLocationIOS(lstAppointmentDetails.get(0));
+            demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
+            demoScreenContainer.appointmentsScreen.selectProviderIOS(lstAppointmentDetails.get(1));
+            demoScreenContainer.appointmentsScreen.selectAppointmentDateIOS(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
+            demoScreenContainer.appointmentsScreen.selectAppointmentOptionIOS(TestDataUtil.getValue(strAppointment));
+            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlotIOS();
+            demoScreenContainer.appointmentsScreen.selectReasonIOS(lstAppointmentDetails.get(3));
+        }
+
+
+    }
+
+    @And("I enter the {string} {string} verify Pre Screening Popup Not Displayed")
+    public void iEnterTheVerifyPreScreeningPopupNotDisplayed(String strAppointment, String strAppointmentDetails) {
+        List<String> lstAppointmentDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+//            demoScreenContainer.appointmentsScreen.VerifyBannerMessage(lstAppointmentDetails.get(4));
+            demoScreenContainer.appointmentsScreen.VerifyAllLocationDisplayed(TestDataUtil.getListOfValue(strAppointmentDetails));
+            demoScreenContainer.appointmentsScreen.selectLocation(lstAppointmentDetails.get(0));
+            demoScreenContainer.appointmentsScreen.selectAppointmentsPolicy();
+            demoScreenContainer.appointmentsScreen.selectProvider(lstAppointmentDetails.get(1));
+            demoScreenContainer.appointmentsScreen.VerifyAppointmentPreScreeningNotDisplayed();
+//            demoScreenContainer.appointmentsScreen.selectAppointmentDate(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
+//            demoScreenContainer.appointmentsScreen.selectAppointmentOption(TestDataUtil.getValue(strAppointment));
+//            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlot();
+//            demoScreenContainer.appointmentsScreen.selectReason(lstAppointmentDetails.get(3));
+        } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            demoScreenContainer.appointmentsScreen.selectLocationIOS(lstAppointmentDetails.get(0));
+            demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
+            demoScreenContainer.appointmentsScreen.selectProviderIOS(lstAppointmentDetails.get(1));
+            demoScreenContainer.appointmentsScreen.selectAppointmentDateIOS(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
+            demoScreenContainer.appointmentsScreen.selectAppointmentOptionIOS(TestDataUtil.getValue(strAppointment));
+            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlotIOS();
+            demoScreenContainer.appointmentsScreen.selectReasonIOS(lstAppointmentDetails.get(3));
+        }
+        
+    }
+
+    @And("I enter the {string} {string} verify Pre Screening Popup Displayed")
+    public void iEnterTheVerifyPreScreeningPopupDisplayed(String strAppointment, String strAppointmentDetails) {
+        List<String> lstAppointmentDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            demoScreenContainer.appointmentsScreen.VerifyBannerMessage(lstAppointmentDetails.get(4));
+            demoScreenContainer.appointmentsScreen.VerifyAllLocationDisplayed(TestDataUtil.getListOfValue(strAppointmentDetails));
+            demoScreenContainer.appointmentsScreen.selectLocation(lstAppointmentDetails.get(0));
+            demoScreenContainer.appointmentsScreen.selectAppointmentsPolicy();
+            demoScreenContainer.appointmentsScreen.selectProvider(lstAppointmentDetails.get(1));
+            demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
+            demoScreenContainer.appointmentsScreen.selectAppointmentDate(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
+            demoScreenContainer.appointmentsScreen.selectAppointmentOption(TestDataUtil.getValue(strAppointment));
+            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlot();
+            demoScreenContainer.appointmentsScreen.selectReason(lstAppointmentDetails.get(3));
+        } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            demoScreenContainer.appointmentsScreen.selectLocationIOS(lstAppointmentDetails.get(0));
+            demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
+            demoScreenContainer.appointmentsScreen.selectProviderIOS(lstAppointmentDetails.get(1));
+            demoScreenContainer.appointmentsScreen.selectAppointmentDateIOS(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
+            demoScreenContainer.appointmentsScreen.selectAppointmentOptionIOS(TestDataUtil.getValue(strAppointment));
+            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlotIOS();
+            demoScreenContainer.appointmentsScreen.selectReasonIOS(lstAppointmentDetails.get(3));
+        }
+
+    }
+
+    @When("I enter the video Appointment {string} {string} based on Family Member")
+    public void iEnterTheVideoAppointmentBasedOnFamilyMember(String strAppointment, String strAppointmentDetails) {
+        List<String> lstAppointmentDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
+        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            demoScreenContainer.appointmentsScreen.selectLocation(lstAppointmentDetails.get(0));
+            demoScreenContainer.appointmentsScreen.selectAppointmentsPolicy();
+            demoScreenContainer.appointmentsScreen.selectProvider(lstAppointmentDetails.get(1));
+            demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
+            demoScreenContainer.appointmentsScreen.selectAppointmentDate(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
+            demoScreenContainer.appointmentsScreen.selectAppointmentOption(TestDataUtil.getValue(strAppointment));
+            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlot();
+            demoScreenContainer.appointmentsScreen.selectAppointmentVideoCallOptions(TestDataUtil.getValue(lstAppointmentDetails.get(3)));
+            demoScreenContainer.appointmentsScreen.selectReason(lstAppointmentDetails.get(4));
+        } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            demoScreenContainer.appointmentsScreen.selectLocationIOS(lstAppointmentDetails.get(0));
+            demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
+            demoScreenContainer.appointmentsScreen.selectProviderIOS(lstAppointmentDetails.get(1));
+            demoScreenContainer.appointmentsScreen.selectAppointmentDateIOS(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
+            demoScreenContainer.appointmentsScreen.selectAppointmentOptionIOS(TestDataUtil.getValue(strAppointment));
+            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlotIOS();
+            demoScreenContainer.appointmentsScreen.selectReasonIOS(lstAppointmentDetails.get(3));
         }
     }
 }

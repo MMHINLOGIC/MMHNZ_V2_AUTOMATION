@@ -145,6 +145,13 @@ public class AppointmentSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='allowtobookfamily']//input)[1]")
     protected WebElement elmntAllowToBookFriendsYesButton;
 
+
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='reason']//input)[1]")
+    protected WebElement elmntReasonforAppointmentisMandatoryYesButton;
+
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='reason']//input)[2]")
+    protected WebElement elmntReasonforAppointmentisMandatoryNoButton;
+
     //mat-radio-button[@value='ruleE']//input
 
 
@@ -560,6 +567,37 @@ public class AppointmentSettingPage extends BasePage {
         }
         return blresult;
     }
+
+
+    public boolean clickReasonforAppointmentisMandatoryYesButton() {
+        boolean blresult = false;
+        try {
+            jsScrollIntoView(elmntRuleARadioButton);
+            waitForElement(elmntRuleARadioButton);
+//            takeScreenshot(driver);
+            jsClick(elmntRuleARadioButton);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntReasonforAppointmentisMandatoryYesButton);
+            waitForElement(elmntReasonforAppointmentisMandatoryYesButton);
+//            takeScreenshot(driver);
+            jsClick(elmntReasonforAppointmentisMandatoryYesButton);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            System.out.println("Successfully Click Allow To Book Friends Yes Radio Button");
+            jsScrollIntoView(elmntSaveButton);
+            waitForElement(elmntSaveButton);
+            click(elmntSaveButton);
+            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+//            takeScreenshot(driver);
+            blresult =true;
+
+        } catch (Exception e) {
+            System.out.println("Failed to click Allow to Book For Family Yes Button >>> :: ");
+            e.printStackTrace();
+        }
+        return blresult;
+    }
+
+
 
     public boolean clickAllowtoBookForFamilyNoButton() {
         boolean blresult = false;

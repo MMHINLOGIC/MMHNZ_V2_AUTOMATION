@@ -208,7 +208,7 @@ public class MessagesPage extends BasePage {
     protected WebElement ProviderLocation;
 
     protected String elmntbyDrop = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[2]").toString();
+            .append("<<REPLACEMENT>>").append("')])[1]").toString();
 
     protected String ProviderHealthCentre = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[3]").toString();
