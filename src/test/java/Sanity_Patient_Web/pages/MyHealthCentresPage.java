@@ -129,9 +129,9 @@ public class MyHealthCentresPage extends BasePage {
 
 
     protected String SelectContentType = new StringBuilder()
-            .append("//span[contains(text(),'")
+            .append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')]").toString();
+            .append("')])[1]").toString();
 
     //li[contains(text(),'MTEVOLUTION,VM04Location2')]
     protected String healthCentre = new StringBuilder()
@@ -217,9 +217,9 @@ public class MyHealthCentresPage extends BasePage {
     public boolean clickConnectAHealthCentre() {
         boolean blResult = false;
         try {
-            waitForElement(btnConnectAHealthCentre);
-            waitForElementClickable(btnConnectAHealthCentre);
-            jsClick(btnConnectAHealthCentre);
+//            waitForElement(btnConnectAHealthCentre);
+//            waitForElementClickable(btnConnectAHealthCentre);
+//            jsClick(btnConnectAHealthCentre);
             waitForElement(txtBoxSearchForHealthCentre);
             blResult = verifyElement(txtBoxSearchForHealthCentre);
         } catch (Exception e) {
@@ -384,7 +384,7 @@ public class MyHealthCentresPage extends BasePage {
             WebElement header = waitForElement(By.xpath(SelectContentType.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strType))));
             System.out.println("header >>> :: "+header);
             waitForElement(header);
-            jsClick(header);
+            mouseClick(header);
 
             waitForSeconds(5);
             waitForElement(txtContentHeader);

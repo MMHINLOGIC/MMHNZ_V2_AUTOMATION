@@ -238,7 +238,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.clickRRPScriptInstructionSetting());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickRRPScriptInstructionsFeeSetup());
-        Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.selectHealthCentre(strHealthCentre));
+        Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.selectHealthCentre(TestDataUtil.getValue(strHealthCentre)));
     }
 
 
@@ -918,14 +918,14 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I enable RuleA Radio button and I click save button then I see Saved Successfully message{string}")
     public void iEnableRuleARadioButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickRuleAButton());
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.backToHomePage());
     }
 
     @And("I enable RuleB Radio button and I click save button then I see Saved Successfully message{string}")
     public void iEnableRuleBRadioButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickRuleBButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
@@ -974,6 +974,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.preScreeningPage.clickUpdateButton());
         Assert.assertTrue(providerPageContainer.preScreeningPage.verifyUpdates(strHealthCentre));
         Assert.assertTrue(providerPageContainer.preScreeningPage.clickCloseButton());
+
     }
 
     @And("I enable RuleC Radio button and I click save button then I see Saved Successfully message{string}")
@@ -1047,9 +1048,9 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I enable RuleE Radio button and I check Non restrict providers checkbox{string}and click save button then I see Saved Successfully message{string}")
     public void iEnableRuleERadioButtonAndICheckNonRestrictProvidersCheckboxAndClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData , String strRestrictProviders) {
         List<String>strRestrictProvidersdata=TestDataUtil.getListOfValue(strRestrictProviders);
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickRuleEButton());
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         for (String strdata:strRestrictProvidersdata) {
             System.out.println(">>>>>>>strdata"+strdata);
             Assert.assertTrue(providerPageContainer.appointmentSettingPage.DeselectRestrictProviderscheckbox(TestDataUtil.getValue(strdata)));
@@ -1061,7 +1062,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I enable allow to book friends yes radio button{string} and click save button then I see Saved Successfully message")
     public void iEnableAllowToBookFriendsYesRadioButtonAndClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickAllowtoBookForFamilyYesButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
 
@@ -1069,7 +1070,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I enable allow to book friends No radio button{string} and click save button then I see Saved Successfully message")
     public void iEnableAllowToBookFriendsNoRadioButtonAndClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickAllowtoBookForFamilyNoButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
 
@@ -1078,7 +1079,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I navigate to Turn Off Online Appointments {string} and Enable turn-off online appointments checkbox click save button then I see turned-off Message")
     public void iNavigateToTurnOffOnlineAppointmentsAndEnableTurnOffOnlineAppointmentsCheckboxClickSaveButtonThenISeeTurnedOffMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickTurnoffAppointments());
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickTurnOffOnlineAppointmentsCheckBoxchecked());
 
 //        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
@@ -1104,7 +1105,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I navigate to Turn On Online Appointments {string} and Enable turn-on online appointments checkbox click save button then I see turned-off Message")
     public void iNavigateToTurnOnOnlineAppointmentsAndEnableTurnOnOnlineAppointmentsCheckboxClickSaveButtonThenISeeTurnedOffMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickTurnoffAppointments());
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickTurnOnOnlineAppointmentsCheckBoxUnchecked());
 
     }
@@ -1139,7 +1140,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I navigate to Turn On Online Appointments {string} and Enable turn-On online appointments checkbox click save button then I see turned-On Message")
     public void iNavigateToTurnOnOnlineAppointmentsAndEnableTurnOnOnlineAppointmentsCheckboxClickSaveButtonThenISeeTurnedOnMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickTurnoffAppointments());
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickTurnOnOnlineAppointmentsCheckBoxchecked());
     }
     @Then("I Should see Turn On Appointments audit details displayed grid view {string}")
@@ -1690,7 +1691,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I enable Video Consultations by clicking Yes button and I click save button then I see Saved Successfully message{string}")
     public void iEnableVideoConsultationsByClickingYesButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
-        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue((providerPageContainer.videoConsultationsSettingPage.EnableVideoConsultationYesButton()));
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickVideoConsultationSaveButton());
     }
@@ -1702,7 +1703,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I enable Video Consultations by clicking No button and I click save button then I see Saved Successfully message{string}")
     public void iEnableVideoConsultationsByClickingNoButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
-        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.EnableVideoConsultationNoButton());
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickVideoConsultationSaveButton());
     }
@@ -1714,7 +1715,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I enable face to face appointment on a Video Consultation slot by clicking yes button and I click save button then I see Saved Successfully message{string}")
     public void iEnableFaceToFaceAppointmentOnAVideoConsultationSlotByClickingYesButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
-        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue((providerPageContainer.videoConsultationsSettingPage.EnablefacetofaceappointmentVideoConsultationYesButton()));
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickVideoConsultationSaveButton());
 
@@ -1808,7 +1809,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I enable face to face appointment on a Video Consultation slot by clicking No button and I click save button then I see Saved Successfully message{string}")
     public void iEnableFaceToFaceAppointmentOnAVideoConsultationSlotByClickingNoButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
-        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue((providerPageContainer.videoConsultationsSettingPage.DisablefacetofaceappointmentVideoConsultationNoButton()));
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickVideoConsultationSaveButton());
     }

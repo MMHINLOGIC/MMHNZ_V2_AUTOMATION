@@ -17,7 +17,7 @@ public class ProviderMessagesPage extends BasePage {
     }
 
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Compose Message']")
+    @FindBy(how = How.XPATH, using = " //span[text()='COMPOSE MESSAGE']")
     protected WebElement txtCompose;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Attach Files')]")
@@ -71,7 +71,8 @@ public class ProviderMessagesPage extends BasePage {
 
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),' Timprefer!')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),' Barry')]")
     })
     protected WebElement txtProviderPortalWelcomePage;
     @FindBy(xpath = "//a[@class='navbar-brand']")
@@ -135,7 +136,7 @@ public class ProviderMessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Inbox')]")
     protected WebElement elmntInboxDoctor;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Compose']")
+    @FindBy(how = How.XPATH, using = " //span[text()='COMPOSE MESSAGE']")
     protected WebElement elmntComposeDoctor;
 
 
@@ -145,7 +146,7 @@ public class ProviderMessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Message Settings')]")
     protected WebElement txtDoctorMessageSetting;
 
-    @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Compose Email')])[1]")
+    @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'COMPOSE MESSAGE')])[1]")
     protected WebElement txtProviderComposeEmail;
 
 
@@ -476,11 +477,11 @@ public class ProviderMessagesPage extends BasePage {
         try {
             waitForElement(elmntInboxDoctor);
             waitForElementClickable(elmntInboxDoctor);
-            click(elmntInboxDoctor);
+            jsClick(elmntInboxDoctor);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
          waitForElement(elmntDoctorMessageSetting);
             waitForElementClickable(elmntDoctorMessageSetting);
-            click(elmntDoctorMessageSetting);
+            jsClick(elmntDoctorMessageSetting);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForElement(txtDoctorMessageSetting);
             blResult = verifyElement(txtDoctorMessageSetting);

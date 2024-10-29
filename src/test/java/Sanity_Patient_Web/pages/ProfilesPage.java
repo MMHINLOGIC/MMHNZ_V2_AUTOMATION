@@ -1697,7 +1697,7 @@ click(btnAddresschangedOkPopup);
 //            waitForElement(elmntsMenu);
 //            waitForElement(elmntPraticeMenuDoctor);
 //            jsClick(elmntPraticeMenuDoctor);
-            waitForElement(getElmntSearchPatientsDoctor);
+//            waitForElement(getElmntSearchPatientsDoctor);
             jsClick(getElmntSearchPatientsDoctor);
             waitForElement(txtBCSearchPatient);
             blResult = verifyElement(txtBCSearchPatient);

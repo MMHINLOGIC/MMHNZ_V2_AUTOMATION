@@ -20,8 +20,8 @@ Feature: Video Consultations Setting Page
     Then I should see Video appointment slots are Not displayed in All tab
 
     Examples:
-      | Location         | Appointment_Details      |
-      | Automation1_Loc1 | &BOOK_VIDEO_APPOINTMENT& |
+      | Location   | Appointment_Details      |
+      | &LOCATION& | &BOOK_VIDEO_APPOINTMENT& |
 
   @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
   Scenario Template:S2-Provider Enable Video Consultations yes Button Check Video appointment slots are displayed in All tab
@@ -33,8 +33,8 @@ Feature: Video Consultations Setting Page
     Then I should see Video appointment slots are displayed in All tab
 
     Examples:
-      | Location         | Appointment_Details      |
-      | Automation1_Loc1 | &BOOK_VIDEO_APPOINTMENT& |
+      | Location   | Appointment_Details      |
+      | &LOCATION& | &BOOK_VIDEO_APPOINTMENT& |
 
   @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
   Scenario Template:S3-Provider Disable face to face appointment on a Video Consultation slot
@@ -48,8 +48,8 @@ Feature: Video Consultations Setting Page
     And I should see booked appointment displayed under the future tab "<Appointment_Summary>"
 
     Examples:
-      | Location         | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
-      | Automation1_Loc1 | &BOOK_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VIDEO_APPOINTMENT_SUMMARY& |
+      | Location   | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
+      | &LOCATION& | &BOOK_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VIDEO_APPOINTMENT_SUMMARY& |
 
 
   @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
@@ -64,10 +64,8 @@ Feature: Video Consultations Setting Page
     And I should see booked appointment displayed under the future tab "<Appointment_Summary>"
 
     Examples:
-      | Location         | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
-      | Automation1_Loc1 | &BOOK_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VIDEO_APPOINTMENT_SUMMARY& |
-
-
+      | Location   | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
+      | &LOCATION& | &BOOK_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VIDEO_APPOINTMENT_SUMMARY& |
 
 
   @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING

@@ -66,6 +66,17 @@ Feature: Appointment Reminder Setting Page
       | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Patient_User_Login   | Password   | Appointment           | Appointment_Cancel_Button        | Appointment_Summary         |
       | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &PATIENT_USER_LOGIN& | &PASSWORD& | Upcoming Appointments | &APPOINTMENT_DETAILS_FOR_CANCEL& | &VISIT_APPOINTMENT_SUMMARY& |
 
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING
+  Scenario Template: Prep- Canceling all the appointments
+
+    Given As a user I am on HomePage
+    And I navigate to the "<Appointment>" Future Appointments page
+    And I canceling all the available appointments
+
+    Examples:
+      | Appointment           |
+      | Upcoming Appointments |
+
 
   @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING
   Scenario Template:S4- Set First & Second Appointment Remainder with Remainder Time

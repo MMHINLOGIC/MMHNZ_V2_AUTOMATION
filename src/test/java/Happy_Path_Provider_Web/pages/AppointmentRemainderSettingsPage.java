@@ -41,8 +41,9 @@ public class AppointmentRemainderSettingsPage extends BasePage {
 //    })
 //    protected WebElement elmntHealthCenterDropDown;
 
-    protected String elmntSelectNumberDropDown = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[2]").toString();
+    protected String elmntSelectNumberDropDown = new StringBuilder().append("//span[text()='")
+            .append("<<REPLACEMENT>>").append("']").toString();
+
 
     protected String elmntHealthCentreDrop = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[2]").toString();
@@ -60,14 +61,12 @@ public class AppointmentRemainderSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//mat-label[contains(text(),'Select')]//preceding::mat-select)[3]")
     protected WebElement elmntHoursDropDown;
 
-    protected String elmntSelectDaysDropDown = new StringBuilder().append("//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]").toString();
+    protected String elmntSelectDaysDropDown = new StringBuilder().append("//span[text()='")
+            .append("<<REPLACEMENT>>").append("']").toString();
 
-    protected String elmntSelectHoursDropDown = new StringBuilder().append("//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]").toString();
+    protected String elmntSelectHoursDropDown = new StringBuilder().append("//span[text()='")
+            .append("<<REPLACEMENT>>").append("']").toString();
 
-    protected String elmntSelect2HoursDropDown = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     protected String elmntSelectRemiderTime = new StringBuilder().append("//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
@@ -137,7 +136,7 @@ public class AppointmentRemainderSettingsPage extends BasePage {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmntEditButton);
             waitForElement(elmntEditButton);
-            click(elmntEditButton);
+            jsClick(elmntEditButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
              waitForElement(elmntSaveButton);
             blresult = verifyElement(elmntSaveButton);
@@ -199,12 +198,21 @@ public class AppointmentRemainderSettingsPage extends BasePage {
             System.out.println(">>>>>>>>>StrNumber"+StrNumber);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntNumberDropDown);
-            click(elmntNumberDropDown);
+            jsClick(elmntNumberDropDown);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectNumberDropDown.replace("<<REPLACEMENT>>", StrNumber)));
-            System.out.println(">>>>>>>>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
-            waitForSeconds(2);
-            mouseClick(elmntEntriesFromHealthCentre);
+//            if (verifyElement(By.xpath(elmntSelectNumberDropDown.replace("<<REPLACEMENT>>", StrNumber)))) {
+                WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectNumberDropDown.replace("<<REPLACEMENT>>", StrNumber)));
+                System.out.println(">>>>>>>>>>elmntSelectNumberDropDown" + elmntEntriesFromHealthCentre);
+                waitForSeconds(2);
+                jsClick(elmntEntriesFromHealthCentre);
+//            }
+
+//            if (verifyElement(By.xpath(elmntSelectNumberDropDown1.replace("<<REPLACEMENT>>", StrNumber)))) {
+//                WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectNumberDropDown1.replace("<<REPLACEMENT>>", StrNumber)));
+//                System.out.println(">>>>>>>>>>elmntSelectNumberDropDown" + elmntEntriesFromHealthCentre);
+//                waitForSeconds(2);
+//                jsClick(elmntEntriesFromHealthCentre);
+//            }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult = verifyElement(elmntNumberDropDown);
         } catch (Exception e) {
@@ -220,12 +228,20 @@ public class AppointmentRemainderSettingsPage extends BasePage {
         try {
             System.out.println(">>>>>>>>>StrHours"+StrHours);
             waitForElement(elmntHoursDropDown);
-            click(elmntHoursDropDown);
+            jsClick(elmntHoursDropDown);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectHoursDropDown.replace("<<REPLACEMENT>>", StrHours)));
-            System.out.println(">>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
-            waitForSeconds(2);
-            mouseClick(elmntEntriesFromHealthCentre);
+//            if (verifyElement(By.xpath(elmntSelectHoursDropDown.replace("<<REPLACEMENT>>", StrHours)))) {
+                WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectHoursDropDown.replace("<<REPLACEMENT>>", StrHours)));
+                System.out.println(">>>>elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
+                waitForSeconds(2);
+                jsClick(elmntEntriesFromHealthCentre);
+//            }
+//            if (verifyElement(By.xpath(elmntSelectHoursDropDown.replace("<<REPLACEMENT>>", StrHours)))) {
+//                WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectHoursDropDown.replace("<<REPLACEMENT>>", StrHours)));
+//                System.out.println(">>>>elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
+//                waitForSeconds(2);
+//                jsClick(elmntEntriesFromHealthCentre);
+//            }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult = verifyElement(elmntHoursDropDown);
         } catch (Exception e) {
@@ -285,7 +301,7 @@ public class AppointmentRemainderSettingsPage extends BasePage {
         try {
             jsScrollIntoView(elmntSaveButton);
             waitForElement(elmntSaveButton);
-            click(elmntSaveButton);
+            jsClick(elmntSaveButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             waitForElement(elmntAppointmentReminderSettingSavedPopUp);
             blresult1 =  verifyElement(elmntAppointmentReminderSettingSavedPopUp);
@@ -304,11 +320,11 @@ public class AppointmentRemainderSettingsPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
             waitForElement(elmntHoursDropDown);
-            click(elmntHoursDropDown);
+            jsClick(elmntHoursDropDown);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectDaysDropDown.replace("<<REPLACEMENT>>", StrHours)));
             waitForSeconds(2);
-            mouseClick(elmntEntriesFromHealthCentre);
+            jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult = verifyElement(elmntHoursDropDown);
         } catch (Exception e) {
@@ -323,10 +339,10 @@ public class AppointmentRemainderSettingsPage extends BasePage {
         boolean blresult = false;
         try {
             waitForElement(elmntReminderTimeDropDown);
-            click(elmntReminderTimeDropDown);
+            jsClick(elmntReminderTimeDropDown);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectRemiderTime.replace("<<REPLACEMENT>>", StrHours)));
-            mouseClick(elmntEntriesFromHealthCentre);
+            jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult = verifyElement(elmntReminderTimeDropDown);
         } catch (Exception e) {
@@ -386,10 +402,19 @@ public class AppointmentRemainderSettingsPage extends BasePage {
             waitForElement(elmntSecondHoursDropDown);
             jsClick(elmntSecondHoursDropDown);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelect2HoursDropDown.replace("<<REPLACEMENT>>", StrHours)));
-            System.out.println(">>>>>>>>>"+elmntEntriesFromHealthCentre);
-            waitForSeconds(2);
-            jsClick(elmntEntriesFromHealthCentre);
+//            if (verifyElement(By.xpath(elmntSelect2HoursDropDown.replace("<<REPLACEMENT>>", StrHours)))) {
+//                WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelect2HoursDropDown.replace("<<REPLACEMENT>>", StrHours)));
+//                System.out.println(">>>>>>>>>" + elmntEntriesFromHealthCentre);
+//                waitForSeconds(2);
+//                jsClick(elmntEntriesFromHealthCentre);
+//            }
+
+//            if (verifyElement(By.xpath(elmntSelectHoursDropDown.replace("<<REPLACEMENT>>", StrHours)))) {
+                WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectHoursDropDown.replace("<<REPLACEMENT>>", StrHours)));
+                System.out.println(">>>>>>>>>" + elmntEntriesFromHealthCentre);
+                waitForSeconds(2);
+                jsClick(elmntEntriesFromHealthCentre);
+//            }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult =true;
         } catch (Exception e) {

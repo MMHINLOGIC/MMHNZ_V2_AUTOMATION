@@ -38,7 +38,7 @@ public class MyAppointmentPage extends BasePage {
             jsClick(clickMyAppointmentButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(clickheaderMyAppointmentPage);
-            click(clickheaderMyAppointmentPage);
+            jsClick(clickheaderMyAppointmentPage);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(verifyheaderMyAppointmentPage);
             blresult =verifyElement(verifyheaderMyAppointmentPage);

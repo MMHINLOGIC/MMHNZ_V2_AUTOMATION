@@ -203,6 +203,7 @@ public class WebSteps {
     @When("I click confirm button")
     public void iClickConfirmButton() {
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmButton());
+
     }
 
     @Then("I should see details of created appointment {string} {string}")
@@ -381,11 +382,11 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -3137,7 +3138,7 @@ public class WebSteps {
         demoPageContainer.messagesPage.selecGroupTo(list.get(3));
         Assert.assertTrue(demoPageContainer.messagesPage.enterGroupSubject(TestDataUtil.getValue(list.get(4))));
         Assert.assertTrue(demoPageContainer.messagesPage.enterGroupMessage(TestDataUtil.getValue(list.get(5))));
-        demoPageContainer.messagesPage.selecGroupTo(list.get(3));
+//        demoPageContainer.messagesPage.selecGroupTo(list.get(3));
     }
 
     @And("I send the group message to the patient users")

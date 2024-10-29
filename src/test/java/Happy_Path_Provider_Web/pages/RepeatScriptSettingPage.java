@@ -1908,6 +1908,31 @@ public class RepeatScriptSettingPage extends BasePage {
         return blResult;
     }
 
+    public boolean DisableRRPScriptInstructionsFeeForLocation(String strType) {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
+            System.out.println("Rdo Btn Locator :: " + rdoBtn.replace("<<TYPE>>", strType) + "\n");
+            WebElement type = waitForElement(By.xpath(rdoBtn.replace("<<TYPE>>", strType)));
+            waitForElementClickable(type);
+            waitForSeconds(3);
+            jsClick(type);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            System.out.println("selectedType Btn Locator :: " + selectedRdoBtnValue.replace("<<TYPE>>", strType) + "\n");
+            WebElement selectedType = waitForElement(By.xpath(selectedRdoBtnValue.replace("<<TYPE>>", strType)));
+            waitForElement(selectedType);
+            takeScreenshot(driver);
+            blResult = selectedType.isSelected();
+
+        } catch (Exception e) {
+            System.out.println("Rdo Btn not selected >>> :: ");
+            e.printStackTrace();
+
+        }
+        return blResult;
+    }
+
     public boolean verifyRRPScriptInstructionsChanges(String strLocation, String strType) {
         boolean isVerified = false;
         try {

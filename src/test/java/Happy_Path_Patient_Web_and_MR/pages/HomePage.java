@@ -110,7 +110,7 @@ public class HomePage extends BasePage {
     })
     protected WebElement txtProviderPortalWelcomePage;
 
-    @FindBy(how = How.XPATH, using = "//a/span[contains(text(),'Dashboard')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
     protected WebElement elmntDashboard;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
@@ -324,7 +324,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@id='EncrySecuredPassword']")
     protected WebElement txtPassword;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(@class,'header')]/span[text()='Appointments']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Appointments']")
     protected WebElement btnAppointmentExpand;
 
     @FindBy(how = How.XPATH, using = "//img[@class='profile-pic bookAppointmentIcon']")
