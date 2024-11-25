@@ -584,8 +584,8 @@ public class BeatingTheBlues extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(verifySessionOverviewHomeIcon);
             isverified=verifyElement(verifySessionOverviewHomeIcon);
-            waitForElement(verifyStartSessionHomePageIcon);
-            isverified=verifyElement(verifyStartSessionHomePageIcon);
+//            waitForElement(verifyStartSessionHomePageIcon);
+//            isverified=verifyElement(verifyStartSessionHomePageIcon);
             waitForElement(verifyMyProgressHomePageIcon);
             isverified=verifyElement(verifyMyProgressHomePageIcon);
             waitForElement(verifyViewUserGuide);

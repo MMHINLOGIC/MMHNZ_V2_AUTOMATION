@@ -136,6 +136,10 @@ public class BasePage {
 
     }
 
+    public WebElement waitForElementIgnoreStale(WebElement element) {
+        return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
+    }
+
     public static boolean compareList(List<WebElement> lstElements, List<String> lstDataValues) {
         List<String> lstActualValue = new ArrayList<String>();
         List<String> lstExpectedValues = new ArrayList<String>();

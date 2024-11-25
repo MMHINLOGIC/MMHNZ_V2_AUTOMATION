@@ -720,7 +720,7 @@ public class MyHealthRecordsPage extends BasePage {
 
 
     protected String elmntCovidImmunisationsDrop = new StringBuilder().append("(//span[text()='")
-            .append("<<REPLACEMENT>>").append("'])[2]").toString();
+            .append("<<REPLACEMENT>>").append("'])[1]").toString();
 
     protected String elmntAddAllergicDrop = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
@@ -1675,8 +1675,8 @@ jsScrollIntoView(elmntClinicianNotes);
         boolean blResult = false;
         try {
             WebElement elmntMobileAllergiesTableData = waitForElement(By.xpath(strMobileLabResultIconContentLocator
-                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(1)))
-                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(4)))));
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(2)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))));
             waitForElement(elmntMobileAllergiesTableData);
             verifyElement(elmntMobileAllergiesTableData);
             waitForSeconds(3);
@@ -1717,8 +1717,8 @@ jsScrollIntoView(elmntClinicianNotes);
         boolean blResult = false;
         try {
             WebElement elmntMobileAllergiesIconData = waitForElement(By.xpath(strMobileLabResultIconContentLocator
-                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(1)))
-                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(4)))));
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(2)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))));
             jsScrollIntoView(elmntMobileAllergiesIconData);
             waitForElementClickable(elmntMobileAllergiesIconData);
             jsClick(elmntMobileAllergiesIconData);
@@ -2543,7 +2543,7 @@ jsScrollIntoView(elmntClinicianNotes);
         boolean blResult = false;
         try {
             waitForSeconds(2);
-            waitForElementClickable(elmntMobileclassificationdrop);
+//            waitForElementClickable(elmntMobileclassificationdrop);
             waitForSeconds(2);
             jsClick(elmntMobileclassificationdrop);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntAddclassiDrop.replace("<<REPLACEMENT>>", strSeverity)));
@@ -3096,7 +3096,7 @@ jsScrollIntoView(elmntClinicianNotes);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntCovidImmunisationsDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
             System.out.println(">>>>>>>"+elmntEntriesFromHealthCentre);
             waitForElement(elmntEntriesFromHealthCentre);
-            mouseClick(elmntEntriesFromHealthCentre);
+            jsClick(elmntEntriesFromHealthCentre);
             blResult = verifyElement(elmntCovidImmunisationsdrop);
         } catch (Exception e) {
             e.printStackTrace();

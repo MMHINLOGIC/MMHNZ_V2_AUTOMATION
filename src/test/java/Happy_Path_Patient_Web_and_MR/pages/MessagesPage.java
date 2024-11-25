@@ -74,7 +74,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'COMPOSE MESSAGE')]")
     protected WebElement elmntComposePatient;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Compose')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'COMPOSE MESSAGE')]")
     protected WebElement elmntMobileComposePatient;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Inbox')]")
@@ -1285,6 +1285,8 @@ protected WebElement txtWelcome;
     public boolean replyToPatientReceivedMessage(String strSubject, String strMessage) {
         boolean blResult = false;
         try {
+            System.out.println("strSubject"+strSubject);
+            System.out.println("strMessage"+strMessage);
             strRandomSubjectMessage = strSubject.concat(strExecutionID);
 //            strRandomSubjectMessage = strSubject.concat(" - ").concat(getRandomString());
             System.out.println("strRandomSubjectMessage >>> :: " + strRandomSubjectMessage);
@@ -1294,7 +1296,6 @@ protected WebElement txtWelcome;
             waitForSeconds(6);
             jsClick(btnReply);
             waitForElement(txtBoxReplySubject);
-            waitForElementClickable(txtBoxReplySubject);
             txtBoxReplySubject.clear();
             txtBoxReplySubject.sendKeys(strSubject.concat(strExecutionID));
             waitForSeconds(2);
@@ -2303,7 +2304,7 @@ jsScrollIntoView(txtBoxMessages);
         boolean blResult = false;
         try {
             waitForSeconds(2);
-            waitForElement(txtSentPatient);
+//            waitForElement(txtSentPatient);
             System.out.println("strRandomSubjectMessage >>> :: " + strRandomSubjectMessage);
             System.out.println("X Path-inboxSubject >>> :: " + sentMessageSubject.replace("<<REPLACEMENT>>", strRandomSubjectMessage));
             WebElement sentSubject = waitForElement(By.xpath(sentMessageSubject.replace("<<REPLACEMENT>>", strRandomSubjectMessage)));
@@ -2348,14 +2349,15 @@ jsScrollIntoView(txtBoxMessages);
     public boolean navigateToSentItems() {
         boolean blResult = false;
         try {
-            waitForElement(txtInboxPage);
+//            waitForElement(txtInboxPage);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElement(elmntSentDoctor);
-            waitForElementClickable(elmntSentDoctor);
+//            waitForElement(elmntSentDoctor);
+//            waitForElementClickable(elmntSentDoctor);
+            jsScrollIntoView(elmntSentDoctor);
             mouseClick(elmntSentDoctor);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             driver.navigate().refresh();
-            waitForElement(txtSent);
+//            waitForElement(txtSent);
             blResult = verifyElement(txtSent);
             System.out.println("Successfully navigated to the inbox");
 

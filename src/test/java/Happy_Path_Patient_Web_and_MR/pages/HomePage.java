@@ -45,7 +45,6 @@ public class HomePage extends BasePage {
     public static String BTBNewEmail;
 
 
-
     //MMH_v2
 
     @FindBy(how = How.XPATH, using = "//div[@class='navbar-header']")

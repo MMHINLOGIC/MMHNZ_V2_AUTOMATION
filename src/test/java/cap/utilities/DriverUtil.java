@@ -72,7 +72,6 @@ public class DriverUtil {
                 System.out.println("Exception for Remote Execution : " + ex.getMessage());
             }
         }
-
         return driver;
     }
 
@@ -431,9 +430,11 @@ public class DriverUtil {
             if (System.getProperty(Constants.ENV_VARIABLE_CONFIG, "").contains("remote_")) {
                 System.out.println("\n enter if... remote Execut");
 
-                String USERNAME = "rdevanathan_NS9RGC";
-                String AUTOMATE_KEY = "6HKdZhsteHb6zMAykmyY";
+                String USERNAME = "mmhglobalptltd_XdIJEO";
+                String AUTOMATE_KEY = "thy2kfN3zpGBWXb6zxkq";
+                String PERCY_TOKEN="auto_e36d83a289f30f373738feda87a06a3340467b9b540b26832f88364415de50ac";
                 strURL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+
                 System.out.println("URL   " + strURL);
 
             } else {
@@ -457,6 +458,7 @@ public class DriverUtil {
             }
             if (capability.getPlatform().toString().equalsIgnoreCase(Constants.ANDROID.toUpperCase())) {
                 driver = new AndroidDriver(new URL(strURL), capability);
+//                driver=new AndroidDriver(new URL(Str));
 
             } else if (capability.getPlatform().toString().equalsIgnoreCase(Constants.IOS.toUpperCase())) {
                 driver = new IOSDriver(new URL(strURL), capability);
