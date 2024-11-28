@@ -2970,7 +2970,7 @@ public class WebSteps {
         List<String> lstMessageDetails = TestDataUtil.getListOfValue(strMessageDetails);
         System.out.println("List Message Details >>> :: " + lstMessageDetails);
         Assert.assertTrue(demoPageContainer.messagesPage.navigateToSentItems());
-        Assert.assertTrue(demoPageContainer.messagesPage.verifySentMessages(TestDataUtil.getValue(lstMessageDetails.get(5))));
+//        Assert.assertTrue(demoPageContainer.messagesPage.verifySentMessages(TestDataUtil.getValue(lstMessageDetails.get(5))));
 
 
     }

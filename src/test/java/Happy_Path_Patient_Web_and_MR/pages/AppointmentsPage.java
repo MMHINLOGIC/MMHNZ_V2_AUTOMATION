@@ -277,7 +277,15 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//div[@class='slot-start-time']")
     protected WebElement elmntSlotTimes;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Visit')]//parent::strong")
+//    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Visit')]//parent::strong")
+//    protected WebElement elmntSlotTime;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'Visit')]//parent::strong"),
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'Video')]//parent::strong"),
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'Phone')]//parent::strong")
+
+    })
     protected WebElement elmntSlotTime;
 
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'No visit slots are available for the selected provider and date.')]")
@@ -583,7 +591,7 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[@class='interstitial-close-button']")
     protected WebElement elmntMobileUpComingAppointmentAdd;
 
-    @FindBy(how = How.XPATH, using = "(//button[@class='mat-focus-indicator mat-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-button mat-button-base ng-star-inserted']//span[text()=' Cancel Appointment']")
+    @FindBy(how = How.XPATH, using = "(//button[@class='mat-focus-indicator mat-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-button mat-button-base ng-star-inserted']//span[text()=' Cancel Appointment'])[1]")
     protected WebElement elmntCancelAppointments;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Next')]")

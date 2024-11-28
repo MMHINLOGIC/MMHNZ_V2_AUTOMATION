@@ -41,6 +41,23 @@ public class ProviderPageContainer {
 
     public VideoConsultationsSettingPage videoConsultationsSettingPage;
 
+    public TurnOffOnlineAppointmentPage turnOffOnlineAppointmentPage;
+
+    public TurnOffAppointmentAuditPage turnOffAppointmentAuditPage;
+
+    public BlockAppointmentForProviderPage blockAppointmentForProviderPage;
+
+    public AlternativeProvidersPage alternativeProvidersPage;
+
+    public MerchantAccountSetupPage merchantAccountSetupPage;
+
+    public AppointmentReasonPage appointmentReasonPage;
+
+    public SMSSettingsPage sMSSettingsPage;
+
+
+
+
 
 
     public ProviderPageContainer() {
@@ -82,8 +99,16 @@ public class ProviderPageContainer {
         onlinePaymentsSettingPage = new OnlinePaymentSettingsPage(driver);
         videoConsultationsPage = new VideoConsultationsPage(driver);
         setupServicesPage = new SetupServicesPage(driver);
-        appointmentReminderSettingPage = new    AppointmentRemainderSettingsPage(driver);
+        appointmentReminderSettingPage = new AppointmentRemainderSettingsPage(driver);
         videoConsultationsSettingPage = new VideoConsultationsSettingPage(driver);
+        turnOffOnlineAppointmentPage = new TurnOffOnlineAppointmentPage(driver);
+        turnOffAppointmentAuditPage = new TurnOffAppointmentAuditPage(driver);
+        blockAppointmentForProviderPage =new BlockAppointmentForProviderPage(driver);
+
+        alternativeProvidersPage=new AlternativeProvidersPage(driver);
+        merchantAccountSetupPage =new MerchantAccountSetupPage(driver);
+        appointmentReasonPage =new AppointmentReasonPage(driver);
+        sMSSettingsPage =new SMSSettingsPage(driver);
     }
 
     @After("@WEB")

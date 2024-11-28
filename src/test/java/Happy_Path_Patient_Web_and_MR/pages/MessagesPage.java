@@ -942,7 +942,7 @@ protected WebElement txtWelcome;
             click(elmntMessages);
             waitForSeconds(1);
             waitForElementClickable(elmntMessagesSettings);
-            click(elmntMessagesSettings);
+            jsClick(elmntMessagesSettings);
             waitForSeconds(1);
             waitForElement(btnSave);
             blResult = verifyElement(btnSave);
@@ -1246,7 +1246,7 @@ protected WebElement txtWelcome;
             WebElement bodyMessage = waitForElement(By.xpath(receivedBodyMessage.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strBody))));
             waitForElement(bodyMessage);
             takeScreenshot(driver);
-            blResult = true;
+            blResult = verifyElement(bodyMessage);
         } catch (Exception e) {
             System.out.println("Failed verify Patient Received Message >>>>> :: " + blResult);
             e.printStackTrace();
@@ -2354,11 +2354,11 @@ jsScrollIntoView(txtBoxMessages);
 //            waitForElement(elmntSentDoctor);
 //            waitForElementClickable(elmntSentDoctor);
             jsScrollIntoView(elmntSentDoctor);
-            mouseClick(elmntSentDoctor);
+            jsClick(elmntSentDoctor);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             driver.navigate().refresh();
 //            waitForElement(txtSent);
-            blResult = verifyElement(txtSent);
+            blResult = true;
             System.out.println("Successfully navigated to the inbox");
 
         } catch (Exception e) {

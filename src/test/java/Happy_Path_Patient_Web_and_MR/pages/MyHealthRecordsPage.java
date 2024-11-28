@@ -720,7 +720,7 @@ public class MyHealthRecordsPage extends BasePage {
 
 
     protected String elmntCovidImmunisationsDrop = new StringBuilder().append("(//span[text()='")
-            .append("<<REPLACEMENT>>").append("'])[1]").toString();
+            .append("<<REPLACEMENT>>").append("'])[2]").toString();
 
     protected String elmntAddAllergicDrop = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
@@ -4051,7 +4051,7 @@ jsScrollIntoView(elmntClinicianNotes);
             jsClick(elmntCovidImmunisationsdrop);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntCovidImmunisationsDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
             System.out.println(">>>>>>>>>>>>>>>>>>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
-            mouseClick(elmntEntriesFromHealthCentre);
+            jsClick(elmntEntriesFromHealthCentre);
             blResult = true;
         } catch (Exception e) {
             e.printStackTrace();

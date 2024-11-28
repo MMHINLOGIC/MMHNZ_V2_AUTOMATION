@@ -71,8 +71,8 @@ Feature: Appointments
     When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
     Examples:
-      | Email Address            | Password   |
-      | &EMAIL FOR APPOINTMENTS& | &PASSWORD& |
+      | Email Address | Password   |
+      | &EMAIL&       | &PASSWORD& |
 
   @WEB @SANITY_PATH @SANITY_PATH_APPOINTMENTS
   Scenario Template: S1 - Patient Cancel Appointment
@@ -129,7 +129,7 @@ Feature: Appointments
     Given As a user I am on HomePage
     And I navigate to the "<Appointment>" page
     And I enter the video appointment details "<Appointment_Details>"
-    When I click confirm button
+    When I click confirm button "<Appointment_Details>"
     Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"
     And I accept the terms & conditions and confirm my booking
     And I should see booked appointment displayed under the future tab "<Appointment_Summary>"
@@ -207,5 +207,5 @@ Feature: Appointments
 #    And I should see Appointment is not for today popup
 
     Examples:
-      | Appointments      | All_Icons     |
-      | Video invitations | &VIDEO_ICONS& |
+      | Appointments        | All_Icons     |
+      | Video Consultations | &VIDEO_ICONS& |

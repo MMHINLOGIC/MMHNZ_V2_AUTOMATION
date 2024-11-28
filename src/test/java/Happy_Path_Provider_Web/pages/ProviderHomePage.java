@@ -94,7 +94,7 @@ public class ProviderHomePage extends BasePage {
     })
     protected WebElement txtHarryHarryWelcome;
 
-    @FindBy(how = How.XPATH, using = "//a/span[contains(text(),'Dashboard')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
     protected WebElement elmntDashboard;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
