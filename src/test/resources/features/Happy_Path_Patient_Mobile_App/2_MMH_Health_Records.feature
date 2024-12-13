@@ -18,8 +18,8 @@ Feature: Mobile_Health_Records_Scenarios
 
     Given I am on MMH Home screen
     And I tap on "Health Records" option in home screen
-    When I tap on "Test results" in Health Records
-    Then I should see "<Test Result Records>" and "<Test Result Details>" in "Test results"
+    When I tap on "Lab Results" in Health Records
+    Then I should see "<Test Result Records>" and "<Test Result Details>" in "Lab Results"
 #    And I should see Pathology Tests Explanation under Help
 
     Examples:
@@ -79,8 +79,8 @@ Feature: Mobile_Health_Records_Scenarios
 
     Given I am on MMH Home screen
     And I tap on "Health Records" option in home screen
-    When I tap on "Doctor Notes" in Health Records
-    Then I should see "<Test Result Records>" and "<Test Result Details>" in "Doctor notes"
+    When I tap on "Clinician Notes" in Health Records
+    Then I should see "<Test Result Records>" and "<Test Result Details>" in "Clinician notes"
 
     Examples:
       | Test Result Records    | Test Result Details    |

@@ -3089,7 +3089,7 @@ public class WebSteps {
         }
         Assert.assertTrue(demoPageContainer.messagesPage.navigateToPatientSentMessage());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-//            Assert.assertTrue(demoPageContainer.messagesPage.verifyReplySentMessage());
+            Assert.assertTrue(demoPageContainer.messagesPage.verifyReplySentMessage());
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             Assert.assertTrue(demoPageContainer.messagesPage.verifyMobileReplySentMessage());
@@ -5370,16 +5370,32 @@ public class WebSteps {
     }
 
     @And("I should see details of created appointment Reason {string} {string} and I should see booked appointment displayed under the future tab {string}")
-    public void iShouldSeeDetailsOfCreatedAppointmentReasonAndIShouldSeeBookedAppointmentDisplayedUnderTheFutureTab(String strAppointmentDetails, String strAppointmentSummary, String strFutureDate) {
+    public void iShouldSeeDetailsOfCreatedAppointmentReasonAndIShouldSeeBookedAppointmentDisplayedUnderTheFutureTab(String strAppointmentDetails, String strFutureDate, String strAppointmentSummary) {
 
         List<String> lstDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
         List<String> lstDetail = TestDataUtil.getListOfValue(strAppointmentSummary);
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmButton());
-        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDetailsOfCreatedAppointment(lstDetails, (strFutureDate)));
+        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDetailsOfCreatedAppointment(lstDetails, (TestDataUtil.getValue(strFutureDate))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.acceptTermsAndConditionsForAppointment());
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmYourBookingButton());
         Assert.assertTrue(demoPageContainer.appointmentsPage.verifyCreatedAppointmentInFutureAppointmentTab(lstDetail));
 
+    }
+
+
+    @And("I click Inbox navigate to Compose screen verify the SMS Tab Displayed")
+    public void iClickInboxNavigateToComposeScreenVerifyTheSMSTabDisplayed() {
+        Assert.assertTrue(demoPageContainer.homePage.clickDashBoard());
+        Assert.assertTrue(demoPageContainer.messagesPage.navigateToProviderHomepage());
+        Assert.assertTrue(demoPageContainer.messagesPage.navigateToComposeMessageForDoctor());
+        Assert.assertTrue(demoPageContainer.messagesPage.verifySMSTab());
+    }
+
+
+    @Then("I should see SMS info message displayed")
+    public void iShouldSeeSMSInfoMessageDisplayed() {
+
+        Assert.assertTrue(demoPageContainer.messagesPage.verifySMSInfoMessage());
     }
 }
 

@@ -41,7 +41,9 @@ public class DemoMobileViewCukes extends AbstractTestNGCucumberTests {
                 ExtentService.getInstance().setSystemInfo("Automation QA", System.getProperty("user.name"));
 
 
-
-
         }
 }
+
+//PRE PROD
+
+//clean test -Dapp=Happy_Path_Patient_Web_and_MR -Drunner=DemoMobileViewCukes -Dexecution_type=mobile -Dconfig=local_android_Galaxy_M53_Chrome -Denv=PROD -Dbrowser_name=chrome "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/PatientMobilechrome-QAResults.html -Dsysteminfo.AppName=Demo-QA"

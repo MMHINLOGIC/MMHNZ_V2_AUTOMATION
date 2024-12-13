@@ -10,7 +10,7 @@ Feature: Turn_Off_Online_Appointment
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @TURN_OFF_ONLINE_APPOINTMENT @PROVIDER_SCRIPT2
   Scenario Template:S1-Provider Turn Off Online Appointments verify No Available appointment slot Text is displayed in Appointment Page
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -23,7 +23,7 @@ Feature: Turn_Off_Online_Appointment
       | &LOCATION& | &PROVIDER_LOGIN_DETAILS& | &BOOK_VISIT_APPOINTMENT& | Book Appointment | Automation |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @TURN_OFF_ONLINE_APPOINTMENT @PROVIDER_SCRIPT2
   Scenario Template:S2-Provider Turn on Online Appointments verify Available appointment slot Text is displayed in Appointment Page
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page

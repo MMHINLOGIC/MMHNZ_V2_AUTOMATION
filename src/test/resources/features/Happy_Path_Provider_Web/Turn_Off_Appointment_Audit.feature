@@ -10,7 +10,7 @@ Feature: Turn_Off_Appointment_Audit
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @TURN_OFF_APPOINTMENT_AUDIT
   Scenario Template:S1-Provider View Turn Off Appointments Audit verify Check Turn Off Appointments audit grid displayed
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -22,7 +22,7 @@ Feature: Turn_Off_Appointment_Audit
       | Location   | Appointments_Audit_Details |
       | &LOCATION& | &APPOINTMENT_AUDIT_DATA&   |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @TURN_OFF_APPOINTMENT_AUDIT
   Scenario Template:S2-Provider View Turn On Appointments Audit verify Check Turn On Appointments audit grid view displayed
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page

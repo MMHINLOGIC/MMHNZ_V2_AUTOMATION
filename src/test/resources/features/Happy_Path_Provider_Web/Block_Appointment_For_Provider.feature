@@ -9,7 +9,7 @@ Feature: Block_Appointment_For_Provider
     And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB @PROVIDER_HAPPY_PATH11 @APPOINTMENTS_SETTING11
+  @WEB @PROVIDER_HAPPY_PATH1 @APPOINTMENTS_SETTING1 @PROVIDER_SCRIPT2
   Scenario Template:S1-Provider Block & Unblock Appointments doctor Name verify Patient Side Block & Unblock Appointment Provider Name Is Displayed or Not Displayed
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page

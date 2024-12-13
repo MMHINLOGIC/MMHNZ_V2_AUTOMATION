@@ -119,7 +119,6 @@ public class ProviderWebSteps {
     }
 
 
-
     @Given("As a user I am on login Provider Portal Page")
     public void asAUserIAmOnLoginProviderPortalPage() {
         Assert.assertTrue(providerPageContainer.providerHomePage.launchProviderUrl());
@@ -151,7 +150,6 @@ public class ProviderWebSteps {
     }
 
 
-
     @Given("As a user Iam on Patient login page and I enter {string} and {string} for Patient")
     public void asAUserIamOnPatientLoginPageAndIEnterAndForPatient(String strUserName, String strPassword) {
 
@@ -176,9 +174,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectHealthCenter(TestDataUtil.getValue(strHealthCentre)));
 //        Assert.assertTrue(providerPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(strLocation)));
-}
-
-
+    }
 
 
     @Given("As a user I navigate to Provider Page")
@@ -252,9 +248,9 @@ public class ProviderWebSteps {
     public void AsAProviderIAmOnHomePageAndNavigateToRepeatScriptSettingsIn(String strName) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             System.out.println("Entre");
-        Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
-        Assert.assertTrue(providerPageContainer.providerHomePage.clickSecureMessaging());
-        Assert.assertTrue(providerPageContainer.providerHomePage.navigateToRepeatScriptSettings(strName));
+            Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
+            Assert.assertTrue(providerPageContainer.providerHomePage.clickSecureMessaging());
+            Assert.assertTrue(providerPageContainer.providerHomePage.navigateToRepeatScriptSettings(strName));
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             System.out.println("Entre");
@@ -457,7 +453,7 @@ public class ProviderWebSteps {
 
     @When("I click Send Script by Post checkbox &Enter Service Option Name Fees and Description for all four service option")
     public void iClickSendScriptByPostCheckboxEnterServiceOptionNameFeesAndDescriptionForAllFourServiceOption(String strdata) {
-        List<String>strData=TestDataUtil.getListOfValue(strdata);
+        List<String> strData = TestDataUtil.getListOfValue(strdata);
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScriptbyPostCheckBox());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.EnterSendScriptByPostUrgentSamedayTextBox(strData.get(0)));
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScriptByPostFeeUrgentSameday(strData.get(1)));
@@ -475,7 +471,7 @@ public class ProviderWebSteps {
 
     @When("I click Send Send Script to Pharmacy checkbox &Enter Service Option Name Fees and Description for all four service option")
     public void iClickSendSendScriptToPharmacyCheckboxEnterServiceOptionNameFeesAndDescriptionForAllFourServiceOption(String strdata) {
-        List<String>strData=TestDataUtil.getListOfValue(strdata);
+        List<String> strData = TestDataUtil.getListOfValue(strdata);
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScripttoPharmacyCheckBox());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.EnterSendScripttoPharmacyUrgentSamedayTextBox(strData.get(0)));
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScriptToPharamacyFeeUrgentSameday(strData.get(1)));
@@ -493,8 +489,8 @@ public class ProviderWebSteps {
 
     @When("I click Deliver Meds by Pharmacy checkbox &Enter Service Option Name Fees and Description for all four service option")
     public void iClickDeliverMedsByPharmacyCheckboxEnterServiceOptionNameFeesAndDescriptionForAllFourServiceOption(String strdata) {
-        List<String>strData=TestDataUtil.getListOfValue(strdata);
-        System.out.println("strData ::"+strData);
+        List<String> strData = TestDataUtil.getListOfValue(strdata);
+        System.out.println("strData ::" + strData);
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickDeliverMedsbyPharmacyCheckBox());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.EnterDeliverMedsByPharmacyUrgentSamedayTextBox(strData.get(0)));
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickDeliverMedsByPharamacyFeeUrgentSameday(strData.get(1)));
@@ -516,7 +512,7 @@ public class ProviderWebSteps {
 
     @When("I click Deliver via Zoom Pharmacy checkbox &Enter Service Option Name Fees and Description for all four service option")
     public void iClickDeliverViaZoomPharmacyCheckboxEnterServiceOptionNameFeesAndDescriptionForAllFourServiceOption(String strdata) {
-        List<String>strData=TestDataUtil.getListOfValue(strdata);
+        List<String> strData = TestDataUtil.getListOfValue(strdata);
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickDeliverviaZoomPharmacyCheckBox());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.EnterDeliverViaZoomPharmacyUrgentSamedayTextBox(strData.get(0)));
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.EnterDeliverViaZoomPharamacyFeeUrgentSameday(strData.get(1)));
@@ -538,12 +534,12 @@ public class ProviderWebSteps {
 
     @And("I click Edit button to select {string} and {string}")
     public void iClickEditButtonToSelectAnd(String strHealthCentre, String strLocation) {
-        List<String>strtestdata=TestDataUtil.getListOfValue(strLocation);
+        List<String> strtestdata = TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.preScreeningPage.clickPreScreeningEdit());
         Assert.assertTrue(providerPageContainer.preScreeningPage.clickHealthCentreDropDown());
         Assert.assertTrue(providerPageContainer.preScreeningPage.selectHealthCentre(strHealthCentre));
-        for (String strdata:strtestdata) {
-            System.out.println(">>>>>>>strdata"+strdata);
+        for (String strdata : strtestdata) {
+            System.out.println(">>>>>>>strdata" + strdata);
             Assert.assertTrue(providerPageContainer.preScreeningPage.deselectCovidPreScreeningPopup(TestDataUtil.getValue(strdata)));
         }
 
@@ -570,6 +566,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.providerHomePage.clickAppointmentMenu());
         Assert.assertTrue(providerPageContainer.providerHomePage.clickBookAppointment());
     }
+
     @And("I click Systems Menu and I navigating to Appointment Message page")
     public void iClickSystemsMenuAndINavigatingToAppointmentMessagePage() {
 
@@ -613,14 +610,14 @@ public class ProviderWebSteps {
 
     @And("I Enter the Location in search box and I verify the created Appointment {string}")
     public void iEnterTheLocationInSearchBoxAndIVerifyTheCreatedAppointment(String strLocation) {
-List<String>data=TestDataUtil.getListOfValue(strLocation);
+        List<String> data = TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.appointmentMessagePage.enterLocationInSearchBox(TestDataUtil.getValue(data.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentMessagePage.verifyHealthCenterLocation(TestDataUtil.getValue(data.get(1))));
     }
 
     @When("I click the Book Now button {string}")
     public void iClickTheBookNowButton(String strLocation) {
-        List<String>data=TestDataUtil.getListOfValue(strLocation);
+        List<String> data = TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.appointmentMessagePage.clickBookNow(data.get(1)));
     }
 
@@ -849,6 +846,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         providerPageContainer.providerMessagesPage.clickSendMessageAndNavigateToHomePage();
         providerPageContainer.providerMessagesPage.verifySentSuccessfully();
     }
+
     @And("I navigate to inbox items and create a reply message {string}")
     public void iNavigateToInboxItemsAndCreateAReplyMessage(String strMessageDetails) {
         List<String> lstMessageDetails = TestDataUtil.getListOfValue(strMessageDetails);
@@ -859,10 +857,11 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.providerMessagesPage.clickSendMessageButtonInboxMessages());
 
     }
+
     @And("I navigate to provider portal and verify the Reply message {string}")
     public void iNavigateToProviderPortalAndVerifyTheReplyMessage(String lstMessageDetails) {
         List<String> lstMessage = TestDataUtil.getListOfValue(lstMessageDetails);
-        System.out.println(">>>>>>>>>>>>>>>>>>>"+lstMessage);
+        System.out.println(">>>>>>>>>>>>>>>>>>>" + lstMessage);
         Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
         Assert.assertTrue(providerPageContainer.providerMessagesPage.navigateToInboxMessageForDoctor());
         Assert.assertTrue(providerPageContainer.providerMessagesPage.verifyProviderInboxMessages(TestDataUtil.getValue(lstMessage.get(8))));
@@ -883,6 +882,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.providerMessagesPage.navigateToProviderHomepage());
         Assert.assertTrue(providerPageContainer.providerMessagesPage.navigateToDoctorMessageSetting());
     }
+
     @Then("I Should see the Provider Signature Based on {string} entered and signature must get auto populated in Compose mail")
     public void iShouldSeeTheProviderSignatureBasedOnEnteredAndSignatureMustGetAutoPopulatedInComposeMail(String strMessage) {
 //        Assert.assertTrue(providerPageContainer.homePage.clickDashBoard());
@@ -902,6 +902,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
             Assert.assertTrue(providerPageContainer.providerMessagesPage.verifyEnteredProviderOutOfOfficeMessage(TestDataUtil.getValue(lstStrMessage.get(0))));
         }
     }
+
     @Given("As a Provider I am on HomePage and navigate to Appointment Setting page")
     public void asAProviderIAmOnHomePageAndNavigateToAppointmentSettingPage() {
         Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
@@ -933,7 +934,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @Then("I select {string} and {string} and verify the Covid Pre-Screening popup is Undisplayed")
     public void iSelectAndAndVerifyTheCovidPreScreeningPopupIsUndisplayed(String strHealthCentre, String strLocation) {
-        List<String>stsdta=TestDataUtil.getListOfValue(strLocation);
+        List<String> stsdta = TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectHealthCenter(TestDataUtil.getValue(strHealthCentre)));
         Assert.assertTrue(providerPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
@@ -945,12 +946,12 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click Edit button to select {string} and {string} and Disable Appointment Pre-Screening Popup")
     public void iClickEditButtonToSelectAndAndDisableAppointmentPreScreeningPopup(String strHealthCentre, String strLocation) {
-        List<String>strtestdata=TestDataUtil.getListOfValue(strLocation);
+        List<String> strtestdata = TestDataUtil.getListOfValue(strLocation);
 //        Assert.assertTrue(providerPageContainer.preScreeningPage.clickPreScreeningEdit());
         Assert.assertTrue(providerPageContainer.preScreeningPage.clickHealthCentreDropDown());
         Assert.assertTrue(providerPageContainer.preScreeningPage.selectHealthCentre(strHealthCentre));
-        for (String strdata:strtestdata) {
-            System.out.println(">>>>>>>strdata"+strdata);
+        for (String strdata : strtestdata) {
+            System.out.println(">>>>>>>strdata" + strdata);
             Assert.assertTrue(providerPageContainer.preScreeningPage.deselectCovidPreScreeningPopup(TestDataUtil.getValue(strdata)));
         }
 
@@ -961,13 +962,13 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click Edit button to select {string} and {string} and Enable Appointment Pre-Screening Popup")
     public void iClickEditButtonToSelectAndAndEnableAppointmentPreScreeningPopup(String strHealthCentre, String strLocation) {
-        List<String>strtestdata=TestDataUtil.getListOfValue(strLocation);
-        System.out.println(">>>>>>>strtestdata :: "+strtestdata);
+        List<String> strtestdata = TestDataUtil.getListOfValue(strLocation);
+        System.out.println(">>>>>>>strtestdata :: " + strtestdata);
 //        Assert.assertTrue(providerPageContainer.preScreeningPage.clickPreScreeningEdit());
         Assert.assertTrue(providerPageContainer.preScreeningPage.clickHealthCentreDropDown());
         Assert.assertTrue(providerPageContainer.preScreeningPage.selectHealthCentre(strHealthCentre));
-        for (String strdata:strtestdata) {
-            System.out.println(">>>>>>>strdata"+strdata);
+        for (String strdata : strtestdata) {
+            System.out.println(">>>>>>>strdata" + strdata);
             Assert.assertTrue(providerPageContainer.preScreeningPage.selectCovidPreScreeningPopup(TestDataUtil.getValue(strdata)));
         }
 
@@ -1008,12 +1009,12 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I enable RuleE Radio button and I click restrict providers checkbox{string} click save button then I see Saved Successfully message{string}")
     public void iEnableRuleERadioButtonAndIClickRestrictProvidersCheckboxClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData, String strRestrictProviders) {
-        List<String>strRestrictProvidersdata=TestDataUtil.getListOfValue(strRestrictProviders);
+        List<String> strRestrictProvidersdata = TestDataUtil.getListOfValue(strRestrictProviders);
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickRuleEButton());
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
-        for (String strdata:strRestrictProvidersdata) {
-            System.out.println(">>>>>>>strdata"+strdata);
+        for (String strdata : strRestrictProvidersdata) {
+            System.out.println(">>>>>>>strdata" + strdata);
             Assert.assertTrue(providerPageContainer.appointmentSettingPage.selectRestrictProviderscheckbox(TestDataUtil.getValue(strdata)));
         }
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickAppointmentsettingsRuleESaveButton());
@@ -1046,18 +1047,17 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     }
 
     @And("I enable RuleE Radio button and I check Non restrict providers checkbox{string}and click save button then I see Saved Successfully message{string}")
-    public void iEnableRuleERadioButtonAndICheckNonRestrictProvidersCheckboxAndClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData , String strRestrictProviders) {
-        List<String>strRestrictProvidersdata=TestDataUtil.getListOfValue(strRestrictProviders);
+    public void iEnableRuleERadioButtonAndICheckNonRestrictProvidersCheckboxAndClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData, String strRestrictProviders) {
+        List<String> strRestrictProvidersdata = TestDataUtil.getListOfValue(strRestrictProviders);
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickRuleEButton());
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
-        for (String strdata:strRestrictProvidersdata) {
-            System.out.println(">>>>>>>strdata"+strdata);
+        for (String strdata : strRestrictProvidersdata) {
+            System.out.println(">>>>>>>strdata" + strdata);
             Assert.assertTrue(providerPageContainer.appointmentSettingPage.DeselectRestrictProviderscheckbox(TestDataUtil.getValue(strdata)));
         }
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickAppointmentsettingsRuleESaveButton());
     }
-
 
 
     @And("I enable allow to book friends yes radio button{string} and click save button then I see Saved Successfully message")
@@ -1089,7 +1089,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I Log Out from Provider and Search for Health Centre Verify Online Appointment is not displayed for Easy booking{string}and{string}")
     public void iLogOutFromProviderAndSearchForHealthCentreVerifyOnlineAppointmentIsNotDisplayedForEasyBookingAnd(String LocationData, String ProviderLoginData) {
-        List<String> strdata=TestDataUtil.getListOfValue(ProviderLoginData);
+        List<String> strdata = TestDataUtil.getListOfValue(ProviderLoginData);
         Assert.assertTrue(providerPageContainer.providerHomePage.clickProviderLogoutButton());
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.EnterValueinSearchBoxVerifyAppointmentsSlotIsNotDisplayed(LocationData));
         Assert.assertTrue(providerPageContainer.providerHomePage.clickMMHLogo());
@@ -1112,7 +1112,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I Log Out from Provider and Search for Health Centre Verify Online Appointment Slot is displayed for Easy booking{string}and{string}")
     public void iLogOutFromProviderAndSearchForHealthCentreVerifyOnlineAppointmentSlotIsDisplayedForEasyBookingAnd(String LocationData, String ProviderLoginData) {
-        List<String> strdata=TestDataUtil.getListOfValue(ProviderLoginData);
+        List<String> strdata = TestDataUtil.getListOfValue(ProviderLoginData);
         Assert.assertTrue(providerPageContainer.providerHomePage.clickProviderLogoutButton());
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.EnterValueinSearchBoxVerifyAppointmentsSlotIsNotDisplayed(LocationData));
         Assert.assertTrue(providerPageContainer.providerHomePage.clickMMHLogo());
@@ -1143,6 +1143,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickTurnOnOnlineAppointmentsCheckBoxchecked());
     }
+
     @Then("I Should see Turn On Appointments audit details displayed grid view {string}")
     public void iShouldSeeTurnOnAppointmentsAuditDetailsDisplayedGridView(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.verifyTurnOnAppointmentsAuditDetailsGridView(LocationData));
@@ -1150,11 +1151,12 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("Click Block link under status column in Blocked Appointments Grid {string}")
     public void clickBlockLinkUnderStatusColumnInBlockedAppointmentsGrid(String BlockAppointmentData) {
-        List<String> data=TestDataUtil.getListOfValue(BlockAppointmentData);
+        List<String> data = TestDataUtil.getListOfValue(BlockAppointmentData);
         Assert.assertTrue(providerPageContainer.appointmentsPage.clickBlockAppointmentsForProvider());
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectHealthCenter(TestDataUtil.getValue(data.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.VerifyBlockAppointmentTableData(TestDataUtil.getListOfValue(BlockAppointmentData)));
     }
+
     @Given("As a Provider I am on HomePage and navigate to Phone Appointment Setting page")
     public void asAProviderIAmOnHomePageAndNavigateToPhoneAppointmentSettingPage() {
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.navigateToProviderHomepage());
@@ -1170,6 +1172,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 //        Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickVM03LocationRule1RadioButton());
 //        Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickVM03Location2Rule1RadioButton());
     }
+
     @And("I click edit button select the Phone Appointment Rule BLANK{string}")
     public void iClickEditButtonSelectThePhoneAppointmentRuleBLANK(String HealthcentreData) {
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickPhoneAppointmentSettingHealthCenter(TestDataUtil.getListOfValue(HealthcentreData)));
@@ -1178,36 +1181,41 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 //        Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickVM03LocationRule2RadioButton());
 //        Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickVM03Location2Rule2RadioButton());
     }
+
     @When("I select the phone call initiated by Practice radio button and click the save button {string}")
     public void iSelectThePhoneCallInitiatedByPracticeRadioButtonAndClickTheSaveButton(String strdata) {
-        List<String>InstructionstoPatientData=TestDataUtil.getListOfValue(strdata);
+        List<String> InstructionstoPatientData = TestDataUtil.getListOfValue(strdata);
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickAutomationLocation1PraticeRadioButton());
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickAutomationLocation2PraticeRadioButton());
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.EnterAutomationLoc1textbox(TestDataUtil.getValue(InstructionstoPatientData.get(1))));
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.EnterVM03Location2textbox(TestDataUtil.getValue(InstructionstoPatientData.get(2))));
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickSaveButton());
     }
+
     @When("I select the phone call initiated by Patient radio button and click the save button {string}")
     public void iSelectThePhoneCallInitiatedByPatientRadioButtonAndClickTheSaveButton(String strdata) {
-        List<String>InstructionstoPatientData=TestDataUtil.getListOfValue(strdata);
+        List<String> InstructionstoPatientData = TestDataUtil.getListOfValue(strdata);
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickVM03LocationPatientRadioButton());
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickVM03Location2PatientRadioButton());
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.EnterAutomationLoc1textbox(TestDataUtil.getValue(InstructionstoPatientData.get(1))));
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.EnterVM03Location2textbox(TestDataUtil.getValue(InstructionstoPatientData.get(2))));
         Assert.assertTrue(providerPageContainer.phoneAppointmentSettingPage.clickSaveButton());
     }
+
     @Given("As a Provider I am on HomePage and navigate to Recall Setting page")
     public void asAProviderIAmOnHomePageAndNavigateToRecallSettingPage() {
         Assert.assertTrue(providerPageContainer.recallSettingPage.navigateToProviderHomepage());
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickSecureMessaging());
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickRecallSetting());
     }
+
     @And("I click edit button select the Recall Setting Health centre {string}")
     public void iClickEditButtonSelectTheRecallSettingHealthCentre(String LocationData) {
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickRecallRemindersYesRadioButton());
     }
+
     @When("I enter the number of days recall reminder text box and click save button {string}")
     public void iEnterTheNumberOfDaysRecallReminderTextBoxAndClickSaveButton(String LocationData) {
         Assert.assertTrue(providerPageContainer.recallSettingPage.EnterRecallReminderValue(LocationData));
@@ -1232,8 +1240,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @Then("I should see View Appointments details in My appointments grid based on the search {string}")
     public void iShouldSeeViewAppointmentsDetailsInMyAppointmentsGridBasedOnTheSearch(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectHealthCenter(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectLocation(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectMyAppointmentsFutureDateOnCalender(TestDataUtil.getValue(stsdata.get(8))));
@@ -1244,13 +1252,12 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.appointmentsPage.VerifyMyAppointmentTableData(TestDataUtil.getListOfValue(strHealthCentre)));
 
 
-
     }
 
     @Then("I should see View Appointments details in My appointments grid based on the select provider name {string}")
     public void iShouldSeeViewAppointmentsDetailsInMyAppointmentsGridBasedOnTheSelectProviderName(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectHealthCenter(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectLocation(TestDataUtil.getValue(stsdata.get(1))));
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectMyAppointmentsFutureDateOnCalender(TestDataUtil.getValue(stsdata.get(8))));
@@ -1264,8 +1271,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @Then("I should see View Appointments details in My appointments grid based on the search and Enter Patient Name {string}")
     public void iShouldSeeViewAppointmentsDetailsInMyAppointmentsGridBasedOnTheSearchAndEnterPatientName(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectHealthCenter(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectLocation(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectMyAppointmentsFutureDateOnCalender(TestDataUtil.getValue(stsdata.get(8))));
@@ -1278,8 +1285,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @Then("I should see View Appointments details in My appointments grid based on the View clear search {string}")
     public void iShouldSeeViewAppointmentsDetailsInMyAppointmentsGridBasedOnTheViewClearSearch(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectHealthCenter(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectLocation(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectMyAppointmentsFutureDateOnCalender(TestDataUtil.getValue(stsdata.get(8))));
@@ -1380,8 +1387,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @Then("I should see Video consultations details in My appointments grid based on the select provider name {string}")
     public void iShouldSeeVideoConsultationsDetailsInMyAppointmentsGridBasedOnTheSelectProviderName(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectHealthCenter(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.appointmentsPage.selectProviderName(TestDataUtil.getValue(stsdata.get(5))));
 //        Assert.assertTrue(providerPageContainer.appointmentsPage.selectVideoAppointmentsFutureDateOnCalender(TestDataUtil.getValue(stsdata.get(9))));
@@ -1403,8 +1410,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click the Add new Button then select the setup services all details {string}")
     public void iClickTheAddNewButtonThenSelectTheSetupServicesAllDetails(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.setupServicesPage.AddNewServices());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectHealthCentre(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCategory(TestDataUtil.getValue(stsdata.get(1))));
@@ -1424,8 +1431,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click the Add new Button then select the setup services Staff radio button {string}")
     public void iClickTheAddNewButtonThenSelectTheSetupServicesStaffRadioButton(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.setupServicesPage.AddNewServices());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectHealthCentre(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCategory(TestDataUtil.getValue(stsdata.get(1))));
@@ -1445,7 +1452,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     @And("I navigate to provider portal and verify the Patient message {string}")
     public void iNavigateToProviderPortalAndVerifyThePatientMessage(String lstMessageDetails) {
         List<String> lstMessage = TestDataUtil.getListOfValue(lstMessageDetails);
-        System.out.println(">>>>>>>>>>>>>>>>>>>"+lstMessage);
+        System.out.println(">>>>>>>>>>>>>>>>>>>" + lstMessage);
         Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
         Assert.assertTrue(providerPageContainer.providerMessagesPage.navigateToInboxMessageForDoctor());
         Assert.assertTrue(providerPageContainer.providerMessagesPage.verifyProvidersetupServiceInboxMessages(TestDataUtil.getValue(lstMessage.get(0))));
@@ -1454,8 +1461,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click the Add new Button then select the setup services Non Clinical {string}")
     public void iClickTheAddNewButtonThenSelectTheSetupServicesNonClinical(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.setupServicesPage.AddNewServices());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectHealthCentre(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCategory(TestDataUtil.getValue(stsdata.get(1))));
@@ -1476,8 +1483,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click the Add new Button then select the setup services Patient radio button {string}")
     public void iClickTheAddNewButtonThenSelectTheSetupServicesPatientRadioButton(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.setupServicesPage.AddNewServices());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectHealthCentre(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCategory(TestDataUtil.getValue(stsdata.get(1))));
@@ -1496,8 +1503,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click the Add new Button then select the setup services Non Clinical to Patient Staff {string}")
     public void iClickTheAddNewButtonThenSelectTheSetupServicesNonClinicalToPatientStaff(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.setupServicesPage.AddNewServices());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectHealthCentre(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCategory(TestDataUtil.getValue(stsdata.get(1))));
@@ -1517,8 +1524,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("As a user I am on Doctor portal homepage and Navigate to Provider inbox {string}")
     public void asAUserIAmOnDoctorPortalHomepageAndNavigateToProviderInbox(String strHealthCentre) {
-        List<String>lstMessageDetails=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+lstMessageDetails);
+        List<String> lstMessageDetails = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + lstMessageDetails);
         Assert.assertTrue(providerPageContainer.providerMessagesPage.navigateToProviderHomepage());
         Assert.assertTrue(providerPageContainer.providerMessagesPage.navigateToInboxMessageForDoctor());
         Assert.assertTrue(providerPageContainer.providerMessagesPage.verifyInboxMessages(TestDataUtil.getValue(lstMessageDetails.get(5))));
@@ -1527,8 +1534,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click the Add new Button then select the setup services Do Not Allow to patient to Reply  {string}")
     public void iClickTheAddNewButtonThenSelectTheSetupServicesDoNotAllowToPatientToReply(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.setupServicesPage.AddNewServices());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectHealthCentre(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCategory(TestDataUtil.getValue(stsdata.get(1))));
@@ -1548,8 +1555,8 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click the Add new Button then select the setup services Restrict to patient default location {string}")
     public void iClickTheAddNewButtonThenSelectTheSetupServicesRestrictToPatientDefaultLocation(String strHealthCentre) {
-        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
-        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        List<String> stsdata = TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata" + stsdata);
         Assert.assertTrue(providerPageContainer.setupServicesPage.AddNewServices());
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectHealthCentre(TestDataUtil.getValue(stsdata.get(0))));
         Assert.assertTrue(providerPageContainer.setupServicesPage.SelectServiceCategory(TestDataUtil.getValue(stsdata.get(1))));
@@ -1585,7 +1592,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click on the edit button then i Enable First Appointment Remainder checkbox and hours {string}")
     public void iClickOnTheEditButtonThenIEnableFirstAppointmentRemainderCheckboxAndHours(String AppointmentReminderData) {
-        List<String> strData= TestDataUtil.getListOfValue(AppointmentReminderData);
+        List<String> strData = TestDataUtil.getListOfValue(AppointmentReminderData);
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickHealthCenterLocation(strData.get(0)));
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.verifyFirstAppointmentReminderCheckBoxEnabled());
@@ -1604,7 +1611,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click on the edit button then i Enable First Appointment Remainder checkbox and Days {string}")
     public void iClickOnTheEditButtonThenIEnableFirstAppointmentRemainderCheckboxAndDays(String AppointmentReminderData) {
-        List<String> strData= TestDataUtil.getListOfValue(AppointmentReminderData);
+        List<String> strData = TestDataUtil.getListOfValue(AppointmentReminderData);
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickHealthCenterLocation(strData.get(0)));
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.verifyFirstAppointmentReminderCheckBoxEnabled());
@@ -1617,7 +1624,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click on the edit button then i Enable First and Second Appointment Remainder checkbox and hours {string}")
     public void iClickOnTheEditButtonThenIEnableFirstAndSecondAppointmentRemainderCheckboxAndHours(String AppointmentReminderData) {
-        List<String> strData= TestDataUtil.getListOfValue(AppointmentReminderData);
+        List<String> strData = TestDataUtil.getListOfValue(AppointmentReminderData);
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickHealthCenterLocation(strData.get(0)));
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.verifyFirstAppointmentReminderCheckBoxEnabled());
@@ -1633,7 +1640,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click on the edit button then i Enable First and Second Appointment Remainder checkbox and Days {string}")
     public void iClickOnTheEditButtonThenIEnableFirstAndSecondAppointmentRemainderCheckboxAndDays(String AppointmentReminderData) {
-        List<String> strData= TestDataUtil.getListOfValue(AppointmentReminderData);
+        List<String> strData = TestDataUtil.getListOfValue(AppointmentReminderData);
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickHealthCenterLocation(strData.get(0)));
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.verifyFirstAppointmentReminderCheckBoxEnabled());
@@ -1650,7 +1657,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click on the edit button then i Enable First Appointment Remainder Enable Skip weekends {string}")
     public void iClickOnTheEditButtonThenIEnableFirstAppointmentRemainderEnableSkipWeekends(String AppointmentReminderData) {
-        List<String> strData= TestDataUtil.getListOfValue(AppointmentReminderData);
+        List<String> strData = TestDataUtil.getListOfValue(AppointmentReminderData);
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickHealthCenterLocation(strData.get(0)));
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.verifyFirstAppointmentReminderCheckBoxEnabled());
@@ -1664,7 +1671,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I click on the edit button then i Enable First Appointment Remainder Disable Skip weekends {string}")
     public void iClickOnTheEditButtonThenIEnableFirstAppointmentRemainderDisableSkipWeekends(String AppointmentReminderData) {
-        List<String> strData= TestDataUtil.getListOfValue(AppointmentReminderData);
+        List<String> strData = TestDataUtil.getListOfValue(AppointmentReminderData);
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.clickHealthCenterLocation(strData.get(0)));
         Assert.assertTrue(providerPageContainer.appointmentReminderSettingPage.verifyFirstAppointmentReminderCheckBoxEnabled());
@@ -1678,7 +1685,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @And("I select Minimum notice for Cancellation and I click save button then I see Saved Successfully message{string}")
     public void iSelectMinimumNoticeForCancellationAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String strdata) {
-       Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickMinimumNoticeForCancellation(TestDataUtil.getValue(strdata)));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickMinimumNoticeForCancellation(TestDataUtil.getValue(strdata)));
 
     }
 
@@ -1730,7 +1737,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @When("I click Edit button to select OnDemand Video Consultations by clicking Yes button {string}")
     public void iClickEditButtonToSelectOnDemandVideoConsultationsByClickingYesButton(String strdata) {
-        List<String> data=TestDataUtil.getListOfValue(strdata);
+        List<String> data = TestDataUtil.getListOfValue(strdata);
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(data.get(0)));
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickServiceCategory(data.get(1)));
@@ -1746,7 +1753,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @When("I click Edit button to select OnDemand Video Consultations by clicking No button {string}")
     public void iClickEditButtonToSelectOnDemandVideoConsultationsByClickingNoButton(String strdata) {
-        List<String> data=TestDataUtil.getListOfValue(strdata);
+        List<String> data = TestDataUtil.getListOfValue(strdata);
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(data.get(0)));
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickServiceCategory(data.get(1)));
@@ -1761,7 +1768,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @When("I click Edit button to select SMS Video Invite Settings by clicking Yes button {string}")
     public void iClickEditButtonToSelectSMSVideoInviteSettingsByClickingYesButton(String strdata) {
-        List<String> data=TestDataUtil.getListOfValue(strdata);
+        List<String> data = TestDataUtil.getListOfValue(strdata);
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(data.get(0)));
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickSMSVideoInviteYesButton());
@@ -1770,7 +1777,7 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
 
     @When("I click Edit button to select SMS Video Invite Settings by clicking No button {string}")
     public void iClickEditButtonToSelectSMSVideoInviteSettingsByClickingNoButton(String strdata) {
-        List<String> data=TestDataUtil.getListOfValue(strdata);
+        List<String> data = TestDataUtil.getListOfValue(strdata);
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(data.get(0)));
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickSMSVideoInviteNoButton());
@@ -1806,7 +1813,6 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
     }
 
 
-
     @And("I enable face to face appointment on a Video Consultation slot by clicking No button and I click save button then I see Saved Successfully message{string}")
     public void iEnableFaceToFaceAppointmentOnAVideoConsultationSlotByClickingNoButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
@@ -1821,4 +1827,120 @@ List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
 
     }
+
+    @Given("As a Provider I am on HomePage and navigate to Alternative Provider page")
+    public void asAProviderIAmOnHomePageAndNavigateToAlternativeProviderPage() {
+        Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.clickAlternativeAppointmentProviders());
+
+
+    }
+
+    @And("I click Edit button and select health centre {string}")
+    public void iClickEditButtonAndSelectHealthCentre(String strdata) {
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.clickHealthCenterLocation(strdata));
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.clickAlternativeAppointmentProviders());
+
+    }
+
+
+    @And("I click Edit button Enable alternative provider details page and verify changed saved successfully Popup {string}")
+    public void iClickEditButtonEnableAlternativeProviderDetailsPageAndVerifyChangedSavedSuccessfullyPopup(String strdata) {
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.clickHealthCenterLocation(TestDataUtil.getValue(strdata)));
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.clickEditButton());
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.ClickYesButton());
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.ClickSaveButton());
+    }
+
+    @And("I click Edit button Disable alternative provider details page and verify changed saved successfully Popup {string}")
+    public void iClickEditButtonDisableAlternativeProviderDetailsPageAndVerifyChangedSavedSuccessfullyPopup(String strdata) {
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.clickHealthCenterLocation(TestDataUtil.getValue(strdata)));
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.clickEditButton());
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.ClickNoButton());
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.ClickSaveButton());
+    }
+
+    @Given("As a Provider I am on HomePage and navigate to Appointment Reason page")
+    public void asAProviderIAmOnHomePageAndNavigateToAppointmentReasonPage() {
+        Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
+//        Assert.assertTrue(providerPageContainer.providerHomePage.clickSecureMessaging());
+        Assert.assertTrue(providerPageContainer.alternativeProviderPage.clickAppointmentReason());
+    }
+
+    @And("Verify health Centre {string} and default reason list is displayed with edit and delete option")
+    public void verifyHealthCentreAndDefaultReasonListIsDisplayedWithEditAndDeleteOption(String strdata) {
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.clickAppointmentReasonHealthCenterLocation(TestDataUtil.getValue(strdata)));
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.verifyAllElements());
+
+
+    }
+
+
+    @And("I Enter the new reason in the appointment reason textbox {string}")
+    public void iEnterTheNewReasonInTheAppointmentReasonTextbox(String strdata) {
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.EnterAppointmentReason(TestDataUtil.getValue(strdata)));
+    }
+
+
+    @When("click on Save Button & verify new reason got added in the list {string}")
+    public void clickOnSaveButtonVerifyNewReasonGotAddedInTheList(String strdata) {
+
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.clickSaveButton());
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.verifyAppointmentReason(TestDataUtil.getValue(strdata)));
+    }
+
+
+    @When("click on Update Button & verify Update reason got added in the list {string}")
+    public void clickOnUpdateButtonVerifyUpdateReasonGotAddedInTheList(String strdata) {
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.clickUpdateButton());
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.verifyAppointmentReason(TestDataUtil.getValue(strdata)));
+    }
+
+    @And("I click edit icon {string} Update the new reason in the appointment reason textbox {string}")
+    public void iClickEditIconUpdateTheNewReasonInTheAppointmentReasonTextbox(String strdata, String strdata1) {
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.clickAppointmentReasonEditIcon(TestDataUtil.getValue(strdata)));
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.UpdateAppointmentReason(TestDataUtil.getValue(strdata1)));
+
+
+    }
+
+    @And("I click Delete icon select yes to delete and verify deleted reason is not updated in the list {string}")
+    public void iClickDeleteIconSelectYesToDeleteAndVerifyDeletedReasonIsNotUpdatedInTheList(String strdata) {
+        Assert.assertTrue(providerPageContainer.appointmentReasonPage.DeleteAppointmentReason(TestDataUtil.getValue(strdata)));
+
+    }
+
+    @Given("As a Provider I am on HomePage and navigate to SMS Setting page")
+    public void asAProviderIAmOnHomePageAndNavigateToSMSSettingPage() {
+        Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
+        Assert.assertTrue(providerPageContainer.sMSSettingsPage.clickSMS());
+
+    }
+
+
+    @And("I click Edit button select the Health center {string} and select Module Dropdown")
+    public void iClickEditButtonSelectTheHealthCenterAndSelectModuleDropdown(String Data) {
+        List<String> strdata = TestDataUtil.getListOfValue(Data);
+        Assert.assertTrue(providerPageContainer.sMSSettingsPage.selectEditButton());
+        Assert.assertTrue(providerPageContainer.sMSSettingsPage.selectHealthCentre(TestDataUtil.getValue(strdata.get(0))));
+        Assert.assertTrue(providerPageContainer.sMSSettingsPage.selectModule(TestDataUtil.getValue(strdata.get(1))));
+
+
+    }
+
+
+    @When("I select Enable secure Messaging SMS yes radio button and click save button see Saved Successfully Popup")
+    public void iSelectEnableSecureMessagingSMSYesRadioButtonAndClickSaveButtonSeeSavedSuccessfullyPopup() {
+        Assert.assertTrue(providerPageContainer.sMSSettingsPage.EnableGroupMessaging());
+        Assert.assertTrue(providerPageContainer.sMSSettingsPage.SelectSaveButton());
+    }
+
+    @When("I select Enable secure Messaging SMS No radio button and click save button see Saved Successfully Popup")
+    public void iSelectEnableSecureMessagingSMSNoRadioButtonAndClickSaveButtonSeeSavedSuccessfullyPopup() {
+        Assert.assertTrue(providerPageContainer.sMSSettingsPage.DisableGroupMessaging());
+        Assert.assertTrue(providerPageContainer.sMSSettingsPage.SelectSaveButton());
+
+    }
 }
+
+

@@ -20,6 +20,7 @@ Feature: Appointments
       | Email Address | Password   | ui         |
       | &EMAIL&       | &PASSWORD& | &UI_EMAIL& |
 
+
   @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: Prep- Canceling all the appointments
 
@@ -72,6 +73,7 @@ Feature: Appointments
     Examples:
       | Appointment      | Appointment_Details      | Details_For_Appointment     | Appointment_Summary         | Future_Date   |
       | Book Appointment | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &VISIT_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
+
 
   @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S1- User Successfully logs in to the MMH Portal.
@@ -229,7 +231,7 @@ Feature: Appointments
 
 
     ####################################################################################################################################
-
+#  FlexibleAppointment Script
 
   @WEB @Mobile @APPOINTMENTS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
   Scenario Template: User Successfully logs in to the MMH Provider Portal.

@@ -525,6 +525,10 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//img[@id='DpsCustomerLogo']")
     protected WebElement elmntPaymentPage;
 
+    @FindBy(how = How.XPATH, using = "//h2[contains(text(),'Credit Card Payment')]")
+    protected WebElement elmntCreditCardPayment;
+
+
     @FindBy(how = How.XPATH, using = "//div[@class='DpsRadioButton DpsCreditCardRadio']")
     protected WebElement elmntchoosepaymentmethod;
 
@@ -1577,14 +1581,23 @@ public class AppointmentsPage extends BasePage {
         boolean blResult = false;
         try {
             System.out.println(">>>>>>>>>>>>>"+lstDetails);
-            System.out.println(">>>>>>>>>>>>>"+TestDataUtil.getValue(strFutureDate));
+            System.out.println(">>>>>>>>>>>>>strFutureDate"+TestDataUtil.getValue(strFutureDate));
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+
+                System.out.println("strFutureDate"+strFutureDate);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                waitForSeconds(2);
-                String strDatePattern1 = "dd MMM yyyy";
-                String strDate = TestDataUtil.getValue(strFutureDate);
+
+                String strDatePattern1 = "d";
+                String strDate = strFutureDate;
+
                 String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
                 System.out.println("DATE" + strDateValue);
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForSeconds(2);
+//                String strDatePattern1 = "dd MMM yyyy";
+//                String strDate = TestDataUtil.getValue(strFutureDate);
+//                String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
+//                System.out.println("DATE" + strDateValue);
                 WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", strDateValue)));
                 System.out.println(">>>>>>>>>>>>>>>elmntAppointmentDetails" + elmntAppointmentDetails);
                 System.out.println(">>>>>>>>>>>>>>>elmntAppointmentDetails" + elmntAppointmentDetails.getText());
@@ -1605,8 +1618,16 @@ public class AppointmentsPage extends BasePage {
             blResult = true;
         } catch (Exception e) {
             try {
-                String strDatePattern1 = "dd MMM yyyy";
-                String strDate = TestDataUtil.getValue(strFutureDate);
+//                String strDatePattern1 = "dd MMM yyyy";
+//                String strDate = TestDataUtil.getValue(strFutureDate);
+//                String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
+//                System.out.println("DATE " + strDateValue);
+                System.out.println("strFutureDate"+strFutureDate);
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
+                String strDatePattern1 = "d";
+                String strDate = strFutureDate;
+
                 String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
                 System.out.println("DATE" + strDateValue);
                 WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", strDateValue)));
@@ -2684,11 +2705,13 @@ public class AppointmentsPage extends BasePage {
             waitForSeconds(3);
             driver.switchTo().frame(CardPaymentFrame);
             System.out.println("Succesfully Switch to frame");
-            waitForSeconds(3);
-            waitForElement(elmntchoosepaymentmethod);
-            jsClick(elmntchoosepaymentmethod);
             waitForElement(elmntPaymentPage);
-            blResult = verifyElement(elmntPaymentPage);
+            blResult=verifyElement(elmntPaymentPage);
+            waitForSeconds(3);
+//            waitForElement(elmntchoosepaymentmethod);
+            jsClick(elmntchoosepaymentmethod);
+            waitForElement(elmntCreditCardPayment);
+            blResult = verifyElement(elmntCreditCardPayment);
             ;
         } catch (Exception e) {
             e.printStackTrace();
@@ -3604,7 +3627,8 @@ waitForSeconds(5);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(5);    //wait until 'loader'  loading
                 if (verifyElement(elmntCancelAppointments)) {
-                    List<WebElement> btnCancel = driver.findElements(By.xpath("//button[@class='mat-focus-indicator mat-tooltip-trigger btn mat-button mat-button-base']/span[text()=' Cancel Appointment']"));
+//                    jsScrollIntoView(elmntCancelAppointments);
+                    List<WebElement> btnCancel = driver.findElements(By.xpath("(//button[@class='mat-focus-indicator mat-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-button mat-button-base ng-star-inserted']//span[text()=' Cancel Appointment'])[1]"));
                     if (btnCancel.size() > 0) {
                         System.out.println("btnCancel exists and size=>" + btnCancel.size());
                         int page_no = btnCancel.size();
@@ -3624,7 +3648,7 @@ waitForSeconds(5);
                             System.out.println("TEST");
                             waitForSeconds(5); //wait until 'loader'  loading
                             waitForElement(elmntMobileUpComingAppointmentHeader);
-                            WebElement cancelButton = driver.findElement(By.xpath("(//button[@class='mat-focus-indicator mat-tooltip-trigger btn mat-button mat-button-base']/span[text()=' Cancel Appointment'])[1]"));
+                            WebElement cancelButton = driver.findElement(By.xpath("(//button[@class='mat-focus-indicator mat-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-button mat-button-base ng-star-inserted']//span[text()=' Cancel Appointment'])[1]"));
                             waitForElement(cancelButton);
                             jsScrollIntoView(cancelButton);
                             waitForElement(cancelButton);
