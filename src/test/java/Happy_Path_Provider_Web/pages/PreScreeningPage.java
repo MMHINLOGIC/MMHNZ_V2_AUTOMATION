@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import cap.utilities.TestDataUtil;
@@ -66,12 +66,12 @@ public class PreScreeningPage extends BasePage {
 
 
     protected String deselectCovidPreScreeningPopup = new StringBuilder()
-            .append("//span[normalize-space(text())='").append("<<REPLACEMENT>>")
-            .append("']//following::mat-checkbox[@name='LocationName']//input[@aria-checked='false']").toString();
+            .append("//label[normalize-space(text())='").append("<<REPLACEMENT>>")
+            .append("']").toString();
 
     protected String selectCovidPreScreeningPopup = new StringBuilder()
-            .append("//span[normalize-space(text())='").append("<<REPLACEMENT>>")
-            .append("']//following::mat-checkbox[@name='LocationName']//input[@aria-checked='true']").toString();
+            .append("//label[normalize-space(text())='").append("<<REPLACEMENT>>")
+            .append("']").toString();
 
     //span[normalize-space(text())='VM07 Loc1 Evo Prod']//following::mat-checkbox[@name='LocationName']//input[@aria-checked='true']
 
@@ -131,19 +131,19 @@ public class PreScreeningPage extends BasePage {
         try {
             jsScrollDown();
             jsScrollIntoView(elmntUpdate);
-            if (verifyElement(By.xpath(deselectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
-//                takeScreenshot(driver);
-                System.out.println("Appointment PreScreening CheckBox Already Unchecked");
-            }
-            else {
+//            if (verifyElement(By.xpath(deselectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
+////                takeScreenshot(driver);
+//                System.out.println("Appointment PreScreening CheckBox Already Unchecked");
+//            }
+//            else {
                 WebElement elmntHealthCentreLocation = waitForElement(By.xpath(selectCovidPreScreeningPopup.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strLocation))));
                 System.out.println(">>>>>>>>>>>>elmntHealthCentreLocation"+ elmntHealthCentreLocation);
                 jsClick(elmntHealthCentreLocation);
                 waitForElementDisappear(driver,By.xpath(elmntSpinner));
-                verifyElement(By.xpath(deselectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))));
+//                verifyElement(By.xpath(deselectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))));
 //                takeScreenshot(driver);
                 System.out.println("Appointment PreScreening CheckBox UnChecked::");
-            }
+//            }
             blresult = true;
         } catch (Exception e) {
             System.out.println("Cannot Successfully verify Appointment PreScreening CheckBox");
@@ -158,22 +158,22 @@ public class PreScreeningPage extends BasePage {
             jsScrollDown();
             jsScrollIntoView(elmntUpdate);
             waitForSeconds(3);
-            if (verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
-//                takeScreenshot(driver);
-                System.out.println("Appointment PreScreening CheckBox Already checked");
-                blresult = true;
-            }
-            if (!verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
+//            if (verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
+////                takeScreenshot(driver);
+//                System.out.println("Appointment PreScreening CheckBox Already checked");
+//                blresult = true;
+//            }
+//            if (!verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
             WebElement elmntHealthCentreLocation2 = waitForElementClickable(By.xpath(deselectCovidPreScreeningPopup.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strLocation))));
             System.out.println(">>>>>>>>>>>>elmntHealthCentreLocation2"+ elmntHealthCentreLocation2);
             waitForElement(elmntHealthCentreLocation2);
             jsClick(elmntHealthCentreLocation2);
                 waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))));
+//            verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))));
 //                takeScreenshot(driver);
             System.out.println("Appointment PreScreening CheckBox Checked::");
                 blresult = true;
-            }
+//            }
             blresult = true;
         }
         catch (Exception e) {

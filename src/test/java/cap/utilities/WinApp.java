@@ -1,4 +1,4 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import io.appium.java_client.windows.WindowsDriver;
 import org.openqa.selenium.By;

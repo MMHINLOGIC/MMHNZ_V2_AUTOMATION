@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import cap.utilities.TestDataUtil;
@@ -20,15 +20,15 @@ public class AppointmentMessagePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[text()=' Appointment Message ']")
     protected WebElement elmntAppointmentMssgHeading;
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::input)[1]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::label)[1]")
     protected WebElement elmntEnableBannerMssg;
 
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::input)[2]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::label)[2]")
     protected WebElement elmntDisableBannerMssg;
 
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::input)[4]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::label)[4]")
     protected WebElement elmntEnableWebBannerMessage;
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='easyBookingHeading']")
     protected WebElement elmntBannerHeading;
@@ -36,13 +36,13 @@ public class AppointmentMessagePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='WebAppointmentBannerHeading']")
     protected WebElement elmntWebBannerHeading;
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::input)[5]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::label)[5]")
     protected WebElement elmntDisableWebBannerMessage;
 
     @FindBy(how = How.XPATH, using = "(//iframe[@class='k-iframe'])[1]")
     protected WebElement frameBannerMessage;
 
-    @FindBy(how = How.XPATH, using = "(//iframe[@class='k-iframe'])[3]")
+    @FindBy(how = How.XPATH, using = "(//iframe[@class='k-iframe'])[5]")
     protected WebElement frameWebBannerMessage;
 
     @FindBy(how = How.XPATH, using = "//kendo-editor[@formcontrolname='easyBookingBannerMessage']/descendant::div")
@@ -53,11 +53,13 @@ public class AppointmentMessagePage extends BasePage {
 
 
 
-    @FindBy(how = How.XPATH, using = "(//div[@class='ProseMirror']//p)[1]")
+    @FindBy(how = How.XPATH, using = "(//div[@class='k-content ProseMirror']//p)[1]")
     protected WebElement elmntWriteBannerMessage;
 
-    @FindBy(how = How.XPATH, using = "(//div[@class='ProseMirror']//p)[1]")
+    @FindBy(how = How.XPATH, using = "(//div[@class='k-content ProseMirror']//p)[1]")
     protected WebElement elmntWriteWebBannerMessage;
+
+    //kendo-editor[@formcontrolname='webAppointmentBannerMessage']//div/iframe
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='mobileAppointmentBannerHeading']")
     protected WebElement elmntMobileAppsBannerHeading;
@@ -68,7 +70,7 @@ public class AppointmentMessagePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='SIGN OUT']")
     protected WebElement elmntSignOutBtn;
 
-    @FindBy(how = How.XPATH, using = "( //span[contains(text(),'Provider Login')])[1]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Provider Login')])[1]")
     protected WebElement elmntProviderLoginBtn;
 
     @FindBy(how = How.XPATH, using = "//label[@for='searchFilter1']/child::span")
@@ -115,7 +117,7 @@ public class AppointmentMessagePage extends BasePage {
     protected String elmntVerifyWebBannerMessage = new StringBuilder()
             .append("//p[text()='").append("<<REPLACEMENT>>").append("']").toString();
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::input)[7]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='easyBookingBanner']//following::label)[7]")
     protected WebElement elmntEnableMobileAppsBannerMessage;
     protected String elmntVerifyBannerMessage = new StringBuilder()
             .append("//h4/p[text()='").append("<<REPLACEMENT>>").append("']").toString();
@@ -258,7 +260,8 @@ public class AppointmentMessagePage extends BasePage {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            click(elmntSignOutBtn);
+            waitForElement(elmntSignOutBtn);
+            jsClick(elmntSignOutBtn);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             blresult = true;
         } catch (Exception e) {
@@ -274,7 +277,7 @@ public class AppointmentMessagePage extends BasePage {
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             waitForElement(elmntProviderLoginBtn);
-            click(elmntProviderLoginBtn);
+            jsClick(elmntProviderLoginBtn);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             boolean radioBtn = elmntAllRadioBtn.isSelected();
             if (radioBtn == true) {
@@ -370,9 +373,24 @@ public class AppointmentMessagePage extends BasePage {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            WebElement elmntBannerHeading = waitForElement(By.xpath(elmntVerifyBannerHeading.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strHeading.concat(strExecutionID)))));
-            blresult=!verifyElement(elmntBannerHeading);
-            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+if (verifyElement(By.xpath(elmntVerifyBannerHeading.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strHeading.concat(strExecutionID)))))){
+    System.out.println("Element is visible");
+                blresult=false;
+}
+else {
+                System.out.println("Element is present but not visible");
+                blresult=true;
+            }
+
+//            WebElement elmntBannerHeading = driver.findElement(By.xpath(elmntVerifyBannerHeading.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strHeading.concat(strExecutionID)))));
+//            if (elmntBannerHeading.isDisplayed()) {
+//                System.out.println("Element is visible");
+//                blresult=false;
+//            } else {
+//                System.out.println("Element is present but not visible");
+//                blresult=true;
+//            }
+
         } catch (Exception e) {
             System.out.println("Failed To  verify Banner Heading >>> :: ");
             e.printStackTrace();
@@ -399,8 +417,18 @@ public class AppointmentMessagePage extends BasePage {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            WebElement elmntBannerMessage = waitForElement(By.xpath(elmntVerifyBannerMessage.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage))));
-            blresult= !verifyElement(elmntBannerMessage);
+
+            if (verifyElement(By.xpath(elmntVerifyBannerMessage.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage))))){
+                System.out.println("Element is visible");
+                blresult=false;
+            }
+            else {
+                System.out.println("Element is present but not visible");
+                blresult=true;
+            }
+
+//            WebElement elmntBannerMessage = waitForElement(By.xpath(elmntVerifyBannerMessage.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage))));
+//            blresult= !verifyElement(elmntBannerMessage);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
         } catch (Exception e) {
             System.out.println("Failed To  verify Banner Message >>> :: ");
@@ -414,6 +442,7 @@ public class AppointmentMessagePage extends BasePage {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
+//            jsScrollIntoView(elmntEnableWebBannerMessage);
             waitForElement(elmntEnableWebBannerMessage);
             jsClick(elmntEnableWebBannerMessage);
             takeScreenshot(driver);
@@ -432,7 +461,7 @@ public class AppointmentMessagePage extends BasePage {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmntWebBannerHeading);
             waitForElement(elmntWebBannerHeading);
-            click(elmntWebBannerHeading);
+            jsClick(elmntWebBannerHeading);
             waitForElement(elmntWebBannerHeading);
             elmntWebBannerHeading.clear();
             elmntWebBannerHeading.sendKeys(strHeading.concat(strExecutionID));
@@ -449,10 +478,10 @@ public class AppointmentMessagePage extends BasePage {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            jsScrollIntoView(elmntWebBannerMessage);
+//            jsScrollIntoView(elmntWebBannerMessage);
             waitForElement(elmntWebBannerMessage);
             driver.switchTo().frame(frameWebBannerMessage);
-            waitForSeconds(2);
+            waitForSeconds(4);
             click(elmntWriteWebBannerMessage);
             waitForSeconds(2);
             driver.switchTo().activeElement().clear();

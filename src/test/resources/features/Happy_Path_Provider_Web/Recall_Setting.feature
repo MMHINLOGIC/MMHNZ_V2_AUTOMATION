@@ -9,7 +9,7 @@ Feature: Recall Setting
     And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING @PROVIDER_SCRIPT2
+  @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING1
   Scenario Template:S1-Provider Enable Recall Remainder
 
     Given As a Provider I am on HomePage and navigate to Recall Setting page
@@ -20,7 +20,7 @@ Feature: Recall Setting
       | Location   | Recall_Reminder_Details |
       | &LOCATION& | 1                       |
 
-  @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING @PROVIDER_SCRIPT2
+  @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING
   Scenario Template:S2-Provider Disable Recall Remainder
 
     Given As a Provider I am on HomePage and navigate to Recall Setting page
@@ -32,7 +32,7 @@ Feature: Recall Setting
       | &LOCATION& | 1                       |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING @PROVIDER_SCRIPT2
+  @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING
   Scenario Template:S3-Patient Read Recall Remainder Message
 
     Given As a Provider I am on HomePage and navigate to Recall Setting page
@@ -43,7 +43,7 @@ Feature: Recall Setting
       | Location   | Recall_Reminder_Details |
       | &LOCATION& | 1                       |
 
-  @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING @PROVIDER_SCRIPT2
+  @WEB @PROVIDER_HAPPY_PATH @RECALL_SETTING
   Scenario Template:S4-Patient Book Appointment through Recall Remainder Message
 
     Given As a Provider I am on HomePage and navigate to Recall Setting page

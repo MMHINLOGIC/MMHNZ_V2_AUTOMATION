@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import cap.utilities.TestDataUtil;
@@ -30,6 +30,12 @@ public class PhoneAppointmentSettingPage extends BasePage {
     })
     protected WebElement txtProviderPortalWelcomePage;
 
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Your session is about to expire!')]")
+    protected WebElement elmntLogoutPopup;
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes, Keep Working')]")
+    protected WebElement elmntLogoutPopupButton;
+
     @FindBy(xpath = "//a[@class='navbar-brand']")
     protected WebElement elmtMMHLogo;
     @FindBy(xpath = "//span[contains(text(),'Appointment Settings')]")
@@ -40,7 +46,7 @@ public class PhoneAppointmentSettingPage extends BasePage {
     protected WebElement elmntSystemMenu;
     @FindBy(xpath = "//span[contains(text(),'Systems Menu')]/following::mat-icon[contains(@class,'mat-icon notranslate dd')]")
     protected WebElement elmtSystemsMenu;
-    @FindBy(how = How.XPATH, using = "//div[text()='Phone Appointment Settings']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Phone Appointment Settings']")
     protected WebElement elmntPhoneAppointmentSetting;
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Phone Appointment Settings')]")
     protected WebElement elmntPhoneAppointmentSettingHeader;
@@ -49,7 +55,7 @@ public class PhoneAppointmentSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-select[@role='combobox']")
     protected WebElement elmntPhoneAppointmentSettingHealthcentre;
     protected String elmntPhoneAppoinmentHealthCentre = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[1]").toString();
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
@@ -132,8 +138,8 @@ public class PhoneAppointmentSettingPage extends BasePage {
 //    protected WebElement clickVM03Location2Rule2;
 
     @FindAll({
-            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc1')]//following::textarea)[1]"),
-            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'VM07 Loc1 Evo Prod')]//following::textarea)[1]")
+            @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Automation1_Loc1')]//following::textarea)[1]"),
+            @FindBy(how = How.XPATH, using = "(//label[contains(text(),'VM07 Loc1 Evo Prod')]//following::textarea)[1]")
 
     })
     protected WebElement EnterVM03LocationTextValue;
@@ -142,8 +148,8 @@ public class PhoneAppointmentSettingPage extends BasePage {
 //    protected WebElement EnterVM03LocationTextValue;
 
     @FindAll({
-            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Automation1_Loc2')]//following::textarea)[1]"),
-            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'VM07 Loc2 Evo Prod')]//following::textarea)[1]")
+            @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Automation1_Loc2')]//following::textarea)[1]"),
+            @FindBy(how = How.XPATH, using = "(//label[contains(text(),'VM07 Loc2 Evo Prod')]//following::textarea)[1]")
 
     })
     protected WebElement EnterVM03Location2TextValue;
@@ -152,16 +158,16 @@ public class PhoneAppointmentSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = " //span[contains(text(),'Save')] ")
     protected WebElement ClickSaveButton;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Practice')]//preceding::input[@name='phnecallInitiation0'])[1]")
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Practice')])[1]")
     protected WebElement clickAutomationLoc1LocationPraticeRadioButton;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Practice')]//preceding::input[@name='phnecallInitiation1'])[1]")
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Practice')])[2]")
     protected WebElement clickAutomationLocation2PraticeRadioButton;
 
-    @FindBy(how = How.XPATH, using = " (//div[contains(text(),'Patient')]//preceding::input[@name='phnecallInitiation0'])[2]")
+    @FindBy(how = How.XPATH, using = " (//label[contains(text(),'Patient')])[1]")
     protected WebElement clickVM03LocationPatientRadioButton;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Patient')]//preceding::input[@name='phnecallInitiation1'])[2]")
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Patient')])[2]")
     protected WebElement clickVM03Location2PatientRadioButton;
 
     @FindBy(xpath = "(//span[contains(text(),'Setup Modules')]//following::mat-icon)[1]")
@@ -185,6 +191,9 @@ public class PhoneAppointmentSettingPage extends BasePage {
             }
             if (!isElementDisplayed(txtProviderPortalWelcomePage)){
                 focusWindow(1);
+                if (verifyElement(elmntLogoutPopup)){
+                    click(elmntLogoutPopupButton);
+                }
                 System.out.println("Successfully switch to doctor portal");
                 waitForElement(elmtMMHLogo);
                 waitForElementClickable(elmtMMHLogo);
@@ -275,12 +284,13 @@ public class PhoneAppointmentSettingPage extends BasePage {
     public boolean clickPhoneAppointmentSettingHealthCenter(List<String> Strdata) {
         boolean blresult = false;
         try {
+            waitForSeconds(4);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntPhoneAppointmentSettingHealthcentre);
             jsClick(elmntPhoneAppointmentSettingHealthcentre);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntPhoneAppoinmentHealthCentre.replace("<<REPLACEMENT>>",TestDataUtil.getValue(Strdata.get(0)))));
             System.out.printf("elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
-            mouseClick(elmntEntriesFromHealthCentre);
+            jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult = verifyElement(elmntPhoneAppointmentSettingHealthcentre);
         } catch (Exception e) {

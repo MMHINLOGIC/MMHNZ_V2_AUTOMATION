@@ -1,4 +1,4 @@
-package Sanity_Patient_Web.pages;
+package java.Sanity_Patient_Web.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;
@@ -174,22 +174,20 @@ public class MyHealthDocumentsPage extends BasePage {
             .append("')]").toString();
 
     //tr[./td[contains(text(),'27 Aug 2022')]][./td[contains(text(),'Test-PKBFHFCO')]][./td[contains(text(),'Consent Form')]][./td//a[contains(text(),'MMHtest.jpg')]][./td[contains(text(),'CHRISTOPHER MICHAEL CLANCY')]][./td[contains(text(),'28 Aug 2022')]]
-
-    //tr//td//div[contains(text(),'13 Aug 2024')]//following::td[contains(text(),'Test-SWIBNRJY')]//following::td[contains(text(),'Consent Form')]//following::td//a[contains(text(),'MMHtest.jpg')]//following::td[contains(text(),'PETER ADAMS')]//following::td[contains(text(),'15 Aug 2024')]
     public String verifyHealthDocument = new StringBuilder()
-            .append(" //tr//td//div[contains(text(),'")
+            .append("//tr[./td[contains(text(),'")
             .append("<<DATE>>")
-            .append("')]//following::td[contains(text(),'")
+            .append("')]][./td[contains(text(),'")
             .append("<<DocumentName>>")
-            .append("')]//following::td[contains(text(),'")
+            .append("')]][./td[contains(text(),'")
             .append("<<DocumentType>>")
-            .append("')]//following::td//a[contains(text(),'")
+            .append("')]][./td//a[contains(text(),'")
             .append("<<FileName>>")
-            .append("')]//following::td[contains(text(),'")
+            .append("')]][./td[contains(text(),'")
             .append("<<AttachedBy>>")
-            .append("')]//following::td[contains(text(),'")
+            .append("')]][./td[contains(text(),'")
             .append("<<DocumentValid>>")
-            .append("')]")
+            .append("')]]")
             .toString();
 
 

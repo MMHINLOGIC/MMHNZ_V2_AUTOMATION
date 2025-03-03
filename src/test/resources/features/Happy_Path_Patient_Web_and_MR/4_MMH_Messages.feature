@@ -1,6 +1,6 @@
 Feature: Messages
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: Changing machines timezone
 
     Given I change Windows "<TimeZone>"
@@ -9,7 +9,7 @@ Feature: Messages
       | TimeZone                  |
       | New Zealand Standard Time |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: User Successfully logs in to the MMH Portal.
 
     Given As a user I am on MMH login Page
@@ -23,7 +23,7 @@ Feature: Messages
 
 
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE1 @MESSAGES_MOBILE1
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE1
   Scenario Template: S2- Patient Save Message as Draft
 
     Given As a Existing user I am on HomePage and navigate to Compose Message
@@ -36,7 +36,7 @@ Feature: Messages
       | Details         |
       | &DRAFT_MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
   Scenario Template: S3- Preparation for Received Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -48,7 +48,7 @@ Feature: Messages
       | V1 Portal | Email Address      | Password              |
       | &URL&     | &EMAIL FOR DOCTOR& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
   Scenario Template: S3- Preparation for Received Message, Sending a EMail to the Patient from provider login
 
     Given As a user I am on Doctor portal homepage and Navigate to Compose in Inbox module
@@ -61,7 +61,7 @@ Feature: Messages
       | Message Details            |
       | &RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
   Scenario Template: User Successfully logs in to the MMH v2 Portal as patient user.
 
     Given As a user I am on MMH login Page
@@ -73,7 +73,7 @@ Feature: Messages
       | Email Address | Password   |
       | &EMAIL&       | &PASSWORD& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
   Scenario Outline: S3- User verify the Received Message
     Given As a user I am on HomePage and navigate to Inbox
     When I verify received "<Message>" in the Patient Inbox
@@ -83,7 +83,7 @@ Feature: Messages
       | Message                    |
       | &RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
   Scenario Template: S4- User Verifies the Patient Reply Message
 
     Given As a user I am on HomePage and navigate to Inbox
@@ -155,7 +155,7 @@ Feature: Messages
 
 
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Outline: S8- Patient Signature Settings
     Given As a user I am on HomePage and navigate to Messages Setting
     And I click the Signature Setting and Enter the "<Signature Message>"
@@ -166,7 +166,7 @@ Feature: Messages
       | Signature Message   |
       | &SIGNATURE MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Outline: S10- Patient Automatic Reply Settings
 
     Given As a user I am on HomePage and navigate to Messages Setting
@@ -179,7 +179,7 @@ Feature: Messages
       | Message                   |
       | &AUTOMATIC REPLY MESSAGE& |
 
-  @WEB @Mobile @HAPPY_PATH @MESSAGES
+  @WEB @Mobile @HAPPY_PATH @MESSAGES1
   Scenario Template: S10- Preparation for Patient Automatic Reply Settings, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -191,7 +191,7 @@ Feature: Messages
       | V1 Portal | Email Address      | Password              |
       | &URL&     | &EMAIL FOR DOCTOR& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @Mobile @HAPPY_PATH @MESSAGES
+  @WEB @Mobile @HAPPY_PATH @MESSAGES1
   Scenario Template: S10- Patient verifies the Automatic Reply Messages.
 
     Given As a user I am on Doctor portal homepage and Navigate to Compose in Inbox module
@@ -204,7 +204,7 @@ Feature: Messages
       | Message Details             | Automatic Reply Message   |
       | &AUTOMATIC_MESSAGE_DETAILS& | &AUTOMATIC REPLY MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: User Successfully logs in to the MMH v2 Portal as Patient.
 
     Given As a user I am on MMH login Page
@@ -216,7 +216,7 @@ Feature: Messages
       | Email Address | Password   |
       | &EMAIL&       | &PASSWORD& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Outline: S9- Patient Out Of Office Settings
 
     Given As a user I am on HomePage and navigate to Messages Setting
@@ -229,7 +229,7 @@ Feature: Messages
       | Start Date   | End Date   | Message          |
       | &START DATE& | &END DATE& | &OUT OF MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: User Successfully logs in to the MMH Portal.
 
     Given As a user I am on MMH login Page
@@ -242,7 +242,7 @@ Feature: Messages
       | &EMAIL&       | &PASSWORD& |
 
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Outline: S7- Patient Alert Settings
     Given As a user I am on HomePage and navigate to Messages Setting
     And I click the Alert Setting and select the "<Alert Type>"
@@ -252,7 +252,7 @@ Feature: Messages
       | Alert Type   |
       | &ALERT TYPE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S1- Patient Sending Message
 
     Given As a Existing user I am on HomePage and navigate to Compose Message
@@ -265,7 +265,7 @@ Feature: Messages
       | Compose Details   |
       | &COMPOSE_MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: Changing machines timezone
 
     Given I change Windows "<TimeZone>"
@@ -300,7 +300,7 @@ Feature: Messages
 
   #============================================================================
 
-  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: User Successfully logs in to the MMH Portal.
 
     Given As a user I am on MMH login Page
@@ -313,7 +313,7 @@ Feature: Messages
       | &EMAIL&       | &PASSWORD& |
 
 
-  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Outline: S3- User verify the Received Message
 
     Given As a user I am on HomePage and navigate to Inbox
@@ -324,7 +324,7 @@ Feature: Messages
       | Message                            |
       | &MOBILE_RESPONSE_RECEIVED_MESSAGE& |
 
-  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S4- User Verifies the Patient Reply Message
 
     Given As a user I am on HomePage and navigate to Inbox
@@ -336,7 +336,7 @@ Feature: Messages
       | Reply                           |
       | &MOBILE_RESPONSE_REPLY_MESSAGE& |
 
-  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE @MESSAGES_MOBILE
+  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S5-  User verifies the Patient Group Message
 
     Given As a user I am on HomePage and navigate to GroupMessage

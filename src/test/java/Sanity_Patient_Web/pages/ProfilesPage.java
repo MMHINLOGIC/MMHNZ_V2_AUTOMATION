@@ -1,4 +1,4 @@
-package Sanity_Patient_Web.pages;
+package java.Sanity_Patient_Web.pages;
 
 import cap.common.BasePage;
 import cap.utilities.TestDataUtil;
@@ -1697,7 +1697,7 @@ click(btnAddresschangedOkPopup);
 //            waitForElement(elmntsMenu);
 //            waitForElement(elmntPraticeMenuDoctor);
 //            jsClick(elmntPraticeMenuDoctor);
-//            waitForElement(getElmntSearchPatientsDoctor);
+            waitForElement(getElmntSearchPatientsDoctor);
             jsClick(getElmntSearchPatientsDoctor);
             waitForElement(txtBCSearchPatient);
             blResult = verifyElement(txtBCSearchPatient);

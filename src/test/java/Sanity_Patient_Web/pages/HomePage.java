@@ -1,4 +1,4 @@
-package Sanity_Patient_Web.pages;
+package java.Sanity_Patient_Web.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;
@@ -228,12 +228,12 @@ public class HomePage extends BasePage {
             String pageTitle = driver.getTitle();
             System.out.println("pageTitle >>> : " + pageTitle);
             try {
-//                pageTitle.equalsIgnoreCase("PostRegistration");
-//                waitForElementDisappear(driver, By.xpath(elmntSpinner));
-//                waitForSeconds(3);
-//                waitForElement(txtConnectAHealthCentre);
-//                blResult = verifyElement(txtConnectAHealthCentre);
-//                System.out.println("User on the HomePage and Verified the HomePage >>>>");
+                pageTitle.equalsIgnoreCase("PostRegistration");
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForSeconds(3);
+                waitForElement(txtConnectAHealthCentre);
+                blResult = verifyElement(txtConnectAHealthCentre);
+                System.out.println("User on the HomePage and Verified the HomePage >>>>");
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("User not in the HomePage >>>>");

@@ -1,4 +1,4 @@
-package cap.common;
+package java.cap.common;
 
 import Sanity_Patient_Web.SanityPageContainer;
 import cap.helpers.Constants;
@@ -65,6 +65,10 @@ public class BasePage {
     /**When an element on the page is not clickable, Selenium waits for it to be clickable, and it takes a long time to load all elements.In this method, declare the elements Xpath and Secs..   */
     protected WebElement waitForElementClickable(By by, int secs) {
         return new WebDriverWait(driver, secs).until(ExpectedConditions.elementToBeClickable(by));
+    }
+
+    public WebElement waitForElementIgnoreStale(WebElement element) {
+        return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
     }
 
     protected boolean verifyURLContains(String strURLValue) {
@@ -134,10 +138,6 @@ public class BasePage {
         isFrameFocused = true;
         return isFrameFocused;
 
-    }
-
-    public WebElement waitForElementIgnoreStale(WebElement element) {
-        return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
     }
 
     public static boolean compareList(List<WebElement> lstElements, List<String> lstDataValues) {
@@ -625,9 +625,9 @@ public class BasePage {
             WebDriverWait wait = new WebDriverWait(driver, 1);
             wait.until(ExpectedConditions.visibilityOf(element));
             return element.isDisplayed();
-        } catch (org.openqa.selenium.NoSuchElementException
-                | org.openqa.selenium.StaleElementReferenceException
-                | org.openqa.selenium.TimeoutException e) {
+        } catch (NoSuchElementException
+                 | StaleElementReferenceException
+                 | TimeoutException e) {
             return false;
         }
     }

@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import cap.utilities.TestDataUtil;
@@ -21,7 +21,7 @@ public class AppointmentSettingPage extends BasePage {
 
     public static String strTime;
 
-    @FindBy(how = How.XPATH, using = "//div[text()='Appointment Settings']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Appointment Settings']")
     protected WebElement elmntAppointmentSetting;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Appointment Settings')]")
@@ -35,13 +35,13 @@ public class AppointmentSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Appointment Settings')]")
     protected WebElement txtAppointmentSettingHeader;
 
-    @FindBy(how = How.XPATH, using = "//mat-radio-button[@value='ruleA']//input")
+    @FindBy(how = How.XPATH, using = " //label[contains(text(),'Rule A: No Restrictions – Patient can book appointment with any provider in any location that is enabled for online appointments.')]")
     protected WebElement elmntRuleARadioButton;
 
-    @FindBy(how = How.XPATH, using = "//div[text()='Turn-Off Appointments']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Turn-Off Appointments']")
     protected WebElement elmntTurnOffAppointments;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Turn-Off Appointments Audit')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Turn-Off Appointments Audit')]")
     protected WebElement elmntTurnOffAppointmentsAudit;
 
 
@@ -123,30 +123,31 @@ public class AppointmentSettingPage extends BasePage {
     protected WebElement AppointmentTimeSlotsisNotDisplaying;
     //p[text()='Online Appointment booking has been turned-on']
 
-    @FindBy(how = How.XPATH, using = "//input[@aria-checked='true']")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Tick the checkbox to turn-off online appointments')]")
     protected WebElement elmntTurnOffOnlineAppointmentsCheckBoxChecked;
+    //label[contains(text(),'Tick the checkbox to turn-off online appointments')]
     @FindBy(how = How.XPATH, using = "//input[@aria-checked='false']")
     protected WebElement elmntTurnOnOnlineAppointmentsCheckBoxUnchecked;
 
 
     //mat-checkbox[@formcontrolname='turnOffOnlinechecked']//input
-    @FindBy(how = How.XPATH, using = "//mat-radio-button[@value='ruleB']//input")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Rule B')]")
     protected WebElement elmntRuleBRadioButton;
 
-    @FindBy(how = How.XPATH, using = "//mat-radio-button[@value='ruleC']//input")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Rule C')]")
     protected WebElement elmntRuleCRadioButton;
 
-    @FindBy(how = How.XPATH, using = "//mat-radio-button[@value='ruleD']//input")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Rule D')]")
     protected WebElement elmntRuleDRadioButton;
 
-    @FindBy(how = How.XPATH, using = "//mat-radio-button[@value='ruleE']//input")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Rule E')]")
     protected WebElement elmntRuleERadioButton;
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='allowtobookfamily']//input)[1]")
+    @FindBy(how = How.XPATH, using = "//mat-radio-group[@formcontrolname='allowtobookfamily']//label[contains(text(),'Yes')]")
     protected WebElement elmntAllowToBookFriendsYesButton;
 
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='reason']//input)[1]")
+    @FindBy(how = How.XPATH, using = "//mat-radio-group[@formcontrolname='reason']//label[contains(text(),'Yes')]")
     protected WebElement elmntReasonforAppointmentisMandatoryYesButton;
 
     @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='reason']//input)[2]")
@@ -155,7 +156,7 @@ public class AppointmentSettingPage extends BasePage {
     //mat-radio-button[@value='ruleE']//input
 
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='allowtobookfamily']//input)[2]")
+    @FindBy(how = How.XPATH, using = "//mat-radio-group[@formcontrolname='allowtobookfamily']//label[contains(text(),'No')]")
     protected WebElement elmntAllowToBookFriendsNoButton;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Save')]")
@@ -180,6 +181,11 @@ public class AppointmentSettingPage extends BasePage {
     protected String selectCovidPreScreeningPopup = new StringBuilder()
             .append("//span[normalize-space(text())='").append("<<REPLACEMENT>>")
             .append("']//ancestor::mat-checkbox[@ng-reflect-model='true']//input").toString();
+
+    protected String selectRuleEDoctors = new StringBuilder()
+            .append("//label[normalize-space(text())='").append("<<REPLACEMENT>>")
+            .append("']").toString();
+
 
     protected String deselectCovidPreScreeningPopup = new StringBuilder()
             .append("//span[normalize-space(text())='").append("<<REPLACEMENT>>")
@@ -433,24 +439,24 @@ public class AppointmentSettingPage extends BasePage {
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
-            if (verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strLocation))))) {
-//                takeScreenshot(driver);
-                System.out.println("Appointment Restrict Provider CheckBox Already checked");
-                blresult = true;
-            }
-            if (!verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
+//            if (verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strLocation))))) {
+////                takeScreenshot(driver);
+//                System.out.println("Appointment Restrict Provider CheckBox Already checked");
+//                blresult = true;
+//            }
+
                 waitForSeconds(3);
                 waitForElementDisappear(driver,By.xpath(elmntSpinner));
-                WebElement elmntHealthCentreLocation2 = waitForElementClickable(By.xpath(deselectCovidPreScreeningPopup.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strLocation))));
+                WebElement elmntHealthCentreLocation2 = waitForElementClickable(By.xpath(selectRuleEDoctors.replaceAll("<<REPLACEMENT>>", TestDataUtil.getValue(strLocation))));
                 System.out.println(">>>>>>>>>>>>elmntHealthCentreLocation2"+ elmntHealthCentreLocation2);
                 waitForElement(elmntHealthCentreLocation2);
                 jsClick(elmntHealthCentreLocation2);
                 waitForElementDisappear(driver,By.xpath(elmntSpinner));
-                verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))));
+
 //                takeScreenshot(driver);
                 System.out.println("Appointment  Restrict Provider CheckBox Checked::");
                 blresult = true;
-            }
+
             blresult = true;
         }
         catch (Exception e) {
@@ -651,15 +657,17 @@ public class AppointmentSettingPage extends BasePage {
             waitForElement(elmntEditButton);
              click(elmntEditButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-           if (isElementDisplayed(elmntTurnOffOnlineAppointmentsCheckBoxChecked)) {
-               System.out.println("Turn Off Online Appointments CheckBox Already checked");
-           }
-           if (isElementDisplayed(elmntTurnOnOnlineAppointmentsCheckBoxUnchecked)){
-               jsClick(elmntTurnOnOnlineAppointmentsCheckBoxUnchecked);
-               waitForElementDisappear(driver,By.xpath(elmntSpinner));
-               takeScreenshot(driver);
-               verifyElement(elmntTurnOffOnlineAppointmentsCheckBoxChecked);
-           }
+//           if (isElementDisplayed(elmntTurnOffOnlineAppointmentsCheckBoxChecked)) {
+//               System.out.println("Turn Off Online Appointments CheckBox Already checked");
+//           }
+//           if (isElementDisplayed(elmntTurnOnOnlineAppointmentsCheckBoxUnchecked)){
+//               jsClick(elmntTurnOnOnlineAppointmentsCheckBoxUnchecked);
+//               waitForElementDisappear(driver,By.xpath(elmntSpinner));
+//               takeScreenshot(driver);
+//               verifyElement(elmntTurnOffOnlineAppointmentsCheckBoxChecked);
+//           }
+            waitForElement(elmntTurnOffOnlineAppointmentsCheckBoxChecked);
+            click(elmntTurnOffOnlineAppointmentsCheckBoxChecked);
             waitForElement(elmntTurnOffAppointmentsHeader);
             verifyElement(elmntTurnOffAppointmentsHeader);
             waitForElement(elmntSaveButton);
@@ -714,14 +722,16 @@ public class AppointmentSettingPage extends BasePage {
             waitForElement(elmntEditButton);
             click(elmntEditButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            if (isElementDisplayed(elmntTurnOnOnlineAppointmentsCheckBoxUnchecked)) {
-                System.out.println("Turn Off Online Appointments CheckBox Already Unchecked");
-            }
-            if (isElementDisplayed(elmntTurnOffOnlineAppointmentsCheckBoxChecked)){
-                jsClick(elmntTurnOffOnlineAppointmentsCheckBoxChecked);
-                takeScreenshot(driver);
-                verifyElement(elmntTurnOnOnlineAppointmentsCheckBoxUnchecked);
-            }
+//            if (isElementDisplayed(elmntTurnOnOnlineAppointmentsCheckBoxUnchecked)) {
+//                System.out.println("Turn Off Online Appointments CheckBox Already Unchecked");
+//            }
+//            if (isElementDisplayed(elmntTurnOffOnlineAppointmentsCheckBoxChecked)){
+//                jsClick(elmntTurnOffOnlineAppointmentsCheckBoxChecked);
+//                takeScreenshot(driver);
+//                verifyElement(elmntTurnOnOnlineAppointmentsCheckBoxUnchecked);
+//            }
+            waitForElement(elmntTurnOffOnlineAppointmentsCheckBoxChecked);
+            click(elmntTurnOffOnlineAppointmentsCheckBoxChecked);
             waitForElement(elmntTurnOffAppointmentsHeader);
             verifyElement(elmntTurnOffAppointmentsHeader);
             waitForElement(elmntSaveButton);

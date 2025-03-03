@@ -1,4 +1,4 @@
-package General_Sanity_Provider_Web.cukes;
+package java.General_Sanity_Provider_Web.cukes;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;

@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Mobile_App.cukes;
+package java.Happy_Path_Patient_Mobile_App.cukes;
 
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;

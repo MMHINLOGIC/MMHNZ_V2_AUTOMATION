@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import org.openqa.selenium.By;
@@ -26,7 +26,7 @@ public class MyAppointmentPage extends BasePage {
     protected WebElement elmtMMHLogo;
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'My Appointments')] ")
     protected WebElement verifyheaderMyAppointmentPage;
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'My Appointments')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'My Appointments')])[2]")
     protected WebElement clickheaderMyAppointmentPage;
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
@@ -38,7 +38,7 @@ public class MyAppointmentPage extends BasePage {
             jsClick(clickMyAppointmentButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(clickheaderMyAppointmentPage);
-            jsClick(clickheaderMyAppointmentPage);
+            click(clickheaderMyAppointmentPage);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(verifyheaderMyAppointmentPage);
             blresult =verifyElement(verifyheaderMyAppointmentPage);

@@ -1,4 +1,4 @@
-package Sanity_Patient_Web.pages;
+package java.Sanity_Patient_Web.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;
@@ -55,7 +55,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Sent')]")
     protected WebElement elmntSentPatient;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE MESSAGE']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Compose']")
     protected WebElement elmntComposeDoctor;
 
 
@@ -119,7 +119,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//h1[text()=' Compose Email ']//i)[1]")
     protected WebElement txtComposeBackButton;
 
-    @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'COMPOSE MESSAGE')])[1]")
+    @FindBy(how = How.XPATH, using = "(//h1[text()=' Compose Email '])[1]")
     protected WebElement txtCompose;
     @FindBy(how = How.XPATH, using = "//div[@class='leftside']")
     protected WebElement elmntsMenu;
@@ -140,8 +140,8 @@ public class MessagesPage extends BasePage {
     protected String elmntbyDrop = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[3]").toString();
 
-    protected String elmntbyServiceName = new StringBuilder().append("//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]").toString();
+    protected String elmntbyServiceName = new StringBuilder().append("(//span[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='serviceName']")
     protected WebElement drpDownServiceName;
@@ -1356,11 +1356,10 @@ public class MessagesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-waitForSeconds(4);
+
             waitForElement(txtCompose);
             waitForElementClickable(drpDownRole);
             jsClick(drpDownRole);
-            waitForSeconds(4);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             //            Select healthCentre = new Select(driver.findElement(By.xpath("//mat-select[@formcontrolname='role']")));
 //            healthCentre.selectByVisibleText(strRole);

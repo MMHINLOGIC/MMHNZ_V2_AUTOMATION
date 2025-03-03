@@ -1,4 +1,4 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import java.util.Random;
 

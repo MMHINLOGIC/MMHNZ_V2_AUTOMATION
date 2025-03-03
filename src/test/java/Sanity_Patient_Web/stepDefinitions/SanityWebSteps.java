@@ -1,4 +1,4 @@
-package Sanity_Patient_Web.stepDefinitions;
+package java.Sanity_Patient_Web.stepDefinitions;
 
 
 import Sanity_Patient_Web.SanityPageContainer;
@@ -374,7 +374,7 @@ public class SanityWebSteps {
 
     @Then("I should see the Password changed Success Popup")
     public void iShouldSeeThePasswordChangedSuccessPopup() {
-//        Assert.assertTrue(sanityPageContainer.profilesPage.verifyPasswordSuccess());
+        Assert.assertTrue(sanityPageContainer.profilesPage.verifyPasswordSuccess());
     }
 
     @Then("I should see the Address changed Success Popup")

@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import org.openqa.selenium.By;
@@ -20,6 +20,12 @@ public class RecallSettingPage extends BasePage {
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]")
     })
     protected WebElement txtProviderPortalWelcomePage;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Your session is about to expire!')]")
+    protected WebElement elmntLogoutPopup;
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes, Keep Working')]")
+    protected WebElement elmntLogoutPopupButton;
 
     @FindBy(xpath = "//a[@class='navbar-brand']")
     protected WebElement elmtMMHLogo;
@@ -46,14 +52,14 @@ public class RecallSettingPage extends BasePage {
     @FindBy (how = How.XPATH, using = "//h1[contains(text(),'Recall Settings')]")
     protected WebElement elmntRecallSettingPageHeader;
 
-    @FindBy (how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='enablecallremainders']//input)[1]")
+    @FindBy (how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='enablecallremainders']//label)[1]")
     protected WebElement elmntRecallReminderYesRadioButton;
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='healthCenter']")
     protected WebElement elmntHealthCentre;
 
     protected String elmntHealthCentreDrop = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[1]").toString();
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='sendcallremainders']")
     protected WebElement elmntRecallReminderTextbox;
@@ -67,7 +73,7 @@ public class RecallSettingPage extends BasePage {
     @FindBy (how = How.XPATH, using = "//span[contains(text(),' Edit ')]")
     protected WebElement clickEditButton;
 
-    @FindBy (how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='enablecallremainders']//input)[2]")
+    @FindBy (how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='enablecallremainders']//label)[2]")
     protected WebElement elmntRecallReminderNoRadioButton;
 
 
@@ -87,6 +93,9 @@ public class RecallSettingPage extends BasePage {
             }
             if (!isElementDisplayed(txtProviderPortalWelcomePage)){
                 focusWindow(1);
+                if (verifyElement(elmntLogoutPopup)){
+                    click(elmntLogoutPopupButton);
+                }
                 System.out.println("Successfully switch to doctor portal");
                 waitForElement(elmtMMHLogo);
                 waitForElementClickable(elmtMMHLogo);
@@ -195,12 +204,13 @@ public class RecallSettingPage extends BasePage {
     public boolean clickHealthCenterLocation(String Strdata) {
         boolean blresult = false;
         try {
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntHealthCentre);
-            click(elmntHealthCentre);
+            jsClick(elmntHealthCentre);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntHealthCentreDrop.replace("<<REPLACEMENT>>", Strdata)));
             System.out.printf("elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
-            mouseClick(elmntEntriesFromHealthCentre);
+            jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntHealthCentre);
             blresult = verifyElement(elmntHealthCentre);

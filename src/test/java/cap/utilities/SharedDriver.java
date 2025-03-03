@@ -1,4 +1,4 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import cap.helpers.Constants;
 import org.openqa.selenium.WebDriver;

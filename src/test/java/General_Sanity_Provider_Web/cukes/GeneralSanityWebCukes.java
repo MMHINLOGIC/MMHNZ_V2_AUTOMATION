@@ -1,4 +1,4 @@
-package General_Sanity_Provider_Web.cukes;
+package java.General_Sanity_Provider_Web.cukes;
 
 import cap.utilities.TestDataUtil;
 import com.aventstack.extentreports.service.ExtentService;
@@ -12,14 +12,16 @@ import static Happy_Path_Patient_Web_and_MR.pages.HomePage.strSystemName;
 
 @CucumberOptions(features = {"src/test/resources/features/General_Sanity_Provider_Web"},
         monochrome = true,
-        tags = "@APPOINTMENTS_SETTING",
-        glue = {"General_Sanity_Provider_Web","Happy_Path_Patient_Web_and_MR","Happy_Path_Provider_Web"},
+        tags = "@BEATING_THE_BLUES",
+        glue = {"General_Sanity_Provider_Web","Happy_Path_Patient_Web_and_MR","Happy_Path_Provider_Web","Sanity_Patient_Web"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "html:reports/WEB/index.html",
                 "json:reports/WEB/cucumber.json",
                 "rerun:target/failedrerun.txt"
         })
+//clean test -Dapp=General_Sanity_Provider_Web -Dexecution_type=browser -Drunner=GeneralSanityWebCukes -Dbrowser_name=chrome -Denv=QA "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/WebApp-QAResults.html -Dsysteminfo.AppName=Demo-QA"
+//clean test -Dapp=General_Sanity_Provider_Web -Drunner=GeneralSanityWebCukes -Dexecution_type=mobile -Dconfig=local_android_Galaxy_M53_Chrome -Denv=QA -Dbrowser_name=chrome "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/RealDeviceMobile-QAResults.html -Dsysteminfo.AppName=Demo-QA"
 
 public class GeneralSanityWebCukes extends AbstractTestNGCucumberTests {
     @BeforeClass
@@ -29,7 +31,6 @@ public class GeneralSanityWebCukes extends AbstractTestNGCucumberTests {
         System.setProperty("runner","GeneralSanityWebCukes");
         System.setProperty("browser_name","chrome");
         System.setProperty("env","QA");
-
     }
     @AfterClass
     public void teardown() {
@@ -41,12 +42,7 @@ public class GeneralSanityWebCukes extends AbstractTestNGCucumberTests {
         ExtentService.getInstance().setSystemInfo("Browser Version", strBrowserVersion);
         ExtentService.getInstance().setSystemInfo("Execution Machine", strSystemName);
         ExtentService.getInstance().setSystemInfo("Automation QA", System.getProperty("user.name"));
-
-
     }
-
-
-
 }
 
 

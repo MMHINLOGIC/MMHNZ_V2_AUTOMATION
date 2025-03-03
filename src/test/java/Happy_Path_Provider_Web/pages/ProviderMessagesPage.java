@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import cap.utilities.TestDataUtil;
@@ -17,7 +17,7 @@ public class ProviderMessagesPage extends BasePage {
     }
 
 
-    @FindBy(how = How.XPATH, using = " //span[text()='COMPOSE MESSAGE']")
+    @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE MESSAGE']")
     protected WebElement txtCompose;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Attach Files')]")
@@ -26,7 +26,7 @@ public class ProviderMessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Save')]")
     protected WebElement btnSave;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Enable Out Of Office Reply')]/preceding-sibling::div/input")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Enable Out Of Office Reply')]")
     protected WebElement chkboxOutOfOfficeReply;
 
     @FindBy(how = How.XPATH, using = "(//iframe)[1]")
@@ -63,16 +63,15 @@ public class ProviderMessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='Send message']")
     protected WebElement txtReplySendMessageButton;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Sent')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Sent')]")
     protected WebElement elmntSentDoctor;
 
     @FindBy(how = How.XPATH, using = "(//h1[text()='Sent Messages'])[1]")
     protected WebElement txtSent;
 
     @FindAll({
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),' Timprefer!')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),' Barry')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
     })
     protected WebElement txtProviderPortalWelcomePage;
     @FindBy(xpath = "//a[@class='navbar-brand']")
@@ -87,7 +86,7 @@ public class ProviderMessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//div[@class='ProseMirror'][1]//p)[2]")
     protected WebElement txtReplyBodyMessage;
 
-    @FindBy(how = How.XPATH, using = "//a[text()=' Draft']")
+    @FindBy(how = How.XPATH, using = "//span[text()=' Draft']")
     protected WebElement ElementDraftPage;
 
 
@@ -133,14 +132,14 @@ public class ProviderMessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//*[contains(text(),'My Home page') or contains(text(),'Welcome')])[1]")
     protected WebElement txtMyHomePage;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Inbox')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Inbox')])[1]")
     protected WebElement elmntInboxDoctor;
 
-    @FindBy(how = How.XPATH, using = " //span[text()='COMPOSE MESSAGE']")
+    @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE MESSAGE']")
     protected WebElement elmntComposeDoctor;
 
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),' Settings')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Settings')])[2]")
     protected WebElement elmntDoctorMessageSetting;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Message Settings')]")

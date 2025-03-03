@@ -1,4 +1,4 @@
-package cap.common;
+package java.cap.common;
 
 import Happy_Path_Patient_Mobile_App.DemoScreenContainer;
 import cap.helpers.Constants;

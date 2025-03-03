@@ -1,4 +1,4 @@
-package Sanity_Patient_Web.pages;
+package java.Sanity_Patient_Web.pages;
 
 import cap.common.BasePage;
 import org.openqa.selenium.WebDriver;

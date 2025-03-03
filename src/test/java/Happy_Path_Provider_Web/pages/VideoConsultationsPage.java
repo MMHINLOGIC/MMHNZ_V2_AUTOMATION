@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +13,7 @@ public class VideoConsultationsPage extends BasePage {
     }
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),' Timprefer!')]"), //Desktop View
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),' Barry')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
     })
     protected WebElement txtWelcome;
@@ -24,13 +24,13 @@ public class VideoConsultationsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='My Appointments']")
     protected WebElement clickMyAppointmentButton;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'My Appointments')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'My Appointments')]")
     protected WebElement clickheaderMyAppointmentPage;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'My Appointments')] ")
     protected WebElement verifyheaderMyAppointmentPage;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Video Consultations')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Video Consultations')]")
     protected WebElement clickVideoConsultationsButton;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Video Consultations')]")

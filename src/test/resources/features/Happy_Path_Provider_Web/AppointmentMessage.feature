@@ -9,18 +9,7 @@ Feature: Appointment Message
     And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SCRIPT2
-  Scenario Template: Prep- Canceling all the appointments
-
-    Given As a user I am on HomePage
-    And I navigate to the "<Appointment>" Future Appointments page
-    And I canceling all the available appointments
-
-    Examples:
-      | Appointment           |
-      | Upcoming Appointments |
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_MESSAGE @PROVIDER_SCRIPT2
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_MESSAGE
   Scenario Template:S1-As a User I have to enable Easy Booking Banner Message to Yes in Appointment Message page
 
     Given As a Provider I am on HomePage and navigate to Appointment Message page
@@ -36,7 +25,7 @@ Feature: Appointment Message
       | Health_Centre                 | Banner_Heading   | Banner_Message   | Location                 |
       | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& | &PRE_SCREENING_LOCATION& |
 
-  @WEB @PROVIDER_HAPPY_PATH1 @APPOINTMENTS_MESSAGE @PROVIDER_SCRIPT2
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_MESSAGE
   Scenario Template:S2-As a User I have to enable Easy Booking Banner Message to No in Appointment Message page
 
     Given As a Provider I am on HomePage and navigate to Appointment Message page
@@ -52,7 +41,7 @@ Feature: Appointment Message
       | Health_Centre                 | Banner_Heading   | Banner_Message   | Location                 |
       | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& | &PRE_SCREENING_LOCATION& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_MESSAGE @PROVIDER_SCRIPT2
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_MESSAGE
   Scenario Template:S3-As a User I have to enable Patient Portal(Web) Banner Message to yes in Appointment Message page
 
     Given As a Provider I am on HomePage and navigate to Appointment Message page
@@ -67,7 +56,7 @@ Feature: Appointment Message
       | Health_Centre                 | Banner_Heading   | Banner_Message   |
       | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_MESSAGE @PROVIDER_SCRIPT2
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_MESSAGE
   Scenario Template:S4-As a User I have to enable Patient Portal(Web) Banner Message to No in Appointment Message page
 
     Given As a Provider I am on HomePage and navigate to Appointment Message page

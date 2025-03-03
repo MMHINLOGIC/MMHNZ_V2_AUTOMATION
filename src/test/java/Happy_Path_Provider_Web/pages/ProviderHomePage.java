@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;
@@ -30,7 +30,7 @@ public class ProviderHomePage extends BasePage {
     protected WebElement elmntSavebtn;
 
     public String elmntModule = new StringBuilder()
-            .append("//div[contains(text(),'")
+            .append("//span[contains(text(),'")
             .append("<<NAME>>")
             .append("')]").toString();
 
@@ -72,7 +72,7 @@ public class ProviderHomePage extends BasePage {
     @FindBy(xpath = "(//span[contains(text(),'Setup Modules')]//following::mat-icon)[1]")
     protected WebElement elmtSystemsMenuExpandIcon;
 
-    @FindBy(xpath = "(//img[@alt='Manage My Health'])[3]")
+    @FindBy(xpath = "//img[@src='/assets/themes/app/MMH-logo.svg']")
     protected WebElement ProviderManageMyHealthLogo;
 
     @FindBy(xpath = "//a[@class='navbar-brand']")
@@ -96,6 +96,12 @@ public class ProviderHomePage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
     protected WebElement elmntDashboard;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Your session is about to expire!')]")
+    protected WebElement elmntLogoutPopup;
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes, Keep Working')]")
+    protected WebElement elmntLogoutPopupButton;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
     protected WebElement btnExitApp;
@@ -196,10 +202,10 @@ public class ProviderHomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Appointment Settings')]")
     protected WebElement txtAppointmentSettingHeader;
 
-    @FindBy(how = How.XPATH, using = "//div[text()='Appointment Settings']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Appointment Settings']")
     protected WebElement elmntAppointmentSetting;
 
-    @FindBy (how = How.XPATH, using = "//div[contains(text(),'Appointment Message')]")
+    @FindBy (how = How.XPATH, using = "//span[contains(text(),'Appointment Message')]")
     protected WebElement elmntAppoitmentMssgHeading;
 
     @FindBy (how = How.XPATH, using = "//*[contains(text(),'Home')and contains(text(),'My Home page') or contains(text(),'Start managing your health today')]")
@@ -512,6 +518,9 @@ public class ProviderHomePage extends BasePage {
         }
             if (!verifyElement(txtProviderPortalWelcomePage)){
                 focusWindow(1);
+                if (verifyElement(elmntLogoutPopup)){
+                    click(elmntLogoutPopupButton);
+                }
                 System.out.println("Successfully switch to doctor portal");
                 waitForElement(elmtMMHLogo);
                 waitForElementClickable(elmtMMHLogo);
@@ -561,7 +570,7 @@ public class ProviderHomePage extends BasePage {
                     if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                         if (verifyElement(txtProviderPortalWelcomePage)) {
                             waitForElement(elmntLogOut);
-                            click(elmntLogOut);
+                            jsClick(elmntLogOut);
                             waitForSeconds(2);
                             visit(TestDataUtil.getValue("&URL&"));
                         }

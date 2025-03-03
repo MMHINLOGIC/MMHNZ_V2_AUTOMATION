@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.cukes;
+package java.Happy_Path_Provider_Web.cukes;
 
 import cap.utilities.TestDataUtil;
 import com.aventstack.extentreports.service.ExtentService;
@@ -12,7 +12,7 @@ import static Happy_Path_Patient_Web_and_MR.pages.HomePage.strSystemName;
 
 @CucumberOptions(features = {"src/test/resources/features/Happy_Path_Provider_Web"},
         monochrome = true,
-        tags = "@PROVIDER_HAPPY_PATH",
+        tags = "@PROVIDER_MESSAGES",
         glue = {"Happy_Path_Provider_Web", "Happy_Path_Patient_Web_and_MR"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -29,7 +29,7 @@ public class ProviderWebCukes extends AbstractTestNGCucumberTests {
         System.setProperty("execution_type","browser");
         System.setProperty("runner","ProviderWebCukes");
         System.setProperty("browser_name","chrome");
-        System.setProperty("env","QA");
+        System.setProperty("env","PROD");
 
     }
     @AfterClass
@@ -47,4 +47,4 @@ public class ProviderWebCukes extends AbstractTestNGCucumberTests {
     }
 }
 
-//clean test -Dapp=Happy_Path_Provider_Web -Dexecution_type=browser -Drunner=ProviderWebCukes -Dbrowser_name=chrome -Denv=QA "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/WebApp-QAResults.html -Dsysteminfo.AppName=Demo-QA"
+//clean test -Dapp=Happy_Path_Provider_Web -Dexecution_type=browser -Drunner=ProviderWebCukes -Dbrowser_name=chrome -Denv=PROD "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/WebApp-QAResults.html -Dsysteminfo.AppName=Demo-QA"

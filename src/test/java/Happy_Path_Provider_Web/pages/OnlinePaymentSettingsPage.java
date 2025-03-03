@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web.pages;
+package java.Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import org.openqa.selenium.By;
@@ -15,7 +15,7 @@ public class OnlinePaymentSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Payments')])[2]")
     protected WebElement elmntPayments;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Online Payment Settings')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Online Payment Settings')]")
     protected WebElement elmntOnlinePaymentSetting;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Online Payment Settings')]")
@@ -38,16 +38,16 @@ public class OnlinePaymentSettingsPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Repeat Prescriptions')]")
     protected WebElement elmtRepeatScriptSettings;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Appointments')]//following::input)[1]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Appointments')]//following::label)[1]")
     protected WebElement elmntEnableOnlinePaymentsForAppointments;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Appointments')]//following::input)[2]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Appointments')]//following::label)[2]")
     protected WebElement elmntEnableNoOnlinePaymentsForAppointments;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Request Repeat Prescriptions')]//following::input)[1]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Request Repeat Prescriptions')]//following::label)[1]")
     protected WebElement elmntEnableOnlinePaymentsForRRP;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Request Repeat Prescriptions')]//following::input)[2]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Request Repeat Prescriptions')]//following::label)[2]")
     protected WebElement elmntDisableOnlinePaymentsForRRP;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Save')] ")
@@ -56,7 +56,7 @@ public class OnlinePaymentSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'Changes saved successfully')]")
     protected WebElement veriflyPopup;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Appointment Settings')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Appointment Settings')])[1]")
     protected WebElement elmntAppointmentSetting;
 
 
@@ -64,58 +64,58 @@ public class OnlinePaymentSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Appointments')])[2]")
     protected WebElement elmntAppointments;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Appointment Settings')])[1]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Appointment Settings')])[1]")
     protected WebElement clickAppointmentSettingHeader;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Appointment Settings')]")
     protected WebElement elmntAppointmentSettingHeader;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Pay at Health Centre Only')]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Pay at Health Centre Only')]")
     protected WebElement verifyPayAtHealthCentreonly;
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Pay Online Only ')]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Pay Online Only ')]")
     protected WebElement verifyPayOnlineonly;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Pay at Health Centre or Pay Online')]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Pay at Health Centre or Pay Online')]")
     protected WebElement verifyPayatHealthCentreorPayOnline;
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentMode']//input)[3]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentMode']//label)[3]")
     protected WebElement verifyInPersonAppointmentsCheckbox;
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentMode']//input)[3]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentMode']//label)[3]")
     protected WebElement verifyInPersonAppointmentsCheckboxUnchecked;
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModePhone']//input)[3]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModePhone']//label)[3]")
     protected WebElement verifyPhoneAppointmentsCheckboxUnchecked;
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModePhone']//input)[3]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModePhone']//label)[3]")
     protected WebElement verifyPhoneAppointmentsCheckbox;
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModeVideo']//input)[3]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModeVideo']//label)[3]")
     protected WebElement verifyVideoAppointmentsCheckbox;
 
-    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModeVideo']//input)[3]")
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModeVideo']//label)[3]")
     protected WebElement verifyVideoAppointmentsCheckboxUnchecked;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Repeat Script Settings')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Repeat Script Settings')]")
     protected WebElement elmntRepeatScriptSetting;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Repeat Prescriptions')]")
     protected WebElement elmntRepeatPrescription;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Repeat Script Settings')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Repeat Script Settings')]")
     protected WebElement clickRepeatScriptSettingHeader;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Repeat Script Settings')]")
     protected WebElement elmntRepeatScriptSettingHeader;
 
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Pay at Health Centre Only')]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Pay at Health Centre Only')]")
     protected WebElement elmntRRPPayAtHealthCentreOnly;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Pay Online Only')]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Pay Online Only')]")
     protected WebElement elmntRRPPayOnlineOnly;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Pay at Health Centre or Pay Online')]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Pay at Health Centre or Pay Online')]")
     protected WebElement elmntRRPPayatHealthCentreorPayOnline;
 
     //div[contains(text(),'Pay Online Only')]
@@ -141,9 +141,10 @@ public class OnlinePaymentSettingsPage extends BasePage {
     public boolean clickEditButton() {
         boolean blresult = false;
         try {
+            waitForSeconds(4);
 jsScrollIntoView(elmntEditButton);
             waitForElement(elmntEditButton);
-            click(elmntEditButton);
+            jsClick(elmntEditButton);
             waitForElement(elmntOnlinePaymentSettingHeader);
             blresult = verifyElement(elmntOnlinePaymentSettingHeader);
         } catch (Exception e) {
@@ -155,9 +156,10 @@ jsScrollIntoView(elmntEditButton);
     public boolean clickHealthCenterLocation(String Strdata) {
         boolean blresult = false;
         try {
+            waitForSeconds(3);
             jsScrollIntoView(clickHealthCentre);
             waitForElement(clickHealthCentre);
-            click(clickHealthCentre);
+            jsClick(clickHealthCentre);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntHealthCentreDrop.replace("<<REPLACEMENT>>", Strdata)));
             System.out.printf("elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
@@ -209,7 +211,7 @@ jsScrollIntoView(elmntEditButton);
         try {
             jsScrollIntoView(elmntSaveButton);
             waitForElement(elmntSaveButton);
-            click(elmntSaveButton);
+            jsClick(elmntSaveButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(veriflyPopup);
             blresult = verifyElement(veriflyPopup);
@@ -224,13 +226,13 @@ jsScrollIntoView(elmntEditButton);
         try {
             jsScrollIntoView(elmntAppointments);
             waitForElement(elmntAppointments);
-            click(elmntAppointments);
+            jsClick(elmntAppointments);
             jsScrollIntoView(elmntAppointmentSetting);
             waitForElement(elmntAppointmentSetting);
             jsClick(elmntAppointmentSetting);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(clickAppointmentSettingHeader);
-            click(clickAppointmentSettingHeader);
+            jsClick(clickAppointmentSettingHeader);
             waitForElement(elmntAppointmentSettingHeader);
             blresult = verifyElement(elmntAppointmentSettingHeader);
         } catch (Exception e) {
@@ -256,16 +258,16 @@ jsScrollIntoView(elmntEditButton);
     public boolean veriflyInpersonAppoitmentPaymentSettings() {
         boolean blresult = false;
         try {
-            if (verifyElement(verifyInPersonAppointmentsCheckbox)){
-                jsClick(verifyInPersonAppointmentsCheckbox);
-                System.out.println("Sucessfully verified In Person Appointments Checkbox Cheacked");
-            }
-            else {
+//            if (verifyElement(verifyInPersonAppointmentsCheckbox)){
+//                jsClick(verifyInPersonAppointmentsCheckbox);
+//                System.out.println("Sucessfully verified In Person Appointments Checkbox Cheacked");
+//            }
+//            else {
                 waitForElement(verifyInPersonAppointmentsCheckboxUnchecked);
                 jsClick(verifyInPersonAppointmentsCheckboxUnchecked);
                 verifyElement(verifyInPersonAppointmentsCheckbox);
                 System.out.println("Else -Sucessfully verified In Person Appointments Checkbox Cheacked");
-            }
+//            }
             jsScrollIntoView(verifyPayAtHealthCentreonly);
             waitForElement(verifyPayAtHealthCentreonly);
           verifyElement(verifyPayAtHealthCentreonly);
@@ -286,16 +288,16 @@ jsScrollIntoView(elmntEditButton);
     public boolean veriflyPhoneAppoitmentPaymentSettings() {
         boolean blresult = false;
         try {
-            if (verifyElement(verifyPhoneAppointmentsCheckbox)){
-                jsClick(verifyPhoneAppointmentsCheckbox);
-                System.out.println("Sucessfully verified In Person Appointments Checkbox Cheacked");
-            }
-            else {
+//            if (verifyElement(verifyPhoneAppointmentsCheckbox)){
+//                jsClick(verifyPhoneAppointmentsCheckbox);
+//                System.out.println("Sucessfully verified In Person Appointments Checkbox Cheacked");
+//            }
+//            else {
                 waitForElement(verifyPhoneAppointmentsCheckboxUnchecked);
                 jsClick(verifyPhoneAppointmentsCheckboxUnchecked);
                 verifyElement(verifyPhoneAppointmentsCheckbox);
                 System.out.println("Else -Sucessfully verified In Person Appointments Checkbox Cheacked");
-            }
+//            }
             jsScrollIntoView(verifyPayAtHealthCentreonly);
             waitForElement(verifyPayAtHealthCentreonly);
             verifyElement(verifyPayAtHealthCentreonly);
@@ -316,16 +318,16 @@ jsScrollIntoView(elmntEditButton);
     public boolean veriflyVideoAppoitmentPaymentSettings() {
         boolean blresult = false;
         try {
-            if (verifyElement(verifyVideoAppointmentsCheckbox)){
-                jsClick(verifyVideoAppointmentsCheckbox);
-                System.out.println("Sucessfully verified In Person Appointments Checkbox Cheacked");
-            }
-            else {
+//            if (verifyElement(verifyVideoAppointmentsCheckbox)){
+//                jsClick(verifyVideoAppointmentsCheckbox);
+//                System.out.println("Sucessfully verified In Person Appointments Checkbox Cheacked");
+//            }
+//            else {
                 waitForElement(verifyVideoAppointmentsCheckboxUnchecked);
                 jsClick(verifyVideoAppointmentsCheckboxUnchecked);
                 verifyElement(verifyVideoAppointmentsCheckbox);
                 System.out.println("Else -Sucessfully verified In Person Appointments Checkbox Cheacked");
-            }
+//            }
             jsScrollIntoView(verifyPayAtHealthCentreonly);
             waitForElement(verifyPayAtHealthCentreonly);
             verifyElement(verifyPayAtHealthCentreonly);
@@ -347,6 +349,7 @@ jsScrollIntoView(elmntEditButton);
     public boolean EnableYesOnlinePaymentsforRRP() {
         boolean blresult = false;
         try {
+            waitForSeconds(4);
             jsScrollIntoView(elmntEnableOnlinePaymentsForRRP);
             waitForElement(elmntEnableOnlinePaymentsForRRP);
             jsClick(elmntEnableOnlinePaymentsForRRP);
@@ -414,9 +417,11 @@ jsScrollIntoView(elmntEditButton);
     public boolean EnableNoOnlinePaymentsforRRP() {
         boolean blresult = false;
         try {
+            waitForSeconds(4);
             jsScrollIntoView(elmntDisableOnlinePaymentsForRRP);
             waitForElement(elmntDisableOnlinePaymentsForRRP);
             jsClick(elmntDisableOnlinePaymentsForRRP);
+            waitForSeconds(3);
             waitForElement(elmntOnlinePaymentSettingHeader);
             blresult = verifyElement(elmntOnlinePaymentSettingHeader);
         } catch (Exception e) {

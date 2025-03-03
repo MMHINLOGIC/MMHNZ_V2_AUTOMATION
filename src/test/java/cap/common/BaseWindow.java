@@ -1,4 +1,4 @@
-package cap.common;
+package java.cap.common;
 
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Getter;

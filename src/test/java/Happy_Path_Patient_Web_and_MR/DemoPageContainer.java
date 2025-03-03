@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Web_and_MR;
+package java.Happy_Path_Patient_Web_and_MR;
 
 import Happy_Path_Patient_Web_and_MR.pages.*;
 import cap.helpers.Constants;

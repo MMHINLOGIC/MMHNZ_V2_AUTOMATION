@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Web_and_MR.cukes;
+package java.Happy_Path_Patient_Web_and_MR.cukes;
 
 
 import cap.utilities.TestDataUtil;
@@ -11,7 +11,7 @@ import static Happy_Path_Patient_Web_and_MR.pages.HomePage.*;
 
 @CucumberOptions(features = {"src/test/resources/features/Happy_Path_Patient_Web_and_MR"},
         monochrome = true,
-        tags = "@HAPPY_PATH",
+        tags = "@MESSAGES1",
         glue = {"Happy_Path_Patient_Web_and_MR"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -40,5 +40,5 @@ public class DemoWebCukes extends AbstractTestNGCucumberTests {
 
 
 
-//    clean test -Dapp=Happy_Path_Patient_Web_and_MR -Dexecution_type=browser -Drunner=DemoWebCukes -Dbrowser_name=chrome -Denv=UAT "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/Web-QAResults.html -Dsysteminfo.AppName=Demo-QA"
+//    clean test -Dapp=Happy_Path_Patient_Web_and_MR -Dexecution_type=browser -Drunner=DemoWebCukes -Dbrowser_name=chrome -Denv=PRD "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/Web-QAResults.html -Dsysteminfo.AppName=Demo-QA"
 

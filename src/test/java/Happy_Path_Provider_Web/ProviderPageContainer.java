@@ -1,4 +1,4 @@
-package Happy_Path_Provider_Web;
+package java.Happy_Path_Provider_Web;
 
 import Happy_Path_Patient_Web_and_MR.pages.AppointmentsPage;
 import Happy_Path_Provider_Web.pages.*;
@@ -40,12 +40,6 @@ public class ProviderPageContainer {
     public AppointmentRemainderSettingsPage appointmentReminderSettingPage;
 
     public VideoConsultationsSettingPage videoConsultationsSettingPage;
-
-    public AlternativeProviderPage alternativeProviderPage;
-
-    public AppointmentReasonPage appointmentReasonPage;
-
-    public SMSSettingsPage sMSSettingsPage;
 
 
 
@@ -90,9 +84,6 @@ public class ProviderPageContainer {
         setupServicesPage = new SetupServicesPage(driver);
         appointmentReminderSettingPage = new    AppointmentRemainderSettingsPage(driver);
         videoConsultationsSettingPage = new VideoConsultationsSettingPage(driver);
-        alternativeProviderPage = new AlternativeProviderPage(driver);
-        appointmentReasonPage = new AppointmentReasonPage(driver);
-        sMSSettingsPage = new SMSSettingsPage(driver);
     }
 
     @After("@WEB")

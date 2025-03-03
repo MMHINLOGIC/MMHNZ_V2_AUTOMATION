@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Web_and_MR.pages;
+package java.Happy_Path_Patient_Web_and_MR.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;
@@ -103,7 +103,7 @@ public class RepeatPrescription extends BasePage {
     protected String ddLocation = new StringBuilder()
             .append("//span[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')]/parent::span").toString();
+            .append("')]").toString();
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='ScriptUrgency']")
     protected WebElement drpdwnScriptUrgency;
@@ -152,7 +152,7 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-checkbox[@formcontrolname='termsConditions']")
     protected WebElement checkBoxTermsAndConditions;
 
-    @FindBy(how = How.XPATH, using = "(//span[text()='Pay At Health Centre'])[1]")
+    @FindBy(how = How.XPATH, using = "(//button[text()='Pay At Health Centre'])[1]")
     protected WebElement BtnPayAtHealthCentre;
 
     @FindBy(how = How.XPATH, using = "//div[@class='toast-content']")
@@ -239,7 +239,7 @@ public class RepeatPrescription extends BasePage {
     protected String chkMedication = new StringBuilder()
             .append("//tr//td[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')]/preceding-sibling::td/input").toString();
+            .append("')]//preceding-sibling::td//input").toString();
 
 
     @FindBy(how = How.XPATH, using = "//textarea[@formcontrolname='MessageBody']")
@@ -248,19 +248,19 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='PharmacyName'])[1]")
     protected WebElement SelectPhar;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(@class,'mat-form-field')]/child::textarea[contains(@class,'mat-form-field')][@formcontrolname='MessageBody']")
+    @FindBy(how = How.XPATH, using = "//textarea[@formcontrolname='MessageBody']")
     protected WebElement txaMessage;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'I accept the Repeat Precriptions')]/preceding-sibling::mat-checkbox/label/div")
+    @FindBy(how = How.XPATH, using = "//mat-checkbox[@formcontrolname='termsConditions']")
     protected WebElement chkTermsAndCondion;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Pay At Health Centre')])[1]")
+    @FindBy(how = How.XPATH, using = "(//button[contains(text(),'Pay At Health Centre')])[1]")
     protected WebElement btnPayAtHealthCentre;
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Pay At Health Centre')])[2]")
     protected WebElement btnMobilePayAtHealthCentre;
 
-    @FindBy(how = How.XPATH, using = "(//span[text()='Pay Now'])[1]")
+    @FindBy(how = How.XPATH, using = "(//button[text()='Pay Now'])[1]")
     protected WebElement btnPayNow;
 
     @FindBy(how = How.XPATH, using = "(//span[text()='Pay Now'])[2]")
@@ -412,10 +412,10 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "(//div[@class='repeat-card-block yellow ng-star-inserted'])[1]")
     protected WebElement emlntPrescriptionStatus;
 
-    @FindBy(how = How.XPATH, using = "(//mat-card-title[@class='mat-card-title'])[1]")
+    @FindBy(how = How.XPATH, using = "(//mat-card-title[@class='mat-mdc-card-title'])[1]")
     protected WebElement txtPrescriptionDate;
 
-    protected String txtPrescriptionDate1 = "(//mat-card-title[@class='mat-card-title'])[1]";
+    protected String txtPrescriptionDate1 = "(//mat-card-title[@class='mat-mdc-card-title'])[1]";
 
     @FindBy(how = How.XPATH, using = "//mat-select[@name='ddlSelectOrSearchFax' or @placeholder='Select or search for a pharmacy']")
     protected WebElement drpDownPharmacy;
@@ -466,10 +466,10 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "(//button//span[text()='Select'])[1]")
     protected WebElement btnSelectForSentScript;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Change ']")
+    @FindBy(how = How.XPATH, using = "//button[text()='Change ']")
     protected WebElement btnChange;
 
-    @FindBy(how = How.XPATH, using = "(//span[text()='Change '])[2]")
+    @FindBy(how = How.XPATH, using = "(//button[text()='Change '])[2]")
     protected WebElement btnChangeForMobile;
 
     @FindBy(how = How.XPATH, using = "(//button//span[text()='Select'])[2]")
@@ -518,12 +518,12 @@ public class RepeatPrescription extends BasePage {
 
     //div[contains(text(),'Select from my saved list')]/preceding-sibling::div/input
     protected String rdoBtnType = new StringBuilder()
-            .append("//div[contains(text(),'")
+            .append("//label[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')]/preceding-sibling::div/div[@class='mat-radio-outer-circle']").toString();
+            .append("')]").toString();
 
     protected String elmntMedicationFields = new StringBuilder()
-            .append("(//mat-card-content[@class='mat-card-content']/following::div[contains(text(),'")
+            .append("(//mat-card-content[@class='mat-mdc-card-content']/following::div[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')])[1]").toString();
 
@@ -1014,8 +1014,9 @@ waitForElement(ReasonForNewScript);
         boolean blResult = false;
         try {
             waitForSeconds(3);
+            jsScrollIntoView(chkTermsAndCondion);
             waitForElementClickable(chkTermsAndCondion);
-            jsClick(chkTermsAndCondion);
+            mouseClick(chkTermsAndCondion);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             takeScreenshot(driver);
             System.out.println("Terms and Condition was selected in the Request Medication");
@@ -2317,13 +2318,13 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
             waitForElement(referenceDetails);
             System.out.println("reference Details >>>>> " + referenceDetails);
             if (verifyElement(btnNextA2A)) {
-                waitForElementClickable(btnNextA2A);
+//                waitForElementClickable(btnNextA2A);
                 takeScreenshot(driver);
                 jsClick(btnNextA2A);
             }
             waitForSeconds(5);
             if (verifyElement(btnNextA2A)) {
-                waitForElement(btnNextA2A);
+//                waitForElement(btnNextA2A);
                 jsClick(btnNextA2A);
             }
 //            waitForElement(elmntSuccessA2A);
@@ -2603,8 +2604,8 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
         boolean scriptDetail = false;
         try {
             waitForElement(drpdwnScriptInstruction);
-            click(drpdwnScriptInstruction);
-            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
+            jsClick(drpdwnScriptInstruction);
+//            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
             WebElement ddlScriptInstruction = waitForElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strScriptDetail)));
             jsScrollIntoView(ddlScriptInstruction);
             click(ddlScriptInstruction);
@@ -2630,7 +2631,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
         boolean optScriptsending = false;
         try {
             waitForElement(drpdwnScriptInstruction);
-            click(drpdwnScriptInstruction);
+            jsClick(drpdwnScriptInstruction);
             waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
             WebElement ddlScriptInstruction = waitForElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strScriptDetail)));
             jsScrollIntoView(ddlScriptInstruction);

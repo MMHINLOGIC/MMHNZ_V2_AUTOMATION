@@ -1,4 +1,4 @@
-package General_Sanity_Provider_Web.pages;
+package java.General_Sanity_Provider_Web.pages;
 
 import cap.common.BasePage;
 import cap.utilities.TestDataUtil;

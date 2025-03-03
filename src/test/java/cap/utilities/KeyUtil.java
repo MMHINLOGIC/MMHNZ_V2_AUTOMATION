@@ -1,4 +1,4 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;

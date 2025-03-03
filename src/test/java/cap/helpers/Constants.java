@@ -1,4 +1,4 @@
-package cap.helpers;
+package java.cap.helpers;
 
 import java.awt.event.KeyEvent;
 import java.io.File;

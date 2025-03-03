@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Mobile_App;
+package java.Happy_Path_Patient_Mobile_App;
 
 
 import Happy_Path_Patient_Mobile_App.screens.*;

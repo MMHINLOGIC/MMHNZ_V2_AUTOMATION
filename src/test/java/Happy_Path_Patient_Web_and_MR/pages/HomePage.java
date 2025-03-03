@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Web_and_MR.pages;
+package java.Happy_Path_Patient_Web_and_MR.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;
@@ -45,6 +45,7 @@ public class HomePage extends BasePage {
     public static String BTBNewEmail;
 
 
+
     //MMH_v2
 
     @FindBy(how = How.XPATH, using = "//div[@class='navbar-header']")
@@ -82,13 +83,13 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//img[@class='profile-pic img-fluid']")
     protected WebElement elmntProfile;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),' Sign Out ')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),' Sign Out ')]")
     protected WebElement elmntSignout;
 
     @FindBy(how = How.XPATH, using = "//div[@class='appVersion']/small")
     protected WebElement txtAppVersion;
 
-    @FindBy(how = How.XPATH, using = "//*[contains(text(),'My Home page') or contains(text(),'Welcome') or contains(text(),'Start managing your health today')]")
+    @FindBy(how = How.XPATH, using = "(//*[contains(text(),'My Home page') or contains(text(),'Welcome') or contains(text(),'Start managing your health today')])[1]")
     protected WebElement elmntVerifyHomePage;
 
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Helping you get better and stay well')]")
@@ -127,6 +128,12 @@ public class HomePage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "(//img[@alt='ManageMyHealth'])[1]")
     protected WebElement elmntMMHLogo;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Your session is about to expire!')]")
+    protected WebElement elmntLogoutPopup;
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes, Keep Working')]")
+    protected WebElement elmntLogoutPopupButton;
 
     @FindBy(how = How.XPATH, using = "(//a[@class='pum-trigger'])[1]")
     protected WebElement elmntSignLogin;
@@ -323,7 +330,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@id='EncrySecuredPassword']")
     protected WebElement txtPassword;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Appointments']")
+    @FindBy(how = How.XPATH, using = "//a[contains(@class,'header')]//span[text()='Appointments']")
     protected WebElement btnAppointmentExpand;
 
     @FindBy(how = How.XPATH, using = "//img[@class='profile-pic bookAppointmentIcon']")
@@ -382,7 +389,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//kendo-grid-group-panel[contains(@class,'grouping-header')]")
     protected WebElement elmntGroupingHeader;
 
-    @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Email Address' or @data-placeholder='Email address']")
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Email Address' or @placeholder='Email address']")
     protected WebElement txtBoxEmail;
 
         @FindAll({
@@ -408,7 +415,7 @@ public class HomePage extends BasePage {
 
 
 
-    @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Password']")
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Password']")
     protected WebElement txtBoxPassword;
 
 
