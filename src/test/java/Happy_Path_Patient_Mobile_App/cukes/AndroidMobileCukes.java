@@ -1,4 +1,4 @@
-package java.Happy_Path_Patient_Mobile_App.cukes;
+package Happy_Path_Patient_Mobile_App.cukes;
 
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = {"src/test/resources/features/Happy_Path_Patient_Mobile_App"},
         monochrome = true,
-        tags = "@Mobile_Health_Record or @Mobile_RRP",
+        tags = "@HAPPY_PATH_MOBILE",
         glue = {"Happy_Path_Patient_Mobile_App", "Happy_Path_Patient_Web_and_MR","Happy_Path_Provider_Web"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"

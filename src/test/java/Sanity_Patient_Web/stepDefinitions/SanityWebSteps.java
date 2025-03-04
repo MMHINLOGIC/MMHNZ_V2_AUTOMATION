@@ -1,4 +1,4 @@
-package java.Sanity_Patient_Web.stepDefinitions;
+package Sanity_Patient_Web.stepDefinitions;
 
 
 import Sanity_Patient_Web.SanityPageContainer;

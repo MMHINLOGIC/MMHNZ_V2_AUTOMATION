@@ -1,4 +1,4 @@
-package java.Happy_Path_Provider_Web;
+package Happy_Path_Provider_Web;
 
 import Happy_Path_Patient_Web_and_MR.pages.AppointmentsPage;
 import Happy_Path_Provider_Web.pages.*;

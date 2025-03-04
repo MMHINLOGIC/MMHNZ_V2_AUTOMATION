@@ -1,4 +1,4 @@
-package java.Happy_Path_Provider_Web.stepDefinitions;
+package Happy_Path_Provider_Web.stepDefinitions;
 
 
 import Happy_Path_Provider_Web.ProviderPageContainer;

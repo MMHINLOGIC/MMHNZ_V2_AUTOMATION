@@ -1,4 +1,4 @@
-package java.Happy_Path_Patient_Web_and_MR.cukes;
+package Happy_Path_Patient_Web_and_MR.cukes;
 
 import cap.utilities.TestDataUtil;
 import com.aventstack.extentreports.service.ExtentService;

@@ -1,4 +1,4 @@
-package java.cap.utilities;
+package cap.utilities;
 
 import cap.helpers.Constants;
 import com.codoid.products.fillo.Connection;

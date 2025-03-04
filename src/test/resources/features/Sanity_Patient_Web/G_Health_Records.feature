@@ -1,4 +1,4 @@
-Feature: Health_Records
+ Feature: Health_Records
 
   @WEB   @HEALTH_RECORDS @SANITY_PATH
   Scenario Template: Changing machines timezone

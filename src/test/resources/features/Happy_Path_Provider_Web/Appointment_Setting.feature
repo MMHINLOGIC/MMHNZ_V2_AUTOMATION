@@ -348,23 +348,23 @@ Feature: Appointment Setting
 #      | &APPOINTMENT_SET_MINIMUM_DATA& | Automation1_Loc1 | A new issue        | &APPOINTMENT_IS_FOR_DROPDOWN& | &FRIENDS_AND_FAMILY_BOOK_VISIT_APPOINTMENT& | &FRIENDS_AND_FAMILY_VISIT_APPOINTMENT_DETAILS& | &FRIENDS_AND_FAMILY_FUTURE_DATE& | &FRIENDS_AND_FAMILY_VISIT_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | Future Appointments | &FRIENDS_AND_FAMILY_APPOINTMENT_DETAILS_FOR_CANCEL& | &FRIENDS_AND_FAMILY_APPOINTMENT_DETAILS_AFTER_CANCELLED& |
 
 #=================================== Block Online Appointments for Provider=================IS NOT Working====================
-  @WEB @PROVIDER_HAPPY_PATH11 @APPOINTMENTS_SETTING11
-  Scenario Template:S21-Provider Block & Unblock Appointments doctor Name verify Patient Side Block & Unblock Appointment Provider Name Is Displayed or Not Displayed
-
-    Given As a Provider I am on HomePage and navigate to Appointment Setting page
-    And I navigate to Block Appointments for Provider and enter the all details"<Appointment_Details>" click save button then i see Setting saved successfully message
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    When Navigate to Appointment in the left menu and click Book Appointments "<Appointment>"
-    And I Should see Check Blocked provider is not displayed for Online Appointment "<Block_Appointment_Details>"
-    And As a Provider I am on HomePage and navigate to Appointment Setting page
-    Then Click Block link under status column in Blocked Appointments Grid "<Block_Appointment_Data>"
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    And Navigate to Appointment in the left menu and click Book Appointments "<Appointment>"
-    And I Should see Check Blocked provider is not displayed for Online Appointment "<Block_Appointment_Details>"
-
-    Examples:
-      | Appointment_Details | Appointment      | Block_Appointment_Details   | Block_Appointment_Data         |
-      | &BLOCK_APPOINTMENT& | Book Appointment | &BLOCK_APPOINTMENT_DETAILS& | &BLOCK_APPOINTMENT_TABLE_DATA& |
+#  @WEB @PROVIDER_HAPPY_PATH11 @APPOINTMENTS_SETTING11
+#  Scenario Template:S21-Provider Block & Unblock Appointments doctor Name verify Patient Side Block & Unblock Appointment Provider Name Is Displayed or Not Displayed
+#
+#    Given As a Provider I am on HomePage and navigate to Appointment Setting page
+#    And I navigate to Block Appointments for Provider and enter the all details"<Appointment_Details>" click save button then i see Setting saved successfully message
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    When Navigate to Appointment in the left menu and click Book Appointments "<Appointment>"
+#    And I Should see Check Blocked provider is not displayed for Online Appointment "<Block_Appointment_Details>"
+#    And As a Provider I am on HomePage and navigate to Appointment Setting page
+#    Then Click Block link under status column in Blocked Appointments Grid "<Block_Appointment_Data>"
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    And Navigate to Appointment in the left menu and click Book Appointments "<Appointment>"
+#    And I Should see Check Blocked provider is not displayed for Online Appointment "<Block_Appointment_Details>"
+#
+#    Examples:
+#      | Appointment_Details | Appointment      | Block_Appointment_Details   | Block_Appointment_Data         |
+#      | &BLOCK_APPOINTMENT& | Book Appointment | &BLOCK_APPOINTMENT_DETAILS& | &BLOCK_APPOINTMENT_TABLE_DATA& |
 
 
 

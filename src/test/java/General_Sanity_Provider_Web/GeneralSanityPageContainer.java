@@ -1,4 +1,4 @@
-package java.General_Sanity_Provider_Web;
+package General_Sanity_Provider_Web;
 
 import General_Sanity_Provider_Web.pages.Login;
 import Happy_Path_Provider_Web.pages.ProviderHomePage;

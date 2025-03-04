@@ -1,4 +1,4 @@
-package java.Happy_Path_Provider_Web.pages;
+package Happy_Path_Provider_Web.pages;
 
 import cap.common.BasePage;
 import cap.utilities.TestDataUtil;

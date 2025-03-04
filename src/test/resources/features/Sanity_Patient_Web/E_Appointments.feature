@@ -9,7 +9,7 @@ Feature: Appointments
       | TimeZone                  |
       | New Zealand Standard Time |
 
-  @WEB @SANITY_PAT @SANITY_PATH_APPOINTMENTS
+  @WEB @SANITY_PATH @SANITY_PATH_APPOINTMENTS
   Scenario Template: S1- User Successfully logs in to the beta v2 Portal.
 
     Given As a user I am on beta MMH login Page

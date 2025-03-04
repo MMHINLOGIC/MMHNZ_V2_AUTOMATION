@@ -1,4 +1,4 @@
-package java.General_Sanity_Provider_Web.cukes;
+package General_Sanity_Provider_Web.cukes;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 
 @CucumberOptions(features = {"@target/failedrerun.txt"},
         monochrome = true,
-        tags = "@Logins",
+        tags = "@GENERAL_SANITY",
         glue = {"General_Sanity_Provider_Web"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",

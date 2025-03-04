@@ -1,4 +1,4 @@
-package java.cap.utilities;
+package cap.utilities;
 
 import java.io.FileInputStream;
 import java.util.HashMap;

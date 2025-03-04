@@ -1,4 +1,4 @@
-package java.Happy_Path_Provider_Web.cukes;
+package Happy_Path_Provider_Web.cukes;
 
 import cap.utilities.TestDataUtil;
 import com.aventstack.extentreports.service.ExtentService;
@@ -12,7 +12,7 @@ import static Happy_Path_Patient_Web_and_MR.pages.HomePage.strSystemName;
 
 @CucumberOptions(features = {"src/test/resources/features/Happy_Path_Provider_Web"},
         monochrome = true,
-        tags = "@PROVIDER_MESSAGES",
+        tags = "@PROVIDER_HAPPY_PATH",
         glue = {"Happy_Path_Provider_Web", "Happy_Path_Patient_Web_and_MR"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -23,15 +23,15 @@ import static Happy_Path_Patient_Web_and_MR.pages.HomePage.strSystemName;
         })
 
 public class ProviderWebCukes extends AbstractTestNGCucumberTests {
-    @BeforeClass
-    public void Rerun(){
-        System.setProperty("app", "Happy_Path_Provider_Web");
-        System.setProperty("execution_type","browser");
-        System.setProperty("runner","ProviderWebCukes");
-        System.setProperty("browser_name","chrome");
-        System.setProperty("env","PROD");
-
-    }
+//    @BeforeClass
+//    public void Rerun(){
+//        System.setProperty("app", "Happy_Path_Provider_Web");
+//        System.setProperty("execution_type","browser");
+//        System.setProperty("runner","ProviderWebCukes");
+//        System.setProperty("browser_name","chrome");
+//        System.setProperty("env","PROD");
+//
+//    }
     @AfterClass
     public void teardown() {
         ExtentService.getInstance().setSystemInfo("Application Name", "V2 Feature Development");

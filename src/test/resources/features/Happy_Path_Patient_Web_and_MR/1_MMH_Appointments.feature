@@ -169,7 +169,7 @@ Feature: Appointments
       | Book Appointment | &BOOK_PHONE_APPOINTMENT& | &PHONE_APPOINTMENT_DETAILS& | &PHONE_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
 
 
-  @WEB @Mobile @APPOINTMENTS11 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S7 - Patient can view all the future date booked appointments in card view
 
     Given As a user I am on HomePage
@@ -181,7 +181,7 @@ Feature: Appointments
       | Appointments          |
       | Upcoming Appointments |
 
-  @WEB @Mobile @APPOINTMENTS11 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S7 - Patient can view all the future date booked appointments in grid view
 
     Given I am on "<Tab>" page
@@ -192,7 +192,7 @@ Feature: Appointments
       | Tab                   |
       | Upcoming Appointments |
 
-  @WEB @APP @APPOINTMENTS11 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @APP @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S8 - Patient can view all the past date booked appointments in card view
 
     Given As a user I am on HomePage
@@ -204,7 +204,7 @@ Feature: Appointments
       | Appointments      |
       | Past appointments |
 
-  @WEB @APP @APPOINTMENTS11 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @APP @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S8 - Patient can view all the past date booked appointments in card view
 
     Given I am on "<Tab>" page

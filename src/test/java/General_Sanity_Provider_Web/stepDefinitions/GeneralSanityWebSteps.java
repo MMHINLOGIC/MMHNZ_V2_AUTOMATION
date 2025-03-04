@@ -1,4 +1,4 @@
-package java.General_Sanity_Provider_Web.stepDefinitions;
+package General_Sanity_Provider_Web.stepDefinitions;
 
 import General_Sanity_Provider_Web.GeneralSanityPageContainer;
 import cap.helpers.Constants;

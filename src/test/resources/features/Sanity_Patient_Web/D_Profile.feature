@@ -29,16 +29,16 @@ Feature: Patient Profile
       | Current Password       | Password                   |
       | &PASSWORD_FOR_PROFILE& | &NEW_PASSWORD_FOR_PROFILE& |
 
-  @WEB  @PROFILE12 @SANITY_PATH12
-  Scenario Template: S1- Existing Patient Login with new password.
-
-    Given As a user I am on beta MMH login Page
-    And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
-    Then I should see user successfully logs in to the MMH portal
-    Examples:
-      | Email Address       | Password               |
-      | &EMAIL_FOR_PROFILE& | &PASSWORD_FOR_PROFILE& |
+#  @WEB  @PROFILE12 @SANITY_PATH12
+#  Scenario Template: S1- Existing Patient Login with new password.
+#
+#    Given As a user I am on beta MMH login Page
+#    And I enter "<Email Address>" and "<Password>" For Beta
+#    When I click SignIn button
+#    Then I should see user successfully logs in to the MMH portal
+#    Examples:
+#      | Email Address       | Password               |
+#      | &EMAIL_FOR_PROFILE& | &PASSWORD_FOR_PROFILE& |
 
 
 #    Note: {

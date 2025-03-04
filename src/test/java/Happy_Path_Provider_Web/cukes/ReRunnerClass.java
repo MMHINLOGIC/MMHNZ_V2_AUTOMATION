@@ -1,4 +1,4 @@
-package java.Happy_Path_Provider_Web.cukes;
+package Happy_Path_Provider_Web.cukes;
 
 import cap.utilities.TestDataUtil;
 import com.aventstack.extentreports.service.ExtentService;

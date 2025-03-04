@@ -1,6 +1,6 @@
 Feature: Dashboard
 
-  @WEB @DASHBOARD @SANITY_PATH @dash
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: Changing machines timezone
 
     Given I change Windows "<TimeZone>"
@@ -43,7 +43,7 @@ Feature: Dashboard
     #  15	Dashboard	View patient connected Health Centre list in My Health Centre card
 #  16	Dashboard	Navigate to Connect health centre page by clicking Connect Health Centre option(text) in My Health Centres card
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_HEALTH-CENTRE
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Outline: View patient connected Health Centre
 
     Given As a Existing user I am on HomePage and I click Dashboard
@@ -70,7 +70,7 @@ Feature: Dashboard
       | &EMAIL&       | &PASSWORD& |
 
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_RRP
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Outline: S2- Patient to collect the Prescription
 
     Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
@@ -83,7 +83,7 @@ Feature: Dashboard
       | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION& | &VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION& | &MORE INFO VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION& |
 
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_RRP
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Outline: S3- Patient Collect the medication by Sent Script by Post
 
     Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
@@ -94,7 +94,7 @@ Feature: Dashboard
       | Medication Details             | Verification Medication Details             | More info details                                     |
       | &DATA FOR SENT SCRIPT BY POST& | &VERIFICATION DATA FOR SENT SCRIPT BY POST& | &MORE INFO VERIFICATION DATA FOR SENT SCRIPT BY POST& |
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_RRP
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Outline: S4- Patient Collect the medication by Sent Script by Pharmacy
 
     Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
@@ -111,7 +111,7 @@ Feature: Dashboard
 #  18	Dashboard	Navigate to Request Medication page by Clicking on New Repeat Prescription option(Text) in Repeat Prescription card
 #  19	Dashboard	Navigate to view history page and View Specified Requested RRP Details by clicking any Request From Repeat Prescription card
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_RRP
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario: View My Repeat Prescription in Repeat Prescription card
 
     Given As a Existing user I am on HomePage and I click Dashboard
@@ -129,7 +129,7 @@ Feature: Dashboard
 
 
 
-  @WEB @MESSAGES @SANITY_PATH @DASHBOARD
+  @WEB @SANITY_PATH @DASHBOARD
   Scenario Template: S3- User successfully login into Doctor Portal
 
     Given As a user Launch the "<V1 Portal>"
@@ -141,7 +141,7 @@ Feature: Dashboard
       | V1 Portal | Email Address      | Password              |
       | &URL&     | &EMAIL FOR DOCTOR& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_MESSAGES
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario: S3- Preparation for Received Message
 
     Given As a user I am on Doctor portal homepage and Navigate to Compose in Inbox module
@@ -174,7 +174,7 @@ Feature: Dashboard
 #  14	Dashboard	Check Unread message count in New Messages Card
 
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_MESSAGES
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario: View latest three New messages received in new message card
 
     Given As a Existing user I am on HomePage and I click Dashboard
@@ -185,18 +185,18 @@ Feature: Dashboard
     And Check Unread message count in New Messages Card
     And Navigate to Inbox bar by clicking View Message from text dashboard
 
-
-  @WEB @DASHBOARD @SANITY_PATH1 @DASHBOARD_HEALTH-RECORDS
-  Scenario: View patient Health Records
-
-    Given As a Existing user I am on HomePage and I click Dashboard
-    And View latest three patient Health Records in Health records card
-      | &VERIFY_DASHBOARD_HEALTH_RECORD_1& |
-      | &VERIFY_DASHBOARD_HEALTH_RECORD_1& |
-      | &VERIFY_DASHBOARD_HEALTH_RECORD_1& |
-    And Navigate to View Specific health Record Details in Dashboard
-      | &VERIFY_DASHBOARD_HEALTH_RECORD_1& |
-    And Navigate to Health Summary page by clicking View Health Summary text from dashboard
+#
+#  @WEB @DASHBOARD @SANITY_PATH1
+#  Scenario: View patient Health Records
+#
+#    Given As a Existing user I am on HomePage and I click Dashboard
+#    And View latest three patient Health Records in Health records card
+#      | &VERIFY_DASHBOARD_HEALTH_RECORD_1& |
+#      | &VERIFY_DASHBOARD_HEALTH_RECORD_1& |
+#      | &VERIFY_DASHBOARD_HEALTH_RECORD_1& |
+#    And Navigate to View Specific health Record Details in Dashboard
+#      | &VERIFY_DASHBOARD_HEALTH_RECORD_1& |
+#    And Navigate to Health Summary page by clicking View Health Summary text from dashboard
 
 
 
@@ -206,24 +206,24 @@ Feature: Dashboard
 #    These test Case Covered The Scenario NO: S3
 #  }
 
-  @WEB @DASHBOARD1 @SANITY_PATH12
-  Scenario: S2-Existing Patient Verify Medicine details and validate Add, edit, delete, change status, set reminder in My entries Alcohol Details
-
-    Given As a Existing user I am on HomePage and I click the My Health Indicators
-    And I click the view summary button
-    When I click on add new Button & Enter the Medicine Details
-      | &ALCOHOL_MY_ENTRIES_DATA&        |
-      | &BLOOD_SUGAR_MY_ENTRIES_DATA&    |
-      | &BLOOD_PRESSURE_MY_ENTRIES_DATA& |
-    Then I should see all My Entries Medicine details in the grid view
-      | &ALCOHOL_MY_ENTRIES_DATA&        |
-      | &BLOOD_SUGAR_MY_ENTRIES_DATA&    |
-      | &BLOOD_PRESSURE_MY_ENTRIES_DATA& |
-    And I navigate to Dashboard
-    And I should see last three Entries of Medicine details in the dashboard
-      | &BLOOD_DASHBOARD_DATA&       |
-      | &BLOOD_SUGAR_DASHBOARD_DATA& |
-      | &ALCOHOL_DASHBOARD_DATA&     |
+#  @WEB @DASHBOARD1 @SANITY_PATH12
+#  Scenario: S2-Existing Patient Verify Medicine details and validate Add, edit, delete, change status, set reminder in My entries Alcohol Details
+#
+#    Given As a Existing user I am on HomePage and I click the My Health Indicators
+#    And I click the view summary button
+#    When I click on add new Button & Enter the Medicine Details
+#      | &ALCOHOL_MY_ENTRIES_DATA&        |
+#      | &BLOOD_SUGAR_MY_ENTRIES_DATA&    |
+#      | &BLOOD_PRESSURE_MY_ENTRIES_DATA& |
+#    Then I should see all My Entries Medicine details in the grid view
+#      | &ALCOHOL_MY_ENTRIES_DATA&        |
+#      | &BLOOD_SUGAR_MY_ENTRIES_DATA&    |
+#      | &BLOOD_PRESSURE_MY_ENTRIES_DATA& |
+#    And I navigate to Dashboard
+#    And I should see last three Entries of Medicine details in the dashboard
+#      | &BLOOD_DASHBOARD_DATA&       |
+#      | &BLOOD_SUGAR_DASHBOARD_DATA& |
+#      | &ALCOHOL_DASHBOARD_DATA&     |
 
 
 
@@ -233,7 +233,7 @@ Feature: Dashboard
 #  21	Dashboard	View latest 3 updated Health records in Health records card
 #  23	Dashboard	View Specific health Record details
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: Changing machines timezone
 
     Given I change Windows "<TimeZone>"
@@ -242,7 +242,7 @@ Feature: Dashboard
       | TimeZone                  |
       | New Zealand Standard Time |
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS1 @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: S1- User Successfully logs in to the beta v2 Portal.
 
     Given As a user I am on beta MMH login Page
@@ -253,7 +253,7 @@ Feature: Dashboard
       | Email Address | Password   |
       | &EMAIL&       | &PASSWORD& |
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS1 @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -264,7 +264,7 @@ Feature: Dashboard
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS1 @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: S1 Patient Booking Appointment - Visit Appointment
 
     Given As a user I am on HomePage
@@ -281,7 +281,7 @@ Feature: Dashboard
       | Book Appointment | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &VISIT_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
 
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS1 @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: Changing machines timezone
 
     Given I change Windows "<TimeZone>"
@@ -290,7 +290,7 @@ Feature: Dashboard
       | TimeZone                  |
       | New Zealand Standard Time |
 #
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS1 @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: S1- User Successfully logs in to the beta v2 Portal.
 
     Given As a user I am on beta MMH login Page
@@ -301,7 +301,7 @@ Feature: Dashboard
       | Email Address | Password   |
       | &EMAIL&       | &PASSWORD& |
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS1 @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: S6 - Patient Cancel Appointment
 
     Given I navigate to the "<Appointment>" Future Appointments page
@@ -314,7 +314,7 @@ Feature: Dashboard
       | Appointment           | Appointment_Cancel_Button        | Appointment_After_Cancel              |
       | Upcoming Appointments | &APPOINTMENT_DETAILS_FOR_CANCEL& | &APPOINTMENT_DETAILS_AFTER_CANCELLED& |
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: S2 - Patient Booking Appointment - Video Appointment
 
     Given As a user I am on HomePage
@@ -331,14 +331,14 @@ Feature: Dashboard
       | Book Appointment | &BOOK_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &VIDEO_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
 
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: Changing machines timezone
     Given I change Windows "<TimeZone>"
     Examples:
       | TimeZone                  |
       | New Zealand Standard Time |
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: S1- User Successfully logs in to the beta v2 Portal.
     Given As a user I am on beta MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
@@ -348,7 +348,7 @@ Feature: Dashboard
       | Email Address | Password   |
       | &EMAIL&       | &PASSWORD& |
 
-  @WEB @DASHBOARD @SANITY_PATH @DASHBOARD_APPOINTMENTS @App
+  @WEB @DASHBOARD @SANITY_PATH
   Scenario Template: S3 - Patient Booking Appointment - Visit in video slot Appointment
 
     Given As a user I am on HomePage
@@ -364,7 +364,7 @@ Feature: Dashboard
       | Book Appointment | &BOOK_VISIT_IN_VIDEO_APPOINTMENT& | &VISIT_IN_VIDEO_APPOINTMENT_DETAILS& | &VISIT_IN_VIDEO_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
 
 
-  @WEB @DASHBOARD @SANITY_PATH1 @DASHBOARD_APPOINTMENTS @App
+  @WEB @DASHBOARD @SANITY_PATH1
   Scenario: View patient Appointments Records
 
     Given As a Existing user I am on HomePage and I click Dashboard

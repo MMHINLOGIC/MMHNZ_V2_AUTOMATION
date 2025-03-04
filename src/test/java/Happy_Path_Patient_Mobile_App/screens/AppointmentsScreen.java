@@ -1,4 +1,4 @@
-package java.Happy_Path_Patient_Mobile_App.screens;
+package Happy_Path_Patient_Mobile_App.screens;
 
 import cap.common.BaseScreen;
 import cap.utilities.DateUtil;

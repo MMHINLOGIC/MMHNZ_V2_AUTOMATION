@@ -1,4 +1,4 @@
-package java.Sanity_Patient_Web.pages;
+package Sanity_Patient_Web.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;

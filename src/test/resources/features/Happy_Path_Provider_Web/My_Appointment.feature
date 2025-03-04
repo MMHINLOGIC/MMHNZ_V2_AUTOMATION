@@ -20,7 +20,7 @@ Feature: My Appointment Page
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @PROVIDER_HAPPY_PATH @MY_APPOINTMENT1
+  @WEB @PROVIDER_HAPPY_PATH @MY_APPOINTMENT
   Scenario Template:S1-Provider My Appointments & Provider Search Booked Appointments
 
     Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments

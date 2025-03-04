@@ -1,4 +1,4 @@
-package java.Happy_Path_Patient_Web_and_MR.stepDefinitions;
+package Happy_Path_Patient_Web_and_MR.stepDefinitions;
 
 import cap.helpers.Constants;
 import cap.utilities.TestDataUtil;

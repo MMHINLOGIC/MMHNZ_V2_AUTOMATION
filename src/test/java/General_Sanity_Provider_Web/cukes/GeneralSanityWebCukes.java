@@ -1,4 +1,4 @@
-package java.General_Sanity_Provider_Web.cukes;
+package General_Sanity_Provider_Web.cukes;
 
 import cap.utilities.TestDataUtil;
 import com.aventstack.extentreports.service.ExtentService;
@@ -12,7 +12,7 @@ import static Happy_Path_Patient_Web_and_MR.pages.HomePage.strSystemName;
 
 @CucumberOptions(features = {"src/test/resources/features/General_Sanity_Provider_Web"},
         monochrome = true,
-        tags = "@BEATING_THE_BLUES",
+        tags = "@GENERAL_SANITY",
         glue = {"General_Sanity_Provider_Web","Happy_Path_Patient_Web_and_MR","Happy_Path_Provider_Web","Sanity_Patient_Web"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",

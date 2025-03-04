@@ -23,7 +23,7 @@ Feature: Messages
 
 
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE1
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S2- Patient Save Message as Draft
 
     Given As a Existing user I am on HomePage and navigate to Compose Message
@@ -36,7 +36,7 @@ Feature: Messages
       | Details         |
       | &DRAFT_MESSAGE& |
 
-  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
+  @WEB @Mobile @MESSAGES @HAPPY_PATH
   Scenario Template: S3- Preparation for Received Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -48,7 +48,7 @@ Feature: Messages
       | V1 Portal | Email Address      | Password              |
       | &URL&     | &EMAIL FOR DOCTOR& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
+  @WEB @Mobile @MESSAGES @HAPPY_PATH
   Scenario Template: S3- Preparation for Received Message, Sending a EMail to the Patient from provider login
 
     Given As a user I am on Doctor portal homepage and Navigate to Compose in Inbox module
@@ -61,7 +61,7 @@ Feature: Messages
       | Message Details            |
       | &RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
+  @WEB @Mobile @MESSAGES @HAPPY_PATH
   Scenario Template: User Successfully logs in to the MMH v2 Portal as patient user.
 
     Given As a user I am on MMH login Page
@@ -73,7 +73,7 @@ Feature: Messages
       | Email Address | Password   |
       | &EMAIL&       | &PASSWORD& |
 
-  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
+  @WEB @Mobile @MESSAGES @HAPPY_PATH
   Scenario Outline: S3- User verify the Received Message
     Given As a user I am on HomePage and navigate to Inbox
     When I verify received "<Message>" in the Patient Inbox
@@ -83,7 +83,7 @@ Feature: Messages
       | Message                    |
       | &RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
+  @WEB @Mobile @MESSAGES @HAPPY_PATH
   Scenario Template: S4- User Verifies the Patient Reply Message
 
     Given As a user I am on HomePage and navigate to Inbox
@@ -166,7 +166,7 @@ Feature: Messages
       | Signature Message   |
       | &SIGNATURE MESSAGE& |
 
-  @WEB @Mobile @MESSAGES1 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Outline: S10- Patient Automatic Reply Settings
 
     Given As a user I am on HomePage and navigate to Messages Setting
@@ -179,7 +179,7 @@ Feature: Messages
       | Message                   |
       | &AUTOMATIC REPLY MESSAGE& |
 
-  @WEB @Mobile @HAPPY_PATH @MESSAGES1
+  @WEB @Mobile @HAPPY_PATH @MESSAGES
   Scenario Template: S10- Preparation for Patient Automatic Reply Settings, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -191,7 +191,7 @@ Feature: Messages
       | V1 Portal | Email Address      | Password              |
       | &URL&     | &EMAIL FOR DOCTOR& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @Mobile @HAPPY_PATH @MESSAGES1
+  @WEB @Mobile @HAPPY_PATH @MESSAGES
   Scenario Template: S10- Patient verifies the Automatic Reply Messages.
 
     Given As a user I am on Doctor portal homepage and Navigate to Compose in Inbox module

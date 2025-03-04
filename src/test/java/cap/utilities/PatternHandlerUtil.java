@@ -1,4 +1,4 @@
-package java.cap.utilities;
+package cap.utilities;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

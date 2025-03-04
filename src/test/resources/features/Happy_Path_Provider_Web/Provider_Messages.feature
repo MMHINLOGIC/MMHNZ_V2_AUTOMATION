@@ -9,7 +9,7 @@ Feature: Provider_Messages
     And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES
   Scenario Template: S1-Provider Sending Message
 
     Given As a user I am on Doctor portal homepage and Navigate to Compose in Inbox module
@@ -21,7 +21,7 @@ Feature: Provider_Messages
       | Compose Details            |
       | &RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES
   Scenario Template: S2-Provider Save Message as Draft
 
     Given As a user I am on Doctor portal homepage and Navigate to Compose in Inbox module
@@ -33,7 +33,7 @@ Feature: Provider_Messages
       | Compose Details            |
       | &RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES
   Scenario Template: S3- Provider Received Message & Provider Reply Message
 
     Given As a Existing user I am on HomePage and navigate to Compose Message
@@ -48,7 +48,7 @@ Feature: Provider_Messages
       | Compose Details            | Message Details            |
       | &PROVIDER_COMPOSE_MESSAGE& | &RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1
+  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES
   Scenario Template: S4- Preparation for Group Message, Sending a Group of E-Mail's to the Patient from provider login
 
     Given As a user I am on Doctor portal homepage and Navigate to GroupMessage Page
@@ -60,7 +60,7 @@ Feature: Provider_Messages
       | Message Details              | Group Message Details        |
       | &SENT_GROUP_MESSAGE_DETAILS& | &SENT_GROUP_MESSAGE_DETAILS& |
 
-  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1
+  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES
   Scenario Outline: S5- Provider Alert Settings
     Given As a user I am on Doctor portal HomePage and navigate to Messages Setting
     And I click the Alert Setting and select the "<Alert Type>"
@@ -110,50 +110,50 @@ Feature: Provider_Messages
       | Message                   | Compose Details            |
       | &AUTOMATIC REPLY MESSAGE& | &PROVIDER_COMPOSE_MESSAGE& |
 
-  @WEB @PROVIDER_HAPPY_PATH1 @PROVIDER_MESSAGES1
-  Scenario Outline: S9-Allow Patient to Send Message when provider enabled Out of Office
+#  @WEB @PROVIDER_HAPPY_PATH1 @PROVIDER_MESSAGES1
+#  Scenario Outline: S9-Allow Patient to Send Message when provider enabled Out of Office
+#
+#    Given As a user I am on Doctor portal HomePage and navigate to Messages Setting
+#    And I click the Out of Office Settings and Enable Out Of Office Reply option
+#    And I select the Out of office "<Start Date>" and "<End Date>" and Enter the"<Message>" click the Save Button
+#    When As a user I am on HomePage and navigate to Patient Book Compose Page in Messages
+#    And I enter the "<Compose Details>" to compose an email and Verify out of office text
+#    And I Click Send Message Button
+#    Then I should see message sent Successfully popup
+#    And I navigate to Patient Sent items and verify the Sent "<Compose Details>"
+#
+#    Examples:
+#      | Start Date   | End Date   | Message                   | Compose Details   |
+#      | &START DATE& | &END DATE& | &AUTOMATIC REPLY MESSAGE& | &COMPOSE_MESSAGE& |
 
-    Given As a user I am on Doctor portal HomePage and navigate to Messages Setting
-    And I click the Out of Office Settings and Enable Out Of Office Reply option
-    And I select the Out of office "<Start Date>" and "<End Date>" and Enter the"<Message>" click the Save Button
-    When As a user I am on HomePage and navigate to Patient Book Compose Page in Messages
-    And I enter the "<Compose Details>" to compose an email and Verify out of office text
-    And I Click Send Message Button
-    Then I should see message sent Successfully popup
-    And I navigate to Patient Sent items and verify the Sent "<Compose Details>"
+#  @WEB @PROVIDER_HAPPY_PATH1 @PROVIDER_MESSAGES1
+#  Scenario Outline: S10-Do not Allow Patient to Send Message to Provider when provider enabled Out of Office
+#
+#    Given As a user I am on Doctor portal HomePage and navigate to Messages Setting
+#    And I click the Out of Office Settings and Enable Out Of Office Reply option
+#    And I select the Out of office "<Start Date>" and "<End Date>" and Enter the"<Message>" click the Save Button
+#    When As a user I am on HomePage and navigate to Patient Book Compose Page in Messages
+#    And I enter the "<Compose Details>" to compose an email and Verify out of office text
+#    And I Click Send Message Button
+#    Then I should see message sent Successfully popup
+#    And I navigate to Patient Sent items and verify the Sent "<Compose Details>"
+#
+#    Examples:
+#      | Start Date   | End Date   | Message                   | Compose Details   |
+#      | &START DATE& | &END DATE& | &AUTOMATIC REPLY MESSAGE& | &COMPOSE_MESSAGE& |
 
-    Examples:
-      | Start Date   | End Date   | Message                   | Compose Details   |
-      | &START DATE& | &END DATE& | &AUTOMATIC REPLY MESSAGE& | &COMPOSE_MESSAGE& |
-
-  @WEB @PROVIDER_HAPPY_PATH1 @PROVIDER_MESSAGES1
-  Scenario Outline: S10-Do not Allow Patient to Send Message to Provider when provider enabled Out of Office
-
-    Given As a user I am on Doctor portal HomePage and navigate to Messages Setting
-    And I click the Out of Office Settings and Enable Out Of Office Reply option
-    And I select the Out of office "<Start Date>" and "<End Date>" and Enter the"<Message>" click the Save Button
-    When As a user I am on HomePage and navigate to Patient Book Compose Page in Messages
-    And I enter the "<Compose Details>" to compose an email and Verify out of office text
-    And I Click Send Message Button
-    Then I should see message sent Successfully popup
-    And I navigate to Patient Sent items and verify the Sent "<Compose Details>"
-
-    Examples:
-      | Start Date   | End Date   | Message                   | Compose Details   |
-      | &START DATE& | &END DATE& | &AUTOMATIC REPLY MESSAGE& | &COMPOSE_MESSAGE& |
-
-  @WEB @PROVIDER_HAPPY_PATH1 @PROVIDER_MESSAGES1
-  Scenario Outline: S11-Do not Allow Patient to Send Message to Provider when provider enabled Out of Office
-
-    Given As a user I am on Doctor portal HomePage and navigate to Messages Setting
-    And I click the Out of Office Settings and Enable Out Of Office Reply option
-    And I select the Out of office "<Start Date>" and "<End Date>" and Enter the"<Message>" click the Save Button
-    When As a user I am on HomePage and navigate to Patient Repeat Medication Page in Repeat Prescription
-    And I select the Medication details"<Medication Details>"
-    Then I should see the successful message and I navigate to view history of the Prescription
-    And I see the status for Patient to collect the Prescription"<Verification Medication Details>"
-    And I should see the more info details of the prescription in view history"<More info details>"
-
-    Examples:
-      | Start Date   | End Date   | Message                   | Medication Details                            | Verification Medication Details                         | More info details                                                 |
-      | &START DATE& | &END DATE& | &AUTOMATIC REPLY MESSAGE& | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION& | &VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION& | &MORE INFO VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION& |
+#  @WEB @PROVIDER_HAPPY_PATH1 @PROVIDER_MESSAGES1
+#  Scenario Outline: S11-Do not Allow Patient to Send Message to Provider when provider enabled Out of Office
+#
+#    Given As a user I am on Doctor portal HomePage and navigate to Messages Setting
+#    And I click the Out of Office Settings and Enable Out Of Office Reply option
+#    And I select the Out of office "<Start Date>" and "<End Date>" and Enter the"<Message>" click the Save Button
+#    When As a user I am on HomePage and navigate to Patient Repeat Medication Page in Repeat Prescription
+#    And I select the Medication details"<Medication Details>"
+#    Then I should see the successful message and I navigate to view history of the Prescription
+#    And I see the status for Patient to collect the Prescription"<Verification Medication Details>"
+#    And I should see the more info details of the prescription in view history"<More info details>"
+#
+#    Examples:
+#      | Start Date   | End Date   | Message                   | Medication Details                            | Verification Medication Details                         | More info details                                                 |
+#      | &START DATE& | &END DATE& | &AUTOMATIC REPLY MESSAGE& | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION& | &VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION& | &MORE INFO VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION& |

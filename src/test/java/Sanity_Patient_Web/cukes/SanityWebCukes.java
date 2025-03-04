@@ -1,4 +1,4 @@
-package java.Sanity_Patient_Web.cukes;
+package Sanity_Patient_Web.cukes;
 import cap.utilities.TestDataUtil;
 import com.aventstack.extentreports.service.ExtentService;
 import io.cucumber.testng.AbstractTestNGCucumberTests;

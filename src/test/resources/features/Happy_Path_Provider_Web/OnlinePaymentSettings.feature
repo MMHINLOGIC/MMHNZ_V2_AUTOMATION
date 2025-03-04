@@ -10,7 +10,7 @@ Feature: OnlinePaymentSetting
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
 
-  @WEB @PROVIDER_HAPPY_PATH @ONLINE_PAYMENTS_SETTING1
+  @WEB @PROVIDER_HAPPY_PATH @ONLINE_PAYMENTS_SETTING
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -21,7 +21,7 @@ Feature: OnlinePaymentSetting
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @PROVIDER_HAPPY_PATH @ONLINE_PAYMENTS_SETTING1
+  @WEB @PROVIDER_HAPPY_PATH @ONLINE_PAYMENTS_SETTING
   Scenario Template:S1-Provider Disable Online payment for Appointments
 
     Given As a Provider I am on HomePage and navigate to online payments setting page
@@ -37,7 +37,7 @@ Feature: OnlinePaymentSetting
       | &LOCATION& | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | Upcoming Appointments | &APPOINTMENT_DETAILS_FOR_CANCEL& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @ONLINE_PAYMENTS_SETTING1
+  @WEB @PROVIDER_HAPPY_PATH @ONLINE_PAYMENTS_SETTING
   Scenario Template:S2-Provider Enable Online payment for Appointments
 
     Given As a Provider I am on HomePage and navigate to online payments setting page
