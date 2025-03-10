@@ -254,6 +254,17 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//h1[text()='Inbox'])[1]")
     protected WebElement txtInboxPage;
 
+    @FindBy(how = How.XPATH, using = "//span[text()=' SMS ']")
+    protected WebElement verifySMSTab;
+
+    @FindBy(how = How.XPATH, using = "//span[text()='Information']")
+    protected WebElement verifyInformationHeader;
+
+    @FindBy(how = How.XPATH, using = "//p[text()='This SMS feature has been disabled by your practice.']")
+    protected WebElement verifyInformationContent;
+
+    @FindBy(how = How.XPATH, using = "//span[text()='OK']")
+    protected WebElement clcikPopupOkButton;
     @FindBy(how = How.XPATH, using = "//input[@placeholder='Enter Patient first name']")
     protected WebElement txtBoxTo;
 
@@ -4301,6 +4312,37 @@ click(elmntDoNotAllowPatientOkButton);
         return blResult;
     }
 
+    public boolean verifySMSInfoMessage() {
+        boolean blResult = false;
+        try {
+            waitForElement(verifyInformationHeader);
+            verifyElement(verifyInformationHeader);
+            waitForElement(verifyInformationContent);
+            verifyElement(verifyInformationContent);
+            waitForElement(clcikPopupOkButton);
+            click(clcikPopupOkButton);
+            blResult = true;
 
+        } catch (Exception e) {
+            System.out.println("Failed to navigate the compose");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean verifySMSTab() {
+        boolean blResult = false;
+        try {
+            waitForElement(verifySMSTab);
+            verifyElement(verifySMSTab);
+            click(verifySMSTab);
+            blResult = true;
+
+        } catch (Exception e) {
+            System.out.println("Failed to navigate the compose");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
 
 }

@@ -13,6 +13,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -24,6 +25,7 @@ import java.util.List;
 import java.util.Set;
 
 import static cap.utilities.DateUtil.*;
+import static cap.utilities.SharedDriver.strExecutionID;
 
 public class AppointmentsPage extends BasePage {
 
@@ -138,6 +140,9 @@ public class AppointmentsPage extends BasePage {
     protected String elmntHealthCenter = new StringBuilder().append("//h6[text()='")
             .append("<<REPLACEMENT>>").append("']").toString();
 
+    protected String elmntPreScreenQuesText = new StringBuilder().append("//p[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')]").toString();
+
     protected String ProviderHealthCenter = new StringBuilder().append("//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
@@ -173,6 +178,12 @@ public class AppointmentsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'There are no records available.')]")
     protected WebElement elmntVerfied;
+
+    @FindBy(how = How.XPATH, using = "//div[text()='View alternative appointment providers']")
+    protected WebElement clickAlternativeProviders;
+
+    @FindBy(how = How.XPATH, using = "//img[@src='https://cdn.managemyhealth.co.nz/assets/V2/Images/Carehq-mob.png']")
+    protected WebElement verifyimg;
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='searchValue']")
     protected WebElement elmntSearchTextBox;
@@ -231,6 +242,10 @@ public class AppointmentsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//input[@class='k-input-inner']")
     protected WebElement elmntReason;
+
+    protected String VerifyAppointmentReason = new StringBuilder().append("(//span[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
+
 
     protected String strReasonForAppointment = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[2]").toString();
@@ -414,6 +429,15 @@ public class AppointmentsPage extends BasePage {
             .append("<<REPLACEMENT3>>")
             .append("')]/ancestor::mat-card/child::mat-card-content/child::div//button//following::span[text()='join now']").toString();
 
+    protected String btnAddToCalender = new StringBuilder().append("//mat-card//following-sibling::div//mat-card-title[contains(text(),'")
+            .append("<<REPLACEMENT1>>")
+            .append("')]/ancestor::mat-card//child::mat-card-actions//p[contains(text(),'")
+            .append("<<REPLACEMENT2>>")
+            .append("')]/ancestor::mat-card//child::div/p[contains(text(),'")
+            .append("<<REPLACEMENT3>>")
+            .append("')]/ancestor::mat-card/child::mat-card-content/child::div//button//following::span[contains(text(),'Add to Calendar')]").toString();
+
+
     protected String elmntDetailsAfterCancelingAppointment = new StringBuilder().append("(//mat-card//following-sibling::div//mat-card-title[contains(text(),'")
             .append("<<REPLACEMENT1>>")
             .append("')]/ancestor::mat-card//child::mat-card-actions//p[contains(text(),'")
@@ -441,6 +465,15 @@ public class AppointmentsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "(//h3[contains(text(),'Upcoming Appointments')])[1]")
     protected WebElement elmntFutureAppointmentTab;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'ADD TO GOOGLE')]")
+    protected WebElement elmntAddToGoogle;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'ADD TO OUTLOOK')]")
+    protected WebElement elmntAddToOutLook;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'ADD TO ICAL')]")
+    protected WebElement elmntAddToIcal;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Upcoming Appointments')]")
     protected WebElement clickMobileFutureAppointmentTab;
@@ -902,6 +935,30 @@ public class AppointmentsPage extends BasePage {
         return blResult;
     }
 
+    public boolean verifyCovidPreScreeningQuestionnaire(String Strdata) {
+        boolean blResult = false;
+        try {
+            waitForSeconds(5);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver,By.xpath(elmntAppointmentPreScreening1));
+            if (isElementDisplayed(elmntAppointmentPreScreening)) {
+                System.out.println("Covid Prescreening popup is displayed");
+                WebElement elmntSelectHealthCenter = waitForElement(By.xpath(elmntPreScreenQuesText.replace("<<REPLACEMENT>>", Strdata)));
+                waitForElement(elmntSelectHealthCenter);
+               verifyElement(elmntSelectHealthCenter);
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElement(elmntDeclineCovidPreScreening);
+                jsClick(elmntDeclineCovidPreScreening);
+            }
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = verifyElement(elmntAppointmentPanel);
+        } catch (Exception e) {
+            System.out.println("Cannot Verify Covid Prescreening popup ");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
     public boolean VeriflyAllTabElementIsNotDisplayed() {
         boolean blResult = false;
         try {
@@ -1008,6 +1065,26 @@ public class AppointmentsPage extends BasePage {
 //            waitForSeconds(3);
 //            elmntReasonTextBox.sendKeys(strReason);
             blResult = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return blResult;
+
+    }
+
+    public boolean verifyReasonForBooking(String strReason) {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementClickable(elmntReason);
+            click(elmntReason);
+            waitForSeconds(2);
+            driver.switchTo().activeElement().sendKeys(strReason.concat(strExecutionID));
+            waitForSeconds(2);
+            elmntReason.sendKeys(Keys.ENTER);
+            WebElement elmntTypeOfAppointment = waitForElement(By.xpath(VerifyAppointmentReason.replace("<<REPLACEMENT>>", strReason.concat(strExecutionID))));
+            System.out.println("elmntTypeOfAppointment"+elmntTypeOfAppointment);
+            blResult = verifyElement(elmntTypeOfAppointment);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3007,6 +3084,34 @@ waitForSeconds(5);
             verifyElement(elmntAppointmentDetails);
             jsScrollIntoView(elmntAppointmentDetails);
 
+//            Add Calender Verification
+
+            WebElement elmntAddToCalender = waitForElement(By.xpath(btnAddToCalender
+                    .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
+                    .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                    .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
+            System.out.println("TEST" + elmntAddToCalender);
+            verifyElement(elmntAddToCalender);
+            click(elmntAddToCalender);
+            if (verifyElement(elmntAddToGoogle)){
+                waitForElement(elmntAddToGoogle);
+                click(elmntAddToGoogle);
+                waitForElement(elmntAddToOutLook);
+                verifyElement(elmntAddToOutLook);
+                waitForElement(elmntAddToIcal);
+                verifyElement(elmntAddToIcal);
+                focusWindow(2);
+                waitForSeconds(2);
+                String getUrl=driver.getCurrentUrl();
+                String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
+                Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
+                System.out.println("getUrl ::"+getUrl);
+                waitForSeconds(2);
+                closeWindow(2);
+                focusWindow(1);
+
+            }
+
             System.out.println("TEST" + lstDetails.get(1));
             WebElement elmntReservationDetails = waitForElement(By.xpath(btnCancelForCreatedAppointment
                     .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
@@ -3039,6 +3144,32 @@ waitForSeconds(5);
                 WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
                 verifyElement(elmntAppointmentDetails);
                 jsScrollIntoView(elmntAppointmentDetails);
+
+                WebElement elmntAddToCalender = waitForElement(By.xpath(btnAddToCalender
+                        .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
+                        .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                        .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
+                System.out.println("TEST" + elmntAddToCalender);
+                verifyElement(elmntAddToCalender);
+                click(elmntAddToCalender);
+                if (verifyElement(elmntAddToGoogle)){
+                    waitForElement(elmntAddToGoogle);
+                    click(elmntAddToGoogle);
+                    waitForElement(elmntAddToOutLook);
+                    verifyElement(elmntAddToOutLook);
+                    waitForElement(elmntAddToIcal);
+                    verifyElement(elmntAddToIcal);
+                    focusWindow(2);
+                    waitForSeconds(2);
+                    String getUrl=driver.getCurrentUrl();
+                    String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
+                    Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
+                    System.out.println("getUrl ::"+getUrl);
+                    waitForSeconds(2);
+                    closeWindow(2);
+                    focusWindow(1);
+
+                }
 
                 System.out.println("TEST" + lstDetails.get(1));
                 WebElement elmntReservationDetails = waitForElement(By.xpath(btnCancelForCreatedAppointment
@@ -3296,6 +3427,32 @@ waitForSeconds(5);
             verifyElement(elmntAppointmentDetails);
             jsScrollIntoView(elmntAppointmentDetails);
 
+
+            WebElement elmntAddToCalender = waitForElement(By.xpath(btnAddToCalender
+                    .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
+                    .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                    .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
+            System.out.println("TEST" + elmntAddToCalender);
+            verifyElement(elmntAddToCalender);
+            click(elmntAddToCalender);
+            if (verifyElement(elmntAddToGoogle)){
+                waitForElement(elmntAddToGoogle);
+                click(elmntAddToGoogle);
+                waitForElement(elmntAddToOutLook);
+                verifyElement(elmntAddToOutLook);
+                waitForElement(elmntAddToIcal);
+                verifyElement(elmntAddToIcal);
+                focusWindow(2);
+                waitForSeconds(2);
+                String getUrl=driver.getCurrentUrl();
+                String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
+                Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
+                System.out.println("getUrl ::"+getUrl);
+                waitForSeconds(2);
+                closeWindow(2);
+                focusWindow(1);
+            }
+
             System.out.println("TEST" + lstDetails.get(1));
             WebElement elmntReservationDetails = waitForElement(By.xpath(btnJoinVideoConsultingForCreatedAppointment
                     .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
@@ -3324,6 +3481,32 @@ waitForSeconds(5);
                 WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
                 verifyElement(elmntAppointmentDetails);
                 jsScrollIntoView(elmntAppointmentDetails);
+
+
+                WebElement elmntAddToCalender = waitForElement(By.xpath(btnAddToCalender
+                        .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
+                        .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                        .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
+                System.out.println("TEST" + elmntAddToCalender);
+                verifyElement(elmntAddToCalender);
+                click(elmntAddToCalender);
+                if (verifyElement(elmntAddToGoogle)){
+                    waitForElement(elmntAddToGoogle);
+                    click(elmntAddToGoogle);
+                    waitForElement(elmntAddToOutLook);
+                    verifyElement(elmntAddToOutLook);
+                    waitForElement(elmntAddToIcal);
+                    verifyElement(elmntAddToIcal);
+                    focusWindow(2);
+                    waitForSeconds(2);
+                    String getUrl=driver.getCurrentUrl();
+                    String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
+                    Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
+                    System.out.println("getUrl ::"+getUrl);
+                    waitForSeconds(2);
+                    closeWindow(2);
+                    focusWindow(1);
+                }
 
                 System.out.println("TEST" + lstDetails.get(1));
                 WebElement elmntReservationDetails = waitForElement(By.xpath(btnJoinVideoConsultingForCreatedAppointment
@@ -3373,6 +3556,33 @@ waitForSeconds(5);
             jsScrollIntoView(elmntAppointmentDetails);
 
             System.out.println("TEST" + lstDetails.get(1));
+
+
+
+            WebElement elmntAddToCalender = waitForElement(By.xpath(btnAddToCalender
+                    .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
+                    .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                    .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
+            System.out.println("TEST" + elmntAddToCalender);
+            verifyElement(elmntAddToCalender);
+            click(elmntAddToCalender);
+if (verifyElement(elmntAddToGoogle)){
+            waitForElement(elmntAddToGoogle);
+            click(elmntAddToGoogle);
+            waitForElement(elmntAddToOutLook);
+            verifyElement(elmntAddToOutLook);
+            waitForElement(elmntAddToIcal);
+            verifyElement(elmntAddToIcal);
+            focusWindow(2);
+            waitForSeconds(2);
+            String getUrl=driver.getCurrentUrl();
+            String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
+            Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
+            System.out.println("getUrl ::"+getUrl);
+            waitForSeconds(2);
+            closeWindow(2);
+            focusWindow(1);
+}
             WebElement elmntReservationDetails = waitForElement(By.xpath(btnJoinVideoConsultingForCreatedAppointment
                     .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
                     .replace("<<REPLACEMENT2>>", lstDetails.get(0))
@@ -3403,6 +3613,32 @@ waitForSeconds(5);
                 jsScrollIntoView(elmntAppointmentDetails);
 
                 System.out.println("TEST" + lstDetails.get(1));
+
+                WebElement elmntAddToCalender = waitForElement(By.xpath(btnAddToCalender
+                        .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
+                        .replace("<<REPLACEMENT2>>", lstDetails.get(0))
+                        .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
+                System.out.println("TEST" + elmntAddToCalender);
+                verifyElement(elmntAddToCalender);
+                click(elmntAddToCalender);
+                if (verifyElement(elmntAddToGoogle)){
+                    waitForElement(elmntAddToGoogle);
+                    click(elmntAddToGoogle);
+                    waitForElement(elmntAddToOutLook);
+                    verifyElement(elmntAddToOutLook);
+                    waitForElement(elmntAddToIcal);
+                    verifyElement(elmntAddToIcal);
+                    focusWindow(2);
+                    waitForSeconds(2);
+                    String getUrl=driver.getCurrentUrl();
+                    String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
+                    Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
+                    System.out.println("getUrl ::"+getUrl);
+                    waitForSeconds(2);
+                    closeWindow(2);
+                    focusWindow(1);
+                }
+
                 WebElement elmntReservationDetails = waitForElement(By.xpath(btnJoinVideoConsultingForCreatedAppointment
                         .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
                         .replace("<<REPLACEMENT2>>", lstDetails.get(0))
@@ -4787,6 +5023,42 @@ System.out.println(">>>>>>>>>>>>>VerifyMyAppointmentTableDatalstDetails"+lstDeta
         return blResult;
     }
 
+    public boolean verifyAlternativeProvider() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementClickable(clickAlternativeProviders);
+            jsClick(clickAlternativeProviders);
+            waitForSeconds(2);
+            String img=verifyimg.getAttribute("src");
+            System.out.println("img"+img);
+            click(verifyimg);
+            blResult = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return blResult;
 
+    }
+
+    public boolean verifyIsNotDisplayedAlternativeProviderOption() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            if(!verifyElement(clickAlternativeProviders)){
+                blResult=true;
+            }
+            if (verifyElement(clickAlternativeProviders)){
+                waitForElementClickable(clickAlternativeProviders);
+                jsClick(clickAlternativeProviders);
+                blResult=false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return blResult;
+
+    }
 
 }

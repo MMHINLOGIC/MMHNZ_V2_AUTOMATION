@@ -11,10 +11,13 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.time.Duration;
 import java.util.List;
@@ -22,6 +25,9 @@ import java.util.Set;
 
 import static cap.utilities.DateUtil.getCurrentDate;
 import static cap.utilities.SharedDriver.strExecutionID;
+
+//import org.openqa.selenium.devtools.DevTools;
+//import org.openqa.selenium.devtools.v119.page.Page;
 
 public class MyHealthRecordsPage extends BasePage {
     public MyHealthRecordsPage(WebDriver driver) {
@@ -54,6 +60,9 @@ public class MyHealthRecordsPage extends BasePage {
     protected WebElement headerConditions;
     @FindBy(how = How.XPATH, using = "(//h3[text()='Lab Results '])[1]")
     protected WebElement headerLabResults;
+
+    @FindBy(how = How.XPATH, using = "//button[@ng-reflect-disabled='false']//span[contains(text(),'EXPORT TO PDF')]")
+    protected WebElement LabResultsExportToPDF;
     @FindBy(how = How.XPATH, using = "(//h3[text()='Clinician Notes'])[1]")
     protected WebElement headerClinicanNotes;
 
@@ -220,6 +229,13 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
 
+    protected String strLabResultsCheckbox = new StringBuilder()
+            .append("(//td[contains(.,'")
+            .append("<<REPLACEMENT1>>").append("')]/following-sibling::td[contains(.,'")
+            .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[contains(.,'")
+            .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
+            .append("<<REPLACEMENT4>>").append("')]//preceding::div[@class='mdc-checkbox'])[2]").toString();
+
     protected String strMobileLabResultIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::p[contains(text(),'")
@@ -330,7 +346,6 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT>>").append("')]").toString();
 
 
-
     protected String strPrescriptionsMyEntitesIconLocator = new StringBuilder()
             .append("//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]/following-sibling::td[contains(text(),'")
@@ -341,7 +356,6 @@ public class MyHealthRecordsPage extends BasePage {
             .append("(//h2[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::p[contains(text(),'")
             .append("<<REPLACEMENT2>>").append("')])[1]").toString();
-
 
 
     protected String strMobilePrescriptionsMyEntriesInfoDetails = new StringBuilder()
@@ -791,8 +805,8 @@ public class MyHealthRecordsPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForElementClickable(elmntPrescriptions);
 //            jsClick(elmntPrescriptions);
-                        WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntFilterbyDrop.replace("<<REPLACEMENT>>", Strdata)));
-                        System.out.println(elmntEntriesFromHealthCentre);
+            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntFilterbyDrop.replace("<<REPLACEMENT>>", Strdata)));
+            System.out.println(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
@@ -917,7 +931,7 @@ public class MyHealthRecordsPage extends BasePage {
             waitForElement(elmntPrescriptionTableData);
             verifyElement(elmntPrescriptionTableData);
             waitForSeconds(3);
-            blResult =verifyElement(headerPrescriptions);
+            blResult = verifyElement(headerPrescriptions);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         } catch (Exception e) {
             e.printStackTrace();
@@ -954,6 +968,7 @@ public class MyHealthRecordsPage extends BasePage {
         elmntDownArrow.sendKeys(Keys.ENTER);
         return verifyElement(elmntDownArrow);
     }
+
     public boolean clickMaxvalue1() {
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(2);
@@ -1151,7 +1166,7 @@ public class MyHealthRecordsPage extends BasePage {
             WebElement elmntMobileAllergiesIconData = waitForElement(By.xpath(strMobileAllergiesIconContentLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(1)))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(5)))));
-            System.out.println(">>>>>>>>>>>>>>>elmntMobileAllergiesIconData"+elmntMobileAllergiesIconData);
+            System.out.println(">>>>>>>>>>>>>>>elmntMobileAllergiesIconData" + elmntMobileAllergiesIconData);
             jsScrollIntoView(elmntMobileAllergiesIconData);
             waitForSeconds(3);
             waitForElementClickable(elmntMobileAllergiesIconData);
@@ -1181,7 +1196,7 @@ public class MyHealthRecordsPage extends BasePage {
 //            waitForElementClickable(elmntClinicalNotes);
 //            jsClick(elmntClinicalNotes);
             waitForSeconds(3);
-jsScrollIntoView(elmntClinicianNotes);
+            jsScrollIntoView(elmntClinicianNotes);
             WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntFilterbyAllergiesDrop.replace("<<REPLACEMENT>>", strdata)));
             jsScrollIntoView(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
@@ -1253,6 +1268,7 @@ jsScrollIntoView(elmntClinicianNotes);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         }
     }
+
     public void clickExportButton() {
         waitForElement(elmntExport);
         click(elmntExport);
@@ -1269,8 +1285,6 @@ jsScrollIntoView(elmntClinicianNotes);
         }
 
     }
-
-
 
 
     public void DeleteFile() {
@@ -1661,6 +1675,7 @@ jsScrollIntoView(elmntClinicianNotes);
     public boolean VerifyLabResultsTableData(List<String> lstDetails) {
         boolean blResult = false;
         try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntLabResultTableData = waitForElement(By.xpath(strLabResultsIconLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
@@ -1669,10 +1684,49 @@ jsScrollIntoView(elmntClinicianNotes);
             waitForElement(elmntLabResultTableData);
             verifyElement(elmntLabResultTableData);
             waitForSeconds(3);
+
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            WebElement elmntLabResultCheckBox = waitForElement(By.xpath(strLabResultsCheckbox
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
+                    .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
+                    .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
+            waitForElement(elmntLabResultCheckBox);
+            verifyElement(elmntLabResultCheckBox);
+            mouseClick(elmntLabResultCheckBox);
+            waitForSeconds(3);
+            waitForElement(LabResultsExportToPDF);
+            verifyElement(LabResultsExportToPDF);
+//            click(LabResultsExportToPDF);
+//            waitForSeconds(5);
+//System.out.println("Enter 1");
+//            Robot robot = new Robot();
+////            robot.keyPress(KeyEvent.VK_CONTROL);
+////            robot.keyPress(KeyEvent.VK_P);
+////            robot.keyRelease(KeyEvent.VK_P);
+////            robot.keyRelease(KeyEvent.VK_CONTROL);
+//            waitForSeconds(5);
+//            robot.keyPress(KeyEvent.VK_ENTER);
+//            robot.keyRelease(KeyEvent.VK_ENTER);
+//            waitForSeconds(5);
+//            String filePath = "C:\\MMHNZ_V2_AUTOMATION\\config\\Downloads\\";
+//            for (char c : filePath.toCharArray()) {
+//                int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
+//                if (KeyEvent.CHAR_UNDEFINED == keyCode) {
+//                    throw new RuntimeException("Key code not found for character: " + c);
+//                }
+//                robot.keyPress(keyCode);
+//                robot.keyRelease(keyCode);
+//            }
+//            waitForSeconds(5);
+//            robot.keyPress(KeyEvent.VK_ENTER);
+//            robot.keyRelease(KeyEvent.VK_ENTER);
+//            waitForSeconds(5);
             blResult = verifyElement(headerLabResults);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 
         return blResult;
     }
@@ -1703,6 +1757,7 @@ jsScrollIntoView(elmntClinicianNotes);
                     .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
                     .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
             waitForElementClickable(elmntLabResultIconData);
+            System.out.println("elmntLabResultIconData ::" + elmntLabResultIconData);
             jsClick(elmntLabResultIconData);
             for (String str : lstDetails1) {
                 WebElement elmntPaitientDetails = waitForElement(By.xpath(strLabResultsDetails.replace("<<REPLACEMENT>>", str)));
@@ -2074,9 +2129,9 @@ jsScrollIntoView(elmntClinicianNotes);
 //            String currentDate = formatter.format(calendar.getTime());
 //            System.out.println(currentDate);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            String strdatePattern="dd MMM yyyy";
-            String strdate=TestDataUtil.getValue("TODAY");
-            String currentDate=DateUtil.getDate(strdate,strdatePattern);
+            String strdatePattern = "dd MMM yyyy";
+            String strdate = TestDataUtil.getValue("TODAY");
+            String currentDate = DateUtil.getDate(strdate, strdatePattern);
             WebElement elmntMobilePrescriptionMyEntiresData = waitForElement(By.xpath(strMobilePrescriptionsMyEntitesIconLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0).concat(strExecutionID)))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(currentDate))));
@@ -2100,11 +2155,12 @@ jsScrollIntoView(elmntClinicianNotes);
 
         return blResult;
     }
+
     public boolean VerifyMobileCovidImmusationMyEntriesDataIcon(List<String> lstDetails, List<String> lstDetails1) {
         boolean blResult = false;
         try {
-            System.out.println(">>>>lstDetails: "+lstDetails);
-            System.out.println(">>>>lstDetails1: "+lstDetails1);
+            System.out.println(">>>>lstDetails: " + lstDetails);
+            System.out.println(">>>>lstDetails1: " + lstDetails1);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
             String currentDate = getCurrentDate("dd MMM yyyy");
@@ -2126,6 +2182,7 @@ jsScrollIntoView(elmntClinicianNotes);
 
         return blResult;
     }
+
     public boolean VerifyMyEntriesClassificationData(List<String> lstDetails, List<String> lstDetails1) {
         boolean blResult = false;
         try {
@@ -2153,6 +2210,7 @@ jsScrollIntoView(elmntClinicianNotes);
 
         return blResult;
     }
+
     public boolean VerifyMyEntriesClinicanNotesData(List<String> lstDetails, List<String> lstDetails1) {
         boolean blResult = false;
         try {
@@ -2183,7 +2241,7 @@ jsScrollIntoView(elmntClinicianNotes);
 
         boolean blResult = false;
         try {
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>"+lstDetails);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>" + lstDetails);
             waitForSeconds(5);
             WebElement elmntPrescriptionMyEntiresIconData = waitForElement(By.xpath(strTestingPrescriptionsMyEntitesIconLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0).concat(strExecutionID)))
@@ -2214,7 +2272,7 @@ jsScrollIntoView(elmntClinicianNotes);
         boolean blResult = false;
         try {
             String currentDate = getCurrentDate("dd MMM yyyy");
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>"+lstDetails);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>" + lstDetails);
             waitForSeconds(5);
             WebElement elmntPrescriptionMyEntiresIconData = waitForElement(By.xpath(strAllergiesMyEntitesIconLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(currentDate))
@@ -2253,6 +2311,7 @@ jsScrollIntoView(elmntClinicianNotes);
         isVerifed = verifyElement(elmntMyEntiresReport);
         return isVerifed;
     }
+
     public boolean verifyImmunisationsMyEntries(List<String> ImmunisationsMyEntitiesNotesDetails) {
         boolean isVerifed = false;
         System.out.println("Data Value1::>>" + TestDataUtil.getValue(ImmunisationsMyEntitiesNotesDetails.get(0)
@@ -2264,6 +2323,7 @@ jsScrollIntoView(elmntClinicianNotes);
         isVerifed = verifyElement(elmntMyEntiresReport);
         return isVerifed;
     }
+
     public boolean verifyClassificationsMyEntitiesNotesDetails(List<String> ClassificationsMyEntitiesNotesDetails) {
         boolean isVerifed = false;
         System.out.println("Data Value1::>>" + TestDataUtil.getValue(ClassificationsMyEntitiesNotesDetails.get(0)
@@ -2275,6 +2335,7 @@ jsScrollIntoView(elmntClinicianNotes);
         isVerifed = verifyElement(elmntMyEntiresReport);
         return isVerifed;
     }
+
     public void enterVistedName(String strVisitedName) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             PrescriptionsMedicationName = strVisitedName.concat(strExecutionID);
@@ -3100,7 +3161,7 @@ jsScrollIntoView(elmntClinicianNotes);
             jsClick(elmntCovidImmunisationsdrop);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntCovidImmunisationsDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
-            System.out.println(">>>>>>>"+elmntEntriesFromHealthCentre);
+            System.out.println(">>>>>>>" + elmntEntriesFromHealthCentre);
             waitForElement(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             blResult = verifyElement(elmntCovidImmunisationsdrop);
@@ -3165,6 +3226,7 @@ jsScrollIntoView(elmntClinicianNotes);
         waitForSeconds(3);
         return verifyElement(elmntMobileAllergiesCheckBox);
     }
+
     public boolean clickPrescriptionCheckBox() {
         waitForSeconds(3);
         return verifyElement(elmntPrescriptionCheckBox);
@@ -3211,7 +3273,7 @@ jsScrollIntoView(elmntClinicianNotes);
                 }
                 capabilities.setCapability("autoGrantPermissions", "true");
 
-                if (System.getProperty("deviceName").equalsIgnoreCase("Poco M2")){
+                if (System.getProperty("deviceName").equalsIgnoreCase("Poco M2")) {
                     waitForSeconds(3);
                     click(WhileUsingTheApp);
                     waitForSeconds(3);
@@ -3223,7 +3285,7 @@ jsScrollIntoView(elmntClinicianNotes);
                     waitForSeconds(3);
                     click(optDownloads);
                 }
-                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy A13")){
+                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy A13")) {
                     waitForSeconds(3);
                     click(WhileUsingTheAppForA13);
                     waitForSeconds(2);
@@ -3231,7 +3293,7 @@ jsScrollIntoView(elmntClinicianNotes);
                     waitForSeconds(2);
                     click(MediaIcon);
                 }
-                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy M53")){
+                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy M53")) {
                     waitForSeconds(3);
                     click(WhileUsingTheAppForA13);
                     waitForSeconds(2);
@@ -3239,7 +3301,7 @@ jsScrollIntoView(elmntClinicianNotes);
                     waitForSeconds(2);
                     click(MediaIcon);
                 }
-                if (System.getProperty("deviceName").equalsIgnoreCase("Motorola One Fusion+")){
+                if (System.getProperty("deviceName").equalsIgnoreCase("Motorola One Fusion+")) {
                     waitForSeconds(3);
                     click(WhileUsingTheAppForA13);
                     waitForSeconds(2);
@@ -3346,6 +3408,7 @@ jsScrollIntoView(elmntClinicianNotes);
             jsClick(elmntFilterdropMyEntries);
         }
     }
+
     public boolean verifyClinicalNotesAddRecord(List<String> listCreatedRecord) {
         boolean blResult = false;
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
@@ -3558,7 +3621,7 @@ jsScrollIntoView(elmntClinicianNotes);
             waitForSeconds(2);
             WebElement elmntActiveHeader = waitForElement(By.xpath(strActiveHeader.replace("<<REPLACEMENT>>", strHeader)));
             jsScrollIntoView(elmntActiveHeader);
-            System.out.println(">>>>>>>>>>>>>>"+elmntActiveHeader);
+            System.out.println(">>>>>>>>>>>>>>" + elmntActiveHeader);
             waitForElement(elmntActiveHeader);
             return verifyElement(elmntActiveHeader);
         }
@@ -3567,7 +3630,7 @@ jsScrollIntoView(elmntClinicianNotes);
             waitForSeconds(2);
             WebElement elmntActiveHeader = waitForElement(By.xpath(strMobileActiveHeader.replace("<<REPLACEMENT>>", strHeader)));
             jsScrollIntoView(elmntActiveHeader);
-            System.out.println(">>>>>>>>>>>>>>"+elmntActiveHeader);
+            System.out.println(">>>>>>>>>>>>>>" + elmntActiveHeader);
             waitForElement(elmntActiveHeader);
             return verifyElement(elmntActiveHeader);
         }
@@ -3576,7 +3639,7 @@ jsScrollIntoView(elmntClinicianNotes);
             waitForSeconds(2);
             WebElement elmntActiveHeader = waitForElement(By.xpath(strMobileActiveHeader.replace("<<REPLACEMENT>>", strHeader)));
             jsScrollIntoView(elmntActiveHeader);
-            System.out.println(">>>>>>>>>>>>>>"+elmntActiveHeader);
+            System.out.println(">>>>>>>>>>>>>>" + elmntActiveHeader);
             waitForElement(elmntActiveHeader);
             return verifyElement(elmntActiveHeader);
         }
@@ -3670,7 +3733,7 @@ jsScrollIntoView(elmntClinicianNotes);
             strVisitedName = strCreatedRecord;
             WebElement btnEdit = waitForElement(By.xpath(elmntCovidEdit.replace("<<REPLACEMENT>>", strCreatedRecord)));
             waitForElement(btnEdit);
-            System.out.println(">>>>>>btnEdit"+btnEdit);
+            System.out.println(">>>>>>btnEdit" + btnEdit);
             click(btnEdit);
 
         }
@@ -3959,7 +4022,7 @@ jsScrollIntoView(elmntClinicianNotes);
             waitAndClick(btnYes);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-                waitForSeconds(5);
+            waitForSeconds(5);
             String strMedicationName = strCreatedRecord.concat(strExecutionID);
             WebElement btnEdit = waitForElement(By.xpath(elmntMobilePrescriptionsEdit.replace("<<REPLACEMENT>>", strMedicationName)));
             jsClick(btnEdit);
@@ -3975,7 +4038,6 @@ jsScrollIntoView(elmntClinicianNotes);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         }
     }
-
 
 
     public void clickCovidDelete(String strCreatedRecord) {
@@ -4056,7 +4118,7 @@ jsScrollIntoView(elmntClinicianNotes);
             waitForSeconds(2);
             jsClick(elmntCovidImmunisationsdrop);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntCovidImmunisationsDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
-            System.out.println(">>>>>>>>>>>>>>>>>>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
             mouseClick(elmntEntriesFromHealthCentre);
             blResult = true;
         } catch (Exception e) {
@@ -4227,6 +4289,7 @@ jsScrollIntoView(elmntClinicianNotes);
         }
         return blResult;
     }
+
     public void clickSignoutButton() {
         waitForSeconds(3);
         waitForElementClickable(elmntProfile);
@@ -4251,6 +4314,7 @@ jsScrollIntoView(elmntClinicianNotes);
         }
 
     }
+
     public void enterBlockAppointmentsforProviderEndDate() {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             waitForElement(elmntBlockAppointmentsforProviderEnddate);

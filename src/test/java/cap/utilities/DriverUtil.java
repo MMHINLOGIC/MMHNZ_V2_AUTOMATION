@@ -506,6 +506,12 @@ public class DriverUtil {
         chromePrefs.put("credentials_enable_service", false);
         chromePrefs.put("profile.password_manager_enabled", false);
 
+        chromePrefs.put("profile.default_content_setting_values.notifications", 2);
+
+        chromePrefs.put("profile.default_content_settings.popups", 0);
+
+        options.setExperimentalOption("prefs", chromePrefs);
+
         options.addArguments("chrome.switches", "--disable-extensions --disable-extensions-file-access-check --disable-extensions-http-throttling --disable-infobars --enable-automation --start-maximized");
 
         // Default download directory
@@ -516,6 +522,8 @@ public class DriverUtil {
         //Disable infobar in chrome instance
         options.addArguments("disable-infobars");
         //  options.addArguments("chrome.switches", "--disable-extensions");
+        options.addArguments("--kiosk-printing"); // Auto-save PDF
+        options.addArguments("--disable-notifications");
         options.setExperimentalOption("useAutomationExtension", false);
         options.setExperimentalOption("excludeSwitches",
                 Collections.singletonList("enable-automation"));

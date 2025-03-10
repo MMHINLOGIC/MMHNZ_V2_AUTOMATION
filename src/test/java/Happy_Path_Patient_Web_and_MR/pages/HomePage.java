@@ -1873,9 +1873,9 @@ public boolean veriflyTeamscondition(){
 
     public boolean clickDashBoard() {
         boolean isVerified = false;
-        jsScrollIntoView(elmntDashboard);
-        waitForElement(elmntDashboard);
-        jsClick(elmntDashboard);
+//        jsScrollIntoView(elmntDashboard);
+//        waitForElement(elmntDashboard);
+//        jsClick(elmntDashboard);
 if (isElementDisplayed(txtPatientWelcomePage)) {
     waitForElementDisappear(driver, By.xpath(elmntSpinner));
     jsScrollIntoView(elmntDashboard);
