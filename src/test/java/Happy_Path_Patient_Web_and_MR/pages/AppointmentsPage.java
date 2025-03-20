@@ -163,8 +163,11 @@ public class AppointmentsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='locationCenter']")
     protected WebElement elmntLocationCenter;
+@FindAll({
+        @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='location']"),
+        @FindBy(how = How.XPATH, using = "//mat-select[@formcontolname='locations']")
+})
 
-    @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='location']")
     protected WebElement elmntProviderLocationCenter;
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='provider']")
@@ -843,11 +846,14 @@ public class AppointmentsPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntHealtCenter);
-            click(elmntHealtCenter);
+            jsClick(elmntHealtCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntSelectHealthCenter = waitForElement(By.xpath(ProviderLocation.replace("<<REPLACEMENT>>", strHealthCenter)));
             mouseClick(elmntSelectHealthCenter);
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = true;
         } catch (Exception e) {
@@ -876,7 +882,8 @@ public class AppointmentsPage extends BasePage {
 
     public boolean ProviderselectLocation(String strLocation) {
         boolean blResult = false;
-        try {
+        try {  waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(elmntProviderLocationCenter);
             jsClick(elmntProviderLocationCenter);
@@ -3090,12 +3097,12 @@ waitForSeconds(5);
                     .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
                     .replace("<<REPLACEMENT2>>", lstDetails.get(0))
                     .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
-            System.out.println("TEST" + elmntAddToCalender);
+            System.out.println("elmntAddToCalender" + elmntAddToCalender);
             verifyElement(elmntAddToCalender);
             click(elmntAddToCalender);
             if (verifyElement(elmntAddToGoogle)){
                 waitForElement(elmntAddToGoogle);
-                click(elmntAddToGoogle);
+                jsClick(elmntAddToGoogle);
                 waitForElement(elmntAddToOutLook);
                 verifyElement(elmntAddToOutLook);
                 waitForElement(elmntAddToIcal);
@@ -3154,7 +3161,7 @@ waitForSeconds(5);
                 click(elmntAddToCalender);
                 if (verifyElement(elmntAddToGoogle)){
                     waitForElement(elmntAddToGoogle);
-                    click(elmntAddToGoogle);
+                    jsClick(elmntAddToGoogle);
                     waitForElement(elmntAddToOutLook);
                     verifyElement(elmntAddToOutLook);
                     waitForElement(elmntAddToIcal);
@@ -3437,7 +3444,7 @@ waitForSeconds(5);
             click(elmntAddToCalender);
             if (verifyElement(elmntAddToGoogle)){
                 waitForElement(elmntAddToGoogle);
-                click(elmntAddToGoogle);
+                jsClick(elmntAddToGoogle);
                 waitForElement(elmntAddToOutLook);
                 verifyElement(elmntAddToOutLook);
                 waitForElement(elmntAddToIcal);
@@ -3492,7 +3499,7 @@ waitForSeconds(5);
                 click(elmntAddToCalender);
                 if (verifyElement(elmntAddToGoogle)){
                     waitForElement(elmntAddToGoogle);
-                    click(elmntAddToGoogle);
+                    jsClick(elmntAddToGoogle);
                     waitForElement(elmntAddToOutLook);
                     verifyElement(elmntAddToOutLook);
                     waitForElement(elmntAddToIcal);
@@ -3568,7 +3575,7 @@ waitForSeconds(5);
             click(elmntAddToCalender);
 if (verifyElement(elmntAddToGoogle)){
             waitForElement(elmntAddToGoogle);
-            click(elmntAddToGoogle);
+            jsClick(elmntAddToGoogle);
             waitForElement(elmntAddToOutLook);
             verifyElement(elmntAddToOutLook);
             waitForElement(elmntAddToIcal);
@@ -3623,7 +3630,7 @@ if (verifyElement(elmntAddToGoogle)){
                 click(elmntAddToCalender);
                 if (verifyElement(elmntAddToGoogle)){
                     waitForElement(elmntAddToGoogle);
-                    click(elmntAddToGoogle);
+                    jsClick(elmntAddToGoogle);
                     waitForElement(elmntAddToOutLook);
                     verifyElement(elmntAddToOutLook);
                     waitForElement(elmntAddToIcal);
@@ -3657,11 +3664,14 @@ if (verifyElement(elmntAddToGoogle)){
     }
     public boolean verifySucessMessage() {
         boolean blResult = false;
-        try {
+        try {  waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             if (verifyElement(btnNextA2A)) {
                 waitForElement(btnNextA2A);
                 jsClick(btnNextA2A);
             }
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             driver.switchTo().defaultContent();
             waitForSeconds(2);
             waitForElement(elmntPaymentSuccess);
@@ -4150,7 +4160,7 @@ if (verifyElement(elmntAddToGoogle)){
             waitForElement(elmntLocationCenter);
             jsClick(elmntLocationCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(0)))));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strData.get(1)))));
             System.out.println("elmntSelectLocation"+elmntSelectLocation);
             waitForElement(elmntSelectLocation);
             verifyElement(elmntSelectLocation);
@@ -4967,11 +4977,11 @@ System.out.println(">>>>>>>>>>>>>VerifyMyAppointmentTableDatalstDetails"+lstDeta
     public boolean selectSearch() {
         boolean blResult = false;
         try {
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
          waitForElement(elmntSearchButton);
-         mouseClick(elmntSearchButton);
-         waitForSeconds(5);
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+         jsClick(elmntSearchButton);
+         waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = true;
         } catch (Exception e) {
             System.out.println("Failed to select Search Button >>> :: ");

@@ -1134,11 +1134,17 @@ public class HomePage extends BasePage {
     }
 
     public void enterEmail(String strEmail) {
-        waitForSeconds(2);
-//        jsClick(txtProviderPortal);
+    if (verifyElement(txtBoxEmail)){
         waitForSeconds(3);
         waitForElementClickable(txtBoxEmail);
         enterValue(txtBoxEmail, strEmail);
+
+    }else {
+        System.out.println("User Already in Home Page");
+    }
+
+
+
     }
 
 
@@ -1187,8 +1193,13 @@ public class HomePage extends BasePage {
     }
 
     public void enterpassword(String strPassword) {
-        waitForElementClickable(txtBoxPassword);
-        enterValue(txtBoxPassword, strPassword);
+        if (verifyElement(txtBoxPassword)){
+            waitForElementClickable(txtBoxPassword);
+            enterValue(txtBoxPassword, strPassword);
+        }else {
+            System.out.println("User here in home page");
+        }
+
     }
 
     public boolean clickLoginButton() {
@@ -1873,9 +1884,9 @@ public boolean veriflyTeamscondition(){
 
     public boolean clickDashBoard() {
         boolean isVerified = false;
-//        jsScrollIntoView(elmntDashboard);
-//        waitForElement(elmntDashboard);
-//        jsClick(elmntDashboard);
+        jsScrollIntoView(elmntDashboard);
+        waitForElement(elmntDashboard);
+        jsClick(elmntDashboard);
 if (isElementDisplayed(txtPatientWelcomePage)) {
     waitForElementDisappear(driver, By.xpath(elmntSpinner));
     jsScrollIntoView(elmntDashboard);

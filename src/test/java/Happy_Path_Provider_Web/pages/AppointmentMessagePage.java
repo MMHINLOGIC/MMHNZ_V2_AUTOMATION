@@ -503,11 +503,12 @@ else {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-//            jsScrollIntoView(elmntMobileAppsBannerHeading);
+            jsScrollIntoView(elmntMobileAppsBannerHeading);
             waitForElement(elmntMobileAppsBannerHeading);
             driver.switchTo().frame(frameWebBannerMessage);
             waitForSeconds(2);
-            click(elmntWriteWebBannerMessage);
+            waitForElement(elmntWriteWebBannerMessage);
+            mouseClick(elmntWriteWebBannerMessage);
             waitForSeconds(2);
             driver.switchTo().activeElement().clear();
             waitForSeconds(2);
@@ -530,14 +531,19 @@ else {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmntMobileAppsBannerHeading);
             waitForElement(elmntMobileAppsBannerHeading);
-            click(elmntMobileAppsBannerHeading);
+            jsClick(elmntMobileAppsBannerHeading);
+            waitForSeconds(2);
+//            waitForElement(elmntMobileAppsBannerHeading);
+//            elmntMobileAppsBannerHeading.click();
+//            waitForSeconds(2);
+            driver.switchTo().activeElement().clear();
+//            elmntMobileAppsBannerHeading.clear();
             waitForSeconds(2);
             waitForElement(elmntMobileAppsBannerHeading);
-            elmntMobileAppsBannerHeading.click();
+            jsClick(elmntMobileAppsBannerHeading);
             waitForSeconds(2);
-            elmntMobileAppsBannerHeading.clear();
-            waitForSeconds(2);
-            elmntMobileAppsBannerHeading.sendKeys(strHeading.concat(strExecutionID));
+            driver.switchTo().activeElement().sendKeys(strHeading.concat(strExecutionID));
+//            elmntMobileAppsBannerHeading.sendKeys(strHeading.concat(strExecutionID));
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             blresult = true;
         } catch (Exception e) {

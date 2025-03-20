@@ -50,6 +50,9 @@ public class ProviderPageContainer {
     public PreScreeningQuestionnairePage preScreeningQuestionnairePage;
 
 
+    public ManageProvidersPage manageProviderspage;
+
+
 
     public ProviderPageContainer() {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
@@ -96,6 +99,7 @@ public class ProviderPageContainer {
         sMSSettingsPage = new SMSSettingsPage(driver);
         appointmentReasonPage = new AppointmentReasonPage(driver);
         preScreeningQuestionnairePage=new PreScreeningQuestionnairePage(driver);
+        manageProviderspage=new ManageProvidersPage(driver);
     }
 
     @After("@WEB")

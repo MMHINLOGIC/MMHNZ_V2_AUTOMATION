@@ -25,7 +25,7 @@ Feature: Messages_Scenarios
       | Message Details              |
       | &SENT_GROUP_MESSAGE_DETAILS& |
 
-  @MOBILE @RELAUNCH @Mobile_Message @HAPPY_PATH_MOBILE
+  @MOBILE  @Mobile_Message @HAPPY_PATH_MOBILE
   Scenario Outline: Pre-Req 3- Doctor login with valid credential and verifies MMH Home screen
 
     Given I am on MMH Login screen
@@ -63,7 +63,7 @@ Feature: Messages_Scenarios
     Then I tap on logout icon in Home screen
 
 
-  @MOBILE @RELAUNCH @Mobile_Message @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Message @HAPPY_PATH_MOBILE
   Scenario Outline: Pre-Req - User login with valid credential and verifies MMH Home screen
 
     Given I am on MMH Login screen

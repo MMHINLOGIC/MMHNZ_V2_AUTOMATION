@@ -75,11 +75,11 @@ public class HealthRecordsScreen extends BaseScreen {
 
     public void tapHealthRecordOption(String strHealthRecordOption) {
 //        waitForElements(lstHealthRecordNo);
-        waitForSecond(2);
+        waitForSecond(4);
         waitForElement(elmntHealthRecords);
         waitForElementIgnoreStale(elmntHealthRecords);
         WebElement elmntHealthRecords = waitForElement(By.xpath(strContainsTextViewLocator.replace("<<TEXT>>", strHealthRecordOption)));
-        waitForElementClickable(elmntHealthRecords);
+        waitForElement(elmntHealthRecords);
         System.out.println(">>>>>>>>>>>>>>>>>>>>>elmntHealthRecords"+elmntHealthRecords);
         click(elmntHealthRecords);
     }

@@ -4291,7 +4291,7 @@ public class WebSteps {
 
     @When("I navigate to Book Appointment select Default Location {string}and{string}")
     public void iNavigateToBookAppointmentSelectDefaultLocationAnd(String strLocation, String AppointmentReason) {
-        List<String> data=TestDataUtil.getListOfValue(strLocation);
+        List<String> data = TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(demoPageContainer.homePage.clickDashBoard());
         Assert.assertTrue(demoPageContainer.homePage.clickPatientBookAppointment());
         Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
@@ -5320,12 +5320,12 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.messagesPage.navigateToComposeMessageForDoctor());
         Assert.assertTrue(demoPageContainer.messagesPage.verifySMSTab());
     }
+
     @Then("I should see SMS info message displayed")
     public void iShouldSeeSMSInfoMessageDisplayed() {
 
         Assert.assertTrue(demoPageContainer.messagesPage.verifySMSInfoMessage());
     }
-
 
 
     @Then("I enter the visit appointment details {string} & verify Appointment Reason {string}")
@@ -5359,6 +5359,22 @@ public class WebSteps {
 
     }
 
+    @Then("I select the Patient to collect Script Medication details{string} Verify patient should not able to view the Nurse {string}")
+    public void iSelectThePatientToCollectScriptMedicationDetailsVerifyPatientShouldNotAbleToViewTheNurse(String strMedicationDetails, String SelectScriptDropDownDetails) {
+        System.out.println("\nMedicationDetails >>> :" + strMedicationDetails);
+        System.out.println("\nSelectScriptDropDownDetails >>> :" + SelectScriptDropDownDetails);
+        List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
+        System.out.println("\nlstMedicationDetails >>> " + lstMedicationDetails);
+        System.out.println("\nSize Of lstMedicationDetails >>> " + lstMedicationDetails.size());
+
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectHealthCentreLocation(lstMedicationDetails.get(0)));
+
+        Assert.assertTrue(demoPageContainer.repeatPrescription.verifyEnabledDoctorName(TestDataUtil.getValue(SelectScriptDropDownDetails)));
+
+//        Assert.assertTrue(demoPageContainer.repeatPrescription.selectDoctor(lstMedicationDetails.get(1)));
+
+
+    }
 }
 
 

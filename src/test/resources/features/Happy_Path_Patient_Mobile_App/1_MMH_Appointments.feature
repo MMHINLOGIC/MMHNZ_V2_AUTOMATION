@@ -1,6 +1,6 @@
 Feature: Mobile_Appointments_Scenarios
 
-  @MOBILE @RELAUNCH @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @RELAUNCH @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S1 - User login with valid credential and verifies MMH Home screen
 
     Given I am on MMH Login screen
@@ -17,11 +17,11 @@ Feature: Mobile_Appointments_Scenarios
   Scenario Outline: S2 - Patient Send the Appointment Request [Mobile-Visit]
 
     Given I am on MMH Home screen
-    And I tap on "Book Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     When I enter the "Visit" "<Appointment Details>"
     Then I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
-    And I Send Appointment Request
+    And I click Continue Button
 
     Examples:
       | Appointment Details                         | Details_For_Appointment                        | Future_Date                     |
@@ -46,7 +46,7 @@ Feature: Mobile_Appointments_Scenarios
   Scenario Outline: S3 - Patient Send the Appointment Request [Mobile-Phone]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Phone" "<Appointment Details>"
     When I enter the "<Contact Number>" in Confirm Appointment
@@ -76,7 +76,7 @@ Feature: Mobile_Appointments_Scenarios
   Scenario Outline: S4 - Patient Send the Appointment Request [Mobile-Video]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     When I enter the video Appointment "Video" "<Appointment Details>"
     Then I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -102,11 +102,11 @@ Feature: Mobile_Appointments_Scenarios
       | VIDEO       | &CARD_DETAILS& | &FUTURE_DATE_PAYMENT_FOR_VIDEO& | &VIDEO_APPOINTMENT_SUMMARY_USING_CARD_PAYMENT& |
 
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S5 - Patient Booking Appointment - Visit Appointment & Pay at Health centre [Mobile]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Visit" "<Appointment Details>"
     And I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -122,7 +122,7 @@ Feature: Mobile_Appointments_Scenarios
   Scenario Outline: S6 - Patient Booking Appointment - Phone Appointment & Pay at Health centre [Mobile]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Phone" "<Appointment Details>"
     And I enter the "<Contact Number>" in Confirm Appointment
@@ -139,7 +139,7 @@ Feature: Mobile_Appointments_Scenarios
   Scenario Outline: S7 - Patient Booking Appointment - Video Appointment(Book Video Appointment) & Pay at Health centre [Mobile]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     When I enter the video Appointment "Video" "<Appointment Details>"
     And I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -155,7 +155,7 @@ Feature: Mobile_Appointments_Scenarios
   Scenario Outline: S8 - Patient verify the Confirm Appointment details [Mobile-Visit]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     When I enter the "Visit" "<Appointment Details>"
     Then I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -183,7 +183,7 @@ Feature: Mobile_Appointments_Scenarios
   Scenario Outline: S9 - Patient Booking Appointment - Phone Appointment & $0 Amount [Mobile-Phone]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Phone" "<Appointment Details>"
     When I enter the "<Contact Number>" in Confirm Appointment
@@ -195,7 +195,7 @@ Feature: Mobile_Appointments_Scenarios
       | &BOOK_PHONE_APPOINTMENT_0_AMOUNT& | &PHONE_APPOINTMENT_DETAILS_0_AMOUNT& | &FUTURE_DATE_0_AMOUNT& | &CONTACT_NUMBER& |
 
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S9 - Patient verify the Confirm Appointment details [Mobile-Phone]
 
     Given I am on Confirm Appointment screen
@@ -207,11 +207,11 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Future_Date            | Appointment_Summary                  |
       | PHONE       | &FUTURE_DATE_0_AMOUNT& | &PHONE_APPOINTMENT_SUMMARY_0_AMOUNT& |
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S10 - Patient Booking Appointment - Video Appointment & $0 Amount [Mobile-Video]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     When I enter the video Appointment "Video" "<Appointment Details>"
     Then I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -222,7 +222,7 @@ Feature: Mobile_Appointments_Scenarios
       | &BOOK_VIDEO_APPOINTMENT_0_AMOUNT& | &VIDEO_APPOINTMENT_DETAILS_0_AMOUNT& | &FUTURE_DATE_0_AMOUNT& |
 
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S10 -  Patient verify the Confirm Appointment details [Mobile-Video]
 
     Given I am on Confirm Appointment screen
@@ -237,11 +237,11 @@ Feature: Mobile_Appointments_Scenarios
 
 
     ######################################################################################################
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S0 - Patient Booking Appointment - Video Appointment (Book Face To Face )& Pay at Health centre [Mobile]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     When I enter the video Appointment "Video" "<Appointment Details>"
     And I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -253,7 +253,7 @@ Feature: Mobile_Appointments_Scenarios
       | VIDEO       | &BOOK_FACE_TO_FACE_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_VIDEO_FACE_TO_FACE& | &VIDEO_APPOINTMENT_SUMMARY& |
 
 
-  @WEB @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Template: Pre-Req 1- Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -265,7 +265,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S2 - Patient Booking Appointment - Rule B (Phone Appointment )[ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -275,16 +275,15 @@ Feature: Mobile_Appointments_Scenarios
     Then I fill Patient Portal Mobile Apps Banner Heading "<Banner_Heading>" and Banner Message fields "<Banner_Message>"
     Examples:
 
-      | Location         | Health_Centre                 | Banner_Heading   | Banner_Message   |
-      | Automation1_Loc1 | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
+      | Location   | Health_Centre                 | Banner_Heading   | Banner_Message   |
+      | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
 
 
-
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S2 - Patient Booking Appointment - Rule B (Phone Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Phone" "<Appointment Details>" based on Rule B
     And I enter the "<Contact Number>" in Confirm Appointment
@@ -296,7 +295,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details             | Details_For_Appointment     | Future_Date              | Appointment_Summary         | Contact Number   |
       | PHONE       | &BOOK_PHONE_APPOINTMENT_RULE_B& | &PHONE_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_A& | &PHONE_APPOINTMENT_SUMMARY& | &CONTACT_NUMBER& |
 
-  @WEB @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -308,7 +307,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S3 - Patient Booking Appointment - Rule C (Video Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -318,17 +317,15 @@ Feature: Mobile_Appointments_Scenarios
     Then I fill Patient Portal Mobile Apps Banner Heading "<Banner_Heading>" and Banner Message fields "<Banner_Message>"
     Examples:
 
-      | Location         | Health_Centre                 | Banner_Heading   | Banner_Message   |
-      | Automation1_Loc1 | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
+      | Location   | Health_Centre                 | Banner_Heading   | Banner_Message   |
+      | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
 
 
-
-
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S3 - Patient Booking Appointment - Rule C (Video Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     When I enter the video Appointment "Video" "<Appointment Details>" based on Rule C
     And I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -339,7 +336,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details             | Details_For_Appointment     | Future_Date              | Appointment_Summary         |
       | VIDEO       | &BOOK_VIDEO_APPOINTMENT_RULE_C& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_C& | &VIDEO_APPOINTMENT_SUMMARY& |
 
-  @WEB @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -351,7 +348,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S4 - Patient Booking Appointment - Rule D (Book Face to Face ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -361,16 +358,15 @@ Feature: Mobile_Appointments_Scenarios
     Then I fill Patient Portal Mobile Apps Banner Heading "<Banner_Heading>" and Banner Message fields "<Banner_Message>"
     Examples:
 
-      | Location         | Health_Centre                 | Banner_Heading   | Banner_Message   |
-      | Automation1_Loc1 | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
+      | Location   | Health_Centre                 | Banner_Heading   | Banner_Message   |
+      | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
 
 
-
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S4 - Patient Booking Appointment - Video Appointment (Book Face To Face )& Pay at Health centre [Web to Mobile Apps]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     When I enter the video Appointment "Video" "<Appointment Details>" based on Rule D
     And I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -381,7 +377,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details                   | Details_For_Appointment     | Future_Date                          | Appointment_Summary         |
       | VIDEO       | &BOOK_FACE_TO_FACE_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_VIDEO_FACE_TO_FACE& | &VIDEO_APPOINTMENT_SUMMARY& |
 
-  @WEB @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -393,7 +389,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S5 - Patient Booking Appointment - Rule E Scenario 1 (Visit Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -403,17 +399,15 @@ Feature: Mobile_Appointments_Scenarios
     Then I fill Patient Portal Mobile Apps Banner Heading "<Banner_Heading>" and Banner Message fields "<Banner_Message>"
     Examples:
 
-      | Location         | Health_Centre                 | Banner_Heading   | Banner_Message   | Restrict_Provider_Details |
-      | Automation1_Loc1 | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& | &RESTRICT_PROVIDER_DATA&  |
+      | Location   | Health_Centre                 | Banner_Heading   | Banner_Message   | Restrict_Provider_Details |
+      | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& | &RESTRICT_PROVIDER_DATA&  |
 
 
-
-
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S5 - Patient Booking Appointment - Rule E Scenario 1 (Visit Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Visit" "<Appointment Details>" based on Rule A
     And I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -424,7 +418,7 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
       | VISIT       | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
 
-  @WEB @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -436,7 +430,7 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S6 - Patient Booking Appointment - Rule E Scenario 2 (Phone Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -446,17 +440,15 @@ Feature: Mobile_Appointments_Scenarios
     Then I fill Patient Portal Mobile Apps Banner Heading "<Banner_Heading>" and Banner Message fields "<Banner_Message>"
     Examples:
 
-      | Location         | Health_Centre                 | Banner_Heading   | Banner_Message   | Restrict_Provider_Details |
-      | Automation1_Loc1 | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& | &RESTRICT_PROVIDER_DATA&  |
-
-
+      | Location   | Health_Centre                 | Banner_Heading   | Banner_Message   | Restrict_Provider_Details |
+      | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& | &RESTRICT_PROVIDER_DATA&  |
 
 
   @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S6 - Patient Booking Appointment - Rule E Scenario 2 (Phone Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Phone" "<Appointment Details>" based on Rule B
     And I enter the "<Contact Number>" in Confirm Appointment
@@ -487,7 +479,7 @@ Feature: Mobile_Appointments_Scenarios
     And I click Systems Menu and I navigating to Pre-Screening Settings page
     And I click Edit button to select "<Health_Centre>" and "<Location>" and Disable Appointment Pre-Screening Popup
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Visit" "<Appointment Details>" verify Pre Screening Popup Not Displayed
     Examples:
@@ -502,14 +494,14 @@ Feature: Mobile_Appointments_Scenarios
     And I click Systems Menu and I navigating to Pre-Screening Settings page
     And I click Edit button to select "<Health_Centre>" and "<Location>" and Enable Appointment Pre-Screening Popup
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Visit" "<Appointment Details>" verify Pre Screening Popup Displayed
     Examples:
       | Health_Centre                 | Location        | Appointment Details      |
       | &PRE_SCREENING_HEALTH_CENTRE& | &PRE_SCREENING& | &BOOK_VISIT_APPOINTMENT& |
 
-  @WEB @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -522,7 +514,7 @@ Feature: Mobile_Appointments_Scenarios
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S1 - Patient Booking Appointment - Rule A (Visit Appointment )[ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -532,16 +524,15 @@ Feature: Mobile_Appointments_Scenarios
     Then I fill Patient Portal Mobile Apps Banner Heading "<Banner_Heading>" and Banner Message fields "<Banner_Message>"
     Examples:
 
-      | Location         | Health_Centre                 | Banner_Heading   | Banner_Message   |
-      | Automation1_Loc1 | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
+      | Location   | Health_Centre                 | Banner_Heading   | Banner_Message   |
+      | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &BANNER_HEADING& | &BANNER_MESSAGE& |
 
 
-
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S1 - Patient Booking Appointment - Rule A (Visit Appointment ) & Pay at Health centre [ Web to Mobile Apps]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Visit" "<Appointment Details>" based on Rule A
     And I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -553,7 +544,7 @@ Feature: Mobile_Appointments_Scenarios
       | VISIT       | &BOOK_VISIT_APPOINTMENT_RULE_A& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_A& | &VISIT_APPOINTMENT_SUMMARY& |
 
 
-  @WEB @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @WEB @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -565,23 +556,22 @@ Feature: Mobile_Appointments_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S9 - Patient Booking Appointment - Reason For Appointment is Mandatory (Book Video Appointment ) [ Web to Mobile Apps]
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
     And I enable allow to Reason For Appointment is Mandatory yes radio button"<Location>" and click save button then I see Saved Successfully message
 
     Examples:
-      | Location         |  |
-      | Automation1_Loc1 |  |
+      | Location   |  |
+      | &LOCATION& |  |
 
 
-
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S9 - Patient Booking Appointment - Video Appointment(Book Video Appointment) & Pay at Health centre [Mobile]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     When I enter the video Appointment "Video" "<Appointment Details>" based on Family Member
     And I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -592,11 +582,11 @@ Feature: Mobile_Appointments_Scenarios
       | Appointment | Appointment Details             | Details_For_Appointment     | Future_Date              | Appointment_Summary         |
       | VIDEO       | &BOOK_VIDEO_APPOINTMENT_REASON& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_C& | &VIDEO_APPOINTMENT_SUMMARY& |
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario Outline: S10 - Patient Booking Appointment - Visit Appointment & Pay at Health centre [Mobile]
 
     Given I am on MMH Home screen
-    And I tap on "Appointments" option in home screen
+    And I tap on "Book Appointment" option in home screen
     And I tap Book Appointment under Future tab
     And I enter the "Visit" "<Appointment Details>"
     And I should see Confirm Appointment details "<Details_For_Appointment>" "<Future_Date>"
@@ -609,7 +599,7 @@ Feature: Mobile_Appointments_Scenarios
       | VISIT       | &BOOK_VISIT_APPOINTMENT_RULE_C& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE_FOR_RULE_C& | &VISIT_APPOINTMENT_SUMMARY& |
 
 
-  @MOBILE @Mobile_Appointment1 @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Appointment @HAPPY_PATH_MOBILE
   Scenario: Pre-Req - Doctor Sending Message
 
     Given I am on MMH Home screen

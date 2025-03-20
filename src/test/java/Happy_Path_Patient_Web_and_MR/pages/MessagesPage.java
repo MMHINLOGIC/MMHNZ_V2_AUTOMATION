@@ -36,7 +36,11 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Messages')]")
     protected WebElement elmntMessages;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Draft')]")
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Draft')])[2]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Draft')])[1]")
+    })
+
     protected WebElement elmntDraft;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Group Messages')]")
@@ -140,13 +144,19 @@ public class MessagesPage extends BasePage {
     })
     protected WebElement txtPatientWelcomePage;
 
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),' Timprefer!')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]")
+    })
+    protected WebElement txtProviderPortalWelcomePage;
+
     @FindBy(how = How.XPATH, using = "//img[@class='profile-pic img-fluid']")
     protected WebElement elmntProfile;
 
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),' Sign Out ')]")
     protected WebElement elmntSignout;
-
 
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Inbox')]")
@@ -236,7 +246,6 @@ public class MessagesPage extends BasePage {
             .append("<<REPLACEMENT>>").append("']").toString();
 
     //span[normalize-space(text())='Patient']
-
 
 
     //span[contains(text(),'VM03Location')]
@@ -428,7 +437,7 @@ public class MessagesPage extends BasePage {
             .append("<<REPLACEMENT>>")
             .append("')])[1]")
             .toString();
-//(//mat-card-title[contains(text(),'Received Msg Testing-DOOWGQFJ')])[1]
+    //(//mat-card-title[contains(text(),'Received Msg Testing-DOOWGQFJ')])[1]
 //    (//mat-card-title[contains(text(),'Received Msg Testing-OCMDIQWF')])[1]
     protected String elmntinnerSubject = new StringBuilder()
             .append("//span[contains(text(),'")
@@ -536,11 +545,8 @@ public class MessagesPage extends BasePage {
     protected WebElement getClickAutomaticReplyoption;
 
 
-
-
     @FindBy(how = How.XPATH, using = "(//mat-panel-title[contains(text(),'Automatic replies')]//following::span)[1]")
     protected WebElement clickAutomaticReplyoption;
-
 
 
     @FindBy(how = How.XPATH, using = "//div[@fxlayout='row']")
@@ -945,13 +951,12 @@ public class MessagesPage extends BasePage {
     protected WebElement btnMobileInboxAttachButton;
 
 
-
     @FindAll({
-            @FindBy(how = How.XPATH,using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Timprefer!')]"),
-            @FindBy(how = How.XPATH,using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]"),
-            @FindBy(how = How.XPATH,using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Timprefer!')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
     })
-protected WebElement txtWelcome;
+    protected WebElement txtWelcome;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Your session is about to expire!')]")
     protected WebElement elmntLogoutPopup;
@@ -1035,6 +1040,7 @@ protected WebElement txtWelcome;
         }
         return blResult;
     }
+
     public boolean navigateToPatientInboxMessage() {
         boolean blResult = false;
         try {
@@ -1144,9 +1150,9 @@ protected WebElement txtWelcome;
             waitForElement(txtComposeMail);
             blResult = verifyElement(btnSendMessage);
 
-            System.out.println("Successfully navigated to Compose message >>>>> :: " );
+            System.out.println("Successfully navigated to Compose message >>>>> :: ");
         } catch (Exception e) {
-            System.out.println("Failed navigate to Compose message >>>>> :: " );
+            System.out.println("Failed navigate to Compose message >>>>> :: ");
             e.printStackTrace();
 
         }
@@ -1174,9 +1180,9 @@ protected WebElement txtWelcome;
 //            waitForElement(txtComposeMail);
 //            blResult = verifyElement(btnSendMessage);
 
-            System.out.println("Successfully navigated to Compose message >>>>> :: " );
+            System.out.println("Successfully navigated to Compose message >>>>> :: ");
         } catch (Exception e) {
-            System.out.println("Failed navigate to Compose message >>>>> :: " );
+            System.out.println("Failed navigate to Compose message >>>>> :: ");
             e.printStackTrace();
 
         }
@@ -1355,7 +1361,7 @@ protected WebElement txtWelcome;
             blResult = true;
 
         } catch (Exception e) {
-            System.out.println("Failed verify Patient Received Message >>>>> :: " );
+            System.out.println("Failed verify Patient Received Message >>>>> :: ");
             e.printStackTrace();
 
         }
@@ -1365,8 +1371,8 @@ protected WebElement txtWelcome;
     public boolean replyToMobilePatientReceivedMessage(String strSubject, String strMessage) {
         boolean blResult = false;
         try {
-            System.out.println(">>>>>>>>>>"+TestDataUtil.getValue(strSubject));
-            System.out.println(">>>>>>>>>>"+TestDataUtil.getValue(strMessage));
+            System.out.println(">>>>>>>>>>" + TestDataUtil.getValue(strSubject));
+            System.out.println(">>>>>>>>>>" + TestDataUtil.getValue(strMessage));
             strRandomSubjectMessage = strSubject.concat(strExecutionID);
             System.out.println("strRandomSubjectMessage >>> :: " + strRandomSubjectMessage);
 //            waitForElement(txtInboxPatient);
@@ -1407,7 +1413,7 @@ protected WebElement txtWelcome;
             blResult = true;
 
         } catch (Exception e) {
-            System.out.println("Failed verify Patient Received Message >>>>> :: " );
+            System.out.println("Failed verify Patient Received Message >>>>> :: ");
             e.printStackTrace();
 
         }
@@ -1466,7 +1472,7 @@ protected WebElement txtWelcome;
             waitForElement(btnReplySendMessage);
             jsClick(btnReplySendMessage);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElementToAppear(driver,By.xpath(btnSentSuccessfullyPopup1));
+            waitForElementToAppear(driver, By.xpath(btnSentSuccessfullyPopup1));
             waitForElement(btnSentSuccessfullyPopup);
             blResult = verifyElement(btnSentSuccessfullyPopup);
 
@@ -1488,7 +1494,7 @@ protected WebElement txtWelcome;
             waitForElement(btnMobileReplySendMessage);
             jsClick(btnMobileReplySendMessage);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElementToAppear(driver,By.xpath(btnSentSuccessfullyPopup1));
+            waitForElementToAppear(driver, By.xpath(btnSentSuccessfullyPopup1));
             waitForElement(btnSentSuccessfullyPopup);
             blResult = verifyElement(btnSentSuccessfullyPopup);
 
@@ -1498,6 +1504,7 @@ protected WebElement txtWelcome;
         }
         return blResult;
     }
+
     public boolean selectAutomaticRepliesSetting() {
         boolean blResult = false;
         try {
@@ -1529,7 +1536,7 @@ protected WebElement txtWelcome;
 //            System.out.println("chkbox Automatic Reply Attribute >>> :: " + strAutomaticReply);
 //            if (strAutomaticReply.equalsIgnoreCase("False")) {
 //                jsClick(chkboxAutomaticReply);
-                blResult = true;
+            blResult = true;
 //            } else {
 
 //            }
@@ -1554,7 +1561,7 @@ protected WebElement txtWelcome;
 //            System.out.println("chkbox our of office Reply Attribute >>> :: " + strOutOfOfficeReply);
 //            if (strOutOfOfficeReply.equalsIgnoreCase("False")) {
 //                jsClick(chkboxOutOfOfficeReply);
-                blResult = true;
+            blResult = true;
 //            } else {
 //                blResult = true;
 //            }
@@ -1652,7 +1659,7 @@ protected WebElement txtWelcome;
 //                robotKey(txtBoxMessages, KeyEvent.VK_V);
 //                robotKeyRelease(KeyEvent.VK_V);
 //                robotKeyRelease(KeyEvent.VK_CONTROL);
-jsScrollIntoView(txtBoxMessages);
+                jsScrollIntoView(txtBoxMessages);
                 waitForSeconds(5);
                 txtBoxMessages.click();
                 waitForSeconds(2);
@@ -1984,7 +1991,7 @@ jsScrollIntoView(txtBoxMessages);
                 driver.switchTo().defaultContent();
             }
 
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return blResult;
@@ -2167,7 +2174,7 @@ jsScrollIntoView(txtBoxMessages);
             waitForSeconds(3);
 //            waitForElement(txtSettingSuccessPopUp);
 //            blResult = verifyElement(txtSettingSuccessPopUp);
-            blResult=true;
+            blResult = true;
             System.out.println("Save button clicked successfully >>>>::");
         } catch (Exception e) {
             System.out.println("Failed to click Save button >>>>::");
@@ -2187,9 +2194,11 @@ jsScrollIntoView(txtBoxMessages);
                 driver.manage().deleteAllCookies();
                 waitForSeconds(10);
                 waitForElement(elmntLoginBtn);
-                click(elmntLoginBtn);
+                jsClick(elmntLoginBtn);
                 driver.manage().deleteAllCookies();
-                blResult =true;
+                blResult = true;
+            } else {
+                System.out.println("User Already in Home Page");
             }
             if (WindowsCount == 2) {
                 focusWindow(1);
@@ -2222,10 +2231,10 @@ jsScrollIntoView(txtBoxMessages);
         System.out.println("===============>WindowsCount::" + WindowsCount);
         if (WindowsCount == 2) {
             focusWindow(1);
-            if (verifyElement(txtPatientWelcomePage)){
+            if (verifyElement(txtPatientWelcomePage)) {
                 driver.manage().deleteAllCookies();
                 System.out.println("User here in Provider home page");
-            }else{
+            } else {
 //                System.out.println("Else Part ::::::Window Count 2");
                 driver.manage().deleteAllCookies();
                 visit(TestDataUtil.getValue("&URL&"));
@@ -2240,8 +2249,7 @@ jsScrollIntoView(txtBoxMessages);
                 driver.manage().deleteAllCookies();
                 System.out.println("User here in Provider home page");
                 takeScreenshot(driver);
-            }
-            else{
+            } else {
                 waitForSeconds(3);
                 visit(TestDataUtil.getValue("&URL&"));
                 driver.manage().deleteAllCookies();
@@ -2259,10 +2267,14 @@ jsScrollIntoView(txtBoxMessages);
 //            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 //            driver.switchTo().window(tabs.get(1));
 
-
+            if (verifyElement(txtProviderPortalWelcomePage)) {
+                System.out.println("User Already in Home Page");
+                blResult = true;
+            } else {
                 visit(URL);
                 waitForSeconds(3);
                 System.out.println("focussed another window");
+            }
 
 
             blResult = true;
@@ -2507,7 +2519,7 @@ jsScrollIntoView(txtBoxMessages);
 //            jsClick(elmntPraticeMenuDoctor);
             waitForSeconds(3);
             jsScrollIntoView(elmntInboxDoctor);
-         waitForElement(elmntInboxDoctor);
+            waitForElement(elmntInboxDoctor);
             jsClick(elmntInboxDoctor);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(elmntComposeDoctor);
@@ -2579,11 +2591,11 @@ jsScrollIntoView(txtBoxMessages);
             WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDrop.replace("<<REPLACEMENT>>", strServiceName)));
             jsScrollDown();
             waitForSeconds(2);
-            System.out.println(">>>>>>"+elmntEntriesFromHealthCentre);
+            System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
             jsScrollIntoView(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-           blResult=verifyElement(drpDownServiceName);
+            blResult = verifyElement(drpDownServiceName);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         } catch (Exception e) {
             System.out.println("\nFailed to select the sService Name >>> :: ");
@@ -2606,11 +2618,11 @@ jsScrollIntoView(txtBoxMessages);
             WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDropPatient.replace("<<REPLACEMENT>>", strServiceName)));
             jsScrollDown();
             waitForSeconds(2);
-            System.out.println(">>>>>>"+elmntEntriesFromHealthCentre);
+            System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
             jsScrollIntoView(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            blResult=verifyElement(drpDownServiceName);
+            blResult = verifyElement(drpDownServiceName);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         } catch (Exception e) {
             System.out.println("\nFailed to select the sService Name >>> :: ");
@@ -2646,7 +2658,8 @@ jsScrollIntoView(txtBoxMessages);
 
     public boolean selectTo(String strTo) {
         boolean blResult = false;
-        try { waitForSeconds(5);
+        try {
+            waitForSeconds(5);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
             waitForElement(txtCompose);
@@ -2749,8 +2762,9 @@ jsScrollIntoView(txtBoxMessages);
             }
 
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            blResult=true;
-            System.out.println("\nSuccessfully Enabled the terms and conditions >>> :: ");} catch (Exception e) {
+            blResult = true;
+            System.out.println("\nSuccessfully Enabled the terms and conditions >>> :: ");
+        } catch (Exception e) {
             System.out.println("\nFailed to Enable the terms and conditions >>> :: ");
             e.printStackTrace();
         }
@@ -2766,7 +2780,7 @@ jsScrollIntoView(txtBoxMessages);
             waitForElementClickable(btnSendMessage);
             jsClick(btnSendMessage);
 //            waitForSeconds(1);
-            waitForElementToAppear(driver,By.xpath("//p[contains(text(),'Message sent successfully')]"));
+            waitForElementToAppear(driver, By.xpath("//p[contains(text(),'Message sent successfully')]"));
 //            waitForElement(txtComposeSuccessMessage);
             verifyElement(txtComposeSuccessMessage);
 //            waitForElement(btnHome);
@@ -2827,8 +2841,8 @@ jsScrollIntoView(txtBoxMessages);
             waitForElementClickable(ProviderLocation);
             jsClick(ProviderLocation);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(ProviderHealthCentre.replace("<<REPLACEMENT>>", strHealthCenterLocation)));
-                jsClick(elmntEntriesFromHealthCentre);
+            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(ProviderHealthCentre.replace("<<REPLACEMENT>>", strHealthCenterLocation)));
+            jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = true;
             System.out.println("\nSuccessfully selected the health centre Location >>> :: ");
@@ -2851,8 +2865,8 @@ jsScrollIntoView(txtBoxMessages);
 //            Select healthCentre = new Select(driver.findElement(By.xpath("//mat-select[@formcontrolname='healthCenter']")));
 //            healthCentre.selectByVisibleText(strHealthCenterLocation);
             jsClick(drpDownLocation);
-                WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(ProviderHealthCentre.replace("<<REPLACEMENT>>", strHealthCenterLocation)));
-                jsClick(elmntEntriesFromHealthCentre);
+            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(ProviderHealthCentre.replace("<<REPLACEMENT>>", strHealthCenterLocation)));
+            jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = true;
             System.out.println("\nSuccessfully selected the health centre Location >>> :: ");
@@ -2862,7 +2876,6 @@ jsScrollIntoView(txtBoxMessages);
         }
         return blResult;
     }
-
 
 
     public void clickMessagesExpandIcon() {
@@ -2936,10 +2949,10 @@ jsScrollIntoView(txtBoxMessages);
 //            Select healthCentre = new Select(driver.findElement(By.xpath("(//select[contains(@id,'GroupMessage1')])[1]")));
 //            healthCentre.selectByVisibleText(strFamilyMember);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntProviderGroupMessageFromDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
-            System.out.println(">>>>>>>>>>>>>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
+            System.out.println(">>>>>>>>>>>>>>>elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            blResult =verifyElement(btnfrom);
+            blResult = verifyElement(btnfrom);
 
         } catch (Exception e) {
             System.out.println("\nFailed to select the health centre >>> :: ");
@@ -3001,7 +3014,7 @@ jsScrollIntoView(txtBoxMessages);
 //            Select healthCentre = new Select(driver.findElement(By.xpath("(//select[contains(@id,'GroupMessage1')])[4]")));
 //            healthCentre.selectByVisibleText(strFamilyMember);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntbyDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
-            System.out.println(">>>>>>>>>>>>>>>"+elmntEntriesFromHealthCentre);
+            System.out.println(">>>>>>>>>>>>>>>" + elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = verifyElement(btnGroupTo);
@@ -3121,9 +3134,7 @@ jsScrollIntoView(txtBoxMessages);
             waitForElement(clickIAgreeButton);
             verifyElement(clickIAgreeButton);
             click(clickIAgreeButton);
-        }
-
-        else {
+        } else {
             System.out.println("CheckBox are checked::>>");
         }
     }
@@ -3239,9 +3250,9 @@ jsScrollIntoView(txtBoxMessages);
                     }
                 }
                 capabilities.setCapability("autoGrantPermissions", "true");
-                String mobiledevicename=System.getProperty("deviceName");
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>"+mobiledevicename);
-                if (System.getProperty("deviceName").equalsIgnoreCase("Poco M2")){
+                String mobiledevicename = System.getProperty("deviceName");
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>" + mobiledevicename);
+                if (System.getProperty("deviceName").equalsIgnoreCase("Poco M2")) {
                     waitForSeconds(3);
                     click(WhileUsingTheApp);
                     waitForSeconds(3);
@@ -3271,7 +3282,7 @@ jsScrollIntoView(txtBoxMessages);
                     click(MediaIcon);
 
                 }
-                if (System.getProperty("deviceName").equalsIgnoreCase("Motorola One Fusion+")){
+                if (System.getProperty("deviceName").equalsIgnoreCase("Motorola One Fusion+")) {
                     waitForSeconds(3);
                     click(WhileUsingTheAppForA13);
                     waitForSeconds(2);
@@ -3583,7 +3594,7 @@ jsScrollIntoView(txtBoxMessages);
         try {
             waitForSeconds(2);
             WebElement Subject = waitForElement(By.xpath(draftSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(lstDetails.get(5)))));
-            System.out.println(">>>>>>>>>>>>"+Subject);
+            System.out.println(">>>>>>>>>>>>" + Subject);
             waitForElement(Subject);
             waitForElementClickable(Subject);
             mouseClick(Subject);
@@ -3920,20 +3931,20 @@ jsScrollIntoView(txtBoxMessages);
     }
 
     public boolean verifySentSuccessfully() {
-        waitForElementToAppear(driver,By.xpath(btnSentSuccessfullyPopup1));
+        waitForElementToAppear(driver, By.xpath(btnSentSuccessfullyPopup1));
         waitForElement(btnSentSuccessfullyPopup);
         return verifyElement(btnSentSuccessfullyPopup);
     }
 
     public boolean verifyDraftSuccessfully() {
-        waitForElementToAppear(driver,By.xpath(btnDraftSuccessfullyPopup1));
+        waitForElementToAppear(driver, By.xpath(btnDraftSuccessfullyPopup1));
         waitForElement(btnDraftSuccessfullyPopup);
         return verifyElement(btnDraftSuccessfullyPopup);
     }
 
     public boolean VerifyAttachdowloadSuccessfully() {
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        waitForElementToAppear(driver,By.xpath(btnAttachdowloadSuccessfullyPopup1));
+        waitForElementToAppear(driver, By.xpath(btnAttachdowloadSuccessfullyPopup1));
         waitForElement(btnAttachdowloadSuccessfullyPopup);
         return verifyElement(btnAttachdowloadSuccessfullyPopup);
     }
@@ -4030,7 +4041,7 @@ jsScrollIntoView(txtBoxMessages);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForElementToAppear(driver,By.xpath(elmntGroupMessageSuccessPopUp1));
 //            blResult=verifyElement(elmntGroupMessageSuccessPopUp);
-            blResult=true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("\nFailed to click the send message >>> :: ");
             e.printStackTrace();
@@ -4238,9 +4249,9 @@ jsScrollIntoView(txtBoxMessages);
         }
     }
 
-    public boolean  navigateToProviderHomepage() {
+    public boolean navigateToProviderHomepage() {
         boolean blResult = false;
-        try{
+        try {
             if (isElementDisplayed(txtWelcome)) {
                 verifyElement(txtWelcome);
                 waitForSeconds(3);
@@ -4251,9 +4262,9 @@ jsScrollIntoView(txtBoxMessages);
                 waitForSeconds(3);
                 blResult = verifyElement(txtWelcome);
             }
-            if (!isElementDisplayed(txtWelcome)){
+            if (!isElementDisplayed(txtWelcome)) {
                 focusWindow(1);
-                if (verifyElement(elmntLogoutPopup)){
+                if (verifyElement(elmntLogoutPopup)) {
                     click(elmntLogoutPopupButton);
                 }
                 System.out.println("Successfully switch to doctor portal");
@@ -4263,7 +4274,7 @@ jsScrollIntoView(txtBoxMessages);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 System.out.println("Successfully click Logo");
                 waitForSeconds(3);
-                blResult=verifyElement(txtWelcome);
+                blResult = verifyElement(txtWelcome);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -4295,13 +4306,14 @@ jsScrollIntoView(txtBoxMessages);
 
     public boolean veriflyExceptedPopup() {
         boolean blResult = false;
-        try {  waitForSeconds(3);
+        try {
+            waitForSeconds(3);
             jsClick(btnReply);
             waitForSeconds(2);
             waitForElement(elmntDoNotAllowPatientTOReply);
-           verifyElement(elmntDoNotAllowPatientTOReply);
-waitForElement(elmntDoNotAllowPatientOkButton);
-click(elmntDoNotAllowPatientOkButton);
+            verifyElement(elmntDoNotAllowPatientTOReply);
+            waitForElement(elmntDoNotAllowPatientOkButton);
+            click(elmntDoNotAllowPatientOkButton);
             blResult = verifyElement(txtInboxPage);
             System.out.println("Successfully navigated to messages settings >>>>> :: ");
         } catch (Exception e) {

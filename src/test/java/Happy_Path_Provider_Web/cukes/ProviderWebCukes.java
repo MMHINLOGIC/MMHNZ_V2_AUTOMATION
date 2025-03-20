@@ -47,4 +47,4 @@ public class ProviderWebCukes extends AbstractTestNGCucumberTests {
     }
 }
 
-//clean test -Dapp=Happy_Path_Provider_Web -Dexecution_type=browser -Drunner=ProviderWebCukes -Dbrowser_name=chrome -Denv=PROD "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/WebApp-QAResults.html -Dsysteminfo.AppName=Demo-QA"
+//clean test -Dapp=Happy_Path_Provider_Web -Dexecution_type=browser -Drunner=ProviderWebCukes -Dbrowser_name=chrome -Denv=UAT "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/WebApp-QAResults.html -Dsysteminfo.AppName=Demo-QA"

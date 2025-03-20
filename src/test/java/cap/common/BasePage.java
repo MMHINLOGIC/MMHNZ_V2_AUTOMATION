@@ -85,6 +85,14 @@ public class BasePage {
         return new WebDriverWait(driver, secs).until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
+    public WebElement waitForElementSeconds(By locator) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 3);
+            return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        } catch (TimeoutException e) {
+            return null; // Return null if element is not found
+        }
+    }
     /** explicit wait condition where we can pause or wait for an element before proceeding to the next step.In this method, declare the elements of Xpath like Id, and Name.  */
     protected WebElement waitForElement(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element));
@@ -784,6 +792,15 @@ public class BasePage {
                 .moveTo(PointOption.point(endX, startY))
                 .release()
                 .perform();
+    }
+
+    public boolean isElementNotDisplayed(WebElement element) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 1);
+            return wait.until(ExpectedConditions.invisibilityOf(element));
+        } catch (Exception e) {
+            return true;
+        }
     }
 
 }

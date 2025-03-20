@@ -22,6 +22,12 @@ public class MyAppointmentPage extends BasePage {
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]")
     })
     protected WebElement txtWelcome;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Your session is about to expire!')]")
+    protected WebElement elmntLogoutPopup;
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes, Keep Working')]")
+    protected WebElement elmntLogoutPopupButton;
     @FindBy(xpath = "//a[@class='navbar-brand']")
     protected WebElement elmtMMHLogo;
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'My Appointments')] ")
@@ -64,6 +70,9 @@ public class MyAppointmentPage extends BasePage {
             }
             if (!isElementDisplayed(txtWelcome)){
                 focusWindow(1);
+                if (verifyElement(elmntLogoutPopup)){
+                    click(elmntLogoutPopupButton);
+                }
                 System.out.println("Successfully switch to doctor portal");
                 waitForElement(elmtMMHLogo);
                 waitForElementClickable(elmtMMHLogo);

@@ -1,6 +1,6 @@
 Feature: Repeat_Request_Prescription_Scenarios
 
-  @MOBILE @RELAUNCH @Mobile_RRP @HAPPY_PATH_MOBILE
+  @MOBILE  @Mobile_RRP @HAPPY_PATH_MOBILE
   Scenario Outline: Pre-Req - User login with valid credential and verifies MMH Home screen
 
     Given I am on MMH Login screen
@@ -436,7 +436,7 @@ Feature: Repeat_Request_Prescription_Scenarios
 
     Given I am on MMH Home screen
     And I tap on "Repeat Prescriptions" option in home screen
-    And I select the "<Medication Details>" for "Patient to collect script" based on Rule C
+    And I select the "<Medication Details>" for "Patient to collect script" based on Rule A
     And I enter "<Message>" and accept the terms & conditions
     When I Send Prescription Request through pay at health centre
     Then I should see Repeat prescription request sent successfully popup message

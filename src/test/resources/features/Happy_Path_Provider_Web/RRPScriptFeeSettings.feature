@@ -52,8 +52,8 @@ Feature: RRP_Script_Fee_Settings
     And I should see the successful message and I navigate to view history of the Prescription
     And I see the status for Patient to collect the Prescription"<Verification Medication Details>"
     Examples:
-      | System_Menu             | Health_Centre | Medication Details             | Verification Medication Details             | Patient to Collect Script DropDown Details   |
-      | RRP Script Fee Settings | &LOCATION&    | &DATA FOR SENT SCRIPT BY POST& | &VERIFICATION DATA FOR SENT SCRIPT BY POST& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
+      | System_Menu             | Health_Centre | Medication Details             | Verification Medication Details                       | Patient to Collect Script DropDown Details   |
+      | RRP Script Fee Settings | &LOCATION&    | &DATA FOR SENT SCRIPT BY POST& | &MORE INFO VERIFICATION DATA FOR SENT SCRIPT BY POST& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
 
 
   @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING

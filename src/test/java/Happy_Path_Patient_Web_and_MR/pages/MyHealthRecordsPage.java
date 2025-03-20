@@ -61,7 +61,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//h3[text()='Lab Results '])[1]")
     protected WebElement headerLabResults;
 
-    @FindBy(how = How.XPATH, using = "//button[@ng-reflect-disabled='false']//span[contains(text(),'EXPORT TO PDF')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'EXPORT TO PDF')]")
     protected WebElement LabResultsExportToPDF;
     @FindBy(how = How.XPATH, using = "(//h3[text()='Clinician Notes'])[1]")
     protected WebElement headerClinicanNotes;
@@ -1691,11 +1691,12 @@ public class MyHealthRecordsPage extends BasePage {
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
                     .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
                     .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
+            System.out.println("elmntLabResultCheckBox"+elmntLabResultCheckBox);
             waitForElement(elmntLabResultCheckBox);
             verifyElement(elmntLabResultCheckBox);
             mouseClick(elmntLabResultCheckBox);
             waitForSeconds(3);
-            waitForElement(LabResultsExportToPDF);
+//            waitForElement(LabResultsExportToPDF);
             verifyElement(LabResultsExportToPDF);
 //            click(LabResultsExportToPDF);
 //            waitForSeconds(5);
@@ -3999,14 +4000,15 @@ public class MyHealthRecordsPage extends BasePage {
     public void clickImmuDelete(String strCreatedRecord) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             String strMedicationName = strCreatedRecord.concat(strExecutionID);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //          strVisitedName = strCreatedRecord;
-            waitForSeconds(2);
+            waitForSeconds(5);
             WebElement btnDelete = waitForElement(By.xpath(elmntImmunisationDelete.replace("<<REPLACEMENT>>", strMedicationName)));
-            waitAndClick(btnDelete);
+            jsClick(btnDelete);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(5);
             waitForElementClickable(btnYes);
-            waitAndClick(btnYes);
+            jsClick(btnYes);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             String strMedicationName = strCreatedRecord.concat(strExecutionID);

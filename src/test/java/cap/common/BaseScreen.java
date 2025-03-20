@@ -8,7 +8,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.StartsActivity;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import lombok.Getter;
 import org.openqa.selenium.*;
@@ -128,6 +130,25 @@ public class BaseScreen {
         } catch (NoSuchElementException error) {
             error.getMessage();
             isVerify = false;
+        }
+        return isVerify;
+    }
+
+
+    public boolean performTapAction(WebElement element) {
+        boolean isVerify = false;
+        try {
+            if (element != null) {
+                TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
+                touchAction.tap(TapOptions.tapOptions().withElement(ElementOption.element(element))).perform();
+                isVerify = true; // Success
+            } else {
+                System.out.println("Element is null!");
+            }
+        } catch (NoSuchElementException error) {
+            System.out.println("Element not found: " + error.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error performing tap: " + e.getMessage());
         }
         return isVerify;
     }

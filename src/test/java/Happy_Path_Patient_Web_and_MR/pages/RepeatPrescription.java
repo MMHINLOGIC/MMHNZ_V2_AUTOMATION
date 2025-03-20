@@ -833,6 +833,37 @@ public class RepeatPrescription extends BasePage {
         return blResult;
     }
 
+    public boolean verifyEnabledDoctorName(String strDoctor) {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            waitForElementClickable(drpdownDoctor);
+            jsClick(drpdownDoctor);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(2);
+            WebElement ddlDoctor = waitForElementSeconds(By.xpath(selectDoctor.replace("<<REPLACEMENT>>", strDoctor)));
+            if (ddlDoctor == null || isElementNotDisplayed(ddlDoctor)) {
+                System.out.println("Element is not displayed!");
+                blResult=true;
+            } else {
+                System.out.println("Element is displayed!");
+                blResult=false;
+            }
+
+
+            takeScreenshot(driver);
+
+
+        } catch (Exception e) {
+            System.out.println("Doctor not selected in the Request Medication");
+            e.printStackTrace();
+
+        }
+        return blResult;
+    }
+
+
     public boolean selectInstructions(String strInstruction) {
         boolean blResult = false;
         try {
@@ -2322,7 +2353,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
                 takeScreenshot(driver);
                 jsClick(btnNextA2A);
             }
-            waitForSeconds(5);
+            waitForSeconds(8);
             if (verifyElement(btnNextA2A)) {
 //                waitForElement(btnNextA2A);
                 jsClick(btnNextA2A);

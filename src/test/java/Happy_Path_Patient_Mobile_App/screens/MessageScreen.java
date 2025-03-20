@@ -120,11 +120,11 @@ public class MessageScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='return up back outline Reply']")
     protected WebElement iconReply;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[contains(@text,'ATTACH FILES')]/preceding::android.widget.EditText[1]")
+    @AndroidFindBy(xpath = "(//android.widget.EditText)[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name,'Attach files')]/preceding:: XCUIElementTypeTextView[2]")
     protected WebElement txtReplyMessage;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='notifications outline']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='notifications']")
     @iOSXCUITFindBy(id = "notifications outline")
     protected WebElement iconNotification;
 
@@ -152,7 +152,7 @@ public class MessageScreen extends BaseScreen {
     //XCUIElementTypeStaticText[@name='Gp2White']// following::XCUIElementTypeOther[@name='Lab Result enquiry']//following::XCUIElementTypeStaticText[@name='Test-Message-QCGFLGCESignature Testing-JMQFCWWE']
 
     String strReceivedMessageLocator = new StringBuilder()
-            .append("//android.widget.TextView[contains(@text,'")
+            .append("//android.view.View[contains(@text,'")
             .append("<<SERVICE>>")
             .append("')]/following-sibling::android.widget.TextView[@text='")
             .append("<<MESSAGE>>")
@@ -208,8 +208,8 @@ public class MessageScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strLocationLocator = new StringBuilder()
-            .append("(//android.widget.TextView[@text='")
-            .append("<<LOCATION>>").append("'])[2]").toString();
+            .append("//android.widget.TextView[@text='")
+            .append("<<LOCATION>>").append("']").toString();
 
     String strLocationLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeImage[@name='cart']/preceding::XCUIElementTypeStaticText[@name='")
@@ -229,6 +229,7 @@ public class MessageScreen extends BaseScreen {
     }
 
     public void tapCompose() {
+        waitForSecond(2);
         waitForElement(iconCompose);
         click(iconCompose);
     }
@@ -313,23 +314,23 @@ public class MessageScreen extends BaseScreen {
     }
 
     public void uploadFile(String strImage) {
-        pushFileToDevice(strImage);
-        waitForElement(lnkAttachFiles);
-        click(lnkAttachFiles);
-        waitForSecond(4);
+//        pushFileToDevice(strImage);
+//        waitForElement(lnkAttachFiles);
+//        click(lnkAttachFiles);
+//        waitForSecond(6);
 //        waitForElement(elmntChooseFromGallery);
 //        click(elmntChooseFromGallery);
 
-        tapByCoordinates(354,2300);
-        waitForSecond(2);
-        waitForElement(iconHamburger);
-        click(iconHamburger);
-        waitForSecond(2);
-        waitForElementIgnoreStale(optDownloads);
-        click(optDownloads);
-        waitForSecond(2);
-        WebElement elmntImage = waitForElement(By.xpath(strTextViewLocator.replace("<<TEXT>>", strImage)));
-        click(elmntImage);
+//        tapByCoordinates(72,2211);
+//        waitForSecond(2);
+//        waitForElement(iconHamburger);
+//        click(iconHamburger);
+//        waitForSecond(2);
+//        waitForElementIgnoreStale(optDownloads);
+//        click(optDownloads);
+//        waitForSecond(2);
+//        WebElement elmntImage = waitForElement(By.xpath(strTextViewLocator.replace("<<TEXT>>", strImage)));
+//        click(elmntImage);
 
     }
 
@@ -492,9 +493,11 @@ click(elmntPatientSent);
     public boolean tapReceivedMessage(List<String> lstReceiveMessage) {
         By elmntReceivedMessageInfo = null;
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+
             elmntReceivedMessageInfo = By.xpath(strReceivedMessageLocator
                     .replace("<<SERVICE>>", lstReceiveMessage.get(0))
                     .replace("<<MESSAGE>>", TestDataUtil.getValue(lstReceiveMessage.get(1))));
+            System.out.println("elmntReceivedMessageInfo ::"+elmntReceivedMessageInfo);
         } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
             System.out.println("elmntReceivedMessageInfo>> "+By.xpath(strReceivedMessageLocatorIOS
                     .replace("<<SERVICE>>", lstReceiveMessage.get(0))
@@ -547,6 +550,7 @@ click(elmntPatientSent);
         boolean blResult = false;
         for (String strMessageDetail : lstMessageDetails) {
             WebElement elmntMessageDetail = waitForElement(By.xpath(strContainsTextViewLocator.replace("<<TEXT>>", TestDataUtil.getValue(strMessageDetail))));
+            System.out.println("elmntMessageDetail ::"+elmntMessageDetail);
             blResult = verifyElement(elmntMessageDetail);
             if (blResult == false) {
                 takeScreenshot(driver);

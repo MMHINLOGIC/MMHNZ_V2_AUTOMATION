@@ -50,7 +50,6 @@ public class RepeatScriptSettingPage extends BasePage {
     protected WebElement btnSave;
 
 
-
     @FindBy(xpath = "//mat-radio-group[@formcontrolname='isMessageMandatory']//div/label[text()='Yes']")
     protected WebElement btnRequestisMandatoryYESButton;
 
@@ -81,7 +80,7 @@ public class RepeatScriptSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//span[text()='VM03Location']/following::mat-select[@name='staffDefaults'])[1]")
     protected WebElement drpDownProviderName;
 
-    @FindBy(how = How.XPATH, using = "//mat-radio-button[@class='mat-radio-button mat-accent mat-radio-checked']//*[contains(text(),'Apply Rules based on Patient')]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Apply Rules based on Patient')]")
     protected WebElement selectedRRPRequest;
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Apply Rules based on Patient')]")
@@ -93,7 +92,7 @@ public class RepeatScriptSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//label[contains(text(),'Restrict to Named Provider in each Location')]")
     protected WebElement selectedRadioBtnRestrictToNamedProviderOption;
 
-    @FindBy(how = How.XPATH, using = "//mat-radio-button[@class='mat-radio-button mat-radio-checked mat-accent']//*[contains(text(),'Rule A : No Restrictions')]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Rule A : No Restrictions')]")
     protected WebElement selectedRuleARequest;
 
     @FindBy(how = How.XPATH, using = "//b[.='Patient to Collect Script']/following::input[@placeholder='Urgent/Same day'][1]")
@@ -404,7 +403,7 @@ public class RepeatScriptSettingPage extends BasePage {
 
 
     @FindAll({
-            @FindBy(how = How.XPATH, using = "//mat-checkbox//*[normalize-space(text())='VM04Practice']/following::mat-select[1]"),
+            @FindBy(how = How.XPATH, using = "(//mat-select[@name='staffDefaults'])[1]"),
             @FindBy(how = How.XPATH, using = "//mat-checkbox//*[normalize-space(text())='Automation_Practice1_Loc1']/following::mat-select[1]")
 
     })
@@ -412,11 +411,18 @@ public class RepeatScriptSettingPage extends BasePage {
 
 
     @FindAll({
-            @FindBy(how = How.XPATH, using = "//mat-checkbox//*[normalize-space(text())='VM04Practice']/following::mat-select[2]"),
+            @FindBy(how = How.XPATH, using = "(//mat-select[@name='staffDefaults'])[2]"),
             @FindBy(how = How.XPATH, using = "//mat-checkbox//*[normalize-space(text())='Automation_Practice1_Loc1']/following::mat-select[2]")
 
     })
     protected WebElement dropdownProvider2;
+
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//mat-select[@name='staffDefaults'])[3]"),
+            @FindBy(how = How.XPATH, using = "//mat-checkbox//*[normalize-space(text())='Automation_Practice1_Loc1']/following::mat-select[2]")
+
+    })
+    protected WebElement dropdownProvider3;
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Rule A : No Restrictions')]")
     protected WebElement optionRuleARequest;
@@ -505,23 +511,23 @@ public class RepeatScriptSettingPage extends BasePage {
 //            if (verifyElement(By.xpath(VeriflyselectedDrpDownOption.replace("<<REPLACEMENT>>", strLocation)))) {
 //                blResult = true;
 //            } else {
-                waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                jsScrollIntoView(drpDownLocation);
-                waitForElement(drpDownLocation);
-                jsClick(drpDownLocation);
-                waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                waitForSeconds(3);
-                WebElement ddlLocation = waitForElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strLocation)));
-                System.out.println(" select Location Locator ::" + ddlLocation);
-                jsScrollIntoView(ddlLocation);
-                waitForElementClickable(ddlLocation);
-                click(ddlLocation);
-                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(drpDownLocation);
+            waitForElement(drpDownLocation);
+            jsClick(drpDownLocation);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            WebElement ddlLocation = waitForElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strLocation)));
+            System.out.println(" select Location Locator ::" + ddlLocation);
+            jsScrollIntoView(ddlLocation);
+            waitForElementClickable(ddlLocation);
+            click(ddlLocation);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //                WebElement selectedOption = waitForElement(By.xpath(VeriflyselectedDrpDownOption.replace("<<REPLACEMENT>>", strLocation)));
 //                System.out.println(" selected DrpDownOption Locator >>> :: " + selectedOption);
 //                jsScrollIntoView(selectedOption);
 //                waitForElement(selectedOption);
-                blResult = true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Location not selected >>> :: ");
             e.printStackTrace();
@@ -589,17 +595,12 @@ public class RepeatScriptSettingPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            if (verifyElement(selectedRRPRequest)) {
-                blResult = verifyElement(selectedRRPRequest);
-                System.out.println("RRP Settings in default selected");
-            } else {
-                waitForSeconds(2);
-                jsScrollIntoView(RRP1stOption);
-                waitForElementClickable(RRP1stOption);
-                jsClick(RRP1stOption);
-                blResult =true;
-                System.out.println("RRP Settings is now selected");
-            }
+            waitForSeconds(2);
+            waitForElement(selectedRRPRequest);
+            jsClick(selectedRRPRequest);
+            System.out.println("RRP Settings is now selected");
+            blResult=true;
+
         } catch (Exception e) {
             System.out.println("sending RRP Requests default option is not selected >>> :: ");
             e.printStackTrace();
@@ -610,10 +611,11 @@ public class RepeatScriptSettingPage extends BasePage {
     public boolean selectOtherReqDataToRestrictNameAndLocation() {
         boolean blResult = false;
         try {
-                waitForElementClickable(selectedRadioBtnRestrictToNamedProviderOption);
-                 jsClick(selectedRadioBtnRestrictToNamedProviderOption);
-                 blResult=true;
-                System.out.println("Selected the option Restrict to Named Provider in each Location ");
+            waitForSeconds(2);
+            waitForElement(selectedRadioBtnRestrictToNamedProviderOption);
+            jsClick(selectedRadioBtnRestrictToNamedProviderOption);
+            blResult = true;
+            System.out.println("Selected the option Restrict to Named Provider in each Location ");
 
         } catch (Exception e) {
             System.out.println("sending RRP Requests default option is not selected >>> :: ");
@@ -626,14 +628,10 @@ public class RepeatScriptSettingPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            if (!verifyElement(selectedRuleARequest)) {
-                waitForElementClickable(optionRuleARequest);
-                blResult = click(optionRuleARequest);
-                System.out.println("Rule A option is not selected and now it is selected >>> :: ");
-            } else {
-                blResult = verifyElement(selectedRuleARequest);
-                System.out.println("Rule A is already selected");
-            }
+            waitForElement(optionRuleARequest);
+            jsClick(optionRuleARequest);
+            System.out.println("Rule A option is selected >>> :: ");
+            blResult = verifyElement(optionRuleARequest);
         } catch (Exception e) {
             System.out.println("Rule A option is not selected >>> :: ");
             e.printStackTrace();
@@ -1752,37 +1750,37 @@ public class RepeatScriptSettingPage extends BasePage {
     }
 
     public boolean selectSendReqData(List<String> strProvider) {
-        boolean blResult2 = false;
+        boolean blResult = false;
         try {
 
-//            waitForElement(enabledVM04PracticeOption);
-//            blResult1 = verifyElement(enabledVM04PracticeOption);
-//            System.out.println("VM04Practice location is indefault selected");
             jsScrollIntoView(dropdownProvider);
             waitForElement(dropdownProvider);
-            click(dropdownProvider);
-//            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
+            jsClick(dropdownProvider);
+            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
             WebElement ddlProvider = waitForElement(By.xpath(selectProvider.replace("<<REPLACEMENT>>", strProvider.get(2))));
             click(ddlProvider);
-//            String providerName = dropdownProvider.getText();
-//            if (providerName.equals(strProvider)) {
-//                System.out.println("Both provider names are Same");
-//            }
+
+            waitForSeconds(2);
             waitForElement(dropdownProvider2);
-            click(dropdownProvider2);
-//            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
+            jsClick(dropdownProvider2);
+            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
             WebElement ddlProvider2 = waitForElement(By.xpath(selectProvider.replace("<<REPLACEMENT>>", strProvider.get(3))));
             click(ddlProvider2);
-//            String providerName2 = dropdownProvider2.getText();
-//            if (providerName2.equals(strProvider)) {
-//                System.out.println("Both provider names are Same");
-//            }
-            blResult2=true;
+
+            waitForSeconds(2);
+            waitForElement(dropdownProvider3);
+            jsClick(dropdownProvider3);
+            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
+            WebElement ddlProvider3 = waitForElement(By.xpath(selectProvider.replace("<<REPLACEMENT>>", strProvider.get(4))));
+            click(ddlProvider3);
+
+            waitForSeconds(2);
+            blResult = verifyElement(dropdownProvider3);
         } catch (Exception e) {
             System.out.println("Send Request to Provider is not selected " + strProvider);
             e.printStackTrace();
         }
-        return  blResult2;
+        return blResult;
     }
 
     public boolean verifySavedData() {
@@ -1867,6 +1865,7 @@ public class RepeatScriptSettingPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean ClickPaymentSettingPayOnlineButton() {
         boolean blResult = false;
         try {

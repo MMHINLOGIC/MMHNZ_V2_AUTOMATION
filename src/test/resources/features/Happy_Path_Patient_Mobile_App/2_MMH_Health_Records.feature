@@ -1,6 +1,6 @@
 Feature: Mobile_Health_Records_Scenarios
 
-  @MOBILE @RELAUNCH @Mobile_Health_Record @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Health_Record @HAPPY_PATH_MOBILE
   Scenario Outline: S1 - User login with valid credential and verifies MMH Home screen
 
     Given I am on MMH Login screen

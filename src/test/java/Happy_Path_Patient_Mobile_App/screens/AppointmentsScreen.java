@@ -3,11 +3,12 @@ package Happy_Path_Patient_Mobile_App.screens;
 import cap.common.BaseScreen;
 import cap.utilities.DateUtil;
 import cap.utilities.TestDataUtil;
-import io.appium.java_client.ios.IOSDriver;
+
 import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
@@ -138,6 +139,10 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Send Appointment Request']")
     protected WebElement btnSendAppointmentRequest;
 
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='CONTINUE']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Send Appointment Request']")
+    protected WebElement btnContinueButton;
+
     @AndroidFindBy(xpath = "//android.widget.Button[@text='PAY AT HEALTH CENTRE']")
     @iOSXCUITFindBy(id = "Pay at Health Centre")
     protected WebElement btnPayHealthCentre;
@@ -176,9 +181,13 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(id = "Contact Number *")
     protected WebElement txtContactNumber;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Pay Now']/following-sibling::android.widget.TextView")
+    @AndroidFindAll({
+            @AndroidBy(xpath= "(//android.widget.TextView[@text='Pay Now:']/following-sibling::android.widget.TextView)[1]"),
+            @AndroidBy(xpath= "(//android.widget.TextView[@text='Pay Now']/following-sibling::android.widget.TextView)[1]"),
+    } )
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pay Now']/following::XCUIElementTypeOther/XCUIElementTypeStaticText[contains(@name,'$')]")
     protected WebElement elmntAmountInPaymentOption;
+
 
     @AndroidFindBy(xpath = "//android.widget.Button[contains(@text,'PAY NOW')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pay Now']/following:: XCUIElementTypeButton[1]")
@@ -213,11 +222,11 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='CVC:']/following::XCUIElementTypeTextField[1]")
     protected WebElement txtCVC;
 
-    @AndroidFindBy(xpath = "(//android.view.View[@text='Expiry Date (MM)'])[2]")
+    @AndroidFindBy(xpath = "//android.view.View[@text='MM']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Expiry Date (MM)']/following-sibling::XCUIElementTypeOther[1]")
     protected WebElement drpExpiryMonth;
 
-    @AndroidFindBy(xpath = "(//android.view.View[@text='Expiry Date (YY)'])[2]")
+    @AndroidFindBy(xpath = "//android.view.View[@text='YY']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Expiry Date (YY)']/following-sibling::XCUIElementTypeOther[1]")
     protected WebElement drpExpiryYear;
 
@@ -456,6 +465,7 @@ public class AppointmentsScreen extends BaseScreen {
         waitForSecond(4);
         String data="information circle outline "+strBannerMessages.concat(strExecutionID);
         WebElement elmntBannerMessage = waitForElement(By.xpath(strBannerMessage.replace("<<BANNERMESSAGE>>", data)));
+        System.out.println("elmntBannerMessage  ::"+elmntBannerMessage);
       verifyElement(elmntBannerMessage);
     }
 
@@ -592,18 +602,19 @@ public class AppointmentsScreen extends BaseScreen {
         attachStepLog("Reason", strReason);
         waitForElement(elmntConfirmAppointmentAppointment);
         verifyElement(elmntConfirmAppointmentAppointment);
+        waitForSecond(2);
         waitForElementIgnoreStale(elmntAppointmentReason);
         waitForElement(elmntAppointmentReasonDropdowm);
-        click(elmntAppointmentReasonDropdowm);
+      click(elmntAppointmentReasonDropdowm);
      waitForElementIgnoreStale(SelectAppointmentReason);
      verifyElement(SelectAppointmentReason);
 //     waitForElement(SelectAppointmentReasonCheckbox);
 //     click(SelectAppointmentReasonCheckbox);
-//        WebElement elmntReason = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strReason)));
-//        click(elmntReason);
-        waitForSecond(2);
-        tapByCoordinates(354,1055);
-        waitForSecond(2);
+        WebElement elmntReason = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strReason)));
+        click(elmntReason);
+//        waitForSecond(2);
+//        tapByCoordinates(354,1055);
+//        waitForSecond(2);
         waitForElement(btnOk);
         click(btnOk);
     }
@@ -651,12 +662,17 @@ public class AppointmentsScreen extends BaseScreen {
         return blResult;
     }
 
+
     public void tapSendAppointmentRequest() {
         waitForSecond(3);
         waitForElement(btnSendAppointmentRequest);
         click(btnSendAppointmentRequest);
     }
-
+    public void tabContinueButton() {
+        waitForSecond(3);
+        waitForElement(btnContinueButton);
+        click(btnContinueButton);
+    }
     public void tapPayHealthCentre() {
         waitForSecond(5);
         waitForElement(elmntPaymentOptions);
@@ -708,11 +724,12 @@ System.out.println(">>>>"+lstDetails);
         waitForSecond(180);
 
         reLaunchAppAndroid();
-        waitForSecond(2);
+        waitForSecond(10);
         waitForElement(elmntAppointmentBookIcon);
+//        performTapAction(elmntAppointmentBookIcon);
         click(elmntAppointmentBookIcon);
         waitForElement(elmntFutureTab);
-        click(elmntFutureTab);
+       click(elmntFutureTab);
 
         System.out.println("Before Swipe");
         waitForSecond(8);
@@ -883,6 +900,7 @@ System.out.println(">>>>"+lstDetails);
         WebElement elmntMonth = waitForElement(By.xpath(strCheckedTextLocator.replace("<<TEXT>>", strMonth)));
         click(elmntMonth);
 
+        waitForElement(drpExpiryYear);
         click(drpExpiryYear);
         WebElement elmntYear = waitForElement(By.xpath(strCheckedTextLocator.replace("<<TEXT>>", strYear)));
         click(elmntYear);
@@ -947,7 +965,8 @@ System.out.println(">>>>"+lstDetails);
         waitForSecond(180);
 
         reLaunchAppAndroid();
-        waitForSecond(3);
+
+
         waitForElement(elmntAppointmentBookIcon);
         click(elmntAppointmentBookIcon);
         waitForElement(elmntFutureTab);

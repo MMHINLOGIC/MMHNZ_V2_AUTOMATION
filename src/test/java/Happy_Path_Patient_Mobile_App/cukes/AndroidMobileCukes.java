@@ -3,6 +3,7 @@ package Happy_Path_Patient_Mobile_App.cukes;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.AfterClass;
 
 @CucumberOptions(features = {"src/test/resources/features/Happy_Path_Patient_Mobile_App"},
         monochrome = true,
@@ -14,6 +15,8 @@ import io.cucumber.testng.CucumberOptions;
 
 public class AndroidMobileCukes extends AbstractTestNGCucumberTests {
 
+
+
 }
 
-//       clean test -Dapp=Happy_Path_Patient_Mobile_App -Drunner=AndroidMobileCukes -Dexecution_type=webmobile -Dconfig=local_android_Galaxy_M53_Mobile_App -Denv=PRD -Dbrowser_name=chrome "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/MobileApp-QAResults.html -Dsysteminfo.AppName=Demo-QA"
+//       clean test -Dapp=Happy_Path_Patient_Mobile_App -Drunner=AndroidMobileCukes -Dexecution_type=webmobile -Dconfig=local_android_Galaxy_M53_Mobile_App -Denv=UAT -Dbrowser_name=chrome "-DargLine=-Dextent.reporter.spark.out=reports/Extent-Report/MobileApp-QAResults.html -Dsysteminfo.AppName=Demo-QA"

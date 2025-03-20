@@ -177,7 +177,7 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Please select an account you would like us to deduct your payment from:')]")
     protected WebElement txtSelectAccount;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Account2Account Payment')]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='PxPayAccount2AccountAuth_Logo']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Account2Account Payment']")
     protected WebElement txtAccount2Account;
 
@@ -339,6 +339,13 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
         System.out.println("All Location Displayed");
     }
 
+
+    public void verifyDefaultLocationDisplayed(List <String> strLocation) {
+        waitForElement(elmntSelectLocation);
+        WebElement elmntLocation = waitForElement(By.xpath(strLocationLocator.replace("<<LOCATION>>", strLocation.get(0))));
+        verifyElement(elmntLocation);
+        System.out.println("Default Location Displayed");
+    }
     public void selectRepeatNewPrescription() {
         waitForSecond(4);
         waitForElement(elmntSelectRepeatNewPrescriptionOption);
@@ -499,7 +506,8 @@ tapByCoordinates(88,1578);
         waitForSecond(5);
         waitForElement(elmntPaymentCheckout);
         waitForElement(elmntAccount2Account);
-        waitForElementClickable(elmntAccount2Account);
+        waitForSecond(2);
+        waitForElement(elmntAccount2Account);
         click(elmntAccount2Account);
         waitForElement(txtAccount2Account);
         return verifyElement(txtAccount2Account);
@@ -698,7 +706,7 @@ tapByCoordinates(88,1578);
         click(chkPharmacy);
         waitForElement(btnContinueInPharmacy);
         click(btnContinueInPharmacy);
-
+        waitForSecond(2);
         waitForElement(elmntSelectDeliveryAddress);
 //        waitForElement(elmntAddDeliveryAddress);
         click(elmntSelectDeliveryAddress);

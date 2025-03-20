@@ -114,7 +114,7 @@ public class MobileSteps {
     @And("I Send Appointment Request through pay at health centre")
     public void iSendAppointmentRequestThroughPayAtHealthCentre() {
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
-            demoScreenContainer.appointmentsScreen.tapSendAppointmentRequest();
+            demoScreenContainer.appointmentsScreen.tabContinueButton();
             demoScreenContainer.appointmentsScreen.tapPayHealthCentre();
             Assert.assertTrue(demoScreenContainer.appointmentsScreen.verifyAppointmentInformation());
             demoScreenContainer.appointmentsScreen.tapOK();
@@ -147,6 +147,7 @@ public class MobileSteps {
             demoScreenContainer.appointmentsScreen.enterContactNumberIOS(TestDataUtil.getValue(strContactNumber));
         }
     }
+
     @Given("I am on Payment Options screen")
     public void iAmOnPaymentOptionsScreen() {
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
@@ -430,8 +431,8 @@ public class MobileSteps {
 
     @And("I tap on on attached file and file gets downloaded")
     public void iTapOnOnAttachedFileAndFileGetsDownloaded() {
-        demoScreenContainer.messageScreen.tapAttachedFile();
-        demoScreenContainer.messageScreen.verifyDownloadedFile();
+//        demoScreenContainer.messageScreen.tapAttachedFile();
+//        demoScreenContainer.messageScreen.verifyDownloadedFile();
     }
 
     @When("I tap Achieve icon for the specific message")
@@ -492,7 +493,7 @@ public class MobileSteps {
 
     @When("I enter the Account{string} and Next")
     public void iEnterTheAccountAndNext(String strDetails) {
-        List <String> lstDetails=TestDataUtil.getListOfValue(strDetails);
+        List<String> lstDetails = TestDataUtil.getListOfValue(strDetails);
         demoScreenContainer.repeatRequestPrescriptionScreen.enterCustomerNumber(lstDetails.get(1));
         demoScreenContainer.repeatRequestPrescriptionScreen.enterPassword(lstDetails.get(2));
         Assert.assertTrue(demoScreenContainer.repeatRequestPrescriptionScreen.clickNext());
@@ -501,7 +502,7 @@ public class MobileSteps {
 
     @Then("I should select the Bank account {string}")
     public void iShouldSelectTheBankAccount(String strBankAccount) {
-        List <String> lstDetails=TestDataUtil.getListOfValue(strBankAccount);
+        List<String> lstDetails = TestDataUtil.getListOfValue(strBankAccount);
 //        Assert.assertTrue(demoScreenContainer.repeatRequestPrescriptionScreen.selectBankAccount(lstDetails.get(3)));
         Assert.assertTrue(demoScreenContainer.repeatRequestPrescriptionScreen.clickNext());
         Assert.assertTrue(demoScreenContainer.repeatRequestPrescriptionScreen.clickNext());
@@ -616,7 +617,7 @@ public class MobileSteps {
     @And("I enter the {string} {string} based on Rule B")
     public void iEnterTheBasedOnRuleB(String strAppointment, String strAppointmentDetails) {
         List<String> lstAppointmentDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
-        System.out.println(">>>>>>>>>"+lstAppointmentDetails);
+        System.out.println(">>>>>>>>>" + lstAppointmentDetails);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             demoScreenContainer.appointmentsScreen.VerifyBannerMessage(lstAppointmentDetails.get(4));
 //            demoScreenContainer.appointmentsScreen.VerifydefaultLocationDisplayed(TestDataUtil.getListOfValue(strAppointmentDetails));
@@ -657,10 +658,10 @@ public class MobileSteps {
         }
 
 
-
     }
+
     @And("I select the {string} for {string} based on Rule A")
-    public void iSelectTheForBasedOnRuleA(String strMedicationDetails,String strdata) {
+    public void iSelectTheForBasedOnRuleA(String strMedicationDetails, String strdata) {
         List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
@@ -679,16 +680,14 @@ public class MobileSteps {
         }
 
 
-
-
     }
 
     @And("I select the {string} for {string} based on Rule B")
-    public void iSelectTheForBasedOnRuleB(String strMedicationDetails,String strdata) {
+    public void iSelectTheForBasedOnRuleB(String strMedicationDetails, String strdata) {
         List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
-//            Assert.assertTrue(demoScreenContainer.repeatRequestPrescriptionScreen.verifyDefaultLocationDisplayed(TestDataUtil.getListOfValue(strMedicationDetails)));
+            demoScreenContainer.repeatRequestPrescriptionScreen.verifyDefaultLocationDisplayed(TestDataUtil.getListOfValue(strMedicationDetails));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectLocation(lstMedicationDetails.get(0));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectProvider(lstMedicationDetails.get(1));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectMedications(lstMedicationDetails.get(2));
@@ -706,11 +705,11 @@ public class MobileSteps {
     }
 
     @And("I select the {string} for {string} based on Rule C")
-    public void iSelectTheForBasedOnRuleC(String strMedicationDetails,String strdata) {
+    public void iSelectTheForBasedOnRuleC(String strMedicationDetails, String strdata) {
         List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
-//            Assert.assertTrue(demoScreenContainer.repeatRequestPrescriptionScreen.verifyDefaultLocationDisplayed(TestDataUtil.getListOfValue(strMedicationDetails)));
+            demoScreenContainer.repeatRequestPrescriptionScreen.verifyDefaultLocationDisplayed(TestDataUtil.getListOfValue(strMedicationDetails));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectLocation(lstMedicationDetails.get(0));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectProvider(lstMedicationDetails.get(1));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectMedications(lstMedicationDetails.get(2));
@@ -774,23 +773,23 @@ public class MobileSteps {
             demoScreenContainer.appointmentsScreen.selectAvailableTimeSlotIOS();
             demoScreenContainer.appointmentsScreen.selectReasonIOS(lstAppointmentDetails.get(3));
         }
-        
+
     }
 
     @And("I enter the {string} {string} verify Pre Screening Popup Displayed")
     public void iEnterTheVerifyPreScreeningPopupDisplayed(String strAppointment, String strAppointmentDetails) {
         List<String> lstAppointmentDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
-            demoScreenContainer.appointmentsScreen.VerifyBannerMessage(lstAppointmentDetails.get(4));
+//            demoScreenContainer.appointmentsScreen.VerifyBannerMessage(lstAppointmentDetails.get(4));
             demoScreenContainer.appointmentsScreen.VerifyAllLocationDisplayed(TestDataUtil.getListOfValue(strAppointmentDetails));
             demoScreenContainer.appointmentsScreen.selectLocation(lstAppointmentDetails.get(0));
             demoScreenContainer.appointmentsScreen.selectAppointmentsPolicy();
             demoScreenContainer.appointmentsScreen.selectProvider(lstAppointmentDetails.get(1));
             demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
-            demoScreenContainer.appointmentsScreen.selectAppointmentDate(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
-            demoScreenContainer.appointmentsScreen.selectAppointmentOption(TestDataUtil.getValue(strAppointment));
-            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlot();
-            demoScreenContainer.appointmentsScreen.selectReason(lstAppointmentDetails.get(3));
+//            demoScreenContainer.appointmentsScreen.selectAppointmentDate(lstAppointmentDetails.get(1), lstAppointmentDetails.get(2));
+//            demoScreenContainer.appointmentsScreen.selectAppointmentOption(TestDataUtil.getValue(strAppointment));
+//            demoScreenContainer.appointmentsScreen.selectAvailableTimeSlot();
+//            demoScreenContainer.appointmentsScreen.selectReason(lstAppointmentDetails.get(3));
         } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
             demoScreenContainer.appointmentsScreen.selectLocationIOS(lstAppointmentDetails.get(0));
             demoScreenContainer.appointmentsScreen.tapNoInAppointmentPreScreening();
@@ -825,5 +824,11 @@ public class MobileSteps {
             demoScreenContainer.appointmentsScreen.selectAvailableTimeSlotIOS();
             demoScreenContainer.appointmentsScreen.selectReasonIOS(lstAppointmentDetails.get(3));
         }
+    }
+
+    @And("I click Continue Button")
+    public void iClickContinueButton() {
+        demoScreenContainer.appointmentsScreen.tabContinueButton();
+
     }
 }

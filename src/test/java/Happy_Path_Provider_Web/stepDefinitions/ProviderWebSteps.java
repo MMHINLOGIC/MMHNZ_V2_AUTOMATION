@@ -310,6 +310,15 @@ public class ProviderWebSteps {
             Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
 
         }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("WEBMOBILE")) {
+            providerPageContainer.providerHomePage.clickEditButton();
+            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
+            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
+            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
+            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleA());
+            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
+            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+        }
 
     }
 
@@ -347,7 +356,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqDataToRestrictNameAndLocation());
-//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqData(TestDataUtil.getListOfValue(strDetail)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqData(TestDataUtil.getListOfValue(strDetail)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
@@ -1837,7 +1846,7 @@ public class ProviderWebSteps {
 
     @And("I enable allow to Reason For Appointment is Mandatory yes radio button{string} and click save button then I see Saved Successfully message")
     public void iEnableAllowToReasonForAppointmentIsMandatoryYesRadioButtonAndClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(LocationData));
+        Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickReasonforAppointmentisMandatoryYesButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
 
@@ -1978,4 +1987,35 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.preScreeningPage.ClickDashBoard());
 
     }
+
+    @Given("As a Provider I am on HomePage and navigate to My Manage Providers page")
+    public void asAProviderIAmOnHomePageAndNavigateToMyManageProvidersPage() {
+        Assert.assertTrue(providerPageContainer.myAppointmentPage.navigateToProviderHomepage());
+        Assert.assertTrue(providerPageContainer.manageProviderspage.clickSetupPracticeButton());
+
+    }
+
+    @Then("I should see doctor details in Manage Providers grid based on the select provider name {string}")
+    public void iShouldSeeDoctorDetailsInManageProvidersGridBasedOnTheSelectProviderName(String strHealthCentre) {
+        List<String>stsdata=TestDataUtil.getListOfValue(strHealthCentre);
+        System.out.println(">>>>>>>>>>>>stsdata"+stsdata);
+        Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectHealthCenter(TestDataUtil.getValue(stsdata.get(0))));
+        Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderselectLocation(TestDataUtil.getValue(stsdata.get(1))));
+        Assert.assertTrue(providerPageContainer.manageProviderspage.selectSearchTextBox(TestDataUtil.getValue(stsdata.get(2))));
+        Assert.assertTrue(providerPageContainer.appointmentsPage.selectSearch());
+        Assert.assertTrue(providerPageContainer.manageProviderspage.VerifyManageProvidersTableData(TestDataUtil.getListOfValue(strHealthCentre)));
+
+
+    }
+
+
+    @When("I click the Edit Icon Edit Provider Type and verify Updated Successfully message {string}")
+    public void iClickTheEditIconEditProviderTypeAndVerifyUpdatedSuccessfullyMessage(String strHealthCentre) {
+        Assert.assertTrue(providerPageContainer.manageProviderspage.clickProviderTypeValue());
+        Assert.assertTrue(providerPageContainer.manageProviderspage.clickUpdateButton());
+        Assert.assertTrue(providerPageContainer.manageProviderspage.VerifyManageProvidersUpdateData(TestDataUtil.getListOfValue(strHealthCentre)));
+
+    }
+
+
 }
