@@ -25,7 +25,7 @@ public class MyHealthCentresPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Link to Health Centre')]")
     protected WebElement elmntConnectToHealthCentre;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Link to Health Centre')]")
+    @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Connect to a health centre')]")
     protected WebElement btnConnectAHealthCentre;
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'My Health Centres')])[1]")
@@ -62,7 +62,7 @@ public class MyHealthCentresPage extends BasePage {
     protected WebElement txtBoxSearchForHealthCentre;
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Overview')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Overview')])[2]")
     protected WebElement elmntOverview;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Next')]")
@@ -77,7 +77,7 @@ public class MyHealthCentresPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Go to Dashboard')]")
     protected WebElement btnConnect;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'New Post')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'New Post')]//i")
     protected WebElement elmntNewPost;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Content Header')]")
@@ -86,7 +86,7 @@ public class MyHealthCentresPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//iframe")
     protected WebElement elmntIframe;
 
-    @FindBy(how = How.XPATH, using = "//div[@class='ProseMirror']/p")
+    @FindBy(how = How.XPATH, using = "//div[@class='k-content ProseMirror']/p")
     protected WebElement elmntEditorBody;
 
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'Created successfully')]/preceding::h4[contains(text(),'Success!')]")
@@ -219,7 +219,7 @@ public class MyHealthCentresPage extends BasePage {
         try {
             waitForElement(btnConnectAHealthCentre);
             waitForElementClickable(btnConnectAHealthCentre);
-            jsClick(btnConnectAHealthCentre);
+//            jsClick(btnConnectAHealthCentre);
             waitForElement(txtBoxSearchForHealthCentre);
             blResult = verifyElement(txtBoxSearchForHealthCentre);
         } catch (Exception e) {
@@ -433,7 +433,7 @@ public class MyHealthCentresPage extends BasePage {
 //            elmntEditorBody.sendKeys(strBodyMessage);
             takeScreenshot(driver);
             waitForSeconds(3);
-            driver.switchTo().parentFrame();
+            driver.switchTo().defaultContent();
             waitForElement(btnSave);
             blResult = verifyElement(btnSave);
             System.out.println("\nSuccessfully Entered The Subject Body Message >>> :: ");
@@ -475,7 +475,7 @@ public class MyHealthCentresPage extends BasePage {
         waitForSeconds(2);
         waitForElement(elmntNewPost);
         waitForElementClickable(elmntNewPost);
-        click(elmntNewPost);
+        jsClick(elmntNewPost);
         waitForSeconds(2);
         jsScrollIntoView(AddPostHeader);
         waitForElement(AddPostHeader);

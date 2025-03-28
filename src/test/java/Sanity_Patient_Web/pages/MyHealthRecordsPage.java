@@ -37,7 +37,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//i[@class='icon-cent-prescription-extra-medicine']//following::span[1]")
     protected WebElement elmntPrescriptions;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Entries From Health Centre(s)')]//preceding::input[@class='mat-radio-input cdk-visually-hidden'])[2]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Entries From Health Centre(s)')]")
     protected WebElement elmntEntriesfromhealthcentreRadioButton;
     @FindBy(how = How.XPATH, using = "//mat-progress-spinner[@mode='indeterminate']")
     protected WebElement elmntLoadingSpinner;
@@ -76,13 +76,14 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT>>").append("')]").toString();
     @FindBy(how = How.XPATH, using = "//span[text()='Conditions']")
     protected WebElement elmntConditions;
+
     protected String strPrescriptionsIconContentLocator = new StringBuilder()
             .append("//td[text()='")
             .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT2>>").append("']/following-sibling::td[contains(text(),'")
+            .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-ripple mat-button-ripple\"]").toString();
+            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
     protected String strMobilePrescriptionsIconContentLocator = new StringBuilder()
             .append("(//h2[text()='")
             .append("<<REPLACEMENT1>>").append("']//following::p[text()='")
@@ -97,7 +98,7 @@ public class MyHealthRecordsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//mat-expansion-panel-header[@aria-expanded='true']")
     protected WebElement elmntMobileIcon;
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Close')]")
+    @FindBy(how = How.XPATH, using = "//span[text()='Close']")
     protected WebElement elmntIcon;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
@@ -113,11 +114,11 @@ public class MyHealthRecordsPage extends BasePage {
     protected WebElement elmntSaveButton;
     protected String strClassificationsIconLocator = new StringBuilder()
             .append("//td[text()='")
-            .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT1>>").append("']/following-sibling::td[contains(text(),'")
+            .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[text()='")
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-ripple mat-button-ripple\"]").toString();
+            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Clinician Notes')]")
     protected WebElement elmntClinicalNotes;
@@ -138,7 +139,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-ripple mat-button-ripple\"]").toString();
+            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
     @FindBy(how = How.XPATH, using = "//span[text()='Allergies']")
     protected WebElement elmntAllergies;
     protected String strAllergiesNotesIconLocator = new StringBuilder()
@@ -146,7 +147,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-ripple mat-button-ripple\"]").toString();
+            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
     protected String strMobileAllergiesIconContentLocator = new StringBuilder()
             .append("(//h2[text()='")
             .append("<<REPLACEMENT1>>").append("']//following::p[text()='")
@@ -158,7 +159,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-ripple mat-button-ripple\"]").toString();
+            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Lab Results')])[1]")
     protected WebElement elmntLabResults;
     protected String strLabResultsIconLocator = new StringBuilder()
@@ -166,7 +167,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
-            .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-ripple mat-button-ripple\"]").toString();
+            .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
     protected String strMobileLabResultIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::p[contains(text(),'")
@@ -186,7 +187,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
-            .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-ripple mat-button-ripple\"]").toString();
+            .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
     protected String strClinicalNotesDetails = new StringBuilder()
             .append("(//*[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[last()]").toString();
@@ -207,7 +208,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strTestResultsDetails = new StringBuilder()
-            .append("//div[@class='k-window-actions k-dialog-actions']/following::span[contains(text(),'")
+            .append("//div[contains(@class,'k-window-content k-dialog-content ng-tns')]//following::span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     @FindBy(how = How.XPATH, using = "//span[text()='Close']")
     protected WebElement elmntlabIcon;
@@ -215,7 +216,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strRecallsRemainderDetails = new StringBuilder()
-            .append("//div[@class='k-window-actions k-dialog-actions']/following::span[contains(text(),'")
+            .append("//div[contains(@class,'k-window-content k-dialog-content ng-tns')]//following::span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strClinicalNotesMyEntitesIconLocator = new StringBuilder()
             .append("//td[contains(text(),'")
@@ -305,17 +306,18 @@ public class MyHealthRecordsPage extends BasePage {
     protected String strClassificationsMyEntriesInfoDetails = new StringBuilder()
             .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
-    @FindBy(how = How.XPATH, using = "//p[text()='Write the name who visited']//following::div[11]//input")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='whoIVisited'])[1]")
     protected WebElement elmntVisitedName;
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='whoIVisited'])[2]")
     protected WebElement elmntMobileVisitedName;
-    @FindBy(how = How.XPATH, using = "//p[text()='Write the name of the vaccine']/following::div[11]//input")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='vaccineName'])[1]")
     protected WebElement elmntImmunisationVaccineName;
+
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='vaccineName'])[2]")
     protected WebElement elmntMobileImmunisationVaccineName;
-    @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Batch Number']")
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Batch Number']")
     protected WebElement elmntCovidImmunisationBatchNo;
-    @FindBy(how = How.XPATH, using = "//p[text()='Write the name of the condition']//following::div[11]//input")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='conditionName'])[1]")
     protected WebElement elmntConditionName;
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='conditionName'])[2]")
     protected WebElement elmntMobileConditionName;
@@ -331,7 +333,7 @@ public class MyHealthRecordsPage extends BasePage {
     protected WebElement elmntPrescriptionsDose;
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='dosage'])[2]")
     protected WebElement elmntMobilePrescriptionsDose;
-    @FindBy(how = How.XPATH, using = "//p[text()='Write the name of visited location']//following::div[11]//input")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='visitedLocation'])[1]")
     protected WebElement elmntVisitedLocation;
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='visitedLocation'])[2]")
     protected WebElement elmntMobileVisitedLocation;
@@ -350,7 +352,7 @@ public class MyHealthRecordsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "(//textarea[@formcontrolname='additionalInformation'])[3]")
     protected WebElement elmntMobilePrescriptionAdditionalInformation;
-    @FindBy(how = How.XPATH, using = "//p[text()='Do you know the date of given vaccine?']//following::div[28]//textarea")
+    @FindBy(how = How.XPATH, using = "(//textarea[@formcontrolname='immunisationAdditionalInformation'])[1]")
     protected WebElement elmntImmuAdditionalInformation;
 
     @FindBy(how = How.XPATH, using = "(//textarea[@formcontrolname='immunisationAdditionalInformation'])[2]")
@@ -359,27 +361,26 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//textarea[@formcontrolname='Site']")
     protected WebElement elmntCovidClinicalSite;
 
-    @FindBy(how = How.XPATH, using = "//p[text()='Do you know the visited date?']//following::div[28]//textarea")
+    @FindBy(how = How.XPATH, using = "(//textarea[@formcontrolname='clinicalNotesInformation'])[1]")
     protected WebElement elmntClinicianNotesAdditionalInformation;
 
     @FindBy(how = How.XPATH, using = "(//textarea[@formcontrolname='clinicalNotesInformation'])[2]")
     protected WebElement elmntMobileClinicianNotesAdditionalInformation;
 
 
-    @FindBy(how = How.XPATH, using = "//p[text()='Do you know the visited date?']//following::div[13]")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='visitedDate'])[1]")
     protected WebElement elmntVisitedDate;
 
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='visitedDate'])[2]")
     protected WebElement elmntMobileVisitedDate;
-    @FindBy(how = How.XPATH, using = "//p[text()='Do you know the date of given vaccine?']//following::div[13]//input")
+    @FindBy(how = How.XPATH, using = "//input[@formcontrolname='immunisationDateGiven']")
     protected WebElement elmntImmunisationDate;
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='DateGiven']")
     protected WebElement elmntCovidImmunisationDate;
 
-    @FindBy(how = How.XPATH, using = "//p[text()='Do you know the period of condition?']//following::div[13]//input")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='startDate'])[3]")
     protected WebElement elmntStartDate;
-
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='startDate'])[6]")
     protected WebElement elmntMobileStartDate;
 
@@ -399,7 +400,7 @@ public class MyHealthRecordsPage extends BasePage {
     protected String elmntMobilePrescriptionHowmanyDrop = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
-    @FindBy(how = How.XPATH, using = "//p[text()='Do you know the period of condition?']//following::div[29]//input")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='endDate'])[3]")
     protected WebElement elmntEndDate;
 
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='endDate'])[6]")
@@ -409,7 +410,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='endDate'])[2]")
     protected WebElement elmntAllergiesEndDate;
 
-    @FindBy(how = How.XPATH, using = "//p[text()='How often?']//following::div[81]")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='endDate'])[1]")
     protected WebElement elmntPrescriptionEndDate;
 
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='endDate'])[4]")
@@ -433,7 +434,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//div[text()='COVID19 Comirnaty - 2']")
     protected WebElement btnCovidDose;
 
-    @FindBy(how = How.XPATH, using = "//button[@class='mat-focus-indicator btn-increment mat-stroked-button mat-button-base']")
+    @FindBy(how = How.XPATH, using = "(//p[contains(text(),'How many?')]//following::input[@name='counter']//following::button)[1]")
     protected WebElement btnDose;
 
     @FindBy(how = How.XPATH, using = "(//mat-checkbox[@formcontrolname='clinicianCheckbox']//input)[1]")
@@ -445,12 +446,30 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//mat-checkbox[@formcontrolname='shareWithDoctors'])[1]//input")
     protected WebElement elmntAllergiesCheckBox;
 
-    @FindBy(how = How.XPATH, using = "(//mat-checkbox[@formcontrolname='privacyCheckbox'])[1]//input")
+
+
+    @FindBy(how = How.XPATH, using = "(//mat-checkbox[@formcontrolname='privacyCheckbox'])[1]")
     protected WebElement elmntPrescriptionCheckBox;
 
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Share with doctors')])[1]")
+    protected WebElement elmntPrescriptionUnCheckBox;
+
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Share with doctors')])[4]")
+    protected WebElement elmntClassiUnCheckBox;
+
+
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Share with doctors')])[2]")
+    protected WebElement elmntAllergiesUnCheckBox;
 
     @FindBy(how = How.XPATH, using = "(//mat-checkbox[@formcontrolname='privacyCheckbox'])[2]//input")
     protected WebElement elmtImmunisationsiCheckBox;
+
+
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Share with doctors')])[3]")
+    protected WebElement elmtImmunisationsiUnCheckBox;
+
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Show this entry to my doctor')])[2]")
+    protected WebElement elmtCovidImmunisationsiUnCheckBox;
 
 
     @FindBy(how = How.XPATH, using = "//mat-checkbox[@formcontrolname='isconf']//input")
@@ -461,10 +480,10 @@ public class MyHealthRecordsPage extends BasePage {
             .append(Constants.IMAGES_FOLDER).append(File.separator)
             .append("<<FILENAME>>").toString();
 
-    @FindBy(how = How.XPATH, using = "//input[@formcontrolname='uploadDocument']")
+    @FindBy(how = How.XPATH, using = "//input[@type='file']")
     protected WebElement btnFloorplanUpload;
 
-    @FindBy(how = How.XPATH, using = "//p[text()='Do you know the visited date?']//following::div[40]//button")
+    @FindBy(how = How.XPATH, using = "(//span[normalize-space(text())='Confirm & Save'])[5]")
     protected WebElement elmntSave;
 
     @FindBy(how = How.XPATH, using = "(//mat-checkbox[@formcontrolname='clinicianCheckbox'])[2]//following::button[1]")
@@ -530,7 +549,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//span[text()='Update'])[3]")
     protected WebElement btnCovidImmunisationsUpdate;
 
-    @FindBy(how = How.XPATH, using = "(//span[text()='Update']//parent::button)[3]")
+    @FindBy(how = How.XPATH, using = "//button[@class='mat-focus-indicator btn-primary-rect mat-button mat-button-base ng-star-inserted']")
     protected WebElement btnMobileCovidImmunisationsUpdate;
 
 
@@ -539,26 +558,27 @@ public class MyHealthRecordsPage extends BasePage {
     protected String strMobileActiveHeader = new StringBuilder().append("(//h3[contains(text(),'").append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     protected String strDayAfterDate = new StringBuilder()
-            .append("//table[@class='mat-calendar-table']//tbody//tr//td//div[contains(text(),'")
+            .append("//button[@class='mat-calendar-body-cell mat-calendar-body-active']//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='immunisationDateGiven'])[2]")
     protected WebElement elmntMobileImmunisationDate;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Do you know the period of your allergy?']/following::input[@formcontrolname='endDate'])[4]")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='endDate'])[5]")
     protected WebElement elmntMobileAllergiesEndDate;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Do you know the period of your allergy?']/following::input[@formcontrolname='startDate'])[4]")
+    @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='startDate'])[5]")
     protected WebElement elmntMobileAllergiesStartDate;
 
-    protected String elmntEdit = new StringBuilder().append("//td[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]//parent::tr//button[contains(@class,'edit')]").toString();
 
-    protected String elmntCovidEdit = new StringBuilder().append("//td[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]//parent::tr//button[contains(@class,'edit')]").toString();
+    protected String elmntEdit = new StringBuilder().append("(//td[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')]//parent::tr//span[@class='k-button-text'])[1]").toString();
 
-    protected String elmntPrescriptionsEdit = new StringBuilder().append("//td[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]//parent::tr//button[contains(@class,'edit')]").toString();
+    protected String elmntCovidEdit = new StringBuilder().append("(//td[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')]//following::td//span[@class='k-button-text'])[1]").toString();
+
+    protected String elmntPrescriptionsEdit = new StringBuilder().append("(//td[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')]//parent::tr//span[@class='k-button-text'])[1]").toString();
 
     protected String elmntMobilePrescriptionsEdit = new StringBuilder().append("//h2[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
@@ -574,20 +594,24 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT2>>").append("')]").toString();
 
     protected String elmntDelete = new StringBuilder().append("//td[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]//parent::tr//button[contains(@class,'remove')]").toString();
+            .append("<<REPLACEMENT>>").append("')]//following::td//mat-icon[contains(text(),'delete')]").toString();
+
+    protected String elmntCovidDelete = new StringBuilder().append("//td[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')]//following::td//following::td//mat-icon[text()='delete']").toString();
 
     protected String elmntVerifyDelete = new StringBuilder().append("//td[text()='")
             .append("<<REPLACEMENT>>").append("']").toString();
 
-    @FindBy(how = How.XPATH, using = "//p[text()='What is the status?']//following::div[11]")
+    @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='status']")
     protected WebElement elmntclassificationdrop;
+
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='Vaccine']")
     protected WebElement elmntCovidImmunisationsdrop;
-    @FindBy(how = How.XPATH, using = "//p[text()='Severity']//following::div[12]")
+    @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='severityType'])[1]")
     protected WebElement elmntAllergicdrop;
 
-    @FindBy(how = How.XPATH, using = "//p[text()='Status']//following::div[12]")
+    @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='statusType'])[1]")
     protected WebElement elmntAllergicdrop1;
 
     @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='howOften'])[1]")
@@ -595,7 +619,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='prescStatusType'])[1]")
     protected WebElement elmntPrescriptiondrop1;
 
-    protected String elmntAddclassiDrop = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntAddclassiDrop = new StringBuilder().append("//span[@class='mdc-list-item__primary-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='status'])[2]")
     protected WebElement elmntMobileclassificationdrop;
@@ -607,30 +631,29 @@ public class MyHealthRecordsPage extends BasePage {
 //    (//span[text()='Comirnaty, COVID-19 mRNA (Pfizer-BioNTech)'])[1]
 //    (//span[contains(text(),'Comirnaty, COVID-19 mRNA (Pfizer-BioNTech)')])[2]
 
-    protected String elmntAddAllergicDrop = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntAddAllergicDrop = new StringBuilder().append("//span[@class='mdc-list-item__primary-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
-
     @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='severityType'])[2]")
     protected WebElement elmntMobileAllergicdrop;
 
-    protected String elmntAllergicDrop1 = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntAllergicDrop1 = new StringBuilder().append("//span[@class='mdc-list-item__primary-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='statusType'])[2]")
     protected WebElement elmntMobileAllergicdrop1;
 
-    protected String elmntAddPrescriptionDrop = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntAddPrescriptionDrop = new StringBuilder().append("//span[@class='mdc-list-item__primary-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='howOften'])[2]")
     protected WebElement elmntMobilePrescriptiondrop;
 
-    protected String elmntAddPrescriptionDrop1 = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntAddPrescriptionDrop1 = new StringBuilder().append("//span[@class='mdc-list-item__primary-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     @FindBy(how = How.XPATH, using = "(//mat-select[@formcontrolname='prescStatusType'])[2]")
     protected WebElement elmntMobilePrescriptiondrop1;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Yes')]")
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes')]")
     protected WebElement btnYes;
     protected String strBMI = new StringBuilder()
             .append("//tr//td[contains(text(),'")
@@ -713,6 +736,7 @@ public class MyHealthRecordsPage extends BasePage {
 //            jsClick(elmntFilterdropPrescriptions);
 //            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntFilterbyDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
 //            jsClick(elmntEntriesFromHealthCentre);
+            waitForElement(elmntEntriesfromhealthcentreRadioButton);
             jsClick(elmntEntriesfromhealthcentreRadioButton);
 
 
@@ -1384,6 +1408,8 @@ public class MyHealthRecordsPage extends BasePage {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             PrescriptionsMedicationName = strVisitedName.concat(strExecutionID);
             waitForElement(elmntImmunisationVaccineName);
+//            click(elmntImmunisationVaccineName);
+//            elmntImmunisationVaccineName.sendKeys(PrescriptionsMedicationName);
             enterValue(elmntImmunisationVaccineName, PrescriptionsMedicationName);
             isVerified = verifyElement(elmntImmunisationVaccineName);
         }
@@ -1406,7 +1432,9 @@ public class MyHealthRecordsPage extends BasePage {
         boolean isVerified = false;
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             PrescriptionsMedicationName = strConditionName.concat(strExecutionID);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(elmntConditionName);
             enterValue(elmntConditionName, PrescriptionsMedicationName);
             isVerified = verifyElement(elmntConditionName);
@@ -1428,7 +1456,9 @@ public class MyHealthRecordsPage extends BasePage {
             PrescriptionsMedicationName = strConditionName.concat(strExecutionID);
             waitForSeconds(2);
             waitForElementClickable(elmntAllergicName);
-            enterValue(elmntAllergicName, PrescriptionsMedicationName);
+            jsClick(elmntAllergicName);
+            elmntAllergicName.sendKeys(PrescriptionsMedicationName);
+//            enterValue(elmntAllergicName, PrescriptionsMedicationName);
             isVerified = verifyElement(elmntAllergicName);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -1446,11 +1476,16 @@ public class MyHealthRecordsPage extends BasePage {
     public boolean enterPrescriptionsMedicationName(String strConditionName) {
         boolean isVerified = false;
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             PrescriptionsMedicationName = strConditionName.concat(strExecutionID);
-            waitForSeconds(2);
+            waitForSeconds(8);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(elmntPrescriptionsMedicationName);
-            enterValue(elmntPrescriptionsMedicationName, PrescriptionsMedicationName);
+            jsClick(elmntPrescriptionsMedicationName);
+//            enterValue(elmntPrescriptionsMedicationName, PrescriptionsMedicationName);
+            elmntPrescriptionsMedicationName.sendKeys(PrescriptionsMedicationName);
             isVerified = verifyElement(elmntPrescriptionsMedicationName);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             PrescriptionsMedicationName = strConditionName.concat(strExecutionID);
@@ -1467,7 +1502,8 @@ public class MyHealthRecordsPage extends BasePage {
         boolean isVerified = false;
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             System.out.println("enterelement::::" + strDoseName);
-            waitForSeconds(2);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
             waitForElement(elmntPrescriptionsDose);
             enterValue(elmntPrescriptionsDose, strDoseName);
             isVerified = verifyElement(elmntPrescriptionsDose);
@@ -1485,7 +1521,6 @@ public class MyHealthRecordsPage extends BasePage {
         boolean isVerified = false;
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             System.out.println("enterelement::::" + strVisitedLocation);
-            waitForSeconds(8);
             waitForElement(elmntVisitedLocation);
             enterValue(elmntVisitedLocation, strVisitedLocation);
             isVerified = verifyElement(elmntVisitedLocation);
@@ -1626,6 +1661,7 @@ public class MyHealthRecordsPage extends BasePage {
     public boolean enterAllergiesAdditionalInformation(String strAdditionalInformation) {
         boolean isVerified = false;
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            waitForSeconds(2);
             jsScrollIntoView(elmntAllergiesAdditionalInformation);
             waitForElement(elmntAllergiesAdditionalInformation);
             enterValue(elmntAllergiesAdditionalInformation, strAdditionalInformation);
@@ -1666,7 +1702,7 @@ public class MyHealthRecordsPage extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day:: >>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             waitForElement(elmntMobileVisitedDate);
@@ -1689,7 +1725,7 @@ public class MyHealthRecordsPage extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day:: >>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             waitForElement(elmntMobileImmunisationDate);
@@ -1712,7 +1748,7 @@ public class MyHealthRecordsPage extends BasePage {
         System.out.println("Current Day>>" + strDate);
         WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
         System.out.println("elmntDayAfterDate" + elmntDayAfterDate);
-        click(elmntDayAfterDate);
+        jsClick(elmntDayAfterDate);
 
     }
 
@@ -1727,7 +1763,7 @@ public class MyHealthRecordsPage extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day ::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
 
         }
 
@@ -1782,7 +1818,7 @@ public class MyHealthRecordsPage extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day ::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             waitForElement(elmntMobilePrescriptionDateToken);
@@ -1809,7 +1845,7 @@ public class MyHealthRecordsPage extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -1870,8 +1906,8 @@ public class MyHealthRecordsPage extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
-            isVerified = verifyElement(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
+//            isVerified = verifyElement(elmntDayAfterDate);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             waitForElementClickable(elmntMobileEndDate);
@@ -1894,7 +1930,12 @@ public class MyHealthRecordsPage extends BasePage {
             waitForSeconds(3);
             waitForElementClickable(btnAddRecord);
             jsClick(btnAddRecord);
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(btnAddRecord);
             isVerified = verifyElement(btnAddRecord);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -2026,10 +2067,10 @@ public class MyHealthRecordsPage extends BasePage {
     public boolean clickClassiUnCheckBox() {
         boolean isVerified = false;
         waitForSeconds(3);
-        if (verifyElement(elmntClassiCheckBox)) {
-            waitForElementClickable(elmntClassiCheckBox);
-            jsClick(elmntClassiCheckBox);
-            isVerified = verifyElement(elmntClassiCheckBox);
+        if (verifyElement(elmntClassiUnCheckBox)) {
+            waitForElementClickable(elmntClassiUnCheckBox);
+            jsClick(elmntClassiUnCheckBox);
+            isVerified = verifyElement(elmntClassiUnCheckBox);
         } else {
             System.out.println("CheckBox are checked::>>");
         }
@@ -2042,12 +2083,10 @@ public class MyHealthRecordsPage extends BasePage {
     }
 
     public void clickAllergiesUnCheckBox() {
-        waitForSeconds(3);
-        if (verifyElement(elmntAllergiesCheckBox)) {
-            waitForElementClickable(elmntAllergiesCheckBox);
-            waitForSeconds(3);
-            waitForElementClickable(elmntAllergiesCheckBox);
-            jsClick(elmntAllergiesCheckBox);
+
+        if (verifyElement(elmntAllergiesUnCheckBox)) {
+            waitForElementClickable(elmntAllergiesUnCheckBox);
+            jsClick(elmntAllergiesUnCheckBox);
         }
 
     }
@@ -2058,10 +2097,10 @@ public class MyHealthRecordsPage extends BasePage {
     }
 
     public void unCheckSharePrescription() {
-        if (verifyElement(elmntPrescriptionCheckBox)) {
+        if (verifyElement(elmntPrescriptionUnCheckBox)) {
             waitForSeconds(3);
-            waitForElementClickable(elmntPrescriptionCheckBox);
-            jsClick(elmntPrescriptionCheckBox);
+            waitForElementClickable(elmntPrescriptionUnCheckBox);
+            jsClick(elmntPrescriptionUnCheckBox);
         }
     }
 
@@ -2074,10 +2113,10 @@ public class MyHealthRecordsPage extends BasePage {
 
     public void clickImmuUnCheckBox() {
         waitForSeconds(3);
-        if (verifyElement(elmtImmunisationsiCheckBox)) {
+        if (verifyElement(elmtImmunisationsiUnCheckBox)) {
             waitForSeconds(3);
-            waitForElementClickable(elmtImmunisationsiCheckBox);
-            jsClick(elmtImmunisationsiCheckBox);
+            waitForElementClickable(elmtImmunisationsiUnCheckBox);
+            jsClick(elmtImmunisationsiUnCheckBox);
         }
     }
 
@@ -2091,8 +2130,8 @@ public class MyHealthRecordsPage extends BasePage {
 
     public void clickCovidUnCheckBox() {
         waitForSeconds(3);
-        if (verifyElement(elmtCovidImmunisationsiCheckBox)) {
-            jsClick(elmtCovidImmunisationsiCheckBox);
+        if (verifyElement(elmtCovidImmunisationsiUnCheckBox)) {
+            jsClick(elmtCovidImmunisationsiUnCheckBox);
         }
 
     }
@@ -2522,7 +2561,7 @@ public class MyHealthRecordsPage extends BasePage {
     public boolean selectCovidImmunisationsdropdown(String strFamilyMember) {
         boolean blResult = false;
         try {
-
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
             waitForElementClickable(elmntCovidImmunisationsdrop);
             waitForSeconds(2);

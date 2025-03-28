@@ -33,7 +33,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='VIEW SUMMARY']")
     protected WebElement elmtViewSummary;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(@class,'mat-tab-label-active')]//span[text()='ALL']")
+    @FindBy(how = How.XPATH, using = "//span[text()='ALL']")
     protected WebElement elmtAlltab;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'My Health Indicators')]")
     protected WebElement elmtmyhealthindicators;
@@ -53,7 +53,7 @@ public class MyHealthIndicators extends BasePage {
 
 
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Active')]//preceding::input[@value='Active']")
+    @FindBy(how = How.XPATH, using = "//label[text()='Active']")
     protected WebElement btnActive;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Save')]")
@@ -62,16 +62,16 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='ACTIVE']")
     protected WebElement btnactivetab;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(@class,'mat-tab-label-active')]//span[text()='ACTIVE']")
+    @FindBy(how = How.XPATH, using = "//a[@ng-reflect-active='true']//span[text()='ACTIVE']")
     protected WebElement elmtActiveTab;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Inactive')]//preceding::input[@value='Inactive']")
+    @FindBy(how = How.XPATH, using = "//label[text()='Inactive']")
     protected WebElement btnInActive;
 
     @FindBy(how = How.XPATH, using = "//span[text()='INACTIVE']")
     protected WebElement btnInactivetab;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(@class,'mat-tab-label-active')]//span[text()='INACTIVE']")
+    @FindBy(how = How.XPATH, using = "//a[@ng-reflect-active='true']//span[text()='INACTIVE']")
     protected WebElement elmtInActiveTab;
 
 
@@ -81,7 +81,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//div[text()='Blood Pressure']")
     protected WebElement elmtBloodPressure;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(@class,'mat-tab-link mat-focus-indicator ng-star-inserted')]//span[text()='ALL']")
+    @FindBy(how = How.XPATH, using = "//span[text()='INACTIVE']")
     protected WebElement elmtInactiveAlltab;
 
 
@@ -335,10 +335,10 @@ public class MyHealthIndicators extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'LDL')]")
     protected WebElement elmtLDL;
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Alcohol')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Alcohol')]")
     protected WebElement elmtAlcohol;
 
-    @FindBy(how = How.XPATH, using = "//div[text()='Mental Health and Addictions']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Mental Health and Addictions']")
     protected WebElement elmtMentalHealthAndAddictions;
 
     @FindBy(how = How.XPATH, using = "//div[text()='Physical Health']")

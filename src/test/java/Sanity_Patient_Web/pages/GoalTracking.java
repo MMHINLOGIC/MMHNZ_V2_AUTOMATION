@@ -7,6 +7,7 @@ import cap.utilities.TestDataUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -72,7 +73,7 @@ public class GoalTracking extends BasePage {
     protected WebElement elmntMonthAndYear;
 
     public String futureDate = new StringBuilder()
-            .append("//td/div[contains(text(),'")
+            .append("//td//span[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')]").toString();
 
@@ -80,10 +81,10 @@ public class GoalTracking extends BasePage {
     protected WebElement elmntCalendar;
 
     protected String strDayAfterDate = new StringBuilder()
-            .append("//table[@class='mat-calendar-table']//tbody//tr//td//div[contains(text(),'")
+            .append("//table[@class='mat-calendar-table']//tbody//tr//td//button//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'I want to use pre-defined unit of measurements')]/preceding::div[@class='mat-radio-container']//input)[2]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'I want to use pre-defined unit of measurements')]")
     protected WebElement getElmtmeasurementforthisgoal;
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='initialValue']")
@@ -95,10 +96,10 @@ public class GoalTracking extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='targetValue']")
     protected WebElement elmntTargetValue;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),' Privacy Settings')]//following::div[@class='mat-radio-container']//input)[1]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Keep this private')]")
     protected WebElement getElmtGoalPrivacySetting;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),' Privacy Settings')]//following::div[@class='mat-radio-container']//input)[2]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Show this entry to my care providers')]")
     protected WebElement getElmtShowThisEntryPrivacySetting;
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Save')]//parent::button)[1]")
@@ -123,7 +124,7 @@ public class GoalTracking extends BasePage {
             .append("//div[@class='tbl-th']/following::div[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Close')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Close')])[2]")
     protected WebElement elmntIcon;
 
     protected String strEditGoalTrackingTableData = new StringBuilder()
@@ -131,7 +132,7 @@ public class GoalTracking extends BasePage {
             .append("<<REPLACEMENT1>>").append("')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT2>>").append("')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT3>>").append("')]//following::td//a[contains(text(),'")
-            .append("<<REPLACEMENT4>>").append("')]//following::td//following::td//following::td//button)[2]").toString();
+            .append("<<REPLACEMENT4>>").append("')]//following::td//following::td//following::td//following::td//mat-button)[1]").toString();
 
     @FindBy(how = How.XPATH, using = "//textarea[@formcontrolname='notes']")
     protected WebElement elmntNotes;
@@ -150,9 +151,9 @@ public class GoalTracking extends BasePage {
             .append("<<REPLACEMENT1>>").append("')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT2>>").append("')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT3>>").append("')]//following::td//a[contains(text(),'")
-            .append("<<REPLACEMENT4>>").append("')]//following::td//following::td//following::td//button)[3]").toString();
+            .append("<<REPLACEMENT4>>").append("')]//following::td//following::td//following::td//mat-button)[2]").toString();
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Yes')] ")
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes')]")
     protected WebElement btnBloodPressureyes;
 
     protected String elmntVerifyDelete = new StringBuilder().append("//td[text()='")
@@ -183,17 +184,20 @@ public class GoalTracking extends BasePage {
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Save')]//parent::button)[4]")
     protected WebElement getElmtAddValuesavebutton;
 
+@FindAll({
+        @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Save')]//parent::button)[3]"),
+        @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Save')]//parent::button)[1]")
+})
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Save')]//parent::button)[3]")
     protected WebElement getElmtSetRemindersavebutton;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Reminder Preview')]")
     protected WebElement getElmtSetReminderPreviewsavebutton;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Goal Reminder Preview Message')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Goal Reminder Preview Message')]")
     protected WebElement veriflySetReminderPreviewsavebutton;
 
-    @FindBy(how = How.XPATH, using = " //a[contains(text(),'click here')]")
+    @FindBy(how = How.XPATH, using = "//a[contains(text(),'click here')]")
     protected WebElement getclickbutton;
 
     //a[contains(text(),'click here')]
@@ -218,7 +222,7 @@ public class GoalTracking extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Goal Analysis')]")
     protected WebElement getGoalAnalysisHeader;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Data')]//preceding::div[@class='mat-radio-inner-circle']//following-sibling::input)[3]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Data')]")
     protected WebElement getElmtDataRadiobutton;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),' Export to Excel')]")
@@ -267,10 +271,10 @@ public class GoalTracking extends BasePage {
     @FindBy(how = How.XPATH, using = "(//textarea[@formcontrolname='message'])[3]")
     protected WebElement elmntTaskMessage;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Add this task to Calendar')]//preceding::div[@class='mat-checkbox-inner-container']//child::input[@aria-checked='true']")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Add this task to Calendar')]")
     protected WebElement btnAddthistasktoCalendar;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Completed')]//preceding::div[@class='mat-checkbox-inner-container']/child::input)[2]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Completed')]")
     protected WebElement btnStatusCompleted;
 
 
@@ -286,28 +290,28 @@ public class GoalTracking extends BasePage {
 
 
     protected String ClickReminderSettingIconTableData = new StringBuilder()
-            .append("(//div[contains(text(),'Previous Tasks')]//following::td[contains(text(),'")
+            .append("(//span[contains(text(),'Previous Tasks')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::td//following::td//button)[1]").toString();
 
 //    (//div[contains(text(),'Previous Tasks')]//following::td[contains(text(),'task name')]//following::td//following::td//button)[1]
 
     protected String ClickFutureTaskInfoIconTableData = new StringBuilder()
-            .append("(//div[contains(text(),'Previous Tasks')]//following::td[contains(text(),'")
+            .append("(//span[contains(text(),'Previous Tasks')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::td//following::td//button)[1]").toString();
 
     protected String ClickFutureTaskEditIconTableData = new StringBuilder()
-            .append("(//div[contains(text(),'Previous Tasks')]//following::td[contains(text(),'")
-            .append("<<REPLACEMENT1>>").append("')]//following::td//following::td//button)[2]").toString();
+            .append("(//span[contains(text(),'Previous Tasks')]//following::td[contains(text(),'")
+            .append("<<REPLACEMENT1>>").append("')]//following::td//following::td//mat-button)[1]").toString();
 
 
     protected String ClickFutureTaskDeleteIconTableData = new StringBuilder()
-            .append("(//div[contains(text(),'Previous Tasks')]//following::td[contains(text(),'")
-            .append("<<REPLACEMENT1>>").append("')]//following::td//following::td//button)[3]").toString();
+            .append("(//span[contains(text(),'Previous Tasks')]//following::td[contains(text(),'")
+            .append("<<REPLACEMENT1>>").append("')]//following::td//following::td//mat-button)[2]").toString();
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='taskDueDate']")
     protected WebElement elmntTaskDueDate;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Previous Tasks')]//parent::div)[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Previous Tasks')]")
     protected WebElement elmtsPreviousTask;
     public boolean clickGoalTracking() {
         waitForSeconds(4);
@@ -387,7 +391,7 @@ public class GoalTracking extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day ::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
 
@@ -466,7 +470,9 @@ public class GoalTracking extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElementClickable(elmntInitialValue);
-            enterValue(elmntInitialValue, strConditionName);
+            jsClick(elmntInitialValue);
+//            enterValue(elmntInitialValue, strConditionName);
+            elmntInitialValue.sendKeys(strConditionName);
             waitForSeconds(3);
             isVerified = verifyElement(elmntInitialValue);
         }
@@ -485,6 +491,7 @@ public class GoalTracking extends BasePage {
             waitForSeconds(2);
             jsClick(getElmntUnitMeasurement);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntHealthIndicatorDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
+            System.out.println("elmntEntriesFromHealthCentre ::"+elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             blResult = verifyElement(getElmntUnitMeasurement);
         } catch (Exception e) {
@@ -499,7 +506,9 @@ public class GoalTracking extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElementClickable(elmntTargetValue);
-            enterValue(elmntTargetValue, strConditionName);
+            jsClick(elmntTargetValue);
+//            enterValue(elmntTargetValue, strConditionName);
+            elmntTargetValue.sendKeys(strConditionName);
             waitForSeconds(3);
             isVerified = verifyElement(elmntTargetValue);
         }
@@ -661,6 +670,7 @@ public class GoalTracking extends BasePage {
                     .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
             waitForElementClickable(elmntBloodPressureTableData);
             waitForSeconds(3);
+            System.out.println("elmntBloodPressureTableData :: "+elmntBloodPressureTableData);
             jsClick(elmntBloodPressureTableData);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
@@ -747,6 +757,7 @@ public class GoalTracking extends BasePage {
                     .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
             jsScrollIntoView(elmntBloodPressureTableData);
             waitForElementClickable(elmntBloodPressureTableData);
+            System.out.println("elmntBloodPressureTableData "+elmntBloodPressureTableData);
             waitForSeconds(3);
             jsClick(elmntBloodPressureTableData);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -786,7 +797,7 @@ public class GoalTracking extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day ::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
 
@@ -805,7 +816,7 @@ public class GoalTracking extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day ::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
 
@@ -895,7 +906,7 @@ public class GoalTracking extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day ::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
 
@@ -1024,7 +1035,7 @@ public class GoalTracking extends BasePage {
 
     public boolean ClickHereButton() {
         waitForSeconds(3);
-        click(getclickbutton);
+        jsClick(getclickbutton);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(3);
         return verifyElement(elmtsgoaltracking);
@@ -1246,7 +1257,7 @@ public class GoalTracking extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day ::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
 
 
@@ -1353,7 +1364,7 @@ public class GoalTracking extends BasePage {
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day ::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
 
 
@@ -1568,6 +1579,7 @@ public class GoalTracking extends BasePage {
             System.out.println(">>>>>>>>>>>>>>>>>lstDetails" + lstDetails);
             WebElement elmntPrescriptionTableData = waitForElement(By.xpath(ClickReminderSettingIconTableData
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.concat(strExecutionID)))));
+            System.out.println("elmntPrescriptionTableData ::"+elmntPrescriptionTableData);
             waitForElement(elmntPrescriptionTableData);
             verifyElement(elmntPrescriptionTableData);
             waitForSeconds(2);

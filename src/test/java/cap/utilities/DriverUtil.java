@@ -543,8 +543,14 @@ public class DriverUtil {
         DesiredCapabilities cap = DesiredCapabilities.chrome();
         cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         cap.setCapability(ChromeOptions.CAPABILITY, options);
-//        options.addArguments("incognito");
-//        cap.setCapability(ChromeOptions.CAPABILITY, options);
+        options.addArguments("incognito");
+//        options.addArguments("--headless=new");  // Enables headless mode (new mode for Chrome 109+)
+//        options.addArguments("--incognito");     // Enables incognito mode
+//        options.addArguments("--disable-gpu");   // Disables GPU (for stability)
+//        options.addArguments("--window-size=1920,1080");
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        options.setExperimentalOption("useAutomationExtension", false);
+        cap.setCapability(ChromeOptions.CAPABILITY, options);
         return options;
     }
 

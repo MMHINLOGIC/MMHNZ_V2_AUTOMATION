@@ -23,7 +23,7 @@ public class ProviderHomePage extends BasePage {
         super(driver);
     }
 
-    @FindBy (how = How.XPATH, using = "//span[text()='Login']")
+    @FindBy (how = How.XPATH, using = "(//span[text()='Sign in'])[1]")
     protected WebElement elmntloginbtn;
 
     @FindBy (how = How.XPATH, using = "//span[contains(text(),'Save')] ")
@@ -111,7 +111,7 @@ public class ProviderHomePage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "(//img[@alt='ManageMyHealth'])[1]")
     protected WebElement elmntMMHLogo;
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Sign out')])[1]")
     protected WebElement elmntLogOut;
     @FindBy(how = How.XPATH, using = "//mat-icon[text()='exit_to_app']")
     protected WebElement elmntMobileLogOut;

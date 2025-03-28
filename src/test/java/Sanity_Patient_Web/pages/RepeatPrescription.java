@@ -124,19 +124,19 @@ public class RepeatPrescription extends BasePage {
     protected String chkMedication = new StringBuilder()
             .append("//tr//td[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')]/preceding-sibling::td/input").toString();
+            .append("')]/preceding-sibling::td//input").toString();
 
 
-    @FindBy(how = How.XPATH, using = "//div[contains(@class,'mat-form-field')]/child::textarea[contains(@class,'mat-form-field')][@formcontrolname='MessageBody']")
+    @FindBy(how = How.XPATH, using = "//textarea[@formcontrolname='MessageBody']")
     protected WebElement txaMessage;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'I accept the Repeat Precriptions')]/preceding-sibling::mat-checkbox/label/div")
+    @FindBy(how = How.XPATH, using = "//mat-checkbox[@formcontrolname='termsConditions']")
     protected WebElement chkTermsAndCondion;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Pay At Health Centre')])[1]")
+    @FindBy(how = How.XPATH, using = "(//button[contains(text(),'Pay At Health Centre')])[1]")
     protected WebElement btnPayAtHealthCentre;
 
-    @FindBy(how = How.XPATH, using = "(//span[text()='Pay Now'])[1]")
+    @FindBy(how = How.XPATH, using = "(//button[text()='Pay Now'])[1]")
     protected WebElement btnPayNow;
 
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Payment')]")
@@ -262,7 +262,7 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "(//div[@class='repeat-card-block yellow ng-star-inserted'])[1]")
     protected WebElement emlntPrescriptionStatus;
 
-    @FindBy(how = How.XPATH, using = "(//mat-card-title[@class='mat-card-title'])[1]")
+    @FindBy(how = How.XPATH, using = "(//mat-card-title[@class='mat-mdc-card-title'])[1]")
     protected WebElement txtPrescriptionDate;
 
     @FindBy(how = How.XPATH, using = "//mat-select[@name='ddlSelectOrSearchFax' or @placeholder='Select or search for a pharmacy']")
@@ -335,7 +335,7 @@ public class RepeatPrescription extends BasePage {
             .append("')]").toString();
 
     protected String elmntMedicationFields = new StringBuilder()
-            .append("(//mat-card-content[@class='mat-card-content']/following::div[contains(text(),'")
+            .append("(//mat-card-content[@class='mat-mdc-card-content']/following::div[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')])[1]").toString();
 
@@ -471,7 +471,7 @@ public class RepeatPrescription extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(ddlUrgrencyType);
             waitForElementClickable(ddlUrgrencyType);
-            mouseClick(ddlUrgrencyType);
+            jsClick(ddlUrgrencyType);
             blResult = true;
 
         } catch (Exception e) {

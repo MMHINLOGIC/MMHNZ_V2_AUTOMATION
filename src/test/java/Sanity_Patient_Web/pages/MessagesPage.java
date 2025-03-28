@@ -55,7 +55,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Sent')]")
     protected WebElement elmntSentPatient;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Compose']")
+    @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE MESSAGE']")
     protected WebElement elmntComposeDoctor;
 
 
@@ -81,7 +81,7 @@ public class MessagesPage extends BasePage {
             @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Draft')])[2]"),
             @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Draft')])[1]")
 
-            })
+    })
     protected WebElement txtDraftPatient;
 
 
@@ -110,16 +110,16 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[@text='Refresh']")
     protected WebElement elmntRefresh;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(@class,'breadcrumbs')]/descendant::span[contains(text(),'Inbox')]")
-    protected WebElement txtInbox;
+    @FindBy(how = How.XPATH, using = "(//h1[text()='Sent Messages'])[1]")
+    protected WebElement txtSentHeader;
 
-    @FindBy(how = How.XPATH, using = "//a[text()=' Sent Messages']")
+    @FindBy(how = How.XPATH, using = "//span[text()=' Sent Messages']")
     protected WebElement txtSent;
 
-    @FindBy(how = How.XPATH, using = "(//h1[text()=' Compose Email ']//i)[1]")
+    @FindBy(how = How.XPATH, using = "(//h1[text()=' COMPOSE MESSAGE ']//i)[1]")
     protected WebElement txtComposeBackButton;
 
-    @FindBy(how = How.XPATH, using = "(//h1[text()=' Compose Email '])[1]")
+    @FindBy(how = How.XPATH, using = "(//h1[text()=' COMPOSE MESSAGE '])[1]")
     protected WebElement txtCompose;
     @FindBy(how = How.XPATH, using = "//div[@class='leftside']")
     protected WebElement elmntsMenu;
@@ -130,18 +130,18 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//td[contains(text(),'Compose New Message')]")
     protected WebElement txtComposeNewMessage;
 
-    @FindBy(how = How.XPATH, using = "//select[contains(@id,'ddlPractice')]")
+    @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='healthCenter']")
     protected WebElement drpDownHealthCentre;
 
 
-    @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='healthCenter']")
+    @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='location']")
     protected WebElement drpDownLocation;
 
     protected String elmntbyDrop = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[3]").toString();
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     protected String elmntbyServiceName = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[2]").toString();
+            .append("<<REPLACEMENT>>").append("')])[1]").toString();
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='serviceName']")
     protected WebElement drpDownServiceName;
@@ -182,7 +182,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//div/iframe[contains(@style,'height')]")
     protected WebElement frameComposeForDoctor;
 
-    @FindBy(how = How.XPATH, using = "//input[@name='clinicalUser']")
+    @FindBy(how = How.XPATH, using = "//mat-checkbox[@name='clinicalUser']")
     protected List<WebElement> chkBoxInboxPatient;
 
     @FindBy(how = How.XPATH, using = "//input[contains(@id,'Subject')]")
@@ -224,9 +224,9 @@ public class MessagesPage extends BasePage {
             .toString();
 
     protected String sentMessageSubject = new StringBuilder()
-            .append("//mat-card-title[contains(text(),'")
+            .append("(//mat-card-title[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')]")
+            .append("')])[1]")
             .toString();
 
     protected String sentMessageSubjectForMobile = new StringBuilder()
@@ -379,10 +379,10 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Sent')]")
     protected WebElement txtSentForPatient;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Archive')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Archive')]")
     protected WebElement elmntArchive;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Sent')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Sent')]")
     protected WebElement elmntSent;
 
     @FindBy(how = How.XPATH, using = "//a[@mattooltip='Mark as unread']")
@@ -519,7 +519,6 @@ public class MessagesPage extends BasePage {
     protected WebElement btnDoctorUploadfile;
 
 
-
     @FindBy(how = How.XPATH, using = "//input[@type='file']")
     protected WebElement btnFloorplanUpload;
 
@@ -650,9 +649,9 @@ public class MessagesPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//a[contains(@mattooltip,'Archive') or contains(@mattooltip,'Move to inbox')]")
     protected WebElement btnMoveTo;
-//
-//    @FindBy(how = How.XPATH, using = "//a[contains(@mattooltip,'Move to inbox')]")
-//    protected WebElement btnMoveToInbox;
+    //
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'YES')]")
+    protected WebElement btnArchiveYes;
 
     protected String chkBoxInbox = new StringBuilder()
             .append("//*[contains(text(),'")
@@ -765,34 +764,35 @@ public class MessagesPage extends BasePage {
     protected WebElement btnMobileInboxAttachButton;
 
 
-
-    public boolean SelectAllInboxMessage(){
-        boolean blResult=false;
+    public boolean SelectAllInboxMessage() {
+        boolean blResult = false;
         try {
             waitForElement(txtInboxPatient);
             waitForElement(chkBoxInboxSelectAll);
             waitForElementClickable(chkBoxInboxSelectAll);
             waitAndClick(chkBoxInboxSelectAll);
             int size = chkBoxInboxPatient.size();
-            System.out.println("\n size of chkBoxInboxPatient >>> :: "+size);
-            for (WebElement checkBok:chkBoxInboxPatient) {
-                String checkBoxValue=checkBok.getAttribute("aria-checked");
-                if (checkBoxValue.equalsIgnoreCase("false")){
+            System.out.println("\n size of chkBoxInboxPatient >>> :: " + size);
+            for (WebElement checkBok : chkBoxInboxPatient) {
+                String checkBoxValue = checkBok.getAttribute("ng-reflect-checked");
+                System.out.println("checkBoxValue :: " + checkBoxValue);
+                if (checkBoxValue.equalsIgnoreCase("false")) {
                     System.out.println("All INBOX CheckBox was failed to select");
                     return blResult;
                 }
             }
             takeScreenshotSanity(driver);
             System.out.println("Inbox All CheckBox was selected Successfully");
-            blResult=true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Inbox All CheckBox was failed to select");
             e.printStackTrace();
         }
         return blResult;
     }
-    public boolean ClickMarkAsUnRead(){
-        boolean blResult=false;
+
+    public boolean ClickMarkAsUnRead() {
+        boolean blResult = false;
         try {
             waitForElement(txtInboxPatient);
             waitForElement(btnMarkAsUnRead);
@@ -801,38 +801,40 @@ public class MessagesPage extends BasePage {
             waitForSeconds(3);
 
             System.out.println("Mark as Unread was selected Successfully");
-            blResult=true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Mark as unread was failed to select");
             e.printStackTrace();
         }
         return blResult;
     }
-    public boolean verifyMarkAsUnRead(){
-        boolean blResult=false;
+
+    public boolean verifyMarkAsUnRead() {
+        boolean blResult = false;
         try {
             waitForElement(txtInboxPatient);
             int size = elmntVerifyInbox.size();
-            System.out.println("\n size of chkBoxInboxPatient >>> :: "+size);
-            for (WebElement messageSubject:elmntVerifyInbox) {
-                String checkBoxValue=messageSubject.getAttribute("class");
+            System.out.println("\n size of chkBoxInboxPatient >>> :: " + size);
+            for (WebElement messageSubject : elmntVerifyInbox) {
+                String checkBoxValue = messageSubject.getAttribute("class");
 
-                if (!checkBoxValue.contains("read")){
+                if (!checkBoxValue.contains("read")) {
                     System.out.println("Failed select mark as Unread >>> :: ");
                     return blResult;
                 }
             }
             System.out.println("Mark as Unread was selected Successfully");
             takeScreenshotSanity(driver);
-            blResult=true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Mark as unread was failed to select");
             e.printStackTrace();
         }
         return blResult;
     }
-    public boolean ClickMarkAsRead(){
-        boolean blResult=false;
+
+    public boolean ClickMarkAsRead() {
+        boolean blResult = false;
         try {
             waitForElement(txtInboxPatient);
             waitForElement(btnMarkAsRead);
@@ -840,31 +842,32 @@ public class MessagesPage extends BasePage {
             waitAndClick(btnMarkAsRead);
             waitForSeconds(3);
             System.out.println("Mark as read was selected Successfully");
-            blResult=true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Mark as read was failed to select");
             e.printStackTrace();
         }
         return blResult;
     }
-    public boolean verifyMarkAsRead(){
-        boolean blResult=false;
+
+    public boolean verifyMarkAsRead() {
+        boolean blResult = false;
         try {
             waitForElement(txtInboxPatient);
             int size = elmntVerifyInbox.size();
-            System.out.println("\n size of chkBoxInboxPatient >>> :: "+size);
-            for (WebElement messageSubject:elmntVerifyInbox) {
-                String checkBoxValue=messageSubject.getAttribute("class");
-                System.out.println("GetAttribue>>>>"+checkBoxValue);
+            System.out.println("\n size of chkBoxInboxPatient >>> :: " + size);
+            for (WebElement messageSubject : elmntVerifyInbox) {
+                String checkBoxValue = messageSubject.getAttribute("class");
+                System.out.println("GetAttribue>>>>" + checkBoxValue);
 
-                if (checkBoxValue.contains("read")){
+                if (checkBoxValue.contains("read")) {
                     System.out.println("Failed select mark as read >>> :: ");
-                    return blResult=true;
+                    return blResult = true;
                 }
             }
             takeScreenshotSanity(driver);
             System.out.println("Mark as read was selected Successfully");
-            blResult=true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Mark as read was failed to select");
             e.printStackTrace();
@@ -872,8 +875,8 @@ public class MessagesPage extends BasePage {
         return blResult;
     }
 
-    public boolean ClickArchive(){
-        boolean blResult=false;
+    public boolean ClickArchive() {
+        boolean blResult = false;
         try {
             waitForElement(txtInboxPatient);
             waitForElement(btnMoveTo);
@@ -881,31 +884,33 @@ public class MessagesPage extends BasePage {
             waitAndClick(btnMoveTo);
             waitForSeconds(3);
             System.out.println("Archive was selected Successfully");
-            blResult=true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Archive was failed to select");
             e.printStackTrace();
         }
         return blResult;
     }
-    public boolean verifyArchive(){
-        boolean blResult=false;
+
+    public boolean verifyArchive() {
+        boolean blResult = false;
         try {
             waitForElement(txtSuccessForArchive);
             System.out.println("Archive was selected Successfully");
             takeScreenshotSanity(driver);
-            System.out.println("txtSuccessForArchive >>> :: "+verifyElement(txtSuccessForArchive));
+            System.out.println("txtSuccessForArchive >>> :: " + verifyElement(txtSuccessForArchive));
 //            waitForElement(verifyInboxEmpty);
 //            verifyElement(verifyInboxEmpty);
-            blResult=true;
+            blResult = verifyElement(txtSuccessForArchive);
         } catch (Exception e) {
             System.out.println("Archive was failed to select");
             e.printStackTrace();
         }
         return blResult;
     }
-    public boolean navigateToArchiveAndUndoAllArchiveMessages(){
-        boolean blResult=false;
+
+    public boolean navigateToArchiveAndUndoAllArchiveMessages() {
+        boolean blResult = false;
         try {
 
             waitForSeconds(3);
@@ -917,7 +922,7 @@ public class MessagesPage extends BasePage {
             waitForElement(txtArchive);
             waitForElement(chkBoxInboxSelectAll);
             waitForElementClickable(chkBoxInboxSelectAll);
-            jsClick(chkBoxInboxSelectAll);
+            waitAndClick(chkBoxInboxSelectAll);
 
             waitForSeconds(3);
             waitForElement(elmtMoveToInbox);
@@ -928,15 +933,16 @@ public class MessagesPage extends BasePage {
             waitForElement(txtSuccessForUndoArchive);
             verifyElement(txtSuccessForUndoArchive);
             takeScreenshotSanity(driver);
-            blResult=true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Undo Archive was failed to select");
             e.printStackTrace();
         }
         return blResult;
     }
-    public boolean navigateToArchive(){
-        boolean blResult=false;
+
+    public boolean navigateToArchive() {
+        boolean blResult = false;
         try {
             waitForElement(elmntArchive);
             waitForElementClickable(elmntArchive);
@@ -944,15 +950,14 @@ public class MessagesPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
             waitForElement(txtArchive);
-            System.out.println("Navigate to Archive Successfully >>> :: "+verifyElement(txtSuccessForArchive));
-            blResult=verifyElement(txtArchive);
+            System.out.println("Navigate to Archive Successfully >>> :: " + verifyElement(txtSuccessForArchive));
+            blResult = verifyElement(txtArchive);
         } catch (Exception e) {
             System.out.println("Navigate to Archive was failed");
             e.printStackTrace();
         }
         return blResult;
     }
-
 
 
     public boolean verifyPatientReceivedGroupMessage(String strSubjectMessage, String strBody) {
@@ -985,21 +990,20 @@ public class MessagesPage extends BasePage {
     }
 
 
-
     public boolean selectOutOfOfficeSetting() {
         boolean blResult = false;
         try {
             waitForSeconds(2);
             waitForElement(btnSave);
-            if (!verifyElement(chkboxOutOfOfficeReply)){
-            waitForElementClickable(drpDownOutOfOfficeSettings);
-            click(drpDownOutOfOfficeSettings);
+            if (!verifyElement(chkboxOutOfOfficeReply)) {
+                waitForElementClickable(drpDownOutOfOfficeSettings);
+                click(drpDownOutOfOfficeSettings);
             }
             waitForSeconds(1);
             waitForElement(chkboxOutOfOfficeReply);
 
             System.out.println("Out of Office Setting was selected >>> ::");
-            blResult=verifyElement(chkboxOutOfOfficeReply);
+            blResult = verifyElement(chkboxOutOfOfficeReply);
 //            blResult = chkboxOutOfOfficeReply.isDisplayed();
 
         } catch (Exception e) {
@@ -1010,19 +1014,18 @@ public class MessagesPage extends BasePage {
     }
 
 
-
     public boolean moveReceivedMessageIntoArchive(String strSubject) {
         boolean blResult = false;
         try {
             waitForSeconds(2);
 //            System.out.println("X Path for chkBoxInbox >>> :: "+chkBoxInbox.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strSubject)));
 //            WebElement ReceivedMessage=waitForElement(By.xpath(chkBoxInbox.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strSubject))));
-            System.out.println("Move Received Message Into Archive chkBoxInbox >>> :: "+chkBoxInbox.replace("<<REPLACEMENT>>",strSubject));
-            WebElement ReceivedMessage=waitForElement(By.xpath(chkBoxInbox.replace("<<REPLACEMENT>>",strSubject)));
+            System.out.println("Move Received Message Into Archive chkBoxInbox >>> :: " + chkBoxInbox.replace("<<REPLACEMENT>>", strSubject));
+            WebElement ReceivedMessage = waitForElement(By.xpath(chkBoxInbox.replace("<<REPLACEMENT>>", strSubject)));
             waitForElement(ReceivedMessage);
             waitForElementClickable(ReceivedMessage);
-            System.out.println("inboxSubject dis >>> "+ ReceivedMessage.isDisplayed());
-            System.out.println("inboxSubject ena >>> "+ ReceivedMessage.isEnabled());
+            System.out.println("inboxSubject dis >>> " + ReceivedMessage.isDisplayed());
+            System.out.println("inboxSubject ena >>> " + ReceivedMessage.isEnabled());
             waitAndClick(ReceivedMessage);
             waitForElement(btnMoveTo);
             waitForElementClickable(btnMoveTo);
@@ -1037,12 +1040,13 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean moveSentMessageIntoArchive(String strSubject) {
         boolean blResult = false;
         try {
             waitForSeconds(2);
-            System.out.println("Move Sent Message Into Archive chkBoxInbox >>> :: "+chkBoxInbox.replace("<<REPLACEMENT>>",strSubject));
-            WebElement SentMessage =waitForElement(By.xpath(chkBoxInbox.replace("<<REPLACEMENT>>",strSubject)));
+            System.out.println("Move Sent Message Into Archive chkBoxInbox >>> :: " + chkBoxInbox.replace("<<REPLACEMENT>>", strSubject));
+            WebElement SentMessage = waitForElement(By.xpath(chkBoxInbox.replace("<<REPLACEMENT>>", strSubject)));
             waitForElement(SentMessage);
             waitForElementClickable(SentMessage);
             jsClick(SentMessage);
@@ -1050,6 +1054,9 @@ public class MessagesPage extends BasePage {
             waitForElement(btnMoveTo);
             waitForElementClickable(btnMoveTo);
             jsClick(btnMoveTo);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(btnArchiveYes);
+            click(btnArchiveYes);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(txtSuccessForArchive);
             takeScreenshotSanity(driver);
@@ -1061,18 +1068,23 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean moveArchiveIntoSentMessage(String strSubject) {
         boolean blResult = false;
         try {
             waitForSeconds(2);
-            System.out.println("move Archive Into Sent Message chkBoxInbox >>> :: "+chkBoxInbox.replace("<<REPLACEMENT>>",strSubject));
-            WebElement SentMessage =waitForElement(By.xpath(chkBoxInbox.replace("<<REPLACEMENT>>",strSubject)));
+            System.out.println("move Archive Into Sent Message chkBoxInbox >>> :: " + chkBoxInbox.replace("<<REPLACEMENT>>", strSubject));
+            WebElement SentMessage = waitForElement(By.xpath(chkBoxInbox.replace("<<REPLACEMENT>>", strSubject)));
             waitForElement(SentMessage);
             waitForElementClickable(SentMessage);
             jsClick(SentMessage);
             waitForElement(btnMoveTo);
             waitForElementClickable(btnMoveTo);
             jsClick(btnMoveTo);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(btnArchiveYes);
+            click(btnArchiveYes);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(txtSuccessForMoveToSentFromArchive);
 //            takeScreenshotSanity(driver);
             blResult = verifyElement(txtSuccessForMoveToSentFromArchive);
@@ -1085,7 +1097,6 @@ public class MessagesPage extends BasePage {
     }
 
 
-
     public boolean disableOutOfOfficeChkBox() {
         boolean blResult = false;
         try {
@@ -1093,7 +1104,7 @@ public class MessagesPage extends BasePage {
             waitForElement(chkboxOutOfOfficeReply);
             String strOutOfOfficeReply = chkboxOutOfOfficeReply.getAttribute("aria-checked");
             System.out.println("chkbox our of office Reply Attribute >>> :: " + strOutOfOfficeReply);
-            if (strOutOfOfficeReply.equalsIgnoreCase("true")){
+            if (strOutOfOfficeReply.equalsIgnoreCase("true")) {
                 waitForElementClickable(chkboxOutOfOfficeReply);
                 jsClick(chkboxOutOfOfficeReply);
                 blResult = true;
@@ -1109,7 +1120,6 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
-
 
 
     public boolean clickSaveButton() {
@@ -1131,13 +1141,12 @@ public class MessagesPage extends BasePage {
     }
 
 
-
     public boolean verifySentMessages(String strMessage) {
         boolean blResult = false;
         try {
 
             waitForSeconds(3);
-            waitForElement(txtSent);
+            waitForElement(txtSentHeader);
 //            waitForElement(elmntRefresh);
 //            waitForElementClickable(elmntRefresh);
 //            click(elmntRefresh);
@@ -1155,7 +1164,6 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
-
 
 
     public boolean verifyPatientSentMessage(String strMessages) {
@@ -1183,6 +1191,7 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean verifyPatientSentMessageInArchive(String strMessages) {
         boolean blResult = false;
         try {
@@ -1208,11 +1217,15 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean verifyArchivedMovedToSent(String strMessages) {
         boolean blResult = false;
         try {
             waitForSeconds(2);
             waitForElement(txtSentForPatient);
+            refreshPage();
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
             System.out.println("strMessages >>> :: " + strMessages);
             System.out.println("X Path-inboxSubject >>> :: " + sentMessageSubject.replace("<<REPLACEMENT>>", strMessages));
             WebElement sentSubject = waitForElement(By.xpath(sentMessageSubject.replace("<<REPLACEMENT>>", strMessages)));
@@ -1255,8 +1268,8 @@ public class MessagesPage extends BasePage {
             waitForElement(txtSent);
             click(txtSent);
             waitForSeconds(3);
-            waitForElement(txtSent);
-            blResult = verifyElement(txtSent);
+            waitForElement(txtSentHeader);
+            blResult = verifyElement(txtSentHeader);
             System.out.println("Successfully navigated to the inbox");
 
         } catch (Exception e) {
@@ -1265,6 +1278,7 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean navigateToPatientSentItems() {
         boolean blResult = false;
         try {
@@ -1275,8 +1289,8 @@ public class MessagesPage extends BasePage {
             waitForSeconds(2);
             waitForElement(txtSentForPatient);
             takeScreenshotSanity(driver);
-            System.out.println("Navigate to Archive Successfully >>> :: "+verifyElement(txtSentForPatient));
-            blResult=verifyElement(txtSentForPatient);
+            System.out.println("Navigate to Archive Successfully >>> :: " + verifyElement(txtSentForPatient));
+            blResult = verifyElement(txtSentForPatient);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1307,18 +1321,22 @@ public class MessagesPage extends BasePage {
     }
 
 
-
     public boolean selectHealthCenter(String strHealthCenter) {
         boolean blResult = false;
         try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
-            waitForElement(txtComposeNewMessage);
+            waitForElement(txtCompose);
             waitForElementClickable(drpDownHealthCentre);
-            Select healthCentre = new Select(driver.findElement(By.xpath("//select[contains(@id,'ddlPractice')]")));
-            healthCentre.selectByVisibleText(strHealthCenter);
-            waitForSeconds(1);
+//            Select healthCentre = new Select(driver.findElement(By.xpath("//mat-select[@formcontrolname='healthCenter']")));
+//            healthCentre.selectByVisibleText(strHealthCenterLocation);
+            jsClick(drpDownHealthCentre);
+            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntbyDrop.replace("<<REPLACEMENT>>", strHealthCenter)));
+            System.out.println(">>>>>>>>elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
+            jsClick(elmntEntriesFromHealthCentre);
 
             blResult = true;
+
             System.out.println("\nSuccessfully selected the health centre >>> :: ");
         } catch (Exception e) {
             System.out.println("\nFailed to select the health centre >>> :: ");
@@ -1338,7 +1356,7 @@ public class MessagesPage extends BasePage {
 //            Select healthCentre = new Select(driver.findElement(By.xpath("//mat-select[@formcontrolname='serviceName']")));
 //            healthCentre.selectByVisibleText(strServiceName);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntbyServiceName.replace("<<REPLACEMENT>>", strServiceName)));
-            System.out.println(">>>>>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
+            System.out.println(">>>>>>>elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
             jsScrollIntoView(elmntEntriesFromHealthCentre);
             mouseClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -1361,10 +1379,12 @@ public class MessagesPage extends BasePage {
             waitForElementClickable(drpDownRole);
             jsClick(drpDownRole);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(4);
             //            Select healthCentre = new Select(driver.findElement(By.xpath("//mat-select[@formcontrolname='role']")));
 //            healthCentre.selectByVisibleText(strRole);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntRolebyDrop.replace("<<REPLACEMENT>>", strRole)));
             jsClick(elmntEntriesFromHealthCentre);
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = true;
             System.out.println("\nSuccessfully selected the Role>>> :: ");
@@ -1379,14 +1399,15 @@ public class MessagesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-//            waitForSeconds(2);
+            waitForSeconds(2);
             waitForElement(txtCompose);
             waitForElementClickable(txtBoxTo);
             click(txtBoxTo);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForSeconds(5);
 //            waitForElement(txtMessageBody);
 //            click(txtMessageBody);
-//            waitForSeconds(3);
+            waitForSeconds(3);
             txtBoxTo.sendKeys(strTo);
             waitForSeconds(3);
             txtBoxTo.sendKeys(Keys.ENTER);
@@ -1394,7 +1415,7 @@ public class MessagesPage extends BasePage {
 //            WebElement patient = waitForElement(By.xpath(selectTo.replace("<<REPLACEMENT>>", strTo)));
 //            waitForElementClickable(patient);
 //            jsClick(patient);
-
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForSeconds(1);
             blResult = true;
             System.out.println("\nSuccessfully Entered To>>> :: ");
@@ -1429,6 +1450,7 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean clickDeleteAllUnderDraft() {
         boolean blResult = false;
 
@@ -1468,15 +1490,14 @@ public class MessagesPage extends BasePage {
             }
             waitForSeconds(1);
 
-            blResult=true;
-            System.out.println("\nSuccessfully Enabled the terms and conditions >>> :: ");} catch (Exception e) {
+            blResult = true;
+            System.out.println("\nSuccessfully Enabled the terms and conditions >>> :: ");
+        } catch (Exception e) {
             System.out.println("\nFailed to Enable the terms and conditions >>> :: ");
             e.printStackTrace();
         }
         return blResult;
     }
-
-
 
 
     public boolean enterBodyMessage(String strBodyMessage) {
@@ -1508,6 +1529,7 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean selectHealthCenterLocation(String strHealthCenterLocation) {
         boolean blResult = false;
         try {
@@ -1519,7 +1541,7 @@ public class MessagesPage extends BasePage {
 //            healthCentre.selectByVisibleText(strHealthCenterLocation);
             jsClick(drpDownLocation);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntbyDrop.replace("<<REPLACEMENT>>", strHealthCenterLocation)));
-            System.out.println(">>>>>>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
+            System.out.println(">>>>>>>>elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
 
             blResult = true;
@@ -1564,12 +1586,12 @@ public class MessagesPage extends BasePage {
 
     public boolean verifyDraftHeader(String strHeader) {
         boolean blResult = false;
-        System.out.println("strHeader >>>> ::"+ strHeader);
+        System.out.println("strHeader >>>> ::" + strHeader);
 
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             verifyElement(btnDraftHeader);
             waitForSeconds(2);
-            WebElement elmntActiveHeader = waitForElement(By.xpath(elmtDraftclick.replace("<<REPLACEMENT>>",strHeader)));
+            WebElement elmntActiveHeader = waitForElement(By.xpath(elmtDraftclick.replace("<<REPLACEMENT>>", strHeader)));
             jsClick(elmntActiveHeader);
 
             return verifyElement(elmntActiveHeader);
@@ -1586,19 +1608,18 @@ public class MessagesPage extends BasePage {
     }
 
 
-
     public boolean VerifyBodyMessage(String lstDetails) {
         boolean blResult = false;
         try {
             waitForSeconds(2);
-            if (verifyElement(btnFocusFrame)){
+            if (verifyElement(btnFocusFrame)) {
                 driver.switchTo().frame(btnFocusFrame);
             }
-            WebElement bodyMessage=waitForElement(By.xpath(txtBodyMessage.replace("<<REPLACEMENT>>",lstDetails)));
-            System.out.println("X-Path for txtBodyMessageForMobile >>> :: "+ txtBodyMessage.replace("<<REPLACEMENT>>",lstDetails));
+            WebElement bodyMessage = waitForElement(By.xpath(txtBodyMessage.replace("<<REPLACEMENT>>", lstDetails)));
+            System.out.println("X-Path for txtBodyMessageForMobile >>> :: " + txtBodyMessage.replace("<<REPLACEMENT>>", lstDetails));
             takeScreenshotSanity(driver);
             jsScrollIntoView(bodyMessage);
-            blResult=verifyElement(bodyMessage);
+            blResult = verifyElement(bodyMessage);
             driver.switchTo().defaultContent();
         } catch (Exception e) {
             e.printStackTrace();
@@ -1663,6 +1684,7 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean clickSendMessageAndNavigateToHomePage() {
         boolean blResult = false;
         try {
@@ -1679,11 +1701,11 @@ public class MessagesPage extends BasePage {
 //            waitForElementClickable(btnHome);
 //            click(btnHome);
 //            waitForSeconds(180);
-           waitForElement(elmntMessagesSuccessfullyPopup1);
-         waitForElementToAppear(driver,By.xpath(elmntMessagesSuccessfullyPopup));
-         verifyElement(elmntMessagesSuccessfullyPopup1);
+            waitForElement(elmntMessagesSuccessfullyPopup1);
+            waitForElementToAppear(driver, By.xpath(elmntMessagesSuccessfullyPopup));
+            verifyElement(elmntMessagesSuccessfullyPopup1);
             waitForSeconds(4);
-         waitForElementClickable(elmntComposeDoctor);
+            waitForElementClickable(elmntComposeDoctor);
             jsClick(elmntComposeDoctor);
             waitForSeconds(2);
             waitForElement(txtCompose);
@@ -1696,6 +1718,7 @@ public class MessagesPage extends BasePage {
         }
         return blResult;
     }
+
     public boolean navigateToDoctorHomepage() {
         boolean blResult = false;
         try {

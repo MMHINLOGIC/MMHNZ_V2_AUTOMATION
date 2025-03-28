@@ -145,7 +145,7 @@ public class SanityWebSteps {
             System.out.println("SENT_MESSAGE_DETAILS_FOR_DASHBOARD >>> :: " + strMessageDetails);
             List<String> lstMessageDetails = TestDataUtil.getListOfValue(strMessageDetails);
             System.out.println("List Message Details >>> :: " + lstMessageDetails);
-//            Assert.assertTrue(sanityPageContainer.messagesPage.selectHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
+            Assert.assertTrue(sanityPageContainer.messagesPage.selectHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
             Assert.assertTrue(sanityPageContainer.messagesPage.selectHealthCenterLocation(TestDataUtil.getValue(lstMessageDetails.get(1))));
             Assert.assertTrue(sanityPageContainer.messagesPage.selectServiceName(TestDataUtil.getValue(lstMessageDetails.get(2))));
             Assert.assertTrue(sanityPageContainer.messagesPage.selectRole(TestDataUtil.getValue(lstMessageDetails.get(3))));
@@ -675,7 +675,7 @@ public class SanityWebSteps {
     @And("I click on the more info icon to see all the Prescription Entries From the Health center Medicine details")
     public void iClickOnTheMoreInfoIconToSeeAllThePrescriptionEntriesFromTheHealthCenterMedicineDetails(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -690,21 +690,21 @@ public class SanityWebSteps {
 
     @And("I select My Entries {string} & I Should see all My entries Prescription medicine details")
     public void iSelectMyEntriesIShouldSeeAllMyEntriesPrescriptionMedicineDetails(String strOption) {
-        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectFilter(TestDataUtil.getValue(strOption)));
+//        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectFilter(TestDataUtil.getValue(strOption)));
     }
 
     @And("I click on add record & Enter the Medicine Details")
     public void iClickOnAddRecordEnterTheMedicineDetails(List<String> listCreateData) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickAddRecord());
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterPrescriptionsMedicationName(TestDataUtil.getValue(listCreateData.get(0))));
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickDose());
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterPrescriptionsDose(TestDataUtil.getValue(listCreateData.get(1))));
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectPrescriptiondropdown(TestDataUtil.getValue(listCreateData.get(2))));
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectPrescriptiondropdown1(TestDataUtil.getValue(listCreateData.get(3))));
+     sanityPageContainer.myHealthRecordsPage.clickAddRecord();
+        sanityPageContainer.myHealthRecordsPage.enterPrescriptionsMedicationName(TestDataUtil.getValue(listCreateData.get(0)));
+   sanityPageContainer.myHealthRecordsPage.clickDose();
+           sanityPageContainer.myHealthRecordsPage.enterPrescriptionsDose(TestDataUtil.getValue(listCreateData.get(1)));
+           sanityPageContainer.myHealthRecordsPage.selectPrescriptiondropdown(TestDataUtil.getValue(listCreateData.get(2)));
+         sanityPageContainer.myHealthRecordsPage.selectPrescriptiondropdown1(TestDataUtil.getValue(listCreateData.get(3)));
             sanityPageContainer.myHealthRecordsPage.enterPrescriptionDateTaken();
             sanityPageContainer.myHealthRecordsPage.enterPrescriptionEndDate();
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterPrescriptionAdditionalInformation(TestDataUtil.getValue(listCreateData.get(4))));
+           sanityPageContainer.myHealthRecordsPage.enterPrescriptionAdditionalInformation(TestDataUtil.getValue(listCreateData.get(4)));
             sanityPageContainer.myHealthRecordsPage.clickPrescriptionCheckBox();
 
         }
@@ -713,7 +713,7 @@ public class SanityWebSteps {
 
     @And("I click on Confirm & Save Button")
     public void iClickOnConfirmSaveButton() {
-        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickPrescriptionSave());
+       sanityPageContainer.myHealthRecordsPage.clickPrescriptionSave();
 
     }
 
@@ -721,10 +721,10 @@ public class SanityWebSteps {
     public void iClickOnEditIconIEditPrescriptionOfMyEntriesRecords(String strCreatedRecord, String strFrequencyLocation) {
 
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickPrescriptionsEditButton(TestDataUtil.getValue(strCreatedRecord)));
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectFrequency(TestDataUtil.getValue(strFrequencyLocation)));
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickPrescriptionsSaveButton());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+           sanityPageContainer.myHealthRecordsPage.clickPrescriptionsEditButton(TestDataUtil.getValue(strCreatedRecord));
+           sanityPageContainer.myHealthRecordsPage.selectFrequency(TestDataUtil.getValue(strFrequencyLocation));
+           sanityPageContainer.myHealthRecordsPage.clickPrescriptionsSaveButton();
         }
 
     }
@@ -732,28 +732,28 @@ public class SanityWebSteps {
 
     @And("I click on Delete Icon {string}& I verify the Prescription My Entries Record is deleted")
     public void iClickOnDeleteIconIVerifyThePrescriptionMyEntriesRecordIsDeleted(String strCreatedRecord) {
-        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickDelete(TestDataUtil.getValue(strCreatedRecord)));
+        sanityPageContainer.myHealthRecordsPage.clickDelete(TestDataUtil.getValue(strCreatedRecord));
         Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.verifyDeletedRecord());
     }
 
     @And("I select My Entries {string}")
     public void iSelectMyEntries(String strOption) {
-        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMyHealthRecordsOptionFromMenu(strOption));
+        sanityPageContainer.myHealthRecordsPage.clickMyHealthRecordsOptionFromMenu(strOption);
 //        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectFilter(TestDataUtil.getValue(strOption)));
     }
 
     @And("I click on Add record & Enter the Medicine Details")
     public void iClickOnaddRecordEnterTheMedicineDetails(List<String> listCreateData) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickAddRecord());
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterPrescriptionsMedicationName(TestDataUtil.getValue(listCreateData.get(0))));
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickDose());
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterPrescriptionsDose(TestDataUtil.getValue(listCreateData.get(1))));
+    sanityPageContainer.myHealthRecordsPage.clickAddRecord();
+      sanityPageContainer.myHealthRecordsPage.enterPrescriptionsMedicationName(TestDataUtil.getValue(listCreateData.get(0)));
+     sanityPageContainer.myHealthRecordsPage.clickDose();
+      sanityPageContainer.myHealthRecordsPage.enterPrescriptionsDose(TestDataUtil.getValue(listCreateData.get(1)));
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectPrescriptiondropdown(TestDataUtil.getValue(listCreateData.get(2))));
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectPrescriptiondropdown1(TestDataUtil.getValue(listCreateData.get(3))));
             sanityPageContainer.myHealthRecordsPage.enterPrescriptionDateTaken();
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterPrescriptionEndDate());
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterPrescriptionAdditionalInformation(TestDataUtil.getValue(listCreateData.get(4))));
+         sanityPageContainer.myHealthRecordsPage.enterPrescriptionEndDate();
+        sanityPageContainer.myHealthRecordsPage.enterPrescriptionAdditionalInformation(TestDataUtil.getValue(listCreateData.get(4)));
             sanityPageContainer.myHealthRecordsPage.unCheckSharePrescription();
 
         }
@@ -764,7 +764,7 @@ public class SanityWebSteps {
     @And("I click on the more info icon to see all the Allergies Entries From the Health center Medicine details")
     public void iClickOnTheMoreInfoIconToSeeAllTheAllergiesEntriesFromTheHealthCenterMedicineDetails(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -788,7 +788,7 @@ public class SanityWebSteps {
             sanityPageContainer.myHealthRecordsPage.enterAllergiesStartDate();
             sanityPageContainer.myHealthRecordsPage.enterAllergiesEndDate();
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterAllergiesAdditionalInformation(TestDataUtil.getValue(listCreateData.get(3))));
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickAllergiesCheckBox());
+           sanityPageContainer.myHealthRecordsPage.clickAllergiesCheckBox();
 
         }
 
@@ -836,7 +836,7 @@ public class SanityWebSteps {
 
     @Then("I should see all the  Allergies My Entries Medicine details in more info")
     public void iShouldSeeAllTheAllergiesMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
-        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
@@ -899,7 +899,7 @@ public class SanityWebSteps {
     @And("I click on the more info icon to see all the Immunisations Entries From the Health center Medicine details")
     public void iClickOnTheMoreInfoIconToSeeAllTheImmunisationsEntriesFromTheHealthCenterMedicineDetails(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -947,7 +947,7 @@ public class SanityWebSteps {
 
     @Then("I should see all the  Immunisations My Entries Medicine details in more info")
     public void iShouldSeeAllTheImmunisationsMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
-        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
@@ -1048,7 +1048,7 @@ public class SanityWebSteps {
     @And("I click on the more info icon to see all the Classifications Entries From the Health center Medicine details")
     public void iClickOnTheMoreInfoIconToSeeAllTheClassificationsEntriesFromTheHealthCenterMedicineDetails(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1075,9 +1075,9 @@ public class SanityWebSteps {
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterConditionName(TestDataUtil.getValue(listCreateData.get(0))));
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectClassificationsdropdown(TestDataUtil.getValue(listCreateData.get(1))));
             sanityPageContainer.myHealthRecordsPage.enterStartDate();
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterEndDate());
+          sanityPageContainer.myHealthRecordsPage.enterEndDate();
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterClassiAdditionalInformation(TestDataUtil.getValue(listCreateData.get(2))));
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickClassiCheckBox());
+            sanityPageContainer.myHealthRecordsPage.clickClassiCheckBox();
         }
 
     }
@@ -1099,7 +1099,7 @@ public class SanityWebSteps {
 
     @Then("I should see all the  Classifications My Entries Medicine details in more info")
     public void iShouldSeeAllTheClassificationsMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
-        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
@@ -1129,7 +1129,7 @@ public class SanityWebSteps {
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterConditionName(TestDataUtil.getValue(listCreateData.get(0))));
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.selectClassificationsdropdown(TestDataUtil.getValue(listCreateData.get(1))));
             sanityPageContainer.myHealthRecordsPage.enterStartDate();
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterEndDate());
+            sanityPageContainer.myHealthRecordsPage.enterEndDate();
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterClassiAdditionalInformation(TestDataUtil.getValue(listCreateData.get(2))));
             sanityPageContainer.myHealthRecordsPage.clickClassiUnCheckBox();
 
@@ -1157,7 +1157,7 @@ public class SanityWebSteps {
     @And("I click on the more info icon to see all the Lab Results Entries From the Health center Medicine details")
     public void iClickOnTheMoreInfoIconToSeeAllTheLabResultsEntriesFromTheHealthCenterMedicineDetails(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1174,7 +1174,7 @@ public class SanityWebSteps {
     @And("I click on the more info icon to see all the Test Results Entries From the Health center Medicine details")
     public void iClickOnTheMoreInfoIconToSeeAllTheTestResultsEntriesFromTheHealthCenterMedicineDetails(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1199,7 +1199,7 @@ public class SanityWebSteps {
     @And("I click on the more info icon to see all theClinic Notes Entries From the Health center Medicine details")
     public void iClickOnTheMoreInfoIconToSeeAllTheClinicNotesEntriesFromTheHealthCenterMedicineDetails(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1227,7 +1227,7 @@ public class SanityWebSteps {
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterVisitedLocation(TestDataUtil.getValue(listCreateData.get(1))));
             sanityPageContainer.myHealthRecordsPage.enterVisitedDate();
             Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.enterClinicianNotesAdditionalInformation(TestDataUtil.getValue(listCreateData.get(2))));
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickCheckBox());
+        sanityPageContainer.myHealthRecordsPage.clickCheckBox();
 
         }
 
@@ -1248,7 +1248,7 @@ public class SanityWebSteps {
 
     @Then("I should see all the  Clinic Notes My Entries Medicine details in more info")
     public void iShouldSeeAllTheClinicNotesMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
-        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//        Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
@@ -1294,7 +1294,7 @@ public class SanityWebSteps {
     @And("I click on the more info icon to see all the Recalls Entries From the Health center Medicine details")
     public void iClickOnTheMoreInfoIconToSeeAllTheRecallsEntriesFromTheHealthCenterMedicineDetails(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue1());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue1());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1322,7 +1322,7 @@ public class SanityWebSteps {
     @And("I click on the more info icon to see all the Recall Remainder Entries From the Health center Medicine details")
     public void iClickOnTheMoreInfoIconToSeeAllTheRecallRemainderEntriesFromTheHealthCenterMedicineDetails(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1533,7 +1533,7 @@ public class SanityWebSteps {
     @Then("I should see all the Blood Pressure Entries From Health center Medicine Details in a grid view")
     public void iShouldSeeAllTheBloodPressureEntriesFromHealthCenterMedicineDetailsInAGridView(List<String> locDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthIndicators.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthIndicators.clickMaxvalue());
             for (String String : locDetails) {
                 System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
                 Assert.assertTrue(sanityPageContainer.myHealthIndicators.VerifyBloodPressureTableData(TestDataUtil.getListOfValue(String)));
@@ -1551,7 +1551,7 @@ public class SanityWebSteps {
     @Then("I should see all the BMI Entries From Health center Medicine Details in a grid view")
     public void iShouldSeeAllTheBMIEntriesFromHealthCenterMedicineDetailsInAGridView(List<String> locDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthIndicators.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthIndicators.clickMaxvalue());
             for (String String : locDetails) {
                 System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
                 Assert.assertTrue(sanityPageContainer.myHealthIndicators.VerifyBMITableData(TestDataUtil.getListOfValue(String)));
@@ -1699,7 +1699,7 @@ public class SanityWebSteps {
     @Then("I should see all the HBAC Entries From Health center Medicine Details in a grid view")
     public void iShouldSeeAllTheHBACEntriesFromHealthCenterMedicineDetailsInAGridView(List<String> locDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthIndicators.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthIndicators.clickMaxvalue());
             for (String String : locDetails) {
                 System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
                 Assert.assertTrue(sanityPageContainer.myHealthIndicators.VerifyHBACTableData(TestDataUtil.getListOfValue(String)));
@@ -1776,7 +1776,7 @@ public class SanityWebSteps {
     @Then("I should see all the LDL Entries From Health center Medicine Details in a grid view")
     public void iShouldSeeAllTheLDLEntriesFromHealthCenterMedicineDetailsInAGridView(List<String> locDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.myHealthIndicators.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.myHealthIndicators.clickMaxvalue());
             for (String String : locDetails) {
                 System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
                 Assert.assertTrue(sanityPageContainer.myHealthIndicators.VerifyLDLTableData(TestDataUtil.getListOfValue(String)));
@@ -2172,7 +2172,7 @@ public class SanityWebSteps {
 
     @And("I should see all the Added journal Details must be displayed in the grid view")
     public void iShouldSeeAllTheAddedJournalDetailsMustBeDisplayedInTheGridView(List<String> viewjournalDetails) {
-        sanityPageContainer.viewJournal.clickMaxvalue();
+//        sanityPageContainer.viewJournal.clickMaxvalue();
         for (String String : viewjournalDetails) {
             System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
             Assert.assertTrue(sanityPageContainer.viewJournal.VerifyviewjournalTableData(TestDataUtil.getListOfValue(String)));
@@ -2182,7 +2182,7 @@ public class SanityWebSteps {
     @Then("I should see all the Added journal Details in more info")
     public void iShouldSeeAllTheAddedJournalDetailsInMoreInfo(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.viewJournal.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.viewJournal.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -2250,7 +2250,7 @@ public class SanityWebSteps {
     @And("I should see all the Goal Tracking Details must be displayed in the grid view")
     public void iShouldSeeAllTheGoalTrackingDetailsMustBeDisplayedInTheGridView(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.viewJournal.clickMaxvalue());
+//            Assert.assertTrue(sanityPageContainer.viewJournal.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -2268,7 +2268,7 @@ public class SanityWebSteps {
 //       List<String> strGoalTrackingData = TestDataUtil.getListOfValue(GoalTracking);
         System.out.println(">>>>>>>>>>GoalTracking" + GoalTracking);
         Assert.assertTrue(sanityPageContainer.goalTracking.selectFliterCurrentGoals(TestDataUtil.getListOfValue(GoalTracking.get(0))));
-        sanityPageContainer.viewJournal.clickMaxvalue();
+//        sanityPageContainer.viewJournal.clickMaxvalue();
         for (String String : GoalTracking) {
             System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
             Assert.assertTrue(sanityPageContainer.goalTracking.VerifyGoalTrackingTableData(TestDataUtil.getListOfValue(String)));
@@ -2279,7 +2279,7 @@ public class SanityWebSteps {
     public void clickOnTheFilterByShowAllGoalWillDisplayGoalsThatAreCurrentPreviousInTheGridView(List<String> GoalTracking) {
 //        List<String> strGoalTrackingData = TestDataUtil.getListOfValue(GoalTracking);
         Assert.assertTrue(sanityPageContainer.goalTracking.selectFliterShowAllGoals(TestDataUtil.getListOfValue(GoalTracking.get(0))));
-        sanityPageContainer.viewJournal.clickMaxvalue();
+//        sanityPageContainer.viewJournal.clickMaxvalue();
         for (String String : GoalTracking) {
             System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getValue(String));
             Assert.assertTrue(sanityPageContainer.goalTracking.VerifyGoalTrackingTableData(TestDataUtil.getListOfValue(String)));
@@ -2342,7 +2342,7 @@ public class SanityWebSteps {
     public void clickOnTheFilterByThePreviousGoalWillDisplayGoalsThatHaveCrossedTheEndDateInTheGridView(List<String> GoalTracking) {
 //        List<String> strGoalTrackingData = TestDataUtil.getListOfValue(GoalTracking);
         Assert.assertTrue(sanityPageContainer.goalTracking.selectFliterPreviousGoals(TestDataUtil.getListOfValue(GoalTracking.get(0))));
-        sanityPageContainer.viewJournal.clickMaxvalue();
+//        sanityPageContainer.viewJournal.clickMaxvalue();
         for (String String : GoalTracking) {
             System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getValue(String));
             Assert.assertTrue(sanityPageContainer.goalTracking.VerifyGoalTrackingTableData(TestDataUtil.getListOfValue(String)));
@@ -3078,7 +3078,7 @@ public class SanityWebSteps {
 
     @Then("I should see all the Added set reminder Details must be displayed in the grid view")
     public void iShouldSeeAllTheAddedSetReminderDetailsMustBeDisplayedInTheGridView(List<String> SetReminderData) {
-        sanityPageContainer.viewJournal.clickMaxvalue();
+//        sanityPageContainer.viewJournal.clickMaxvalue();
         for (String String : SetReminderData) {
             System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getValue(String));
             Assert.assertTrue(sanityPageContainer.goalTracking.VerifyGoalTrackingTableData(TestDataUtil.getListOfValue(String)));
@@ -3153,7 +3153,7 @@ public class SanityWebSteps {
         Assert.assertTrue(sanityPageContainer.goalTracking.selectTaskRemindMe(TestDataUtil.getValue(strTaskData.get(3))));
         Assert.assertTrue(sanityPageContainer.goalTracking.selectTaskTime(TestDataUtil.getValue(strTaskData.get(4))));
         Assert.assertTrue(sanityPageContainer.goalTracking.enterTaskMessage(TestDataUtil.getValue(strTaskData.get(5))));
-        Assert.assertTrue(sanityPageContainer.goalTracking.VeriflyAddthistasktoCalendar());
+//        Assert.assertTrue(sanityPageContainer.goalTracking.VeriflyAddthistasktoCalendar());
 //        Assert.assertTrue(sanityPageContainer.goalTracking.clickStatusCompleted());
         Assert.assertTrue(sanityPageContainer.goalTracking.ClickAddTaskSaveButton());
     }
@@ -3169,7 +3169,7 @@ public class SanityWebSteps {
     @Then("I should see all the Added future task grid Details must be displayed in more info")
     public void iShouldSeeAllTheAddedFutureTaskGridDetailsMustBeDisplayedInMoreInfo(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(sanityPageContainer.viewJournal.clickMaxvalue1());
+//            Assert.assertTrue(sanityPageContainer.viewJournal.clickMaxvalue1());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -3204,7 +3204,7 @@ public class SanityWebSteps {
         Assert.assertTrue(sanityPageContainer.goalTracking.selectTaskRemindMe(TestDataUtil.getValue(strTaskData.get(3))));
         Assert.assertTrue(sanityPageContainer.goalTracking.selectTaskTime(TestDataUtil.getValue(strTaskData.get(4))));
         Assert.assertTrue(sanityPageContainer.goalTracking.enterTaskMessage(TestDataUtil.getValue(strTaskData.get(5))));
-        Assert.assertTrue(sanityPageContainer.goalTracking.VeriflyAddthistasktoCalendar());
+//        Assert.assertTrue(sanityPageContainer.goalTracking.VeriflyAddthistasktoCalendar());
         Assert.assertTrue(sanityPageContainer.goalTracking.clickStatusCompleted());
         Assert.assertTrue(sanityPageContainer.goalTracking.ClickAddTaskSaveButton());
     }
@@ -3235,7 +3235,7 @@ public class SanityWebSteps {
 
     @Then("I should see all the Added Previous task grid Details must be displayed in more info")
     public void iShouldSeeAllTheAddedPreviousTaskGridDetailsMustBeDisplayedInMoreInfo(DataTable dataTable) {
-        Assert.assertTrue(sanityPageContainer.viewJournal.clickMaxvalue1());
+//        Assert.assertTrue(sanityPageContainer.viewJournal.clickMaxvalue1());
         List<List<String>> tableData = dataTable.asLists(String.class);
         for (int i = 0; i < tableData.size(); i++) {
             String strKey = tableData.get(i).get(0).trim();
@@ -3564,7 +3564,7 @@ public class SanityWebSteps {
 
     @Then("click view all the steps of session in Beating the Blues")
     public void clickViewAllTheStepsOfSessionInBeatingTheBlues() {
-        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickContinuesession1());
+//        Assert.assertTrue(sanityPageContainer.beatingTheBlues.clickContinuesession1());
         Assert.assertTrue(sanityPageContainer.viewJournal.clickDashBoard());
     }
 

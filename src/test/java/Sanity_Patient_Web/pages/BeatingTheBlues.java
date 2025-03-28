@@ -45,11 +45,11 @@ public class BeatingTheBlues extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'NO')]//parent::button")
     protected WebElement elmntDeclineCovidPreScreening;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Resume Session')]//parent::a")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Resume Session')]")
     protected WebElement elmtviewsession1;
 
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Continue Session 1')]//following::span)[1]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Continue Session 1')])[1]")
     protected WebElement elmtContinuesession1;
 
     @FindBy(how = How.XPATH, using = "//iframe[@title='Beating The Blues']")
@@ -486,26 +486,29 @@ public class BeatingTheBlues extends BasePage {
         waitForSeconds(5);
         waitForElement(elmtviewsession1);
         jsClick(elmtviewsession1);
+        waitForElementToAppear(driver,By.xpath(elmntSpinner));
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
     }
 
     public boolean clickContinuesession1() {
-//        focusWindow(2);
+        waitForSeconds(5);
+        focusWindow(2);
         waitForSeconds(3);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        driver.switchTo().frame(getElmtBeatingTheBluesFrame);
+//        driver.switchTo().frame(getElmtBeatingTheBluesFrame);
         waitForSeconds(3);
         waitForElementToAppear(driver, By.xpath(elmtContinuesession));
 //        waitForElementClickable(elmtContinuesession1);
         jsClick(elmtContinuesession1);
+        waitForElementToAppear(driver, By.xpath(elmtContinuesession));
         waitForSeconds(2);
 //        waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(2);
-        jsClick(getElmtBeatingTheBluesCloseButton);
-//        closeWindow(2);
+//        jsClick(getElmtBeatingTheBluesCloseButton);
+        closeWindow(2);
 //        waitForSeconds(3);
-        driver.switchTo().defaultContent();
+//        driver.switchTo().defaultContent();
 //        focusWindow(1);
         waitForSeconds(3);
         return true;

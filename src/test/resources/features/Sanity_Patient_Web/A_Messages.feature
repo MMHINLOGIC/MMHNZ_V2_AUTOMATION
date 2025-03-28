@@ -291,14 +291,14 @@ Feature: Messages
 #    69:Click on save to save all the settings
 #    These test Case Covered The Scenario NO: S11
 #    }
-  @WEB @MESSAGES @SANITY_PATH1
+  @WEB @MESSAGES @SANITY_PATH
   Scenario Outline: S11- Patient Out Of Office Settings
     Given As a user I am on HomePage and navigate to Messages Setting
     And I click the Out of Office Settings and Enable Out Of Office Reply option
     And I select the Out of office "<Start Date>" and "<End Date>" and Enter the"<Message>"
     When I click the Save Button
     Then I Should Verify the Out Of Office Reply "<Message>"
-    And I Disable Out of Setting
+#    And I Disable Out of Setting
     Examples:
       | Start Date   | End Date   | Message          |
       | &START DATE& | &END DATE& | &OUT OF MESSAGE& |

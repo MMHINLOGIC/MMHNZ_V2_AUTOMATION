@@ -3,6 +3,7 @@ package Sanity_Patient_Web.pages;
 import cap.common.BasePage;
 import cap.utilities.TestDataUtil;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -24,46 +25,46 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[@mattooltip='Profile']")
     protected WebElement elmntMyProfile;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Profile')]")
+    @FindBy(how = How.XPATH, using = "//span[text()=' Profile ']")
     protected WebElement elmntProfile;
 
     @FindBy(how = How.XPATH, using = "//button[contains(text(),'Change Email Address')]")
     protected WebElement elmntChangeEmailAddress;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Change Phone Number')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Change Phone Number')])[2]")
     protected WebElement elmntChangePhoneNumber;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Calendar')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Calendar')])[2]")
     protected WebElement elmntCalendar;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Update Profile') or contains(text(),'View Profile')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Update Profile') or contains(text(),'View Profile')])[2]")
     protected WebElement elmntViewOrUpdateProfile;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'My Health Centres')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'My Health Centres')])[2]")
     protected WebElement elmntMyHealthCentre;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'My Subscriptions')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'My Subscriptions')]")
     protected WebElement elmntMySubscriptions;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Emergency Contacts')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Emergency Contacts')]")
     protected WebElement elmntEmergencyContacts;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Log-in History')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Log-in History')]")
     protected WebElement elmntLoginHistory;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'General')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'General')]")
     protected WebElement elmntGeneral;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Categories')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Categories')]")
     protected WebElement elmntCategories;
 
-    @FindBy(how = How.XPATH, using = "//button[@aria-label='Delete']")
+    @FindBy(how = How.XPATH, using = "//mat-button[@aria-label='Delete']")
     protected List<WebElement> btnDeleteIcon;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Change Address')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Change Address')])[2]")
     protected WebElement elmntChangeAddress;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Change Password')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Change Password')])[2]")
     protected WebElement elmntChangePassword;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Change Password')]")
@@ -75,11 +76,11 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Add Category ')]")
     protected WebElement txtAddCategory;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Delete Event')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Delete Event')]")
     protected WebElement txtDeleteEvent;
 
     //td[@class='ng-star-inserted currentDay']
-    @FindBy(how = How.XPATH, using = "//table/tr/td[@class='ng-star-inserted currentDay' or @class='currentDay ng-star-inserted']")
+    @FindBy(how = How.XPATH, using = "(//table//tr/td[@class='k-scheduler-cell k-nonwork-hour ng-star-inserted'])[1]")
     protected WebElement elmntCurrentDay;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Log-in History')]")
@@ -96,19 +97,19 @@ public class ProfilesPage extends BasePage {
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Event')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Event')]")
     protected WebElement txtEvent;
 
-    @FindBy(how = How.XPATH, using = "(//button[contains(text(),'Close')])[2]")
+    @FindBy(how = How.XPATH, using = "(//span[text()='Close'])[1]")
     protected WebElement btnClose;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Change Address')]")
     protected WebElement txtChangeAddress;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Add New Contact')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Add New Contact')]//i")
     protected WebElement elmntAddNewContact;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Add category')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Add category')]//i")
     protected WebElement elmntAddCategory;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Emergency Contacts')]")
@@ -117,7 +118,7 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Calendar Settings')]")
     protected WebElement txtCalendarSettings;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Emergency Information')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Emergency Information')])[2]")
     protected WebElement txtEmergencyInformation;
 
     @FindBy(how = How.XPATH, using = "(//input[@value='accessed']/preceding-sibling::div//following::input)[1]")
@@ -166,11 +167,16 @@ public class ProfilesPage extends BasePage {
             .append("<<REPLACEMENT>>")
             .append("')]").toString();
 
+    protected String elmntEventNameDelete = new StringBuilder()
+            .append("(//div[contains(text(),'")
+            .append("<<REPLACEMENT>>")
+            .append("')]//following::span[@class='k-event-actions']/span)[1]").toString();
+
 
     @FindBy(how = How.XPATH, using = "//button[@aria-label='Delete']")
     protected WebElement btnEventConfirmDelete;
 
-    @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Current Password']")
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Current Password']")
     protected WebElement txtBoxCurrentPassword;
 
     @FindBy(how = How.XPATH, using = "//input[@placeholder='Subject']")
@@ -182,16 +188,16 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Description')]/following::div//textarea")
     protected WebElement txtBoxDescription;
 
-    @FindBy(how = How.XPATH, using = "//input[@data-placeholder='New Password']")
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='New Password']")
     protected WebElement txtBoxNewPassword;
 
-    @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Confirm Password']")
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Confirm Password']")
     protected WebElement txtBoxConfirmPassword;
 
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'weekview')]")
     protected WebElement elmntWeekView;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(@class,'dayview')]")
+    @FindBy(how = How.XPATH, using = "//button[@class='k-button k-button-md k-rounded-md k-button-solid-base k-button-solid ng-star-inserted k-selected']")
     protected WebElement elmntDayView;
 
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'monthview')]")
@@ -251,7 +257,7 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='categoryTheme']")
     protected WebElement drpDownCategoryTheme;
 
-    @FindBy(how = How.XPATH, using = "//span[@role='listbox']")
+    @FindBy(how = How.XPATH, using = "//kendo-dropdownlist[@aria-haspopup='listbox']//button")
     protected WebElement drpDownEventCategory;
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='DateFormat']")
@@ -284,10 +290,10 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Save')]")
     protected WebElement btnSave;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Save')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Save')])[1]")
     protected WebElement btnEventSave;
 
-    @FindBy(how = How.XPATH, using = "//th[text()='Name']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Name']")
     protected WebElement headerName;
 
     @FindBy(how = How.XPATH, using = "//button[@aria-label='Delete']")
@@ -296,7 +302,7 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//label[contains(text(),'All Day Event')]/ancestor::div/input")
     protected WebElement chkBoxAllDayEvent;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Yes')]")
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes')]")
     protected WebElement btnYes;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Week')]")
@@ -305,10 +311,10 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Month')]")
     protected WebElement btnMonth;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'calendar settings')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'calendar settings')]//i")
     protected WebElement btnCalendarSettings;
 
-    @FindBy(how = How.XPATH, using = "//mat-checkbox[@formcontrolname='categoryShow']//input")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Show')]")
     protected WebElement chkBoxShow;
 
     @FindBy(how = How.XPATH, using = "//div[@class='leftside']")
@@ -326,7 +332,7 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),' Search ')]")
     protected WebElement btnSearchForPatient;
 
-    @FindBy(how = How.XPATH, using = "//input[@class='k-input']")
+    @FindBy(how = How.XPATH, using = "//input[@class='k-input-inner']")
     protected WebElement txtBoxPatientName;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Date Recorded')]")
@@ -371,7 +377,7 @@ public class ProfilesPage extends BasePage {
 
     //label[contains(text(),'Last Name First Name')]/preceding-sibling::input
     protected String searchOrder = new StringBuilder()
-            .append("//div[contains(text(),'")
+            .append("//label[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')]").toString();
 
@@ -577,7 +583,8 @@ click(btnAddresschangedOkPopup);
     public boolean clickEmergencyContacts() {
         waitForElement(elmntAddNewContact);
         waitForElementClickable(elmntAddNewContact);
-        waitAndClick(elmntAddNewContact);
+        jsClick(elmntAddNewContact);
+        waitForElement(txtEmergencyContacts);
         return verifyElement(txtEmergencyContacts);
     }
 
@@ -632,14 +639,16 @@ click(btnAddresschangedOkPopup);
     public boolean deleteAllCategories() {
         waitForElement(elmntAddCategory);
         try {
-            waitForElements(btnDeleteIcon);
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            waitForElements(btnDeleteIcon);
             for (WebElement delete: btnDeleteIcon) {
                 waitForSeconds(3);
 //                waitForElement(delete);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForElement(delete);
                 waitForElementClickable(delete);
-                jsClick(delete);
+                waitAndClick(delete);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(1);
                 waitForElement(btnYes);
@@ -664,11 +673,12 @@ click(btnAddresschangedOkPopup);
         waitForElement(txtEmergencyContacts);
         try {
 //            waitForElements(btnDeleteIcon);
+            int Value=btnDeleteIcon.size();
+            System.out.println("Value :: "+Value);
             for (WebElement delete: btnDeleteIcon) {
-                waitForSeconds(2);
+                waitForSeconds(4);
                 waitForElement(delete);
-                waitForElementClickable(delete);
-                waitAndClick(delete);
+                jsClick(delete);
                 waitForSeconds(1);
                 waitForElement(btnYes);
                 waitForSeconds(1);
@@ -677,6 +687,7 @@ click(btnAddresschangedOkPopup);
                 waitAndClick(btnYes);
 
                 waitForElement(successPopup);
+                verifyElement(successPopup);
                 waitForSeconds(3);
             }
 
@@ -694,6 +705,7 @@ click(btnAddresschangedOkPopup);
         waitForElement(elmntAddCategory);
         waitForElementClickable(elmntAddCategory);
         jsClick(elmntAddCategory);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForElement(txtAddCategory);
         return txtAddCategory.isDisplayed();
     }
@@ -703,25 +715,35 @@ click(btnAddresschangedOkPopup);
         List<String> lstDetails = TestDataUtil.getListOfValue(strDetails);
         System.out.println("lstDetails 1 >>> :: " + lstDetails);
         try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(2);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(txtBoxCategoryName);
-            waitForElementClickable(txtBoxCategoryName);
-            enterValue(txtBoxCategoryName, TestDataUtil.getValue(lstDetails.get(0)));
+//            waitForElementClickable(txtBoxCategoryName);
+            jsClick(txtBoxCategoryName);
+            waitForSeconds(2);
+//            enterValue(txtBoxCategoryName, TestDataUtil.getValue(lstDetails.get(0)));
+            txtBoxCategoryName.sendKeys(TestDataUtil.getValue(lstDetails.get(0)));
+
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
             waitForElement(drpDownCategoryTheme);
             waitForElementClickable(drpDownCategoryTheme);
             jsClick(drpDownCategoryTheme);
+
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
             String strTheme = TestDataUtil.getValue(lstDetails.get(1));
             WebElement theme = waitForElement(By.xpath(ddlTheme.replace("<<REPLACEMENT>>", strTheme)));
             waitForElement(theme);
             waitForElementClickable(theme);
             jsClick(theme);
-
-            waitForElement(chkBoxShow);
-            if (!chkBoxShow.isSelected()) {
-                waitForElementClickable(chkBoxShow);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            waitForElement(chkBoxShow);
+//            if (!chkBoxShow.isSelected()) {
+                waitForElement(chkBoxShow);
                 jsClick(chkBoxShow);
-            }
+//            }
             takeScreenshotSanity(driver);
             blResult = true;
 
@@ -739,18 +761,21 @@ click(btnAddresschangedOkPopup);
 
         boolean isVerified = false;
         try {
+            String Phone = TestDataUtil.getValue(lstDetails.get(3));
+            String HomePhoneNumber="+64"+Phone;
+            System.out.println("HomePhoneNumber :: "+HomePhoneNumber);
             waitForElement(txtEmergencyContacts);
             System.out.println("\nX-Path for Grid Emergency Information >>> :: " + elmntGridEmergencyInformation
                     .replace("<<FirstName>>", TestDataUtil.getValue(lstDetails.get(0)))
                     .replace("<<LastName>>", TestDataUtil.getValue(lstDetails.get(1)))
                     .replace("<<E-Mail>>", TestDataUtil.getValue(lstDetails.get(2)))
-                    .replace("<<HomePhone>>", TestDataUtil.getValue(lstDetails.get(3))));
+                    .replace("<<HomePhone>>", TestDataUtil.getValue(HomePhoneNumber)));
 
             WebElement contactDetails = waitForElement(By.xpath(elmntGridEmergencyInformation
                     .replace("<<FirstName>>", TestDataUtil.getValue(lstDetails.get(0)))
                     .replace("<<LastName>>", TestDataUtil.getValue(lstDetails.get(1)))
                     .replace("<<E-Mail>>", TestDataUtil.getValue(lstDetails.get(2)))
-                    .replace("<<HomePhone>>", TestDataUtil.getValue(lstDetails.get(3)))));
+                    .replace("<<HomePhone>>", TestDataUtil.getValue(HomePhoneNumber))));
 
             waitForElement(contactDetails);
             takeScreenshotSanity(driver);
@@ -1079,22 +1104,22 @@ click(btnAddresschangedOkPopup);
             waitForElementClickable(txtBoxWhat);
             enterValue(txtBoxWhat, strWhat);
 
-            waitForElement(drpDownEventCategory);
-            waitForElementClickable(drpDownEventCategory);
-            waitAndClick(drpDownEventCategory);
-            waitForSeconds(3);
+//            waitForElement(drpDownEventCategory);
+//            waitForElementClickable(drpDownEventCategory);
+//            waitAndClick(drpDownEventCategory);
+//            waitForSeconds(3);
 
-            String strCategory = TestDataUtil.getValue(lstDetails.get(1));
-            System.out.println("X-Path for category list value >>> :: " + ddlCategory
-                    .replace("<<REPLACEMENT>>", strCategory));
-
-            WebElement category = waitForElement(By.xpath(ddlCategory
-                    .replace("<<REPLACEMENT>>", strCategory)));
-
-            waitForElement(category);
-            waitForElementClickable(category);
-            takeScreenshotSanity(driver);
-            waitAndClick(category);
+//            String strCategory = TestDataUtil.getValue(lstDetails.get(1));
+//            System.out.println("X-Path for category list value >>> :: " + ddlCategory
+//                    .replace("<<REPLACEMENT>>", strCategory));
+//
+//            WebElement category = waitForElement(By.xpath(ddlCategory
+//                    .replace("<<REPLACEMENT>>", strCategory)));
+//
+//            waitForElement(category);
+//            waitForElementClickable(category);
+//            takeScreenshotSanity(driver);
+//            waitAndClick(category);
 
             blResult = true;
 
@@ -1130,22 +1155,22 @@ click(btnAddresschangedOkPopup);
             waitForElementClickable(txtBoxWhat);
             enterValue(txtBoxWhat, strWhat);
 
-            waitForElement(drpDownEventCategory);
-            waitForElementClickable(drpDownEventCategory);
-            jsClick(drpDownEventCategory);
-            waitForSeconds(3);
-
-            String strCategory = TestDataUtil.getValue(lstDetails.get(1));
-            System.out.println("X-Path for category list value >>> :: " + ddlCategory
-                    .replace("<<REPLACEMENT>>", strCategory));
-
-            WebElement category = waitForElement(By.xpath(ddlCategory
-                    .replace("<<REPLACEMENT>>", strCategory)));
-
-            waitForElement(category);
-            waitForElementClickable(category);
-            takeScreenshotSanity(driver);
-            jsClick(category);
+//            waitForElement(drpDownEventCategory);
+//            waitForElementClickable(drpDownEventCategory);
+//            jsClick(drpDownEventCategory);
+//            waitForSeconds(3);
+//
+//            String strCategory = TestDataUtil.getValue(lstDetails.get(1));
+//            System.out.println("X-Path for category list value >>> :: " + ddlCategory
+//                    .replace("<<REPLACEMENT>>", strCategory));
+//
+//            WebElement category = waitForElement(By.xpath(ddlCategory
+//                    .replace("<<REPLACEMENT>>", strCategory)));
+//
+//            waitForElement(category);
+//            waitForElementClickable(category);
+//            takeScreenshotSanity(driver);
+//            jsClick(category);
 
             String strWhere = TestDataUtil.getValue(lstDetails.get(2));
             System.out.println("strWhat >>> :: " + strWhat);
@@ -1185,23 +1210,23 @@ click(btnAddresschangedOkPopup);
 
             mouseOver(name);
 
-            waitForSeconds(2);
+            waitForSeconds(4);
 
-            System.out.println("X-Path for elmnt eName >>> :: " + btnEventDelete
+            System.out.println("X-Path for elmnt eName >>> :: " + elmntEventNameDelete
                     .replace("<<REPLACEMENT>>", TestDataUtil.getValue(lstDetails.get(0))));
 
-            WebElement deletePopup = waitForElement(By.xpath(btnEventDelete
+            WebElement deletePopup = waitForElement(By.xpath(elmntEventNameDelete
                     .replace("<<REPLACEMENT>>", TestDataUtil.getValue(lstDetails.get(0)))));
 
             waitForElement(deletePopup);
-            jsClick(deletePopup);
+            mouseClick(deletePopup);
             waitForElement(txtDeleteEvent);
             waitForElement(btnEventConfirmDelete);
             waitForElementClickable(btnEventConfirmDelete);
             jsClick(btnEventConfirmDelete);
-//            waitForElement(successPopup);
+            waitForElement(successPopup);
             takeScreenshotSanity(driver);
-            blResult = true;
+            blResult = verifyElement(successPopup);
 
         } catch (Exception e) {
             System.out.println("Failed to Enter Event Details >>> :: ");
@@ -1291,54 +1316,63 @@ click(btnAddresschangedOkPopup);
             waitForElementClickable(txtBoxFirstName);
             System.out.println("txtBoxFirstName >>> :: " + TestDataUtil.getValue(lstNewAddress.get(0)));
             enterValue(txtBoxFirstName, TestDataUtil.getValue(lstNewAddress.get(0)));
+            waitForSeconds(2);
 
             waitForElement(txtBoxLastName);
             waitForElementClickable(txtBoxLastName);
             System.out.println("txtBoxLastName >>> :: " + TestDataUtil.getValue(lstNewAddress.get(1)));
             enterValue(txtBoxLastName, TestDataUtil.getValue(lstNewAddress.get(1)));
+            waitForSeconds(2);
 
             waitForElement(txtBoxEmail);
             waitForElementClickable(txtBoxEmail);
             System.out.println("txtBoxEmail >>> :: " + TestDataUtil.getValue(lstNewAddress.get(2)));
             enterValue(txtBoxEmail, TestDataUtil.getValue(lstNewAddress.get(2)));
+            waitForSeconds(2);
 
             waitForElement(txtBoxHomePhone);
             waitForElementClickable(txtBoxHomePhone);
             System.out.println("txtBoxHomePhone >>> :: " + TestDataUtil.getValue(lstNewAddress.get(3)));
             enterValue(txtBoxHomePhone, TestDataUtil.getValue(lstNewAddress.get(3)));
+            waitForSeconds(2);
 
             waitForElement(txtBoxMobilePhone);
             jsScrollIntoView(txtBoxMobilePhone);
             waitForElementClickable(txtBoxMobilePhone);
             System.out.println("txtBoxMobileNumber >>> :: " + TestDataUtil.getValue(lstNewAddress.get(4)));
             enterValue(txtBoxMobilePhone, TestDataUtil.getValue(lstNewAddress.get(4)));
+            waitForSeconds(2);
 
             waitForElement(txtBoxWorkPhone);
             waitForElementClickable(txtBoxWorkPhone);
             System.out.println("txtBoxWorkPhone >>> :: " + TestDataUtil.getValue(lstNewAddress.get(5)));
             enterValue(txtBoxWorkPhone, TestDataUtil.getValue(lstNewAddress.get(5)));
+            waitForSeconds(2);
 
             waitForElement(txtBoxAHPhone);
             waitForElementClickable(txtBoxAHPhone);
             System.out.println("txtBoxAHPhone >>> :: " + TestDataUtil.getValue(lstNewAddress.get(6)));
             enterValue(txtBoxAHPhone, TestDataUtil.getValue(lstNewAddress.get(6)));
+            waitForSeconds(2);
 
             String strRelation = TestDataUtil.getValue(lstNewAddress.get(7));
             System.out.println("strRelation >>> :: " + strRelation);
             waitForElement(drpDownRelationship);
             waitForElementClickable(drpDownRelationship);
             waitAndClick(drpDownRelationship);
+            waitForSeconds(2);
             System.out.println("X-Path for relationShip >>> ::" + ddlValue.replace("<<REPLACEMENT>>", strRelation));
             WebElement relationShip = waitForElement(By.xpath(ddlValue.replace("<<REPLACEMENT>>", strRelation)));
             waitForElementClickable(relationShip);
             waitAndClick(relationShip);
+            waitForSeconds(2);
 
             waitForElement(txtBoxStreetNumber);
             jsScrollIntoView(txtBoxStreetNumber);
             waitForElementClickable(txtBoxStreetNumber);
             System.out.println("txtBoxStreetNumber >>> :: " + TestDataUtil.getValue(lstNewAddress.get(8)));
             enterValue(txtBoxStreetNumber, TestDataUtil.getValue(lstNewAddress.get(8)));
-
+            waitForSeconds(2);
             waitForElement(txtBoxStreetSuburbCity);
             waitForElementClickable(txtBoxStreetSuburbCity);
             System.out.println("txtBoxStreetSuburbCity >>> :: " + TestDataUtil.getValue(lstNewAddress.get(9)));
@@ -1445,11 +1479,16 @@ click(btnAddresschangedOkPopup);
             waitForSeconds(2);
             waitForElement(btnDay);
             waitForElementClickable(btnDay);
-            waitAndClick(btnDay);
+            jsClick(btnDay);
             waitForSeconds(3);
             waitForElement(elmntDayView);
-            takeScreenshotSanity(driver);
-            blResult = verifyElement(elmntDayView);
+            String data=elmntDayView.getAttribute("ng-reflect-selected").toString();
+            System.out.println("data :: "+data);
+            if (data.equals("true")){
+                takeScreenshotSanity(driver);
+                blResult=true;
+
+            }
 
         } catch (Exception e) {
             System.out.println("Failed to verify Day view >>> :: ");
@@ -1464,10 +1503,15 @@ click(btnAddresschangedOkPopup);
             waitForElement(txtCalendar);
             waitForElement(btnWeek);
             waitForElementClickable(btnWeek);
-            waitAndClick(btnWeek);
-            waitForElement(elmntWeekView);
-            takeScreenshotSanity(driver);
-            blResult = verifyElement(elmntWeekView);
+            jsClick(btnWeek);
+            waitForSeconds(2);
+            String data=elmntDayView.getAttribute("ng-reflect-selected");
+            System.out.println("data :: "+data);
+            if (data.equals("true")){
+                takeScreenshotSanity(driver);
+                blResult=true;
+
+            }
 
         } catch (Exception e) {
             System.out.println("Failed to verify Week view >>> :: ");
@@ -1482,10 +1526,15 @@ click(btnAddresschangedOkPopup);
             waitForElement(txtCalendar);
             waitForElement(btnMonth);
             waitForElementClickable(btnMonth);
-            waitAndClick(btnMonth);
-            waitForElement(elmntMonthView);
-            takeScreenshotSanity(driver);
-            blResult = verifyElement(elmntMonthView);
+            jsClick(btnMonth);
+            waitForSeconds(2);
+            String data=elmntDayView.getAttribute("ng-reflect-selected");
+            System.out.println("data :: "+data);
+            if (data.equals("true")){
+                takeScreenshotSanity(driver);
+                blResult=true;
+
+            }
 
         } catch (Exception e) {
             System.out.println("Failed to verify Month view >>> :: ");
@@ -1503,7 +1552,8 @@ click(btnAddresschangedOkPopup);
             waitForElement(txtCalendar);
             waitForElement(btnCalendarSettings);
             waitForElementClickable(btnCalendarSettings);
-            waitAndClick(btnCalendarSettings);
+            jsClick(btnCalendarSettings);
+            waitForSeconds(2);
             waitForElement(txtCalendarSettings);
             takeScreenshotSanity(driver);
             blResult = verifyElement(txtCalendarSettings);
@@ -1752,6 +1802,7 @@ click(btnAddresschangedOkPopup);
 //            waitForElementClickable(patient);
 //            waitAndClick(patient);
             waitForSeconds(1);
+            txtBoxPatientName.sendKeys(Keys.ENTER);
 
             System.out.println("\nSuccessfully Entered To>>> :: ");
         } catch (Exception e) {

@@ -129,7 +129,7 @@ public class DashboardPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),' Previous Repeat Prescriptions')]")
     protected WebElement txtViewPreviousRequests;
 
-    @FindBy(how = How.XPATH, using = "//mat-icon[contains(text(),'close')]")
+    @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'close')])[2]")
     protected WebElement btnMoreInfoClose;
 
 
@@ -174,7 +174,7 @@ public class DashboardPage extends BasePage {
     // (//h5[contains(text(),'11 Sep 2022, Dr Paul Anderson')]/following-sibling::p[contains(text(),'Dashboard Msg Testing1-MMQWSDGI')])[2]/parent::div
     protected static String verifyDashboardMessages = new StringBuilder()
             .append("(//h5[contains(text(),'")
-            .append("<<DATE>>").append(", ")
+            .append("<<DATE>>").append(",")
             .append("<<DOCTOR_NAME>>")
             .append("')]/following-sibling::p[contains(text(),'")
             .append("<<MESSAGE>>")
@@ -288,7 +288,7 @@ public class DashboardPage extends BasePage {
                 System.out.println("Covid Prescreening popup is displayed");
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForElementClickable(elmntDeclineCovidPreScreening);
-                click(elmntDeclineCovidPreScreening);
+                jsClick(elmntDeclineCovidPreScreening);
             }
             if (!isElementDisplayed(elmntCovidPreScreeningPopup)){
                 System.out.println("Covid Prescreening popup is not displayed");

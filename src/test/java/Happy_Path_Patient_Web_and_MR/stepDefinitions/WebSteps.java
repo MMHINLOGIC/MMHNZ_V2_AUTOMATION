@@ -2563,7 +2563,7 @@ public class WebSteps {
 //       Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
         Assert.assertTrue(demoPageContainer.messagesPage.ProviderHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenterLocation(TestDataUtil.getValue(lstMessageDetails.get(1))));
-        Assert.assertTrue(demoPageContainer.messagesPage.selectServiceName(TestDataUtil.getValue(lstMessageDetails.get(2))));
+        Assert.assertTrue(demoPageContainer.messagesPage.selectServiceNamePatient1(TestDataUtil.getValue(lstMessageDetails.get(2))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectRole(TestDataUtil.getValue(lstMessageDetails.get(3))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectTo(TestDataUtil.getValue(lstMessageDetails.get(4))));
         Assert.assertTrue(demoPageContainer.messagesPage.enterSubjectDoctor(TestDataUtil.getValue(lstMessageDetails.get(5))));

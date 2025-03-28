@@ -120,7 +120,7 @@ public class ViewJournal extends BasePage {
     protected WebElement elmntMonthAndYear;
 
     public String futureDate = new StringBuilder()
-            .append("//td/div[contains(text(),'")
+            .append("//td//span[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')]").toString();
 
@@ -157,19 +157,19 @@ public class ViewJournal extends BasePage {
             .append("//div[@class='tbl-th']/following::div[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Close')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Close')])[2]")
     protected WebElement elmntIcon;
 
     protected String strEditjournalContentLocator = new StringBuilder()
-            .append("//td[contains(text(),'")
+            .append("(//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following-sibling::td[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')]//following::td//following::td//following::td//following::button[@mattooltip='Edit']").toString();
+            .append("<<REPLACEMENT2>>").append("')]//following::td//following::td//following::td//following::mat-button[@mattooltip='Edit'])[1]").toString();
 
     //td[contains(text(),'31-Aug-2022')]//following-sibling::td[contains(text(),'TestSubject-TCVXYCWR')]//following::td//following::td//following::td//following::button[@mattooltip='Edit']
     protected String strDeletejournalContentLocator = new StringBuilder()
             .append("//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following-sibling::td[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')]//following::td//following::td//following::button[@mattooltip='Delete']").toString();
+            .append("<<REPLACEMENT2>>").append("')]//following::td//following::td//following::mat-button[@mattooltip='Delete']").toString();
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Save')]")
     protected WebElement btnEditBloodPressureSave;
 
@@ -251,8 +251,9 @@ public class ViewJournal extends BasePage {
 
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             waitForSeconds(3);
+            jsScrollIntoView(elmtHealthTools);
             waitForElementClickable(elmtHealthTools);
-            click(elmtHealthTools);
+            jsClick(elmtHealthTools);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmtGoalTracking);
             waitForElement(elmtGoalTracking);

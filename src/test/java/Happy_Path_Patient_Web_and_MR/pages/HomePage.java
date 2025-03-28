@@ -54,7 +54,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[@id='Login']")
     protected WebElement btnLogin;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Login']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Sign in']")
     protected WebElement elmntLoginBtn;
 
     @FindBy(how = How.XPATH, using = "//button[contains(@class,'btn-primary-pill')]")
@@ -80,7 +80,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='Provider Login']")
     protected WebElement ClickPatientLoginBtn;
 
-    @FindBy(how = How.XPATH, using = "//img[@class='profile-pic img-fluid']")
+    @FindBy(how = How.XPATH, using = "//img[@src='assets/images/profile-unknown.svg']")
     protected WebElement elmntProfile;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),' Sign Out ')]")
@@ -308,7 +308,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
     protected WebElement elmntSideBar;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Sign out')])[1]")
     protected WebElement btnExitApp;
 
     @FindBy(how = How.XPATH, using = "//mat-icon[contains(text(),'exit_to_app')]")
@@ -333,7 +333,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//a[contains(@class,'header')]//span[text()='Appointments']")
     protected WebElement btnAppointmentExpand;
 
-    @FindBy(how = How.XPATH, using = "//img[@class='profile-pic bookAppointmentIcon']")
+    @FindBy(how = How.XPATH, using = "//img[@src='/assets/themes/app/Book Appointment.svg']")
     protected WebElement VerifyBookAppointmentHeaderIcon;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Book an Appointment')]")
@@ -357,7 +357,7 @@ public class HomePage extends BasePage {
     @FindBy (how = How.XPATH, using = "//span[contains(text(),'BOOK APPOINTMENT')]")
     protected WebElement elmntPatientBookAppointment;
 
-    @FindBy (how = How.XPATH, using = "//span[text()='Login']")
+    @FindBy (how = How.XPATH, using = "//span[text()='Sign in']")
     protected WebElement elmntloginbtn;
 
     @FindBy(how = How.XPATH, using = "//mat-icon[text()='exit_to_app']")

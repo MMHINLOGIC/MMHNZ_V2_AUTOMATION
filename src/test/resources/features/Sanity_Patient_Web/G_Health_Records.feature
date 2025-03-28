@@ -528,9 +528,9 @@
     Given As a Existing user I am on HomePage and I click the Health Records
     And I navigate to the Recalls page
     When I should see all the Recalls Entries From Health center Medicine Details in a grid view
-      | &RECALLS_TABLE_DATA_1& |
+      | &RECALLS_TABLE_DATA& |
     And I click on the more info icon to see all the Recalls Entries From the Health center Medicine details
-      | &RECALLS_TABLE_DATA_1& | &RECALLS_ICON_DATA_1& | &MOBILE_RECALLS_ICON_DATA_1& |
+      | &RECALLS_TABLE_DATA& | &RECALLS_ICON_DATA& | &MOBILE_RECALLS_ICON_DATA& |
     Then I should see all the Recall Remainder Entries From Health center Medicine Details in a grid view
       | &RECALLS_REMAINDER_TABLE_DATA& |
     And I click on the more info icon to see all the Recall Remainder Entries From the Health center Medicine details
