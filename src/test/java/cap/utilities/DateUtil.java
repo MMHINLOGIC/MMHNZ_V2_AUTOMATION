@@ -30,10 +30,10 @@ public class DateUtil {
 
     public static void main(String[] args) {
 
-//        String currentDate = getCurrentDate("dd MMM yyyy");
-//        System.out.println(currentDate);
-//        String TomorrowDate = getDate("TOMORROW","dd MMM yyyy");
-//        System.out.println(currentDate);
+        String currentDate = getCurrentDate("dd MMM yyyy");
+        System.out.println(currentDate);
+        String TomorrowDate = getDate("TOMORROW","dd MMM yyyy");
+        System.out.println(currentDate);
         String Date = getDate("AFTER_THREE_DAYS","dd MMM yyyy");
         System.out.println(Date);
 

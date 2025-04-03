@@ -803,11 +803,13 @@ public class MyHealthRecordsPage extends BasePage {
             jsClick(btnMyHealthRecordsExpand);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
 //            waitForElementClickable(elmntPrescriptions);
 //            jsClick(elmntPrescriptions);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntFilterbyDrop.replace("<<REPLACEMENT>>", Strdata)));
             System.out.println(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
 
@@ -1427,6 +1429,11 @@ public class MyHealthRecordsPage extends BasePage {
 //            jsClick(elmntImmunisations);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntFilterbyAllergiesDrop.replace("<<REPLACEMENT>>", strdata)));
             jsClick(elmntEntriesFromHealthCentre);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
+
+
+
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             waitForSeconds(3);
@@ -2102,9 +2109,10 @@ public class MyHealthRecordsPage extends BasePage {
             WebElement elmntPrescriptionMyEntiresIconData = waitForElement(By.xpath(StrShareDoctorCOVIDImmunisationsIconLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(currentDate))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(0)))));
+            System.out.println("elmntPrescriptionMyEntiresIconData ::"+elmntPrescriptionMyEntiresIconData);
             waitForElementClickable(elmntPrescriptionMyEntiresIconData);
             waitForElement(elmntPrescriptionMyEntiresIconData);
-            mouseClick(elmntPrescriptionMyEntiresIconData);
+            jsClick(elmntPrescriptionMyEntiresIconData);
             for (String str : lstDetails1) {
                 waitForSeconds(3);
                 WebElement elmntMyEntries = waitForElement(By.xpath(strPrescriptionsMyEntriesInfoDetails.replace("<<REPLACEMENT>>", str)));
@@ -2357,6 +2365,7 @@ public class MyHealthRecordsPage extends BasePage {
 
     public void enterImmunisationVaccineName(String strVisitedName) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
             PrescriptionsMedicationName = strVisitedName.concat(strExecutionID);
             waitForElement(elmntImmunisationVaccineName);
             enterValue(elmntImmunisationVaccineName, PrescriptionsMedicationName);
@@ -3093,10 +3102,12 @@ public class MyHealthRecordsPage extends BasePage {
     public void clickAddRecord() {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElementClickable(btnAddRecord);
             jsClick(btnAddRecord);
-
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));

@@ -133,7 +133,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'User settings updated successfully')]")
     protected WebElement txtSettingSuccessPopUp;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Login']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Sign in']")
     protected WebElement elmntLoginBtn;
 
     @FindAll({
@@ -151,7 +151,7 @@ public class MessagesPage extends BasePage {
     })
     protected WebElement txtProviderPortalWelcomePage;
 
-    @FindBy(how = How.XPATH, using = "//img[@class='profile-pic img-fluid']")
+    @FindBy(how = How.XPATH, using = "//img[@src='assets/images/profile-unknown.svg']")
     protected WebElement elmntProfile;
 
 
@@ -926,7 +926,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//a[contains(text(),'Send Message')])[2]")
     protected WebElement btnSendMessageButton;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Sign out')])[1]")
     protected WebElement elmntLogOut;
 
     @FindBy(how = How.XPATH, using = "//div[@class='navbar-header']")
@@ -1760,10 +1760,10 @@ public class MessagesPage extends BasePage {
             }
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                 System.out.println("strMessage >>> :: " + TestDataUtil.getValue(strMessage));
-                waitForSeconds(2);
+                waitForSeconds(4);
                 waitForElement(chkboxAutomaticReply);
                 jsClick(chkboxAutomaticReply);
-                waitForSeconds(1);
+                waitForSeconds(3);
                 waitForElement(frameAutomaticReplies);
                 driver.switchTo().frame(frameAutomaticReplies);
                 System.out.println("Switched into frame");

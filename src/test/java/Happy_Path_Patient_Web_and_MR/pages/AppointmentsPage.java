@@ -3590,13 +3590,14 @@ if (verifyElement(elmntAddToGoogle)){
             closeWindow(2);
             focusWindow(1);
 }
+waitForSeconds(4);
             WebElement elmntReservationDetails = waitForElement(By.xpath(btnJoinVideoConsultingForCreatedAppointment
                     .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
                     .replace("<<REPLACEMENT2>>", lstDetails.get(0))
                     .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
             System.out.println("TEST" + elmntReservationDetails);
             verifyElement(elmntReservationDetails);
-            click(elmntReservationDetails);
+            jsClick(elmntReservationDetails);
             waitForSeconds(3);
             blResult = true;
 
@@ -3645,14 +3646,14 @@ if (verifyElement(elmntAddToGoogle)){
                     closeWindow(2);
                     focusWindow(1);
                 }
-
+                waitForSeconds(4);
                 WebElement elmntReservationDetails = waitForElement(By.xpath(btnJoinVideoConsultingForCreatedAppointment
                         .replace("<<REPLACEMENT1>>", strFinalOutDateTime)
                         .replace("<<REPLACEMENT2>>", lstDetails.get(0))
                         .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
                 System.out.println("TEST" + lstDetails.get(1));
                 verifyElement(elmntReservationDetails);
-                click(elmntReservationDetails);
+                jsClick(elmntReservationDetails);
                 waitForSeconds(3);
                 blResult = true;
             } catch (Exception d) {

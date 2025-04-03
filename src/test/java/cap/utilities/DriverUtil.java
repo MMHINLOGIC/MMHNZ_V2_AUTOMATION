@@ -497,10 +497,16 @@ public class DriverUtil {
     public static ChromeOptions chromeCapabilities() {
 
         String strWorkingDirectory = System.getProperty("user.dir");
+//        String downloadFilepath = "config/Downloads";
         String strDownloadLocation = new StringBuilder(strWorkingDirectory)
                 .append(File.separator).append(Constants.DOWNLOAD_PATH).toString();
         ChromeOptions options = new ChromeOptions();
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+
+        chromePrefs.put("download.default_directory", strDownloadLocation); // Set default download directory
+        chromePrefs.put("download.prompt_for_download", false); // Disable 'Save As' dialog
+        chromePrefs.put("profile.default_content_settings.popups", 0); // Disable popups
+        chromePrefs.put("safebrowsing.enabled", true); // Enable safe browsing
 
         // Hide save credentials prompt
         chromePrefs.put("credentials_enable_service", false);
@@ -543,9 +549,8 @@ public class DriverUtil {
         DesiredCapabilities cap = DesiredCapabilities.chrome();
         cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         cap.setCapability(ChromeOptions.CAPABILITY, options);
-        options.addArguments("incognito");
+        options.addArguments("incognito"); // Enables incognito mode
 //        options.addArguments("--headless=new");  // Enables headless mode (new mode for Chrome 109+)
-//        options.addArguments("--incognito");     // Enables incognito mode
 //        options.addArguments("--disable-gpu");   // Disables GPU (for stability)
 //        options.addArguments("--window-size=1920,1080");
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
