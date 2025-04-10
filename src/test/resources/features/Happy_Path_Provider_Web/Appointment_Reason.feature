@@ -9,7 +9,7 @@ Feature: Appointment Reason
     And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REASON
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REASON @PROVIDER_SCRIPT1
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -20,7 +20,7 @@ Feature: Appointment Reason
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REASON
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REASON @PROVIDER_SCRIPT1
   Scenario Template:S1- Add Appointment Reason
 
     Given As a Provider I am on HomePage and navigate to Appointment Reason page
@@ -37,7 +37,7 @@ Feature: Appointment Reason
       | &LOCATION& | &BOOK_VISIT_APPOINTMENT& | &REASON_DATA& | Book Appointment | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REASON
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REASON @PROVIDER_SCRIPT1
   Scenario Template:S2- Edit Appointment Reason
 
     Given As a Provider I am on HomePage and navigate to Appointment Reason page
@@ -54,7 +54,7 @@ Feature: Appointment Reason
       | &LOCATION& | &BOOK_VISIT_APPOINTMENT& | &UPADTE_REASON_DATA& | Book Appointment | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& | &REASON_DATA& |  |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REASON
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REASON @PROVIDER_SCRIPT1
   Scenario Template:S3- Delete Appointment Reason
 
     Given As a Provider I am on HomePage and navigate to Appointment Reason page

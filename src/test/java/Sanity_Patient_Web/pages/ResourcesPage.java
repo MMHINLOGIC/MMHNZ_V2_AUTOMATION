@@ -19,13 +19,13 @@ public class ResourcesPage extends BasePage {
     protected WebElement elmntMyHealthCentres;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Connected Services')]")
-    protected WebElement elmntResources;
+    protected WebElement elmntConnectedServices;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Discover Health')]")
     protected WebElement elmntDiscoverHealth;
 
     @FindBy(how = How.XPATH, using = "//h5[contains(text(),'Connected Services')]")
-    protected WebElement txtResources;
+    protected WebElement txtConnectedServices;
 
     @FindBy(how = How.XPATH, using = "//h5[contains(text(),'Patient Sheets')]")
     protected WebElement txtPatientSheets;
@@ -66,13 +66,13 @@ public class ResourcesPage extends BasePage {
 
             waitForSeconds(3);
 
-            jsScrollIntoView(elmntResources);
-            waitForElement(elmntResources);
-            waitForElementClickable(elmntResources);
-            jsClick(elmntResources);
+            jsScrollIntoView(elmntConnectedServices);
+            waitForElement(elmntConnectedServices);
+            waitForElementClickable(elmntConnectedServices);
+            jsClick(elmntConnectedServices);
             waitForSeconds(1);
 
-            blResult = verifyElement(txtResources);
+            blResult = verifyElement(txtConnectedServices);
 
             System.out.println("Successfully navigated to Resources >>>>> :: " );
         } catch (Exception e) {
@@ -106,7 +106,7 @@ public class ResourcesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(2);
-            waitForElement(txtResources);
+            waitForElement(txtConnectedServices);
 
             waitForElement(elmntHealthNavigator);
             waitForElementClickable(elmntHealthNavigator);
@@ -127,18 +127,18 @@ public class ResourcesPage extends BasePage {
                 waitForSeconds(5);
                 waitForWindow(1);
                 focusWindow(1);
-                waitForElement(txtResources);
+                waitForElement(txtConnectedServices);
                 takeScreenshotSanity(driver);
-                blResult = verifyElement(txtResources);
+                blResult = verifyElement(txtConnectedServices);
 
             } catch (Exception e) {
                 closeWindow(2);
                 waitForSeconds(5);
                 waitForWindow(1);
                 focusWindow(1);
-                waitForElement(txtResources);
+                waitForElement(txtConnectedServices);
                 takeScreenshotSanity(driver);
-                blResult = verifyElement(txtResources);
+                blResult = verifyElement(txtConnectedServices);
                 e.printStackTrace();
                 System.out.println("User not in the Health Navigator >>>>");
             }
@@ -156,7 +156,7 @@ public class ResourcesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(2);
-            waitForElement(txtResources);
+            waitForElement(txtConnectedServices);
 
             waitForElement(elmntCovid19);
             waitForElementClickable(elmntCovid19);
@@ -178,17 +178,17 @@ public class ResourcesPage extends BasePage {
                 waitForSeconds(5);
                 waitForWindow(1);
                 focusWindow(1);
-                waitForElement(txtResources);
+                waitForElement(txtConnectedServices);
                 takeScreenshotSanity(driver);
-                blResult = verifyElement(txtResources);
+                blResult = verifyElement(txtConnectedServices);
             } catch (Exception e) {
                 closeWindow(1);
                 waitForSeconds(3);
                 waitForWindow(0);
                 focusWindow(0);
-                waitForElement(txtResources);
+                waitForElement(txtConnectedServices);
                 takeScreenshotSanity(driver);
-                blResult = verifyElement(txtResources);
+                blResult = verifyElement(txtConnectedServices);
                 e.printStackTrace();
                 System.out.println("User not in the Health Navigator >>>>");
             }
@@ -206,7 +206,7 @@ public class ResourcesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(2);
-            waitForElement(txtResources);
+            waitForElement(txtConnectedServices);
 
             waitForElement(elmntPatientSheets);
             waitForElementClickable(elmntPatientSheets);
@@ -224,8 +224,8 @@ public class ResourcesPage extends BasePage {
             waitForElementClickable(btnBackToResources);
             waitAndClick(btnBackToResources);
 
-            waitForElement(txtResources);
-            blResult = verifyElement(txtResources);
+            waitForElement(txtConnectedServices);
+            blResult = verifyElement(txtConnectedServices);
 
 
             System.out.println("Successfully verified Activated Resources Covid 19 page >>>>> :: " );

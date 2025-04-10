@@ -10,7 +10,7 @@ Feature: Video Consultations Setting Page
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
 
-  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING @PROVIDER_SCRIPT3
   Scenario Template:S1-Provider Enable Video Consultations No Button Check Video appointment slots are Not displayed in All tab
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -23,7 +23,7 @@ Feature: Video Consultations Setting Page
       | Location   | Appointment_Details      |
       | &LOCATION& | &BOOK_VIDEO_APPOINTMENT& |
 
-  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING @PROVIDER_SCRIPT3
   Scenario Template:S2-Provider Enable Video Consultations yes Button Check Video appointment slots are displayed in All tab
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -36,7 +36,7 @@ Feature: Video Consultations Setting Page
       | Location   | Appointment_Details      |
       | &LOCATION& | &BOOK_VIDEO_APPOINTMENT& |
 
-  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING @PROVIDER_SCRIPT3
   Scenario Template:S3-Provider Disable face to face appointment on a Video Consultation slot
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -52,7 +52,7 @@ Feature: Video Consultations Setting Page
       | &LOCATION& | &BOOK_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VIDEO_APPOINTMENT_SUMMARY& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING @PROVIDER_SCRIPT3
   Scenario Template:S4-Provider Enable face to face appointment on a Video Consultation slot
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -68,7 +68,7 @@ Feature: Video Consultations Setting Page
       | &LOCATION& | &BOOK_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VIDEO_APPOINTMENT_SUMMARY& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING @PROVIDER_SCRIPT3
   Scenario Template:S5-Provider Enable OnDemand Video Consultations Settings
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -80,7 +80,7 @@ Feature: Video Consultations Setting Page
       | details                    |
       | &VIDEO_CONSULTATIONS_DATA& |
 
-  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING @PROVIDER_SCRIPT3
   Scenario Template:S6-Provider Disable OnDemand Video Consultations Settings
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -92,7 +92,7 @@ Feature: Video Consultations Setting Page
       | details                    |
       | &VIDEO_CONSULTATIONS_DATA& |
 
-  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING @PROVIDER_SCRIPT3
   Scenario Template:S7-Provider Enable SMS Video Invite Settings
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page
@@ -105,7 +105,7 @@ Feature: Video Consultations Setting Page
       | &VIDEO_CONSULTATIONS_DATA& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @VIDEO_CONSULTATIONS_SETTING @PROVIDER_SCRIPT3
   Scenario Template:S8-Provider Disable SMS Video Invite Settings
 
     Given As a Provider I am on HomePage and navigate to Video Consultations Setting page

@@ -9,7 +9,7 @@ Feature: Appointment Reminder Setting Page
     And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER
+  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SCRIPT1
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -20,7 +20,7 @@ Feature: Appointment Reminder Setting Page
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER
+  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SCRIPT1
   Scenario Template:S1- Enable Alternative Providers
 
     Given As a Provider I am on HomePage and navigate to Alternative Provider page
@@ -33,7 +33,7 @@ Feature: Appointment Reminder Setting Page
       | Location   | Appointment_Details      |
       | &LOCATION& | &BOOK_VISIT_APPOINTMENT& |
 
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER
+  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SCRIPT1
   Scenario Template:S2- Disable Alternative Providers
 
     Given As a Provider I am on HomePage and navigate to Alternative Provider page

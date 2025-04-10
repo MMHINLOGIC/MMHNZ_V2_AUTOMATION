@@ -62,7 +62,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='ACTIVE']")
     protected WebElement btnactivetab;
 
-    @FindBy(how = How.XPATH, using = "//a[@ng-reflect-active='true']//span[text()='ACTIVE']")
+    @FindBy(how = How.XPATH, using = "//a[@aria-selected='true']//span[text()='ACTIVE']")
     protected WebElement elmtActiveTab;
 
     @FindBy(how = How.XPATH, using = "//label[text()='Inactive']")
@@ -71,7 +71,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='INACTIVE']")
     protected WebElement btnInactivetab;
 
-    @FindBy(how = How.XPATH, using = "//a[@ng-reflect-active='true']//span[text()='INACTIVE']")
+    @FindBy(how = How.XPATH, using = "//a[@aria-selected='true']//span[text()='INACTIVE']")
     protected WebElement elmtInActiveTab;
 
 
@@ -91,10 +91,10 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Health Indicator Clinical Sharing Setting')]")
     protected WebElement elmtPrivacySettingHeader;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Show this entry to my care providers')]//preceding::div[@class='mat-radio-inner-circle']//following-sibling::input)[2]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Show this entry to my care providers')]")
     protected WebElement elmtShowthisentrytomycareproviders;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Show this entry to my care providers')]//preceding::div[@class='mat-radio-inner-circle']//following-sibling::input)[1]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Keep this private')]")
     protected WebElement elmtKeepthisprivate;
 
 
@@ -131,7 +131,7 @@ public class MyHealthIndicators extends BasePage {
     protected WebElement getElmntBloodPressureHealthIndicator;
 
     protected String elmntHealthIndicatorDrop = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[2]").toString();
+            .append("<<REPLACEMENT>>").append("')])[3]").toString();
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='systolic']")
     protected WebElement elmntSystolicMedicationName;
@@ -168,19 +168,19 @@ public class MyHealthIndicators extends BasePage {
     protected String elmntReminderType = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[3]").toString();
 
-    @FindBy(how = How.XPATH, using = "//mat-label[text()='Frequency']//parent::label//parent::span//parent::div")
+    @FindBy(how = How.XPATH, using = "(//mat-label[text()='Frequency']//following::mat-select)[1]")
     protected WebElement getElmntFrequency;
 
     protected String elmntFrequency = new StringBuilder().append(" //span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
-    @FindBy(how = How.XPATH, using = "//mat-label[text()='Time']//parent::label//parent::span//parent::div")
+    @FindBy(how = How.XPATH, using = "(//mat-label[text()='Frequency']//following::mat-select)[2]")
     protected WebElement getElmntTime;
 
     protected String elmntTime = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
-    @FindBy(how = How.XPATH, using = "//mat-label[text()='Comments']//parent::label//parent::span//preceding::textarea")
+    @FindBy(how = How.XPATH, using = "//mat-label[text()='Comments']//following::textarea")
     protected WebElement elmntRemainderComments;
 
     @FindBy(how = How.XPATH, using = "//span[text()='Save']")
@@ -196,7 +196,7 @@ public class MyHealthIndicators extends BasePage {
             .append("(//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT2>>").append("')]//following::td[contains(text(),'")
-            .append("<<REPLACEMENT3>>").append("')]//following::span//following::button)[1]").toString();
+            .append("<<REPLACEMENT3>>").append("')]//following::button//span/i)[1]").toString();
 
     protected String strMyEntriesBloodSugar = new StringBuilder()
             .append("//td[contains(text(),'")
@@ -227,7 +227,7 @@ public class MyHealthIndicators extends BasePage {
     protected String strDeleteMyEntriesBloodPressure = new StringBuilder()
             .append("(//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::td//following::td[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')]//following::span//following::button)[1]").toString();
+            .append("<<REPLACEMENT2>>").append("')]//following::button//span/i)[1]").toString();
 
     protected String strDeleteMyEntriesWeight = new StringBuilder()
             .append("(//td[contains(text(),'")
@@ -312,7 +312,6 @@ public class MyHealthIndicators extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='weight']")
     protected WebElement elmntBMIWeight;
-
 
 
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'HbA1c')]")
@@ -400,7 +399,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'LDL')]")
     protected WebElement getElmntLDLHealthIndicator;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Alcohol')]")
+    @FindBy(how = How.XPATH, using = "//mat-select[@placeholder='Type de service']")
     protected WebElement getElmntAlcoholHealthIndicator;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Anxiety')]")
@@ -442,10 +441,10 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'navigate_next')])[1]")
     protected WebElement elmntchooseAlcoholcount;
 
-    protected String elmntSelectAlcohol = new StringBuilder().append("//a[contains(text(),'")
+    protected String elmntSelectAlcohol = new StringBuilder().append("//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
-    protected String elmntverifyAlcohol = new StringBuilder().append("//a[contains(@class,'label-active')][contains(text(),'")
+    protected String elmntverifyAlcohol = new StringBuilder().append("//a[contains(@class,'mdc-tab-indicator--active')]//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Quarterly')]")
@@ -4007,8 +4006,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+//            waitForElementClickable(elmtInactiveAlltab);
+//            jsClick(elmtInactiveAlltab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -4018,7 +4017,7 @@ public class MyHealthIndicators extends BasePage {
             jsClick(elmntActiveCardData);
             waitForSeconds(3);
             waitForElementClickable(btnStatus);
-            click(btnStatus);
+            jsClick(btnStatus);
             waitForSeconds(3);
             waitForElementClickable(btnInActive);
             jsClick(btnInActive);
@@ -4816,7 +4815,7 @@ public class MyHealthIndicators extends BasePage {
         try {
 //            System.out.println(">>>>>>>>>>>>>>>>>>>PrivateSettinglstDetails"+lstDetails);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-//            jsScrollUp();
+            jsScrollUp();
             jsScrollIntoView(veriflyAllTabElement);
             takeScreenshot(driver);
             String currentDate = getCurrentDate("dd MMM yyyy");

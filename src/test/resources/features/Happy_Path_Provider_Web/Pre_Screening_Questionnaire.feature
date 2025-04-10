@@ -10,7 +10,7 @@ Feature: Pre Screening Questionnaire
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
 
-  @WEB @PROVIDER_HAPPY_PATH @PRE_SCREENING_QUESTIONNAIRE
+  @WEB @PROVIDER_HAPPY_PATH @PRE_SCREENING_QUESTIONNAIRE @PROVIDER_SCRIPT1
   Scenario Template:S1- Add Appointment Reason
 
     Given As a Provider I am on HomePage and navigate to Pre Screening Questionnaire page

@@ -254,6 +254,11 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-checkbox[@formcontrolname='termsConditions']")
     protected WebElement chkTermsAndCondion;
 
+
+    @FindBy(how = How.XPATH, using = "//h6[@class='font-20 total-pay-pos ng-star-inserted']")
+    protected WebElement chkPayment;
+
+
     @FindBy(how = How.XPATH, using = "(//button[contains(text(),'Pay At Health Centre')])[1]")
     protected WebElement btnPayAtHealthCentre;
 
@@ -851,9 +856,7 @@ public class RepeatPrescription extends BasePage {
                 blResult=false;
             }
 
-
             takeScreenshot(driver);
-
 
         } catch (Exception e) {
             System.out.println("Doctor not selected in the Request Medication");
@@ -1052,6 +1055,39 @@ waitForElement(ReasonForNewScript);
             takeScreenshot(driver);
             System.out.println("Terms and Condition was selected in the Request Medication");
             blResult = true;
+
+        } catch (Exception e) {
+            System.out.println("Terms and Condition is not selected in the Request Medication");
+            e.printStackTrace();
+
+        }
+        return blResult;
+    }
+
+    public boolean CapturePaymentDetails() {
+        boolean blResult = false;
+        try {
+            waitForSeconds(3);
+            String Payment=chkPayment.getText().trim();
+            System.out.println("Payment :: "+Payment);
+            if (Payment.equals("Total amount to pay: $440 (Incl. GST)")){
+                System.out.println("Successfully Verified Only CSC Payment");
+                blResult = true;
+            }
+            else if(Payment.equals("Total amount to pay: $450 (Incl. GST)")){
+                System.out.println("Successfully Verified Only HUHC Payment");
+                blResult = true;
+            }
+            else if(Payment.equals("Total amount to pay: $430 (Incl. GST)")){
+                System.out.println("Successfully Verified Only STD Payment");
+                blResult = true;
+            }
+            else {
+                System.out.println("Not Matched For Any Amount!");
+                blResult=false;
+            }
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            takeScreenshot(driver);
 
         } catch (Exception e) {
             System.out.println("Terms and Condition is not selected in the Request Medication");

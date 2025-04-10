@@ -960,6 +960,7 @@ public class WebSteps {
         }
         Assert.assertTrue(demoPageContainer.repeatPrescription.addMessage(lstMedicationDetails.get(8)));
         Assert.assertTrue(demoPageContainer.repeatPrescription.selectTermsAndCondition());
+        Assert.assertTrue(demoPageContainer.repeatPrescription.CapturePaymentDetails());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayNow());
 
@@ -5373,6 +5374,48 @@ public class WebSteps {
 
 //        Assert.assertTrue(demoPageContainer.repeatPrescription.selectDoctor(lstMedicationDetails.get(1)));
 
+
+    }
+
+    @And("I select the Medication details for Delivery Meds by Pharmacy and Pay Online with Card {string} Verify CSC Payments")
+    public void iSelectTheMedicationDetailsForDeliveryMedsByPharmacyAndPayOnlineWithCardVerifyCSCPayments(String strMedicationDetails) {
+        System.out.println("MedicationDetails >>> :" + strMedicationDetails);
+        List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
+        System.out.println("lstMedicationDetails >>> " + lstMedicationDetails);
+
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectHealthCentreLocation(lstMedicationDetails.get(0)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectDoctor(lstMedicationDetails.get(1)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectInstructions(lstMedicationDetails.get(2)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectUrgency(lstMedicationDetails.get(6)));
+//        Assert.assertTrue(demoPageContainer.repeatPrescription.selectPharmacyForDeliveryMedsByPharmacy());
+//        Assert.assertTrue(demoPageContainer.repeatPrescription.selectPharmacyBySavedListForDelivery(lstMedicationDetails.get(3), lstMedicationDetails.get(4)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectPharmacy(lstMedicationDetails.get(4)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectAddress(lstMedicationDetails.get(5)));
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickNextButton());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.selectMedicationsToRepeatForMobile(lstMedicationDetails.get(7)));
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickNextButton());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.selectMedicationsToRepeatForMobile(lstMedicationDetails.get(7)));
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.selectMedicationsToRepeat(lstMedicationDetails.get(7)));
+        }
+        Assert.assertTrue(demoPageContainer.repeatPrescription.addMessage(lstMedicationDetails.get(8)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectTermsAndCondition());
+        demoPageContainer.repeatPrescription.CapturePaymentDetails();
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayNow());
+
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayNow());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayNow());
+
+        }
 
     }
 }

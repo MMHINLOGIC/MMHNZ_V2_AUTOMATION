@@ -9,7 +9,7 @@ Feature: SMS Setting
     And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
     Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB @PROVIDER_HAPPY_PATH @SMS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @SMS_SETTING @PROVIDER_SCRIPT2
   Scenario Template:S1 - Enable -SMS Settings in secure Message
 
     Given As a Provider I am on HomePage and navigate to SMS Setting page
@@ -23,7 +23,7 @@ Feature: SMS Setting
       | Location       |  |
       | &SMS_LOCATION& |  |
 
-  @WEB @PROVIDER_HAPPY_PATH @SMS_SETTING
+  @WEB @PROVIDER_HAPPY_PATH @SMS_SETTING @PROVIDER_SCRIPT2
   Scenario Template:S1 - Disable -SMS Settings in secure Message
 
     Given As a Provider I am on HomePage and navigate to SMS Setting page
