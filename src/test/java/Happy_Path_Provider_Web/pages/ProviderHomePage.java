@@ -518,9 +518,9 @@ public class ProviderHomePage extends BasePage {
         }
             if (!verifyElement(txtProviderPortalWelcomePage)){
                 focusWindow(1);
-                if (verifyElement(elmntLogoutPopup)){
-                    click(elmntLogoutPopupButton);
-                }
+//                if (verifyElement(elmntLogoutPopup)){
+//                    click(elmntLogoutPopupButton);
+//                }
                 System.out.println("Successfully switch to doctor portal");
                 waitForElement(elmtMMHLogo);
                 waitForElementClickable(elmtMMHLogo);

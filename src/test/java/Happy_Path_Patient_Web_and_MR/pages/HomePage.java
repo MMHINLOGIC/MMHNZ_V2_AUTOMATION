@@ -320,7 +320,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@id='UserName']")
     protected WebElement txtEmail;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Provider Login')])[1]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Join meeting')])[1]")
     protected WebElement txtProviderPortal;
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'sign up')])[1]")

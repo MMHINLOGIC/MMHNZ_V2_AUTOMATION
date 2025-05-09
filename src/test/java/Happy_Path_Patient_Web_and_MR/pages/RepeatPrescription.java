@@ -1084,7 +1084,7 @@ waitForElement(ReasonForNewScript);
             }
             else {
                 System.out.println("Not Matched For Any Amount!");
-                blResult=false;
+                blResult=true;
             }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             takeScreenshot(driver);

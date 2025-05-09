@@ -549,7 +549,7 @@ public class DriverUtil {
         DesiredCapabilities cap = DesiredCapabilities.chrome();
         cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         cap.setCapability(ChromeOptions.CAPABILITY, options);
-        options.addArguments("incognito"); // Enables incognito mode
+//        options.addArguments("incognito"); // Enables incognito mode
 //        options.addArguments("--headless=new");  // Enables headless mode (new mode for Chrome 109+)
 //        options.addArguments("--disable-gpu");   // Disables GPU (for stability)
 //        options.addArguments("--window-size=1920,1080");

@@ -54,7 +54,7 @@ public class AppointmentsPage extends BasePage {
     })
     protected WebElement elmntSlotTime;
 
-    protected String strActiveHeader = new StringBuilder().append("//h3[contains(text(),'").append("<<TAB>>").append("')]").toString();
+    protected String strActiveHeader = new StringBuilder().append("(//h3[contains(text(),'").append("<<TAB>>").append("')])[1]").toString();
 
     protected String strMobileActiveHeader = new StringBuilder().append("(//h3[contains(text(),'").append("<<TAB>>").append("')])[2]").toString();
 
@@ -562,7 +562,7 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes')]")
     protected WebElement btnYes;
 
-    @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='phoneCode']")
+    @FindBy(how = How.XPATH, using = "//input[@formcontrolname='contactNumber']")
     protected WebElement elmntPhoneCode;
 
     @FindBy(how = How.XPATH, using = "//div[@class='alert-header-content']/h3[contains(text(),'Payment')]")
@@ -697,10 +697,11 @@ public class AppointmentsPage extends BasePage {
     public boolean navigateToPastAppointmentPage(String strAppointment) {
         boolean blResult = false;
         try {
+            waitForSeconds(3);
 //            waitForElement(elmntWelcomeMessage);
             WebElement elmntBookAppointment = waitForElement(By.xpath(strAppointments.replace("<<REPLACEMENT>>", strAppointment)));
             System.out.println(">>>>>>>>>>>>>>>>>"+elmntBookAppointment);
-            click(elmntBookAppointment);
+            jsClick(elmntBookAppointment);
 //            waitForElement(elmntAppointmentPanel);
 //            waitForElement(elmntBookAppointment);
 //            click(elmntBookAppointment);

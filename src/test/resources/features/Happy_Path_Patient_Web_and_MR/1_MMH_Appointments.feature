@@ -234,7 +234,7 @@ Feature: Appointments
 
 
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -245,7 +245,7 @@ Feature: Appointments
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @Mobile  @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
+  @WEB @Mobile  @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S10 Patient Booking Appointment - Visit Appointment for Nurse & ACC "No" (Card payment)
 
     Given As a user I am on HomePage
@@ -255,10 +255,10 @@ Feature: Appointments
     Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"
 
     Examples:
-      | Appointment      | Appointment_Details                   | Details_For_Appointment                  | Appointment_Summary                  | Future_Date   |
-      | Book Appointment | &BOOK_VISIT_APPOINTMENT_NURSE_ACC_NO& | &VISIT_APPOINTMENT_DETAILS_NURSE_ACC_NO& | &VISIT_APPOINTMENT_DETAILS_CSC_CARD& | &FUTURE_DATE& |
+      | Appointment      | Appointment_Details                   | Details_For_Appointment                  | Future_Date   |
+      | Book Appointment | &BOOK_VISIT_APPOINTMENT_NURSE_ACC_NO& | &VISIT_APPOINTMENT_DETAILS_NURSE_ACC_NO& | &FUTURE_DATE& |
 
-  @WEB  @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
+  @WEB  @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S10 - Patient Booking Appointment - Using Card Payment
 
     And I select payment option "<Payment_Option>"
@@ -281,8 +281,8 @@ Feature: Appointments
     When I click confirm button
     Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"
     Examples:
-      | Appointment      | Appointment_Details                    | Details_For_Appointment                   | Appointment_Summary                  | Future_Date   |
-      | Book Appointment | &BOOK_VISIT_APPOINTMENT_NURSE_ACC_YES& | &VISIT_APPOINTMENT_DETAILS_NURSE_ACC_YES& | &VISIT_APPOINTMENT_DETAILS_CSC_CARD& | &FUTURE_DATE& |
+      | Appointment      | Appointment_Details                    | Details_For_Appointment                   | Future_Date   |
+      | Book Appointment | &BOOK_VISIT_APPOINTMENT_NURSE_ACC_YES& | &VISIT_APPOINTMENT_DETAILS_NURSE_ACC_YES& | &FUTURE_DATE& |
 
   @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
   Scenario Template: S11 - Patient Booking Appointment - Using Card Payment
@@ -298,7 +298,7 @@ Feature: Appointments
       | &PAYMENT_OPTION& | &CARD_DETAILS&  | &CARD_APPOINTMENT_DETAILS_NURSE_ACC_YES& | &FUTURE_DATE& |
 
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: User Successfully logs in to the MMH Portal.
 
     Given As a user I am on MMH login Page
@@ -310,7 +310,7 @@ Feature: Appointments
       | &EMAIL_CSC_CARD& | &PASSWORD& | &UI_EMAIL& |
 
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S12 - Patient Booking Appointment - Visit Appointment Doctor with CSC fees (Card payment)
 
     Given As a user I am on HomePage
@@ -323,7 +323,7 @@ Feature: Appointments
       | Appointment      | Appointment_Details                             | Details_For_Appointment                            | Future_Date   |
       | Book Appointment | &BOOK_VISIT_APPOINTMENT_USING_CSC_CARD_PAYMENT& | &VISIT_APPOINTMENT_DETAILS_CSC_USING_CARD_PAYMENT& | &FUTURE_DATE& |
 
-  @WEB @APP @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
+  @WEB @APP @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S12 - Patient Booking Appointment - Using Card Payment
 
     And I select payment option "<Payment_Option>"
@@ -336,7 +336,7 @@ Feature: Appointments
       | Payment_Option   | Payment_Details | Appointment_Details        | Future_Date   |
       | &PAYMENT_OPTION& | &CARD_DETAILS&  | &CARD_APPOINTMENT_DETAILS& | &FUTURE_DATE& |
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: User Successfully logs in to the MMH Portal.
 
     Given As a user I am on MMH login Page
@@ -348,7 +348,7 @@ Feature: Appointments
       | &EMAIL_HUHC_CARD& | &PASSWORD& | &UI_EMAIL& |
 
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S13 - Patient Booking Appointment - Visit Appointment Doctor with HUHC fees (Card payment)
 
     Given As a user I am on HomePage
@@ -361,7 +361,7 @@ Feature: Appointments
       | Appointment      | Appointment_Details                              | Details_For_Appointment                            | Future_Date   |
       | Book Appointment | &BOOK_VISIT_APPOINTMENT_USING_HUHC_CARD_PAYMENT& | &VISIT_APPOINTMENT_DETAILS_UHC_USING_CARD_PAYMENT& | &FUTURE_DATE& |
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Test
+  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S13 - Patient Booking Appointment - Using Card Payment
 
     And I select payment option "<Payment_Option>"

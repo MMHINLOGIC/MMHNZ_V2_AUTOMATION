@@ -113,12 +113,19 @@ public class MyHealthRecordsPage extends BasePage {
     protected WebElement elmntConditions;
 
     protected String strPrescriptionsIconContentLocator = new StringBuilder()
-            .append("//td[text()='")
+            .append("(//td[text()='")
             .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT2>>").append("']/following-sibling::td[contains(text(),'")
-            .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[text()='")
+            .append("<<REPLACEMENT2>>").append("']//following-sibling::td/div[contains(text(),'")
+            .append("<<REPLACEMENT3>>").append("')]//following::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
+            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"])[1]").toString();
+
+    //td[text()='
+    // 01 Apr 2025']/following-sibling::td[text()=
+    // 'Trasylol 500,000KIU/50ml Inj']//following-sibling::td/div[contains(text(),'
+    // 2 vials, Once Daily, 3 weeks')]//following::td[text()='
+    // Long Term']/following-sibling::td[text()='
+    // Automation1_Loc1']/following-sibling::td//following-sibling::span[@class="mat-mdc-focus-indicator"]
 
     protected String strMobilePrescriptionsIconContentLocator = new StringBuilder()
             .append("//h2[contains(text(),'")
@@ -147,12 +154,20 @@ public class MyHealthRecordsPage extends BasePage {
 
 
     protected String strClassificationsIconLocator = new StringBuilder()
-            .append("//td[text()='")
-            .append("<<REPLACEMENT1>>").append("']/following-sibling::td[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[text()='")
-            .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
+            .append("(//td[text()='")
+            .append("<<REPLACEMENT1>>").append("']//following::td[contains(text(),'")
+            .append("<<REPLACEMENT2>>").append("')]//following-sibling::td/div[contains(text(),'")
+            .append("<<REPLACEMENT3>>").append("')]//following::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
+            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"])[1]").toString();
+
+    //td[text()='21 Jan 2025']/following-sibling::td[contains(text(),'Kahler')]//following-sibling::td/div//following::td[text()='No']/following-sibling::td[text()='Automation1_Loc1']/following-sibling::td//following-sibling::span[@class="mat-mdc-focus-indicator"]
+//    (//td[text()='21 Jan 2025
+//    ']//following::td[contains(text(),'
+//    Kahler')]//following-sibling::td/div[contains(text(),'
+//    ')]//following::td[text()='
+//    No']/following-sibling::td[text()='
+//    Automation1_Loc1']/following-sibling::td//following-sibling::span[@class="mat-mdc-focus-indicator"])[1]
 
     @FindBy(how = How.XPATH, using = "//span[text()='Clinician Notes']")
     protected WebElement elmntClinicalNotes;
@@ -809,9 +824,9 @@ public class MyHealthRecordsPage extends BasePage {
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntFilterbyDrop.replace("<<REPLACEMENT>>", Strdata)));
             System.out.println(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
-            waitForElementToAppear(driver,By.xpath(elmntSpinner));
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-
+            waitForSeconds(3);
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -911,6 +926,8 @@ public class MyHealthRecordsPage extends BasePage {
 //            jsClick(elmntMyEntriesRadioButton);
 //            doubleClick(driver,elmntMyEntriesRadioButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
 
             blResult = true;
         } catch (Exception e) {
@@ -1065,6 +1082,8 @@ public class MyHealthRecordsPage extends BasePage {
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntFilterbyAllergiesDrop.replace("<<REPLACEMENT>>", strdata)));
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
+            waitForSeconds(5);
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -1203,6 +1222,8 @@ public class MyHealthRecordsPage extends BasePage {
             jsScrollIntoView(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
         }
 
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -1431,8 +1452,7 @@ public class MyHealthRecordsPage extends BasePage {
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementToAppear(driver, By.xpath(elmntSpinner));
-
-
+waitForSeconds(3);
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -1698,7 +1718,7 @@ public class MyHealthRecordsPage extends BasePage {
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
                     .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
                     .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
-            System.out.println("elmntLabResultCheckBox"+elmntLabResultCheckBox);
+            System.out.println("elmntLabResultCheckBox" + elmntLabResultCheckBox);
             waitForElement(elmntLabResultCheckBox);
             verifyElement(elmntLabResultCheckBox);
             mouseClick(elmntLabResultCheckBox);
@@ -1866,6 +1886,7 @@ public class MyHealthRecordsPage extends BasePage {
             waitForElementClickable(elmntRecalls);
             jsClick(elmntRecalls);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -2109,7 +2130,7 @@ public class MyHealthRecordsPage extends BasePage {
             WebElement elmntPrescriptionMyEntiresIconData = waitForElement(By.xpath(StrShareDoctorCOVIDImmunisationsIconLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(currentDate))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(0)))));
-            System.out.println("elmntPrescriptionMyEntiresIconData ::"+elmntPrescriptionMyEntiresIconData);
+            System.out.println("elmntPrescriptionMyEntiresIconData ::" + elmntPrescriptionMyEntiresIconData);
             waitForElementClickable(elmntPrescriptionMyEntiresIconData);
             waitForElement(elmntPrescriptionMyEntiresIconData);
             jsClick(elmntPrescriptionMyEntiresIconData);
@@ -3102,7 +3123,7 @@ public class MyHealthRecordsPage extends BasePage {
     public void clickAddRecord() {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElementToAppear(driver,By.xpath(elmntSpinner));
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElementClickable(btnAddRecord);
             jsClick(btnAddRecord);
