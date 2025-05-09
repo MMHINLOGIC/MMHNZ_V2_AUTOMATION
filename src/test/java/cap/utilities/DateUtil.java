@@ -1,17 +1,9 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-
 
 
 public class DateUtil {
@@ -20,44 +12,24 @@ public class DateUtil {
      * @param strFormat
      * @return
      */
-
-    /** This method is used for getting the current date in your system runtime.*/
     public static String getCurrentDate(String strFormat) {
         DateFormat dateFormat = new SimpleDateFormat(strFormat);
         Date date = new Date();
         return dateFormat.format(date);
     }
 
-    public static void main(String[] args) {
-
-//        String currentDate = getCurrentDate("dd MMM yyyy");
-//        System.out.println(currentDate);
-//        String TomorrowDate = getDate("TOMORROW","dd MMM yyyy");
-//        System.out.println(currentDate);
-        String Date = getDate("AFTER_THREE_DAYS","dd MMM yyyy");
-        System.out.println(Date);
-
-
-
-
-        String strTime = getCurrentDate("h:mm aaa");
-        System.out.println(strTime);
-        String DAYAFTERTOMORROW = getDayAfterTommorrowDate("dd MMM yyyy");
-//        System.out.println(DAYAFTERTOMORROW);
-    }
-
+    /**
+     * @return
+     */
     public static String getCurrentTime() {
         String strDateAndTime = "";
         strDateAndTime = getCurrentDate("h:mm");
         return strDateAndTime;
     }
 
-
     /**
      * @return
      */
-
-    /** This method is used for getting the current date and Time in your system runtime.*/
     public static String getCurrentDateTime() {
         String ranNum = "";
         DateFormat formatter = new SimpleDateFormat("MMM");
@@ -82,9 +54,10 @@ public class DateUtil {
         }
         return ranNum;
     }
-    /** This method is used for getting the DayAfterTommorrowDate in your system runtime.*/
-    public static String getDayAfterTommorrowDate() {
-        DateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy");
+
+
+    public static String getDayAfterTommorrowDate(String strFormat) {
+        DateFormat dateFormat = new SimpleDateFormat(strFormat);
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -96,7 +69,6 @@ public class DateUtil {
         return strNextMonthAndYear;
     }
 
-    /** This method is used for getting the Date in your system runtime.*/
     public static String getDate(int inDate, String strDateFormat) {
         SimpleDateFormat formatter = new SimpleDateFormat(strDateFormat);
         Date today = new Date();
@@ -107,7 +79,6 @@ public class DateUtil {
         return strDate;
     }
 
-    /** This method is used for getting the Date in your system runtime.*/
     public static String getDate(String strDay, String strDateFormat) {
         SimpleDateFormat formatter = new SimpleDateFormat(strDateFormat);
         int day = 0;
@@ -171,65 +142,5 @@ public class DateUtil {
         String strDate = formatter.format(date);
         System.out.println("DateUtil. strDate: " + strDate);
         return strDate;
-    }
-
-    /** This method is used for getting the CurrentDateByTimeZone in your system runtime.*/
-
-    public static String getCurrentDateByTimeZone(String strDateFormat, String strTimeZone) {
-
-        Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
-        DateFormat formatter = new SimpleDateFormat(strDateFormat);
-        formatter.setTimeZone(TimeZone.getTimeZone(strTimeZone));
-        String currentDate = formatter.format(calendar.getTime());
-        System.out.println("currentDate >>> :: " + currentDate);
-        return currentDate;
-    }
-
-    /** This method is used for getting the DayAfterTommorrowDate in your system runtime.*/
-    public static String getDayAfterTommorrowDate(String strFormat) {
-        DateFormat dateFormat = new SimpleDateFormat(strFormat);
-        Date date = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        //Current Date should be go on Next Month and Year
-        calendar.add(Calendar.DAY_OF_MONTH, +2);
-        String strNextMonthAndYear = Integer.toString(calendar.get(Calendar.DATE)); //To Convert Integer to String (Next Month and Year)
-        Date NextMonthAndYear = calendar.getTime();
-        strNextMonthAndYear = dateFormat.format(NextMonthAndYear);
-        System.out.println("strNextMonthAndYear  :: "+strNextMonthAndYear);
-        return strNextMonthAndYear;
-    }
-
-
-    public static String getMonth(String strFormat) {
-        DateFormat dateFormat = new SimpleDateFormat(strFormat);
-        Date date = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        //Current Date should be go on Next Month and Year
-        calendar.add(Calendar.DAY_OF_MONTH, +2);
-        String strNextMonthAndYear = Integer.toString(calendar.get(Calendar.DATE)); //To Convert Integer to String (Next Month and Year)
-        Date NextMonthAndYear = calendar.getTime();
-        strNextMonthAndYear = dateFormat.format(NextMonthAndYear);
-        System.out.println("strNextMonthAndYear  :: "+strNextMonthAndYear);
-        return strNextMonthAndYear;
-    }
-
-
-
-    public class Main {
-        public void main(String[] args) {
-            // Get the current date
-            LocalDate currentDate = LocalDate.now();
-
-            // Calculate one year ago
-            LocalDate oneYearAgo = currentDate.minusYears(1);
-
-            // Format the date if needed
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy"); // Adjust format as per your date picker
-            String formattedDate = oneYearAgo.format(formatter);
-
-            System.out.println("One year ago: " + formattedDate);
-        }
     }
 }

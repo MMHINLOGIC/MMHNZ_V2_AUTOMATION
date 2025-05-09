@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Mobile_App.screens;
+package java.Happy_Path_Patient_Mobile_App.screens;
 
 import cap.common.BaseScreen;
 import cap.utilities.TestDataUtil;
@@ -313,7 +313,7 @@ public class MessageScreen extends BaseScreen {
     }
 
     public void uploadFile(String strImage) {
-        pushFileToDevice(strImage);
+//        pushFileToDevice(strImage);
         waitForElement(lnkAttachFiles);
         click(lnkAttachFiles);
         waitForSecond(4);

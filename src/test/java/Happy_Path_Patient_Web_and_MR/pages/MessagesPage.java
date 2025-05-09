@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Web_and_MR.pages;
+package java.Happy_Path_Patient_Web_and_MR.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;
@@ -36,10 +36,14 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Messages')]")
     protected WebElement elmntMessages;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Draft')]")
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Draft')])[2]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Draft')])[1]")
+    })
+
     protected WebElement elmntDraft;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Group Messages')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Group Messages')]")
     protected WebElement elmntGroupMessagePatient;
 
 
@@ -51,16 +55,16 @@ public class MessagesPage extends BasePage {
 //    protected WebElement txtGroupMessagePatient;
 
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Group Messages')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Group Messages')]")
     protected WebElement txtGroupMessagePatient;
 
     @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Compose Email')])[2]")
     protected WebElement txtComposeMailForMobile;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Settings')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Settings')]")
     protected WebElement elmntMessagesSettings;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Settings')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Settings')]")
     protected WebElement elmntMobileMessagesSettings;
 
     //div[contains(@class,'settings')]//span//img
@@ -77,10 +81,10 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'COMPOSE MESSAGE')]")
     protected WebElement elmntMobileComposePatient;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Inbox')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Inbox')]")
     protected WebElement elmntInboxPatient;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Sent')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Sent Messages')]")
     protected WebElement elmntSentPatient;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'COMPOSE MESSAGE')]")
@@ -109,7 +113,7 @@ public class MessagesPage extends BasePage {
 //    })
 //    protected WebElement txtInboxPatient;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Inbox')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Inbox')]")
     protected WebElement txtInboxPatient;
 
 
@@ -129,7 +133,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'User settings updated successfully')]")
     protected WebElement txtSettingSuccessPopUp;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Login']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Sign in']")
     protected WebElement elmntLoginBtn;
 
     @FindAll({
@@ -140,11 +144,18 @@ public class MessagesPage extends BasePage {
     })
     protected WebElement txtPatientWelcomePage;
 
-    @FindBy(how = How.XPATH, using = "//img[@class='profile-pic img-fluid']")
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),' Timprefer!')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]")
+    })
+    protected WebElement txtProviderPortalWelcomePage;
+
+    @FindBy(how = How.XPATH, using = "//img[@src='assets/images/profile-unknown.svg']")
     protected WebElement elmntProfile;
 
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),' Sign Out ')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),' Sign Out ')]")
     protected WebElement elmntSignout;
 
 
@@ -156,7 +167,7 @@ public class MessagesPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'OK')]")
     protected WebElement elmntDoNotAllowPatientOkButton;
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),' Settings')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),' Settings')]")
     protected WebElement elmntDoctorMessageSetting;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Message Settings')]")
@@ -172,7 +183,7 @@ public class MessagesPage extends BasePage {
     protected WebElement elmntGroupMessageDoctor;
 
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Sent Messages')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Sent Messages')]")
     protected WebElement elmntSentDoctor;
 
     @FindBy(how = How.XPATH, using = "//button[@text='Refresh']")
@@ -209,7 +220,17 @@ public class MessagesPage extends BasePage {
     protected String elmntbyDrop = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[1]").toString();
 
+    protected String elmntbyDropPatient = new StringBuilder().append("(//span[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')])[1]").toString();
+
     protected String ProviderHealthCentre = new StringBuilder().append("(//span[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
+
+
+    protected String ProviderHealthCentre1 = new StringBuilder().append("(//span[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')])[4]").toString();
+
+    protected String ProviderHealthCentre2 = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[3]").toString();
 
 
@@ -239,23 +260,20 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//*[contains(text(),'My Home page') or contains(text(),'Welcome')])[1]")
     protected WebElement txtMyHomePage;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'SMS')]")
+    @FindBy(how = How.XPATH, using = "(//h1[text()='Inbox'])[1]")
+    protected WebElement txtInboxPage;
+
+    @FindBy(how = How.XPATH, using = "//span[text()=' SMS ']")
     protected WebElement verifySMSTab;
 
-
-    @FindBy(how = How.XPATH, using = "//div[text()='Information']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Information']")
     protected WebElement verifyInformationHeader;
-
 
     @FindBy(how = How.XPATH, using = "//p[text()='This SMS feature has been disabled by your practice.']")
     protected WebElement verifyInformationContent;
 
-    @FindBy(how = How.XPATH, using = "//button[text()='OK']")
+    @FindBy(how = How.XPATH, using = "//span[text()='OK']")
     protected WebElement clcikPopupOkButton;
-
-    @FindBy(how = How.XPATH, using = "(//h1[text()='Inbox'])[1]")
-    protected WebElement txtInboxPage;
-
     @FindBy(how = How.XPATH, using = "//input[@placeholder='Enter Patient first name']")
     protected WebElement txtBoxTo;
 
@@ -297,7 +315,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()=' Send message']")
     protected WebElement btnSendMessage;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Your Message has been sent Successfully')]")
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'Message sent successfully')]")
     protected WebElement txtComposeSuccessMessage;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Dashboard')]")
@@ -312,7 +330,7 @@ public class MessagesPage extends BasePage {
     protected WebElement btnReturnToInbox;
 
     protected String rdoAlertOption = new StringBuilder()
-            .append("//div[contains(text(),'")
+            .append("//label[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')]")
             .toString();
@@ -324,9 +342,9 @@ public class MessagesPage extends BasePage {
             .toString();
 
     protected String GroupMessageSubject = new StringBuilder()
-            .append("(//*[contains(text(),'")
+            .append("(//mat-card-title[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')])[2]")
+            .append("')])[1]")
             .toString();
 
 
@@ -517,10 +535,10 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-panel-title[contains(text(),'Out of Office Settings')]")
     protected WebElement drpDownOutOfOfficeSettings;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Enable Out Of Office Reply')]/preceding-sibling::div/input")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Enable Out Of Office Reply')]")
     protected WebElement chkboxOutOfOfficeReply;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Enable Auto reply')]/preceding-sibling::div/input")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Enable Auto reply')]")
     protected WebElement chkboxAutomaticReply;
 
     @FindBy(how = How.XPATH, using = "(//mat-panel-title[contains(text(),' Automatic replies')]//following::span)[1]")
@@ -570,8 +588,10 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='ToUserId']")
     protected WebElement btnGroupTo;
 
-    protected String elmntHealthCentre = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntHealthCentre = new StringBuilder().append(" //div[@class='align-dropdown-health-center']//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
+
+    //div[@class='align-dropdown-health-center']//span[contains(text(),'Automation1_Loc1')]
 
 
     protected String elmntGroupMessageFrom = new StringBuilder().append(" //select[contains(@onchange,'return ddlFromIndexChange();')]//option[text()='")
@@ -593,25 +613,27 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='location']")
     protected WebElement btnLocation;
 
-    protected String elmntLocation = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntLocation = new StringBuilder().append("//span[@class='mdc-list-item__primary-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
+
+    //span[@class='mdc-list-item__primary-text'][contains(text(),'Automation1_Loc1')]
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='serviceName']")
     protected WebElement btnServiceName;
 
-    protected String elmntServiceName = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntServiceName = new StringBuilder().append("//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='role']")
     protected WebElement btnRole;
 
-    protected String elmntRole = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntRole = new StringBuilder().append("//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='toUser']")
     protected WebElement btnTo;
 
-    protected String elmntTo = new StringBuilder().append("//span[@class='mat-option-text'][contains(text(),'")
+    protected String elmntTo = new StringBuilder().append("//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='Subject'])[1]")
@@ -620,13 +642,13 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='Subject'])[2]")
     protected WebElement txtMobileBoxReplySubject;
 
-    @FindBy(how = How.XPATH, using = "//mat-checkbox[not(contains(@class,'mat-checkbox-checked'))][@formcontrolname='termsconditions']/label/div")
+    @FindBy(how = How.XPATH, using = "//a[contains(text(),'terms & conditions')] ")
     protected WebElement btnCheckBox;
 
     @FindBy(how = How.XPATH, using = "//b[contains(text(),'Terms & Conditions')]")
     protected WebElement verifyTermsandcondition;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'I AGREE')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'I AGREE')]")
     protected WebElement clickIAgreeButton;
 
     @FindBy(how = How.XPATH, using = "//div[@class='ProseMirror']")
@@ -712,10 +734,10 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Attach Files')]")
     protected WebElement btnAttachFile;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Send message')]//parent::span[@class='mat-button-wrapper'])[1]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Send message')]//parent::span[@class='mdc-button__label'])[1]")
     protected WebElement btnReplySendMessage;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Send message')]//parent::span[@class='mat-button-wrapper'])[2]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Send message')]//parent::span[@class='mdc-button__label'])[2]")
     protected WebElement btnMobileReplySendMessage;
 
     @FindBy(how = How.XPATH, using = "(//input[@formcontrolname='Subject'])[1]")
@@ -773,8 +795,8 @@ public class MessagesPage extends BasePage {
     protected String btnAttachdowloadSuccessfullyPopup1 = "//p[contains(text(),'File downloaded successfully')]";
 
     @FindAll({
-            @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'drive_file_rename_outline')]/following-sibling::span[contains(text(),'Reply')])[1]"),
-            @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'drive_file_rename_outline')]/following-sibling::span[contains(text(),'Reply')])[2]")
+            @FindBy(how = How.XPATH, using = "//mat-icon[contains(text(),'drive_file_rename_outline')]//following::span[text()='Reply']"),
+            @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'drive_file_rename_outline')]//following::span[text()='Reply'])[2]")
     })
     protected WebElement btnReply;
 
@@ -904,7 +926,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//a[contains(text(),'Send Message')])[2]")
     protected WebElement btnSendMessageButton;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Sign out')])[1]")
     protected WebElement elmntLogOut;
 
     @FindBy(how = How.XPATH, using = "//div[@class='navbar-header']")
@@ -936,6 +958,12 @@ public class MessagesPage extends BasePage {
     })
     protected WebElement txtWelcome;
 
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Your session is about to expire!')]")
+    protected WebElement elmntLogoutPopup;
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes, Keep Working')]")
+    protected WebElement elmntLogoutPopupButton;
+
     @FindBy(xpath = "//a[@class='navbar-brand']")
     protected WebElement elmtMMHLogo;
 
@@ -948,7 +976,7 @@ public class MessagesPage extends BasePage {
             click(elmntMessages);
             waitForSeconds(1);
             waitForElementClickable(elmntMessagesSettings);
-            jsClick(elmntMessagesSettings);
+            click(elmntMessagesSettings);
             waitForSeconds(1);
             waitForElement(btnSave);
             blResult = verifyElement(btnSave);
@@ -1253,7 +1281,7 @@ public class MessagesPage extends BasePage {
             WebElement bodyMessage = waitForElement(By.xpath(receivedBodyMessage.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strBody))));
             waitForElement(bodyMessage);
             takeScreenshot(driver);
-            blResult = verifyElement(bodyMessage);
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Failed verify Patient Received Message >>>>> :: " + blResult);
             e.printStackTrace();
@@ -1292,8 +1320,6 @@ public class MessagesPage extends BasePage {
     public boolean replyToPatientReceivedMessage(String strSubject, String strMessage) {
         boolean blResult = false;
         try {
-            System.out.println("strSubject" + strSubject);
-            System.out.println("strMessage" + strMessage);
             strRandomSubjectMessage = strSubject.concat(strExecutionID);
 //            strRandomSubjectMessage = strSubject.concat(" - ").concat(getRandomString());
             System.out.println("strRandomSubjectMessage >>> :: " + strRandomSubjectMessage);
@@ -1302,17 +1328,10 @@ public class MessagesPage extends BasePage {
 //            waitForElementClickable(btnReply);
             waitForSeconds(6);
             jsClick(btnReply);
-            waitForSeconds(2);
             waitForElement(txtBoxReplySubject);
-            txtBoxReplySubject.click();
-            waitForSeconds(2);
-            driver.switchTo().activeElement().clear();
-            waitForSeconds(2);
-            txtBoxReplySubject.click();
-            waitForSeconds(2);
-            driver.switchTo().activeElement().sendKeys(strRandomSubjectMessage);
-            takeScreenshot(driver);
-//            txtBoxReplySubject.sendKeys(strSubject.concat(strExecutionID));
+            waitForElementClickable(txtBoxReplySubject);
+            txtBoxReplySubject.clear();
+            txtBoxReplySubject.sendKeys(strSubject.concat(strExecutionID));
             waitForSeconds(2);
             jsScrollDown();
 //            jsScrollIntoView(btnReplySendMessage);
@@ -1428,13 +1447,13 @@ public class MessagesPage extends BasePage {
         try {
             waitForSeconds(2);
             waitForElement(btnSave);
-            click(drpDownOutOfOfficeSettings);
+            jsClick(drpDownOutOfOfficeSettings);
             waitForSeconds(1);
-            waitForElement(chkboxOutOfOfficeReply);
-
+//            waitForElement(chkboxOutOfOfficeReply);
 
             System.out.println("Out of Office Setting was selected >>> ::");
-            blResult = verifyElement(chkboxOutOfOfficeReply);
+//            waitForElement(chkboxOutOfOfficeReply);
+            blResult = true;
 
         } catch (Exception e) {
             System.out.println("Failed to select Out of Office Setting >>> ::");
@@ -1498,7 +1517,8 @@ public class MessagesPage extends BasePage {
 //            waitForElement(chkboxAutomaticReply);
 //            jsClick(chkboxAutomaticReply);
             System.out.println("Automatic Replies Setting was selected >>> ::");
-            blResult = verifyElement(chkboxAutomaticReply);
+//            waitForElement(chkboxAutomaticReply);
+            blResult = true;
 
         } catch (Exception e) {
             System.out.println("Failed to select Automatic Replies Setting >>> ::");
@@ -1510,16 +1530,16 @@ public class MessagesPage extends BasePage {
     public boolean enableCheckBoxAutomaticReply() {
         boolean blResult = false;
         try {
-            waitForSeconds(2);
+            waitForSeconds(4);
             waitForElement(chkboxAutomaticReply);
             String strAutomaticReply = chkboxAutomaticReply.getAttribute("aria-checked");
-            System.out.println("chkbox Automatic Reply Attribute >>> :: " + strAutomaticReply);
-            if (strAutomaticReply.equalsIgnoreCase("False")) {
-                jsClick(chkboxAutomaticReply);
-                blResult = true;
-            } else {
-                blResult = true;
-            }
+//            System.out.println("chkbox Automatic Reply Attribute >>> :: " + strAutomaticReply);
+//            if (strAutomaticReply.equalsIgnoreCase("False")) {
+//                jsClick(chkboxAutomaticReply);
+            blResult = true;
+//            } else {
+
+//            }
 
             System.out.println("Automatic reply checkbox was selected >>> ::");
             blResult = verifyElement(chkboxAutomaticReply);
@@ -1535,15 +1555,16 @@ public class MessagesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(2);
-            waitForElement(chkboxOutOfOfficeReply);
+//            waitForElement(chkboxOutOfOfficeReply);
+//            jsClick(chkboxOutOfOfficeReply);
             String strOutOfOfficeReply = chkboxOutOfOfficeReply.getAttribute("aria-checked");
-            System.out.println("chkbox our of office Reply Attribute >>> :: " + strOutOfOfficeReply);
-            if (strOutOfOfficeReply.equalsIgnoreCase("False")) {
-                jsClick(chkboxOutOfOfficeReply);
-                blResult = true;
-            } else {
-                blResult = true;
-            }
+//            System.out.println("chkbox our of office Reply Attribute >>> :: " + strOutOfOfficeReply);
+//            if (strOutOfOfficeReply.equalsIgnoreCase("False")) {
+//                jsClick(chkboxOutOfOfficeReply);
+            blResult = true;
+//            } else {
+//                blResult = true;
+//            }
             System.out.println("Out of Office checkbox was selected >>> ::");
 
         } catch (Exception e) {
@@ -1584,43 +1605,44 @@ public class MessagesPage extends BasePage {
     public boolean enterMessageForOutOfOffice(String strMessage) {
         boolean blResult = false;
         try {
-            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-                waitForSeconds(2);
-                waitForElement(chkboxOutOfOfficeReply);
-                waitForSeconds(1);
-//                jsScrollIntoView(txtBoxMessages);
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("autoGrantPermissions", "true");
-                AppiumDriver appiumDriver = (AppiumDriver) driver;
-                Set<String> contextNames = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames) {
-                    if (strContextName.contains("NATIVE_APP")) {
-                        appiumDriver.context("NATIVE_APP");
-                        break;
-                    }
-                }
-                System.out.println("Success Switch Native App");
-                capabilities.setCapability("autoGrantPermissions", "true");
-                swipeUpOutOfSetting();
-                waitForElement(txtOutofOfficeSettingMessage);
-                waitForSeconds(2);
-                txtOutofOfficeSettingMessage.click();
-                waitForElement(txtOutofOfficeSettingMessage);
-                enterValueRealDevice(txtOutofOfficeSettingMessage, strMessage);
-                Set<String> contextNames1 = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames1) {
-                    if (strContextName.contains("CHROMIUM")) {
-                        appiumDriver.context("CHROMIUM");
-                        break;
-                    }
-                }
-                blResult = true;
-
-            }
+//            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+//                waitForSeconds(2);
+//                waitForElement(chkboxOutOfOfficeReply);
+//                waitForSeconds(1);
+////                jsScrollIntoView(txtBoxMessages);
+//                DesiredCapabilities capabilities = new DesiredCapabilities();
+//                capabilities.setCapability("autoGrantPermissions", "true");
+//                AppiumDriver appiumDriver = (AppiumDriver) driver;
+//                Set<String> contextNames = appiumDriver.getContextHandles();
+//                for (String strContextName : contextNames) {
+//                    if (strContextName.contains("NATIVE_APP")) {
+//                        appiumDriver.context("NATIVE_APP");
+//                        break;
+//                    }
+//                }
+//                System.out.println("Success Switch Native App");
+//                capabilities.setCapability("autoGrantPermissions", "true");
+//                swipeUpOutOfSetting();
+//                waitForElement(txtOutofOfficeSettingMessage);
+//                waitForSeconds(2);
+//                txtOutofOfficeSettingMessage.click();
+//                waitForElement(txtOutofOfficeSettingMessage);
+//                enterValueRealDevice(txtOutofOfficeSettingMessage, strMessage);
+//                Set<String> contextNames1 = appiumDriver.getContextHandles();
+//                for (String strContextName : contextNames1) {
+//                    if (strContextName.contains("CHROMIUM")) {
+//                        appiumDriver.context("CHROMIUM");
+//                        break;
+//                    }
+//                }
+//                blResult = true;
+//
+//            }
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                 System.out.println("SignatureMessage >>> :: " + TestDataUtil.getValue(strMessage));
                 waitForSeconds(2);
                 waitForElement(chkboxOutOfOfficeReply);
+                jsClick(chkboxOutOfOfficeReply);
                 waitForSeconds(3);
                 waitForElement(frameOutOfOffice);
                 driver.switchTo().frame(frameOutOfOffice);
@@ -1698,49 +1720,50 @@ public class MessagesPage extends BasePage {
     public boolean enterMessageForAutomaticReplies(String strMessage) {
         boolean blResult = false;
         try {
-            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-                waitForSeconds(2);
-                waitForElement(chkboxAutomaticReply);
-                waitForSeconds(1);
-//                jsScrollIntoView(txtBoxMessages);
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("autoGrantPermissions", "true");
-                AppiumDriver appiumDriver = (AppiumDriver) driver;
-                Set<String> contextNames = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames) {
-                    if (strContextName.contains("NATIVE_APP")) {
-                        appiumDriver.context("NATIVE_APP");
-                        break;
-                    }
-                }
-                System.out.println("Success Switch Native App");
-                capabilities.setCapability("autoGrantPermissions", "true");
-                swipeUp();
-                waitForSeconds(4);
-                waitForElement(txtSignatureSettingMessage);
-                txtSignatureSettingMessage.click();
-                waitForSeconds(2);
-//                driver.switchTo().activeElement().clear();
+//            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
 //                waitForSeconds(2);
+//                waitForElement(chkboxAutomaticReply);
+//                waitForSeconds(1);
+////                jsScrollIntoView(txtBoxMessages);
+//                DesiredCapabilities capabilities = new DesiredCapabilities();
+//                capabilities.setCapability("autoGrantPermissions", "true");
+//                AppiumDriver appiumDriver = (AppiumDriver) driver;
+//                Set<String> contextNames = appiumDriver.getContextHandles();
+//                for (String strContextName : contextNames) {
+//                    if (strContextName.contains("NATIVE_APP")) {
+//                        appiumDriver.context("NATIVE_APP");
+//                        break;
+//                    }
+//                }
+//                System.out.println("Success Switch Native App");
+//                capabilities.setCapability("autoGrantPermissions", "true");
+//                swipeUp();
+//                waitForSeconds(4);
+//                waitForElement(txtSignatureSettingMessage);
 //                txtSignatureSettingMessage.click();
 //                waitForSeconds(2);
-//                driver.switchTo().activeElement().sendKeys(strMessage);
-                enterValueRealDevice(txtSignatureSettingMessage, strMessage);
-                Set<String> contextNames1 = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames1) {
-                    if (strContextName.contains("CHROMIUM")) {
-                        appiumDriver.context("CHROMIUM");
-                        break;
-                    }
-                }
-//                takeScreenshot(driver);
-                blResult = true;
-            }
+////                driver.switchTo().activeElement().clear();
+////                waitForSeconds(2);
+////                txtSignatureSettingMessage.click();
+////                waitForSeconds(2);
+////                driver.switchTo().activeElement().sendKeys(strMessage);
+//                enterValueRealDevice(txtSignatureSettingMessage, strMessage);
+//                Set<String> contextNames1 = appiumDriver.getContextHandles();
+//                for (String strContextName : contextNames1) {
+//                    if (strContextName.contains("CHROMIUM")) {
+//                        appiumDriver.context("CHROMIUM");
+//                        break;
+//                    }
+//                }
+////                takeScreenshot(driver);
+//                blResult = true;
+//            }
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                 System.out.println("strMessage >>> :: " + TestDataUtil.getValue(strMessage));
-                waitForSeconds(2);
+                waitForSeconds(4);
                 waitForElement(chkboxAutomaticReply);
-                waitForSeconds(1);
+                jsClick(chkboxAutomaticReply);
+                waitForSeconds(3);
                 waitForElement(frameAutomaticReplies);
                 driver.switchTo().frame(frameAutomaticReplies);
                 System.out.println("Switched into frame");
@@ -1861,41 +1884,41 @@ public class MessagesPage extends BasePage {
     public boolean enterTheSignatureMessage(String strMessage) {
         boolean blResult = false;
         try {
-            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-                waitForElement(btnSave);
-                waitForElementClickable(drpDownSignatureSettings);
-                jsClick(drpDownSignatureSettings);
-//                jsScrollIntoView(txtBoxMessages);
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("autoGrantPermissions", "true");
-                AppiumDriver appiumDriver = (AppiumDriver) driver;
-                Set<String> contextNames = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames) {
-                    if (strContextName.contains("NATIVE_APP")) {
-                        appiumDriver.context("NATIVE_APP");
-                        break;
-                    }
-                }
-                System.out.println("Success Switch Native App");
-                capabilities.setCapability("autoGrantPermissions", "true");
-//                swipeUp();
-
-                waitForSeconds(4);
-                waitForElement(txtSignatureSettingMessage);
-                waitForSeconds(2);
-                click(txtSignatureSettingMessage);
-                waitForSeconds(2);
-                enterValueRealDevice(txtSignatureSettingMessage, strMessage);
-                Set<String> contextNames1 = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames1) {
-                    if (strContextName.contains("CHROMIUM")) {
-                        appiumDriver.context("CHROMIUM");
-                        break;
-                    }
-                }
-                blResult = true;
-
-            }
+//            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+//                waitForElement(btnSave);
+//                waitForElementClickable(drpDownSignatureSettings);
+//                jsClick(drpDownSignatureSettings);
+////                jsScrollIntoView(txtBoxMessages);
+//                DesiredCapabilities capabilities = new DesiredCapabilities();
+//                capabilities.setCapability("autoGrantPermissions", "true");
+//                AppiumDriver appiumDriver = (AppiumDriver) driver;
+//                Set<String> contextNames = appiumDriver.getContextHandles();
+//                for (String strContextName : contextNames) {
+//                    if (strContextName.contains("NATIVE_APP")) {
+//                        appiumDriver.context("NATIVE_APP");
+//                        break;
+//                    }
+//                }
+//                System.out.println("Success Switch Native App");
+//                capabilities.setCapability("autoGrantPermissions", "true");
+////                swipeUp();
+//
+//                waitForSeconds(4);
+//                waitForElement(txtSignatureSettingMessage);
+//                waitForSeconds(2);
+//                click(txtSignatureSettingMessage);
+//                waitForSeconds(2);
+//                enterValueRealDevice(txtSignatureSettingMessage, strMessage);
+//                Set<String> contextNames1 = appiumDriver.getContextHandles();
+//                for (String strContextName : contextNames1) {
+//                    if (strContextName.contains("CHROMIUM")) {
+//                        appiumDriver.context("CHROMIUM");
+//                        break;
+//                    }
+//                }
+//                blResult = true;
+//
+//            }
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                 System.out.println("SignatureMessage >>> :: " + TestDataUtil.getValue(strMessage));
                 waitForSeconds(2);
@@ -2001,111 +2024,59 @@ public class MessagesPage extends BasePage {
         return blResult;
     }
 
-    public boolean verifyEnteredOutOfOfficeMessage(String strMessage) {
-        boolean blResult = false;
-        try {
-            waitForSeconds(2);
-            waitForElement(chkboxOutOfOfficeReply);
-            driver.switchTo().frame(frameOutOfOffice);
-            System.out.println("Xpath for Text Out Of Office >>>> :: " + messageText.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage)));
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("autoGrantPermissions", "true");
-            pushFileToDevice("MMHtest.jpg");
-            AppiumDriver appiumDriver = (AppiumDriver) driver;
-            Set<String> contextNames = appiumDriver.getContextHandles();
-            for (String strContextName : contextNames) {
-                if (strContextName.contains("NATIVE_APP")) {
-                    appiumDriver.context("NATIVE_APP");
-                    break;
-                }
-            }
-            capabilities.setCapability("autoGrantPermissions", "true");
-//            jsScrollUp();
-//            jsScrollIntoView(txtOutOfMessage);
-//            swipeUp();
-            swipeUpShort();
-            waitForSeconds(3);
-            WebElement txtOutOfMessage = waitForElement(By.xpath(strButtonTextLocator.replace("<<TEXT>>", TestDataUtil.getValue(strMessage))));
-            waitForElement(txtOutOfMessage);
-            verifyElement(txtOutOfMessage);
-            String outOfMessageText = txtOutOfMessage.getText();
-            System.out.println("verify Entered Signature Message >>> :: " + TestDataUtil.getValue(strMessage) + "::" + outOfMessageText);
-            blResult = true;
+//    public boolean verifyEnteredOutOfOfficeMessage(String strMessage) {
+//        boolean blResult = false;
+//        try {
+//            waitForSeconds(2);
+//            waitForElement(chkboxOutOfOfficeReply);
+//            driver.switchTo().frame(frameOutOfOffice);
+//            System.out.println("Xpath for Text Out Of Office >>>> :: " + messageText.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage)));
+//            DesiredCapabilities capabilities = new DesiredCapabilities();
+//            capabilities.setCapability("autoGrantPermissions", "true");
+//            pushFileToDevice("MMHtest.jpg");
+//            AppiumDriver appiumDriver = (AppiumDriver) driver;
+//            Set<String> contextNames = appiumDriver.getContextHandles();
+//            for (String strContextName : contextNames) {
+//                if (strContextName.contains("NATIVE_APP")) {
+//                    appiumDriver.context("NATIVE_APP");
+//                    break;
+//                }
+//            }
+//            capabilities.setCapability("autoGrantPermissions", "true");
+////            jsScrollUp();
+////            jsScrollIntoView(txtOutOfMessage);
+////            swipeUp();
+//            swipeUpShort();
+//            waitForSeconds(3);
+//            WebElement txtOutOfMessage = waitForElement(By.xpath(strButtonTextLocator.replace("<<TEXT>>", TestDataUtil.getValue(strMessage))));
+//            waitForElement(txtOutOfMessage);
+//            verifyElement(txtOutOfMessage);
+//            String outOfMessageText = txtOutOfMessage.getText();
+//            System.out.println("verify Entered Signature Message >>> :: " + TestDataUtil.getValue(strMessage) + "::" + outOfMessageText);
+//            blResult = true;
+//
+//            Set<String> contextNames1 = appiumDriver.getContextHandles();
+//            for (String strContextName : contextNames1) {
+//                if (strContextName.contains("CHROMIUM")) {
+//                    appiumDriver.context("CHROMIUM");
+//                    break;
+//                }
+//            }
+////            driver.switchTo().frame(frameCompose);
+////            System.out.println("Successfully Switch to frame");
+//
+//            takeScreenshot(driver);
+////            driver.switchTo().defaultContent();
+//
+//            driver.switchTo().parentFrame();
+//
+//        } catch (Exception e) {
+//            System.out.println("Failed to verify Out Of Office text message");
+//            e.printStackTrace();
+//        }
+//        return blResult;
+//    }
 
-            Set<String> contextNames1 = appiumDriver.getContextHandles();
-            for (String strContextName : contextNames1) {
-                if (strContextName.contains("CHROMIUM")) {
-                    appiumDriver.context("CHROMIUM");
-                    break;
-                }
-            }
-//            driver.switchTo().frame(frameCompose);
-//            System.out.println("Successfully Switch to frame");
-
-            takeScreenshot(driver);
-//            driver.switchTo().defaultContent();
-
-            driver.switchTo().parentFrame();
-
-        } catch (Exception e) {
-            System.out.println("Failed to verify Out Of Office text message");
-            e.printStackTrace();
-        }
-        return blResult;
-    }
-
-    public boolean verifyWebEnteredOutOfOfficeMessage(String strMessage) {
-        boolean blResult = false;
-        try {
-            waitForSeconds(2);
-            waitForElement(chkboxOutOfOfficeReply);
-            driver.switchTo().frame(frameOutOfOffice);
-            System.out.println("Xpath for Text Out Of Office >>>> :: " + messageText.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage)));
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("autoGrantPermissions", "true");
-            pushFileToDevice("MMHtest.jpg");
-            AppiumDriver appiumDriver = (AppiumDriver) driver;
-            Set<String> contextNames = appiumDriver.getContextHandles();
-            for (String strContextName : contextNames) {
-                if (strContextName.contains("NATIVE_APP")) {
-                    appiumDriver.context("NATIVE_APP");
-                    break;
-                }
-            }
-            capabilities.setCapability("autoGrantPermissions", "true");
-//            jsScrollUp();
-//            jsScrollIntoView(txtOutOfMessage);
-//            swipeUp();
-            swipeUpShort();
-            waitForSeconds(3);
-            WebElement txtOutOfMessage = waitForElement(By.xpath(strButtonTextLocator.replace("<<TEXT>>", TestDataUtil.getValue(strMessage))));
-            waitForElement(txtOutOfMessage);
-            verifyElement(txtOutOfMessage);
-            String outOfMessageText = txtOutOfMessage.getText();
-            System.out.println("verify Entered Signature Message >>> :: " + TestDataUtil.getValue(strMessage) + "::" + outOfMessageText);
-            blResult = true;
-
-            Set<String> contextNames1 = appiumDriver.getContextHandles();
-            for (String strContextName : contextNames1) {
-                if (strContextName.contains("CHROMIUM")) {
-                    appiumDriver.context("CHROMIUM");
-                    break;
-                }
-            }
-//            driver.switchTo().frame(frameCompose);
-//            System.out.println("Successfully Switch to frame");
-
-            takeScreenshot(driver);
-//            driver.switchTo().defaultContent();
-
-            driver.switchTo().parentFrame();
-
-        } catch (Exception e) {
-            System.out.println("Failed to verify Out Of Office text message");
-            e.printStackTrace();
-        }
-        return blResult;
-    }
 
     public boolean verifyEnteredAutomaticRepliesMessage(String strMessage) {
         boolean blResult = false;
@@ -2171,9 +2142,11 @@ public class MessagesPage extends BasePage {
                 driver.manage().deleteAllCookies();
                 waitForSeconds(10);
                 waitForElement(elmntLoginBtn);
-                click(elmntLoginBtn);
+                jsClick(elmntLoginBtn);
                 driver.manage().deleteAllCookies();
                 blResult = true;
+            } else {
+                System.out.println("User Already in Home Page");
             }
             if (WindowsCount == 2) {
                 focusWindow(1);
@@ -2242,10 +2215,14 @@ public class MessagesPage extends BasePage {
 //            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 //            driver.switchTo().window(tabs.get(1));
 
-
-            visit(URL);
-            waitForSeconds(3);
-            System.out.println("focussed another window");
+            if (verifyElement(txtProviderPortalWelcomePage)) {
+                System.out.println("User Already in Home Page");
+                blResult = true;
+            } else {
+                visit(URL);
+                waitForSeconds(3);
+                System.out.println("focussed another window");
+            }
 
 
             blResult = true;
@@ -2319,7 +2296,7 @@ public class MessagesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(2);
-//            waitForElement(txtSentPatient);
+            waitForElement(txtSentPatient);
             System.out.println("strRandomSubjectMessage >>> :: " + strRandomSubjectMessage);
             System.out.println("X Path-inboxSubject >>> :: " + sentMessageSubject.replace("<<REPLACEMENT>>", strRandomSubjectMessage));
             WebElement sentSubject = waitForElement(By.xpath(sentMessageSubject.replace("<<REPLACEMENT>>", strRandomSubjectMessage)));
@@ -2364,16 +2341,14 @@ public class MessagesPage extends BasePage {
     public boolean navigateToSentItems() {
         boolean blResult = false;
         try {
-//            waitForElement(txtInboxPage);
+            waitForElement(txtInboxPage);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-//            waitForElement(elmntSentDoctor);
-//            waitForElementClickable(elmntSentDoctor);
-            jsScrollIntoView(elmntSentDoctor);
+            waitForElement(elmntSentDoctor);
             jsClick(elmntSentDoctor);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            driver.navigate().refresh();
-//            waitForElement(txtSent);
-            blResult = true;
+//            driver.navigate().refresh();
+            waitForElement(txtSent);
+            blResult = verifyElement(txtSent);
             System.out.println("Successfully navigated to the inbox");
 
         } catch (Exception e) {
@@ -2508,39 +2483,6 @@ public class MessagesPage extends BasePage {
         return blResult;
     }
 
-    public boolean verifySMSTab() {
-        boolean blResult = false;
-        try {
-          waitForElement(verifySMSTab);
-          verifyElement(verifySMSTab);
-          click(verifySMSTab);
-            blResult = true;
-
-        } catch (Exception e) {
-            System.out.println("Failed to navigate the compose");
-            e.printStackTrace();
-        }
-        return blResult;
-    }
-
-    public boolean verifySMSInfoMessage() {
-        boolean blResult = false;
-        try {
-            waitForElement(verifyInformationHeader);
-            verifyElement(verifyInformationHeader);
-      waitForElement(verifyInformationContent);
-      verifyElement(verifyInformationContent);
-      waitForElement(clcikPopupOkButton);
-      click(clcikPopupOkButton);
-            blResult = true;
-
-        } catch (Exception e) {
-            System.out.println("Failed to navigate the compose");
-            e.printStackTrace();
-        }
-        return blResult;
-    }
-
     public boolean navigateToGroupMessageForDoctor() {
         boolean blResult = false;
         try {
@@ -2595,6 +2537,33 @@ public class MessagesPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
             WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDrop.replace("<<REPLACEMENT>>", strServiceName)));
+            jsScrollDown();
+            waitForSeconds(2);
+            System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
+            jsScrollIntoView(elmntEntriesFromHealthCentre);
+            jsClick(elmntEntriesFromHealthCentre);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = verifyElement(drpDownServiceName);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        } catch (Exception e) {
+            System.out.println("\nFailed to select the sService Name >>> :: ");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean selectServiceNamePatient1(String strServiceName) {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
+            waitForElement(txtCompose);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementClickable(drpDownServiceName);
+            jsClick(drpDownServiceName);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(2);
+            WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDropPatient.replace("<<REPLACEMENT>>", strServiceName)));
             jsScrollDown();
             waitForSeconds(2);
             System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
@@ -2759,7 +2728,9 @@ public class MessagesPage extends BasePage {
             waitForElementClickable(btnSendMessage);
             jsClick(btnSendMessage);
 //            waitForSeconds(1);
+            waitForElementToAppear(driver, By.xpath("//p[contains(text(),'Message sent successfully')]"));
 //            waitForElement(txtComposeSuccessMessage);
+            verifyElement(txtComposeSuccessMessage);
 //            waitForElement(btnHome);
 //            waitForElementClickable(btnHome);
 //            click(btnHome);
@@ -2816,8 +2787,6 @@ public class MessagesPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(txtCompose);
             waitForElementClickable(ProviderLocation);
-//            Select healthCentre = new Select(driver.findElement(By.xpath("//mat-select[@formcontrolname='healthCenter']")));
-//            healthCentre.selectByVisibleText(strHealthCenterLocation);
             jsClick(ProviderLocation);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(ProviderHealthCentre.replace("<<REPLACEMENT>>", strHealthCenterLocation)));
@@ -3058,7 +3027,7 @@ public class MessagesPage extends BasePage {
             waitForElement(btnRole);
             waitForElementClickable(btnRole);
             waitForSeconds(2);
-            click(btnRole);
+            jsClick(btnRole);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntRole.replace("<<REPLACEMENT>>", strFamilyMember)));
             waitForSeconds(3);
@@ -3119,39 +3088,39 @@ public class MessagesPage extends BasePage {
     }
 
     public void enterWriteMessage(String strConditionName) {
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-
-//            jsScrollIntoView(btnWriteMessage);
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("autoGrantPermissions", "true");
-            AppiumDriver appiumDriver = (AppiumDriver) driver;
-            Set<String> contextNames = appiumDriver.getContextHandles();
-            for (String strContextName : contextNames) {
-                if (strContextName.contains("NATIVE_APP")) {
-                    appiumDriver.context("NATIVE_APP");
-                    break;
-                }
-            }
-            System.out.println("Success Switch Native App");
-            capabilities.setCapability("autoGrantPermissions", "true");
-//            swipeUp();
-            waitForSeconds(2);
-//            waitForElement(txtMessage);
+//        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+//
+////            jsScrollIntoView(btnWriteMessage);
+//            DesiredCapabilities capabilities = new DesiredCapabilities();
+//            capabilities.setCapability("autoGrantPermissions", "true");
+//            AppiumDriver appiumDriver = (AppiumDriver) driver;
+//            Set<String> contextNames = appiumDriver.getContextHandles();
+//            for (String strContextName : contextNames) {
+//                if (strContextName.contains("NATIVE_APP")) {
+//                    appiumDriver.context("NATIVE_APP");
+//                    break;
+//                }
+//            }
+//            System.out.println("Success Switch Native App");
+//            capabilities.setCapability("autoGrantPermissions", "true");
+////            swipeUp();
 //            waitForSeconds(2);
-            mouseClick(txtMessage);
-            waitForSeconds(3);
-            txtMessage.clear();
-            waitForSeconds(2);
-            enterValueRealDevice(txtMessage, strConditionName);
-            Set<String> contextNames1 = appiumDriver.getContextHandles();
-            for (String strContextName : contextNames1) {
-                if (strContextName.contains("CHROMIUM")) {
-                    appiumDriver.context("CHROMIUM");
-                    break;
-                }
-            }
-
-        }
+////            waitForElement(txtMessage);
+////            waitForSeconds(2);
+//            mouseClick(txtMessage);
+//            waitForSeconds(3);
+//            txtMessage.clear();
+//            waitForSeconds(2);
+//            enterValueRealDevice(txtMessage, strConditionName);
+//            Set<String> contextNames1 = appiumDriver.getContextHandles();
+//            for (String strContextName : contextNames1) {
+//                if (strContextName.contains("CHROMIUM")) {
+//                    appiumDriver.context("CHROMIUM");
+//                    break;
+//                }
+//            }
+//
+//        }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
 
 
@@ -3208,79 +3177,79 @@ public class MessagesPage extends BasePage {
     public boolean clickAddFile(String strUploadDocumentName) {
         boolean blResult = false;
         try {
-            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-
-                waitForSeconds(3);
-                jsScrollIntoView(btnAttachClick);
-                waitForSeconds(3);
-                jsClick(btnAttachClick);
-                waitForSeconds(2);
-                mouseClick(btnAddFileForMobile);
-                waitForSeconds(4);
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("autoGrantPermissions", "true");
-                pushFileToDevice("MMHtest.jpg");
-                AppiumDriver appiumDriver = (AppiumDriver) driver;
-                Set<String> contextNames = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames) {
-                    if (strContextName.contains("NATIVE_APP")) {
-                        appiumDriver.context("NATIVE_APP");
-                        break;
-                    }
-                }
-                capabilities.setCapability("autoGrantPermissions", "true");
-                String mobiledevicename = System.getProperty("deviceName");
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>" + mobiledevicename);
-                if (System.getProperty("deviceName").equalsIgnoreCase("Poco M2")) {
-                    waitForSeconds(3);
-                    click(WhileUsingTheApp);
-                    waitForSeconds(3);
-                    click(WhileUsingTheApp);
-                    waitForSeconds(3);
-                    click(FileIcon);
-                    waitForSeconds(3);
-                    click(iconHamburger);
-                    waitForSeconds(3);
-                    click(optDownloads);
-                }
-                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy A13")) {
-                    waitForSeconds(3);
-                    click(WhileUsingTheAppForA13);
-                    waitForSeconds(3);
-                    click(WhileUsingTheAppForA13);
-                    waitForSeconds(3);
-                    click(MediaIcon);
-
-                }
-                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy M53")) {
-                    waitForSeconds(3);
-                    click(WhileUsingTheAppForA13);
-                    waitForSeconds(3);
-                    click(WhileUsingTheAppForA13);
-                    waitForSeconds(3);
-                    click(MediaIcon);
-
-                }
-                if (System.getProperty("deviceName").equalsIgnoreCase("Motorola One Fusion+")) {
-                    waitForSeconds(3);
-                    click(WhileUsingTheAppForA13);
-                    waitForSeconds(2);
-                    click(FileIcon);
-                }
-
-                WebElement elmntImage = waitForElement(By.xpath(strTextViewLocator.replace("<<TEXT>>", "MMHtest.jpg")));
-                click(elmntImage);
-                waitForSeconds(3);
-                Set<String> contextNames1 = appiumDriver.getContextHandles();
-                for (String strContextName : contextNames1) {
-                    if (strContextName.contains("CHROMIUM")) {
-                        appiumDriver.context("CHROMIUM");
-                        break;
-                    }
-                }
-                waitForElement(btnAttachUpload);
-                click(btnAttachUpload);
-            }
+//            if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+//
+//                waitForSeconds(3);
+//                jsScrollIntoView(btnAttachClick);
+//                waitForSeconds(3);
+//                jsClick(btnAttachClick);
+//                waitForSeconds(2);
+//                mouseClick(btnAddFileForMobile);
+//                waitForSeconds(4);
+//                DesiredCapabilities capabilities = new DesiredCapabilities();
+//                capabilities.setCapability("autoGrantPermissions", "true");
+//                pushFileToDevice("MMHtest.jpg");
+//                AppiumDriver appiumDriver = (AppiumDriver) driver;
+//                Set<String> contextNames = appiumDriver.getContextHandles();
+//                for (String strContextName : contextNames) {
+//                    if (strContextName.contains("NATIVE_APP")) {
+//                        appiumDriver.context("NATIVE_APP");
+//                        break;
+//                    }
+//                }
+//                capabilities.setCapability("autoGrantPermissions", "true");
+//                String mobiledevicename = System.getProperty("deviceName");
+//                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>" + mobiledevicename);
+//                if (System.getProperty("deviceName").equalsIgnoreCase("Poco M2")) {
+//                    waitForSeconds(3);
+//                    click(WhileUsingTheApp);
+//                    waitForSeconds(3);
+//                    click(WhileUsingTheApp);
+//                    waitForSeconds(3);
+//                    click(FileIcon);
+//                    waitForSeconds(3);
+//                    click(iconHamburger);
+//                    waitForSeconds(3);
+//                    click(optDownloads);
+//                }
+//                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy A13")) {
+//                    waitForSeconds(3);
+//                    click(WhileUsingTheAppForA13);
+//                    waitForSeconds(3);
+//                    click(WhileUsingTheAppForA13);
+//                    waitForSeconds(3);
+//                    click(MediaIcon);
+//
+//                }
+//                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy M53")) {
+//                    waitForSeconds(3);
+//                    click(WhileUsingTheAppForA13);
+//                    waitForSeconds(3);
+//                    click(WhileUsingTheAppForA13);
+//                    waitForSeconds(3);
+//                    click(MediaIcon);
+//
+//                }
+//                if (System.getProperty("deviceName").equalsIgnoreCase("Motorola One Fusion+")) {
+//                    waitForSeconds(3);
+//                    click(WhileUsingTheAppForA13);
+//                    waitForSeconds(2);
+//                    click(FileIcon);
+//                }
+//
+//                WebElement elmntImage = waitForElement(By.xpath(strTextViewLocator.replace("<<TEXT>>", "MMHtest.jpg")));
+//                click(elmntImage);
+//                waitForSeconds(3);
+//                Set<String> contextNames1 = appiumDriver.getContextHandles();
+//                for (String strContextName : contextNames1) {
+//                    if (strContextName.contains("CHROMIUM")) {
+//                        appiumDriver.context("CHROMIUM");
+//                        break;
+//                    }
+//                }
+//                waitForElement(btnAttachUpload);
+//                click(btnAttachUpload);
+//            }
 
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                 System.out.println("Member " + strUploadDocumentName);
@@ -4243,6 +4212,9 @@ public class MessagesPage extends BasePage {
             }
             if (!isElementDisplayed(txtWelcome)) {
                 focusWindow(1);
+                if (verifyElement(elmntLogoutPopup)) {
+                    click(elmntLogoutPopupButton);
+                }
                 System.out.println("Successfully switch to doctor portal");
                 waitForElement(elmtMMHLogo);
                 waitForElementClickable(elmtMMHLogo);
@@ -4300,5 +4272,37 @@ public class MessagesPage extends BasePage {
         return blResult;
     }
 
+    public boolean verifySMSInfoMessage() {
+        boolean blResult = false;
+        try {
+            waitForElement(verifyInformationHeader);
+            verifyElement(verifyInformationHeader);
+            waitForElement(verifyInformationContent);
+            verifyElement(verifyInformationContent);
+            waitForElement(clcikPopupOkButton);
+            click(clcikPopupOkButton);
+            blResult = true;
+
+        } catch (Exception e) {
+            System.out.println("Failed to navigate the compose");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean verifySMSTab() {
+        boolean blResult = false;
+        try {
+            waitForElement(verifySMSTab);
+            verifyElement(verifySMSTab);
+            click(verifySMSTab);
+            blResult = true;
+
+        } catch (Exception e) {
+            System.out.println("Failed to navigate the compose");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
 
 }

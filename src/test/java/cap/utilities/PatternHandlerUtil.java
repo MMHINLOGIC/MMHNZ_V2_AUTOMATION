@@ -1,8 +1,11 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Created by codoid-pc on 29-08-2022.
+ */
 public class PatternHandlerUtil {
 
     public static String getFirstMatch(String strPattern, String strValue) {
@@ -14,7 +17,7 @@ public class PatternHandlerUtil {
         }
         return strFirstMatch;
     }
-/**get testvalue in used this method getMatchContent.*/
+
     public static String getMatchContent(String strPattern, String strValue) {
         Pattern p = Pattern.compile(strPattern);
         Matcher m = p.matcher(strValue);

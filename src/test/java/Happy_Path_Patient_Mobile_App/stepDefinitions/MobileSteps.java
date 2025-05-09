@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Mobile_App.stepDefinitions;
+package java.Happy_Path_Patient_Mobile_App.stepDefinitions;
 
 import Happy_Path_Patient_Mobile_App.DemoScreenContainer;
 import cap.utilities.TestDataUtil;

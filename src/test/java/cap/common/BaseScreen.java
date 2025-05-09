@@ -1,8 +1,12 @@
-package cap.common;
+package java.cap.common;
 
 import Happy_Path_Patient_Mobile_App.DemoScreenContainer;
 import cap.helpers.Constants;
-import io.appium.java_client.*;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.HidesKeyboard;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.StartsActivity;
@@ -10,10 +14,8 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
-import lombok.Getter;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.touch.TouchActions;
-import org.openqa.selenium.remote.RemoteWebElement;
+
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -26,382 +28,496 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
-import static cap.common.BaseWindow.waitForSeconds;
+// Static imports for TouchAction wait options and point factory methods.
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.PointOption.point;
-
 
 public class BaseScreen {
 
     protected final WebDriver driver;
-    public AndroidDriver androidDriver;
     protected final WebDriverWait wait;
-
     protected final WebDriverWait invisibleWait;
+//    public AndroidDriver<WebElement> androidDriver;
 
-/**   This method is used to connect the mobile class page to the base screen page.*/
+    // Platform name can be set via system property (e.g., "android" or "ios")
+    static String strPlatformName = System.getProperty("platformName");
+
+    // Directory path for images (adjust file separator if needed)
+    public static String strImageDirectory = System.getProperty("user.dir") + File.separator + "config" + File.separator + "Images" + File.separator;
+
+    // Reference to a container for logging/screenshot purposes (if needed)
+    public static DemoScreenContainer pageContainer;
+
+    /**
+     * Constructor that initializes the page elements and explicit waits.
+     *
+     * @param driver the WebDriver (or AppiumDriver) instance
+     */
     public BaseScreen(WebDriver driver) {
+        // Initialize mobile elements with a 5-second timeout
         PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(5)), this);
         this.driver = driver;
-        wait = new WebDriverWait(this.driver, Integer.parseInt("30"));
-        invisibleWait = new WebDriverWait(this.driver,Integer.parseInt("30"));
+        // Set explicit waits using Duration rather than integer seconds
+        wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+        invisibleWait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+
+    }
+
+    /**
+     * Helper method to perform a short sleep.
+     *
+     * @param seconds number of seconds to wait
+     */
+    public void waitForSecond(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000L);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.out.println("Interrupted during waitForSecond: " + e.getMessage());
+        }
     }
 
 
+
+    /**
+     * Starts an Android activity.
+     *
+     * @param strAppPackage the package name of the app
+     * @param strAppActivity the activity name to start
+     */
     public void startAndroidActivity(String strAppPackage, String strAppActivity) {
         ((StartsActivity) driver).startActivity(new Activity(strAppPackage, strAppActivity));
     }
 
+    /**
+     * Hides the mobile keyboard.
+     */
     public void hideMobileKeyboard() {
         ((HidesKeyboard) driver).hideKeyboard();
     }
 
-    /** explicit wait condition where we can pause or wait for an element before proceeding to the next step.In this method, declare the elements Xpath like containsText,Text....*/
+    /**
+     * Waits until the given element is visible.
+     *
+     * @param element the WebElement to wait for
+     * @return the visible WebElement
+     */
     public WebElement waitForElement(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    /**When an element on the page is not clickable, Selenium waits for it to be clickable, and it takes a long time to load all elements.In this method, declare the elements Xpath like Id,Name..  */
+    /**
+     * Waits until the given element (located by By) is visible.
+     *
+     * @param by the locator for the element
+     * @return the visible WebElement
+     */
+    public WebElement waitForElement(By by) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
+    /**
+     * Waits until the given element is clickable.
+     *
+     * @param element the WebElement to wait for
+     * @return the clickable WebElement
+     */
     public WebElement waitForElementClickable(WebElement element) {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    static String strPlatformName = System.getProperty("platformName");
-    /**  This method is used to click the present element.In this method, declare the elements Xpath like Id,Name..*/
+    /**
+     * Clicks on the specified element.
+     *
+     * @param element the WebElement to click
+     * @return true if successful, false otherwise
+     */
     public boolean click(WebElement element) {
-        WebElement ele;
         try {
-            ele = waitForElement(element);
+            WebElement ele = waitForElement(element);
             ele.click();
             return true;
         } catch (Exception e) {
-            System.out.println("\n Click Element:: " + e.getMessage());
-            return false;
-        }
-    }
-    /**  This method is used to click the present element.In this method, declare the elements Xpath.*/
-    public boolean click(By by) {
-        WebElement ele;
-        try {
-            ele = waitForElement(by);
-            ele.click();
-            return true;
-        } catch (Exception e) {
-            System.out.println("\n Click Element:: " + e.getMessage());
+            System.out.println("Click Element Exception: " + e.getMessage());
             return false;
         }
     }
 
+    /**
+     * Clicks on the element located by the given By locator.
+     *
+     * @param by the locator for the element
+     * @return true if successful, false otherwise
+     */
+    public boolean click(By by) {
+        try {
+            WebElement ele = waitForElement(by);
+            ele.click();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Click Element Exception: " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Scrolls vertically until the element containing the specified text is in view (Android-specific).
+     *
+     * @param strTextToScroll the text to scroll to
+     */
     public void scrollVerticalIntoView(String strTextToScroll) {
         try {
             driver.findElement(MobileBy.AndroidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true)).setAsVerticalList().scrollIntoView(" +
-                            "new UiSelector().text(\"" + strTextToScroll + "\"))"));
-
-//            androidDriver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" +strTextToScroll +"\"))");
+                    "new UiScrollable(new UiSelector().scrollable(true)).setAsVerticalList()" +
+                            ".scrollIntoView(new UiSelector().text(\"" + strTextToScroll + "\"))"));
         } catch (Exception e) {
             System.out.println("Scroll Vertical Exception: " + e.getMessage());
         }
-
     }
-    /**  This method is used to verify the present elements.In this method, declare the elements Xpath like Id,Name..*/
-    public boolean verifyElement(WebElement element) {
 
+    /**
+     * Verifies that the given element is displayed.
+     *
+     * @param element the WebElement to verify
+     * @return true if displayed, false otherwise
+     */
+    public boolean verifyElement(WebElement element) {
         try {
-            element.isDisplayed();
-            waitForElement(element).isDisplayed();
-            return true;
+            return waitForElement(element).isDisplayed();
         } catch (Exception e) {
-            System.out.println("\n Click Element:: " + e.getMessage());
+            System.out.println("Verify Element Exception: " + e.getMessage());
             return false;
         }
     }
 
-    /**  This method is used to verify the present elements.In this method, declare the elements Xpath*/
-    public boolean verifyElement(By element) {
-        boolean isVerify = false;
+    /**
+     * Verifies that an element located by the given By locator is displayed.
+     *
+     * @param by the locator for the element
+     * @return true if displayed, false otherwise
+     */
+    public boolean verifyElement(By by) {
         try {
-            isVerify = driver.findElement(element).isDisplayed();
-        } catch (NoSuchElementException error) {
-            error.getMessage();
-            isVerify = false;
+            return driver.findElement(by).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
         }
-        return isVerify;
     }
 
+    /**
+     * Verifies the element without using an explicit wait.
+     *
+     * @param element the WebElement to verify
+     * @return true if displayed, false otherwise
+     */
     public boolean verifyElementWithoutWait(WebElement element) {
-        boolean blResult = false;
-
         try {
             if (element.isDisplayed()) {
-                Thread.sleep(1000);
-                blResult = true;
-            } else {
-                blResult = false;
+                waitForSecond(1);
+                return true;
             }
         } catch (Exception e) {
-            System.out.println("\n Verify Element:: " + e.getMessage());
+            System.out.println("Verify Element Exception: " + e.getMessage());
         }
-
-        return blResult;
+        return false;
     }
 
-    /**The implicitlyWait command waits for an element to load for a specified duration..*/
-    public void waitForSecond(int i) {
-        try {
-            Thread.sleep(i * 1000);
-        } catch (Exception e) {
-            System.out.println("\n waitForSecond:: " + e.getMessage());
-        }
-    }
-
+    /**
+     * Switches focus to a frame identified by the given element.
+     *
+     * @param element the frame element
+     * @return true if focus is switched, false otherwise
+     */
     public boolean focusFrame(WebElement element) {
-        boolean isFrameFocused;
-        waitForSeconds(1);
+        waitForSecond(1);
         driver.switchTo().frame(element);
-        System.out.println("After Focused>>>>>>>>");
-        isFrameFocused = true;
-        return isFrameFocused;
+        System.out.println("Frame is focused.");
+        return true;
     }
 
-/**  Using this method, the mobile application is terminated and relaunched*/
+    /**
+     * Relaunches the Android app by closing and reactivating it.
+     */
     public void reLaunchAppAndroid() {
-        ((AppiumDriver<WebElement>) driver).closeApp();
-        System.out.println("App Teriminated");
+        ((AndroidDriver) driver).closeApp();
+        System.out.println("App terminated.");
         waitForSecond(3);
-        ((AppiumDriver<WebElement>) driver).activateApp("managemyhealth.co.nz");
-        System.out.println("App ReLaunched");
-    }
-/**This method is used to obtain the element's coordinates (x,y value) before tapping it.*/
-    public void tapCooridinatesByElement(WebElement element) {
-        waitForSecond(3);
-        int Xcoordinate = element.getLocation().x;
-        int Ycoordinate = element.getLocation().y;
-        TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
-        touchAction.tap(PointOption.point(Xcoordinate, Ycoordinate)).perform();
-    }
-    /**The implicitlyWait command waits for an element to load for a specified duration..*/
-    public List<WebElement> waitForElements(List<WebElement> element) {
-        return wait.until(ExpectedConditions.visibilityOfAllElements(element));
+        ((AndroidDriver) driver).activateApp("managemyhealth.co.nz");
+        System.out.println("App relaunched.");
     }
 
-    /**This method is used to Enter the value of the present Textbox with Selenium.*/
-    public boolean enterValue(WebElement element, String strVlaue) {
+    /**
+     * Taps on the screen using the coordinates of the given element.
+     *
+     * @param element the WebElement whose coordinates are used for tapping
+     */
+    public void tapCoordinatesByElement(WebElement element) {
+        waitForSecond(3);
+        int xCoordinate = element.getLocation().x;
+        int yCoordinate = element.getLocation().y;
+        new TouchAction<>((PerformsTouchActions) driver)
+                .tap(PointOption.point(xCoordinate, yCoordinate))
+                .perform();
+    }
+
+    /**
+     * Waits until all elements in the given list are visible.
+     *
+     * @param elements the list of WebElements
+     * @return the list of visible WebElements
+     */
+    public List<WebElement> waitForElements(List<WebElement> elements) {
+        return wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+    }
+
+    /**
+     * Clears and enters the specified value into the given element.
+     *
+     * @param element the WebElement to send keys to
+     * @param value the value to enter
+     * @return true if successful, false otherwise
+     */
+    public boolean enterValue(WebElement element, String value) {
         try {
             waitForElement(element).click();
             waitForElement(element).clear();
-            waitForElement(element).click();
-            waitForElement(element).sendKeys(strVlaue);
+            waitForElement(element).sendKeys(value);
             return true;
         } catch (Exception e) {
-            System.out.println("\n Enter a value - Exception:: " + e.getMessage());
+            System.out.println("Enter value Exception: " + e.getMessage());
             return false;
         }
     }
 
-
+    /**
+     * Swipes from the bottom to the top of the screen (vertical swipe).
+     */
     public void swipeUpToDownUsingDimension() {
-        //  swipeFromUpToBottom();
         Dimension size = driver.manage().window().getSize();
-        int anchor = (int) (size.width / 2);
-        // Swipe up to scroll down
-        int startPoint = (int) (size.height - 10);
+        int anchor = size.width / 2;
+        int startPoint = size.height - 10;
         int endPoint = 10;
-        if (strPlatformName.equals(Constants.ANDROID)) {
-            new TouchAction(((AndroidDriver) driver))
-                    .longPress(point(anchor, startPoint))
-                    .moveTo(point(anchor, endPoint))
+        if (strPlatformName.equalsIgnoreCase(Constants.ANDROID)) {
+            new TouchAction<>((PerformsTouchActions) driver)
+                    .longPress(PointOption.point(anchor, startPoint))
+                    .moveTo(PointOption.point(anchor, endPoint))
                     .release()
                     .perform();
-        } else if (strPlatformName.equals(Constants.IOS)) {
-            new TouchAction(((IOSDriver) driver))
-                    .longPress(point(anchor, startPoint))
-                    .moveTo(point(anchor, endPoint))
+        } else if (strPlatformName.equalsIgnoreCase(Constants.IOS)) {
+            new TouchAction<>((PerformsTouchActions) driver)
+                    .longPress(PointOption.point(anchor, startPoint))
+                    .moveTo(PointOption.point(anchor, endPoint))
                     .release()
                     .perform();
         }
     }
-    /**  This method is used with mobiledriver to scroll the mobile screen a short distance.*/
+
+    /**
+     * Performs a short swipe up gesture.
+     */
     public void swipeUpShort() {
         Dimension size = driver.manage().window().getSize();
-        System.out.println("Swipe Up");
+        int startX = (int) (size.width * 0.2);
+        int startY = (int) (size.height * 0.6);
+        int endX = startX;
+        int endY = (int) (size.height * 0.2);
 
-        int startx = (int) (size.width * 0.2);
-        int starty = (int) (size.height * 0.6);
-
-        int endx = (int) (size.width * 0.2);
-        int endy = (int) (size.height * 0.2);
-
-        TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
-        touchAction.press(PointOption.point(startx, starty))
+        new TouchAction<>((PerformsTouchActions) driver)
+                .press(PointOption.point(startX, startY))
                 .waitAction(waitOptions(Duration.ofSeconds(1)))
-                .moveTo(PointOption.point(endx, endy)).release().perform();
+                .moveTo(PointOption.point(endX, endY))
+                .release()
+                .perform();
     }
-/**   This method is used to make the mobile screen scroll up or down with the mobile driver.*/
+
+    /**
+     * Performs a swipe up gesture.
+     */
     public void swipeUp() {
         Dimension size = driver.manage().window().getSize();
-        System.out.println(size);
+        int startX = (int) (size.width * 0.5);
+        int startY = (int) (size.height * 0.8);
+        int endX = (int) (size.width * 0.2);
+        int endY = (int) (size.height * 0.2);
 
-        int startx = (int) (size.width * 0.5);
-        int starty = (int) (size.height * 0.8);
-
-        int endx = (int) (size.width * 0.2);
-        int endy = (int) (size.height * 0.2);
-
-        TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
-        touchAction.press(PointOption.point(startx, starty))
+        new TouchAction<>((PerformsTouchActions) driver)
+                .press(PointOption.point(startX, startY))
                 .waitAction(waitOptions(Duration.ofSeconds(1)))
-                .moveTo(PointOption.point(endx, endy)).release().perform();
+                .moveTo(PointOption.point(endX, endY))
+                .release()
+                .perform();
     }
 
-    /**   This method is used to Mobile Screen down with MobileDriver.*/
+    /**
+     * Performs a swipe down gesture.
+     */
     public void swipeDown() {
         Dimension size = driver.manage().window().getSize();
-        int startx = (int) (size.width * 0.2);
-        int starty = (int) (size.height * 0.2);
-        int endx = (int) (size.width * 0.5);
-        int endy = (int) (size.height * 0.8);
-        TouchAction touchAction = new TouchAction((PerformsTouchActions) driver);
-        touchAction.press(PointOption.point(startx, starty))
+        int startX = (int) (size.width * 0.2);
+        int startY = (int) (size.height * 0.2);
+        int endX = (int) (size.width * 0.5);
+        int endY = (int) (size.height * 0.8);
+
+        new TouchAction<>((PerformsTouchActions) driver)
+                .press(PointOption.point(startX, startY))
                 .waitAction(waitOptions(Duration.ofSeconds(1)))
-                .moveTo(PointOption.point(endx, endy)).release().perform();
+                .moveTo(PointOption.point(endX, endY))
+                .release()
+                .perform();
     }
 
+    /**
+     * Uses JavaScript to swipe down (mobile scroll).
+     */
     public void jsSwipeDown() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        HashMap scrollObject = new HashMap();
+        Map<String, Object> scrollObject = new HashMap<>();
         scrollObject.put("direction", "down");
         js.executeScript("mobile: scroll", scrollObject);
     }
 
+    /**
+     * Uses JavaScript to swipe up (mobile scroll).
+     */
     public void jsSwipeUp() {
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        HashMap scrollObject = new HashMap();
+        Map<String, Object> scrollObject = new HashMap<>();
         scrollObject.put("direction", "up");
         js.executeScript("mobile: scroll", scrollObject);
     }
 
+    /**
+     * Performs an iOS swipe gesture using JavaScript.
+     */
     public void mobileSwipeScreenIOS() {
-
         final int ANIMATION_TIME = 200; // ms
-        final HashMap<String, String> scrollObject = new HashMap<String, String>();
-
-
+        Map<String, String> scrollObject = new HashMap<>();
         scrollObject.put("direction", "left");
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
         try {
-            js.executeScript("mobile:swipe", scrollObject);
-            Thread.sleep(ANIMATION_TIME); // always allow swipe action to complete
+            js.executeScript("mobile: swipe", scrollObject);
+            Thread.sleep(ANIMATION_TIME); // Allow swipe action to complete
         } catch (Exception e) {
-            System.err.println("mobileSwipeScreenIOS(): FAILED\n" + e.getMessage());
-            return;
+            System.err.println("mobileSwipeScreenIOS() FAILED: " + e.getMessage());
         }
     }
 
+    /**
+     * Uses a swipe left gesture via TouchAction (iOS).
+     */
     public void jsSwipeLeft() {
         waitForSecond(2);
         Dimension size = driver.manage().window().getSize();
-        System.out.println(size.height + "height");
-        System.out.println(size.width + "width");
-
-        int startx = (int) (size.width * 0.9D);
-        int endx = (int) (size.width * 0.1D);
-        int starty = size.height / 2;
-
-        TouchAction<?> action = new TouchAction((PerformsTouchActions) driver);
-        action.press(PointOption.point(startx, starty)).moveTo(PointOption.point(endx, starty)).release().perform();
-
+        int startX = (int) (size.width * 0.9);
+        int endX = (int) (size.width * 0.1);
+        int startY = size.height / 2;
+        new TouchAction<>((PerformsTouchActions) driver)
+                .press(PointOption.point(startX, startY))
+                .moveTo(PointOption.point(endX, startY))
+                .release()
+                .perform();
     }
 
-    public void scroll(WebElement element) {
-        TouchActions action = null;
-        if (strPlatformName.equals(Constants.ANDROID)) {
-            action = new TouchActions(((AndroidDriver) driver));
-        } else if (strPlatformName.equals(Constants.IOS)) {
-            action = new TouchActions(((IOSDriver) driver));
-        }
-        action.scroll(element, 10, 10);
-        action.perform();
-    }
+    /**
+     * Scrolls the screen relative to a given element.
+     * <p>
+     * Note: The TouchActions class is deprecated in Selenium 4.
+     * Consider using TouchAction or the W3C Actions API for new implementations.
+     * </p>
+     *
+     * @param element the element to scroll relative to
+     */
 
 
-    public void jsIOSNextDatePicker(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        Map<String, Object> params = new HashMap<>();
-        params.put("order", "next");
-        params.put("offset", 0.15);
-        params.put("element", ((RemoteWebElement) element).getId());
-        js.executeScript("mobile: selectPickerWheelValue", params);
-    }
+    /**
+     * For iOS: advances the picker wheel to the next value.
+     *
+     * @param element the picker wheel element
+     */
 
-    public static DemoScreenContainer pageContainer;
-
-    /**   This method is used to take screenshots of the current page.*/
+    /**
+     * Takes a screenshot and attaches it to the test scenario.
+     *
+     * @param driver the WebDriver instance
+     */
     public void takeScreenshot(WebDriver driver) {
         try {
+            // Assumes that pageContainer.myScenario.attach supports attaching a screenshot as bytes.
             pageContainer.myScenario.attach(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES), "image/png", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    /**   Using an Android driver, you can use this method to Attach,Upload any file into your mobile device.*/
-    public void attachStepLog(String strKey, String strvalue) {
+    /**
+     * Attaches a key-value pair to the step log.
+     *
+     * @param key the key
+     * @param value the value
+     */
+    public void attachStepLog(String key, String value) {
         try {
-            pageContainer.printTestDataMap.put(strKey, strvalue);
+            pageContainer.printTestDataMap.put(key, value);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public WebElement waitForElement(By by) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-    }
-
-
-    /**This method is used to obtain the element's coordinates (x,y value) before tapping it.*/
+    /**
+     * Taps the screen at the specified coordinates.
+     *
+     * @param startX the x-coordinate
+     * @param startY the y-coordinate
+     */
     public void tapByCoordinates(int startX, int startY) {
         try {
-            TouchAction act = new TouchAction((PerformsTouchActions) driver);
-            Thread.sleep(1000);
-            Point pt = new Point(startX, startY);
-            act.tap(PointOption.point(pt)).perform();
+            waitForSecond(1);
+            new TouchAction<>((PerformsTouchActions) driver)
+                    .tap(PointOption.point(startX, startY))
+                    .perform();
         } catch (Exception e) {
-            System.out.println("\n Exception :: tap By Coordinates " + e.getMessage());
+            System.out.println("Exception in tapByCoordinates: " + e.getMessage());
         }
     }
 
-    public void enterValueByCoordinates(String strValue) {
-        try {
-            AppiumDriver appiumDriver = (AppiumDriver) driver;
-            appiumDriver.getKeyboard().sendKeys(strValue);
-        } catch (Exception e) {
-            System.out.println("\n Exception enterValue By Coordinates" + e.getMessage());
-        }
-    }
+    /**
+     * Enters text using the device keyboard.
+     *
 
+
+
+    /**
+     * Checks if the loop should continue based on the elapsed time.
+     *
+     * @param milliSec  the maximum duration in milliseconds
+     * @param startTime the start time in milliseconds
+     * @return true if the elapsed time is less than milliSec, false otherwise
+     */
     public boolean exitLoop(int milliSec, long startTime) {
         return (System.currentTimeMillis() - startTime) < milliSec;
     }
 
-/**    While clicking a link,element we get the IllegalStateException, to avoid this exception, the JavaScript executor is used instead of the method */
-
+    /**
+     * Waits for an element to be visible, ignoring stale element exceptions.
+     *
+     * @param element the WebElement to wait for
+     * @return the refreshed, visible WebElement
+     */
     public WebElement waitForElementIgnoreStale(WebElement element) {
         return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
     }
 
-
+    /**
+     * Navigates back. For iOS, performs a swipe-left gesture.
+     */
     public void navigateToBack() {
         try {
-            if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+            String platform = System.getProperty("PLATFORM");
+            if (platform != null && platform.equalsIgnoreCase("android")) {
                 driver.navigate().back();
-            }  else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+            } else if (platform != null && platform.equalsIgnoreCase("ios")) {
                 swipeLeftIOS();
             }
         } catch (Exception e) {
@@ -409,63 +525,78 @@ public class BaseScreen {
         }
     }
 
+    /**
+     * Performs a left swipe gesture for iOS.
+     */
     public void swipeLeftIOS() {
         waitForSecond(1);
         Dimension size = driver.manage().window().getSize();
-
-        int startY = (int) (size.height / 2);
+        int startY = size.height / 2;
         int startX = (int) (size.width * 0.05);
         int endX = (int) (size.width * 0.90);
-        new TouchAction((PerformsTouchActions) driver)
+        new TouchAction<>((PerformsTouchActions) driver)
                 .press(PointOption.point(startX, startY))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                 .moveTo(PointOption.point(endX, startY))
                 .release()
                 .perform();
-
     }
 
-    public WebElement fluentWaitForElement(By element) {
-        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(80, TimeUnit.SECONDS)
-                .pollingEvery(2, TimeUnit.SECONDS)
+    /**
+     * Waits for an element using FluentWait.
+     *
+     * @param elementLocator the By locator of the element
+     * @return the found WebElement
+     */
+    public WebElement fluentWaitForElement(By elementLocator) {
+        Wait<WebDriver> fluentWait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(80))
+                .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
-        WebElement elmnt = wait.until(new Function<WebDriver, WebElement>() {
+
+        return fluentWait.until(new Function<WebDriver, WebElement>() {
+            @Override
             public WebElement apply(WebDriver driver) {
-                return driver.findElement(element);
+                return driver.findElement(elementLocator);
             }
         });
-        return elmnt;
     }
 
-    public static String strImageDirectory = System.getProperty("user.dir") + "\\config\\Images\\";
-
-/**   Using an Android driver, you can use this method to push any file into your mobile device.*/
-    public void pushFileToDevice(String strImageName) {
-        try {
-            ((AndroidDriver<WebElement>) driver).pushFile("/sdcard/Download/" + strImageName + "", new File(strImageDirectory + strImageName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-//    public void pushFileToIOSDevice(String strImageName) {
+    /**
+     * Pushes a file from the local machine to the device.
+     *
+     * @param strImageName the name of the image file
+     */
+//    public void pushFileToDevice(String strImageName) {
 //        try {
-//            ((AppiumDriver<WebElement>) driver).p("/Users/" + strImageName + "", new File(strImageDirectory + strImageName));
+//            File fileToPush = new File(strImageDirectory, strImageName);
+//            if (!fileToPush.exists()) {
+//                System.err.println("File not found: " + fileToPush.getAbsolutePath());
+//                return;
+//            }
+//            ((AndroidDriver<WebElement>) driver).pushFile("/sdcard/Download/" + strImageName, fileToPush);
+//            System.out.println("File pushed to device: " + strImageName);
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
 //    }
+
+    /**
+     * Relaunches the iOS app by closing and reactivating it.
+     */
+//    public void reLaunchAppIOS() {
+//        ((AppiumDriver<WebElement>) driver).closeApp();
+//        System.out.println("App terminated.");
+//        waitForSecond(3);
+//        ((AppiumDriver<WebElement>) driver).activateApp("managemyhealth.co.nz");
+//        System.out.println("App relaunched.");
+//    }
+
     public void reLaunchAppIOS() {
-//        ((AppiumDriver<WebElement>)driver).terminateApp("managemyhealth.co.nz");
-        ((AppiumDriver<WebElement>) driver).closeApp();
-        System.out.println("App Teriminated");
+        ((AndroidDriver) driver).closeApp();
+        System.out.println("App terminated.");
         waitForSecond(3);
-//        ((AppiumDriver<WebElement>)driver).launchApp();
-        ((AppiumDriver<WebElement>) driver).activateApp("managemyhealth.co.nz");
-        System.out.println("App ReLaunched");
-
-
+        ((AndroidDriver) driver).activateApp("managemyhealth.co.nz");
+        System.out.println("App relaunched.");
     }
-
 }

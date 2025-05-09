@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Mobile_App.screens;
+package java.Happy_Path_Patient_Mobile_App.screens;
 
 import cap.common.BaseScreen;
 import io.appium.java_client.pagefactory.AndroidFindBy;

@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Mobile_App.screens;
+package java.Happy_Path_Patient_Mobile_App.screens;
 
 import cap.common.BaseScreen;
 import io.appium.java_client.pagefactory.*;
@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RepeatRequestPrescriptionScreen extends BaseScreen {
 
@@ -508,7 +506,7 @@ tapByCoordinates(88,1578);
     public void selectAccountToAccountIOS() {
         waitForElement(elmntPaymentCheckout);
         waitForSecond(4);
-        tapCooridinatesByElement(elmntAccount2Account);
+        tapCoordinatesByElement(elmntAccount2Account);
         tapByCoordinates(284,447);
 
     }

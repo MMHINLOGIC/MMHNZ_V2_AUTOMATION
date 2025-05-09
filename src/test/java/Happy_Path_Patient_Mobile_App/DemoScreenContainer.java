@@ -1,13 +1,9 @@
-package Happy_Path_Patient_Mobile_App;
+package java.Happy_Path_Patient_Mobile_App;
 
 
 import Happy_Path_Patient_Mobile_App.screens.*;
-import cap.common.BasePage;
-import cap.common.BaseScreen;
 import cap.helpers.Constants;
-import cap.utilities.DriverUtil;
 import cap.utilities.SharedDriver;
-
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.appmanagement.ApplicationState;
 import io.appium.java_client.ios.IOSDriver;
@@ -17,10 +13,8 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

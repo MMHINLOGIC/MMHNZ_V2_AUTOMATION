@@ -1,4 +1,4 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import java.io.FileInputStream;
 import java.util.HashMap;
@@ -6,9 +6,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
-
-
-/**Propertyutil is used to get property files into your system.*/
+/**
+ * Created by Gokul-pc on 11-04-2025.
+ */
+/** Propertyutil is used to get Property files into your sysytem.*/
 public class PropertyUtil {
     public static Map<String,String> getPropertyFileAsHashmap(String strPropertyFilePath){
         Properties prop = new Properties();

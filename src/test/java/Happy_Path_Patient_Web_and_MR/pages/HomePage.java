@@ -1,30 +1,23 @@
-package Happy_Path_Patient_Web_and_MR.pages;
+package java.Happy_Path_Patient_Web_and_MR.pages;
 
 import cap.common.BasePage;
 import cap.helpers.Constants;
-import cap.utilities.DateUtil;
 import cap.utilities.TestDataUtil;
 import cap.utilities.WindowsProcessUtil;
-import io.restassured.internal.TrustAndKeystoreSpec;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
-import static cap.utilities.DateUtil.*;
+import static cap.utilities.DateUtil.getCurrentDate;
+import static cap.utilities.DateUtil.getDate;
 import static cap.utilities.SharedDriver.strExecutionNumber;
 
 
@@ -53,7 +46,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[@id='Login']")
     protected WebElement btnLogin;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Login']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Sign in']")
     protected WebElement elmntLoginBtn;
 
     @FindBy(how = How.XPATH, using = "//button[contains(@class,'btn-primary-pill')]")
@@ -79,16 +72,16 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='Provider Login']")
     protected WebElement ClickPatientLoginBtn;
 
-    @FindBy(how = How.XPATH, using = "//img[@class='profile-pic img-fluid']")
+    @FindBy(how = How.XPATH, using = "//img[@src='assets/images/profile-unknown.svg']")
     protected WebElement elmntProfile;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),' Sign Out ')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),' Sign Out ')]")
     protected WebElement elmntSignout;
 
     @FindBy(how = How.XPATH, using = "//div[@class='appVersion']/small")
     protected WebElement txtAppVersion;
 
-    @FindBy(how = How.XPATH, using = "//*[contains(text(),'My Home page') or contains(text(),'Welcome') or contains(text(),'Start managing your health today')]")
+    @FindBy(how = How.XPATH, using = "(//*[contains(text(),'My Home page') or contains(text(),'Welcome') or contains(text(),'Start managing your health today')])[1]")
     protected WebElement elmntVerifyHomePage;
 
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Helping you get better and stay well')]")
@@ -116,17 +109,28 @@ public class HomePage extends BasePage {
     protected WebElement elmntSignOut;
 
 
-
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Harry Harry!')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Peter')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto Autochrisc1')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto Autochrisc1')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Chrisc4')]")
 
     })
     protected WebElement txtPatientWelcomePage;
 
     @FindBy(how = How.XPATH, using = "(//img[@alt='ManageMyHealth'])[1]")
     protected WebElement elmntMMHLogo;
+
+    @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Success!')]//following::p[contains(text(),'Login Successful')]")
+    protected WebElement elmntLoginSuccessfulPopup;
+
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Your session is about to expire!')]")
+    protected WebElement elmntLogoutPopup;
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes, Keep Working')]")
+    protected WebElement elmntLogoutPopupButton;
 
     @FindBy(how = How.XPATH, using = "(//a[@class='pum-trigger'])[1]")
     protected WebElement elmntSignLogin;
@@ -251,7 +255,7 @@ public class HomePage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Sign in')]")
     protected WebElement verifyBTBLoginPage;
-    protected String elmntSubmitButtonEnablePage="(//button[@ng-reflect-disabled='false'])[2]";
+    protected String elmntSubmitButtonEnablePage = "(//button[@ng-reflect-disabled='false'])[2]";
 
 //    @FindBy(how = How.XPATH, using = "(//mat-select[@name='ethnicity']//following::input)[3]")
 //    protected WebElement elmntSelectCheckBox3;
@@ -276,7 +280,6 @@ public class HomePage extends BasePage {
     protected WebElement elmntCreate;
 
 
-
 //    @FindBy(xpath = "//h1[contains(text(),'Welcome,')]/following::h3[contains(text(),'Start managing your health, today')]")
 //    protected WebElement txtWelcome;
 
@@ -285,11 +288,13 @@ public class HomePage extends BasePage {
 
     //h1[contains(text(),'Welcome,')]//span[text()=' Christopher Michael!']
 
-        @FindAll({
+    @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[text()=' Harry Harry!']"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[text()=' Christopher Michael!']"),
-                @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Peter')]"),
-                @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Auto Autochrisc1']")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Peter')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Auto Autochrisc1']"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Auto']"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Chrisc4']")
 
     })
     protected WebElement txtWelcome;
@@ -301,7 +306,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
     protected WebElement elmntSideBar;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Sign out')])[1]")
     protected WebElement btnExitApp;
 
     @FindBy(how = How.XPATH, using = "//mat-icon[contains(text(),'exit_to_app')]")
@@ -323,10 +328,10 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@id='EncrySecuredPassword']")
     protected WebElement txtPassword;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Appointments']")
+    @FindBy(how = How.XPATH, using = "//a[contains(@class,'header')]//span[text()='Appointments']")
     protected WebElement btnAppointmentExpand;
 
-    @FindBy(how = How.XPATH, using = "//img[@class='profile-pic bookAppointmentIcon']")
+    @FindBy(how = How.XPATH, using = "//img[@src='/assets/themes/app/Book Appointment.svg']")
     protected WebElement VerifyBookAppointmentHeaderIcon;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Book an Appointment')]")
@@ -344,18 +349,18 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[contains(@class,'hamburger')]")
     protected WebElement btnHamburgerIcon;
 
-    @FindBy (how = How.XPATH, using = "//span[text()='Appointments']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Appointments']")
     protected WebElement elmntAppointment;
 
-    @FindBy (how = How.XPATH, using = "//span[contains(text(),'BOOK APPOINTMENT')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'BOOK APPOINTMENT')]")
     protected WebElement elmntPatientBookAppointment;
 
-    @FindBy (how = How.XPATH, using = "//span[text()='Login']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Sign in']")
     protected WebElement elmntloginbtn;
 
     @FindBy(how = How.XPATH, using = "//mat-icon[text()='exit_to_app']")
     protected WebElement elmntMobileLogOut;
-    @FindBy (how = How.XPATH, using = "//*[contains(text(),'Home')and contains(text(),'My Home page') or contains(text(),'Start managing your health, today')]")
+    @FindBy(how = How.XPATH, using = "//*[contains(text(),'Home')and contains(text(),'My Home page') or contains(text(),'Start managing your health, today')]")
     protected WebElement verifyPatientHomePage;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
@@ -382,10 +387,10 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//kendo-grid-group-panel[contains(@class,'grouping-header')]")
     protected WebElement elmntGroupingHeader;
 
-    @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Email Address' or @data-placeholder='Email address']")
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Email Address' or @placeholder='Email address']")
     protected WebElement txtBoxEmail;
 
-        @FindAll({
+    @FindAll({
             @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Email Address' or @data-placeholder='Email address']"),
             @FindBy(how = How.XPATH, using = "//input[@Placeholder='Email Address']")
     })
@@ -405,10 +410,7 @@ public class HomePage extends BasePage {
 //    protected WebElement txtBoxPassword;
 
 
-
-
-
-    @FindBy(how = How.XPATH, using = "//input[@data-placeholder='Password']")
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Password']")
     protected WebElement txtBoxPassword;
 
 
@@ -417,16 +419,43 @@ public class HomePage extends BasePage {
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
-    public void clickSignInButton() {
-        waitForSeconds(3);
-        if (verifyElement(SignInBtn)) {
-            waitForElement(SignInBtn);
-            jsClick(SignInBtn);
+//    public void clickSignInButton() {
+//        waitForSeconds(3);
+//        if (verifyElement(SignInBtn)) {
+//            waitForElement(SignInBtn);
+//            jsClick(SignInBtn);
+//            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            waitForElement(elmntLoginSuccessfulPopup);
+//        } else if (!verifyElement(SignInBtn)) {
+//            System.out.println("user already in the home page");
+//        }
+//    }
+
+    public boolean clickSignInButton() {
+        boolean isverified = false;
+        try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        } else if (!verifyElement(SignInBtn)) {
-            System.out.println("user already in the home page");
+            waitForSeconds(3);
+            if (verifyElement(SignInBtn)) {
+                waitForElement(SignInBtn);
+                jsClick(SignInBtn);
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElement(elmntLoginSuccessfulPopup);
+                isverified=verifyElement(elmntLoginSuccessfulPopup);
+            } else if (!verifyElement(SignInBtn)) {
+                System.out.println("user already in the home page");
+                isverified=true;
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+        return isverified;
     }
+
+
 
 
     public void BTBvisit() {
@@ -435,8 +464,8 @@ public class HomePage extends BasePage {
         if (WindowsCount == 1) {
             focusWindow(1);
             driver.manage().deleteAllCookies();
-                visit(TestDataUtil.getValue("&BTB_SELF_REGISTER_URL&"));
-                System.out.println("User here in Provider home page");
+            visit(TestDataUtil.getValue("&BTB_SELF_REGISTER_URL&"));
+            System.out.println("User here in Provider home page");
 
         }
 
@@ -453,7 +482,7 @@ public class HomePage extends BasePage {
 
         }
 
-        }
+    }
 
     public void ExistingBTBProvidervisit() {
         int WindowsCount = driver.getWindowHandles().size();
@@ -514,7 +543,6 @@ public class HomePage extends BasePage {
 //        driver.switchTo().defaultContent();
 
 
-
 //        WebElement iframe = driver.findElement(By.xpath("//iframe[contains(@src, 'recaptcha')]"));
 //        driver.switchTo().frame(iframe);
 //
@@ -530,9 +558,7 @@ public class HomePage extends BasePage {
 //        driver.switchTo().defaultContent();
 
 
-
     }
-
 
 
     public boolean ClickcreateanIndividualAccount() {
@@ -546,16 +572,16 @@ public class HomePage extends BasePage {
 
             focusWindow(2);
 
-            String GetUrl=driver.getCurrentUrl();
-            System.out.println(">>>"+GetUrl);
+            String GetUrl = driver.getCurrentUrl();
+            System.out.println(">>>" + GetUrl);
 
-            String FormURL="https://v2webuat.mmh-demo.com/btb/self-registration";
-            if (GetUrl.equalsIgnoreCase(FormURL)){
+            String FormURL = "https://v2webuat.mmh-demo.com/btb/self-registration";
+            if (GetUrl.equalsIgnoreCase(FormURL)) {
                 System.out.println("Check URL True");
-                isverified=true;
-            }else {
+                isverified = true;
+            } else {
                 System.out.println("Check URL False");
-                isverified=false;
+                isverified = false;
             }
 
 
@@ -570,14 +596,14 @@ public class HomePage extends BasePage {
         boolean isverified = false;
         try {
 
-            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+            System.out.println(">>> ::" + TestDataUtil.getValue(Data));
             waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntEnterFirstName);
-            enterValue(elmntEnterFirstName,Data);
+            enterValue(elmntEnterFirstName, Data);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntVerifySelfRegistrationPage);
-            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+            isverified = verifyElement(elmntVerifySelfRegistrationPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -588,14 +614,14 @@ public class HomePage extends BasePage {
     public boolean EnterLastName(String Data) {
         boolean isverified = false;
         try {
-            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+            System.out.println(">>> ::" + TestDataUtil.getValue(Data));
             waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntEnterLastName);
-            enterValue(elmntEnterLastName,Data);
+            enterValue(elmntEnterLastName, Data);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntVerifySelfRegistrationPage);
-            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+            isverified = verifyElement(elmntVerifySelfRegistrationPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -612,24 +638,24 @@ public class HomePage extends BasePage {
             int position = 17;
 
             StringBuilder sb = new StringBuilder(original);
-            sb.insert(position,Integer.valueOf(toInsert));
+            sb.insert(position, Integer.valueOf(toInsert));
 
             String result = sb.toString();
             System.out.println(result);
 
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntEnterEmail);
-            enterValue(elmntEnterEmail,result);
+            enterValue(elmntEnterEmail, result);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
-             NewEmailAttribute= elmntEnterEmail.getAttribute("ng-reflect-model");
-            System.out.println("New Email Attribute :: "+NewEmailAttribute);
+            NewEmailAttribute = elmntEnterEmail.getAttribute("ng-reflect-model");
+            System.out.println("New Email Attribute :: " + NewEmailAttribute);
             if (!verifyElement(elmntError)) {
                 upDateEmailToTestData(NewEmailAttribute);
             }
 
             waitForElement(elmntVerifySelfRegistrationPage);
-            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+            isverified = verifyElement(elmntVerifySelfRegistrationPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -644,14 +670,14 @@ public class HomePage extends BasePage {
     public boolean EnterPassword(String Data) {
         boolean isverified = false;
         try {
-            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+            System.out.println(">>> ::" + TestDataUtil.getValue(Data));
             waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntEnterPassword);
-            enterValue(elmntEnterPassword,Data);
+            enterValue(elmntEnterPassword, Data);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntVerifySelfRegistrationPage);
-            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+            isverified = verifyElement(elmntVerifySelfRegistrationPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -662,14 +688,14 @@ public class HomePage extends BasePage {
     public boolean EnterConfirmPassword(String Data) {
         boolean isverified = false;
         try {
-            System.out.println(">>> ::"+TestDataUtil.getValue(Data));
+            System.out.println(">>> ::" + TestDataUtil.getValue(Data));
             waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntEnterConfirmPassword);
-            enterValue(elmntEnterConfirmPassword,Data);
+            enterValue(elmntEnterConfirmPassword, Data);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntVerifySelfRegistrationPage);
-            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+            isverified = verifyElement(elmntVerifySelfRegistrationPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -684,7 +710,6 @@ public class HomePage extends BasePage {
 //            jsScrollIntoView(elmntSelectDOB);
 //            waitForElement(elmntSelectDOB);
 //            mouseClick(elmntSelectDOB);
-
 
 
 //                    LocalDate currentDate = LocalDate.now();
@@ -776,14 +801,13 @@ public class HomePage extends BasePage {
 //            takeScreenshot(driver);
 
 
-            isverified=true;
+            isverified = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return isverified;
     }
-
 
 
     public boolean SelectGenderDropDown(String strPraticeName) {
@@ -793,10 +817,10 @@ public class HomePage extends BasePage {
             click(elmntSelectGender);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntSelectHealthCenter = waitForElement(By.xpath(elmntHealthCenter.replace("<<REPLACEMENT>>", strPraticeName)));
-            System.out.println(">>>>>>>>"+elmntSelectHealthCenter);
+            System.out.println(">>>>>>>>" + elmntSelectHealthCenter);
             mouseClick(elmntSelectHealthCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            isverified=true;
+            isverified = true;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -812,10 +836,10 @@ public class HomePage extends BasePage {
             click(elmntSelectEthnicity);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntSelectHealthCenter = waitForElement(By.xpath(elmntHealthCenter.replace("<<REPLACEMENT>>", strPraticeName)));
-            System.out.println(">>>>>>>>"+elmntSelectHealthCenter);
+            System.out.println(">>>>>>>>" + elmntSelectHealthCenter);
             mouseClick(elmntSelectHealthCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            isverified=true;
+            isverified = true;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -831,9 +855,9 @@ public class HomePage extends BasePage {
             waitForElement(elmntSelectCheckBox1);
             jsClick(elmntSelectCheckBox1);
             waitForElement(verifyCheckBoxContent);
-            isverified=verifyElement(verifyCheckBoxContent);
+            isverified = verifyElement(verifyCheckBoxContent);
             waitForElement(elmntVerifySelfRegistrationPage);
-            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+            isverified = verifyElement(elmntVerifySelfRegistrationPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -848,10 +872,10 @@ public class HomePage extends BasePage {
             waitForElement(elmntSelectCheckBox2);
             jsClick(elmntSelectCheckBox2);
             waitForElement(verifyCheckBox1Content);
-            isverified=verifyElement(verifyCheckBox1Content);
+            isverified = verifyElement(verifyCheckBox1Content);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntVerifySelfRegistrationPage);
-            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+            isverified = verifyElement(elmntVerifySelfRegistrationPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -866,18 +890,16 @@ public class HomePage extends BasePage {
             waitForElement(elmntSelectCheckBox3);
             jsClick(elmntSelectCheckBox3);
             waitForElement(verifyCheckBox2Content);
-            isverified=verifyElement(verifyCheckBox2Content);
+            isverified = verifyElement(verifyCheckBox2Content);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntVerifySelfRegistrationPage);
-            isverified=verifyElement(elmntVerifySelfRegistrationPage);
+            isverified = verifyElement(elmntVerifySelfRegistrationPage);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return isverified;
     }
-
-
 
 
     public void SelectReCaptcha() {
@@ -891,7 +913,7 @@ public class HomePage extends BasePage {
 //        driver.switchTo().defaultContent();
 //        waitForSeconds(5);
         waitForSeconds(50);
-        waitForElementToAppear(driver,By.xpath(elmntSubmitButtonEnablePage));
+        waitForElementToAppear(driver, By.xpath(elmntSubmitButtonEnablePage));
 
     }
 
@@ -902,7 +924,7 @@ public class HomePage extends BasePage {
             waitForElement(elmntSubmitButton);
             jsClick(elmntSubmitButton);
             waitForElement(verifyInformationPopup);
-            isverified=verifyElement(verifyInformationPopup);
+            isverified = verifyElement(verifyInformationPopup);
 //            waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForElement(elmntInformationPopup);
 //            isverified=verifyElement(elmntInformationPopup);
@@ -921,7 +943,7 @@ public class HomePage extends BasePage {
             jsClick(elmntokButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(verifyBTBLoginPage);
-            isverified=verifyElement(verifyBTBLoginPage);
+            isverified = verifyElement(verifyBTBLoginPage);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         } catch (Exception e) {
             e.printStackTrace();
@@ -938,7 +960,7 @@ public class HomePage extends BasePage {
             driver.switchTo().window(tabs.get(1));
             focusWindow(3);
             visit(TestDataUtil.getValue(data));
-            isverified=true;
+            isverified = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -952,11 +974,11 @@ public class HomePage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElement(elmntGmailEmail);
-           enterValue(elmntGmailEmail,data);
-           waitForSeconds(3);
-           waitForElement(elmntNextButton);
-           click(elmntNextButton);
-           isverified=true;
+            enterValue(elmntGmailEmail, data);
+            waitForSeconds(3);
+            waitForElement(elmntNextButton);
+            click(elmntNextButton);
+            isverified = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -970,11 +992,11 @@ public class HomePage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElement(elmntGmailPassword);
-            enterValue(elmntGmailPassword,data);
+            enterValue(elmntGmailPassword, data);
             waitForSeconds(3);
             waitForElement(elmntNextButton);
             click(elmntNextButton);
-            isverified=true;
+            isverified = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -985,16 +1007,16 @@ public class HomePage extends BasePage {
     public boolean ClickSearchBox() {
         boolean isverified = false;
         try {
-            System.out.println(">>> New Email Id :: "+NewEmailAttribute);
-             BTBNewEmail= NewEmailAttribute+"om";
-            System.out.println(">>>BTBNewEmail :: "+BTBNewEmail);
+            System.out.println(">>> New Email Id :: " + NewEmailAttribute);
+            BTBNewEmail = NewEmailAttribute + "om";
+            System.out.println(">>>BTBNewEmail :: " + BTBNewEmail);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElement(elmntGmailLogo);
-            isverified=verifyElement(elmntGmailLogo);
+            isverified = verifyElement(elmntGmailLogo);
             waitForSeconds(3);
             waitForElement(elmntGmailSearchBox);
-            enterValue(elmntGmailSearchBox,BTBNewEmail);
+            enterValue(elmntGmailSearchBox, BTBNewEmail);
             waitForSeconds(3);
             elmntGmailSearchBox.sendKeys(Keys.ENTER);
         } catch (Exception e) {
@@ -1013,17 +1035,17 @@ public class HomePage extends BasePage {
 //            waitForElement(elmntWelcomeMessage);
 //            isverified=verifyElement(elmntWelcomeMessage);
             waitForElement(elmntBtbConfirmYourMail);
-            isverified=verifyElement(elmntBtbConfirmYourMail);
+            isverified = verifyElement(elmntBtbConfirmYourMail);
             click(elmntBtbConfirmYourMail);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(verifybtbmailcontent);
-            isverified=verifyElement(verifybtbmailcontent);
+            isverified = verifyElement(verifybtbmailcontent);
             waitForElement(verifybtbmailcontent1);
-            isverified=verifyElement(verifybtbmailcontent1);
+            isverified = verifyElement(verifybtbmailcontent1);
             waitForElement(verifybtbmailcontent2);
-            isverified=verifyElement(verifybtbmailcontent2);
+            isverified = verifyElement(verifybtbmailcontent2);
             waitForElement(verifybtbmailcontent3);
-            isverified=verifyElement(verifybtbmailcontent3);
+            isverified = verifyElement(verifybtbmailcontent3);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1035,7 +1057,7 @@ public class HomePage extends BasePage {
     public boolean SelectConfirmyourregistration() {
         boolean isverified = false;
         try {
-           waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
 //            waitForElement(elmntSuccessMessage);
 //            isverified=verifyElement(elmntSuccessMessage);
@@ -1046,7 +1068,7 @@ public class HomePage extends BasePage {
             waitForElement(verifyconfirmyourRegistration);
             click(verifyconfirmyourRegistration);
             waitForElement(selectOkButton);
-            isverified=verifyElement(selectOkButton);
+            isverified = verifyElement(selectOkButton);
             click(selectOkButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         } catch (Exception e) {
@@ -1055,20 +1077,21 @@ public class HomePage extends BasePage {
 
         return isverified;
     }
+
     public boolean NavigatetoManageMyHealth() {
         boolean isverified = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
-           String WebprdURL="https://v2webprdfeature.mmh-demo.com/authentication/confirm-account?Validate";
-           String GetWebPrdUrl = driver.getCurrentUrl();
-           if (WebprdURL.equalsIgnoreCase(GetWebPrdUrl)){
-               isverified=true;
-           }else{
-               isverified=false;
-           }
-           waitForElement(txtBoxEmail);
-           verifyElement(txtBoxEmail);
+            String WebprdURL = "https://v2webprdfeature.mmh-demo.com/authentication/confirm-account?Validate";
+            String GetWebPrdUrl = driver.getCurrentUrl();
+            if (WebprdURL.equalsIgnoreCase(GetWebPrdUrl)) {
+                isverified = true;
+            } else {
+                isverified = false;
+            }
+            waitForElement(txtBoxEmail);
+            verifyElement(txtBoxEmail);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         } catch (Exception e) {
             e.printStackTrace();
@@ -1078,16 +1101,15 @@ public class HomePage extends BasePage {
     }
 
 
-
     public void visit() {
         int WindowsCount = driver.getWindowHandles().size();
         System.out.println("===============>WindowsCount::" + WindowsCount);
         if (WindowsCount == 2) {
             focusWindow(1);
-            if (verifyElement(txtPatientWelcomePage)){
+            if (verifyElement(txtPatientWelcomePage)) {
                 driver.manage().deleteAllCookies();
                 System.out.println("User here in Provider home page");
-            }else{
+            } else {
 //                System.out.println("Else Part ::::::Window Count 2");
                 driver.manage().deleteAllCookies();
                 visit(TestDataUtil.getValue("&URL&"));
@@ -1105,8 +1127,7 @@ public class HomePage extends BasePage {
                 driver.manage().deleteAllCookies();
                 System.out.println("User here in Provider home page");
                 takeScreenshot(driver);
-            }
-            else{
+            } else {
                 waitForSeconds(3);
                 visit(TestDataUtil.getValue("&URL&"));
                 driver.manage().deleteAllCookies();
@@ -1127,11 +1148,16 @@ public class HomePage extends BasePage {
     }
 
     public void enterEmail(String strEmail) {
-        waitForSeconds(2);
-//        jsClick(txtProviderPortal);
-        waitForSeconds(3);
-        waitForElementClickable(txtBoxEmail);
-        enterValue(txtBoxEmail, strEmail);
+        if (verifyElement(txtBoxEmail)) {
+            waitForSeconds(3);
+            waitForElementClickable(txtBoxEmail);
+            enterValue(txtBoxEmail, strEmail);
+
+        } else {
+            System.out.println("User Already in Home Page");
+        }
+
+
     }
 
 
@@ -1148,7 +1174,7 @@ public class HomePage extends BasePage {
     public void enterEmailForBeta(String strEmail) {
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(3);
-        System.out.println(">>>  Email :: "+TestDataUtil.getValue(strEmail));
+        System.out.println(">>>  Email :: " + TestDataUtil.getValue(strEmail));
         if (verifyElement(txtBoxEmail)) {
             waitForSeconds(3);
             waitForElementClickable(txtBoxEmail);
@@ -1165,7 +1191,7 @@ public class HomePage extends BasePage {
     public void BTBNewenterEmail() {
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(3);
-        System.out.println(">>>  Email :: "+TestDataUtil.getValue(BTBNewEmail));
+        System.out.println(">>>  Email :: " + TestDataUtil.getValue(BTBNewEmail));
         if (verifyElement(txtBoxEmail)) {
             waitForSeconds(3);
             waitForElementClickable(txtBoxEmail);
@@ -1180,8 +1206,13 @@ public class HomePage extends BasePage {
     }
 
     public void enterpassword(String strPassword) {
-        waitForElementClickable(txtBoxPassword);
-        enterValue(txtBoxPassword, strPassword);
+        if (verifyElement(txtBoxPassword)) {
+            waitForElementClickable(txtBoxPassword);
+            enterValue(txtBoxPassword, strPassword);
+        } else {
+            System.out.println("User here in home page");
+        }
+
     }
 
     public boolean clickLoginButton() {
@@ -1207,13 +1238,13 @@ public class HomePage extends BasePage {
                 waitForSeconds(5);
                 focusWindow(2);
                 waitForSeconds(5);
-                String  BTBPageGetURL=driver.getCurrentUrl();
-                System.out.println(">>> :: "+BTBPageGetURL);
-                String  BTBPageURL = "https://v2webuat.mmh-demo.com/authentication/login?rf=btb";
-                System.out.println(">>> :: "+BTBPageURL);
-                Assert.assertEquals(BTBPageGetURL,BTBPageURL);
+                String BTBPageGetURL = driver.getCurrentUrl();
+                System.out.println(">>> :: " + BTBPageGetURL);
+                String BTBPageURL = "https://v2webuat.mmh-demo.com/authentication/login?rf=btb";
+                System.out.println(">>> :: " + BTBPageURL);
+                Assert.assertEquals(BTBPageGetURL, BTBPageURL);
                 waitForElement(txtBoxEmail);
-                blResult =verifyElement(txtBoxEmail);
+                blResult = verifyElement(txtBoxEmail);
             }
             if (WindowsCount == 2) {
                 focusWindow(2);
@@ -1258,13 +1289,13 @@ public class HomePage extends BasePage {
                 waitForSeconds(5);
                 focusWindow(2);
                 waitForSeconds(5);
-                String  BTBPageGetURL=driver.getCurrentUrl();
-                System.out.println(">>> :: "+BTBPageGetURL);
-                String  BTBPageURL = "https://v2webuat.mmh-demo.com/authentication/login?rf=btb";
-                System.out.println(">>> :: "+BTBPageURL);
-                Assert.assertEquals(BTBPageGetURL,BTBPageURL);
+                String BTBPageGetURL = driver.getCurrentUrl();
+                System.out.println(">>> :: " + BTBPageGetURL);
+                String BTBPageURL = "https://v2webuat.mmh-demo.com/authentication/login?rf=btb";
+                System.out.println(">>> :: " + BTBPageURL);
+                Assert.assertEquals(BTBPageGetURL, BTBPageURL);
                 waitForElement(txtBoxEmail);
-                blResult =verifyElement(txtBoxEmail);
+                blResult = verifyElement(txtBoxEmail);
             }
             if (WindowsCount == 2) {
                 focusWindow(2);
@@ -1309,7 +1340,7 @@ public class HomePage extends BasePage {
                 focusWindow(2);
                 waitForSeconds(5);
                 waitForElement(txtBoxEmail);
-                blResult =verifyElement(txtBoxEmail);
+                blResult = verifyElement(txtBoxEmail);
 
             }
             if (WindowsCount == 2) {
@@ -1337,20 +1368,20 @@ public class HomePage extends BasePage {
         return blResult;
 
     }
+
     public boolean clickBetaLoginButton() {
         boolean blResult = false;
 
-            try {
-                int WindowsCount = driver.getWindowHandles().size();
+        try {
+            int WindowsCount = driver.getWindowHandles().size();
             System.out.println("===============>WindowsCount::" + WindowsCount);
 
-                String Date = getDate("TODAY","dd MMM yyyy");
-                System.out.println(Date);
+            String Date = getDate("TODAY", "dd MMM yyyy");
+            System.out.println(Date);
 
 
-
-                String strTime = getCurrentDate("h:mm aaa");
-                System.out.println(strTime);
+            String strTime = getCurrentDate("h:mm aaa");
+            System.out.println(strTime);
 
 
 //                if (verifyElement(elmntLoginUIUX)) {
@@ -1398,39 +1429,39 @@ public class HomePage extends BasePage {
 //                    }
 
 //                }
-                if (WindowsCount == 1) {
-                    driver.manage().deleteAllCookies();
-                    waitForSeconds(10);
-                    waitForElement(elmntLoginBtn);
-                    click(elmntLoginBtn);
-                    driver.manage().deleteAllCookies();
-                    blResult =true;
-                }
-                if (WindowsCount == 2) {
-                    focusWindow(1);
-                    System.out.println("user in Provider Home Page");
-                }
-            System.out.println("Try Block 1 executed");
-            } catch (Exception e) {
-                try {
-                    waitForElementClickable(elmntProfile);
-                    jsClick(elmntProfile);
-                    waitForSeconds(2);
-                    waitForElementClickable(elmntSignout);
-                    jsClick(elmntSignout);
-                    visit();
-                    waitForElement(elmntLoginBtn);
-                    click(elmntLoginBtn);
-                    blResult = true;
-                    System.out.println("Catch Block 1 executed");
-                } catch (Exception d) {
-                    d.printStackTrace();
-                }
-
+            if (WindowsCount == 1) {
+                driver.manage().deleteAllCookies();
+                waitForSeconds(10);
+                waitForElement(elmntLoginBtn);
+                click(elmntLoginBtn);
+                driver.manage().deleteAllCookies();
+                blResult = true;
             }
-            return blResult;
+            if (WindowsCount == 2) {
+                focusWindow(1);
+                System.out.println("user in Provider Home Page");
+            }
+            System.out.println("Try Block 1 executed");
+        } catch (Exception e) {
+            try {
+                waitForElementClickable(elmntProfile);
+                jsClick(elmntProfile);
+                waitForSeconds(2);
+                waitForElementClickable(elmntSignout);
+                jsClick(elmntSignout);
+                visit();
+                waitForElement(elmntLoginBtn);
+                click(elmntLoginBtn);
+                blResult = true;
+                System.out.println("Catch Block 1 executed");
+            } catch (Exception d) {
+                d.printStackTrace();
+            }
 
         }
+        return blResult;
+
+    }
 
     public boolean clickPatientandProviderLoginButton() {
         boolean blResult = false;
@@ -1442,7 +1473,7 @@ public class HomePage extends BasePage {
                 waitForElement(elmntMobileLoginBtn);
                 click(elmntMobileLoginBtn);
                 waitForElement(txtBoxEmail);
-                blResult =verifyElement(txtBoxEmail);
+                blResult = verifyElement(txtBoxEmail);
             }
             if (WindowsCount == 2) {
                 focusWindow(1);
@@ -1458,7 +1489,7 @@ public class HomePage extends BasePage {
                 jsClick(elmntSignout);
                 visit();
                 waitForElement(elmntLoginBtn);
-                blResult =  click(elmntLoginBtn);
+                blResult = click(elmntLoginBtn);
                 System.out.println("Catch Block 1 executed");
             } catch (Exception d) {
                 d.printStackTrace();
@@ -1469,23 +1500,22 @@ public class HomePage extends BasePage {
 
     }
 
-public boolean veriflyTeamscondition(){
-    boolean blResult = false;
-    waitForElementDisappear(driver, By.xpath(elmntSpinner));
-    waitForSeconds(4);
-        if (verifyElement(elmntTeamsConditionsHeader)){
+    public boolean veriflyTeamscondition() {
+        boolean blResult = false;
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForSeconds(4);
+        if (verifyElement(elmntTeamsConditionsHeader)) {
             click(elmntTeamsConditions);
-            blResult=true;
-        }
-        else {
+            blResult = true;
+        } else {
             System.out.println("Teams & Conditions Is Not Displayed");
-            blResult=true;
+            blResult = true;
         }
         return blResult;
-}
+    }
 
     public boolean clickPatientDashBoardForMobile() {
-        boolean isVerified=true;
+        boolean isVerified = true;
 
         if (isElementDisplayed(txtPatientWelcomePage)) {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -1502,7 +1532,7 @@ public boolean veriflyTeamscondition(){
             waitForSeconds(3);
             driver.navigate().refresh();
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            isVerified=verifyElement(elmntVerifyHomePage);
+            isVerified = verifyElement(elmntVerifyHomePage);
 
         }
         if (!isElementDisplayed(txtPatientWelcomePage)) {
@@ -1521,7 +1551,7 @@ public boolean veriflyTeamscondition(){
             waitForSeconds(3);
             driver.navigate().refresh();
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            isVerified=verifyElement(elmntVerifyHomePage);
+            isVerified = verifyElement(elmntVerifyHomePage);
 
         }
         return isVerified;
@@ -1532,11 +1562,14 @@ public boolean veriflyTeamscondition(){
 //        waitForElement(elmntVerifyHomePage);
         if (verifyElement(txtAppVersion)) {
             strAppVersion = txtAppVersion.getText();
-            System.out.printf("TxtAPPVersion"+strAppVersion);
+            System.out.printf("TxtAPPVersion" + strAppVersion);
         }
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         strBrowserName = cap.getBrowserName();
-        strBrowserVersion = cap.getVersion();
+        strBrowserVersion = (String) cap.getCapability("browserVersion"); // Updated line
+
+//        strBrowserName = cap.getBrowserName();
+//        strBrowserVersion = cap.getVersion();
         try {
             strSystemName = InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
@@ -1563,7 +1596,7 @@ public boolean veriflyTeamscondition(){
             waitForElement(elmntVerifyHomePage);
             isVerified = verifyElement(elmntVerifyHomePage);
         }
-        if(!isElementDisplayed(txtPatientWelcomePage)){
+        if (!isElementDisplayed(txtPatientWelcomePage)) {
             focusWindow(1);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmntDashboard);
@@ -1587,11 +1620,15 @@ public boolean veriflyTeamscondition(){
         waitForElement(elmntVerifyBTBHomePage);
         if (verifyElement(txtAppVersion)) {
             strAppVersion = txtAppVersion.getText();
-            System.out.printf("TxtAPPVersion"+strAppVersion);
+            System.out.printf("TxtAPPVersion" + strAppVersion);
         }
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         strBrowserName = cap.getBrowserName();
-        strBrowserVersion = cap.getVersion();
+         strBrowserVersion = (String) cap.getCapability("browserVersion"); // Updated line
+
+
+
+
         try {
             strSystemName = InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
@@ -1606,11 +1643,11 @@ public boolean veriflyTeamscondition(){
         waitForElement(elmntVerifyProviderBTBHomePage);
         if (verifyElement(txtAppVersion)) {
             strAppVersion = txtAppVersion.getText();
-            System.out.printf("TxtAPPVersion"+strAppVersion);
+            System.out.printf("TxtAPPVersion" + strAppVersion);
         }
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         strBrowserName = cap.getBrowserName();
-        strBrowserVersion = cap.getVersion();
+        strBrowserVersion = (String) cap.getCapability("browserVersion"); // Updated line
         try {
             strSystemName = InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
@@ -1625,11 +1662,11 @@ public boolean veriflyTeamscondition(){
         waitForElement(txtProviderPortalWelcomePage);
         if (verifyElement(txtAppVersion)) {
             strAppVersion = txtAppVersion.getText();
-            System.out.printf("TxtAPPVersion"+strAppVersion);
+            System.out.printf("TxtAPPVersion" + strAppVersion);
         }
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         strBrowserName = cap.getBrowserName();
-        strBrowserVersion = cap.getVersion();
+        strBrowserVersion = (String) cap.getCapability("browserVersion"); // Updated line
         try {
             strSystemName = InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
@@ -1643,7 +1680,7 @@ public boolean veriflyTeamscondition(){
         boolean blResult = false;
         try {
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-                            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(3);
                 jsScrollIntoView(elmntDashboard);
                 waitForElement(elmntDashboard);
@@ -1733,13 +1770,13 @@ public boolean veriflyTeamscondition(){
     public boolean navigateToDashboard() {
         boolean blResult = false;
         try {
-               jsScrollIntoView(elmntDashboard);
-                verifyElement(elmntDashboard);
-                waitForElementClickable(elmntDashboard);
-                jsClick(elmntDashboard);
-                waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                waitForElement(txtWelcome);
-                blResult = verifyElement(txtWelcome);
+            jsScrollIntoView(elmntDashboard);
+            verifyElement(elmntDashboard);
+            waitForElementClickable(elmntDashboard);
+            jsClick(elmntDashboard);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(txtWelcome);
+            blResult = verifyElement(txtWelcome);
 
             return blResult;
 
@@ -1816,6 +1853,7 @@ public boolean veriflyTeamscondition(){
         waitForElement(elmntFutureAppointment);
         return verifyElement(elmntFutureAppointment);
     }
+
     public boolean DashboardIconsVerification() {
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForElement(elmntDashboard);
@@ -1869,32 +1907,32 @@ public boolean veriflyTeamscondition(){
         jsScrollIntoView(elmntDashboard);
         waitForElement(elmntDashboard);
         jsClick(elmntDashboard);
-if (isElementDisplayed(txtPatientWelcomePage)) {
-    waitForElementDisappear(driver, By.xpath(elmntSpinner));
-    jsScrollIntoView(elmntDashboard);
-    waitForElement(elmntDashboard);
-    jsClick(elmntDashboard);
-    takeScreenshot(driver);
-    waitForElementDisappear(driver, By.xpath(elmntSpinner));
-    driver.navigate().refresh();
-    waitForElementDisappear(driver, By.xpath(elmntSpinner));
-    waitForElement(elmntVerifyHomePage);
-    isVerified = verifyElement(elmntVerifyHomePage);
-}
-if(!isElementDisplayed(txtPatientWelcomePage)){
-    focusWindow(2);
-    waitForElementDisappear(driver, By.xpath(elmntSpinner));
-    jsScrollIntoView(elmntDashboard);
-    waitForElement(elmntDashboard);
-    jsClick(elmntDashboard);
-    takeScreenshot(driver);
-    waitForElementDisappear(driver, By.xpath(elmntSpinner));
-    driver.navigate().refresh();
-    waitForElementDisappear(driver, By.xpath(elmntSpinner));
-    waitForElement(elmntVerifyHomePage);
-    isVerified = verifyElement(elmntVerifyHomePage);
+        if (isElementDisplayed(txtPatientWelcomePage)) {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntDashboard);
+            waitForElement(elmntDashboard);
+            jsClick(elmntDashboard);
+            takeScreenshot(driver);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            driver.navigate().refresh();
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifyHomePage);
+            isVerified = verifyElement(elmntVerifyHomePage);
+        }
+        if (!isElementDisplayed(txtPatientWelcomePage)) {
+            focusWindow(2);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntDashboard);
+            waitForElement(elmntDashboard);
+            jsClick(elmntDashboard);
+            takeScreenshot(driver);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            driver.navigate().refresh();
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntVerifyHomePage);
+            isVerified = verifyElement(elmntVerifyHomePage);
 
-}
+        }
 
 
         return isVerified;
@@ -1917,7 +1955,7 @@ if(!isElementDisplayed(txtPatientWelcomePage)){
             waitForElement(elmntVerifyHomePage);
             isVerified = verifyElement(elmntVerifyHomePage);
         }
-        if(!isElementDisplayed(txtPatientWelcomePage)){
+        if (!isElementDisplayed(txtPatientWelcomePage)) {
             focusWindow(2);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmntDashboard);
@@ -2017,19 +2055,19 @@ if(!isElementDisplayed(txtPatientWelcomePage)){
 
     }
 
-    public boolean clickPatientBookAppointment(){
+    public boolean clickPatientBookAppointment() {
         boolean blresult = false;
-        try{
-            waitForElementToAppear(driver,By.xpath(elmntSpinner));
+        try {
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
             waitForElementClickable(elmntAppointment);
             jsClick(elmntAppointment);
-            waitForElementToAppear(driver,By.xpath(elmntSpinner));
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
             waitForElement(elmntPatientBookAppointment);
             click(elmntPatientBookAppointment);
             blresult = true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return blresult;
@@ -2094,7 +2132,7 @@ if(!isElementDisplayed(txtPatientWelcomePage)){
 
     public boolean clickLogin() {
         boolean blresult = false;
-        try{
+        try {
             if (verifyElement(elmntloginbtn)) {
                 waitForSeconds(3);
                 jsClick(elmntloginbtn);
@@ -2102,12 +2140,12 @@ if(!isElementDisplayed(txtPatientWelcomePage)){
                 refreshPage();
                 blresult = true;
             }
-            if (!verifyElement(elmntloginbtn)){
+            if (!verifyElement(elmntloginbtn)) {
                 System.out.println("user here in home page");
                 blresult = true;
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("user here in Patient Home Page");
             blresult = true;
 

@@ -1,12 +1,9 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
-
-
-
 
 public class KeyUtil {
 
@@ -14,8 +11,6 @@ public class KeyUtil {
         StringSelection stringSelection= new StringSelection(strFiletoUploadPath.getAbsolutePath());
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
     }
-
-    /**The keyUtil used for control in your system "Key Board Actions." */
 
     public static void uploadFileInMACChrome() {
         try {

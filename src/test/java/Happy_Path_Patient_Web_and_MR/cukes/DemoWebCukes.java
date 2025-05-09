@@ -1,4 +1,4 @@
-package Happy_Path_Patient_Web_and_MR.cukes;
+package java.Happy_Path_Patient_Web_and_MR.cukes;
 
 
 import cap.utilities.TestDataUtil;
@@ -9,9 +9,9 @@ import org.testng.annotations.AfterClass;
 
 import static Happy_Path_Patient_Web_and_MR.pages.HomePage.*;
 
-@CucumberOptions(features = {"src/test/resources/features/Happy_Path_Patient_Web_and_MR"},
+@CucumberOptions(features = {"src/test/resources/Happy_Path_Patient_Web_and_MR"},
         monochrome = true,
-        tags = "@HAPPY_PATH",
+        tags = "@MESSAGES",
         glue = {"Happy_Path_Patient_Web_and_MR"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -33,6 +33,7 @@ public class DemoWebCukes extends AbstractTestNGCucumberTests {
         ExtentService.getInstance().setSystemInfo("Browser Version", strBrowserVersion);
         ExtentService.getInstance().setSystemInfo("Execution Machine", strSystemName);
         ExtentService.getInstance().setSystemInfo("Automation QA", System.getProperty("user.name"));
+        System.setProperty("webdriver.chrome.verboseLogging", "true");
 
     }
 }

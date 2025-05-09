@@ -1,4 +1,4 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import cap.helpers.Constants;
 import com.codoid.products.fillo.Connection;
@@ -10,7 +10,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**Testdatautil is used to get TestData files, such as XML, into your system..*/
+/**
+ * Created Gokul-pc on 11-04-2025.
+ */
 public class TestDataUtil {
 
     public static LinkedHashMap<String, String> testDataMap = new LinkedHashMap<String, String>();
@@ -18,7 +20,7 @@ public class TestDataUtil {
     static Fillo fillo = new Fillo();
     static Connection connection = null;
 
-    //    public static void loadData(String strTestDataFilePath, String strSheetName) {
+
     public static Map<String, String> loadData(String strTestDataFilePath, String strSheetName) {
         try {
             connection = fillo.getConnection(strTestDataFilePath);
@@ -44,7 +46,6 @@ public class TestDataUtil {
         return testDataMap;
     }
 
-    /**The updatedata method  is used to update any value from your test data. */
     public static void updateData(String strTestDataFilePath, String strSheetName, String strDataName, String strDataValue) {
         Fillo fillo = new Fillo();
         Connection connection = null;
@@ -63,11 +64,6 @@ public class TestDataUtil {
                     .concat("='").concat(strDataValue).concat("' where ")
                     .concat(Constants.TESTDATA_FIELDS).concat("='").concat(strDataName).concat("'"));
 
-            connection.executeUpdate("Update ".concat(strSheetName)
-                    .concat(" Set ").concat("PROD")
-                    .concat("='").concat(strDataValue).concat("' where ")
-                    .concat(Constants.TESTDATA_FIELDS).concat("='").concat(strDataName).concat("'"));
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -82,7 +78,7 @@ public class TestDataUtil {
         long executionID = Math.round(Math.random() * 100000);
         return executionID;
     }
-/**The getValue method is used to get any value from your test data. */
+
     public static String getValue(String strKey) {
         String strValue = strKey;
         String strRandomPattern = Constants.RANDOM_STRING;
@@ -97,13 +93,13 @@ public class TestDataUtil {
                 else if (strValue.contains(strRandomPattern)) {
                     strValue = strValue.split(strRandomPattern)[0];
                     strValue = testDataMap.get(strValue).toString();
-                    strValue = strValue.concat(String.valueOf(SharedDriver.strExecutionID));
+                    strValue = strValue.concat(String.valueOf(SharedDriver.randomID));
                 } else {
                     strValue = testDataMap.get(strValue).toString();
                 }
             } else if (strKey.contains(strRandomPattern) && !(strValue.matches(strRegularExpressionPattern))) {
                 strValue = strValue.split(strRandomPattern)[0];
-                strValue = strValue.concat(String.valueOf(SharedDriver.strExecutionID));
+                strValue = strValue.concat(String.valueOf(SharedDriver.randomID));
 
             }
         } catch (Exception e) {
@@ -111,8 +107,6 @@ public class TestDataUtil {
         }
         return strValue;
     }
-
-    /**The getListOfValueValue method  is used to get GroupOfvalue from your test data. */
 
     /*@Description: Get a list of values in Excel sheet*/
     public static List<String> getListOfValue(String strKey) {
