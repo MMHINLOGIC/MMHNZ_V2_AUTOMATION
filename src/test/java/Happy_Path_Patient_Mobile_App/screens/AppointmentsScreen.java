@@ -1,21 +1,17 @@
-package Happy_Path_Patient_Mobile_App.screens;
+package java.Happy_Path_Patient_Mobile_App.screens;
 
 import cap.common.BaseScreen;
 import cap.utilities.DateUtil;
 import cap.utilities.TestDataUtil;
-import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.List;
-import java.util.Map;
 
 import static cap.utilities.SharedDriver.strExecutionID;
 
@@ -661,7 +657,7 @@ public class AppointmentsScreen extends BaseScreen {
         waitForSecond(5);
         waitForElement(elmntPaymentOptions);
         waitForElement(btnPayHealthCentre);
-        tapCooridinatesByElement(btnPayHealthCentre);
+        tapCoordinatesByElement(btnPayHealthCentre);
 
 
     }
@@ -1039,7 +1035,7 @@ System.out.println(">>>>"+lstDetails);
         enterValue(txtReasonForCancellation, "Test Cancel");
         swipeUp();
         waitForElement(btnCancelAppointment);
-        tapCooridinatesByElement(btnCancelAppointment);
+        tapCoordinatesByElement(btnCancelAppointment);
     }
 
     public boolean verifyCancelMessage() {

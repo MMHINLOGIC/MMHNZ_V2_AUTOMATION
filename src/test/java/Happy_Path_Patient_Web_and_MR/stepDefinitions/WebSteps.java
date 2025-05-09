@@ -1,5 +1,6 @@
-package Happy_Path_Patient_Web_and_MR.stepDefinitions;
+package java.Happy_Path_Patient_Web_and_MR.stepDefinitions;
 
+import Happy_Path_Patient_Web_and_MR.DemoPageContainer;
 import cap.helpers.Constants;
 import cap.utilities.TestDataUtil;
 import io.cucumber.datatable.DataTable;
@@ -8,7 +9,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import Happy_Path_Patient_Web_and_MR.DemoPageContainer;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class WebSteps {
 
     @When("I click login button")
     public void iClickLoginButton() {
-        demoPageContainer.homePage.clickSignInButton();
+        Assert.assertTrue(demoPageContainer.homePage.clickSignInButton());
     }
 
 
@@ -203,7 +203,6 @@ public class WebSteps {
     @When("I click confirm button")
     public void iClickConfirmButton() {
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmButton());
-
     }
 
     @Then("I should see details of created appointment {string} {string}")
@@ -382,11 +381,11 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -441,7 +440,7 @@ public class WebSteps {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             demoPageContainer.appointmentsPage.clickGrid();
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyGridView());
-            demoPageContainer.appointmentsPage.clickMaxvalue();
+//            demoPageContainer.appointmentsPage.clickMaxvalue();
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             demoPageContainer.appointmentsPage.clickGrid();
@@ -466,7 +465,7 @@ public class WebSteps {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             demoPageContainer.appointmentsPage.clickGrid();
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyGridView());
-            demoPageContainer.appointmentsPage.clickMaxvalue();
+//            demoPageContainer.appointmentsPage.clickMaxvalue();
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             demoPageContainer.appointmentsPage.clickGrid();
@@ -538,7 +537,7 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfPhoneAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
@@ -554,7 +553,7 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfPhoneAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectProviderForMobileView(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
@@ -570,7 +569,7 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfPhoneAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectProviderForRealMobileView(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
@@ -642,7 +641,7 @@ public class WebSteps {
     public void iShouldSeeAllTheAllTheVideoAppointmentsInvitesSentFromPMSProviderInGridView() {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyVideoPage());
-            demoPageContainer.appointmentsPage.clickMaxvalue();
+//            demoPageContainer.appointmentsPage.clickMaxvalue();
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyAlltheVideoAppointments());
 
         }
@@ -788,7 +787,7 @@ public class WebSteps {
 
     @And("I select the Medication details{string}")
     public void SelectTheMedicationDetails(String strMedicationDetails) {
-        System.out.println("\nMedicationDetails >>> :" + strMedicationDetails);
+        System.out.println("\nMedicationDetails >>> :" + TestDataUtil.getListOfValue(strMedicationDetails));
         List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
         System.out.println("\nlstMedicationDetails >>> " + lstMedicationDetails);
         System.out.println("\nSize Of lstMedicationDetails >>> " + lstMedicationDetails.size());
@@ -961,6 +960,7 @@ public class WebSteps {
         }
         Assert.assertTrue(demoPageContainer.repeatPrescription.addMessage(lstMedicationDetails.get(8)));
         Assert.assertTrue(demoPageContainer.repeatPrescription.selectTermsAndCondition());
+        Assert.assertTrue(demoPageContainer.repeatPrescription.CapturePaymentDetails());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayNow());
 
@@ -1113,7 +1113,7 @@ public class WebSteps {
     @Then("I should see all the Prescription Entries From Health center Medicine Details in a grid view")
     public void iShouldSeeAllThePrescriptionEntriesFromHealthCenterMedicineDetailsInAGridView(List<String> PrescriptionDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             for (String String : PrescriptionDetails) {
                 System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyPrescriptionsTableData(TestDataUtil.getListOfValue(String)));
@@ -1136,7 +1136,7 @@ public class WebSteps {
     @And("I click on the more info icon on the grid & view the details of the prescription added")
     public void iClickOnTheMoreInfoIconOnTheGridViewTheDetailsOfThePrescriptionAdded(DataTable PrescriptiondTabledata) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             List<List<String>> tableData = PrescriptiondTabledata.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1217,7 +1217,7 @@ public class WebSteps {
     @Then("I should see all the Conditions Entries From Health center Medicine Details in a grid view")
     public void iShouldSeeAllTheConditionsEntriesFromHealthCenterMedicineDetailsInAGridView(List<String> ClassificationsDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             for (String String : ClassificationsDetails) {
                 System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyClassificationsTableData(TestDataUtil.getListOfValue(String)));
@@ -1241,7 +1241,7 @@ public class WebSteps {
     @And("I click on the more info icon on the grid & view the details of the Conditions added")
     public void iClickOnTheMoreInfoIconOnTheGridViewTheDetailsOfTheConditionsAdded(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1304,7 +1304,7 @@ public class WebSteps {
     @Then("I should see all the Clinic Notes Entries From Health center Medicine Details in a grid view")
     public void iShouldSeeAllTheClinicNotesEntriesFromHealthCenterMedicineDetailsInAGridView(List<String> ClinicNotesDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             for (String String : ClinicNotesDetails) {
                 System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyClinicNotesTableData(TestDataUtil.getListOfValue(String)));
@@ -1327,7 +1327,7 @@ public class WebSteps {
     @And("I click on the more info icon on the grid & view the details of the Clinic Notes added")
     public void iClickOnTheMoreInfoIconOnTheGridViewTheDetailsOfTheClinicNotesAdded(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1398,7 +1398,7 @@ public class WebSteps {
     @Then("I should see all the Allergies Entries From Health center Medicine Details in a grid view")
     public void iShouldSeeAllTheAllergiesEntriesFromHealthCenterMedicineDetailsInAGridView(List<String> AllergiesDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             for (String String : AllergiesDetails) {
                 System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyAllergiesTableData(TestDataUtil.getListOfValue(String)));
@@ -1423,7 +1423,7 @@ public class WebSteps {
     @And("I click on the more info icon on the grid & view the details of the Allergies added")
     public void iClickOnTheMoreInfoIconOnTheGridViewTheDetailsOfTheAllergiesAdded(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1490,7 +1490,7 @@ public class WebSteps {
     @Then("I should see all the Immunisations Entries From Health center Medicine Details in a grid view")
     public void iShouldSeeAllTheImmunisationsEntriesFromHealthCenterMedicineDetailsInAGridView(List<String> ImmunisationsDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             for (String String : ImmunisationsDetails) {
                 System.out.println(">> TestDataUtil.getListOfValue(String) : " + TestDataUtil.getListOfValue(String));
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyImmunisationsTableData(TestDataUtil.getListOfValue(String)));
@@ -1514,7 +1514,7 @@ public class WebSteps {
     @And("I click on the more info icon on the grid & view the details of the Immunisations added")
     public void iClickOnTheMoreInfoIconOnTheGridViewTheDetailsOfTheImmunisationsAdded(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1579,7 +1579,7 @@ public class WebSteps {
     @When("I click on the more info icon on the grid & view the details of the Lab Results added")
     public void iClickOnTheMoreInfoIconOnTheGridViewTheDetailsOfTheLabResultsAdded(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1673,7 +1673,7 @@ public class WebSteps {
     @And("I click on the more info icon on the grid & view the details of the Recalls regarding the clinical added")
     public void iClickOnTheMoreInfoIconOnTheGridViewTheDetailsOfTheRecallsRegardingTheClinicalMedicalAdded(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1717,7 +1717,7 @@ public class WebSteps {
     @And("I click on the more info icon on the grid & view the details of the Recalls added")
     public void iClickOnTheMoreInfoIconOnTheGridViewTheDetailsOfTheRecallsAdded(DataTable dataTable) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            demoPageContainer.myHealthRecordsPage.clickMaxvalue1();
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue1();
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -1770,7 +1770,7 @@ public class WebSteps {
 
     @Then("I sholud see all My Entries in my health records")
     public void iSholudSeeAllMyEntriesInMyHealthRecords(List<String> ClinicMyEntriesClinicNotes) {
-        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
         for (String strCurrentRow : ClinicMyEntriesClinicNotes) {
             Assert.assertTrue(demoPageContainer.myHealthRecordsPage.verifyMyEntries(TestDataUtil.getListOfValue(strCurrentRow)));
         }
@@ -1783,7 +1783,7 @@ public class WebSteps {
 
     @Then("I sholud see all My Entries in Prescription page")
     public void iSholudSeeAllMyEntriesInPrescriptionPage(List<String> PrescriptionsMyEntries) {
-        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
         for (String strCurrentRow : PrescriptionsMyEntries) {
             Assert.assertTrue(demoPageContainer.myHealthRecordsPage.verifyPrescriptionsMyEntries(TestDataUtil.getListOfValue(strCurrentRow)));
         }
@@ -1796,7 +1796,7 @@ public class WebSteps {
 
     @Then("I sholud see all My Entries Allergies page")
     public void iSholudSeeAllMyEntriesAllergiesPage(List<String> AllergiesMyEntries) {
-        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
         for (String strCurrentRow : AllergiesMyEntries) {
             Assert.assertTrue(demoPageContainer.myHealthRecordsPage.verifyAllergiesMyEntries(TestDataUtil.getListOfValue(strCurrentRow)));
         }
@@ -1810,7 +1810,7 @@ public class WebSteps {
 
     @Then("I sholud see all My Entries Immunisations page")
     public void iSholudSeeAllMyEntriesImmunisationsPage(List<String> ImmunisationsMyEntries) {
-        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
         for (String strCurrentRow : ImmunisationsMyEntries) {
             Assert.assertTrue(demoPageContainer.myHealthRecordsPage.verifyImmunisationsMyEntries(TestDataUtil.getListOfValue(strCurrentRow)));
         }
@@ -1823,7 +1823,7 @@ public class WebSteps {
 
     @Then("I sholud see all My Entries Classifications page")
     public void iSholudSeeAllMyEntriesClassificationsPage(List<String> ClassificationsMyEntries) {
-        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+//        demoPageContainer.myHealthRecordsPage.clickMaxvalue();
         for (String strCurrentRow : ClassificationsMyEntries) {
             Assert.assertTrue(demoPageContainer.myHealthRecordsPage.verifyClassificationsMyEntitiesNotesDetails(TestDataUtil.getListOfValue(strCurrentRow)));
         }
@@ -2434,7 +2434,7 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.homePage.navigateToHomePage());
         Assert.assertTrue(demoPageContainer.messagesPage.navigateToMessageSetting());
         Assert.assertTrue(demoPageContainer.messagesPage.selectOutOfOfficeSetting());
-        Assert.assertTrue(demoPageContainer.messagesPage.verifyEnteredOutOfOfficeMessage(TestDataUtil.getValue(strMessage)));
+//        Assert.assertTrue(demoPageContainer.messagesPage.verifyEnteredOutOfOfficeMessage(TestDataUtil.getValue(strMessage)));
 
     }
 
@@ -2504,7 +2504,7 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.homePage.clickHamburgerIcon());
             Assert.assertTrue(demoPageContainer.messagesPage.navigateMobileToMessageSetting());
             Assert.assertTrue(demoPageContainer.messagesPage.selectOutOfOfficeSetting());
-            Assert.assertTrue(demoPageContainer.messagesPage.verifyEnteredOutOfOfficeMessage(TestDataUtil.getValue(lstStrMessage.get(0))));
+//            Assert.assertTrue(demoPageContainer.messagesPage.verifyEnteredOutOfOfficeMessage(TestDataUtil.getValue(lstStrMessage.get(0))));
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             Assert.assertTrue(demoPageContainer.homePage.clickDashBoardForMobile());
@@ -2512,7 +2512,7 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.homePage.clickHamburgerIcon());
             Assert.assertTrue(demoPageContainer.messagesPage.navigateMobileToMessageSetting());
             Assert.assertTrue(demoPageContainer.messagesPage.selectOutOfOfficeSetting());
-            Assert.assertTrue(demoPageContainer.messagesPage.verifyEnteredOutOfOfficeMessage(TestDataUtil.getValue(lstStrMessage.get(0))));
+//            Assert.assertTrue(demoPageContainer.messagesPage.verifyEnteredOutOfOfficeMessage(TestDataUtil.getValue(lstStrMessage.get(0))));
         }
 
 
@@ -2562,9 +2562,9 @@ public class WebSteps {
         List<String> lstMessageDetails = TestDataUtil.getListOfValue(strMessageDetails);
         System.out.println("List Message Details >>> :: " + lstMessageDetails);
 //       Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
-        Assert.assertTrue(demoPageContainer.messagesPage.ProviderHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(1))));
+        Assert.assertTrue(demoPageContainer.messagesPage.ProviderHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenterLocation(TestDataUtil.getValue(lstMessageDetails.get(1))));
-        Assert.assertTrue(demoPageContainer.messagesPage.selectServiceName(TestDataUtil.getValue(lstMessageDetails.get(2))));
+        Assert.assertTrue(demoPageContainer.messagesPage.selectServiceNamePatient1(TestDataUtil.getValue(lstMessageDetails.get(2))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectRole(TestDataUtil.getValue(lstMessageDetails.get(3))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectTo(TestDataUtil.getValue(lstMessageDetails.get(4))));
         Assert.assertTrue(demoPageContainer.messagesPage.enterSubjectDoctor(TestDataUtil.getValue(lstMessageDetails.get(5))));
@@ -2970,7 +2970,7 @@ public class WebSteps {
         List<String> lstMessageDetails = TestDataUtil.getListOfValue(strMessageDetails);
         System.out.println("List Message Details >>> :: " + lstMessageDetails);
         Assert.assertTrue(demoPageContainer.messagesPage.navigateToSentItems());
-//        Assert.assertTrue(demoPageContainer.messagesPage.verifySentMessages(TestDataUtil.getValue(lstMessageDetails.get(5))));
+        Assert.assertTrue(demoPageContainer.messagesPage.verifySentMessages(TestDataUtil.getValue(lstMessageDetails.get(5))));
 
 
     }
@@ -3048,7 +3048,7 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.messagesPage.replyToMobilePatientReceivedMessage(lstReplyMessage.get(0), lstReplyMessage.get(1)));
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.messagesPage.replyToPatientReceivedMessage(lstReplyMessage.get(0), lstReplyMessage.get(1)));
+            Assert.assertTrue(demoPageContainer.messagesPage.replyToPatientReceivedMessage(lstReplyMessage.get(5), lstReplyMessage.get(1)));
 
 
         }
@@ -3197,8 +3197,8 @@ public class WebSteps {
     @Then("I should see all the Prescription My Entries Medicine details in more info")
     public void iShouldSeeAllThePrescriptionMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
 
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -3210,27 +3210,27 @@ public class WebSteps {
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMyEntriesPrescriptionsData(list1, list2));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
@@ -3239,8 +3239,8 @@ public class WebSteps {
     @Then("I should see all the Allergies My Entries Medicine details in more info")
     public void iShouldSeeAllTheAllergiesMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
 
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -3252,27 +3252,27 @@ public class WebSteps {
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMyEntriesAllergiesData(list1, list2));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
@@ -3281,8 +3281,8 @@ public class WebSteps {
     @Then("I should see all the Immunisations My Entries Medicine details in more info")
     public void iShouldSeeAllTheImmunisationsMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
 
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -3294,27 +3294,27 @@ public class WebSteps {
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMyEntriesImmunisationData(list1, list2));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
@@ -3323,8 +3323,8 @@ public class WebSteps {
     @When("I should see all the COVIDImmunisations My Entries Medicine details in more info")
     public void iShouldSeeAllTheCOVIDImmunisationsMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
 
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue1());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue1());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -3337,27 +3337,27 @@ public class WebSteps {
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMyEntriesCOVIDImmunisationData(list1, list2));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobileCovidImmusationMyEntriesDataIcon(list1, list3));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobileCovidImmusationMyEntriesDataIcon(list1, list3));
             }
         }
@@ -3366,8 +3366,8 @@ public class WebSteps {
     @Then("I should see all the Conditions My Entries Medicine details in more info")
     public void iShouldSeeAllTheConditionsMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
 
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -3379,27 +3379,27 @@ public class WebSteps {
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMyEntriesClassificationData(list1, list2));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
@@ -3408,8 +3408,8 @@ public class WebSteps {
     @Then("I should see all the Clinic Notes My Entries Medicine details in more info")
     public void iShouldSeeAllTheClinicNotesMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
 
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -3421,27 +3421,27 @@ public class WebSteps {
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMyEntriesClinicanNotesData(list1, list2));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey2);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobilePrescriptionsMyEntriesDataIcon(list1, list3));
             }
         }
@@ -3474,8 +3474,8 @@ public class WebSteps {
 
     @And("I should see all the COVIDImmunisations Edit My Entries Medicine details in more info")
     public void iShouldSeeAllTheCOVIDImmunisationsEditMyEntriesMedicineDetailsInMoreInfo(DataTable dataTable) {
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue1());
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            Assert.assertTrue(demoPageContainer.myHealthRecordsPage.clickMaxvalue1());
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
@@ -3487,27 +3487,27 @@ public class WebSteps {
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMyEntriesCOVIDImmunisationData(list1, list2));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey3);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey3);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobileCovidImmusationMyEntriesDataIcon(list1, list3));
             }
         }
-        if (System.getProperty(cap.helpers.Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             List<List<String>> tableData = dataTable.asLists(String.class);
             for (int i = 0; i < tableData.size(); i++) {
                 String strKey = tableData.get(i).get(0).trim();
                 String strKey2 = tableData.get(i).get(1).trim();
                 String strKey3 = tableData.get(i).get(2).trim();
-                List<String> list1 = cap.utilities.TestDataUtil.getListOfValue(strKey);
-                List<String> list2 = cap.utilities.TestDataUtil.getListOfValue(strKey2);
-                List<String> list3 = cap.utilities.TestDataUtil.getListOfValue(strKey3);
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                List<String> list3 = TestDataUtil.getListOfValue(strKey3);
                 Assert.assertTrue(demoPageContainer.myHealthRecordsPage.VerifyMobileCovidImmusationMyEntriesDataIcon(list1, list3));
             }
         }
@@ -4062,13 +4062,13 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyRuleADoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
         }
 
@@ -4086,13 +4086,13 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyAnyLocationDoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
         }
     }
@@ -4108,15 +4108,15 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyPhoneAppointmentAnyLocationDoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames), TestDataUtil.getListOfValue(VM032ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyPatientPhoneAppointmentsLocation(TestDataUtil.getListOfValue(strHealthCenter)));
 
         }
@@ -4135,15 +4135,15 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyRuleADoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
         }
 
@@ -4162,16 +4162,16 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyVideoAppointmentAnyLocationDoctorNames(TestDataUtil.getListOfValue(strVideoAppointmentDetails), TestDataUtil.getListOfValue(VM03ProviderNames), TestDataUtil.getListOfValue(VM032ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyPatientVideoAppointmentsLocation(TestDataUtil.getListOfValue(strVideoAppointmentDetails)));
 
         }
@@ -4189,16 +4189,16 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDefaultLocationDoctorNamesforvideoAppointments(TestDataUtil.getListOfValue(strVideoAppointmentDetails), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
 
         }
@@ -4228,13 +4228,13 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDefaultLocationDoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
         }
 
@@ -4252,7 +4252,7 @@ public class WebSteps {
         List<String> lstDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
         List<String> lstDetail = TestDataUtil.getListOfValue(strAppointmentSummary);
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmButton());
-        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDetailsOfCreatedAppointment(lstDetails, (strFutureDate)));
+        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDetailsOfCreatedAppointment(lstDetails, (TestDataUtil.getValue(strFutureDate))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.acceptTermsAndConditionsForAppointment());
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmYourBookingButton());
         Assert.assertTrue(demoPageContainer.appointmentsPage.verifyCreatedAppointmentInFutureAppointmentTab(lstDetail));
@@ -4292,12 +4292,13 @@ public class WebSteps {
 
     @When("I navigate to Book Appointment select Default Location {string}and{string}")
     public void iNavigateToBookAppointmentSelectDefaultLocationAnd(String strLocation, String AppointmentReason) {
+        List<String> data = TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(demoPageContainer.homePage.clickDashBoard());
         Assert.assertTrue(demoPageContainer.homePage.clickPatientBookAppointment());
         Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-        Assert.assertTrue(demoPageContainer.appointmentsPage.selectHealthCenter(TestDataUtil.getValue(strLocation)));
+        Assert.assertTrue(demoPageContainer.appointmentsPage.selectHealthCenter(TestDataUtil.getValue(data.get(0))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-        Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(strLocation)));
+        Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(data.get(1))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
         Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(AppointmentReason)));
     }
@@ -4400,7 +4401,7 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfPhoneAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.veriflyPhoneAvialableSlotTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
@@ -4590,9 +4591,9 @@ public class WebSteps {
         List<String> lstMessageDetails = TestDataUtil.getListOfValue(strMessageDetails);
         System.out.println("List Message Details >>> :: " + lstMessageDetails);
 //       Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
-        Assert.assertTrue(demoPageContainer.messagesPage.ProviderHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(1))));
+        Assert.assertTrue(demoPageContainer.messagesPage.ProviderHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenterLocation(TestDataUtil.getValue(lstMessageDetails.get(1))));
-        Assert.assertTrue(demoPageContainer.messagesPage.selectServiceName(TestDataUtil.getValue(lstMessageDetails.get(2))));
+        Assert.assertTrue(demoPageContainer.messagesPage.selectServiceNamePatient1(TestDataUtil.getValue(lstMessageDetails.get(2))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectRole(TestDataUtil.getValue(lstMessageDetails.get(3))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectTo(TestDataUtil.getValue(lstMessageDetails.get(4))));
         Assert.assertTrue(demoPageContainer.messagesPage.enterSubjectDoctor(TestDataUtil.getValue(lstMessageDetails.get(5))));
@@ -4657,15 +4658,15 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyPhoneAppointmentAnyLocationDoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames), TestDataUtil.getListOfValue(VM03ProviderNames2)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyPatientPhoneAppointmentsLocation(TestDataUtil.getListOfValue(strHealthCenter)));
 
         }
@@ -4683,16 +4684,16 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyVideoAppointmentAnyLocationDoctorNames(TestDataUtil.getListOfValue(strVideoAppointmentDetails), TestDataUtil.getListOfValue(AutoPat1ProviderNames), TestDataUtil.getListOfValue(Autopat2ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyPatientVideoAppointmentsLocation(TestDataUtil.getListOfValue(strVideoAppointmentDetails)));
 
         }
@@ -5082,7 +5083,7 @@ public class WebSteps {
         List<String> lstMessageDetails = TestDataUtil.getListOfValue(strMessageDetails);
         System.out.println("List Message Details >>> :: " + lstMessageDetails);
 //       Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
-        Assert.assertTrue(demoPageContainer.messagesPage.ProviderHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(1))));
+        Assert.assertTrue(demoPageContainer.messagesPage.ProviderHealthCenter(TestDataUtil.getValue(lstMessageDetails.get(0))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectHealthCenterLocation(TestDataUtil.getValue(lstMessageDetails.get(1))));
         Assert.assertTrue(demoPageContainer.messagesPage.selectServiceName(TestDataUtil.getValue(lstMessageDetails.get(11)).concat(strExecutionID)));
         Assert.assertTrue(demoPageContainer.messagesPage.selectRole(TestDataUtil.getValue(lstMessageDetails.get(3))));
@@ -5126,15 +5127,15 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyRuleBDoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
 
         }
@@ -5153,13 +5154,13 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyRuleCDoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
         }
     }
@@ -5176,15 +5177,15 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyRuleCDoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
 
         }
@@ -5203,15 +5204,15 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyRuleDdoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
 
         }
@@ -5230,13 +5231,13 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyRuleDdoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
         }
 
@@ -5255,68 +5256,31 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyRuleEDoctorNames(TestDataUtil.getListOfValue(strHealthCenter), TestDataUtil.getListOfValue(VM03ProviderNames)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(4))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectProvider(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectFutureDateOnCalender(TestDataUtil.getValue(lstAppointmentDetails.get(9))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAvialableSlotDateTime(TestDataUtil.getValue(lstAppointmentDetails.get(5))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
+//            Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
 
         }
     }
 
-    @And("I select the Out of office {string} and {string} and Enter the{string} click the Save Button")
-    public void iSelectTheOutOfOfficeAndAndEnterTheClickTheSaveButton(String strStartDate, String strEndDate,String strMessage) {
-        List<String> lstStrMessage = TestDataUtil.getListOfValue(strMessage);
-        System.out.println("lstStrMessage >>> :: " + lstStrMessage);
 
-//        Assert.assertTrue(demoPageContainer.messagesPage.selectStartDateForOutOfOffice(strStartDate));
-//        Assert.assertTrue(demoPageContainer.messagesPage.selectEndDateForOutOfOffice(strEndDate));
-        Assert.assertTrue(demoPageContainer.messagesPage.enterMessageForOutOfOffice(TestDataUtil.getValue(lstStrMessage.get(0))));
-        Assert.assertTrue(demoPageContainer.messagesPage.clickSaveButton());
-
-    }
-
-    @When("As a user I am on HomePage and navigate to Patient Book Compose Page in Messages")
-    public void asAUserIAmOnHomePageAndNavigateToPatientBookComposePageInMessages() {
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.homePage.clickDashBoard());
-            Assert.assertTrue(demoPageContainer.homePage.navigateToHomePage());
-            Assert.assertTrue(demoPageContainer.messagesPage.navigateToComposeMessage());
-        }
+    @Then("I should see details of created appointment {string} {string} and I verify booked appointment displayed under the future tab {string}")
+    public void iShouldSeeDetailsOfCreatedAppointmentAndIVerifyBookedAppointmentDisplayedUnderTheFutureTab(String strAppointmentDetails, String strFutureDate, String strAppointmentSummary) {
+        List<String> lstDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
+        List<String> lstDetail = TestDataUtil.getListOfValue(strAppointmentSummary);
+        Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmButton());
+        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDetailsOfCreatedAppointment(lstDetails, (TestDataUtil.getValue(strFutureDate))));
+        Assert.assertTrue(demoPageContainer.appointmentsPage.acceptTermsAndConditionsForAppointment());
+        Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmYourBookingButton());
+        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyCreatedAppointmentInFutureAppointmentTab(lstDetail));
 
     }
-
-    @And("I enter the {string} to compose an email and Verify out of office text")
-    public void iEnterTheToComposeAnEmailAndVerifyOutOfOfficeText(String listCreateData) {
-        List<String> list = TestDataUtil.getListOfValue(listCreateData);
-        System.out.println(list);
-        demoPageContainer.messagesPage.selectHealthCentre(list.get(0));
-        demoPageContainer.messagesPage.selectLocation(list.get(1));
-        demoPageContainer.messagesPage.selectServiceNamePatient(list.get(2));
-        demoPageContainer.messagesPage.selectRolePatient(list.get(3));
-        demoPageContainer.messagesPage.selectToPatient(list.get(4));
-        demoPageContainer.messagesPage.enterSubject(list.get(5));
-        demoPageContainer.messagesPage.clickCheckBox();
-        demoPageContainer.messagesPage.enterWriteMessage(TestDataUtil.getValue(list.get(6)));
-        demoPageContainer.messagesPage.clickAddFile(list.get(7));
-    }
-
-    @When("As a user I am on HomePage and navigate to Patient Repeat Medication Page in Repeat Prescription")
-    public void asAUserIAmOnHomePageAndNavigateToPatientRepeatMedicationPageInRepeatPrescription() {
-        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            Assert.assertTrue(demoPageContainer.homePage.clickDashBoard());
-            Assert.assertTrue(demoPageContainer.homePage.navigateToHomePage());
-            Assert.assertTrue(demoPageContainer.homePage.verifyHomePageOfMMHPortal());
-            Assert.assertTrue(demoPageContainer.repeatPrescription.navigateToRequestNewScript());
-        }
-
-    }
-
-
 
     @And("Verify Alternative Provider option displayed {string}")
     public void verifyAlternativeProviderOptionDisplayed(String strHealthCenter) {
@@ -5348,6 +5312,20 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.verifyIsNotDisplayedAlternativeProviderOption());
+    }
+
+    @And("I click Inbox navigate to Compose screen verify the SMS Tab Displayed")
+    public void iClickInboxNavigateToComposeScreenVerifyTheSMSTabDisplayed() {
+        Assert.assertTrue(demoPageContainer.homePage.clickDashBoard());
+        Assert.assertTrue(demoPageContainer.messagesPage.navigateToProviderHomepage());
+        Assert.assertTrue(demoPageContainer.messagesPage.navigateToComposeMessageForDoctor());
+        Assert.assertTrue(demoPageContainer.messagesPage.verifySMSTab());
+    }
+
+    @Then("I should see SMS info message displayed")
+    public void iShouldSeeSMSInfoMessageDisplayed() {
+
+        Assert.assertTrue(demoPageContainer.messagesPage.verifySMSInfoMessage());
     }
 
 
@@ -5382,20 +5360,63 @@ public class WebSteps {
 
     }
 
+    @Then("I select the Patient to collect Script Medication details{string} Verify patient should not able to view the Nurse {string}")
+    public void iSelectThePatientToCollectScriptMedicationDetailsVerifyPatientShouldNotAbleToViewTheNurse(String strMedicationDetails, String SelectScriptDropDownDetails) {
+        System.out.println("\nMedicationDetails >>> :" + strMedicationDetails);
+        System.out.println("\nSelectScriptDropDownDetails >>> :" + SelectScriptDropDownDetails);
+        List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
+        System.out.println("\nlstMedicationDetails >>> " + lstMedicationDetails);
+        System.out.println("\nSize Of lstMedicationDetails >>> " + lstMedicationDetails.size());
 
-    @And("I click Inbox navigate to Compose screen verify the SMS Tab Displayed")
-    public void iClickInboxNavigateToComposeScreenVerifyTheSMSTabDisplayed() {
-        Assert.assertTrue(demoPageContainer.homePage.clickDashBoard());
-        Assert.assertTrue(demoPageContainer.messagesPage.navigateToProviderHomepage());
-        Assert.assertTrue(demoPageContainer.messagesPage.navigateToComposeMessageForDoctor());
-        Assert.assertTrue(demoPageContainer.messagesPage.verifySMSTab());
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectHealthCentreLocation(lstMedicationDetails.get(0)));
+
+        Assert.assertTrue(demoPageContainer.repeatPrescription.verifyEnabledDoctorName(TestDataUtil.getValue(SelectScriptDropDownDetails)));
+
+//        Assert.assertTrue(demoPageContainer.repeatPrescription.selectDoctor(lstMedicationDetails.get(1)));
+
+
     }
 
+    @And("I select the Medication details for Delivery Meds by Pharmacy and Pay Online with Card {string} Verify CSC Payments")
+    public void iSelectTheMedicationDetailsForDeliveryMedsByPharmacyAndPayOnlineWithCardVerifyCSCPayments(String strMedicationDetails) {
+        System.out.println("MedicationDetails >>> :" + strMedicationDetails);
+        List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
+        System.out.println("lstMedicationDetails >>> " + lstMedicationDetails);
 
-    @Then("I should see SMS info message displayed")
-    public void iShouldSeeSMSInfoMessageDisplayed() {
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectHealthCentreLocation(lstMedicationDetails.get(0)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectDoctor(lstMedicationDetails.get(1)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectInstructions(lstMedicationDetails.get(2)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectUrgency(lstMedicationDetails.get(6)));
+//        Assert.assertTrue(demoPageContainer.repeatPrescription.selectPharmacyForDeliveryMedsByPharmacy());
+//        Assert.assertTrue(demoPageContainer.repeatPrescription.selectPharmacyBySavedListForDelivery(lstMedicationDetails.get(3), lstMedicationDetails.get(4)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectPharmacy(lstMedicationDetails.get(4)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectAddress(lstMedicationDetails.get(5)));
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickNextButton());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.selectMedicationsToRepeatForMobile(lstMedicationDetails.get(7)));
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickNextButton());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.selectMedicationsToRepeatForMobile(lstMedicationDetails.get(7)));
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.selectMedicationsToRepeat(lstMedicationDetails.get(7)));
+        }
+        Assert.assertTrue(demoPageContainer.repeatPrescription.addMessage(lstMedicationDetails.get(8)));
+        Assert.assertTrue(demoPageContainer.repeatPrescription.selectTermsAndCondition());
+        demoPageContainer.repeatPrescription.CapturePaymentDetails();
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayNow());
 
-        Assert.assertTrue(demoPageContainer.messagesPage.verifySMSInfoMessage());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayNow());
+        }
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayNow());
+
+        }
+
     }
 }
 

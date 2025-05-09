@@ -1,11 +1,9 @@
-package cap.utilities;
+package java.cap.utilities;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.awt.*;
 import java.io.*;
-
-/**Fileutil is used for system file management control, and it allows you to Create,delete,Rename, and upload files. */
 
 public class FileUtil {
    
@@ -54,8 +52,7 @@ public class FileUtil {
       }
       return blResult;
    }
-/**  The RenameFile method was used to rename your folder name. */
-
+   
    public static boolean renameFile(String strPath1,String strPath2){
       boolean blResult = false;
       try {
@@ -69,8 +66,7 @@ public class FileUtil {
       }
       return blResult;
    }
-
-
+   
    public static boolean writeContent(String strFilePath,String strContent){
       boolean blResult = false;
       try {
@@ -83,7 +79,7 @@ public class FileUtil {
       }
       return blResult;
    }
-   /**  The deleteFile method was used to delete one files from your folder.*/
+   
    public static boolean deleteFile(String strFilePath){
       boolean blResult=false;
       try{
@@ -94,7 +90,6 @@ public class FileUtil {
       catch(Exception e){}
       return blResult;
    }
-   /**  The getFileNamesFromFolder method was used to get the file name and folder name from your folder..*/
 
    public static String[] getFileNamesFromFolder(String strFolderLocation) {
       String[] strFileName = new String[10];
@@ -109,8 +104,6 @@ public class FileUtil {
       }
       return strFileName;
    }
-
-/**  The deleteFile method was used to delete many files from your folder */
 
    public static boolean deleteFiles(String strDirectoryPath) {
       boolean isDeleted = false;
@@ -147,7 +140,7 @@ public class FileUtil {
 
       return isOpened;
    }
-   /**  The deleteFile method was used to delete many files from your folder */
+
    public static void createFile(String strFilePath, String strFile){
       try {
           FileOutputStream f = new FileOutputStream(new File(strFilePath+"/"+strFile));

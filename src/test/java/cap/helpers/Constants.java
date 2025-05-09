@@ -1,6 +1,5 @@
-package cap.helpers;
+package java.cap.helpers;
 
-import java.awt.event.KeyEvent;
 import java.io.File;
 
 
@@ -30,14 +29,7 @@ public class Constants {
 
     public static final String IMAGES_FOLDER = "images";
     public static final String TEST_DATA_FOLDER = "testdata";
-    public static final String FLOORPLAN_FOLDER = "Floorplan";
-    public static final String DRAG_AND_DROP_FOLDER = "DragandDrop";
-    public static final String IMAGE_COMPARISON_FOLDER = "ImageComparison";
-    public static final String DOUBLE_CLICK_IMAGES = "doubleClickImages";
 
-    //Windows
-    public static final String WINAPP_LOCAL_IP = "127.0.0.1";
-    public static String WINAPP_LOCAL_PORT = "4723";
 
     //Platform
     public static final String ANDROID = "Android";
@@ -57,11 +49,10 @@ public class Constants {
     public static final String GECKO_DRIVER_PATH = CONFIG_FOLDER + "/" + DRIVERS_FOLDER + "/" + "geckodriver.exe";
     public static final String CHROME_DRIVER_PATH = CONFIG_FOLDER + "/" + DRIVERS_FOLDER + "/" + "chromedriver.exe";
     public static final String IE_DRIVER_PATH = CONFIG_FOLDER + "/" + DRIVERS_FOLDER + "/" + "IEDriverServer1.exe";
-    public static final String EDGE_DRIVER_PATH = CONFIG_FOLDER + "/" + DRIVERS_FOLDER + "/" + "msedgedriver.exe";
 
     //Drivers mac
     public static final String GECKO_DRIVER_MAC_PATH = CONFIG_FOLDER + "/" + DRIVERS_FOLDER + "/" + "geckodriver_mac";
-    public static final String CHROME_DRIVER_MAC_PATH = CONFIG_FOLDER + "/" + DRIVERS_FOLDER + "/" + "chromedriver";
+    public static final String CHROME_DRIVER_MAC_PATH = CONFIG_FOLDER + "/" + DRIVERS_FOLDER + "/" + "chromedriver_mac";
     public static final String IE_DRIVER_MAC_PATH = CONFIG_FOLDER + "/" + DRIVERS_FOLDER + "/" + "IEDriverServer1.exe";
 
     //Testdata
@@ -76,17 +67,10 @@ public class Constants {
     //Downloads
     public static final String DOWNLOAD_PATH = CONFIG_FOLDER + File.separator + DOWNLOADS_FOLDER + File.separator;
 
-    //Keys
-    public static final int ROBO_KEY_ENTER = KeyEvent.VK_ENTER;
-    public static final int ROBO_KEY_TAB = KeyEvent.VK_TAB;
-
-    //Date
-    public static final String DATE_FORMAT = "MMMM d, yyyy";
-    public static final String KOBITONURL = "Codoid::QA_KobitonURL";
     public static final String WINAPP_DRIVER_EXE_DIRECTORY = "C:/Program Files (x86)/Windows Application Driver/WinAppDriver.exe";
 
 
-    public static final String BASE_URI = "https://www.boursakuwait.com.kw/";
+    public static final String BASE_URI = "";
 
 
 }

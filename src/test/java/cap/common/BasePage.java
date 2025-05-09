@@ -1,6 +1,7 @@
-package cap.common;
+package java.cap.common;
 
-import Sanity_Patient_Web.SanityPageContainer;
+import Happy_Path_Patient_Web_and_MR.DemoPageContainer;
+//import Sanity_Patient_Web.SanityPageContainer;
 import cap.helpers.Constants;
 import cap.utilities.WaitTimeUtil;
 import io.appium.java_client.AppiumDriver;
@@ -13,15 +14,14 @@ import io.appium.java_client.touch.offset.PointOption;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.StopWatch;
-import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import Happy_Path_Patient_Web_and_MR.DemoPageContainer;
 
 import java.awt.*;
 import java.io.File;
@@ -44,15 +44,21 @@ public class BasePage {
 
     protected static Long executionID = null;
 
-    public BasePage(WebDriver driver) {
-        PageFactory.initElements(new AppiumFieldDecorator(driver,Duration.ofSeconds(5)), this);
-        this.driver = driver;
-        wait = new WebDriverWait(this.driver, WaitTimeUtil.getWaitTime(Constants.OBJECT_WAIT_TIME));
-        invisibleWait = new WebDriverWait(this.driver, WaitTimeUtil.getWaitForInvisibilityTime(Constants.OBJECT_WAIT_TIME));
-        // this.driver.manage().timeouts().pageLoadTimeout(WaitTimeUtil.getWaitTime(Constants.PAGE_LOAD_WAIT_TIME),
-        // TimeUnit.SECONDS);
-    }
+//    public BasePage(WebDriver driver) {
+//        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+//        this.driver = driver;
+//        wait = new WebDriverWait(this.driver, WaitTimeUtil.getWaitTime(Constants.OBJECT_WAIT_TIME));
+//        invisibleWait = new WebDriverWait(this.driver, WaitTimeUtil.getWaitForInvisibilityTime(Constants.OBJECT_WAIT_TIME));
+//        // this.driver.manage().timeouts().pageLoadTimeout(WaitTimeUtil.getWaitTime(Constants.PAGE_LOAD_WAIT_TIME),
+//        // TimeUnit.SECONDS);
+//    }
 
+        public BasePage(WebDriver driver) {
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        this.driver = driver;
+        wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+        invisibleWait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
+    }
     StopWatch pageLoad = new StopWatch();
 /**The visit Method used to get URL in testdata.  */
     protected void visit(String URL) {
@@ -63,8 +69,12 @@ public class BasePage {
         System.out.println("=======================>Launched URL");
     }
     /**When an element on the page is not clickable, Selenium waits for it to be clickable, and it takes a long time to load all elements.In this method, declare the elements Xpath and Secs..   */
-    protected WebElement waitForElementClickable(By by, int secs) {
-        return new WebDriverWait(driver, secs).until(ExpectedConditions.elementToBeClickable(by));
+//    protected WebElement waitForElementClickable(By by, int secs) {
+//        return new WebDriverWait(driver, secs).until(ExpectedConditions.elementToBeClickable(by));
+//    }
+
+        protected WebElement waitForElementClickable(By by, int secs) {
+        return new WebDriverWait(driver, Duration.ofSeconds(secs)).until(ExpectedConditions.elementToBeClickable(by));
     }
 
     protected boolean verifyURLContains(String strURLValue) {
@@ -77,8 +87,11 @@ public class BasePage {
     }
 
     /** explicit wait condition where we can pause or wait for an element before proceeding to the next step.In this method, declare the elements Xpath and Secs..  */
+//    protected WebElement waitForElement(By by, int secs) {
+//        return new WebDriverWait(driver, secs).until(ExpectedConditions.visibilityOfElementLocated(by));
+//    }
     protected WebElement waitForElement(By by, int secs) {
-        return new WebDriverWait(driver, secs).until(ExpectedConditions.visibilityOfElementLocated(by));
+        return new WebDriverWait(driver, Duration.ofSeconds(secs)).until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     /** explicit wait condition where we can pause or wait for an element before proceeding to the next step.In this method, declare the elements of Xpath like Id, and Name.  */
@@ -136,10 +149,6 @@ public class BasePage {
 
     }
 
-    public WebElement waitForElementIgnoreStale(WebElement element) {
-        return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
-    }
-
     public static boolean compareList(List<WebElement> lstElements, List<String> lstDataValues) {
         List<String> lstActualValue = new ArrayList<String>();
         List<String> lstExpectedValues = new ArrayList<String>();
@@ -166,7 +175,7 @@ public class BasePage {
 
     public static WebDriver waitForframeToBeAvailableAndSwitchToIt(WebDriver driver, WebElement element) {
         WebDriver frameDriver = null;
-        frameDriver = new WebDriverWait(driver, 60).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+        frameDriver = new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
         return frameDriver;
     }
 /**   The mouseOver  method specifies two functions to run when the mouse pointer hovers over the selected elements.*/
@@ -263,10 +272,41 @@ public class BasePage {
         select.selectByVisibleText(strValue);
     }
 
+    public WebElement waitForElementIgnoreStale(WebElement element) {
+        return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
+    }
+    public WebElement waitForElementSeconds(By locator) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        } catch (TimeoutException e) {
+            return null; // Return null if element is not found
+        }
+    }
+
     public void ElementselectByIndex(WebElement element, int i) {
         Select select = new Select(element);
         select.selectByIndex(i);
     }
+
+    public boolean isElementNotDisplayed(WebElement element) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+            return wait.until(ExpectedConditions.invisibilityOf(element));
+        } catch (Exception e) {
+            return true;
+        }
+    }
+
+    public void pushFileToDevice(String strImageName) {
+        try {
+            ((AndroidDriver) driver).pushFile("/sdcard/Download/" + strImageName + "", new File(strImageDirectory + strImageName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     /**This method is used to Enter the value of the present Textbox with Selenium.*/
     public void enterValue(WebElement elmnt, String strValue) {
         elmnt.click();
@@ -310,7 +350,7 @@ public class BasePage {
         boolean isElementDisappear = false;
         try {
 
-            new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(by));
+            new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOfElementLocated(by));
             isElementDisappear = true;
 
         } catch (Exception e) {
@@ -328,7 +368,7 @@ public class BasePage {
         boolean isElementDisappear = false;
         try {
 
-            new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(by));
+            new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(by));
             isElementDisappear = true;
 
         } catch (Exception e) {
@@ -345,7 +385,7 @@ public class BasePage {
         boolean isElementDisappear = false;
         try {
 
-            new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOf(element));
+            new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOf(element));
             isElementDisappear = true;
 
         } catch (Exception e) {
@@ -610,7 +650,7 @@ public class BasePage {
     }
 
     protected WebElement waitForElementFewSeconds(By by) {
-        WebDriverWait tempWait = new WebDriverWait(this.driver, 30);
+        WebDriverWait tempWait = new WebDriverWait(this.driver,Duration.ofSeconds(30));
         return tempWait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
@@ -622,19 +662,19 @@ public class BasePage {
 /**   verifies if a certain element is present and displayed. */
     public boolean isElementDisplayed(WebElement element) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 1);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
             wait.until(ExpectedConditions.visibilityOf(element));
             return element.isDisplayed();
-        } catch (org.openqa.selenium.NoSuchElementException
-                | org.openqa.selenium.StaleElementReferenceException
-                | org.openqa.selenium.TimeoutException e) {
+        } catch (NoSuchElementException
+                 | StaleElementReferenceException
+                 | TimeoutException e) {
             return false;
         }
     }
 
     public void waitForElementToBeGone(WebElement element, int timeout) {
         if (isElementDisplayed(element)) {
-            new WebDriverWait(driver, timeout).until(ExpectedConditions.not(ExpectedConditions.visibilityOf(element)));
+            new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.not(ExpectedConditions.visibilityOf(element)));
         }
     }
 
@@ -696,24 +736,24 @@ public class BasePage {
 
     public static String strImageDirectory = System.getProperty("user.dir") + "\\config\\Images\\";
 
-    public void pushFileToDevice(String strImageName) {
-        try {
-            ((AndroidDriver<WebElement>) driver).pushFile("/sdcard/Download/" + strImageName + "", new File(strImageDirectory + strImageName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void pushFileToDevice(String strImageName) {
+//        try {
+//            ((AndroidDriver<WebElement>) driver).pushFile("/sdcard/Download/" + strImageName + "", new File(strImageDirectory + strImageName));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    public void enterValueRealDevice(WebElement elmnt, String strValue) {
-        elmnt.click();
-        elmnt.clear();
-        waitForSeconds(1);
-        AppiumDriver appiumDriver = (AppiumDriver) driver;
-        appiumDriver.getKeyboard().sendKeys(strValue);
-        appiumDriver.getKeyboard().pressKey(Keys.ENTER);
-
-
-    }
+//    public void enterValueRealDevice(WebElement elmnt, String strValue) {
+//        elmnt.click();
+//        elmnt.clear();
+//        waitForSeconds(1);
+//        AppiumDriver appiumDriver = (AppiumDriver) driver;
+//        appiumDriver.getKeyboard().sendKeys(strValue);
+//        appiumDriver.getKeyboard().pressKey(Keys.ENTER);
+//
+//
+//    }
 
     public void swipeUpShort() {
         Dimension size = driver.manage().window().getSize();
@@ -763,13 +803,13 @@ public class BasePage {
     }
 
 /**   This method is used to take screenshots of the current page.*/
-    public void takeScreenshotSanity(WebDriver driver) {
-        try {
-            SanityPageContainer.myScenario.attach(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES), "image/png", "");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void takeScreenshotSanity(WebDriver driver) {
+//        try {
+//            SanityPageContainer.myScenario.attach(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES), "image/png", "");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void swipeRight() {
         waitForSeconds(1);
@@ -784,6 +824,18 @@ public class BasePage {
                 .moveTo(PointOption.point(endX, startY))
                 .release()
                 .perform();
+    }
+
+    public void Captcha(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
+                By.xpath("//iframe[starts-with(@name, 'a-') and starts-with(@src, 'https://www.google.com/recaptcha')]")));
+
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[@class='recaptcha-checkbox-border']"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.recaptcha-checkbox-checkmark"))).click();
+
+        System.out.println("Successfully Enter the Captcha");
     }
 
 }
