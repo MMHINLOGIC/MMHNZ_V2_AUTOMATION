@@ -12,6 +12,7 @@ public class OnlinePaymentSettingsPage extends BasePage {
         super(driver);
 
     }
+
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Payments')])[2]")
     protected WebElement elmntPayments;
 
@@ -41,7 +42,7 @@ public class OnlinePaymentSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Appointments')]//following::label)[1]")
     protected WebElement elmntEnableOnlinePaymentsForAppointments;
 
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Appointments')]//following::label)[2]")
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'No')])[1]")
     protected WebElement elmntEnableNoOnlinePaymentsForAppointments;
 
     @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Enable Online Payments for Request Repeat Prescriptions')]//following::label)[1]")
@@ -58,7 +59,6 @@ public class OnlinePaymentSettingsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Appointment Settings')])[1]")
     protected WebElement elmntAppointmentSetting;
-
 
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Appointments')])[2]")
@@ -96,6 +96,9 @@ public class OnlinePaymentSettingsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModeVideo']//label)[3]")
     protected WebElement verifyVideoAppointmentsCheckboxUnchecked;
 
+
+    @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='paymentModeVideo']//label)[2]")
+    protected WebElement clickVideoAppointmentPayOnlineOption;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Repeat Script Settings')]")
     protected WebElement elmntRepeatScriptSetting;
 
@@ -127,10 +130,10 @@ public class OnlinePaymentSettingsPage extends BasePage {
             waitForElement(elmntPayments);
             jsClick(elmntPayments);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-          waitForElement(elmntOnlinePaymentSetting);
-          jsClick(elmntOnlinePaymentSetting);
+            waitForElement(elmntOnlinePaymentSetting);
+            jsClick(elmntOnlinePaymentSetting);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-          waitForElement(elmntOnlinePaymentSettingHeader);
+            waitForElement(elmntOnlinePaymentSettingHeader);
             blresult = verifyElement(elmntOnlinePaymentSettingHeader);
         } catch (Exception e) {
 
@@ -142,7 +145,7 @@ public class OnlinePaymentSettingsPage extends BasePage {
         boolean blresult = false;
         try {
             waitForSeconds(4);
-jsScrollIntoView(elmntEditButton);
+            jsScrollIntoView(elmntEditButton);
             waitForElement(elmntEditButton);
             jsClick(elmntEditButton);
             waitForElement(elmntOnlinePaymentSettingHeader);
@@ -161,7 +164,7 @@ jsScrollIntoView(elmntEditButton);
             waitForElement(clickHealthCentre);
             jsClick(clickHealthCentre);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntHealthCentreDrop.replace("<<REPLACEMENT>>", Strdata)));
-            System.out.printf("elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
+            System.out.printf("elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult = verifyElement(elmntOnlinePaymentSettingHeader);
@@ -179,8 +182,10 @@ jsScrollIntoView(elmntEditButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmntEnableOnlinePaymentsForAppointments);
             waitForElement(elmntEnableOnlinePaymentsForAppointments);
+            waitForSeconds(3);
             jsClick(elmntEnableOnlinePaymentsForAppointments);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            takeScreenshot(driver);
             waitForElement(elmntOnlinePaymentSettingHeader);
             blresult = verifyElement(elmntOnlinePaymentSettingHeader);
         } catch (Exception e) {
@@ -193,9 +198,12 @@ jsScrollIntoView(elmntEditButton);
         boolean blresult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            jsScrollIntoView(elmntEnableNoOnlinePaymentsForAppointments);
+            waitForSeconds(3);
+//            jsScrollIntoView(elmntEnableNoOnlinePaymentsForAppointments);
             waitForElement(elmntEnableNoOnlinePaymentsForAppointments);
             jsClick(elmntEnableNoOnlinePaymentsForAppointments);
+            takeScreenshot(driver);
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntOnlinePaymentSettingHeader);
             blresult = verifyElement(elmntOnlinePaymentSettingHeader);
@@ -224,15 +232,21 @@ jsScrollIntoView(elmntEditButton);
     public boolean clickAppointmentSetting() {
         boolean blresult = false;
         try {
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmntAppointments);
             waitForElement(elmntAppointments);
             jsClick(elmntAppointments);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmntAppointmentSetting);
             waitForElement(elmntAppointmentSetting);
             jsClick(elmntAppointmentSetting);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(2);
+            jsScrollIntoView(clickAppointmentSettingHeader);
             waitForElement(clickAppointmentSettingHeader);
             jsClick(clickAppointmentSettingHeader);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntAppointmentSettingHeader);
             blresult = verifyElement(elmntAppointmentSettingHeader);
         } catch (Exception e) {
@@ -244,9 +258,10 @@ jsScrollIntoView(elmntEditButton);
     public boolean clickAppoitmentSettingEditButton() {
         boolean blresult = false;
         try {
+            waitForSeconds(3);
             jsScrollIntoView(elmntEditButton);
             waitForElement(elmntEditButton);
-            click(elmntEditButton);
+            jsClick(elmntEditButton);
             waitForElement(elmntAppointmentSettingHeader);
             blresult = verifyElement(elmntAppointmentSettingHeader);
         } catch (Exception e) {
@@ -263,20 +278,23 @@ jsScrollIntoView(elmntEditButton);
 //                System.out.println("Sucessfully verified In Person Appointments Checkbox Cheacked");
 //            }
 //            else {
-                waitForElement(verifyInPersonAppointmentsCheckboxUnchecked);
-                jsClick(verifyInPersonAppointmentsCheckboxUnchecked);
-                verifyElement(verifyInPersonAppointmentsCheckbox);
-                System.out.println("Else -Sucessfully verified In Person Appointments Checkbox Cheacked");
+            waitForElement(verifyInPersonAppointmentsCheckboxUnchecked);
+            waitForSeconds(2);
+            jsClick(verifyInPersonAppointmentsCheckboxUnchecked);
+            waitForSeconds(2);
+            verifyElement(verifyInPersonAppointmentsCheckbox);
+            System.out.println("Else -Sucessfully verified In Person Appointments Checkbox Cheacked");
 //            }
+            waitForSeconds(2);
             jsScrollIntoView(verifyPayAtHealthCentreonly);
             waitForElement(verifyPayAtHealthCentreonly);
-          verifyElement(verifyPayAtHealthCentreonly);
-          System.out.println("Sucessfully verified Pay At Health centre only");
-          waitForElement(verifyPayOnlineonly);
-          verifyElement(verifyPayOnlineonly);
-          System.out.println("Sucessfully verified Pay At Health centre only");
-          waitForElement(verifyPayatHealthCentreorPayOnline);
-          verifyElement(verifyPayatHealthCentreorPayOnline);
+            verifyElement(verifyPayAtHealthCentreonly);
+            System.out.println("Sucessfully verified Pay At Health centre only");
+            waitForElement(verifyPayOnlineonly);
+            verifyElement(verifyPayOnlineonly);
+            System.out.println("Sucessfully verified Pay At Health centre only");
+            waitForElement(verifyPayatHealthCentreorPayOnline);
+            verifyElement(verifyPayatHealthCentreorPayOnline);
             System.out.println("Sucessfully verified Pay At Health centre only or Pay Online only");
             waitForElement(verifyPayatHealthCentreorPayOnline);
             blresult = verifyElement(verifyPayatHealthCentreorPayOnline);
@@ -285,6 +303,7 @@ jsScrollIntoView(elmntEditButton);
         }
         return blresult;
     }
+
     public boolean veriflyPhoneAppoitmentPaymentSettings() {
         boolean blresult = false;
         try {
@@ -293,11 +312,13 @@ jsScrollIntoView(elmntEditButton);
 //                System.out.println("Sucessfully verified In Person Appointments Checkbox Cheacked");
 //            }
 //            else {
-                waitForElement(verifyPhoneAppointmentsCheckboxUnchecked);
-                jsClick(verifyPhoneAppointmentsCheckboxUnchecked);
-                verifyElement(verifyPhoneAppointmentsCheckbox);
-                System.out.println("Else -Sucessfully verified In Person Appointments Checkbox Cheacked");
+            waitForElement(verifyPhoneAppointmentsCheckboxUnchecked);
+            waitForSeconds(2);
+            jsClick(verifyPhoneAppointmentsCheckboxUnchecked);
+            verifyElement(verifyPhoneAppointmentsCheckbox);
+            System.out.println("Else -Sucessfully verified In Person Appointments Checkbox Cheacked");
 //            }
+            waitForSeconds(2);
             jsScrollIntoView(verifyPayAtHealthCentreonly);
             waitForElement(verifyPayAtHealthCentreonly);
             verifyElement(verifyPayAtHealthCentreonly);
@@ -315,6 +336,7 @@ jsScrollIntoView(elmntEditButton);
         }
         return blresult;
     }
+
     public boolean veriflyVideoAppoitmentPaymentSettings() {
         boolean blresult = false;
         try {
@@ -323,11 +345,13 @@ jsScrollIntoView(elmntEditButton);
 //                System.out.println("Sucessfully verified In Person Appointments Checkbox Cheacked");
 //            }
 //            else {
-                waitForElement(verifyVideoAppointmentsCheckboxUnchecked);
-                jsClick(verifyVideoAppointmentsCheckboxUnchecked);
-                verifyElement(verifyVideoAppointmentsCheckbox);
-                System.out.println("Else -Sucessfully verified In Person Appointments Checkbox Cheacked");
+            waitForElement(verifyVideoAppointmentsCheckboxUnchecked);
+            waitForSeconds(2);
+            jsClick(verifyVideoAppointmentsCheckboxUnchecked);
+            verifyElement(verifyVideoAppointmentsCheckbox);
+            System.out.println("Else -Sucessfully verified In Person Appointments Checkbox Cheacked");
 //            }
+            waitForSeconds(2);
             jsScrollIntoView(verifyPayAtHealthCentreonly);
             waitForElement(verifyPayAtHealthCentreonly);
             verifyElement(verifyPayAtHealthCentreonly);
@@ -345,6 +369,22 @@ jsScrollIntoView(elmntEditButton);
         }
         return blresult;
     }
+
+    public boolean EnableVideoAppointmentPayOnlineOption() {
+        boolean blresult = false;
+        try {
+            waitForElement(clickVideoAppointmentPayOnlineOption);
+            jsClick(clickVideoAppointmentPayOnlineOption);
+            verifyElement(clickVideoAppointmentPayOnlineOption);
+            System.out.println("Successfully clicked Pay Online Option");
+            waitForElement(verifyPayatHealthCentreorPayOnline);
+            blresult = verifyElement(verifyPayatHealthCentreorPayOnline);
+        } catch (Exception e) {
+            System.out.println("Cannot Successfully verified Pay At Health centre only or Pay Online only");
+        }
+        return blresult;
+    }
+
 
     public boolean EnableYesOnlinePaymentsforRRP() {
         boolean blresult = false;
@@ -401,13 +441,13 @@ jsScrollIntoView(elmntEditButton);
         boolean blresult = false;
         try {
             waitForElement(elmntRRPPayAtHealthCentreOnly);
-          verifyElement(elmntRRPPayAtHealthCentreOnly);
-          waitForElement(elmntRRPPayOnlineOnly);
-          verifyElement(elmntRRPPayOnlineOnly);
-          waitForElement(elmntRRPPayatHealthCentreorPayOnline);
-          verifyElement(elmntRRPPayatHealthCentreorPayOnline);
-          jsClick(elmntRRPPayatHealthCentreorPayOnline);
-          blresult = verifyElement(elmntRRPPayatHealthCentreorPayOnline);
+            verifyElement(elmntRRPPayAtHealthCentreOnly);
+            waitForElement(elmntRRPPayOnlineOnly);
+            verifyElement(elmntRRPPayOnlineOnly);
+            waitForElement(elmntRRPPayatHealthCentreorPayOnline);
+            verifyElement(elmntRRPPayatHealthCentreorPayOnline);
+            jsClick(elmntRRPPayatHealthCentreorPayOnline);
+            blresult = verifyElement(elmntRRPPayatHealthCentreorPayOnline);
         } catch (Exception e) {
 
         }
@@ -436,20 +476,20 @@ jsScrollIntoView(elmntEditButton);
         boolean PayOnlineAndPayhealthCenter = false;
         try {
             jsScrollIntoView(elmntRRPPayAtHealthCentreOnly);
-            PayOnline=!verifyElement(elmntRRPPayOnlineOnly);
-            PayOnlineAndPayhealthCenter=!verifyElement(elmntRRPPayatHealthCentreorPayOnline);
+            PayOnline = !verifyElement(elmntRRPPayOnlineOnly);
+            PayOnlineAndPayhealthCenter = !verifyElement(elmntRRPPayatHealthCentreorPayOnline);
             waitForElement(elmntRRPPayAtHealthCentreOnly);
-            blresult =verifyElement(elmntRRPPayAtHealthCentreOnly);
+            blresult = verifyElement(elmntRRPPayAtHealthCentreOnly);
         } catch (Exception e) {
 
         }
-        return blresult&&PayOnline&&PayOnlineAndPayhealthCenter;
+        return blresult && PayOnline && PayOnlineAndPayhealthCenter;
     }
 
     public boolean clickSecureMessaging() {
         boolean blResult = false;
         try {
-            waitForElementDisappear(driver,By.xpath(elmntSpinner));
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmtSecureMessaging);
             waitForSeconds(2);
             waitForElementClickable(elmtSecureMessaging);
@@ -458,7 +498,7 @@ jsScrollIntoView(elmntEditButton);
             jsScrollIntoView(elmtRepeatScriptSettings);
             System.out.println("scrolled ");
             takeScreenshot(driver);
-            if (!verifyElement(elmtRepeatScriptSettings)){
+            if (!verifyElement(elmtRepeatScriptSettings)) {
                 click(elmtSecureMessaging);
             }
             jsScrollIntoView(elmtRepeatScriptSettings);

@@ -850,6 +850,9 @@ public class ProviderHomePage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntDashboard);
+            waitForElement(elmntDashboard);
+            jsClick(elmntDashboard);
             if (verifyElement(txtHarryHarryWelcome)) {
                 verifyElement(elmntDashboard);
                 waitForElementClickable(elmntDashboard);

@@ -366,8 +366,8 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Home')and contains(text(),'My Home page') or contains(text(),'Start managing your health, today')]")
     protected WebElement verifyPatientHomePage;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
-    protected WebElement elmntLogOut;
+    @FindBy(how = How.XPATH, using = "//span[text()='Sign in']")
+    protected WebElement elmntSignIn;
 
     @FindBy(how = How.XPATH, using = "//h3[text()=' Future Appointments']")
     protected WebElement elmntFutureAppointments;
@@ -1549,6 +1549,7 @@ public class HomePage extends BasePage {
             e.printStackTrace();
         }
         takeScreenshot(driver);
+        waitForElement(elmntVerifyHomePage);
         return verifyElement(elmntVerifyHomePage);
     }
 
@@ -2062,8 +2063,8 @@ public class HomePage extends BasePage {
                     driver.switchTo().window(tabs.get(1));
                     visit(TestDataUtil.getValue("&URL&"));
                     waitForSeconds(4);
-                    waitForElementClickable(elmntLogOut);
-                    jsClick(elmntLogOut);
+                    waitForElementClickable(elmntSignIn);
+                    jsClick(elmntSignIn);
                     waitForSeconds(2);
                     visit(TestDataUtil.getValue("&URL&"));
                 }

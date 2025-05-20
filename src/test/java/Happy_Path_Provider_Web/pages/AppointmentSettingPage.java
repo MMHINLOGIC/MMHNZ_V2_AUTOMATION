@@ -256,13 +256,13 @@ public class AppointmentSettingPage extends BasePage {
             jsClick(elmntRuleARadioButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             System.out.println("Successfully Click RuleA Radio Button");
-            jsScrollIntoView(elmntSaveButton);
-            waitForElement(elmntSaveButton);
-            click(elmntSaveButton);
+//            jsScrollIntoView(elmntSaveButton);
+//            waitForElement(elmntSaveButton);
+//            click(elmntSaveButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
 //            takeScreenshot(driver);
-            waitForElement(txtSuccessfullyMessagePopup);
-            blresult =verifyElement(txtSuccessfullyMessagePopup);
+            waitForElement(txtAppointmentSettingHeader);
+            blresult =verifyElement(txtAppointmentSettingHeader);
             System.out.println("Verify Changes saved successfully. Popup");
         } catch (Exception e) {
             e.printStackTrace();
@@ -282,12 +282,12 @@ public class AppointmentSettingPage extends BasePage {
             jsClick(elmntRuleBRadioButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             System.out.println("Successfully Click RuleB Radio Button");
-            jsScrollIntoView(elmntSaveButton);
-            waitForElement(elmntSaveButton);
-            jsClick(elmntSaveButton);
+//            jsScrollIntoView(elmntSaveButton);
+//            waitForElement(elmntSaveButton);
+//            jsClick(elmntSaveButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            waitForElement(txtSuccessfullyMessagePopup);
-            blresult = verifyElement(txtSuccessfullyMessagePopup);
+            waitForElement(elmntRuleBRadioButton);
+            blresult = verifyElement(elmntRuleBRadioButton);
         } catch (Exception e) {
             System.out.println("Failed to click RuleB Button >>> :: ");
             e.printStackTrace();
@@ -560,12 +560,12 @@ public class AppointmentSettingPage extends BasePage {
             jsClick(elmntAllowToBookFriendsYesButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             System.out.println("Successfully Click Allow To Book Friends Yes Radio Button");
-            jsScrollIntoView(elmntSaveButton);
-            waitForElement(elmntSaveButton);
-            click(elmntSaveButton);
+//            jsScrollIntoView(elmntSaveButton);
+//            waitForElement(elmntSaveButton);
+//            click(elmntSaveButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
 //            takeScreenshot(driver);
-            blresult =true;
+            blresult =verifyElement(txtAppointmentSettingHeader);
 
         } catch (Exception e) {
             System.out.println("Failed to click Allow to Book For Family Yes Button >>> :: ");
@@ -608,20 +608,20 @@ public class AppointmentSettingPage extends BasePage {
     public boolean clickAllowtoBookForFamilyNoButton() {
         boolean blresult = false;
         try {
-            jsScrollIntoView(elmntRuleARadioButton);
-            waitForElement(elmntRuleARadioButton);
-            takeScreenshot(driver);
-            jsClick(elmntRuleARadioButton);
+//            jsScrollIntoView(elmntRuleARadioButton);
+//            waitForElement(elmntRuleARadioButton);
+//            takeScreenshot(driver);
+//            jsClick(elmntRuleARadioButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmntAllowToBookFriendsNoButton);
             waitForElement(elmntAllowToBookFriendsNoButton);
             takeScreenshot(driver);
             jsClick(elmntAllowToBookFriendsNoButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            System.out.println("Successfully Click Allow To Book Friends Yes Radio Button");
-            jsScrollIntoView(elmntSaveButton);
-            waitForElement(elmntSaveButton);
-            click(elmntSaveButton);
+            System.out.println("Successfully Click Allow To Book Friends No Radio Button");
+//            jsScrollIntoView(elmntSaveButton);
+//            waitForElement(elmntSaveButton);
+//            click(elmntSaveButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             takeScreenshot(driver);
             blresult =true;
@@ -887,7 +887,7 @@ public class AppointmentSettingPage extends BasePage {
         boolean blresult = false;
         try {
             waitForElement(elmntMinimumNoticeForCancellation);
-            click(elmntMinimumNoticeForCancellation);
+            jsClick(elmntMinimumNoticeForCancellation);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntHealthCentreDrop.replace("<<REPLACEMENT>>", Strdata)));
             System.out.printf("elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);

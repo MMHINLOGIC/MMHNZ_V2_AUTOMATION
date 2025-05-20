@@ -53,6 +53,9 @@ public class RepeatScriptSettingPage extends BasePage {
     @FindBy(xpath = "//mat-radio-group[@formcontrolname='isMessageMandatory']//div/label[text()='Yes']")
     protected WebElement btnRequestisMandatoryYESButton;
 
+    @FindBy(xpath = "//mat-radio-group[@formcontrolname='isMessageMandatory']//div/label[text()='No']")
+    protected WebElement btnRequestisMandatoryNoButton;
+
     @FindBy(xpath = "//mat-radio-group[@formcontrolname='PaymentOption']//mat-radio-button[1]//label")
     protected WebElement clickPayHealthCenterOnlyButton;
 
@@ -107,7 +110,7 @@ public class RepeatScriptSettingPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//b[.='Deliver Meds by Pharmacy']/following::input[@placeholder='Urgent/Same day'][1]")
     protected WebElement txtDMBP1ServiceOption;
 
-    @FindBy(how = How.XPATH, using = "//b[.='Deliver via Zoom Pharmacy']/following::input[@dplaceholder='Urgent/Same day'][1]")
+    @FindBy(how = How.XPATH, using = "//b[.='Deliver via Zoom Pharmacy']/following::input[@placeholder='Urgent/Same day'][1]")
     protected WebElement txtDVZPServiceOption;
 
     @FindBy(how = How.XPATH, using = "//b[.='Patient to Collect Script']/following::input[@placeholder='Next Day'][1]")
@@ -424,8 +427,12 @@ public class RepeatScriptSettingPage extends BasePage {
     })
     protected WebElement dropdownProvider3;
 
+    //label[contains(text(),'Automation1_Loc3')]
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Rule A : No Restrictions')]")
     protected WebElement optionRuleARequest;
+
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Automation1_Loc3')]")
+    protected WebElement elmntLoaction3Disable;
 
     protected String selectLocation = new StringBuilder()
             .append("//span[contains(text(),'")
@@ -574,10 +581,12 @@ public class RepeatScriptSettingPage extends BasePage {
             jsScrollIntoView(drpDownServiceName);
             waitForElement(drpDownServiceName);
             jsClick(drpDownServiceName);
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForPresenceOfElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strServiceName)));
             WebElement ddlServiceName = waitForElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strServiceName)));
             System.out.println(" select Service Name :: " + ddlServiceName);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(ddlServiceName);
             waitForElementClickable(ddlServiceName);
             jsClick(ddlServiceName);
@@ -599,7 +608,7 @@ public class RepeatScriptSettingPage extends BasePage {
             waitForElement(selectedRRPRequest);
             jsClick(selectedRRPRequest);
             System.out.println("RRP Settings is now selected");
-            blResult=true;
+            blResult = true;
 
         } catch (Exception e) {
             System.out.println("sending RRP Requests default option is not selected >>> :: ");
@@ -1768,14 +1777,19 @@ public class RepeatScriptSettingPage extends BasePage {
             click(ddlProvider2);
 
             waitForSeconds(2);
-            waitForElement(dropdownProvider3);
-            jsClick(dropdownProvider3);
-            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
-            WebElement ddlProvider3 = waitForElement(By.xpath(selectProvider.replace("<<REPLACEMENT>>", strProvider.get(4))));
-            click(ddlProvider3);
+            if (verifyElement(elmntLoaction3Disable)){
+                waitForElement(elmntLoaction3Disable);
+                jsClick(elmntLoaction3Disable);
+
+            }
+//            waitForElement(dropdownProvider3);
+//            jsClick(dropdownProvider3);
+//            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
+//            WebElement ddlProvider3 = waitForElement(By.xpath(selectProvider.replace("<<REPLACEMENT>>", strProvider.get(4))));
+//            click(ddlProvider3);
 
             waitForSeconds(2);
-            blResult = verifyElement(dropdownProvider3);
+            blResult = verifyElement(dropdownProvider2);
         } catch (Exception e) {
             System.out.println("Send Request to Provider is not selected " + strProvider);
             e.printStackTrace();
@@ -1786,13 +1800,13 @@ public class RepeatScriptSettingPage extends BasePage {
     public boolean verifySavedData() {
         boolean blResult = false;
         try {
-
+            waitForSeconds(3);
             jsScrollIntoView(btnSave);
             waitForElement(btnSave);
-            jsClick(btnSave);
+            click(btnSave);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-//            waitForElement(successPopUp);
-            blResult = true;
+            waitForElement(successPopUp);
+            blResult = verifyElement(successPopUp);
         } catch (Exception e) {
             System.out.println("Failed to verify the saved pop up");
             e.printStackTrace();
@@ -1824,8 +1838,24 @@ public class RepeatScriptSettingPage extends BasePage {
             jsScrollIntoView(btnRequestisMandatoryYESButton);
             jsClick(btnRequestisMandatoryYESButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElement(btnSave);
-            blResult = verifyElement(btnSave);
+            waitForElement(btnRequestisMandatoryYESButton);
+            blResult = verifyElement(btnRequestisMandatoryYESButton);
+        } catch (Exception e) {
+            System.out.println("Failed to verify the saved pop up");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean ClickRequestisMandatoryNoButton() {
+        boolean blResult = false;
+        try {
+            waitForElement(btnRequestisMandatoryNoButton);
+            jsScrollIntoView(btnRequestisMandatoryNoButton);
+            jsClick(btnRequestisMandatoryNoButton);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(btnRequestisMandatoryNoButton);
+            blResult = verifyElement(btnRequestisMandatoryNoButton);
         } catch (Exception e) {
             System.out.println("Failed to verify the saved pop up");
             e.printStackTrace();
@@ -1840,8 +1870,8 @@ public class RepeatScriptSettingPage extends BasePage {
             jsScrollIntoView(clickPayHealthCenterOnlyButton);
             jsClick(clickPayHealthCenterOnlyButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElement(btnSave);
-            blResult = verifyElement(btnSave);
+            waitForElement(clickPayHealthCenterOnlyButton);
+            blResult = verifyElement(clickPayHealthCenterOnlyButton);
         } catch (Exception e) {
             System.out.println("Failed to verify the saved pop up");
             e.printStackTrace();

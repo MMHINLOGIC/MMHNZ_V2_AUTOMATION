@@ -67,7 +67,7 @@ public class AppointmentMessagePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Edit')]")
     protected WebElement elmntEditbtn;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='SIGN OUT']")
+    @FindBy(how = How.XPATH, using = "(//div[text()='Sign out'])[1]")
     protected WebElement elmntSignOutBtn;
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Provider Login')])[1]")

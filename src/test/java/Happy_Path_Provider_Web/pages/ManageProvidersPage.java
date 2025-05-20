@@ -96,12 +96,13 @@ public class ManageProvidersPage extends BasePage {
     public boolean VerifyManageProvidersTableData(List<String> lstDetails) {
         boolean blResult = false;
         try {
+            System.out.println(">>>> lstDetails " + lstDetails);
             waitForSeconds(3);
             WebElement elmntManageProvidersTableData = waitForElementFewSeconds(By.xpath(strMyAppointmentContentLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(2)))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(3)))
                     .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(4)))));
-
+System.out.println("elmntManageProvidersTableData ::"+elmntManageProvidersTableData);
             waitForElement(elmntManageProvidersTableData);
             verifyElement(elmntManageProvidersTableData);
             jsClick(elmntManageProvidersTableData);

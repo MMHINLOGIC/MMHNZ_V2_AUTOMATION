@@ -138,9 +138,14 @@ public class ProviderMessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE MESSAGE']")
     protected WebElement elmntComposeDoctor;
 
+@FindAll({
+        @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Settings')])[1]"),
+        @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Settings')])[2]")
+})
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Settings')])[2]")
     protected WebElement elmntDoctorMessageSetting;
+
+
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Message Settings')]")
     protected WebElement txtDoctorMessageSetting;

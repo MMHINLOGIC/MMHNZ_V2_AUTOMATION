@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import static cap.utilities.SharedDriver.strExecutionID;
+
 public class SetupServicesPage extends BasePage {
     public SetupServicesPage(WebDriver driver) {
         super(driver);
@@ -181,7 +183,6 @@ public class SetupServicesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElement(elmntServiceName);
             click(elmntServiceName);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             enterValue(elmntServiceName, strName);
@@ -301,6 +302,7 @@ public class SetupServicesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntRestrictDefaultLocationNoRadioButton);
             waitForElement(elmntRestrictDefaultLocationNoRadioButton);
             jsClick(elmntRestrictDefaultLocationNoRadioButton);
             waitForElement(txtSetupServiceHeader);
@@ -330,9 +332,12 @@ public class SetupServicesPage extends BasePage {
     public boolean SelectAllowreplyfrompatientsNoRadioButton() {
         boolean blResult = false;
         try {
+            waitForSeconds(2);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntAllowreplyfrompatientsNoRadioButton);
+            waitForSeconds(2);
             waitForElement(elmntAllowreplyfrompatientsNoRadioButton);
-            jsClick(elmntAllowreplyfrompatientsNoRadioButton);
+            mouseClick(elmntAllowreplyfrompatientsNoRadioButton);
             waitForElement(txtSetupServiceHeader);
             blResult = verifyElement(txtSetupServiceHeader);
 
@@ -347,8 +352,16 @@ public class SetupServicesPage extends BasePage {
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
+            jsScrollIntoView(elmntDescriptionTextbox);
             waitForElement(elmntDescriptionTextbox);
-            enterValue(elmntDescriptionTextbox, strName);
+            jsClick(elmntDescriptionTextbox);
+            driver.switchTo().activeElement().clear();
+            waitForSeconds(2);
+//            elmntDescriptionTextbox.click();
+            jsClick(elmntDescriptionTextbox);
+            waitForSeconds(2);
+            driver.switchTo().activeElement().sendKeys(strName);
+//            enterValue(elmntDescriptionTextbox, strName);
             waitForElement(txtSetupServiceHeader);
             blResult = verifyElement(txtSetupServiceHeader);
 

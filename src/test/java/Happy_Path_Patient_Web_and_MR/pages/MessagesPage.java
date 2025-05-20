@@ -1,5 +1,6 @@
 package Happy_Path_Patient_Web_and_MR.pages;
 
+import Sanity_Patient_Web.pages.DashboardPage;
 import cap.common.BasePage;
 import cap.helpers.Constants;
 import cap.utilities.TestDataUtil;
@@ -222,6 +223,9 @@ public class MessagesPage extends BasePage {
 
     protected String elmntbyDropPatient = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[1]").toString();
+
+    protected String elmntbyDropProvider = new StringBuilder().append("(//span[contains(text(),'")
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     protected String ProviderHealthCentre = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[2]").toString();
@@ -958,6 +962,9 @@ public class MessagesPage extends BasePage {
     })
     protected WebElement txtWelcome;
 
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
+    protected WebElement elmntDashboard;
+
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Your session is about to expire!')]")
     protected WebElement elmntLogoutPopup;
 
@@ -1132,8 +1139,9 @@ public class MessagesPage extends BasePage {
     public boolean navigateToComposeMessage() {
         boolean blResult = false;
         try {
-
-            waitForSeconds(2);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
             waitForElementClickable(elmntMessages);
             click(elmntMessages);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -2538,6 +2546,12 @@ public class MessagesPage extends BasePage {
     public boolean navigateToGroupMessageForDoctor() {
         boolean blResult = false;
         try {
+            if (verifyElement(elmntdashboard)){
+                jsScrollIntoView(elmntdashboard);
+                waitForElement(elmntdashboard);
+                jsClick(elmntdashboard);
+
+            }
             waitForSeconds(3);
             waitForElement(txtMyHomePage);
 //            waitForElement(elmntsMenu);
@@ -2588,7 +2602,7 @@ public class MessagesPage extends BasePage {
             jsClick(drpDownServiceName);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
-            WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDrop.replace("<<REPLACEMENT>>", strServiceName)));
+            WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDropPatient.replace("<<REPLACEMENT>>", strServiceName)));
             jsScrollDown();
             waitForSeconds(2);
             System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
@@ -2615,12 +2629,60 @@ public class MessagesPage extends BasePage {
             jsClick(drpDownServiceName);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
-            WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDropPatient.replace("<<REPLACEMENT>>", strServiceName)));
-            jsScrollDown();
+            if (verifyElement(By.xpath(elmntbyDropPatient.replace("<<REPLACEMENT>>", strServiceName)))) {
+                WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDropPatient.replace("<<REPLACEMENT>>", strServiceName)));
+                jsScrollDown();
+                waitForSeconds(2);
+                System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
+                jsScrollIntoView(elmntEntriesFromHealthCentre);
+                jsClick(elmntEntriesFromHealthCentre);
+            }
+            if (verifyElement(By.xpath(elmntbyDropProvider.replace("<<REPLACEMENT>>", strServiceName)))) {
+                WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDropProvider.replace("<<REPLACEMENT>>", strServiceName)));
+                jsScrollDown();
+                waitForSeconds(2);
+                System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
+                jsScrollIntoView(elmntEntriesFromHealthCentre);
+                jsClick(elmntEntriesFromHealthCentre);
+            }
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = verifyElement(drpDownServiceName);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        } catch (Exception e) {
+            System.out.println("\nFailed to select the sService Name >>> :: ");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean selectServiceNameProvider(String strServiceName) {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
+            waitForElement(txtCompose);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementClickable(drpDownServiceName);
+            jsClick(drpDownServiceName);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
-            System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
-            jsScrollIntoView(elmntEntriesFromHealthCentre);
-            jsClick(elmntEntriesFromHealthCentre);
+            if (verifyElement(By.xpath(elmntbyDropProvider.replace("<<REPLACEMENT>>", strServiceName)))) {
+                WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDropProvider.replace("<<REPLACEMENT>>", strServiceName)));
+                jsScrollDown();
+                waitForSeconds(4);
+                System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
+                jsScrollIntoView(elmntEntriesFromHealthCentre);
+                jsClick(elmntEntriesFromHealthCentre);
+            }
+            if (verifyElement(By.xpath(elmntbyDropPatient.replace("<<REPLACEMENT>>", strServiceName)))){
+                WebElement elmntEntriesFromHealthCentre = waitForElementClickable(By.xpath(elmntbyDropPatient.replace("<<REPLACEMENT>>", strServiceName)));
+                jsScrollDown();
+                waitForSeconds(4);
+                System.out.println(">>>>>>" + elmntEntriesFromHealthCentre);
+                jsScrollIntoView(elmntEntriesFromHealthCentre);
+                jsClick(elmntEntriesFromHealthCentre);
+
+            }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = verifyElement(drpDownServiceName);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -4252,6 +4314,9 @@ public class MessagesPage extends BasePage {
     public boolean navigateToProviderHomepage() {
         boolean blResult = false;
         try {
+            jsScrollIntoView(elmntDashboard);
+            waitForElement(elmntDashboard);
+            jsClick(elmntDashboard);
             if (isElementDisplayed(txtWelcome)) {
                 verifyElement(txtWelcome);
                 waitForSeconds(3);

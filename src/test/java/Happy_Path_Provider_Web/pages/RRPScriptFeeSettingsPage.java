@@ -353,6 +353,7 @@ public class RRPScriptFeeSettingsPage extends BasePage {
 
     public boolean EnterServiceOptionUrgentSameday(String strConditionName) {
         SystolicMedicationName = strConditionName.concat(strExecutionID);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(5);
 //        jsScrollIntoView(elmntUrgentSamedayServiceoption);
         waitForElementClickable(elmntUrgentSamedayServiceoption);
@@ -363,6 +364,9 @@ public class RRPScriptFeeSettingsPage extends BasePage {
     }
     public boolean clickFeeUrgentSameday(String strConditionName) {
 //        SystolicMedicationName = strConditionName.concat(strExecutionID);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForSeconds(2);
+//        jsScrollIntoView(getElmntUrgentSamedayFee);
         waitForSeconds(2);
         waitForElementClickable(getElmntUrgentSamedayFee);
         enterValue(getElmntUrgentSamedayFee, strConditionName);
@@ -394,6 +398,7 @@ public class RRPScriptFeeSettingsPage extends BasePage {
 
     public boolean clickNextDayFee(String strConditionName) {
 //        SystolicMedicationName = strConditionName.concat(strExecutionID);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(2);
         waitForElementClickable(elmntNextDayFee);
         enterValue(elmntNextDayFee, strConditionName);
@@ -426,6 +431,7 @@ public class RRPScriptFeeSettingsPage extends BasePage {
 
     public boolean click48HoursFee(String strConditionName) {
 //        SystolicMedicationName = strConditionName.concat(strExecutionID);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(2);
         waitForElementClickable(elmnt48HoursFee);
         enterValue(elmnt48HoursFee, strConditionName);
@@ -457,6 +463,7 @@ public class RRPScriptFeeSettingsPage extends BasePage {
 
     public boolean click72HoursFee(String strConditionName) {
 //        SystolicMedicationName = strConditionName.concat(strExecutionID);
+        waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(2);
         waitForElementClickable(elmnt72HoursFee);
         enterValue(elmnt72HoursFee, strConditionName);

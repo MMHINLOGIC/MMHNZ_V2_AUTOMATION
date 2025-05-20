@@ -1,13 +1,13 @@
 Feature: RRP_Script_Fee_Settings
 
-  Background:Pref- User Successfully logs in to the Provider Portal
-
-    Given As a user I am on Provider Portal login Page
-    And I enter "&EMAIL&" and "&PASSWORD&" For Beta
-    And I click SignIn button then I should see user successfully logs in to the MMH Provider portal
-    When As a user I am on Patient Portal login Page
-    And I enter "&EMAIL_FOR_PATIENT&" and "&PASSWORD&" For Beta
-    Then I click SignIn button then I should see user successfully logs in to the MMH portal
+#  Background:Pref- User Successfully logs in to the Provider Portal
+#
+#    Given As a user I am on Provider Portal login Page
+#    And I enter "&EMAIL&" and "&PASSWORD&" For Beta
+#    And I click SignIn button then I should see user successfully logs in to the MMH Provider portal
+#    When As a user I am on Patient Portal login Page
+#    And I enter "&EMAIL_FOR_PATIENT&" and "&PASSWORD&" For Beta
+#    Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
   @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING @PROVIDER_SCRIPT2
   Scenario Template: S1- RRP Script Instructions Settings - Enable.
@@ -107,4 +107,125 @@ Feature: RRP_Script_Fee_Settings
     Examples:
       | System_Menu             | Health_Centre | Medication Details                    | Verification Medication Details                   | Patient to Collect Script DropDown Details   |
       | RRP Script Fee Settings | &LOCATION&    | &DATA FOR DELIVERY VIA ZOOM PHARMACY& | &VERIFICATION DATA FOR DELIVER VIA ZOOM PHARMACY& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
+
+##########################################################################################################################################################################################################################################
+
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING1 @PROVIDER_SINGLE_SCREEN
+  Scenario Template: User Successfully logs in to the MMH Provider Portal.
+
+    Given As a user I am on MMH login Page
+    And I enter "<Email Address>" and "<Password>" For Beta
+    When I click SignIn button
+    Then I should see user successfully logs in to the MMH portal
+    Examples:
+      | Email Address      | Password   |
+      | &EMAIL FOR DOCTOR& | &PASSWORD& |
+
+  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING @PROVIDER_SINGLE_SCREEN
+  Scenario Template: S1- RRP Script Instructions Settings - Enable.
+    Given As a Provider I am on HomePage and navigate to RRP Script Instructions in "<System_Menu>"
+    And I navigate to RRP Script Instructions Settings and click edit button
+    When I disable the RRP Script Instructions Settings "<Details>"
+    Then I should verify disabled RRP Script Instructions Settings "<Details>"
+#    And  I Navigate to Provider Home Page
+    Examples:
+      | System_Menu             | Details                   |
+      | RRP Script Fee Settings | &RRP_SCRIPT_INSTRUCTIONS& |
+
+
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING1 @PROVIDER_SINGLE_SCREEN
+  Scenario Template: S2-create Provider RRP Script Instructions Fees(Patient to Collect Script Fees) (Send Script by Post) (Send Send Script to Pharmacy) (Deliver Meds by Pharmacy) (Deliver via Zoom Pharmacy) Setup & verify it in Patient Portal
+
+    Given As a Provider I am on HomePage and navigate to RRP Script Instructions in "<System_Menu>"
+    And I navigate to RRP Script Instructions Settings and click the edit button Select Health center "<Health_Centre>"
+    And I click Edit on a location record in Grid & Selected Location must be auto-populated
+      | &EDIT_LOCATION_DATA& |
+    When I click Patient to Collect Script checkbox &Enter Service Option Name Fees and Description for all four service option
+      | &EDIT_PATIENT_TO_COLLECT_SCRIPT& |
+    When I click Send Script by Post checkbox &Enter Service Option Name Fees and Description for all four service option
+      | &EDIT_PATIENT_TO_COLLECT_SCRIPT& |
+    When I click Send Send Script to Pharmacy checkbox &Enter Service Option Name Fees and Description for all four service option
+      | &EDIT_PATIENT_TO_COLLECT_SCRIPT& |
+    When I click Deliver Meds by Pharmacy checkbox &Enter Service Option Name Fees and Description for all four service option
+      | &EDIT_PATIENT_TO_COLLECT_SCRIPT& |
+    When I click Deliver via Zoom Pharmacy checkbox &Enter Service Option Name Fees and Description for all four service option
+      | &EDIT_PATIENT_TO_COLLECT_SCRIPT& |
+
+    Examples:
+      | System_Menu             | Health_Centre |
+      | RRP Script Fee Settings | &LOCATION&    |
+
+
+  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING1 @PROVIDER_SINGLE_SCREEN
+  Scenario Template: User Successfully logs in to the MMH Patient Portal.
+
+    Given As a user Launch the "<V1 Portal>"
+    And I enter "<Email Address>" and "<Password>"
+    When I click login button
+    Then I should see user successfully logs in to the MMH portal
+
+    Examples:
+      | V1 Portal | Email Address        | Password              |
+      | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
+
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING1 @PROVIDER_SINGLE_SCREEN
+  Scenario Template: S3-create Provider RRP Script Instructions Fees(Patient to Collect Script Fees) Setup & verify it in Patient Portal
+
+    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
+    And I select the Patient to collect Script Medication details"<Medication Details>" "<Patient to Collect Script DropDown Details>"
+    When I should see the successful message and I navigate to view history of the Prescription
+    Then I see the status for Patient to collect the Prescription"<Verification Medication Details>"
+    Examples:
+      | Verification Medication Details                         | Patient to Collect Script DropDown Details   | Medication Details                            |
+      | &VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION& |
+
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING1 @PROVIDER_SINGLE_SCREEN
+  Scenario Template: S4-create Provider RRP Script Instructions Fees(Send Script by Post Fees) Setup & verify it in Patient Portal
+
+    And As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
+    Then I select the Send Script By Post Medication details"<Medication Details>" "<Patient to Collect Script DropDown Details>"
+    And I should see the successful message and I navigate to view history of the Prescription
+    And I see the status for Patient to collect the Prescription"<Verification Medication Details>"
+    Examples:
+      | Medication Details             | Verification Medication Details             | Patient to Collect Script DropDown Details   |
+      | &DATA FOR SENT SCRIPT BY POST& | &VERIFICATION DATA FOR SENT SCRIPT BY POST& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
+
+
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING1 @PROVIDER_SINGLE_SCREEN
+  Scenario Template: S5-create Provider RRP Script Instructions Fees(Send Script to Pharmacy) Setup & verify it in Patient Portal
+
+    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
+    And I select the Medication details for Sent Script by Pharmacy "<Medication Details>" "<Patient to Collect Script DropDown Details>"
+    When I should see the successful message and I navigate to view history of the Prescription
+    Then I see the status for Patient to collect the Prescription"<Verification Medication Details>"
+    Examples:
+      | Medication Details                                 | Verification Medication Details                 | Patient to Collect Script DropDown Details   |
+      | &DATA FOR PRESCRIPTION BY SENT SCRIPT TO PHARMACY& | &VERIFICATION DATA FOR SENT SCRIPT TO PHARMACY& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
+
+  @WEB @PROVIDER_RRP_SCRIPT_FEE_SETTING1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  Scenario Template: S6-create Provider RRP Script Instructions Fees(Deliver Meds by Pharmacy) Setup & verify it in Patient Portal
+
+    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
+    And I select the Deliver Meds by Pharmacy Medication details"<Medication Details>" "<Patient to Collect Script DropDown Details>"
+    When I should see the successful message and I navigate to view history of the Prescription
+    Then I see the status for Deliver Meds by Pharmacy "<Verification Medication Details>"
+    Examples:
+      | Medication Details                   | Verification Medication Details                   | Patient to Collect Script DropDown Details   |
+      | &DATA FOR DELIVERY MEDS BY PHARMACY& | &VERIFICATION DATA FOR DELIVERY MEDS BY PHARMACY& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
+
+  @WEB @PROVIDER_RRP_SCRIPT_FEE_SETTING1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  Scenario Template: S7-create Provider RRP Script Instructions Fees(Deliver via Zoom Pharmacy) Setup & verify it in Patient Portal
+
+    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
+    And I select the Deliver via zoom Pharmacy Medication details"<Medication Details>" "<Patient to Collect Script DropDown Details>"
+    Then I should see the successful message and I navigate to view history of the Prescription
+    When I see the status for Patient to collect the Prescription"<Verification Medication Details>"
+    Examples:
+      | Medication Details                    | Verification Medication Details                   | Patient to Collect Script DropDown Details   |
+      | &DATA FOR DELIVERY VIA ZOOM PHARMACY& | &VERIFICATION DATA FOR DELIVER VIA ZOOM PHARMACY& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
+
+
+
+
+
 

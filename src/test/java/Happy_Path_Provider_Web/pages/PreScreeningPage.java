@@ -29,7 +29,11 @@ public class PreScreeningPage extends BasePage {
 
 
     @FindBy(how = How.XPATH, using = "//span[normalize-space(text())='Save']")
-    protected WebElement elmntUpdate;
+    protected WebElement elmntSaveButton;
+
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'Changes Saved Successfully')]")
+    protected WebElement txtSuccessfullyMessagePopup;
+
 
 
     @FindBy(how = How.XPATH, using = "//span[normalize-space(text())='Close']")
@@ -130,7 +134,7 @@ public class PreScreeningPage extends BasePage {
         boolean blresult = false;
         try {
             jsScrollDown();
-            jsScrollIntoView(elmntUpdate);
+            jsScrollIntoView(elmntSaveButton);
 //            if (verifyElement(By.xpath(deselectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
 ////                takeScreenshot(driver);
 //                System.out.println("Appointment PreScreening CheckBox Already Unchecked");
@@ -156,7 +160,7 @@ public class PreScreeningPage extends BasePage {
         boolean blresult = false;
         try {
             jsScrollDown();
-            jsScrollIntoView(elmntUpdate);
+            jsScrollIntoView(elmntSaveButton);
             waitForSeconds(3);
 //            if (verifyElement(By.xpath(selectCovidPreScreeningPopup.replace("<<REPLACEMENT>>",TestDataUtil.getValue(strLocation))))) {
 ////                takeScreenshot(driver);
@@ -186,15 +190,16 @@ public class PreScreeningPage extends BasePage {
 
 
 
-    public boolean clickUpdateButton() {
+    public boolean clickSaveButton() {
         boolean blresult = false;
         try {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            jsScrollIntoView(elmntUpdate);
-            waitForElementClickable(elmntUpdate);
-            click(elmntUpdate);
+            jsScrollIntoView(elmntSaveButton);
+            waitForElementClickable(elmntSaveButton);
+            click(elmntSaveButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
-            blresult = true;
+            waitForElement(txtSuccessfullyMessagePopup);
+            blresult = verifyElement(txtSuccessfullyMessagePopup);
         } catch (Exception e) {
             System.out.println("Failed to click Update Button >>> :: ");
             e.printStackTrace();
