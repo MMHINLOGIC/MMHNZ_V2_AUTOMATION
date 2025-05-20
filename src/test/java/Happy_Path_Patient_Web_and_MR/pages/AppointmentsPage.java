@@ -2681,6 +2681,7 @@ public class AppointmentsPage extends BasePage {
             jsClick(elmntPhoneCode);
             WebElement elmntSelectPhoneCode = waitForElement(By.xpath(elmntPhoneID.replace("<<REPLACEMENT>>", strPhoneID)));
             waitForElement(elmntSelectPhoneCode);
+            jsScrollIntoView(elmntSelectPhoneCode);
             jsClick(elmntSelectPhoneCode);
             jsScrollUp();
             blResult = true;
