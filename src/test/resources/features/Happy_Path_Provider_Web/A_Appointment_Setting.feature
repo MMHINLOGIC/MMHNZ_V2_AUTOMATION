@@ -370,7 +370,7 @@ Feature: Appointment Setting
 
 #  New Test
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -382,7 +382,7 @@ Feature: Appointment Setting
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1  @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING  @PROVIDER_SINGLE_SCREEN
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -740,31 +740,31 @@ Feature: Appointment Setting
     Examples:
       | Location   | Health_Centre                 | SET_MINIMUM_DATA               | PRE_SCREENING_LOCATION |
       | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &APPOINTMENT_SET_MINIMUM_DATA& | &PRE_SCREENING&        |
-
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
-  Scenario Template: User Successfully logs in to the MMH Patient Portal.
-
-    Given As a user Launch the "<V1 Portal>"
-    And I enter "<Email Address>" and "<Password>"
-    When I click login button
-    Then I should see user successfully logs in to the MMH portal
-
-    Examples:
-      | V1 Portal | Email Address        | Password              |
-      | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
-  Scenario Template:S1- verify Patient Booked (Payment) Visit Appointment based on Rule A (Any Location with Any Provider) and Verify the Appointments Booking Status
-
-    Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    And I navigate to Book Appointment select any provider with any Location
-    And I enter the visit appointment details "<Any_Location_with_Any_Provider_Appointment_Details>" and Verify the Any Locations Any ProviderName and payments "<Automation_Practice_Loc1_Doctor_Name>" "<Automation_Practice_Loc2_Doctor_Name>" "<Appointment_Is_For_Details>" "<Appointment_Details>"
-    When I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I should see booked appointment displayed under the future tab "<Appointment_Summary>"
-    And As a user I am on Patient Portal login Page and I enter "<Patient_User_Login>" and "<Password>" For Beta I should see user successfully logs in to the MMH portal
-    When I navigate to the "<Appointment>" Future Appointments page click cancel button for the created appointment "<Appointment_Cancel_Button>"
-    And I click cancel your appointment button Very the Appointment cancelled message "<Appointment_After_Cancel>"
-
-    Examples:
-      | Any_Location_with_Any_Provider_Appointment_Details      | Automation_Practice_Loc1_Doctor_Name | Automation_Practice_Loc2_Doctor_Name     | Details_For_Appointment                   | Future_Date   | Appointment_Summary                       | Patient_User_Login   | Password   | Appointment           | Appointment_Cancel_Button                      | Appointment_After_Cancel              | Appointment_Is_For_Details    | Appointment_Details                         |
-      | &ANY_LOCATION_WITH_ANY_PROVIDER_BOOK_VISIT_APPOINTMENT& | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &AUTOMATION_PRACTICE1_LOC2_DOCTOR_NAMES& | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | Upcoming Appointments | &AUTO_PRA_LOC2_APPOINTMENT_DETAILS_FOR_CANCEL& | &APPOINTMENT_DETAILS_AFTER_CANCELLED& | &APPOINTMENT_IS_FOR_DROPDOWN& | &FRIENDS_AND_FAMILY_BOOK_VISIT_APPOINTMENT& |
+#
+#
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+#  Scenario Template: User Successfully logs in to the MMH Patient Portal.
+#
+#    Given As a user Launch the "<V1 Portal>"
+#    And I enter "<Email Address>" and "<Password>"
+#    When I click login button
+#    Then I should see user successfully logs in to the MMH portal
+#
+#    Examples:
+#      | V1 Portal | Email Address        | Password              |
+#      | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
+#
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+#  Scenario Template:S1- verify Patient Booked (Payment) Visit Appointment based on Rule A (Any Location with Any Provider) and Verify the Appointments Booking Status
+#
+#    Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    And I navigate to Book Appointment select any provider with any Location
+#    And I enter the visit appointment details "<Any_Location_with_Any_Provider_Appointment_Details>" and Verify the Any Locations Any ProviderName and payments "<Automation_Practice_Loc1_Doctor_Name>" "<Automation_Practice_Loc2_Doctor_Name>" "<Appointment_Is_For_Details>" "<Appointment_Details>"
+#    When I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I should see booked appointment displayed under the future tab "<Appointment_Summary>"
+#    And As a user I am on Patient Portal login Page and I enter "<Patient_User_Login>" and "<Password>" For Beta I should see user successfully logs in to the MMH portal
+#    When I navigate to the "<Appointment>" Future Appointments page click cancel button for the created appointment "<Appointment_Cancel_Button>"
+#    And I click cancel your appointment button Very the Appointment cancelled message "<Appointment_After_Cancel>"
+#
+#    Examples:
+#      | Any_Location_with_Any_Provider_Appointment_Details      | Automation_Practice_Loc1_Doctor_Name | Automation_Practice_Loc2_Doctor_Name     | Details_For_Appointment                   | Future_Date   | Appointment_Summary                       | Patient_User_Login   | Password   | Appointment           | Appointment_Cancel_Button                      | Appointment_After_Cancel              | Appointment_Is_For_Details    | Appointment_Details                         |
+#      | &ANY_LOCATION_WITH_ANY_PROVIDER_BOOK_VISIT_APPOINTMENT& | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &AUTOMATION_PRACTICE1_LOC2_DOCTOR_NAMES& | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | Upcoming Appointments | &AUTO_PRA_LOC2_APPOINTMENT_DETAILS_FOR_CANCEL& | &APPOINTMENT_DETAILS_AFTER_CANCELLED& | &APPOINTMENT_IS_FOR_DROPDOWN& | &FRIENDS_AND_FAMILY_BOOK_VISIT_APPOINTMENT& |

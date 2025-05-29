@@ -20,9 +20,8 @@ import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
 import static cap.utilities.DateUtil.*;
 import static cap.utilities.SharedDriver.strExecutionID;
@@ -124,6 +123,18 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='healthCenter']")
     protected WebElement elmntHealtCenter;
 
+    @FindBy(how = How.XPATH, using = " //div[contains(text(),'Display Additional Assistance Textbox')]")
+    protected WebElement elmntAdditionalAssistanceTextbox;
+
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Yes')])[3]")
+    protected WebElement elmntAdditionalAssistanceTextboxYesButton;
+
+    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Enable Accident/Injury Option')]")
+    protected WebElement elmntAccidentInjuryOption;
+
+    @FindBy(how = How.XPATH, using = "(//label[contains(text(),'Yes')])[4]")
+    protected WebElement elmntEnableAccidentInjuryYesButton;
+
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Upcoming Appointments')]")
     protected WebElement elmntfuturetab;
 
@@ -209,6 +220,9 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//span[@class='mdc-evolution-chip__text-label mat-mdc-chip-action-label'])[1]")
     protected WebElement getDefaultLocationDoctorName;
 
+
+    @FindBy(how = How.XPATH, using = "//div[@class='doctor-list']")
+    protected List<WebElement> GetLocation1Doctornames;
     @FindBy(how = How.XPATH, using = "//span[@class='mdc-evolution-chip__text-label mat-mdc-chip-action-label']")
     protected List<WebElement> elmntsAppointmentDatesIn;
 
@@ -224,6 +238,12 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'NO')]/parent::button")
     protected WebElement elmntDeclineCovidPreScreening;
 
+
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'Accident / Injury related?')]")
+    protected WebElement elmntAccidentInjuryrelatedOption;
+
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'Yes')]")
+    protected WebElement clickAccidentInjuryYesrelatedOption;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Do any of these apply to you?')]")
     protected WebElement elmntAppointmentPreScreening;
@@ -863,6 +883,44 @@ public class AppointmentsPage extends BasePage {
 
         return blResult;
     }
+
+    public boolean ProviderDisabledAdditionalAssistanceTextbox() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntAdditionalAssistanceTextbox);
+            verifyElement(elmntAdditionalAssistanceTextbox);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntAdditionalAssistanceTextboxYesButton);
+            jsClick(elmntAdditionalAssistanceTextboxYesButton);
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
+
+    public boolean ProviderDisabledAccidentInjuryOption() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntAccidentInjuryOption);
+            verifyElement(elmntAccidentInjuryOption);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntEnableAccidentInjuryYesButton);
+            jsClick(elmntEnableAccidentInjuryYesButton);
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
     public boolean selectHealthCenter(String strHealthCenter) {
         boolean blResult = false;
         try {
@@ -881,6 +939,71 @@ public class AppointmentsPage extends BasePage {
         return blResult;
     }
 
+    public boolean VerifydeclineCovidPreScreeningPopupNotDisplayed() {
+        boolean blResult = false;
+        try {
+            waitForSeconds(5);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver, By.xpath(elmntAppointmentPreScreening1));
+
+            if (!isElementDisplayed(elmntAppointmentPreScreening)) {
+                System.out.println("Covid Pre-screening popup is not displayed");
+                blResult = verifyElement(elmntAppointmentPanel);
+            }
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
+        } catch (Exception e) {
+            System.out.println("Cannot Verify Covid Pre-screening popup");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean VerifydeclineCovidPreScreeningPopupDisplayed() {
+        boolean blResult = false;
+        try {
+            waitForSeconds(5);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver, By.xpath(elmntAppointmentPreScreening1));
+            if (isElementDisplayed(elmntAppointmentPreScreening)) {
+                System.out.println("Covid Pre-screening popup is displayed");
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElement(elmntDeclineCovidPreScreening);
+                jsClick(elmntDeclineCovidPreScreening);
+            }
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = verifyElement(elmntAppointmentPanel);
+        } catch (Exception e) {
+            System.out.println("Cannot Verify Covid Pre-screening popup");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean verifyandselectAccidentInjuryRelated() {
+        boolean blResult = false;
+        try {
+            if (verifyElement(elmntAccidentInjuryrelatedOption)) {
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElementClickable(elmntAccidentInjuryrelatedOption);
+                verifyElement(elmntAccidentInjuryrelatedOption);
+                waitForElement(clickAccidentInjuryYesrelatedOption);
+                verifyElement(clickAccidentInjuryYesrelatedOption);
+                jsClick(clickAccidentInjuryYesrelatedOption);
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElementClickable(elmntAccidentInjuryrelatedOption);
+                blResult = verifyElement(elmntAccidentInjuryrelatedOption);
+                System.out.println("Successfully Verified  to AccidentInjury Option Displayed>>> :: ");
+            } else {
+                System.out.println("Successfully Verified  to AccidentInjury Option Is Not Displayed>>> :: ");
+                blResult = isElementNotDisplayed(elmntAccidentInjuryrelatedOption);
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to select Relationship>>> :: ");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
     public boolean ProviderselectLocation(String strLocation) {
         boolean blResult = false;
         try {  waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -1457,6 +1580,43 @@ public class AppointmentsPage extends BasePage {
             blresult = true;
         }catch (Exception e){
             System.out.println("Cannot verify the  Patient visit Appointments Location");
+            e.printStackTrace();
+        }
+        return blresult;
+    }
+
+
+    public boolean verifyRistrickDefaultLocationDoctorNames(List<String> strData, List<String> Auto_Pra_Loc1_DoctorNames) {
+        boolean blresult = false;
+        try {
+            System.out.println(">>>Auto_Practice_Loc1_DoctorNames>>" + Auto_Pra_Loc1_DoctorNames);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            jsScrollIntoView(elmntLocationCenter);
+            waitForElement(elmntLocationCenter);
+            click(elmntLocationCenter);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            WebElement elmntSelectLocation = waitForElement(By.xpath(elmntLocation.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strData.get(8)))));
+            System.out.println("elmntSelectLocation" + elmntSelectLocation);
+            waitForElement(elmntSelectLocation);
+            verifyElement(elmntSelectLocation);
+            click(elmntSelectLocation);
+            waitForSeconds(3);
+            declineCovidPreScreeningPopup();
+            waitForElement(elmntVisitAppointmentIcon);
+            click(elmntVisitAppointmentIcon);
+            waitForSeconds(3);
+            String strdata = getDefaultLocationDoctorName.getText().trim();
+            System.out.println("GetTextProviderName::::" + strdata);
+            WebElement elmntProviderName = waitForElement(By.xpath(elmntProviderNames.replace("<<REPLACEMENT>>", TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(1)))));
+            System.out.println("elmntProviderName" + elmntProviderName);
+            if (strdata.equals(TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(1)))) {
+                jsScrollIntoView(elmntProviderName);
+                blresult = verifyElement(elmntProviderName);
+                System.out.println("Successfully Verified the Auto Practice Loc1 Location Default Provider Name");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Cannot Verified the Auto Practice Loc1 Default Provider Name");
             e.printStackTrace();
         }
         return blresult;
@@ -2693,7 +2853,8 @@ public class AppointmentsPage extends BasePage {
 
     public boolean enterPhoneNumber(String strPhoneNumber) {
         boolean blResult = false;
-        try {jsScrollIntoView(txtPhoneNumber);
+        try {
+            jsScrollIntoView(txtPhoneNumber);
             waitForElement(elmntPhoneCode);
             jsClick(txtPhoneNumber);
             waitForSeconds(2);
@@ -4082,6 +4243,7 @@ waitForSeconds(4);
     public boolean verifyRuleBDoctorNames(List<String> strData,List<String> Auto_Pra_Loc1_DoctorNames){
         boolean blresult = false;
         try{
+
             System.out.println(">>>strData>>"+strData);
             System.out.println(">>>Auto_Practice_Loc1_DoctorNames>>"+Auto_Pra_Loc1_DoctorNames);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -4099,11 +4261,34 @@ waitForSeconds(4);
             waitForElement(elmntVisitAppointmentIcon);
             jsClick(elmntVisitAppointmentIcon);
             waitForSeconds(3);
+
+
+//           for (WebElement Getdoctor:GetLocation1Doctornames){
+//               System.out.println("Getdoctor :: "+Getdoctor.getText());
+//           }
+//           for (String testdataDoctorName:Auto_Pra_Loc1_DoctorNames){
+//
+//               System.out.println("testdataDoctorName :: "+testdataDoctorName);
+//           }
+//
+//            for (WebElement doctorElement : GetLocation1Doctornames) {
+//                Auto_Pra_Loc1_DoctorNames.add(doctorElement.getText().trim());
+//            }
+//            for (String expectedDoctor : Auto_Pra_Loc1_DoctorNames) {
+//                if (Auto_Pra_Loc1_DoctorNames.contains(expectedDoctor)) {
+//                    System.out.println("✅ Match Found: " + expectedDoctor);
+//                    blresult=true;
+//                } else {
+//                    System.out.println("❌ Missing in UI: " + expectedDoctor);
+//                    blresult=false;
+//                }
+//            }
+
             String strdata=getDefaultLocationDoctorName.getText().trim();
             System.out.println("GetTextProviderName::::"+strdata);
-            WebElement elmntProviderName = waitForElement(By.xpath(elmntProviderNames.replace("<<REPLACEMENT>>",TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(0)))));
+            WebElement elmntProviderName = waitForElement(By.xpath(elmntProviderNames.replace("<<REPLACEMENT>>",TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(2)))));
             System.out.println("elmntProviderName"+elmntProviderName);
-            if (strdata.equals(TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(0)))) {
+            if (strdata.equals(TestDataUtil.getValue(Auto_Pra_Loc1_DoctorNames.get(2)))) {
                 jsScrollIntoView(elmntProviderName);
                 blresult=verifyElement(elmntProviderName);
                 System.out.println("Successfully Verified the Auto Practice Loc1 Location Default Provider Name");
@@ -5072,6 +5257,44 @@ System.out.println(">>>>>>>>>>>>>VerifyMyAppointmentTableDatalstDetails"+lstDeta
         }
         return blResult;
 
+    }
+
+    public boolean ProviderEnabledAdditionalAssistanceTextbox() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntAdditionalAssistanceTextbox);
+            verifyElement(elmntAdditionalAssistanceTextbox);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntAdditionalAssistanceTextboxYesButton);
+            jsClick(elmntAdditionalAssistanceTextboxYesButton);
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
+
+    public boolean ProviderEnabledAccidentInjuryOption() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntAccidentInjuryOption);
+            verifyElement(elmntAccidentInjuryOption);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntEnableAccidentInjuryYesButton);
+            jsClick(elmntEnableAccidentInjuryYesButton);
+            waitForSeconds(3);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
     }
 
 }

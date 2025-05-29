@@ -43,12 +43,13 @@ Feature: My Health Records
       | &PRESCRIPTION_TABLE_DATA& |
     When I select "<Option>" filter dropdown
     And I Create New Record in My Entries in Prescription page
-      | &VISITED_NAME&                   |
-      | &VISITED_DOSE_NAME&              |
-      | &VISITED_PRESCRIPTION_DROPDOWN&  |
-      | &VISITED_PRESCRIPTION_DROPDOWN1& |
-      | &ADDITIONAL_INFORMATION&         |
-      | &VISITED_MOBILE_VALUE&           |
+      | &VISITED_NAME&                         |
+      | &VISITED_DOSE_NAME&                    |
+      | &VISITED_PRESCRIPTION_DROPDOWN&        |
+      | &VISITED_PRESCRIPTION_DROPDOWN1&       |
+      | &ADDITIONAL_INFORMATION&               |
+      | &VISITED_MOBILE_VALUE&                 |
+      | &MOBILE_VISITED_PRESCRIPTION_DROPDOWN& |
     Then I should see all the Prescription My Entries Medicine details in more info
       | &MY_ENTRIES_PRESCRIPTIONS_DATA& | &PRESCRIPTIONS_INFO_ICON_DATA& | &MOBILE_DATA_MY_ENTRIES_INSIDE_PRESCRIPTIONS& |
     Examples:
@@ -291,7 +292,6 @@ Feature: My Health Records
     Examples:
       | Tab             | Record        | Location          |
       | Clinician Notes | &CLINIC_NAME& | &CLINIC_LOCATION& |
-
 
 
   @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE

@@ -145,6 +145,10 @@ public class OnlinePaymentSettingsPage extends BasePage {
         boolean blresult = false;
         try {
             waitForSeconds(4);
+            if (!verifyElement(elmntEditButton)){
+                driver.navigate().refresh();
+                waitForSeconds(2);
+            }
             jsScrollIntoView(elmntEditButton);
             waitForElement(elmntEditButton);
             jsClick(elmntEditButton);

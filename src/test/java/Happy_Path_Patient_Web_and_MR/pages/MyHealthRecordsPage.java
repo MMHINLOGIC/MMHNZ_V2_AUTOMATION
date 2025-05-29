@@ -54,6 +54,9 @@ public class MyHealthRecordsPage extends BasePage {
     protected WebElement headerPrescriptions;
     @FindBy(how = How.XPATH, using = "(//h3[text()='Allergies'])[1]")
     protected WebElement headerAllergies;
+
+    @FindBy(how = How.XPATH, using = "(//h3[text()='Allergies'])[2]")
+    protected WebElement elmntMobileheaderAllergies;
     @FindBy(how = How.XPATH, using = "(//h3[text()='Immunisations'])[1]")
     protected WebElement headerImmunisatoin;
     @FindBy(how = How.XPATH, using = "(//h3[text()='Conditions'])[1]")
@@ -133,8 +136,8 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT2>>").append("']").toString();
 
     protected String strMobilePrescriptionsDetails = new StringBuilder()
-            .append("//mat-expansion-panel-header[@aria-expanded='true']//following::div[contains(@style,'visibility: visible')]//p[normalize-space(text())='")
-            .append("<<REPLACEMENT>>").append("']").toString();
+            .append("(//mat-expansion-panel-header[@aria-expanded='true']//following::p[normalize-space(text())='")
+            .append("<<REPLACEMENT>>").append("'])[1]").toString();
 
     protected String strMobileRecallsIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
@@ -144,7 +147,12 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-expansion-panel-header[@aria-expanded='true']")
     protected WebElement elmntMobileIcon;
 
-    @FindBy(how = How.XPATH, using = "(//img[@alt='Manage My Health'])[2]")
+    @FindBy(how = How.XPATH, using = "//label[contains(text(),'My Entries')]")
+    protected WebElement elmntMobileMyEntries;
+
+
+
+    @FindBy(how = How.XPATH, using = "//img[@src='/assets/themes/app/MMH-mobile-logo.svg']")
     protected WebElement elmntMobileMMHlogo;
 
     @FindBy(how = How.XPATH, using = "//span[text()='Close']")
@@ -259,7 +267,7 @@ public class MyHealthRecordsPage extends BasePage {
     protected String getStrMobileRecallsIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::p[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')])[3]").toString();
+            .append("<<REPLACEMENT2>>").append("')])[2]").toString();
 
     protected String getStrMobileRecallsReminderIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
@@ -292,23 +300,23 @@ public class MyHealthRecordsPage extends BasePage {
             .append("(//*[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[last()]").toString();
     protected String strPrescriptionsDetails = new StringBuilder()
-            .append("//div[@class='tbl-th']/following::div[contains(text(),'")
+            .append("//div[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
 
     protected String strClassificationsDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strAllergiesNotesDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     protected String strImmunisationsDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     protected String strLabResultsDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     protected String strTestResultsDetails = new StringBuilder()
@@ -324,7 +332,7 @@ public class MyHealthRecordsPage extends BasePage {
     protected WebElement elmntCovidImmunisationSuccessfullyPopup;
 
     protected String strRecallsDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strRecallsRemainderDetails = new StringBuilder()
             .append("//div[contains(@class,'k-window-content k-dialog-content ng-tns')]//following::span[contains(text(),'")
@@ -374,10 +382,10 @@ public class MyHealthRecordsPage extends BasePage {
 
 
     protected String strMobilePrescriptionsMyEntriesInfoDetails = new StringBuilder()
-            .append("//mat-expansion-panel-header[@aria-expanded='true']//following::div[contains(@style,'visibility: visible')]//p[normalize-space(text())='")
+            .append("//mat-expansion-panel-header[@aria-expanded='true']//following::p[normalize-space(text())='")
             .append("<<REPLACEMENT>>").append("']").toString();
     protected String strPrescriptionsMyEntriesInfoDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
     protected String StrShareDoctorCOVIDImmunisationsIconLocator = new StringBuilder()
@@ -547,10 +555,10 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Record')]//parent::button")
     protected WebElement btnAddRecord;
 
-    @FindBy(how = How.XPATH, using = "(//div[@class='mobile-view']//img)[1]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(@class,'mobile-view')]//img)[1]")
     protected WebElement btnMobileImmunisationAddRecord;
 
-    @FindBy(how = How.XPATH, using = "(//div[@class='mobile-view']//img)[1]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(@class,'mobile-view')]//img)[1]")
     protected WebElement btnMobileAddRecord;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),' Add COVID Immunisation ')]//parent::button")
@@ -637,28 +645,28 @@ public class MyHealthRecordsPage extends BasePage {
     protected WebElement elmntClassificationsSave;
     @FindBy(how = How.XPATH, using = "(//span[normalize-space(text())='Save']/preceding::button[contains(@type,'submit')])[12]")
     protected WebElement elmntMobileClassificationsSave;
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnPrescriptionsSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']//span[text()='Update']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']//span[text()='Update']")
     protected WebElement btnMobilePrescriptionsSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnAllergiesSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnClassificationsSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']//span[text()='Save']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']//span[text()='Save']")
     protected WebElement btnMobileClassificationsSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnClinicianNotesSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnImmunisationsSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']//span[text()='Save']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']//span[text()='Save']")
     protected WebElement btnMobileImmunisationsSave;
 
     @FindBy(how = How.XPATH, using = "(//span[text()='Update'])[3]")
@@ -697,12 +705,12 @@ public class MyHealthRecordsPage extends BasePage {
     protected String elmntMobilePrescriptionsEdit = new StringBuilder().append("//h2[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
-    @FindBy(how = How.XPATH, using = "//mat-expansion-panel-header[@aria-expanded='true']//following::div[contains(@style,'visibility: visible')]//button[@class='btn-mobile-text'][text()='Delete']")
+    @FindBy(how = How.XPATH, using = "(//mat-expansion-panel-header[@aria-expanded='true']//following::button[text()='Delete'])[1]")
     protected WebElement btnMobilePrescriptionDelete;
 
 //    protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
-    @FindBy(how = How.XPATH, using = "//mat-expansion-panel-header[@aria-expanded='true']//following::div[contains(@style,'visibility: visible')]//button[@class='btn-mobile-text'][text()='Edit']")
+    @FindBy(how = How.XPATH, using = "(//mat-expansion-panel-header[@aria-expanded='true']//following::button[text()='Edit'])[1]")
     protected WebElement btnMobilePrescriptionsEdit;
 
     protected String elmntEditedLocation = new StringBuilder().append("//td[contains(text(),'")
@@ -750,6 +758,9 @@ public class MyHealthRecordsPage extends BasePage {
 
     protected String elmntCovidImmunisationsDrop = new StringBuilder().append("(//span[text()='")
             .append("<<REPLACEMENT>>").append("'])[1]").toString();
+
+    protected String elmntMobileCovidImmunisationsDrop = new StringBuilder().append("(//span[text()='")
+            .append("<<REPLACEMENT>>").append("'])[2]").toString();
 
     protected String elmntAddAllergicDrop = new StringBuilder().append("//span[@class='mdc-list-item__primary-text'][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
@@ -1554,6 +1565,7 @@ waitForSeconds(3);
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(4)))));
             waitForElement(elmntMobileAllergiesTableData);
             verifyElement(elmntMobileAllergiesTableData);
+            System.out.println("elmntMobileAllergiesTableData"+elmntMobileAllergiesTableData);
             waitForSeconds(3);
             blResult = verifyElement(elmntMobileMMHlogo);
         } catch (Exception e) {
@@ -1764,7 +1776,7 @@ waitForSeconds(3);
         try {
             WebElement elmntMobileAllergiesTableData = waitForElement(By.xpath(strMobileLabResultIconContentLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(2)))
-                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))));
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(0)))));
             waitForElement(elmntMobileAllergiesTableData);
             verifyElement(elmntMobileAllergiesTableData);
             waitForSeconds(3);
@@ -1807,8 +1819,9 @@ waitForSeconds(3);
         try {
             WebElement elmntMobileAllergiesIconData = waitForElement(By.xpath(strMobileLabResultIconContentLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(2)))
-                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))));
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(0)))));
             jsScrollIntoView(elmntMobileAllergiesIconData);
+            System.out.println("elmntMobileAllergiesIconData"+elmntMobileAllergiesIconData);
             waitForElementClickable(elmntMobileAllergiesIconData);
             jsClick(elmntMobileAllergiesIconData);
             for (String str : lstDetails1) {
@@ -1945,6 +1958,23 @@ waitForSeconds(3);
             WebElement elmntMobileAllergiesTableData = waitForElement(By.xpath(getStrMobileRecallsReminderIconContentLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(1)))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(4)))));
+            waitForElement(elmntMobileAllergiesTableData);
+            verifyElement(elmntMobileAllergiesTableData);
+            waitForSeconds(3);
+            blResult = verifyElement(elmntMobileMMHlogo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
+
+    public boolean VerifyMobileRecallsRemaindersTableData(List<String> lstDetails) {
+        boolean blResult = false;
+        try {
+            WebElement elmntMobileAllergiesTableData = waitForElement(By.xpath(getStrMobileRecallsReminderIconContentLocator
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(1)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(3)))));
             waitForElement(elmntMobileAllergiesTableData);
             verifyElement(elmntMobileAllergiesTableData);
             waitForSeconds(3);
@@ -2153,11 +2183,11 @@ waitForSeconds(3);
     public boolean VerifyMobilePrescriptionsMyEntriesDataIcon(List<String> lstDetails, List<String> lstDetails1) {
         boolean blResult = false;
         try {
-//            Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
-//            DateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
-//            formatter.setTimeZone(TimeZone.getTimeZone("GMT+12"));
-//            String currentDate = formatter.format(calendar.getTime());
-//            System.out.println(currentDate);
+            waitForSeconds(3);
+            if (verifyElement(elmntMobileMyEntries)){
+                waitForElement(elmntMobileMyEntries);
+                jsClick(elmntMobileMyEntries);
+            }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             String strdatePattern = "dd MMM yyyy";
             String strdate = TestDataUtil.getValue("TODAY");
@@ -2165,8 +2195,9 @@ waitForSeconds(3);
             WebElement elmntMobilePrescriptionMyEntiresData = waitForElement(By.xpath(strMobilePrescriptionsMyEntitesIconLocator
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0).concat(strExecutionID)))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(currentDate))));
-            waitForSeconds(5);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
+            System.out.println("elmntMobilePrescriptionMyEntiresData"+elmntMobilePrescriptionMyEntiresData);
             waitForElement(elmntMobilePrescriptionMyEntiresData);
             jsClick(elmntMobilePrescriptionMyEntiresData);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -2866,13 +2897,13 @@ waitForSeconds(3);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             waitForElement(elmntMobileStartDate);
-            click(elmntMobileStartDate);
+            jsClick(elmntMobileStartDate);
             String strDateFormat = "d";
             String strDay = "TOADY";
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("TOADY date is::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
 
     }
@@ -2902,13 +2933,13 @@ waitForSeconds(3);
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
 
             waitForElement(elmntMobileAllergiesStartDate);
-            click(elmntMobileAllergiesStartDate);
+            jsClick(elmntMobileAllergiesStartDate);
             String strDateFormat = "d";
             String strDay = "TODAY";
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("TOADY date is::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
     }
 
@@ -2967,7 +2998,7 @@ waitForSeconds(3);
     public void enterAllergiesEndDate() {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             waitForElement(elmntAllergiesEndDate);
-            click(elmntAllergiesEndDate);
+            jsClick(elmntAllergiesEndDate);
             String strDateFormat = "d";
             String strDay = "TODAY";
             String strDate = DateUtil.getDate(strDay, strDateFormat);
@@ -2988,13 +3019,13 @@ waitForSeconds(3);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             waitForElement(elmntMobileAllergiesEndDate);
-            click(elmntMobileAllergiesEndDate);
+            jsClick(elmntMobileAllergiesEndDate);
             String strDateFormat = "d";
             String strDay = "TOADY";
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("TOADY date is::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
 
         }
     }
@@ -3040,13 +3071,13 @@ waitForSeconds(3);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             waitForElement(elmntMobilePrescriptionEndDate);
-            click(elmntMobilePrescriptionEndDate);
+            jsClick(elmntMobilePrescriptionEndDate);
             String strDateFormat = "d";
             String strDay = "TOADY";
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("TOADY date is::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
     }
 
@@ -3115,7 +3146,7 @@ waitForSeconds(3);
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("TOADY date is::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
 
     }
@@ -3193,7 +3224,7 @@ waitForSeconds(3);
 //            waitForSeconds(2);
             jsClick(elmntCovidImmunisationsdrop);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntCovidImmunisationsDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
+            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntMobileCovidImmunisationsDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
             System.out.println(">>>>>>>" + elmntEntriesFromHealthCentre);
             waitForElement(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
@@ -3870,6 +3901,7 @@ waitForSeconds(3);
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             String strMedicationName = strCreatedRecord.concat(strExecutionID);
             WebElement btnEdit = waitForElement(By.xpath(elmntMobilePrescriptionsEdit.replace("<<REPLACEMENT>>", strMedicationName)));
+            System.out.println("btnEdit"+btnEdit);
             click(btnEdit);
             waitForSeconds(3);
             jsScrollIntoView(btnMobilePrescriptionsEdit);
@@ -4196,6 +4228,24 @@ waitForSeconds(3);
         }
         return blResult;
     }
+
+//    public boolean selectMobilePrescriptiondropdown(String strFamilyMember) {
+//        boolean blResult = false;
+//        try {
+//            waitForSeconds(2);
+//            waitForElementClickable(elmntPrescriptiondrop);
+//            waitForSeconds(2);
+//            jsClick(elmntPrescriptiondrop);
+//            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntAddPrescriptionDrop.replace("<<REPLACEMENT>>", strFamilyMember)));
+//            jsClick(elmntEntriesFromHealthCentre);
+//
+//            blResult = true;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return blResult;
+//    }
 
     public boolean selectPrescriptiondropdown1(String strFamilyMember) {
         boolean blResult = false;

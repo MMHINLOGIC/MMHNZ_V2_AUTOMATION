@@ -1407,9 +1407,9 @@ public class HomePage extends BasePage {
 //                }
             if (WindowsCount == 1) {
                 driver.manage().deleteAllCookies();
-                waitForSeconds(10);
+                waitForSeconds(8);
                 waitForElement(elmntLoginBtn);
-                click(elmntLoginBtn);
+                jsClick(elmntLoginBtn);
                 driver.manage().deleteAllCookies();
                 blResult = true;
             }
@@ -1854,7 +1854,6 @@ public class HomePage extends BasePage {
     }
 
     public boolean clickDashBoardForMobile() {
-        System.out.println("Enetr");
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(5);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));

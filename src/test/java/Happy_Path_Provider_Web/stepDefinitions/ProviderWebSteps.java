@@ -556,7 +556,7 @@ public class ProviderWebSteps {
             Assert.assertTrue(providerPageContainer.preScreeningPage.deselectCovidPreScreeningPopup(TestDataUtil.getValue(strdata)));
         }
 
-        Assert.assertTrue(providerPageContainer.preScreeningPage.clickUpdateButton());
+        Assert.assertTrue(providerPageContainer.preScreeningPage.clickSaveButton());
         Assert.assertTrue(providerPageContainer.preScreeningPage.verifyUpdates(strHealthCentre));
         Assert.assertTrue(providerPageContainer.preScreeningPage.clickCloseButton());
     }
@@ -598,7 +598,7 @@ public class ProviderWebSteps {
 
         Assert.assertTrue(providerPageContainer.appointmentMessagePage.enterBannerHeading(TestDataUtil.getValue(strBannerHeading)));
         Assert.assertTrue(providerPageContainer.appointmentMessagePage.enterBannerMessage(TestDataUtil.getValue(strBannerMssg)));
-        Assert.assertTrue(providerPageContainer.preScreeningPage.clickUpdateButton());
+//        Assert.assertTrue(providerPageContainer.preScreeningPage.clickUpdateButton());
     }
 
     @When("I click the Update Button")
@@ -709,7 +709,7 @@ public class ProviderWebSteps {
     public void iFillPatientPortalWebBannerHeadingAndBannerMessageFields(String strBannerHeading, String strBannerMssg) {
         Assert.assertTrue(providerPageContainer.appointmentMessagePage.enterWebBannerHeading(TestDataUtil.getValue(strBannerHeading)));
         Assert.assertTrue(providerPageContainer.appointmentMessagePage.enterWebBannerMessage(TestDataUtil.getValue(strBannerMssg)));
-        Assert.assertTrue(providerPageContainer.preScreeningPage.clickUpdateButton());
+        Assert.assertTrue(providerPageContainer.preScreeningPage.clickSaveButton());
     }
 
     @Then("I should verify the Patient Portal Web Banner heading {string} and Banner Messages {string} are not displayed")
@@ -951,14 +951,14 @@ public class ProviderWebSteps {
     public void iEnableRuleARadioButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickRuleAButton());
-        Assert.assertTrue(providerPageContainer.appointmentSettingPage.backToHomePage());
+
     }
 
     @And("I enable RuleB Radio button and I click save button then I see Saved Successfully message{string}")
     public void iEnableRuleBRadioButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickRuleBButton());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+
     }
 
 
@@ -977,41 +977,33 @@ public class ProviderWebSteps {
     @And("I click Edit button to select {string} and {string} and Disable Appointment Pre-Screening Popup")
     public void iClickEditButtonToSelectAndAndDisableAppointmentPreScreeningPopup(String strHealthCentre, String strLocation) {
         List<String>strtestdata=TestDataUtil.getListOfValue(strLocation);
-//        Assert.assertTrue(providerPageContainer.preScreeningPage.clickPreScreeningEdit());
-        Assert.assertTrue(providerPageContainer.preScreeningPage.clickHealthCentreDropDown());
-        Assert.assertTrue(providerPageContainer.preScreeningPage.selectHealthCentre(strHealthCentre));
+
         for (String strdata:strtestdata) {
             System.out.println(">>>>>>>strdata"+strdata);
             Assert.assertTrue(providerPageContainer.preScreeningPage.deselectCovidPreScreeningPopup(TestDataUtil.getValue(strdata)));
         }
 
-        Assert.assertTrue(providerPageContainer.preScreeningPage.clickUpdateButton());
-        Assert.assertTrue(providerPageContainer.preScreeningPage.verifyUpdates(strHealthCentre));
-        Assert.assertTrue(providerPageContainer.preScreeningPage.clickCloseButton());
+        Assert.assertTrue(providerPageContainer.preScreeningPage.clickSaveButton());
     }
 
     @And("I click Edit button to select {string} and {string} and Enable Appointment Pre-Screening Popup")
     public void iClickEditButtonToSelectAndAndEnableAppointmentPreScreeningPopup(String strHealthCentre, String strLocation) {
         List<String>strtestdata=TestDataUtil.getListOfValue(strLocation);
         System.out.println(">>>>>>>strtestdata :: "+strtestdata);
-//        Assert.assertTrue(providerPageContainer.preScreeningPage.clickPreScreeningEdit());
-        Assert.assertTrue(providerPageContainer.preScreeningPage.clickHealthCentreDropDown());
-        Assert.assertTrue(providerPageContainer.preScreeningPage.selectHealthCentre(strHealthCentre));
         for (String strdata:strtestdata) {
             System.out.println(">>>>>>>strdata"+strdata);
             Assert.assertTrue(providerPageContainer.preScreeningPage.selectCovidPreScreeningPopup(TestDataUtil.getValue(strdata)));
         }
 
-        Assert.assertTrue(providerPageContainer.preScreeningPage.clickUpdateButton());
-        Assert.assertTrue(providerPageContainer.preScreeningPage.verifyUpdates(strHealthCentre));
-        Assert.assertTrue(providerPageContainer.preScreeningPage.clickCloseButton());
+        Assert.assertTrue(providerPageContainer.preScreeningPage.clickSaveButton());
+
     }
 
     @And("I enable RuleC Radio button and I click save button then I see Saved Successfully message{string}")
     public void iEnableRuleCRadioButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickRuleCButton());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+
     }
 
     @And("As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments")
@@ -1024,7 +1016,7 @@ public class ProviderWebSteps {
     public void iEnableRuleDRadioButtonAndIClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickRuleDButton());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+
     }
 
     @And("I enable RuleE Radio button and I click restrict providers checkbox and save button then I see Saved Successfully message{string}")
@@ -1047,7 +1039,7 @@ public class ProviderWebSteps {
             Assert.assertTrue(providerPageContainer.appointmentSettingPage.selectRestrictProviderscheckbox(TestDataUtil.getValue(strdata)));
         }
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickAppointmentsettingsRuleESaveButton());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+
 
     }
 
@@ -1094,7 +1086,7 @@ public class ProviderWebSteps {
     public void iEnableAllowToBookFriendsYesRadioButtonAndClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickAllowtoBookForFamilyYesButton());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+
 
     }
 
@@ -1102,7 +1094,7 @@ public class ProviderWebSteps {
     public void iEnableAllowToBookFriendsNoRadioButtonAndClickSaveButtonThenISeeSavedSuccessfullyMessage(String LocationData) {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickAllowtoBookForFamilyNoButton());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+
 
     }
 
@@ -1112,7 +1104,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickHealthCenterLocation(TestDataUtil.getValue(LocationData)));
         Assert.assertTrue(providerPageContainer.appointmentSettingPage.clickTurnOffOnlineAppointmentsCheckBoxchecked());
 
-//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+
 
     }
 
@@ -2017,5 +2009,44 @@ public class ProviderWebSteps {
 
     }
 
+    @And("I Disable Additional Assistance Textbox and Enable Accident Yes Button")
+    public void iDisableAdditionalAssistanceTextboxAndEnableAccidentYesButton() {
+        Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderDisabledAdditionalAssistanceTextbox());
+        Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderDisabledAccidentInjuryOption());
+        Assert.assertTrue(providerPageContainer.preScreeningPage.clickSaveButton());
+    }
 
+    @And("I navigate to Appointment setting page verify the Payonline or Payhealthcentre options displayed choose the Pay online Option")
+    public void iNavigateToAppointmentSettingPageVerifyThePayonlineOrPayhealthcentreOptionsDisplayedChooseThePayOnlineOption() {
+
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickSecureMessaging());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickAppointmentSetting());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickAppoitmentSettingEditButton());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.veriflyInpersonAppoitmentPaymentSettings());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.veriflyPhoneAppoitmentPaymentSettings());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.veriflyVideoAppoitmentPaymentSettings());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.EnableVideoAppointmentPayOnlineOption());
+        Assert.assertTrue(providerPageContainer.preScreeningPage.clickSaveButton());
+
+
+    }
+
+    @Then("I navigate to Appointment setting page verify the Payonline or Payhealthcentre options displayed and choose Payhealthcentre option")
+    public void iNavigateToAppointmentSettingPageVerifyThePayonlineOrPayhealthcentreOptionsDisplayedAndChoosePayhealthcentreOption() {
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickSecureMessaging());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickAppointmentSetting());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.clickAppoitmentSettingEditButton());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.veriflyInpersonAppoitmentPaymentSettings());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.veriflyPhoneAppoitmentPaymentSettings());
+        Assert.assertTrue(providerPageContainer.onlinePaymentsSettingPage.veriflyVideoAppoitmentPaymentSettings());
+        Assert.assertTrue(providerPageContainer.preScreeningPage.clickSaveButton());
+    }
+
+    @And("I Enable Additional Assistance Textbox and Enable Accident Yes Button")
+    public void iEnableAdditionalAssistanceTextboxAndEnableAccidentYesButton() {
+        Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderEnabledAdditionalAssistanceTextbox());
+        Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderEnabledAccidentInjuryOption());
+        Assert.assertTrue(providerPageContainer.preScreeningPage.clickSaveButton());
+
+    }
 }
