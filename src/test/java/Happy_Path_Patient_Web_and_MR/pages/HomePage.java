@@ -312,7 +312,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Sign out')])[1]")
     protected WebElement btnExitApp;
 
-    @FindBy(how = How.XPATH, using = "//mat-icon[contains(text(),'exit_to_app')]")
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Sign out')]//following::span[@class='mat-mdc-button-touch-target'])[1]")
     protected WebElement btnExitAppMobile;
 
     //mat-icon[contains(text(),'exit_to_app')]

@@ -300,8 +300,8 @@ public class MyHealthRecordsPage extends BasePage {
             .append("(//*[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[last()]").toString();
     protected String strPrescriptionsDetails = new StringBuilder()
-            .append("//div[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]").toString();
+            .append("//div[text()='")
+            .append("<<REPLACEMENT>>").append("']").toString();
 
 
     protected String strClassificationsDetails = new StringBuilder()
@@ -2876,7 +2876,7 @@ waitForSeconds(3);
     public void enterStartDate() {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             waitForElement(elmntStartDate);
-            click(elmntStartDate);
+            jsClick(elmntStartDate);
             String strDateFormat = "d";
             String strDay = "TODAY";
             String strDate = DateUtil.getDate(strDay, strDateFormat);
@@ -3126,7 +3126,7 @@ waitForSeconds(3);
             String strDate = DateUtil.getDate(strDay, strDateFormat);
             System.out.println("Current Day::>>" + strDate);
             WebElement elmntDayAfterDate = waitForElement(By.xpath(strDayAfterDate.replace("<<REPLACEMENT>>", strDate)));
-            click(elmntDayAfterDate);
+            jsClick(elmntDayAfterDate);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             waitForElementClickable(elmntMobileEndDate);

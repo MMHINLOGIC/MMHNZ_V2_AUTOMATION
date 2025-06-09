@@ -79,7 +79,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'COMPOSE MESSAGE')]")
     protected WebElement elmntComposePatient;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'COMPOSE MESSAGE')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'COMPOSE')]/i")
     protected WebElement elmntMobileComposePatient;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Inbox')]")
@@ -342,7 +342,7 @@ public class MessagesPage extends BasePage {
     protected String inboxMessageSubject = new StringBuilder()
             .append("(//*[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')])[1]")
+            .append("')])[2]")
             .toString();
 
     protected String GroupMessageSubject = new StringBuilder()
@@ -391,9 +391,9 @@ public class MessagesPage extends BasePage {
 
 
     protected String receivedMessageSubject = new StringBuilder()
-            .append("//div[contains(text(),'")
+            .append("(//div[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')]")
+            .append("')])[2]")
             .toString();
 
     protected String receivedBodyMessage = new StringBuilder()
@@ -2218,7 +2218,7 @@ public class MessagesPage extends BasePage {
                 waitForElementClickable(elmntProfile);
                 jsClick(elmntProfile);
                 waitForSeconds(2);
-                waitForElementClickable(elmntSignout);
+                waitForElement(elmntSignout);
                 jsClick(elmntSignout);
                 visit();
                 waitForElement(elmntLoginBtn);

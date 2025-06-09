@@ -811,15 +811,20 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.repeatPrescription.selectTermsAndCondition());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayAtHealthCentre());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
+
         }
 
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayAtHealthCentre());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayAtHealthCentre());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
 
         }
+
     }
 
     @And("I should see the successful message and I navigate to view history of the Prescription")
@@ -873,14 +878,17 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.repeatPrescription.selectTermsAndCondition());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayAtHealthCentre());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayAtHealthCentre());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayAtHealthCentre());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
 
         }
 
@@ -918,14 +926,17 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.repeatPrescription.selectTermsAndCondition());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayAtHealthCentre());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayAtHealthCentre());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayAtHealthCentre());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
 
         }
 
@@ -963,13 +974,16 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.repeatPrescription.CapturePaymentDetails());
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayNow());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayNowYesButton());
 
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayNow());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayNowYesButton());
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             Assert.assertTrue(demoPageContainer.repeatPrescription.clickMobilePayNow());
+            Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayNowYesButton());
 
         }
 

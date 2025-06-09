@@ -130,7 +130,6 @@ public class RepeatPrescription extends BasePage {
     protected WebElement getDrpdownSelectAddress;
 
 
-
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'ZOOM Pharmacy home delivery,Ground Floor/11 Westhaven Drive, Auckland,Phone:0508 966 622,Fax:0508 966 696')]")
     protected WebElement drpOptionZoomAddress;
 
@@ -206,7 +205,7 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='ScriptInstructions'] ")
     protected WebElement drpdownInstructions;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Next')]/parent::button")
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Next')]")
     protected WebElement btnNextRRP;
 
     @FindBy(how = How.XPATH, using = "//h6[contains(text(),'Total to pay: $')]")
@@ -262,13 +261,22 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "(//button[contains(text(),'Pay At Health Centre')])[1]")
     protected WebElement btnPayAtHealthCentre;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Pay At Health Centre')])[2]")
+    @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Information')]")
+    protected WebElement VerifyInformation;
+
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'It is not possible to amend this request once saved. Do you want to continue?')]")
+    protected WebElement VerifyInformationText;
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes')]")
+    protected WebElement clickYesButton;
+
+    @FindBy(how = How.XPATH, using = "(//button[contains(text(),'Pay At Health Centre')])[2]")
     protected WebElement btnMobilePayAtHealthCentre;
 
     @FindBy(how = How.XPATH, using = "(//button[text()='Pay Now'])[1]")
     protected WebElement btnPayNow;
 
-    @FindBy(how = How.XPATH, using = "(//span[text()='Pay Now'])[2]")
+    @FindBy(how = How.XPATH, using = "(//button[text()='Pay Now'])[2]")
     protected WebElement btnMobilePayNow;
 
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Payment')]")
@@ -505,9 +513,9 @@ public class RepeatPrescription extends BasePage {
             .append("')]").toString();
 
     protected String chkMedicationForMobile = new StringBuilder()
-            .append("//h2[contains(text(),'")
+            .append("(//h2[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')]/parent::div/preceding-sibling::div/mat-checkbox//div").toString();
+            .append("')]/parent::div/preceding-sibling::div/mat-checkbox//div/div)[1]").toString();
 
     //span[contains(text(),'Chemist Warehouse Auckland')]
     protected String ddlSelectFileds = new StringBuilder()
@@ -780,7 +788,7 @@ public class RepeatPrescription extends BasePage {
                 }
 
             }
-            if (isElementDisplayed(VeriflyOutOfOfficePopup)){
+            if (isElementDisplayed(VeriflyOutOfOfficePopup)) {
                 jsClick(ClickOutOfOfficePopupOkButton);
             }
 //            refreshPage();
@@ -795,7 +803,7 @@ public class RepeatPrescription extends BasePage {
             waitForElementClickable(ddlLocation);
             waitForSeconds(2);
             mouseClick(ddlLocation);
-            if (isElementDisplayed(VeriflyOutOfOfficePopup)){
+            if (isElementDisplayed(VeriflyOutOfOfficePopup)) {
                 jsClick(ClickOutOfOfficePopupOkButton);
             }
             System.out.println("Location was selected in the Request Medication >>> ::");
@@ -824,7 +832,7 @@ public class RepeatPrescription extends BasePage {
             waitForElementClickable(ddlDoctor);
             mouseClick(ddlDoctor);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            if (verifyElement(VeriflyOutOfOfficePopup)){
+            if (verifyElement(VeriflyOutOfOfficePopup)) {
                 click(ClickOutOfOfficePopupOkButton);
             }
             takeScreenshot(driver);
@@ -850,10 +858,10 @@ public class RepeatPrescription extends BasePage {
             WebElement ddlDoctor = waitForElementSeconds(By.xpath(selectDoctor.replace("<<REPLACEMENT>>", strDoctor)));
             if (ddlDoctor == null || isElementNotDisplayed(ddlDoctor)) {
                 System.out.println("Element is not displayed!");
-                blResult=true;
+                blResult = true;
             } else {
                 System.out.println("Element is displayed!");
-                blResult=false;
+                blResult = false;
             }
 
             takeScreenshot(driver);
@@ -926,7 +934,7 @@ public class RepeatPrescription extends BasePage {
             waitForSeconds(3);
             jsClick(btnNextRRP);
             waitForSeconds(3);
-            jsScrollIntoView(btnMobilePayNow);
+//            jsScrollIntoView(btnMobilePayNow);
             waitForElement(btnMobilePayNow);
             blResult = verifyElement(btnMobilePayNow);
         } catch (Exception e) {
@@ -1015,8 +1023,8 @@ public class RepeatPrescription extends BasePage {
     public boolean EnterReasonMedicationsToRepeat(String strMedication) {
         boolean blResult = false;
         try {
-waitForElement(ReasonForNewScript);
-     enterValue(ReasonForNewScript,strMedication);
+            waitForElement(ReasonForNewScript);
+            enterValue(ReasonForNewScript, strMedication);
             blResult = true;
 
         } catch (Exception e) {
@@ -1068,23 +1076,20 @@ waitForElement(ReasonForNewScript);
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            String Payment=chkPayment.getText().trim();
-            System.out.println("Payment :: "+Payment);
-            if (Payment.equals("Total amount to pay: $440 (Incl. GST)")){
+            String Payment = chkPayment.getText().trim();
+            System.out.println("Payment :: " + Payment);
+            if (Payment.equals("Total amount to pay: $440 (Incl. GST)")) {
                 System.out.println("Successfully Verified Only CSC Payment");
                 blResult = true;
-            }
-            else if(Payment.equals("Total amount to pay: $450 (Incl. GST)")){
+            } else if (Payment.equals("Total amount to pay: $450 (Incl. GST)")) {
                 System.out.println("Successfully Verified Only HUHC Payment");
                 blResult = true;
-            }
-            else if(Payment.equals("Total amount to pay: $430 (Incl. GST)")){
+            } else if (Payment.equals("Total amount to pay: $430 (Incl. GST)")) {
                 System.out.println("Successfully Verified Only STD Payment");
                 blResult = true;
-            }
-            else {
+            } else {
                 System.out.println("Not Matched For Any Amount!");
-                blResult=true;
+                blResult = true;
             }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             takeScreenshot(driver);
@@ -1106,10 +1111,33 @@ waitForElement(ReasonForNewScript);
             jsClick(btnPayAtHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             System.out.println(" Successfully Selected Pay at Health centre Button >>>");
+            waitForElement(VerifyInformation);
+            blResult = verifyElement(VerifyInformation);
+
+
+        } catch (Exception e) {
+            System.out.println("Failed to Select Pay at Health centre Button >>>");
+            e.printStackTrace();
+
+        }
+        return blResult;
+    }
+
+    public boolean clickYesButton() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(VerifyInformation);
+            verifyElement(VerifyInformation);
+
+            waitForElement(VerifyInformationText);
+            verifyElement(VerifyInformationText);
+
+            waitForElement(clickYesButton);
+            click(clickYesButton);
             waitForElementToAppear(driver, By.xpath(emlntSuccessPopUp1));
             waitForElement(emlntSuccessPopUp);
             blResult = verifyElement(emlntSuccessPopUp);
-
         } catch (Exception e) {
             System.out.println("Failed to Select Pay at Health centre Button >>>");
             e.printStackTrace();
@@ -1138,6 +1166,7 @@ waitForElement(ReasonForNewScript);
         }
         return blResult;
     }
+
     public boolean clickPayNow() {
         boolean blResult = false;
         try {
@@ -1149,7 +1178,7 @@ waitForElement(ReasonForNewScript);
             waitForSeconds(6);
             takeScreenshot(driver);
             System.out.println("Successfully clicked Pay now button >>>");
-            blResult = verifyElement(txtPayment);
+            blResult = verifyElement(VerifyInformation);
 
         } catch (Exception e) {
             System.out.println("Failed to clicked Pay now button >>>");
@@ -1158,6 +1187,30 @@ waitForElement(ReasonForNewScript);
         }
         return blResult;
     }
+
+    public boolean clickPayNowYesButton() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(VerifyInformation);
+            verifyElement(VerifyInformation);
+
+            waitForElement(VerifyInformationText);
+            verifyElement(VerifyInformationText);
+
+            waitForElement(clickYesButton);
+            click(clickYesButton);
+            waitForElementToAppear(driver, By.xpath(emlntSuccessPopUp1));
+            waitForElement(txtPayment);
+            blResult = verifyElement(txtPayment);
+        } catch (Exception e) {
+            System.out.println("Failed to Select Pay at Health centre Button >>>");
+            e.printStackTrace();
+
+        }
+        return blResult;
+    }
+
     public boolean clickMobilePayNow() {
         boolean blResult = false;
         try {
@@ -1184,7 +1237,7 @@ waitForElement(ReasonForNewScript);
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-         waitForElementToAppear(driver,By.xpath(txtRRPSuccessPopUp1));
+            waitForElementToAppear(driver, By.xpath(txtRRPSuccessPopUp1));
 //            waitForElement(txtRRPSuccessPopUp);
 //            verifyElement(txtRRPSuccessPopUp);
             waitForSeconds(5);
@@ -1575,8 +1628,8 @@ waitForElement(ReasonForNewScript);
             System.out.println("\nContent of strDetails :: >>> " + strDetails);
 
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
-waitForElement(txtMobileViewPreviousRequests);
-click(txtMobileViewPreviousRequests);
+                waitForElement(txtMobileViewPreviousRequests);
+                click(txtMobileViewPreviousRequests);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
             }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -1914,7 +1967,7 @@ click(txtMobileViewPreviousRequests);
     public boolean selectPharmacy(String strPharmacy) {
         boolean blResult = false;
         try {
-jsScrollIntoView(drpDownSelectForPharmacyName);
+            jsScrollIntoView(drpDownSelectForPharmacyName);
             waitForSeconds(3);
             waitForElement(drpDownSelectForPharmacyName);
             waitForElementClickable(drpDownSelectForPharmacyName);
@@ -1930,7 +1983,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
                 jsScrollIntoView(btnChange);
                 waitForElement(btnChange);
                 blResult = verifyElement(btnChange);
-            }catch (Exception e){
+            } catch (Exception e) {
                 jsScrollIntoView(btnChangeForMobile);
                 waitForElement(btnChangeForMobile);
                 blResult = verifyElement(btnChangeForMobile);
@@ -2047,8 +2100,10 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
         try {
             System.out.println("selectMedication XPath >>>>" + chkMedicationForMobile.replace("<<REPLACEMENT>>", strMedication));
             WebElement selectMedication = waitForElement(By.xpath(chkMedicationForMobile.replace("<<REPLACEMENT>>", strMedication)));
+//            jsScrollIntoView(selectMedication);
+            waitForSeconds(2);
             waitForElementClickable(selectMedication);
-            jsClick(selectMedication);
+            mouseClick(selectMedication);
             waitForSeconds(2);
             blResult = true;
         } catch (Exception e) {
@@ -2107,6 +2162,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
         }
         return blResult;
     }
+
     public boolean selectAccountToAccountPaymentMethod(String strPaymentMethod) {
         boolean blResult = false;
         try {
@@ -2160,12 +2216,12 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
                     (By.xpath("//select[@id='DateExpiry_2' or @name='DateExpiry_2']")));
             expiryYear.selectByVisibleText(strExpiryYear);
 
-            if (System.getProperty(Constants.ENV_VARIABLE_BROWSER_NAME,"").equalsIgnoreCase("safari")){
-    Actions builder = new Actions(driver);
-    builder.moveToElement(driver.findElement(By.xpath("//input[@name='Cvc2']"))).click().build().perform();
-    waitForSeconds(2);
-    builder.moveToElement(driver.findElement(By.xpath("//input[@name='Cvc2']"))).sendKeys(strCVC).build().perform();
-            }else {
+            if (System.getProperty(Constants.ENV_VARIABLE_BROWSER_NAME, "").equalsIgnoreCase("safari")) {
+                Actions builder = new Actions(driver);
+                builder.moveToElement(driver.findElement(By.xpath("//input[@name='Cvc2']"))).click().build().perform();
+                waitForSeconds(2);
+                builder.moveToElement(driver.findElement(By.xpath("//input[@name='Cvc2']"))).sendKeys(strCVC).build().perform();
+            } else {
                 waitForSeconds(2);
 //                waitForElement(txtboxCVC);
 //                txtboxCVC.sendKeys(strCVC);
@@ -2195,15 +2251,11 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
     public void chromeoptionHandle() {
         ChromeOptions options = new ChromeOptions();
 
-            HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-        chromePrefs.put("credentials_enable_service",false);
-        chromePrefs.put("profile.password_manager_enabled",false);
+        HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+        chromePrefs.put("credentials_enable_service", false);
+        chromePrefs.put("profile.password_manager_enabled", false);
         options.setExperimentalOption("prefs", chromePrefs);
 //        options.add_experimental_option("prefs", chromePrefs);
-
-
-
-
 
 
     }
@@ -2221,7 +2273,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
 //                jsScrollIntoView(selectRdoBtnBank);
 //                waitForElementClickable(selectRdoBtnBank);
 //                jsClick(selectRdoBtnBank);
-                Select A2ABanks  = new Select(driver.findElement(By.name("SelectBank")));
+                Select A2ABanks = new Select(driver.findElement(By.name("SelectBank")));
                 A2ABanks.selectByVisibleText("ASB");
                 System.out.println("Successfully Select RdoBtnBank");
                 waitForSeconds(3);
@@ -2396,7 +2448,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
             }
 //            waitForElement(elmntSuccessA2A);
             System.out.println("Reference details was Successful >>>");
-            blResult =true;
+            blResult = true;
         } catch (Exception e) {
             System.out.println("Failed Reference details was Successful >>>");
             e.printStackTrace();
@@ -2569,7 +2621,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
 //                System.out.println("Both locations mismatched ");
 //                dropDownLocation = false;
 //            }
-            dropDownLocation=verifyElement(SelectDoctordrpdown);
+            dropDownLocation = verifyElement(SelectDoctordrpdown);
         } catch (Exception e) {
             System.out.println("Default unchangable Doctor Location are not verified in the Request Medication as per Location and Provider rule");
             e.printStackTrace();
@@ -2591,7 +2643,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
                 System.out.println("Select Doctor dropdown is present BUT NOT MATCHED as per the Provider and Location Rule");
                 doctorPresence = false;
             }
-            doctorPresence=verifyElement(selectedProviderName);
+            doctorPresence = verifyElement(selectedProviderName);
         } catch (Exception e) {
             System.out.println("Default unchangable Doctor dropdown are not verified in the Request Medication as per Location and Provider rule");
             e.printStackTrace();
@@ -2693,7 +2745,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
         return scriptDetail;
     }
 
-    public boolean  selectScriptInstructionSSTP(String strScriptDetail) {
+    public boolean selectScriptInstructionSSTP(String strScriptDetail) {
         boolean scriptDetail = false;
         boolean optScriptsending = false;
         try {
@@ -2799,7 +2851,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
             String currentAddress = addressBoxValue.getText();
             System.out.println("Current addressBoxValue is " + currentAddress);
             System.out.println("Current savedListAddress is " + savedListAddress);
-            btnSavedAddress=true;
+            btnSavedAddress = true;
 
 //            if (currentAddress.equalsIgnoreCase(savedListAddress)) {
 //                System.out.println("Both Address matched as expected");
@@ -2813,6 +2865,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
         }
         return btnSavedList;
     }
+
     public boolean selectDeliverViaZoomPharmacyScriptSendingOption(String savedListAddress) {
 
         boolean btnSavedAddress = false;
@@ -2824,7 +2877,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
             click(SendDeliverViaZoomAddress);
             waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
             waitForElement(addressBoxValue);
-            btnSavedAddress=verifyElement(addressBoxValue);
+            btnSavedAddress = verifyElement(addressBoxValue);
 
 //            if (currentAddress.equalsIgnoreCase(savedListAddress)) {
 //                System.out.println("Both Address matched as expected");
@@ -2870,9 +2923,9 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
         return btnSavedList && btnSavedAddress;
     }
 
-    public boolean selectSearchAddress(String selectAddress){
+    public boolean selectSearchAddress(String selectAddress) {
         boolean selectedAddress = false;
-        try{
+        try {
             waitForElement(drpdownSelectAddress);
             click(drpdownSelectAddress);
 //            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
@@ -2890,7 +2943,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
 //                System.out.println("Both address are different");
 //                selectedAddress = false;
 //            }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Not able to match the selected address " + selectAddress);
         }
         return selectedAddress;
@@ -2942,8 +2995,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
                 waitForElement(BtnPayAtHealthCentre);
                 blPaymentVerify = verifyElement(BtnPayAtHealthCentre);
                 System.out.println("Only Show The PayAtHealth Centre Button Only");
-            }else
-            {
+            } else {
                 verifyElement(btnPayNow);
                 System.out.println("Show The PayNow Button");
             }
@@ -2959,11 +3011,11 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
     public boolean VerifyPayAtHealthCentreAndPayNowButton() {
         boolean blPaymentVerify = false;
         try {
-               waitForElement(btnPayNow);
-               verifyElement(btnPayNow);
-               waitForElement(BtnPayAtHealthCentre);
-                blPaymentVerify = verifyElement(BtnPayAtHealthCentre);
-                System.out.println(" Show The PayAtHealth Centre Button and Pay Now ");
+            waitForElement(btnPayNow);
+            verifyElement(btnPayNow);
+            waitForElement(BtnPayAtHealthCentre);
+            blPaymentVerify = verifyElement(BtnPayAtHealthCentre);
+            System.out.println(" Show The PayAtHealth Centre Button and Pay Now ");
 
         } catch (Exception e) {
             System.out.println("Not able to verify the Pay At Health Centre AND Pay Now Button");
@@ -2980,8 +3032,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
                 waitForElement(btnPayNow);
                 blPaymentVerify = verifyElement(btnPayNow);
                 System.out.println("Only Show The PayAtHealth Centre Button Only");
-            }else
-            {
+            } else {
                 verifyElement(BtnPayAtHealthCentre);
                 System.out.println("Show The PayNow Button");
             }
@@ -3002,7 +3053,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
             jsClick(SelectRRPScriptInstructionsDoctordrpdown);
 // waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
             WebElement ddlScriptInstruction = waitForElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strLocation)));
-            System.out.println(">>> :: ddlScriptInstruction"+ddlScriptInstruction);
+            System.out.println(">>> :: ddlScriptInstruction" + ddlScriptInstruction);
             waitForElement(ddlScriptInstruction);
             jsScrollIntoView(ddlScriptInstruction);
             verifyElement(ddlScriptInstruction);
@@ -3019,7 +3070,7 @@ jsScrollIntoView(drpDownSelectForPharmacyName);
 // System.out.println("Both locations mismatched ");
 // dropDownLocation = false;
 // }
-            dropDownLocation =verifyElement(SelectRRPScriptInstructionsDoctordrpdown);
+            dropDownLocation = verifyElement(SelectRRPScriptInstructionsDoctordrpdown);
         } catch (Exception e) {
             System.out.println("Default unchangable Doctor Location are not verified in the Request Medication as per Location and Provider rule");
             e.printStackTrace();
