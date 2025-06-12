@@ -113,9 +113,9 @@ public class ProviderMessagesPage extends BasePage {
             .toString();
 
     protected String InboxMessageSubject = new StringBuilder()
-            .append("//div[contains(text(),'")
+            .append("(//div[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')]")
+            .append("')])[2]")
             .toString();
 
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Draft saved successfully')]")

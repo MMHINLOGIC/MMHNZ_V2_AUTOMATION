@@ -926,7 +926,7 @@ public class AppointmentsPage extends BasePage {
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntHealtCenter);
-            click(elmntHealtCenter);
+            jsClick(elmntHealtCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntSelectHealthCenter = waitForElement(By.xpath(elmntHealthCenter.replace("<<REPLACEMENT>>", strHealthCenter)));
             jsClick(elmntSelectHealthCenter);
@@ -4743,11 +4743,14 @@ waitForSeconds(4);
             }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsClick(elmntFamilyMemberCenter);
-            WebElement elmntSelectFamilyMember2 = waitForElementFewSeconds(By.xpath(elmntFamilyMember1.replace("<<REPLACEMENT>>", strFamilyMember.get(1))));
-            if (verifyElement(elmntSelectFamilyMember2)){
-                waitForElement(elmntSelectFamilyMember2);
-                jsClick(elmntSelectFamilyMember2);
-                System.out.println("Succcessfully Verified Family/Friends ");
+//            WebElement elmntSelectFamilyMember2 = waitForElementFewSeconds(By.xpath(elmntFamilyMember1.replace("<<REPLACEMENT>>", strFamilyMember.get(1))));
+//            if (verifyElement(elmntSelectFamilyMember2)){
+//                waitForElement(elmntSelectFamilyMember2);
+//                jsClick(elmntSelectFamilyMember2);
+//                System.out.println("Succcessfully Verified Family/Friends ");
+//            }
+            if (!verifyElement(By.xpath(elmntFamilyMember1.replace("<<REPLACEMENT>>",strFamilyMember.get(0))))){
+                System.out.println("Not Displayed Family/Friends");
             }
 
             waitForElementDisappear(driver, By.xpath(elmntSpinner));

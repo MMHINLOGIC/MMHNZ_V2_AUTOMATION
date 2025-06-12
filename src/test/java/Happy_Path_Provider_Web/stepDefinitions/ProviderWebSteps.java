@@ -251,7 +251,7 @@ public class ProviderWebSteps {
     @Given("As a Provider I am on HomePage and navigate to Repeat Script Settings in {string}")
     public void AsAProviderIAmOnHomePageAndNavigateToRepeatScriptSettingsIn(String strName) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            System.out.println("Entre");
+
         Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
         Assert.assertTrue(providerPageContainer.providerHomePage.clickSecureMessaging());
         Assert.assertTrue(providerPageContainer.providerHomePage.navigateToRepeatScriptSettings(strName));
@@ -2048,5 +2048,12 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.appointmentsPage.ProviderEnabledAccidentInjuryOption());
         Assert.assertTrue(providerPageContainer.preScreeningPage.clickSaveButton());
 
+    }
+
+    @Given("As a Provider I am on HomePage navigate to Video Consultations Setting page")
+    public void asAProviderIAmOnHomePageNavigateToVideoConsultationsSettingPage() {
+        Assert.assertTrue(providerPageContainer.providerHomePage.navigateToProviderHomepage());
+        Assert.assertTrue(providerPageContainer.providerHomePage.clickSecureMessaging());
+        Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickVideoConsultatonsSettingPage());
     }
 }

@@ -116,7 +116,7 @@ public class RecallSettingPage extends BasePage {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmtSecureMessaging);
       waitForElement(elmtSecureMessaging);
-            waitForElementClickable(elmtSecureMessaging);
+//            waitForElementClickable(elmtSecureMessaging);
             jsClick(elmtSecureMessaging);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmtRepeatScriptSettings);

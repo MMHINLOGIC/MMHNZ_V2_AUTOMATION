@@ -931,9 +931,9 @@ public class HomePage extends BasePage {
     public boolean VisitGmail(String data) {
         boolean isverified = false;
         try {
-            ((JavascriptExecutor) driver).executeScript("window.open()");
-            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(tabs.get(1));
+//            ((JavascriptExecutor) driver).executeScript("window.open()");
+//            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+//            driver.switchTo().window(tabs.get(1));
             focusWindow(3);
             visit(TestDataUtil.getValue(data));
             isverified = true;
@@ -1080,18 +1080,18 @@ public class HomePage extends BasePage {
     public void visit() {
         int WindowsCount = driver.getWindowHandles().size();
         System.out.println("===============>WindowsCount::" + WindowsCount);
-        if (WindowsCount == 2) {
-            focusWindow(1);
-            if (verifyElement(txtPatientWelcomePage)) {
-                driver.manage().deleteAllCookies();
-                System.out.println("User here in Provider home page");
-            } else {
-//                System.out.println("Else Part ::::::Window Count 2");
-                driver.manage().deleteAllCookies();
-                visit(TestDataUtil.getValue("&URL&"));
-
-            }
-        }
+//        if (WindowsCount == 2) {
+//            focusWindow(1);
+//            if (verifyElement(txtPatientWelcomePage)) {
+//                driver.manage().deleteAllCookies();
+//                System.out.println("User here in Provider home page");
+//            } else {
+////                System.out.println("Else Part ::::::Window Count 2");
+//                driver.manage().deleteAllCookies();
+//                visit(TestDataUtil.getValue("&URL&"));
+//
+//            }
+//        }
         if (WindowsCount == 1) {
             waitForSeconds(5);
             focusWindow(1);
@@ -2057,9 +2057,9 @@ public class HomePage extends BasePage {
                     }
                 }
                 if (WindowsCount == 1) {
-                    ((JavascriptExecutor) driver).executeScript("window.open()");
-                    ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-                    driver.switchTo().window(tabs.get(1));
+//                    ((JavascriptExecutor) driver).executeScript("window.open()");
+//                    ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+//                    driver.switchTo().window(tabs.get(1));
                     visit(TestDataUtil.getValue("&URL&"));
                     waitForSeconds(4);
                     waitForElementClickable(elmntSignIn);
@@ -2079,9 +2079,9 @@ public class HomePage extends BasePage {
                     visit(TestDataUtil.getValue("&URL&"));
                 }
                 if (WindowsCount == 1) {
-                    ((JavascriptExecutor) driver).executeScript("window.open()");
-                    ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-                    driver.switchTo().window(tabs.get(1));
+//                    ((JavascriptExecutor) driver).executeScript("window.open()");
+//                    ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+//                    driver.switchTo().window(tabs.get(1));
                     visit(TestDataUtil.getValue("&URL&"));
                     waitForSeconds(4);
                     waitForElementClickable(elmntMobileLogOut);

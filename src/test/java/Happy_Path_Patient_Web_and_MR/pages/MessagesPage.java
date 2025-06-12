@@ -396,6 +396,12 @@ public class MessagesPage extends BasePage {
             .append("')])[2]")
             .toString();
 
+    protected String receivedMessageGroupMessageSubject = new StringBuilder()
+            .append("(//div[contains(text(),'")
+            .append("<<REPLACEMENT>>")
+            .append("')])[1]")
+            .toString();
+
     protected String receivedBodyMessage = new StringBuilder()
             .append("(//p[contains(text(),'")
             .append("<<REPLACEMENT>>")
@@ -1282,8 +1288,8 @@ public class MessagesPage extends BasePage {
             takeScreenshot(driver);
             waitForElementClickable(inboxSubject);
             jsClick(inboxSubject);
-            System.out.println("X Path-inboxMessageSubject >>> :: " + receivedMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strSubjectMessage)));
-            WebElement inboxReceivedSubject = waitForElement(By.xpath(receivedMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strSubjectMessage))));
+            System.out.println("X Path-inboxMessageSubject >>> :: " + receivedMessageGroupMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strSubjectMessage)));
+            WebElement inboxReceivedSubject = waitForElement(By.xpath(receivedMessageGroupMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strSubjectMessage))));
             waitForElement(inboxReceivedSubject);
             System.out.println("X Path-inboxMessageSubject >>> :: " + receivedBodyMessage.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strBody)));
             WebElement bodyMessage = waitForElement(By.xpath(receivedBodyMessage.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strBody))));
@@ -3747,9 +3753,9 @@ public class MessagesPage extends BasePage {
     public boolean launchingNewTab(String URL) {
         boolean blResult = false;
         try {
-            ((JavascriptExecutor) driver).executeScript("window.open()");
-            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(tabs.get(1));
+//            ((JavascriptExecutor) driver).executeScript("window.open()");
+//            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+//            driver.switchTo().window(tabs.get(1));
             visit(URL);
             waitForSeconds(3);
             blResult = true;

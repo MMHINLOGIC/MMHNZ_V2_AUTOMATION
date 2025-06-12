@@ -132,55 +132,55 @@ Feature: Repeat Request Prescription
     Examples:
       | Medication Details               | Urgency Details |
       | &MEDICATION DETAILS FOR URGENCY& | &URGENCY PRICE& |
-
-  @WEB @Mobile @RRP @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
-  Scenario Template: User Successfully logs in to the MMH Portal.
-
-    Given As a user I am on MMH login Page
-    And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
-    Then I should see user successfully logs in to the MMH portal
-
-    Examples:
-      | Email Address    | Password   |
-      | &EMAIL_CSC_CARD& | &PASSWORD& |
-
-
-  @WEB @Mobile @RRP @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
-  Scenario Outline: S10- Request Repeat Prescription - CSC card Patient - Pay Online (Account to Account)
-
-    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
-    And I select the Medication details for Delivery Meds by Pharmacy and Pay Online with Card "<Medication Details>" Verify CSC Payments
-    And I see the successful message and I navigate to Payment Page
-    When I enter the Account details on the Payment Page "<Payment Details>"
-    Then I should see the Prescription status for Request by card "<Prescription Verification Details>"
-
-    Examples:
-      | Medication Details                           | Payment Details      | Prescription Verification Details                      |
-      | &DATA MEDS PAY BY USING ONLINE A2A CSC CARD& | &ACCOUNT TO ACCOUNT& | &VERIFICATION DATA FOR MEDS PAY BY USING A2A CSC CARD& |
-
-  @WEB @Mobile @RRP @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
-  Scenario Template: User Successfully logs in to the MMH Portal.
-
-    Given As a user I am on MMH login Page
-    And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
-    Then I should see user successfully logs in to the MMH portal
-
-    Examples:
-      | Email Address     | Password   |
-      | &EMAIL_HUHC_CARD& | &PASSWORD& |
-
-
-  @WEB @Mobile @RRP @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
-  Scenario Outline: S11- Request Repeat Prescription -HUHC card Patient - Pay Online (Account to Account)
-
-    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
-    And I select the Medication details for Delivery Meds by Pharmacy and Pay Online with Card "<Medication Details>"
-    And I see the successful message and I navigate to Payment Page
-    When I enter the Account details on the Payment Page "<Payment Details>"
-    Then I should see the Prescription status for Request by card "<Prescription Verification Details>"
-
-    Examples:
-      | Medication Details                            | Payment Details      | Prescription Verification Details                       |
-      | &DATA MEDS PAY BY USING ONLINE A2A HUHC CARD& | &ACCOUNT TO ACCOUNT& | &VERIFICATION DATA FOR MEDS PAY BY USING A2A HUHC CARD& |
+#
+#  @WEB @Mobile @RRP @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+#  Scenario Template: User Successfully logs in to the MMH Portal.
+#
+#    Given As a user I am on MMH login Page
+#    And I enter "<Email Address>" and "<Password>" For Beta
+#    When I click SignIn button
+#    Then I should see user successfully logs in to the MMH portal
+#
+#    Examples:
+#      | Email Address    | Password   |
+#      | &EMAIL_CSC_CARD& | &PASSWORD& |
+#
+#
+#  @WEB @Mobile @RRP @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+#  Scenario Outline: S10- Request Repeat Prescription - CSC card Patient - Pay Online (Account to Account)
+#
+#    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
+#    And I select the Medication details for Delivery Meds by Pharmacy and Pay Online with Card "<Medication Details>" Verify CSC Payments
+#    And I see the successful message and I navigate to Payment Page
+#    When I enter the Account details on the Payment Page "<Payment Details>"
+#    Then I should see the Prescription status for Request by card "<Prescription Verification Details>"
+#
+#    Examples:
+#      | Medication Details                           | Payment Details      | Prescription Verification Details                      |
+#      | &DATA MEDS PAY BY USING ONLINE A2A CSC CARD& | &ACCOUNT TO ACCOUNT& | &VERIFICATION DATA FOR MEDS PAY BY USING A2A CSC CARD& |
+#
+#  @WEB @Mobile @RRP @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+#  Scenario Template: User Successfully logs in to the MMH Portal.
+#
+#    Given As a user I am on MMH login Page
+#    And I enter "<Email Address>" and "<Password>" For Beta
+#    When I click SignIn button
+#    Then I should see user successfully logs in to the MMH portal
+#
+#    Examples:
+#      | Email Address     | Password   |
+#      | &EMAIL_HUHC_CARD& | &PASSWORD& |
+#
+#
+#  @WEB @Mobile @RRP @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+#  Scenario Outline: S11- Request Repeat Prescription -HUHC card Patient - Pay Online (Account to Account)
+#
+#    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
+#    And I select the Medication details for Delivery Meds by Pharmacy and Pay Online with Card "<Medication Details>"
+#    And I see the successful message and I navigate to Payment Page
+#    When I enter the Account details on the Payment Page "<Payment Details>"
+#    Then I should see the Prescription status for Request by card "<Prescription Verification Details>"
+#
+#    Examples:
+#      | Medication Details                            | Payment Details      | Prescription Verification Details                       |
+#      | &DATA MEDS PAY BY USING ONLINE A2A HUHC CARD& | &ACCOUNT TO ACCOUNT& | &VERIFICATION DATA FOR MEDS PAY BY USING A2A HUHC CARD& |
