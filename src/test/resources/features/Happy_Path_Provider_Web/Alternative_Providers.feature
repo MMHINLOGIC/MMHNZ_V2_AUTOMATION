@@ -8,49 +8,49 @@ Feature: Appointment Reminder Setting Page
 #    When As a user I am on Patient Portal login Page
 #    And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
 #    Then I click SignIn button then I should see user successfully logs in to the MMH portal
-
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SCRIPT1
-  Scenario Template: Prep- Canceling all the appointments
-
-    Given As a user I am on HomePage
-    And I navigate to the "<Appointment>" Future Appointments page
-    And I canceling all the available appointments
-
-    Examples:
-      | Appointment           |
-      | Upcoming Appointments |
-
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SCRIPT1
-  Scenario Template:S1- Enable Alternative Providers
-
-    Given As a Provider I am on HomePage and navigate to Alternative Provider page
-    And I click Edit button Enable alternative provider details page and verify changed saved successfully Popup "<Location>"
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    When I navigate to Book Appointment select any provider with any Location
-    And Verify Alternative Provider option displayed "<Appointment_Details>"
-
-    Examples:
-      | Location   | Appointment_Details      |
-      | &LOCATION& | &BOOK_VISIT_APPOINTMENT& |
-
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SCRIPT1
-  Scenario Template:S2- Disable Alternative Providers
-
-    Given As a Provider I am on HomePage and navigate to Alternative Provider page
-    And I click Edit button Disable alternative provider details page and verify changed saved successfully Popup "<Location>"
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    When I navigate to Book Appointment select any provider with any Location
-    And Verify Alternative Provider option Not displayed "<Appointment_Details>"
-
-    Examples:
-      | Location   | Appointment_Details      |
-      | &LOCATION& | &BOOK_VISIT_APPOINTMENT& |
+#
+#  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SCRIPT1
+#  Scenario Template: Prep- Canceling all the appointments
+#
+#    Given As a user I am on HomePage
+#    And I navigate to the "<Appointment>" Future Appointments page
+#    And I canceling all the available appointments
+#
+#    Examples:
+#      | Appointment           |
+#      | Upcoming Appointments |
+#
+#  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SCRIPT1
+#  Scenario Template:S1- Enable Alternative Providers
+#
+#    Given As a Provider I am on HomePage and navigate to Alternative Provider page
+#    And I click Edit button Enable alternative provider details page and verify changed saved successfully Popup "<Location>"
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    When I navigate to Book Appointment select any provider with any Location
+#    And Verify Alternative Provider option displayed "<Appointment_Details>"
+#
+#    Examples:
+#      | Location   | Appointment_Details      |
+#      | &LOCATION& | &BOOK_VISIT_APPOINTMENT& |
+#
+#  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SCRIPT1
+#  Scenario Template:S2- Disable Alternative Providers
+#
+#    Given As a Provider I am on HomePage and navigate to Alternative Provider page
+#    And I click Edit button Disable alternative provider details page and verify changed saved successfully Popup "<Location>"
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    When I navigate to Book Appointment select any provider with any Location
+#    And Verify Alternative Provider option Not displayed "<Appointment_Details>"
+#
+#    Examples:
+#      | Location   | Appointment_Details      |
+#      | &LOCATION& | &BOOK_VISIT_APPOINTMENT& |
 
     #################################################################################################################################################################
 
 
 
-  @WEB @ALTERNATIVE_PROVIDER1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @ALTERNATIVE_PROVIDER @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -63,7 +63,7 @@ Feature: Appointment Reminder Setting Page
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SINGLE_SCREEN
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -74,7 +74,7 @@ Feature: Appointment Reminder Setting Page
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @ALTERNATIVE_PROVIDER1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @ALTERNATIVE_PROVIDER @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -85,7 +85,7 @@ Feature: Appointment Reminder Setting Page
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SINGLE_SCREEN
   Scenario Template:S1- Enable Alternative Providers
 
     Given As a Provider I am on HomePage and navigate to Alternative Provider page
@@ -96,7 +96,7 @@ Feature: Appointment Reminder Setting Page
       | Location   |
       | &LOCATION& |
 
-  @WEB @ALTERNATIVE_PROVIDER1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @ALTERNATIVE_PROVIDER @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -108,7 +108,7 @@ Feature: Appointment Reminder Setting Page
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SINGLE_SCREEN
   Scenario Template:S1- Enable Alternative Providers
 
     And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
@@ -119,7 +119,7 @@ Feature: Appointment Reminder Setting Page
       | Appointment_Details      |
       | &BOOK_VISIT_APPOINTMENT& |
 
-  @WEB @ALTERNATIVE_PROVIDER1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @ALTERNATIVE_PROVIDER @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -130,7 +130,7 @@ Feature: Appointment Reminder Setting Page
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SINGLE_SCREEN
   Scenario Template:S2- Disable Alternative Providers
 
     Given As a Provider I am on HomePage and navigate to Alternative Provider page
@@ -140,7 +140,7 @@ Feature: Appointment Reminder Setting Page
       | Location   |
       | &LOCATION& |
 
-  @WEB @ALTERNATIVE_PROVIDER1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @ALTERNATIVE_PROVIDER @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -153,7 +153,7 @@ Feature: Appointment Reminder Setting Page
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @ALTERNATIVE_PROVIDER @PROVIDER_SINGLE_SCREEN
   Scenario Template:S2- Disable Alternative Providers
 
     And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments

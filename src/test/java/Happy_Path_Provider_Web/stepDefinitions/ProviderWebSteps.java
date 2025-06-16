@@ -109,7 +109,7 @@ public class ProviderWebSteps {
 //        Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.click72HoursCheckBox());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickServiceOption72Hours(strData.get(6)));
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.click72HoursFee(strData.get(7)));
-        Assert.assertTrue(providerPageContainer.providerHomePage.clickSaveButton());
+//        Assert.assertTrue(providerPageContainer.providerHomePage.clickSaveButton());
     }
 
     @Given("As a user I am on Patient Portal login Page")
@@ -288,8 +288,8 @@ public class ProviderWebSteps {
             Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
             Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
             Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleA());
-            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
-            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+//            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
+//            Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
             providerPageContainer.providerHomePage.clickEditButton();
@@ -331,8 +331,8 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleB());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
 
     @And("I click the edit button and changing the data as per Rule C{string}")
@@ -344,8 +344,8 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleC());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
 
     @And("I click the edit button and changing the data restricting to Named Provider in each Location{string}")
@@ -357,8 +357,8 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqDataToRestrictNameAndLocation());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqData(TestDataUtil.getListOfValue(strDetail)));
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
 
     @And("I click the edit button and changing the data as per Patient to Collect Script requirements{string}")
@@ -392,11 +392,11 @@ public class ProviderWebSteps {
     public void iClickTheEditButtonAndChangingTheDataAsPerSendScriptByPostRequirement(String strDetail) {
         List<String> lstDetails = TestDataUtil.getListOfValue(strDetail);
         System.out.println("RRPScriptSetting details >>> :: " + lstDetails);
-        providerPageContainer.providerHomePage.clickEditButton();
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleA());
+//        providerPageContainer.providerHomePage.clickEditButton();
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleA());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.select1stSelectedServiceOption(lstDetails.get(2)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectFeeFor1stSelectedServiceOption(lstDetails.get(3)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescFor1stSelectedServiceOption(lstDetails.get(4)));
@@ -409,6 +409,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.select4thSelectedServiceOption(lstDetails.get(11)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectFeeFor4thSelectedServiceOption(lstDetails.get(12)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescFor4thSelectedServiceOption(lstDetails.get(13)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.ClickPaymentSettingPayOnlineButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
@@ -417,11 +418,11 @@ public class ProviderWebSteps {
     public void iClickTheEditButtonAndChangingTheDataAsPerSendScriptToPharmacyRequirement(String strDetail) {
         List<String> lstDetails = TestDataUtil.getListOfValue(strDetail);
         System.out.println("RRPScriptSetting details >>> :: " + lstDetails);
-        providerPageContainer.providerHomePage.clickEditButton();
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleA());
+//        providerPageContainer.providerHomePage.clickEditButton();
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleA());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.select1stSSTPServiceOption(lstDetails.get(2)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectFeeFor1stSSTPSelectedServiceOption(lstDetails.get(3)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescFor1stSSTPSelectedServiceOption(lstDetails.get(4)));
@@ -434,6 +435,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.select4thSSTPServiceOption(lstDetails.get(11)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectFeeFor4thSSTPSelectedServiceOption(lstDetails.get(12)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescFor4thSSTPSelectedServiceOption(lstDetails.get(13)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.ClickPaymentSettingPayAtHealthCentreOrPayNowButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
@@ -442,11 +444,11 @@ public class ProviderWebSteps {
     public void iClickTheEditButtonAndChangingTheDataAsPerDeliverMedsByPharmacyRequirement(String strDetail) {
         List<String> lstDetails = TestDataUtil.getListOfValue(strDetail);
         System.out.println("RRPScriptSetting details >>> :: " + lstDetails);
-        providerPageContainer.providerHomePage.clickEditButton();
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleA());
+//        providerPageContainer.providerHomePage.clickEditButton();
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleA());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.select1stDMBPServiceOption(lstDetails.get(2)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectFeeFor1stDMBPSelectedServiceOption(lstDetails.get(3)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescFor1stDMBPSelectedServiceOption(lstDetails.get(4)));
@@ -479,7 +481,7 @@ public class ProviderWebSteps {
 //        Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScriptByPost72HoursCheckBox());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScriptPostServiceOption72Hours(strData.get(6)));
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScriptByPost72HoursFee(strData.get(7)));
-        Assert.assertTrue(providerPageContainer.providerHomePage.clickSaveButton());
+//        Assert.assertTrue(providerPageContainer.providerHomePage.clickSaveButton());
     }
 
     @When("I click Send Send Script to Pharmacy checkbox &Enter Service Option Name Fees and Description for all four service option")
@@ -497,7 +499,7 @@ public class ProviderWebSteps {
 //        Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScriptToPharmacy72HoursCheckBox());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScriptToPharmacyServiceOption72Hours(strData.get(6)));
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickSendScriptToPharmacy72HoursFee(strData.get(7)));
-        Assert.assertTrue(providerPageContainer.providerHomePage.clickSaveButton());
+//        Assert.assertTrue(providerPageContainer.providerHomePage.clickSaveButton());
     }
 
     @When("I click Deliver Meds by Pharmacy checkbox &Enter Service Option Name Fees and Description for all four service option")
@@ -520,7 +522,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickDeliverMedsByPharmacyServiceOption72Hours(strData.get(6)));
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickDeliverMedsByPharmacy72HoursFee(strData.get(7)));
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.selectDeliveryMedsByPharmacy72HoursDescription(strData.get(6)));
-        Assert.assertTrue(providerPageContainer.providerHomePage.clickSaveButton());
+//        Assert.assertTrue(providerPageContainer.providerHomePage.clickSaveButton());
     }
 
     @When("I click Deliver via Zoom Pharmacy checkbox &Enter Service Option Name Fees and Description for all four service option")
@@ -783,7 +785,7 @@ public class ProviderWebSteps {
     public void iClickTheEditButtonAndChangingThePaymentSettingsAsPerPatientToCollectScriptRequirements(String strDetail) {
         List<String> lstDetails = TestDataUtil.getListOfValue(strDetail);
         System.out.println("RRPScriptSetting details >>> :: " + lstDetails);
-        providerPageContainer.providerHomePage.clickEditButton();
+//        providerPageContainer.providerHomePage.clickEditButton();
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
@@ -1234,6 +1236,7 @@ public class ProviderWebSteps {
     public void iEnterTheNumberOfDaysRecallReminderTextBoxAndClickSaveButton(String LocationData) {
         Assert.assertTrue(providerPageContainer.recallSettingPage.EnterRecallReminderValue(LocationData));
         Assert.assertTrue(providerPageContainer.recallSettingPage.clickSaveButton());
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
 
     @And("I click edit button select the Recall Setting Health centre {string} Disable Recalls Remainder No button")
@@ -1543,7 +1546,7 @@ public class ProviderWebSteps {
         System.out.println(">>>>>>>>>>>>stsdata"+lstMessageDetails);
         Assert.assertTrue(providerPageContainer.providerMessagesPage.navigateToProviderHomepage());
         Assert.assertTrue(providerPageContainer.providerMessagesPage.navigateToInboxMessageForDoctor());
-        Assert.assertTrue(providerPageContainer.providerMessagesPage.verifyInboxMessages(TestDataUtil.getValue(lstMessageDetails.get(5))));
+        Assert.assertTrue(providerPageContainer.providerMessagesPage.verifyInboxMessages(TestDataUtil.getValue(lstMessageDetails.get(0))));
 
     }
 

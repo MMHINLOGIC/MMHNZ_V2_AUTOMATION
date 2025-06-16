@@ -9,121 +9,121 @@ Feature: Appointment Reminder Setting Page
 #    And I enter "&PATIENT_USER_LOGIN&" and "&PASSWORD&" For Beta
 #    Then I click SignIn button then I should see user successfully logs in to the MMH portal
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
-  Scenario Template: Prep- Canceling all the appointments
-
-    Given As a user I am on HomePage
-    And I navigate to the "<Appointment>" Future Appointments page
-    And I canceling all the available appointments
-
-    Examples:
-      | Appointment           |
-      | Upcoming Appointments |
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
-  Scenario Template:S1- Set First Appointment Remainder without Remainder Time
-
-    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
-    And I click on the edit button then i Enable First Appointment Remainder checkbox and hours "<Appointment_Reminder_Details>"
-    When I click the save Button then verify the Success message Popup should be displayed
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
-    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I should see booked appointment displayed under the future tab "<Appointment_Summary>"
-    And As a user I am on Patient Portal login Page and I enter "<Patient_User_Login>" and "<Password>" For Beta I should see user successfully logs in to the MMH portal
-    And I navigate to the "<Appointment>" Future Appointments page click cancel button for the created appointment "<Appointment_Cancel_Button>"
-    Examples:
-      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Patient_User_Login   | Password   | Appointment           | Appointment_Cancel_Button        | Appointment_Summary         |
-      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &PATIENT_USER_LOGIN& | &PASSWORD& | Upcoming Appointments | &APPOINTMENT_DETAILS_FOR_CANCEL& | &VISIT_APPOINTMENT_SUMMARY& |
-
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
-  Scenario Template:S2- Set First Appointment Remainder with Remainder Time
-
-    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
-    And I click on the edit button then i Enable First Appointment Remainder checkbox and Days "<Appointment_Reminder_Details>"
-    When I click the save Button then verify the Success message Popup should be displayed
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
-    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
-
-    Examples:
-      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
-      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
-  Scenario Template:S3- Set First & Second Appointment Remainder without Remainder Time
-
-    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
-    And I click on the edit button then i Enable First and Second Appointment Remainder checkbox and hours "<Appointment_Reminder_Details>"
-    When I click the save Button then verify the Success message Popup should be displayed
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
-    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
-
-    Examples:
-      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
-      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
-  Scenario Template: Prep- Canceling all the appointments
-
-    Given As a user I am on HomePage
-    And I navigate to the "<Appointment>" Future Appointments page
-    And I canceling all the available appointments
-
-    Examples:
-      | Appointment           |
-      | Upcoming Appointments |
-
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
-  Scenario Template:S4- Set First & Second Appointment Remainder with Remainder Time
-
-    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
-    And I click on the edit button then i Enable First and Second Appointment Remainder checkbox and Days "<Appointment_Reminder_Details>"
-    When I click the save Button then verify the Success message Popup should be displayed
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
-    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
-
-    Examples:
-      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
-      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
-
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
-  Scenario Template:S5- Set First Appointment Remainder and set Remainder Time then I Enable Skip weekends
-
-    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
-    And I click on the edit button then i Enable First Appointment Remainder Enable Skip weekends "<Appointment_Reminder_Details>"
-    When I click the save Button then verify the Success message Popup should be displayed
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
-    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
-
-    Examples:
-      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
-      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
-
-
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
-  Scenario Template:S6- Set First Appointment Remainder and set Remainder Time then I Disable Skip weekends
-
-    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
-    And I click on the edit button then i Enable First Appointment Remainder Disable Skip weekends "<Appointment_Reminder_Details>"
-    When I click the save Button then verify the Success message Popup should be displayed
-    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
-    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
-    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
-
-    Examples:
-      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
-      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
+#  Scenario Template: Prep- Canceling all the appointments
+#
+#    Given As a user I am on HomePage
+#    And I navigate to the "<Appointment>" Future Appointments page
+#    And I canceling all the available appointments
+#
+#    Examples:
+#      | Appointment           |
+#      | Upcoming Appointments |
+#
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
+#  Scenario Template:S1- Set First Appointment Remainder without Remainder Time
+#
+#    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
+#    And I click on the edit button then i Enable First Appointment Remainder checkbox and hours "<Appointment_Reminder_Details>"
+#    When I click the save Button then verify the Success message Popup should be displayed
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
+#    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I should see booked appointment displayed under the future tab "<Appointment_Summary>"
+#    And As a user I am on Patient Portal login Page and I enter "<Patient_User_Login>" and "<Password>" For Beta I should see user successfully logs in to the MMH portal
+#    And I navigate to the "<Appointment>" Future Appointments page click cancel button for the created appointment "<Appointment_Cancel_Button>"
+#    Examples:
+#      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Patient_User_Login   | Password   | Appointment           | Appointment_Cancel_Button        | Appointment_Summary         |
+#      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &PATIENT_USER_LOGIN& | &PASSWORD& | Upcoming Appointments | &APPOINTMENT_DETAILS_FOR_CANCEL& | &VISIT_APPOINTMENT_SUMMARY& |
+#
+#
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
+#  Scenario Template:S2- Set First Appointment Remainder with Remainder Time
+#
+#    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
+#    And I click on the edit button then i Enable First Appointment Remainder checkbox and Days "<Appointment_Reminder_Details>"
+#    When I click the save Button then verify the Success message Popup should be displayed
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
+#    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
+#
+#    Examples:
+#      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
+#      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
+#
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
+#  Scenario Template:S3- Set First & Second Appointment Remainder without Remainder Time
+#
+#    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
+#    And I click on the edit button then i Enable First and Second Appointment Remainder checkbox and hours "<Appointment_Reminder_Details>"
+#    When I click the save Button then verify the Success message Popup should be displayed
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
+#    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
+#
+#    Examples:
+#      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
+#      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
+#
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
+#  Scenario Template: Prep- Canceling all the appointments
+#
+#    Given As a user I am on HomePage
+#    And I navigate to the "<Appointment>" Future Appointments page
+#    And I canceling all the available appointments
+#
+#    Examples:
+#      | Appointment           |
+#      | Upcoming Appointments |
+#
+#
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
+#  Scenario Template:S4- Set First & Second Appointment Remainder with Remainder Time
+#
+#    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
+#    And I click on the edit button then i Enable First and Second Appointment Remainder checkbox and Days "<Appointment_Reminder_Details>"
+#    When I click the save Button then verify the Success message Popup should be displayed
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
+#    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
+#
+#    Examples:
+#      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
+#      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
+#
+#
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
+#  Scenario Template:S5- Set First Appointment Remainder and set Remainder Time then I Enable Skip weekends
+#
+#    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
+#    And I click on the edit button then i Enable First Appointment Remainder Enable Skip weekends "<Appointment_Reminder_Details>"
+#    When I click the save Button then verify the Success message Popup should be displayed
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
+#    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
+#
+#    Examples:
+#      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
+#      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
+#
+#
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SCRIPT1
+#  Scenario Template:S6- Set First Appointment Remainder and set Remainder Time then I Disable Skip weekends
+#
+#    Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
+#    And I click on the edit button then i Enable First Appointment Remainder Disable Skip weekends "<Appointment_Reminder_Details>"
+#    When I click the save Button then verify the Success message Popup should be displayed
+#    And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
+#    And I navigate to Book Appointment Page Enter the Visit Appointments Details "<Appointment_Details>"
+#    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I verify booked appointment displayed under the future tab "<Appointment_Summary>"
+#
+#    Examples:
+#      | Appointment_Reminder_Details | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
+#      | &APPOINTMENT_REMINDER_DATA&  | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
 
 
     #####################################################################################################################################################################################################################
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -135,7 +135,7 @@ Feature: Appointment Reminder Setting Page
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1  @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING  @PROVIDER_SINGLE_SCREEN
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage
@@ -146,7 +146,7 @@ Feature: Appointment Reminder Setting Page
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -157,7 +157,7 @@ Feature: Appointment Reminder Setting Page
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S1- Set First & Second Appointment Remainder without Remainder Time
 
     Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
@@ -169,7 +169,7 @@ Feature: Appointment Reminder Setting Page
       | Appointment_Reminder_Details |
       | &APPOINTMENT_REMINDER_DATA&  |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -181,7 +181,7 @@ Feature: Appointment Reminder Setting Page
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1  @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING  @PROVIDER_SINGLE_SCREEN
   Scenario Template:S1- Set First & Second Appointment Remainder without Remainder Time
 
 
@@ -193,7 +193,7 @@ Feature: Appointment Reminder Setting Page
       | Appointment_Details      | Details_For_Appointment     | Future_Date   | Appointment_Summary         |
       | &BOOK_VISIT_APPOINTMENT& | &VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &VISIT_APPOINTMENT_SUMMARY& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -205,7 +205,7 @@ Feature: Appointment Reminder Setting Page
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1  @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING  @PROVIDER_SINGLE_SCREEN
   Scenario Template:S2- Set First Appointment Remainder and set Remainder Time then I Enable Skip weekends
 
     Given As a Provider I am on HomePage and navigate to Appointment Reminder Setting page
@@ -217,7 +217,7 @@ Feature: Appointment Reminder Setting Page
       | Appointment_Reminder_Details |
       | &APPOINTMENT_REMINDER_DATA&  |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -230,7 +230,7 @@ Feature: Appointment Reminder Setting Page
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING1  @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_REMINDER_SETTING  @PROVIDER_SINGLE_SCREEN
   Scenario Template:S2- Set First Appointment Remainder and set Remainder Time then I Enable Skip weekends
 
 

@@ -1130,7 +1130,7 @@ public class RepeatPrescription extends BasePage {
             waitForElement(VerifyInformation);
             verifyElement(VerifyInformation);
 
-            waitForElement(VerifyInformationText);
+//            waitForElement(VerifyInformationText);
             verifyElement(VerifyInformationText);
 
             waitForElement(clickYesButton);
@@ -1195,7 +1195,7 @@ public class RepeatPrescription extends BasePage {
             waitForElement(VerifyInformation);
             verifyElement(VerifyInformation);
 
-            waitForElement(VerifyInformationText);
+//            waitForElement(VerifyInformationText);
             verifyElement(VerifyInformationText);
 
             waitForElement(clickYesButton);
@@ -2837,6 +2837,7 @@ public class RepeatPrescription extends BasePage {
         boolean btnSavedList = false;
         boolean btnSavedAddress = false;
         try {
+            System.out.println("savedListAddress :: "+savedListAddress);
             waitForElementClickable(optionSavedList);
             click(optionSavedList);
             waitForSeconds(2);
@@ -2844,8 +2845,11 @@ public class RepeatPrescription extends BasePage {
             btnSavedList = verifyElement(drpdownSelectPharmacy);
             waitForElementClickable(drpdwnSelectPharmacy);
             click(drpdwnSelectPharmacy);
-//            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
-            click(SendScripttoPharmacydrpOptionZoomAddress);
+            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
+
+            WebElement currentScriptDetails = waitForElement(By.xpath(ddLocation.replace("<<REPLACEMENT>>", savedListAddress)));
+            click(currentScriptDetails);
+//            click(SendScripttoPharmacydrpOptionZoomAddress);
             waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
             waitForElement(addressBoxValue);
             String currentAddress = addressBoxValue.getText();
@@ -2954,8 +2958,8 @@ public class RepeatPrescription extends BasePage {
         try {
             waitForElementClickable(checkBoxTermsAndConditions);
             click(checkBoxTermsAndConditions);
-            waitForElementClickable(BtnPayAtHealthCentre);
-            click(BtnPayAtHealthCentre);
+//            waitForElementClickable(BtnPayAtHealthCentre);
+//            click(BtnPayAtHealthCentre);
 //            waitForElement(popUpContent);
             blPaymentVerify = true;
         } catch (Exception e) {
@@ -2968,10 +2972,10 @@ public class RepeatPrescription extends BasePage {
     public boolean selectPayNowButton() {
         boolean blPaymentVerify = false;
         try {
-            waitForElementClickable(checkBoxTermsAndConditions);
-            click(checkBoxTermsAndConditions);
-            waitForElementClickable(btnPayNow);
-            click(btnPayNow);
+//            waitForElementClickable(checkBoxTermsAndConditions);
+//            click(checkBoxTermsAndConditions);
+//            waitForElementClickable(btnPayNow);
+//            click(btnPayNow);
             verifyElement(txtPayment);
             waitForElementClickable(btnPaymentOk);
             jsClick(btnPaymentOk);

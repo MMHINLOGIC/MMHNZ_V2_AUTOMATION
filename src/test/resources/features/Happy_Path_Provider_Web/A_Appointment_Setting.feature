@@ -370,7 +370,7 @@ Feature: Appointment Setting
 
 #  New Test
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -393,7 +393,7 @@ Feature: Appointment Setting
       | Appointment           |
       | Upcoming Appointments |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -405,7 +405,7 @@ Feature: Appointment Setting
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S2-Provider Enable Rule B verify Patient Book Phone Appointment based on Rule B (Default Location with Default Provider) & (Default Location with Any Provider)
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -422,7 +422,7 @@ Feature: Appointment Setting
       | Location   | Health_Centre                 | PRE_SCREENING_LOCATION | SET_MINIMUM_DATA               |
       | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &PRE_SCREENING&        | &APPOINTMENT_SET_MINIMUM_DATA& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -435,7 +435,7 @@ Feature: Appointment Setting
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S2- verify Patient Booked (Payment) Phone Appointment based on Rule B (Any Location with Any Provider) and Verify the Appointments Booking Status
 
     Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
@@ -453,7 +453,7 @@ Feature: Appointment Setting
 
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -464,7 +464,7 @@ Feature: Appointment Setting
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S1-Provider Enable Rule A verify Patient Booked (Payment) Visit Appointment based on Rule A (Any Location with Any Provider) and Verify the Appointments Booking Status
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -482,7 +482,7 @@ Feature: Appointment Setting
       | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &APPOINTMENT_SET_MINIMUM_DATA& | &PRE_SCREENING&        |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -494,7 +494,7 @@ Feature: Appointment Setting
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S1- verify Patient Booked (Payment) Visit Appointment based on Rule A (Any Location with Any Provider) and Verify the Appointments Booking Status
 
     Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
@@ -511,7 +511,7 @@ Feature: Appointment Setting
 
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -522,7 +522,7 @@ Feature: Appointment Setting
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S3-Provider Enable Rule C verify Patient Booked (Payment) Video (Book to Video ) Appointment based on Rule C (Any Location with Any Provider) and Verify the Appointments Booking Status
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -535,7 +535,7 @@ Feature: Appointment Setting
       | Location   |
       | &LOCATION& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -548,7 +548,7 @@ Feature: Appointment Setting
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S3- verify Patient Booked (Payment) Video (Book to Video ) Appointment based on Rule c (Any Location with Any Provider) and Verify the Appointments Booking Status
 
     Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
@@ -564,7 +564,7 @@ Feature: Appointment Setting
       | Automation_Practice_Loc1_Doctor_Name | Default_Location_with_Default_Provider_Video_Appointment_Details_Rule_c | Automation_Practice_Loc1_Doctor_Name | Appointment_Details      | Details_For_Appointment     | Future_Date   | Payment_Option   | Payment_Details | Card_Details_Verification  |
       | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VIDEO_APPOINTMENT_RULE_C&  | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &BOOK_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &PAYMENT_OPTION& | &CARD_DETAILS&  | &CARD_APPOINTMENT_DETAILS& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -575,7 +575,7 @@ Feature: Appointment Setting
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S4-Provider Enable Rule D verify Patient Booked (Payment) Video (Book to Video ) Appointment based on Rule D (Any Location with Any Provider) and Verify the Appointments Booking Status
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -588,7 +588,7 @@ Feature: Appointment Setting
       | Location   |
       | &LOCATION& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -600,7 +600,7 @@ Feature: Appointment Setting
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S4- verify Patient Booked (Payment) Video (Book to Video ) Appointment based on Rule D (Any Location with Any Provider) and Verify the Appointments Booking Status
 
     Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
@@ -617,7 +617,7 @@ Feature: Appointment Setting
       | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VIDEO_APPOINTMENT_RULE_C&  | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &BOOK_VIDEO_APPOINTMENT& | &VIDEO_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &PAYMENT_OPTION& | &PATIENT_USER_LOGIN& | &PASSWORD& | &VIDEO_APPOINTMENT_SUMMARY& | Upcoming Appointments | &AUTO_PRA_LOC1_APPOINTMENT_DETAILS_AFTER_CANCELLED& | &APPOINTMENT_DETAILS_AFTER_CANCELLED& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -628,7 +628,7 @@ Feature: Appointment Setting
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S5-Provider Enable Rule E verify Patient Book Visit Appointment based on Rule E Check Restricted provider are not displayed
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -638,7 +638,7 @@ Feature: Appointment Setting
       | Restrict_Provider_Details | Location   |
       | &RESTRICT_PROVIDER_DATA&  | &LOCATION& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -650,7 +650,7 @@ Feature: Appointment Setting
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S5-Provider Enable Rule E verify Patient Book Visit Appointment based on Rule E Check Restricted provider are not displayed
 
     And As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
@@ -664,7 +664,7 @@ Feature: Appointment Setting
       | Location   | Restrict_Provider_Details | Default_Location_with_Default_Provider_Appointment_Details             | Automation_Practice_Loc1_Doctor_Name |
       | &LOCATION& | &RESTRICT_PROVIDER_DATA&  | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VISIT_APPOINTMENT_RULE_C& | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -676,7 +676,7 @@ Feature: Appointment Setting
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S6-Provider Enable Rule E verify Patient Book Visit Appointment based on Rule E Check Not Restricted provider are displayed
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -686,7 +686,7 @@ Feature: Appointment Setting
       | Location   | Restrict_Provider_Details    |
       | &LOCATION& | &NON_RESTRICT_PROVIDER_DATA& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -698,7 +698,7 @@ Feature: Appointment Setting
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S6-Provider Enable Rule E verify Patient Book Visit Appointment based on Rule E Check Not Restricted provider are displayed
 
     Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
@@ -713,7 +713,7 @@ Feature: Appointment Setting
       | &LOCATION& | &NON_RESTRICT_PROVIDER_DATA& | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VISIT_APPOINTMENT_RULE_C& | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  |
 
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -724,7 +724,7 @@ Feature: Appointment Setting
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template:S1-Provider Enable Rule A verify Patient Booked (Payment) Visit Appointment based on Rule A (Any Location with Any Provider) and Verify the Appointments Booking Status
 
     Given As a Provider I am on HomePage and navigate to Appointment Setting page

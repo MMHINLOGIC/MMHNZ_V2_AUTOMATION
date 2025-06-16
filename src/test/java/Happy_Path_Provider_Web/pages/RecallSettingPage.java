@@ -87,6 +87,8 @@ public class RecallSettingPage extends BasePage {
                 waitForElement(elmtMMHLogo);
                 waitForElementClickable(elmtMMHLogo);
                 jsClick(elmtMMHLogo);
+                waitForSeconds(2);
+                driver.navigate().refresh();
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForElement(txtProviderPortalWelcomePage);
                 blResult = verifyElement(txtProviderPortalWelcomePage);
@@ -113,11 +115,12 @@ public class RecallSettingPage extends BasePage {
     public boolean clickSecureMessaging() {
         boolean blResult = false;
         try {
+            waitForSeconds(3);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmtSecureMessaging);
       waitForElement(elmtSecureMessaging);
 //            waitForElementClickable(elmtSecureMessaging);
-            jsClick(elmtSecureMessaging);
+            click(elmtSecureMessaging);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmtRepeatScriptSettings);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));

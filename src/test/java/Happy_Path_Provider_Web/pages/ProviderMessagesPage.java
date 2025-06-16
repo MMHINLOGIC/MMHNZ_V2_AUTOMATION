@@ -36,7 +36,7 @@ public class ProviderMessagesPage extends BasePage {
     protected WebElement drpDownOutOfOfficeSettings;
 
     protected String messageText = new StringBuilder()
-            .append("//body//p[contains(text(),'")
+            .append("//p[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')]")
             .toString();
@@ -137,12 +137,15 @@ public class ProviderMessagesPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//span[text()='COMPOSE MESSAGE']")
     protected WebElement elmntComposeDoctor;
+//
+//@FindAll({
+//        @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Settings')])[1]"),
+//        @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Settings')])[2]")
+//})
+//
+//    protected WebElement elmntDoctorMessageSetting;
 
-@FindAll({
-        @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Settings')])[1]"),
-        @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Settings')])[2]")
-})
-
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Settings')])[2]")
     protected WebElement elmntDoctorMessageSetting;
 
 
@@ -321,7 +324,7 @@ public class ProviderMessagesPage extends BasePage {
             System.out.println(elmntDoctorInboxSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage)));
             WebElement Subject = waitForElement(By.xpath(elmntDoctorInboxSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage))));
             waitForElement(Subject);
-            jsClick(Subject);
+            click(Subject);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult =true;
             System.out.println("Successfully verified sent Message");
@@ -484,7 +487,8 @@ public class ProviderMessagesPage extends BasePage {
             jsClick(elmntInboxDoctor);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
          waitForElement(elmntDoctorMessageSetting);
-            waitForElementClickable(elmntDoctorMessageSetting);
+//            waitForElementClickable(elmntDoctorMessageSetting);
+
             jsClick(elmntDoctorMessageSetting);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForElement(txtDoctorMessageSetting);
