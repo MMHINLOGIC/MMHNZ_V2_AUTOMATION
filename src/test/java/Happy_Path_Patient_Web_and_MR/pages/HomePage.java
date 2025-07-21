@@ -120,7 +120,7 @@ public class HomePage extends BasePage {
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Harry Harry!')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Peter')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto Autochrisc1')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'14')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Chrisc4')]")
 
     })
@@ -296,7 +296,7 @@ public class HomePage extends BasePage {
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[text()=' Christopher Michael!']"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Peter')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Auto Autochrisc1']"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Auto']"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'14')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Chrisc4']")
 
     })
@@ -1873,6 +1873,7 @@ public class HomePage extends BasePage {
 
     public boolean clickDashBoard() {
         boolean isVerified = false;
+        waitForSeconds(3);
         jsScrollIntoView(elmntDashboard);
         waitForElement(elmntDashboard);
         jsClick(elmntDashboard);

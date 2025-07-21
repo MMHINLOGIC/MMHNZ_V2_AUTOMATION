@@ -1154,10 +1154,10 @@ public class RepeatPrescription extends BasePage {
             waitForSeconds(4);
             click(btnMobilePayAtHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            System.out.println(" Successfully Selected Pay at Health centre Button >>>");
-            waitForElementToAppear(driver, By.xpath(emlntSuccessPopUp1));
-            waitForElement(emlntSuccessPopUp);
-            blResult = verifyElement(emlntSuccessPopUp);
+//            System.out.println(" Successfully Selected Pay at Health centre Button >>>");
+//            waitForElementToAppear(driver, By.xpath(emlntSuccessPopUp1));
+            waitForElement(VerifyInformation);
+            blResult = verifyElement(VerifyInformation);
 
         } catch (Exception e) {
             System.out.println("Failed to Select Pay at Health centre Button >>>");
@@ -1223,7 +1223,7 @@ public class RepeatPrescription extends BasePage {
             waitForSeconds(6);
             takeScreenshot(driver);
             System.out.println("Successfully clicked Pay now button >>>");
-            blResult = verifyElement(txtPayment);
+            blResult = verifyElement(VerifyInformation);
 
         } catch (Exception e) {
             System.out.println("Failed to clicked Pay now button >>>");

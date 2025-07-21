@@ -232,4 +232,18 @@ public class DateUtil {
             System.out.println("One year ago: " + formattedDate);
         }
     }
+
+    public static String getDayAfterThreeDays(String strFormat) {
+        DateFormat dateFormat = new SimpleDateFormat(strFormat);
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        //Current Date should be go on Next Month and Year
+        calendar.add(Calendar.DAY_OF_MONTH, +4);
+        String strNextMonthAndYear = Integer.toString(calendar.get(Calendar.DATE)); //To Convert Integer to String (Next Month and Year)
+        Date NextMonthAndYear = calendar.getTime();
+        strNextMonthAndYear = dateFormat.format(NextMonthAndYear);
+        System.out.println("strNextMonthAndYear  :: "+strNextMonthAndYear);
+        return strNextMonthAndYear;
+    }
 }

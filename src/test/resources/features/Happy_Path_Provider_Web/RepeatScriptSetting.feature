@@ -391,6 +391,25 @@ Feature: Repeat Script Setting
       | &SCRIPT_INSTRUCTIONS& | &SCRIPT_URGENCIES& | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION& | &PATIENT_REPEAT_SCRIPT_SETTINGS_DATA& |
 
 
+  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
+    Given As a user I am on MMH login Page
+    And I enter "<Email Address>" and "<Password>" For Beta
+    When I click SignIn button
+    Then I should see user successfully logs in to the MMH portal
+    Examples:
+      | Email Address      | Password   |
+      | &EMAIL FOR DOCTOR& | &PASSWORD& |
+
+  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  Scenario Outline: S2- RRP Script Settings - Enable Patient Under 14 Years  - Rule A
+    Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
+    And I click the edit button and changing the data as per Rule A"<Details>"
+    Then I click the edit button and changing the Patient Under Fourteen Years as per Patient to Collect Script requirements"<Patient_Script_Instructions>"
+
+    Examples:
+      | System_Menu            | Details                       | Patient_Script_Instructions |
+      | Repeat Script Settings | &REPEAT_SCRIPT_SETTINGS_DATA& | &PATIENT_TO_COLLECT_SCRIPT& |
 
 

@@ -463,6 +463,46 @@ public class RepeatScriptSettingPage extends BasePage {
             .append("')]").toString();
 
 
+    @FindBy(how = How.XPATH, using = "//b[.='Patient to Collect Script']/following::input[@placeholder='Urgent/Same day'][2]")
+    protected WebElement txtUnder14FirstServiceOption;
+
+    @FindBy(how = How.XPATH, using = "(//b[.='Patient to Collect Script']/following::input[@placeholder='Urgent/Same day'][1]/following::input[@placeholder='STD'][2])[2]")
+    protected WebElement txtUnder14FirstServiceOptionFeeSTD;
+
+
+    @FindBy(how = How.XPATH, using = "//b[.='Patient to Collect Script']/following::input[@placeholder='Urgent/Same day'][1]/following::textarea[2]")
+    protected WebElement txtUnder14FirstServiceOptionDescription;
+
+    @FindBy(how = How.XPATH, using = "//b[.='Patient to Collect Script']/following::input[@placeholder='Next Day'][2]")
+    protected WebElement txtUnder14SecondServiceOption;
+
+    @FindBy(how = How.XPATH, using = "(//b[.='Patient to Collect Script']/following::input[@placeholder='Next Day'][1]/following::input[@placeholder='STD'][2])[2]")
+    protected WebElement txtUnder14SecondServiceOptionFeeSTD;
+
+    @FindBy(how = How.XPATH, using = "//b[.='Patient to Collect Script']/following::input[@placeholder='Next Day'][1]/following::textarea[2]")
+    protected WebElement txtUnder14SecondServiceOptionDescription;
+
+    @FindBy(how = How.XPATH, using = "//b[.='Patient to Collect Script']/following::input[@placeholder='48 Hours'][2]")
+    protected WebElement txtUnder14ThirdServiceOption;
+
+    @FindBy(how = How.XPATH, using = "(//b[.='Patient to Collect Script']/following::input[@placeholder='48 Hours'][1]/following::input[@placeholder='STD'][1])[2]")
+    protected WebElement txtUnder14ThirdServiceOptionFeeSTD;
+
+    @FindBy(how = How.XPATH, using = "(//b[.='Patient to Collect Script']/following::input[@placeholder='48 Hours'][1]/following::input[@placeholder='CSC'][1])[2]")
+    protected WebElement txtUnder14ThirdServiceOptionFeeCSC;
+
+    @FindBy(how = How.XPATH, using = "(//b[.='Patient to Collect Script']/following::input[@placeholder='48 Hours'][1]/following::input[@placeholder='HUHC'][1])[2]")
+    protected WebElement txtUnder14ThirdServiceOptionFeeHUHC;
+
+    @FindBy(how = How.XPATH, using = "(//b[.='Patient to Collect Script']/following::input[@placeholder='Next Day'][1]/following::input[@placeholder='CSC'][1])[2]")
+    protected WebElement txtUnder14SecondServiceOptionFeeCSC;
+
+    @FindBy(how = How.XPATH, using = "(//b[.='Patient to Collect Script']/following::input[@placeholder='Next Day'][1]/following::input[@placeholder='HUHC'][1])[2]")
+    protected WebElement txtUnder14SecondServiceOptionFeeHUHC;
+
+
+
+
     public boolean clickRRPScriptInstructionSetting() {
         boolean isVerified = false;
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -667,6 +707,8 @@ public class RepeatScriptSettingPage extends BasePage {
         }
         return blResult;
     }
+
+
 
     public boolean select1stSelectedServiceOption(String strServiceOption) {
         boolean blResult = false;
@@ -1970,4 +2012,152 @@ public class RepeatScriptSettingPage extends BasePage {
         isVerified = verifyElement(txtWelcome);
         return isVerified;
     }
+
+    public boolean selectunder14FirstSelectedServiceOption(String strServiceOption) {
+        boolean blResult = false;
+        try {
+            waitForElement(txtUnder14FirstServiceOption);
+            String firstServiceOption = txtUnder14FirstServiceOption.getAttribute("value");
+            System.out.println("Current value for first service option " + firstServiceOption + "And Expected Value is " + strServiceOption);
+            if (firstServiceOption.equalsIgnoreCase(strServiceOption)) {
+                blResult = true;
+            } else {
+                click(txtUnder14FirstServiceOption);
+                enterValue(txtUnder14FirstServiceOption, strServiceOption);
+                blResult = verifyElement(txtUnder14FirstServiceOption);
+            }
+        } catch (Exception e) {
+            System.out.println("Not able to add the First Service option values>>> :: " + strServiceOption);
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean selectFeeUnder14ForFirstSelectedServiceOption(String strFee) {
+        boolean blResult = false;
+        try {
+            waitForElement(txtUnder14FirstServiceOptionFeeSTD);
+            String firstServiceOptionFee = txtUnder14FirstServiceOptionFeeSTD.getAttribute("value");
+            System.out.println("Current value is " + firstServiceOptionFee + "And Expected Value is " + strFee);
+            click(txtUnder14FirstServiceOptionFeeSTD);
+            enterValue(txtUnder14FirstServiceOptionFeeSTD, strFee);
+            enterValue(txtUnder14FirstServiceOptionFeeSTD, "23");
+            enterValue(txtUnder14FirstServiceOptionFeeSTD, "24");
+            blResult = verifyElement(txtUnder14FirstServiceOptionFeeSTD);
+        } catch (Exception e) {
+            System.out.println("Not able to add the First Service option values Fee>>> :: " + strFee);
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean selectUnder14DescForFirstSelectedServiceOption(String strDescription) {
+        boolean blResult = false;
+        try {
+            waitForElement(txtUnder14FirstServiceOptionDescription);
+            String firstServiceOptionDescriptionText = txtUnder14FirstServiceOptionDescription.getAttribute("value");
+            System.out.println("Current value for First service Option Description is " + firstServiceOptionDescriptionText + " And Expected Description is " + strDescription);
+            click(txtUnder14FirstServiceOptionDescription);
+            enterValue(txtUnder14FirstServiceOptionDescription, strDescription);
+            blResult = verifyElement(txtUnder14FirstServiceOptionDescription);
+        } catch (Exception e) {
+            System.out.println("Not able to add the First Service option's Description>>> :: " + strDescription);
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean selectUnder14SecondSelectedServiceOption(String strServiceOption) {
+        boolean blResult = false;
+        try {
+            waitForElement(txtUnder14SecondServiceOption);
+            String secondServiceOption = txtUnder14SecondServiceOption.getAttribute("value");
+            System.out.println("Current value for Second service option " + secondServiceOption + "And Expected Value is " + strServiceOption);
+            if (secondServiceOption.equalsIgnoreCase(strServiceOption)) {
+                blResult = true;
+            } else {
+                click(txtUnder14SecondServiceOption);
+                enterValue(txtUnder14SecondServiceOption, strServiceOption);
+                blResult = verifyElement(txtUnder14SecondServiceOption);
+            }
+        } catch (Exception e) {
+            System.out.println("Not able to add the Second Service option values>>> :: " + strServiceOption);
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean selectUnder14FeeForSecondSelectedServiceOption(String strFee) {
+        boolean blResult = false;
+        try {
+            waitForElement(txtUnder14SecondServiceOptionFeeSTD);
+            String secondServiceOptionFee = txtUnder14SecondServiceOptionFeeSTD.getAttribute("value");
+            System.out.println("Current value is " + secondServiceOptionFee + "And Expected Value is " + strFee);
+            click(txtUnder14SecondServiceOptionFeeSTD);
+            enterValue(txtUnder14SecondServiceOptionFeeSTD, strFee);
+            enterValue(txtUnder14SecondServiceOptionFeeCSC, "34");
+            enterValue(txtUnder14SecondServiceOptionFeeHUHC, "35");
+            blResult = verifyElement(txtUnder14SecondServiceOptionFeeSTD);
+        } catch (Exception e) {
+            System.out.println("Not able to add the Second Service option values Fee>>> :: " + strFee);
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+
+    public boolean selectUnder14DescForSecondSelectedServiceOption(String strDescription) {
+        boolean blResult = false;
+        try {
+            waitForElement(txtUnder14SecondServiceOptionDescription);
+            String secondServiceOptionDescriptionText = txtUnder14SecondServiceOptionDescription.getAttribute("value");
+            System.out.println("Current Description is " + secondServiceOptionDescriptionText + " And Expected Description is " + strDescription);
+            click(txtUnder14SecondServiceOptionDescription);
+            enterValue(txtUnder14SecondServiceOptionDescription, strDescription);
+            blResult = verifyElement(txtUnder14SecondServiceOptionDescription);
+        } catch (Exception e) {
+            System.out.println("Not able to add the Second Service option's Description>>> :: " + strDescription);
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean selectUnder14ThirdSelectedServiceOption(String strServiceOption) {
+        boolean blResult = false;
+        try {
+            waitForElement(txtUnder14ThirdServiceOption);
+            String thirdServiceOption = txtUnder14ThirdServiceOption.getAttribute("value");
+            System.out.println("Current value for third service option  " + thirdServiceOption + "And Expected Value is " + strServiceOption);
+            if (thirdServiceOption.equalsIgnoreCase(strServiceOption)) {
+                blResult = true;
+            } else {
+                click(txtUnder14ThirdServiceOption);
+                enterValue(txtUnder14ThirdServiceOption, strServiceOption);
+                blResult = verifyElement(txtUnder14ThirdServiceOption);
+            }
+        } catch (Exception e) {
+            System.out.println("Not able to add the Third Service option values>>> :: " + strServiceOption);
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean selectUnder14FeeForThirdSelectedServiceOption(String strFee) {
+        boolean blResult = false;
+        try {
+            waitForElement(txtUnder14ThirdServiceOptionFeeSTD);
+            String thirdServiceOptionFee = txtUnder14ThirdServiceOptionFeeSTD.getAttribute("value");
+            System.out.println("Current value is " + thirdServiceOptionFee + "And Expected Value is " + strFee);
+            click(txtUnder14ThirdServiceOptionFeeSTD);
+            enterValue(txtUnder14ThirdServiceOptionFeeSTD, strFee);
+            enterValue(txtUnder14ThirdServiceOptionFeeCSC, "45");
+            enterValue(txtUnder14ThirdServiceOptionFeeHUHC, "46");
+            blResult = verifyElement(txtUnder14ThirdServiceOptionFeeSTD);
+        } catch (Exception e) {
+            System.out.println("Not able to add the Third Service option values Fee>>> :: " + strFee);
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
 }

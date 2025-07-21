@@ -1,6 +1,6 @@
 Feature: Messages
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: Changing machines timezone
 
     Given I change Windows "<TimeZone>"
@@ -9,7 +9,7 @@ Feature: Messages
       | TimeZone                  |
       | New Zealand Standard Time |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: User Successfully logs in to the MMH Portal.
 
     Given As a user I am on MMH login Page
@@ -23,7 +23,7 @@ Feature: Messages
 
 
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: S2- Patient Save Message as Draft
 
     Given As a Existing user I am on HomePage and navigate to Compose Message
@@ -155,7 +155,7 @@ Feature: Messages
 
 
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Outline: S8- Patient Signature Settings
     Given As a user I am on HomePage and navigate to Messages Setting
     And I click the Signature Setting and Enter the "<Signature Message>"
@@ -166,7 +166,7 @@ Feature: Messages
       | Signature Message   |
       | &SIGNATURE MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Outline: S10- Patient Automatic Reply Settings
 
     Given As a user I am on HomePage and navigate to Messages Setting
@@ -204,7 +204,7 @@ Feature: Messages
       | Message Details             | Automatic Reply Message   |
       | &AUTOMATIC_MESSAGE_DETAILS& | &AUTOMATIC REPLY MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: User Successfully logs in to the MMH v2 Portal as Patient.
 
     Given As a user I am on MMH login Page
@@ -216,7 +216,7 @@ Feature: Messages
       | Email Address | Password   |
       | &EMAIL&       | &PASSWORD& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Outline: S9- Patient Out Of Office Settings
 
     Given As a user I am on HomePage and navigate to Messages Setting
@@ -229,7 +229,7 @@ Feature: Messages
       | Start Date   | End Date   | Message          |
       | &START DATE& | &END DATE& | &OUT OF MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: User Successfully logs in to the MMH Portal.
 
     Given As a user I am on MMH login Page
@@ -242,7 +242,7 @@ Feature: Messages
       | &EMAIL&       | &PASSWORD& |
 
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Outline: S7- Patient Alert Settings
     Given As a user I am on HomePage and navigate to Messages Setting
     And I click the Alert Setting and select the "<Alert Type>"
@@ -252,7 +252,7 @@ Feature: Messages
       | Alert Type   |
       | &ALERT TYPE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: S1- Patient Sending Message
 
     Given As a Existing user I am on HomePage and navigate to Compose Message
@@ -265,7 +265,7 @@ Feature: Messages
       | Compose Details   |
       | &COMPOSE_MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: Changing machines timezone
 
     Given I change Windows "<TimeZone>"
@@ -300,7 +300,7 @@ Feature: Messages
 
   #============================================================================
 
-  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: User Successfully logs in to the MMH Portal.
 
     Given As a user I am on MMH login Page
@@ -313,7 +313,7 @@ Feature: Messages
       | &EMAIL&       | &PASSWORD& |
 
 
-  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Outline: S3- User verify the Received Message
 
     Given As a user I am on HomePage and navigate to Inbox
@@ -324,7 +324,7 @@ Feature: Messages
       | Message                            |
       | &MOBILE_RESPONSE_RECEIVED_MESSAGE& |
 
-  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: S4- User Verifies the Patient Reply Message
 
     Given As a user I am on HomePage and navigate to Inbox
@@ -336,7 +336,7 @@ Feature: Messages
       | Reply                           |
       | &MOBILE_RESPONSE_REPLY_MESSAGE& |
 
-  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: S5-  User verifies the Patient Group Message
 
     Given As a user I am on HomePage and navigate to GroupMessage

@@ -2059,4 +2059,32 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.providerHomePage.clickSecureMessaging());
         Assert.assertTrue(providerPageContainer.videoConsultationsSettingPage.clickVideoConsultatonsSettingPage());
     }
+
+    @And("I click the edit button and changing the Patient Under Fourteen Years as per Patient to Collect Script requirements{string}")
+    public void iClickTheEditButtonAndChangingThePatientUnderFourteenYearsAsPerPatientToCollectScriptRequirements(String strDetail) {
+        List<String> lstDetails = TestDataUtil.getListOfValue(strDetail);
+        System.out.println("RRPScriptSetting details >>> :: " + lstDetails);
+//        providerPageContainer.providerHomePage.clickEditButton();
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectHealthCentreLocation(lstDetails.get(0)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectServiceName(lstDetails.get(1)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectOtherReqData());
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectSendReqDataRuleA());
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectunder14FirstSelectedServiceOption(lstDetails.get(2)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectFeeUnder14ForFirstSelectedServiceOption(lstDetails.get(3)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectUnder14DescForFirstSelectedServiceOption(lstDetails.get(4)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectUnder14SecondSelectedServiceOption(lstDetails.get(5)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectUnder14FeeForSecondSelectedServiceOption(lstDetails.get(6)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectUnder14DescForSecondSelectedServiceOption(lstDetails.get(7)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectUnder14ThirdSelectedServiceOption(lstDetails.get(8)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectUnder14FeeForThirdSelectedServiceOption(lstDetails.get(9)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescForThirdSelectedServiceOption(lstDetails.get(10)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectFourthSelectedServiceOption(lstDetails.get(11)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectFeeForFourthSelectedServiceOption(lstDetails.get(12)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescForFourthSelectedServiceOption(lstDetails.get(13)));
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.ClickRequestisMandatoryYesButton());
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.ClickPaymentSettingPayAtHealthCentreButton());
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
+        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+
+    }
 }

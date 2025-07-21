@@ -184,3 +184,28 @@ Feature: Repeat Request Prescription
 #    Examples:
 #      | Medication Details                            | Payment Details      | Prescription Verification Details                       |
 #      | &DATA MEDS PAY BY USING ONLINE A2A HUHC CARD& | &ACCOUNT TO ACCOUNT& | &VERIFICATION DATA FOR MEDS PAY BY USING A2A HUHC CARD& |
+
+  @WEB @Mobile @RRP1 @HAPPY_PATH11 @HAPPY_PATH_MOBILE_RESPONSE11
+  Scenario Template: User Successfully logs in to the MMH Portal.
+
+    Given As a user I am on MMH login Page
+    And I enter "<Email Address>" and "<Password>" For Beta
+    When I click SignIn button
+    Then I should see user successfully logs in to the MMH portal
+
+    Examples:
+      | Email Address    | Password   |
+      | &EMAIL_UNDER_14& | &PASSWORD& |
+
+  @WEB @Mobile @RRP1 @HAPPY_PATH11 @HAPPY_PATH_MOBILE_RESPONSE11
+  Scenario Outline: S2- Patient to collect the Prescription & Verify Under 14 Fees Details
+
+    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
+    When I select the Medication details"<Medication Details>"
+    Then I should see the successful message and I navigate to view history of the Prescription
+    And I see the status for Patient to collect the Prescription"<Verification Medication Details>"
+    And I should see the more info details of the prescription in view history"<More info details>"
+
+    Examples:
+      | Medication Details                                     | Verification Medication Details                                  | More info details                                                          |
+      | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION UNDER 14& | &VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION UNDER 14& | &MORE INFO VERIFICATION DATA FOR PATIENT TO COLLECT PRESCRIPTION UNDER 14& |

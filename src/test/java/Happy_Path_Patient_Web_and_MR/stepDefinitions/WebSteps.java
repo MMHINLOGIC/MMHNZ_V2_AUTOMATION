@@ -4231,12 +4231,13 @@ public class WebSteps {
 
     @When("I navigate to Book Appointment select Default Location {string}")
     public void iNavigateToBookAppointmentSelectDefaultLocation(String strLocation) {
+        List<String>data=TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(demoPageContainer.homePage.clickDashBoard());
         Assert.assertTrue(demoPageContainer.homePage.clickPatientBookAppointment());
         Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-        Assert.assertTrue(demoPageContainer.appointmentsPage.selectHealthCenter(TestDataUtil.getValue(strLocation)));
+        Assert.assertTrue(demoPageContainer.appointmentsPage.selectHealthCenter(TestDataUtil.getValue(data.get(0))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
-        Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(strLocation)));
+        Assert.assertTrue(demoPageContainer.appointmentsPage.ProviderselectLocation(TestDataUtil.getValue(data.get(1))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
     }
 
@@ -4275,7 +4276,7 @@ public class WebSteps {
     public void iShouldSeeDetailsOfCreatedAppointmentAndIShouldSeeBookedAppointmentDisplayedUnderTheFutureTab(String strAppointmentDetails, String strFutureDate, String strAppointmentSummary) {
         List<String> lstDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
         List<String> lstDetail = TestDataUtil.getListOfValue(strAppointmentSummary);
-//        Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmButton());
+        Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmButton());
         Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDetailsOfCreatedAppointment(lstDetails, (TestDataUtil.getValue(strFutureDate))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.acceptTermsAndConditionsForAppointment());
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmYourBookingButton());
@@ -5459,7 +5460,7 @@ public class WebSteps {
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectLocation(TestDataUtil.getValue(lstAppointmentDetails.get(1))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.VerifydeclineCovidPreScreeningPopupDisplayed());
 //            Assert.assertTrue(demoPageContainer.appointmentsPage.selectAppointmentIsFor(TestDataUtil.getValue(lstAppointmentDetails.get(2))));
-            Assert.assertTrue(demoPageContainer.appointmentsPage.VerifyAppointmentIsForDropdownDetails(TestDataUtil.getListOfValue(StrAppointmentIsForDropdownDetails)));
+            Assert.assertTrue(demoPageContainer.appointmentsPage.VerifyAppointmentIsForFamilyDropdownDetails(TestDataUtil.getListOfValue(StrAppointmentIsForDropdownDetails)));
             Assert.assertTrue(demoPageContainer.appointmentsPage.EnterFamilyMemberName(TestDataUtil.getValue(lstAppointmentDetails1.get(3))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectRelationship(TestDataUtil.getValue(lstAppointmentDetails1.get(4))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectReasonForBooking(TestDataUtil.getValue(lstAppointmentDetails.get(3))));
@@ -5613,6 +5614,18 @@ public class WebSteps {
 
 
 
+    }
+
+    @When("I should see details of created appointment in My Appointments {string} {string} and I should see booked appointment displayed under the future tab {string}")
+    public void iShouldSeeDetailsOfCreatedAppointmentInMyAppointmentsAndIShouldSeeBookedAppointmentDisplayedUnderTheFutureTab(String strAppointmentDetails, String strFutureDate, String strAppointmentSummary) {
+        List<String> lstDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
+        List<String> lstDetail = TestDataUtil.getListOfValue(strAppointmentSummary);
+        Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmButton());
+        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDetailsOfCreatedAppointment(lstDetails, (TestDataUtil.getValue(strFutureDate))));
+        Assert.assertTrue(demoPageContainer.appointmentsPage.acceptTermsAndConditionsForAppointment());
+        Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmYourBookingButton());
+        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyCreatedAppointmentInFutureAppointmentTab(lstDetail));
+        Assert.assertTrue(demoPageContainer.homePage.clickLogoutButton());
     }
 }
 

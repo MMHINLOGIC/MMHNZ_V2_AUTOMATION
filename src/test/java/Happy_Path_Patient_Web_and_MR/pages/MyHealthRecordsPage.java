@@ -267,12 +267,12 @@ public class MyHealthRecordsPage extends BasePage {
     protected String getStrMobileRecallsIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::p[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')])[2]").toString();
+            .append("<<REPLACEMENT2>>").append("')])[1]").toString();
 
     protected String getStrMobileRecallsReminderIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::p[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')])[2]").toString();
+            .append("<<REPLACEMENT2>>").append("')])[1]").toString();
 
     protected String strMobileLabTestResultDetails = new StringBuilder()
             .append(" //mat-expansion-panel-header[@aria-expanded='true']//following::div[contains(@style,'visibility: visible')]//span[contains(text(),'")
@@ -672,7 +672,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//span[text()='Update'])[3]")
     protected WebElement btnCovidImmunisationsUpdate;
 
-    @FindBy(how = How.XPATH, using = "//button[@class='mat-focus-indicator btn-primary-rect mat-button mat-button-base ng-star-inserted']")
+    @FindBy(how = How.XPATH, using = "//button[@class='btn-primary-rect mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base ng-star-inserted']")
     protected WebElement btnMobileCovidImmunisationsUpdate;
 
 
@@ -798,7 +798,7 @@ public class MyHealthRecordsPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Files']")
     protected WebElement FileIcon;
 
-    @AndroidFindBy(xpath = "(//android.widget.ImageView)[5]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Photos and videos']")
     protected WebElement MediaIcon;
 
 //
@@ -3893,6 +3893,7 @@ waitForSeconds(3);
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
             String strMedicationName = strCreatedRecord.concat(strExecutionID);
             WebElement btnEdit = waitForElement(By.xpath(elmntMobilePrescriptionsEdit.replace("<<REPLACEMENT>>", strMedicationName)));
+            System.out.println("btnEdit >>> "+btnEdit);
             click(btnEdit);
             waitForSeconds(3);
             jsScrollIntoView(btnMobilePrescriptionsEdit);

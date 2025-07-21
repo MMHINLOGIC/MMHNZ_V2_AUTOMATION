@@ -59,7 +59,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Group Messages')]")
     protected WebElement txtGroupMessagePatient;
 
-    @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Compose Email')])[2]")
+    @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'COMPOSE MESSAGE')])[2]")
     protected WebElement txtComposeMailForMobile;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Settings')]")
@@ -353,7 +353,7 @@ public class MessagesPage extends BasePage {
 
 
     protected String inboxMessageSubjectForMobile = new StringBuilder()
-            .append("(//*[contains(text(),'")
+            .append("(//b[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')])[2]")
             .toString();
@@ -713,7 +713,7 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='Attach ']")
     protected WebElement btndevDone;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'CLOSE')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Close')])[2]")
     protected WebElement btnSentClose;
 
 
@@ -729,8 +729,10 @@ public class MessagesPage extends BasePage {
     @FindBy(xpath = "//android.widget.TextView[@text='Files']")
     protected WebElement FileIcon;
 
-    @AndroidFindBy(xpath = "(//android.widget.ImageView)[5]")
+    @AndroidFindBy(xpath = "(//android.widget.ImageView)[4]")
     protected WebElement MediaIcon;
+
+    //android.widget.TextView[@text='Photos and videos']
 
     @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Show roots']")
     protected WebElement iconHamburger;
@@ -757,7 +759,7 @@ public class MessagesPage extends BasePage {
     protected WebElement btnsendMessage;
 //    (//span[contains(text(),'Send message')])[1]
 
-    @FindBy(how = How.XPATH, using = "(//button[@class='mat-focus-indicator btn-primary-pill mat-button mat-button-base'])[2]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Send message')])[2]")
     protected WebElement btnMobileReplysendMessage;
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),' Save as Draft')])[1]")
@@ -1145,15 +1147,18 @@ public class MessagesPage extends BasePage {
     public boolean navigateToComposeMessage() {
         boolean blResult = false;
         try {
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElementClickable(elmntMessages);
             click(elmntMessages);
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(1);
             waitForElementClickable(elmntComposePatient);
             click(elmntComposePatient);
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(1);
             String PageUrl = driver.getCurrentUrl();
@@ -1233,15 +1238,15 @@ public class MessagesPage extends BasePage {
         try {
             System.out.println("strMessage >>> :: " + TestDataUtil.getValue(strMessage));
             waitForElement(txtInboxPatient);
-            System.out.println("X Path-inboxSubject 1 >>> :: " + inboxMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage)));
-            WebElement inboxSubject = waitForElement(By.xpath(inboxMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage))));
+            System.out.println("X Path-inboxSubject 1 >>> :: " + inboxMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage.concat(strExecutionID))));
+            WebElement inboxSubject = waitForElement(By.xpath(inboxMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage.concat(strExecutionID)))));
             waitForElement(inboxSubject);
             takeScreenshot(driver);
             waitForElementClickable(inboxSubject);
             jsClick(inboxSubject);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            System.out.println("X Path-inboxSubject 2 >>> :: " + receivedMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage)));
-            WebElement inboxReceivedSubject = waitForElement(By.xpath(receivedMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage))));
+            System.out.println("X Path-inboxSubject 2 >>> :: " + receivedMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage.concat(strExecutionID))));
+            WebElement inboxReceivedSubject = waitForElement(By.xpath(receivedMessageSubject.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strMessage.concat(strExecutionID)))));
             waitForElement(inboxReceivedSubject);
             takeScreenshot(driver);
             blResult = verifyElement(inboxReceivedSubject);
@@ -1369,7 +1374,7 @@ public class MessagesPage extends BasePage {
             waitForSeconds(2);
             btnWriteMessage.click();
             waitForSeconds(2);
-            driver.switchTo().activeElement().sendKeys(strMessage);
+            driver.switchTo().activeElement().sendKeys(strMessage.concat(strExecutionID));
             waitForSeconds(2);
 
             blResult = true;
@@ -1461,7 +1466,8 @@ public class MessagesPage extends BasePage {
         try {
             waitForSeconds(2);
             waitForElement(btnSave);
-            jsClick(drpDownOutOfOfficeSettings);
+            waitForElement(drpDownOutOfOfficeSettings);
+            click(drpDownOutOfOfficeSettings);
             waitForSeconds(1);
 //            waitForElement(chkboxOutOfOfficeReply);
 
@@ -1571,7 +1577,8 @@ public class MessagesPage extends BasePage {
             waitForSeconds(2);
 //            waitForElement(chkboxOutOfOfficeReply);
 //            jsClick(chkboxOutOfOfficeReply);
-            String strOutOfOfficeReply = chkboxOutOfOfficeReply.getAttribute("aria-checked");
+//            String strOutOfOfficeReply = chkboxOutOfOfficeReply.getAttribute("aria-checked");
+            click(chkboxOutOfOfficeReply);
 //            System.out.println("chkbox our of office Reply Attribute >>> :: " + strOutOfOfficeReply);
 //            if (strOutOfOfficeReply.equalsIgnoreCase("False")) {
 //                jsClick(chkboxOutOfOfficeReply);
@@ -1737,6 +1744,7 @@ public class MessagesPage extends BasePage {
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
                 waitForSeconds(2);
                 waitForElement(chkboxAutomaticReply);
+                jsClick(chkboxAutomaticReply);
                 waitForSeconds(1);
 //                jsScrollIntoView(txtBoxMessages);
                 DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -1812,6 +1820,7 @@ public class MessagesPage extends BasePage {
                 System.out.println("strMessage >>> :: " + TestDataUtil.getValue(strMessage));
                 waitForSeconds(2);
                 waitForElement(chkboxAutomaticReply);
+                jsClick(chkboxAutomaticReply);
                 waitForSeconds(1);
                 waitForElement(frameAutomaticReplies);
                 driver.switchTo().frame(frameAutomaticReplies);
@@ -1915,8 +1924,7 @@ public class MessagesPage extends BasePage {
                 }
                 System.out.println("Success Switch Native App");
                 capabilities.setCapability("autoGrantPermissions", "true");
-//                swipeUp();
-
+                swipeUp();
                 waitForSeconds(4);
                 waitForElement(txtSignatureSettingMessage);
                 waitForSeconds(2);
@@ -2793,7 +2801,7 @@ public class MessagesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            System.out.println("strSubject >>> :: " + TestDataUtil.getValue(strSubject));
+            System.out.println("strSubject >>> :: " + TestDataUtil.getValue(strSubject.concat(strExecutionID)));
             waitForSeconds(5);
             waitForElement(txtBoxSubjectPatient);
             waitForElementClickable(txtBoxSubjectPatient);
@@ -2803,7 +2811,7 @@ public class MessagesPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            txtBoxSubject.click();
 //            waitForSeconds(1);
-            txtBoxSubjectPatient.sendKeys(TestDataUtil.getValue(strSubject));
+            txtBoxSubjectPatient.sendKeys(TestDataUtil.getValue(strSubject.concat(strExecutionID)));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             takeScreenshot(driver);
             waitForSeconds(3);
@@ -3473,7 +3481,7 @@ public class MessagesPage extends BasePage {
             jsScrollIntoView(btnSaveDraft);
             waitForElementClickable(btnSaveDraft);
             jsClick(btnSaveDraft);
-            waitForElementClickable(btnokDraft);
+            waitForElement(btnokDraft);
             jsClick(btnokDraft);
 
         }

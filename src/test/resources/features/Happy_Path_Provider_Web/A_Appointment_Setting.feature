@@ -348,7 +348,7 @@ Feature: Appointment Setting
 #      | &APPOINTMENT_SET_MINIMUM_DATA& | Automation1_Loc1 | A new issue        | &APPOINTMENT_IS_FOR_DROPDOWN& | &FRIENDS_AND_FAMILY_BOOK_VISIT_APPOINTMENT& | &FRIENDS_AND_FAMILY_VISIT_APPOINTMENT_DETAILS& | &FRIENDS_AND_FAMILY_FUTURE_DATE& | &FRIENDS_AND_FAMILY_VISIT_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | Future Appointments | &FRIENDS_AND_FAMILY_APPOINTMENT_DETAILS_FOR_CANCEL& | &FRIENDS_AND_FAMILY_APPOINTMENT_DETAILS_AFTER_CANCELLED& |
 
 #=================================== Block Online Appointments for Provider=================IS NOT Working====================
-#  @WEB @PROVIDER_HAPPY_PATH11 @APPOINTMENTS_SETTING11
+#  @WEB @PROVIDER_HAPPY_PATH11 @APPOINTMENTS_SETTING
 #  Scenario Template:S21-Provider Block & Unblock Appointments doctor Name verify Patient Side Block & Unblock Appointment Provider Name Is Displayed or Not Displayed
 #
 #    Given As a Provider I am on HomePage and navigate to Appointment Setting page
@@ -451,8 +451,6 @@ Feature: Appointment Setting
       | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &AUTO_PRA_LOC1_PHONE_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &AUTO_PRA_LOC1_PHONE_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | Upcoming Appointments | &AUTO_PRA_LOC1_APPOINTMENT_DETAILS_FOR_CANCEL& | &APPOINTMENT_DETAILS_AFTER_CANCELLED& | &PAYMENT_OPTION& | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_PHONE_APPOINTMENT& | &APPOINTMENT_IS_FOR_DROPDOWN& |
 
 
-
-
   @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
@@ -508,7 +506,6 @@ Feature: Appointment Setting
     Examples:
       | Any_Location_with_Any_Provider_Appointment_Details      | Automation_Practice_Loc1_Doctor_Name | Automation_Practice_Loc2_Doctor_Name     | Details_For_Appointment                   | Future_Date   | Appointment_Summary                       | Patient_User_Login   | Password   | Appointment           | Appointment_Cancel_Button                      | Appointment_After_Cancel              | Appointment_Is_For_Details    | Appointment_Details                         |
       | &ANY_LOCATION_WITH_ANY_PROVIDER_BOOK_VISIT_APPOINTMENT& | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  | &AUTOMATION_PRACTICE1_LOC2_DOCTOR_NAMES& | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_DETAILS& | &FUTURE_DATE& | &AUTO_PRA_LOC2_VISIT_APPOINTMENT_SUMMARY& | &PATIENT_USER_LOGIN& | &PASSWORD& | Upcoming Appointments | &AUTO_PRA_LOC2_APPOINTMENT_DETAILS_FOR_CANCEL& | &APPOINTMENT_DETAILS_AFTER_CANCELLED& | &APPOINTMENT_IS_FOR_DROPDOWN& | &FRIENDS_AND_FAMILY_BOOK_VISIT_APPOINTMENT& |
-
 
 
   @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
@@ -661,8 +658,8 @@ Feature: Appointment Setting
 
 
     Examples:
-      | Location   | Restrict_Provider_Details | Default_Location_with_Default_Provider_Appointment_Details             | Automation_Practice_Loc1_Doctor_Name |
-      | &LOCATION& | &RESTRICT_PROVIDER_DATA&  | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VISIT_APPOINTMENT_RULE_C& | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  |
+      | Location        | Restrict_Provider_Details | Default_Location_with_Default_Provider_Appointment_Details             | Automation_Practice_Loc1_Doctor_Name |
+      | &HEALTH_CENTRE& | &RESTRICT_PROVIDER_DATA&  | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VISIT_APPOINTMENT_RULE_C& | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  |
 
   @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
@@ -709,8 +706,8 @@ Feature: Appointment Setting
 
 
     Examples:
-      | Location   | Restrict_Provider_Details    | Default_Location_with_Default_Provider_Appointment_Details             | Automation_Practice_Loc1_Doctor_Name |
-      | &LOCATION& | &NON_RESTRICT_PROVIDER_DATA& | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VISIT_APPOINTMENT_RULE_C& | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  |
+      | Location        | Restrict_Provider_Details    | Default_Location_with_Default_Provider_Appointment_Details             | Automation_Practice_Loc1_Doctor_Name |
+      | &HEALTH_CENTRE& | &NON_RESTRICT_PROVIDER_DATA& | &DEFAULT_LOCATION_WITH_DEFAULT_PROVIDER_BOOK_VISIT_APPOINTMENT_RULE_C& | &AUTOMATION_PRACTICE1_DOCTOR_NAMES&  |
 
 
   @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
@@ -742,7 +739,7 @@ Feature: Appointment Setting
       | &LOCATION& | &PRE_SCREENING_HEALTH_CENTRE& | &APPOINTMENT_SET_MINIMUM_DATA& | &PRE_SCREENING&        |
 #
 #
-#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
 #  Scenario Template: User Successfully logs in to the MMH Patient Portal.
 #
 #    Given As a user Launch the "<V1 Portal>"
@@ -754,7 +751,7 @@ Feature: Appointment Setting
 #      | V1 Portal | Email Address        | Password              |
 #      | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 #
-#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING1 @PROVIDER_SINGLE_SCREEN
+#  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
 #  Scenario Template:S1- verify Patient Booked (Payment) Visit Appointment based on Rule A (Any Location with Any Provider) and Verify the Appointments Booking Status
 #
 #    Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments

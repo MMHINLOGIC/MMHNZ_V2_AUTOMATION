@@ -146,7 +146,7 @@ Feature: My Appointment Page
     Given As a user I am on HomePage and navigate to Patient Book Appointment Page in Appointments
     And I navigate to Appointments Menu and I click the Book Appointment
     And I enter the visit appointment details "<Appointment_Details>"
-    When I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I should see booked appointment displayed under the future tab "<Appointment_Summary>"
+    When I should see details of created appointment in My Appointments "<Details_For_Appointment>" "<Future_Date>" and I should see booked appointment displayed under the future tab "<Appointment_Summary>"
     And As a user I am on Patient Portal login Page and I enter "<Patient_User_Login>" and "<Password>" For Beta I should see user successfully logs in to the MMH portal
     And I navigate to the "<Appointment>" Future Appointments page verify the appointment status Approved "<Appointment_Cancel_Button>"
 
@@ -199,7 +199,7 @@ Feature: My Appointment Page
     And I navigate to Book Appointment select Default Location with Default Provider
     And I enter the video appointment details "<Default_Location_with_Default_Provider_Video_Appointment_Details_Rule_c>" and Verify the Default Location Default ProviderName and payment "<Automation_Practice_Loc1_Doctor_Name>"
     And I navigate to Book Appointment Page Enter the Video Appointments Detail "<Appointment_Details>"
-    When I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>" and I should see booked appointment displayed under the future tab "<Appointment_Summary>"
+    When I should see details of created appointment in My Appointments "<Details_For_Appointment>" "<Future_Date>" and I should see booked appointment displayed under the future tab "<Appointment_Summary>"
     And As a user I am on Patient Portal login Page and I enter "<Patient_User_Login>" and "<Password>" For Beta I should see user successfully logs in to the MMH portal
     And I navigate to the "<Appointment>" Future Appointments page verify the appointment status Approved "<Appointment_Cancel_Button>"
 
