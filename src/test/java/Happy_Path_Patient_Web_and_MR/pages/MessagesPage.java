@@ -548,9 +548,14 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//label[contains(text(),'Enable Out Of Office Reply')]")
     protected WebElement chkboxOutOfOfficeReply;
 
+
+    @FindBy(how = How.XPATH, using = "(//input[@placeholder='undefined'])[1]")
+    protected WebElement verifyOutOfOfficDate;
     @FindBy(how = How.XPATH, using = "//label[contains(text(),'Enable Auto reply')]")
     protected WebElement chkboxAutomaticReply;
 
+    @FindBy(how = How.XPATH, using = "//kendo-editor[@formcontrolname='automaticReplyText']")
+    protected WebElement verifyAutomaticReplyTextbox;
     @FindBy(how = How.XPATH, using = "(//mat-panel-title[contains(text(),' Automatic replies')]//following::span)[1]")
     protected WebElement getClickAutomaticReplyoption;
 
@@ -1560,9 +1565,16 @@ public class MessagesPage extends BasePage {
 //            } else {
 
 //            }
+if (verifyElement(verifyAutomaticReplyTextbox)){
+    System.out.println("Automatic reply checkbox was selected >>> ::");
+    blResult = verifyElement(verifyAutomaticReplyTextbox);
+}else {
+    waitForElement(chkboxAutomaticReply);
+    jsClick(chkboxAutomaticReply);
+    blResult = verifyElement(chkboxAutomaticReply);
+}
 
-            System.out.println("Automatic reply checkbox was selected >>> ::");
-            blResult = verifyElement(chkboxAutomaticReply);
+
 
         } catch (Exception e) {
             System.out.println("Automatic reply checkbox was not selected >>> ::");
@@ -1578,7 +1590,7 @@ public class MessagesPage extends BasePage {
 //            waitForElement(chkboxOutOfOfficeReply);
 //            jsClick(chkboxOutOfOfficeReply);
 //            String strOutOfOfficeReply = chkboxOutOfOfficeReply.getAttribute("aria-checked");
-            click(chkboxOutOfOfficeReply);
+//            click(chkboxOutOfOfficeReply);
 //            System.out.println("chkbox our of office Reply Attribute >>> :: " + strOutOfOfficeReply);
 //            if (strOutOfOfficeReply.equalsIgnoreCase("False")) {
 //                jsClick(chkboxOutOfOfficeReply);
@@ -1586,7 +1598,13 @@ public class MessagesPage extends BasePage {
 //            } else {
 //                blResult = true;
 //            }
-            System.out.println("Out of Office checkbox was selected >>> ::");
+            if (verifyElement(verifyOutOfOfficDate)){
+                System.out.println("Out of Office checkbox was selected >>> ::");
+            }else {
+                waitForElement(chkboxOutOfOfficeReply);
+                jsClick(chkboxOutOfOfficeReply);
+            }
+
 
         } catch (Exception e) {
             System.out.println("Out of Office checkbox was not selected >>> ::");
@@ -1662,8 +1680,7 @@ public class MessagesPage extends BasePage {
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                 System.out.println("SignatureMessage >>> :: " + TestDataUtil.getValue(strMessage));
                 waitForSeconds(2);
-                waitForElement(chkboxOutOfOfficeReply);
-                jsClick(chkboxOutOfOfficeReply);
+
                 waitForSeconds(3);
                 waitForElement(frameOutOfOffice);
                 driver.switchTo().frame(frameOutOfOffice);
@@ -1743,8 +1760,7 @@ public class MessagesPage extends BasePage {
         try {
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILE")) {
                 waitForSeconds(2);
-                waitForElement(chkboxAutomaticReply);
-                jsClick(chkboxAutomaticReply);
+
                 waitForSeconds(1);
 //                jsScrollIntoView(txtBoxMessages);
                 DesiredCapabilities capabilities = new DesiredCapabilities();

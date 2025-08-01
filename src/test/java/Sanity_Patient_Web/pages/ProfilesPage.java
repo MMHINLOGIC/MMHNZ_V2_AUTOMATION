@@ -928,11 +928,11 @@ click(btnAddresschangedOkPopup);
         try {
             waitForSeconds(2);
             waitForElement(elmntViewOrUpdateProfile);
-            waitForElementClickable(elmntViewOrUpdateProfile);
+//            waitForElementClickable(elmntViewOrUpdateProfile);
             waitAndClick(elmntViewOrUpdateProfile);
             waitForElement(elmntMyHealthCentre);
-            waitForElementClickable(elmntMyHealthCentre);
-            waitAndClick(elmntMyHealthCentre);
+//            waitForElementClickable(elmntMyHealthCentre);
+            jsClick(elmntMyHealthCentre);
             waitForElement(txtMyHealthRecords);
             takeScreenshotSanity(driver);
             blResult = verifyElement(txtMyHealthRecords);
@@ -994,11 +994,11 @@ click(btnAddresschangedOkPopup);
         try {
             waitForSeconds(2);
             waitForElement(elmntViewOrUpdateProfile);
-            waitForElementClickable(elmntViewOrUpdateProfile);
+//            waitForElementClickable(elmntViewOrUpdateProfile);
             waitAndClick(elmntViewOrUpdateProfile);
             waitForElement(elmntEmergencyContacts);
             waitForElementClickable(elmntEmergencyContacts);
-            waitAndClick(elmntEmergencyContacts);
+            jsClick(elmntEmergencyContacts);
             waitForElement(txtEmergencyContacts);
             takeScreenshotSanity(driver);
             blResult = verifyElement(txtEmergencyContacts);
@@ -1482,7 +1482,7 @@ click(btnAddresschangedOkPopup);
             jsClick(btnDay);
             waitForSeconds(3);
             waitForElement(elmntDayView);
-            String data=elmntDayView.getAttribute("ng-reflect-selected").toString();
+            String data=elmntDayView.getAttribute("aria-pressed").toString();
             System.out.println("data :: "+data);
             if (data.equals("true")){
                 takeScreenshotSanity(driver);
@@ -1505,7 +1505,7 @@ click(btnAddresschangedOkPopup);
             waitForElementClickable(btnWeek);
             jsClick(btnWeek);
             waitForSeconds(2);
-            String data=elmntDayView.getAttribute("ng-reflect-selected");
+            String data=elmntDayView.getAttribute("aria-pressed");
             System.out.println("data :: "+data);
             if (data.equals("true")){
                 takeScreenshotSanity(driver);
@@ -1528,7 +1528,7 @@ click(btnAddresschangedOkPopup);
             waitForElementClickable(btnMonth);
             jsClick(btnMonth);
             waitForSeconds(2);
-            String data=elmntDayView.getAttribute("ng-reflect-selected");
+            String data=elmntDayView.getAttribute("aria-pressed");
             System.out.println("data :: "+data);
             if (data.equals("true")){
                 takeScreenshotSanity(driver);

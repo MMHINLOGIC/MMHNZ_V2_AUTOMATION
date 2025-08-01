@@ -95,7 +95,7 @@ public class ViewJournal extends BasePage {
     @FindBy(how = How.XPATH, using = "(//mat-radio-group[@formcontrolname='privacySettings']//following::input)[2]")
     protected WebElement getElmtShareProviderSetting;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),' Save')]//parent::button")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),' Save')]")
     protected WebElement getElmtsavebutton;
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='subject']")
@@ -442,7 +442,9 @@ public class ViewJournal extends BasePage {
     }
     public void ClickSaveButton() {
         waitForSeconds(3);
-        click(getElmtsavebutton);
+        jsScrollIntoView(getElmtsavebutton);
+        waitForElement(getElmtsavebutton);
+        jsClick(getElmtsavebutton);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
     }

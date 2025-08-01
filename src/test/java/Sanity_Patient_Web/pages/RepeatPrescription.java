@@ -139,6 +139,15 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "(//button[text()='Pay Now'])[1]")
     protected WebElement btnPayNow;
 
+    @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Information')]")
+    protected WebElement VerifyInformation;
+
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'It is not possible to amend this request once saved. Do you want to continue?')]")
+    protected WebElement VerifyInformationText;
+
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes')]")
+    protected WebElement clickYesButton;
+
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Payment')]")
     protected WebElement txtPayment;
 
@@ -340,7 +349,7 @@ public class RepeatPrescription extends BasePage {
             .append("')])[1]").toString();
 
     protected String elmntDoctorName = new StringBuilder()
-            .append("(//mat-card-content/div/p[contains(text(),'")
+            .append("(//mat-card-content/div//p[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')])[1]").toString();
 
@@ -545,13 +554,36 @@ public class RepeatPrescription extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementClickable(btnPayAtHealthCentre);
             waitForSeconds(4);
-            click(btnPayAtHealthCentre);
+            jsClick(btnPayAtHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             System.out.println(" Successfully Selected Pay at Health centre Button >>>");
+            waitForElement(VerifyInformation);
+            blResult = verifyElement(VerifyInformation);
+
+
+        } catch (Exception e) {
+            System.out.println("Failed to Select Pay at Health centre Button >>>");
+            e.printStackTrace();
+
+        }
+        return blResult;
+    }
+
+    public boolean clickYesButton() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(VerifyInformation);
+            verifyElement(VerifyInformation);
+
+//            waitForElement(VerifyInformationText);
+            verifyElement(VerifyInformationText);
+
+            waitForElement(clickYesButton);
+            click(clickYesButton);
             waitForElementToAppear(driver, By.xpath(emlntSuccessPopUp1));
             waitForElement(emlntSuccessPopUp);
             blResult = verifyElement(emlntSuccessPopUp);
-
         } catch (Exception e) {
             System.out.println("Failed to Select Pay at Health centre Button >>>");
             e.printStackTrace();
@@ -564,18 +596,40 @@ public class RepeatPrescription extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElement(btnPayNow);
             waitForElementClickable(btnPayNow);
             waitForSeconds(4);
             jsClick(btnPayNow);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(6);
-            takeScreenshotSanity(driver);
+            takeScreenshot(driver);
             System.out.println("Successfully clicked Pay now button >>>");
-            blResult = verifyElement(txtPayment);
+            blResult = verifyElement(VerifyInformation);
 
         } catch (Exception e) {
             System.out.println("Failed to clicked Pay now button >>>");
+            e.printStackTrace();
+
+        }
+        return blResult;
+    }
+
+    public boolean clickPayNowYesButton() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(VerifyInformation);
+            verifyElement(VerifyInformation);
+
+//            waitForElement(VerifyInformationText);
+            verifyElement(VerifyInformationText);
+
+            waitForElement(clickYesButton);
+            click(clickYesButton);
+            waitForElementToAppear(driver, By.xpath(emlntSuccessPopUp1));
+            waitForElement(txtPayment);
+            blResult = verifyElement(txtPayment);
+        } catch (Exception e) {
+            System.out.println("Failed to Select Pay at Health centre Button >>>");
             e.printStackTrace();
 
         }

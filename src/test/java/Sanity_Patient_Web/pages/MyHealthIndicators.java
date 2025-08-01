@@ -348,7 +348,7 @@ public class MyHealthIndicators extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//div[text()='Breathing']")
     protected WebElement elmtBreathing;
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Anxiety')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Anxiety')]")
     protected WebElement elmtAnxiety;
 
     @FindBy(how = How.XPATH, using = "//div[contains(text(),'Blood Sugar')]")
@@ -402,7 +402,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-select[@placeholder='Type de service']")
     protected WebElement getElmntAlcoholHealthIndicator;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Anxiety')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Anxiety')])[2]")
     protected WebElement getElmntAnxietyHealthIndicator;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Depression')]")
@@ -462,10 +462,10 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Binging')]")
     protected WebElement getElmntAlcoholComments;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='1. Feeling nervous, restless or stressed?']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='1. Feeling nervous, restless or stressed?']//following::label[contains(text(),'Not at all')])[1]")
     protected WebElement getElmntOverthelast2weeks;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been:']//following::label[contains(text(),'Not at all')])[2]")
     protected WebElement getElmntLittleinterestorpleasureindoingthing;
 
     @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[2]")
@@ -473,7 +473,7 @@ public class MyHealthIndicators extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Next')]")
     protected WebElement getElmntNextbutton;
-    @FindBy(how = How.XPATH, using = "(//p[text()='1. Feeling nervous, restless or stressed?']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[6]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='2. Not being able to stop or control worrying?']//following::label[contains(text(),'Not at all')])[2]")
     protected WebElement getElmntNotbeingabletostoporcontrolworrying;
 
     @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[6]")
@@ -482,7 +482,7 @@ public class MyHealthIndicators extends BasePage {
 
     @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[7]")
     protected WebElement getElmntHowmanyStandardDrinkscontainingalcohol;
-    @FindBy(how = How.XPATH, using = "(//p[text()='1. Feeling nervous, restless or stressed?']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[10]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='3. Worrying too much about different things?']//following::label[contains(text(),'Not at all')])[2]")
     protected WebElement getElmntWorryingtoomuchaboutdifferentthings;
 
     @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[12]")
@@ -491,7 +491,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[10]")
     protected WebElement getElmntTroublefallingorstayingasleeporsleepingtoomuch;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='1. Feeling nervous, restless or stressed?']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[14]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='4. Trouble relaxing?']//following::label[contains(text(),'Not at all')])[2]")
     protected WebElement getElmntTroublerelaxing;
 
     @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[14]")
@@ -500,13 +500,13 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[17]")
     protected WebElement getElmntHowoftenduringthelastyearhaveyoufound;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='1. Feeling nervous, restless or stressed?']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[18]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='5. Being so restless that its hard to sit still?']//following::label[contains(text(),'Not at all')])[2]")
     protected WebElement getElmntBeingsorestlessthatitshardtositstill;
 
     @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[18]")
     protected WebElement getElmntPoorappetiteorovereating;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='1. Feeling nervous, restless or stressed?']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[22]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='6. Becoming easily annoyed or irritable?']//following::label[contains(text(),'Not at all')])[2]")
     protected WebElement getElmntBecomingeasilyannoyedorirritable;
 
     @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[22]")
@@ -519,7 +519,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[27]")
     protected WebElement getHowofteninthelastyearhaveyouneededadrink;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='1. Feeling nervous, restless or stressed?']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[26]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='7. Feeling afraid as if something awful might happen?']//following::label[contains(text(),'Not at all')])[2]")
     protected WebElement getElmntFeelingafraidasifsomethingawfulmighthappen;
 
     @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[26]")

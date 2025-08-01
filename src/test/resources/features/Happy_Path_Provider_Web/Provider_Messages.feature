@@ -174,7 +174,7 @@ Feature: Provider_Messages
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1 @PROVIDER_SINGLE_SCREEN
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES @PROVIDER_SINGLE_SCREEN
   Scenario Template: S1-Provider Sending Message
 
     Given As a user I am on Doctor portal homepage and Navigate to Compose in Inbox module
@@ -186,7 +186,7 @@ Feature: Provider_Messages
       | Compose Details            |
       | &RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1 @PROVIDER_SINGLE_SCREEN
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES @PROVIDER_SINGLE_SCREEN
   Scenario Template: S2-Provider Save Message as Draft
 
     Given As a user I am on Doctor portal homepage and Navigate to Compose in Inbox module
@@ -198,7 +198,7 @@ Feature: Provider_Messages
       | Compose Details            |
       | &RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB @PROVIDER_MESSAGES1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_MESSAGES @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -210,7 +210,7 @@ Feature: Provider_Messages
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1 @PROVIDER_SINGLE_SCREEN
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES @PROVIDER_SINGLE_SCREEN
   Scenario Template: S3- Provider Received Message & Provider Reply Message
 
     Given As a Existing user I am on HomePage and navigate to Compose Message
@@ -223,7 +223,7 @@ Feature: Provider_Messages
       | Compose Details            |
       | &PROVIDER_COMPOSE_MESSAGE& |
 
-  @WEB @PROVIDER_MESSAGES1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_MESSAGES @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
@@ -234,7 +234,7 @@ Feature: Provider_Messages
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1 @PROVIDER_SINGLE_SCREEN
+  @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES @PROVIDER_SINGLE_SCREEN
   Scenario Template: S3- Provider Received Message & Provider Reply Message
 
     Given I navigate to provider portal and verify the Reply message "<Message Details>"
@@ -245,7 +245,7 @@ Feature: Provider_Messages
       | Message Details                     |
       | &PROVIDER_RECEIVED_MESSAGE_DETAILS& |
 
-  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES @PROVIDER_SINGLE_SCREEN
   Scenario Template: S4- Preparation for Group Message, Sending a Group of E-Mail's to the Patient from provider login
 
     Given As a user I am on Doctor portal homepage and Navigate to GroupMessage
@@ -256,7 +256,7 @@ Feature: Provider_Messages
       | Message Details              |
       | &SENT_GROUP_MESSAGE_DETAILS& |
 
-  @WEB @PROVIDER_MESSAGES1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_MESSAGES @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
@@ -268,7 +268,7 @@ Feature: Provider_Messages
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES @PROVIDER_SINGLE_SCREEN
   Scenario Template: S4- Preparation for Group Message, Sending a Group of E-Mail's to the Patient from provider login
 
     Given As a user I am on HomePage and navigate to GroupMessage

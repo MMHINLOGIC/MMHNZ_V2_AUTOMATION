@@ -732,7 +732,8 @@ public class MessagesPage extends BasePage {
 
     @FindAll({
             @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]"),
-            @FindBy(how = How.XPATH, using = "//a[contains(text(),'Log out')]")
+            @FindBy(how = How.XPATH, using = "//a[contains(text(),'Log out')]"),
+            @FindBy(how = How.XPATH, using = "(//div[contains(text(),'Sign out')])[1]")
     })
     protected WebElement elmntLogOut;
 

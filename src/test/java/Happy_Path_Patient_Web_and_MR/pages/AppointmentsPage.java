@@ -193,9 +193,18 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'There are no records available.')]")
     protected WebElement elmntVerfied;
 
-    @FindBy(how = How.XPATH, using = "//div[text()='View alternative appointment providers']")
-    protected WebElement clickAlternativeProviders;
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'Try booking with an alternative provider.')]")
+    protected WebElement verifyAlternativeProviders;
 
+
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Consent')])[2]")
+    protected WebElement verifyConsent;
+
+    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'You are now leaving the Manage My Health portal and will be redirected to the CareHQ website.')])[1]")
+    protected WebElement verifyConsentText;
+
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'NO')])[1]")
+    protected WebElement clickConsentNoButton;
     @FindBy(how = How.XPATH, using = "//img[@src='https://cdn.managemyhealth.co.nz/assets/V2/Images/Carehq-mob.png']")
     protected WebElement verifyimg;
 
@@ -1736,12 +1745,15 @@ public class AppointmentsPage extends BasePage {
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(2);
-              jsScrollIntoView(btnConfirmDesktop);
-                waitForElement(btnConfirmDesktop);
-                click(btnConfirmDesktop);
-                waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                waitForSeconds(5);
-                blResult = true;
+                if (verifyElement(btnConfirmDesktop)){
+                    jsScrollIntoView(btnConfirmDesktop);
+                    waitForElement(btnConfirmDesktop);
+                    click(btnConfirmDesktop);
+                    waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                    waitForSeconds(5);
+                    blResult = true;
+                }
+
             }
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -5282,13 +5294,21 @@ System.out.println(">>>>>>>>>>>>>VerifyMyAppointmentTableDatalstDetails"+lstDeta
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElementClickable(clickAlternativeProviders);
-            jsClick(clickAlternativeProviders);
+jsScrollIntoView(verifyAlternativeProviders);
+            waitForElement(verifyAlternativeProviders);
+            verifyElement(verifyAlternativeProviders);
             waitForSeconds(2);
             String img=verifyimg.getAttribute("src");
             System.out.println("img"+img);
             click(verifyimg);
-            blResult = true;
+            waitForElement(verifyConsent);
+            verifyElement(verifyConsent);
+            waitForElement(verifyConsentText);
+            verifyElement(verifyConsentText);
+            waitForElement(clickConsentNoButton);
+            click(clickConsentNoButton);
+            waitForElement(verifyAlternativeProviders);
+            blResult = verifyElement(verifyAlternativeProviders);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -5300,12 +5320,12 @@ System.out.println(">>>>>>>>>>>>>VerifyMyAppointmentTableDatalstDetails"+lstDeta
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            if(!verifyElement(clickAlternativeProviders)){
+            if(!verifyElement(verifyAlternativeProviders)){
                 blResult=true;
             }
-            if (verifyElement(clickAlternativeProviders)){
-                waitForElementClickable(clickAlternativeProviders);
-                jsClick(clickAlternativeProviders);
+            if (verifyElement(verifyAlternativeProviders)){
+                waitForElementClickable(verifyAlternativeProviders);
+                jsClick(verifyAlternativeProviders);
                 blResult=false;
             }
 

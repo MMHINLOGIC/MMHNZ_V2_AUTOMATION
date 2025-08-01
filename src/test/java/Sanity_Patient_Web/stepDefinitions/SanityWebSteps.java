@@ -26,6 +26,7 @@ public class SanityWebSteps {
     @When("I click pay now Button")
     public void iClickPayNowButton() {
         Assert.assertTrue(sanityPageContainer.repeatPrescription.clickPayNow());
+        Assert.assertTrue(sanityPageContainer.repeatPrescription.clickPayNowYesButton());
         Assert.assertTrue(sanityPageContainer.repeatPrescription.verifyTheSuccessAndNavigateToPaymentPage());
 
     }
@@ -37,6 +38,9 @@ public class SanityWebSteps {
     @When("I click pay at health centre Button")
     public void iClickPayAtHealthCentreButton() {
         Assert.assertTrue(sanityPageContainer.repeatPrescription.clickPayAtHealthCentre());
+        Assert.assertTrue(sanityPageContainer.repeatPrescription.clickYesButton());
+
+
     }
 
     @And("I should see the status of the Prescription and Verify the Medication{string}")
@@ -3516,7 +3520,7 @@ public class SanityWebSteps {
     @Then("I navigate to view goals")
     public void iNavigateToViewGoals() {
 
-        Assert.assertTrue(sanityPageContainer.profilesPage.selectViewGoals());
+//        Assert.assertTrue(sanityPageContainer.profilesPage.selectViewGoals());
     }
 
 

@@ -5627,6 +5627,20 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.appointmentsPage.verifyCreatedAppointmentInFutureAppointmentTab(lstDetail));
         Assert.assertTrue(demoPageContainer.homePage.clickLogoutButton());
     }
+
+    @When("I should see details of created appointment {string} {string} and I should see booked Video appointment displayed under the future tab {string}")
+    public void iShouldSeeDetailsOfCreatedAppointmentAndIShouldSeeBookedVideoAppointmentDisplayedUnderTheFutureTab(String strAppointmentDetails, String strFutureDate, String strAppointmentSummary) {
+        List<String> lstDetails = TestDataUtil.getListOfValue(strAppointmentDetails);
+        List<String> lstDetail = TestDataUtil.getListOfValue(strAppointmentSummary);
+
+        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyDetailsOfCreatedAppointment(lstDetails, (TestDataUtil.getValue(strFutureDate))));
+        Assert.assertTrue(demoPageContainer.appointmentsPage.acceptTermsAndConditionsForAppointment());
+        Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmYourBookingButton());
+        Assert.assertTrue(demoPageContainer.appointmentsPage.verifyCreatedAppointmentInFutureAppointmentTab(lstDetail));
+        Assert.assertTrue(demoPageContainer.homePage.clickLogoutButton());
+
+
+    }
 }
 
 

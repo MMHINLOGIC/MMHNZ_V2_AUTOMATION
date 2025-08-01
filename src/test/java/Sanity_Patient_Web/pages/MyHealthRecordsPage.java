@@ -77,13 +77,14 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='Conditions']")
     protected WebElement elmntConditions;
 
+
     protected String strPrescriptionsIconContentLocator = new StringBuilder()
-            .append("//td[text()='")
+            .append("(//td[text()='")
             .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT2>>").append("']/following-sibling::td[contains(text(),'")
-            .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[text()='")
+            .append("<<REPLACEMENT2>>").append("']//following-sibling::td/div[contains(text(),'")
+            .append("<<REPLACEMENT3>>").append("')]//following::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
+            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"])[1]").toString();
     protected String strMobilePrescriptionsIconContentLocator = new StringBuilder()
             .append("(//h2[text()='")
             .append("<<REPLACEMENT1>>").append("']//following::p[text()='")
@@ -113,12 +114,12 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()=' Save ']")
     protected WebElement elmntSaveButton;
     protected String strClassificationsIconLocator = new StringBuilder()
-            .append("//td[text()='")
-            .append("<<REPLACEMENT1>>").append("']/following-sibling::td[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[text()='")
-            .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
+            .append("(//td[text()='")
+            .append("<<REPLACEMENT1>>").append("']//following::td[contains(text(),'")
+            .append("<<REPLACEMENT2>>").append("')]//following-sibling::td/div[contains(text(),'")
+            .append("<<REPLACEMENT3>>").append("')]//following::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
+            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"])[1]").toString();
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Clinician Notes')]")
     protected WebElement elmntClinicalNotes;
@@ -191,21 +192,22 @@ public class MyHealthRecordsPage extends BasePage {
     protected String strClinicalNotesDetails = new StringBuilder()
             .append("(//*[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[last()]").toString();
+
     protected String strPrescriptionsDetails = new StringBuilder()
-            .append("//div[@class='tbl-th']/following::div[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]").toString();
+            .append("//div[text()='")
+            .append("<<REPLACEMENT>>").append("']").toString();
 
     protected String strClassificationsDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strAllergiesNotesDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strImmunisationsDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strLabResultsDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strTestResultsDetails = new StringBuilder()
             .append("//div[contains(@class,'k-window-content k-dialog-content ng-tns')]//following::span[contains(text(),'")
@@ -213,7 +215,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='Close']")
     protected WebElement elmntlabIcon;
     protected String strRecallsDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
     protected String strRecallsRemainderDetails = new StringBuilder()
             .append("//div[contains(@class,'k-window-content k-dialog-content ng-tns')]//following::span[contains(text(),'")
@@ -270,8 +272,9 @@ public class MyHealthRecordsPage extends BasePage {
             .append("//mat-expansion-panel-header[@aria-expanded='true']//following::div[contains(@style,'visibility: visible')]//p[normalize-space(text())='")
             .append("<<REPLACEMENT>>").append("']").toString();
     protected String strPrescriptionsMyEntriesInfoDetails = new StringBuilder()
-            .append("//div[@class='tbl-row']//div[contains(@class,'tbl-td')][contains(text(),'")
+            .append("//div[contains(@class,'tbl-td')][contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
+
 
     protected String StrDoctorImmunisationsIconLocator = new StringBuilder()
             .append("//td[contains(text(),'")
@@ -513,16 +516,16 @@ public class MyHealthRecordsPage extends BasePage {
     protected WebElement elmntClassificationsSave;
     @FindBy(how = How.XPATH, using = "(//span[normalize-space(text())='Save']/preceding::button[contains(@type,'submit')])[12]")
     protected WebElement elmntMobileClassificationsSave;
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnPrescriptionsSave;
 
     @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']//span[text()='Update']")
     protected WebElement btnMobilePrescriptionsSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnAllergiesSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnClassificationsSave;
 
 //    @FindBy(how = How.XPATH, using = "(//h3[text()='Conditions'])[1]")
@@ -531,7 +534,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']//span[text()='Save']")
     protected WebElement btnMobileClassificationsSave;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnClinicianNotesSave;
 
     @FindBy(how = How.XPATH, using = "(//h3[text()='Clinician Notes'])[1]")
@@ -540,7 +543,7 @@ public class MyHealthRecordsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "(//h3[text()='Immunisations'])[1]")
     protected WebElement HeaderImmunisation;
 
-    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//button[@type='submit']")
     protected WebElement btnImmunisationsSave;
 
     @FindBy(how = How.XPATH, using = "//mat-drawer[contains(@class,'drawer-opened')]//form[not(contains(@class,'invalid'))]//div[@class='slide-tray-container']//button[@type='submit']//span[text()='Save']")
@@ -2045,7 +2048,7 @@ public class MyHealthRecordsPage extends BasePage {
         waitForSeconds(3);
         if (verifyElement(elmntCheckBox)) {
             waitForElementClickable(elmntCheckBox);
-            jsClick(elmntCheckBox);
+            mouseClick(elmntCheckBox);
             waitForSeconds(2);
             isVerified = verifyElement(elmntCheckBox);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
