@@ -1799,8 +1799,8 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                 System.out.println("strMessage >>> :: " + TestDataUtil.getValue(strMessage));
                 waitForSeconds(4);
-                waitForElement(chkboxAutomaticReply);
-                jsClick(chkboxAutomaticReply);
+//                waitForElement(chkboxAutomaticReply);
+//                jsClick(chkboxAutomaticReply);
                 waitForSeconds(3);
                 waitForElement(frameAutomaticReplies);
                 driver.switchTo().frame(frameAutomaticReplies);
