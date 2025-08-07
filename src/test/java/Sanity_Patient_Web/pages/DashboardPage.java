@@ -104,7 +104,7 @@ public class DashboardPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]")
     protected WebElement elmntWelcomeMessage;
 
-    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Inbox')]")
+    @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Inbox')])[1]")
     protected WebElement txtInboxPatient;
 
     @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Link to health centre')]")
@@ -129,7 +129,11 @@ public class DashboardPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),' Previous Repeat Prescriptions')]")
     protected WebElement txtViewPreviousRequests;
 
-    @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'close')])[2]")
+    @FindAll({
+    @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'close')])[2]"),
+            @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'close')])[3]")
+
+    })
     protected WebElement btnMoreInfoClose;
 
 
@@ -307,11 +311,11 @@ public class DashboardPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
             waitForElement(elmntWelcomeMessage);
-//            jsScrollIntoView(elmntViewMessage);
-            jsScrollDown();
+            jsScrollIntoView(elmntViewMessage);
+//            jsScrollDown();
             waitForElement(elmntViewMessage);
 //            waitForElementClickable(elmntViewMessage);
-            mouseClick(elmntViewMessage);
+            jsClick(elmntViewMessage);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(txtInboxPatient);
             blResult = verifyElement(txtInboxPatient);

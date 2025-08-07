@@ -9,7 +9,7 @@ Feature:MyHealth_Indicators
       | TimeZone                  |
       | New Zealand Standard Time |
 
-  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS
+  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS1
   Scenario Template:Pref- User Successfully logs in to the beta v2 Portal.
     Given As a user I am on beta MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
@@ -43,7 +43,7 @@ Feature:MyHealth_Indicators
            #174:Click Edit/Delete in All/My Entries Records
            # These tests Case Covered The Scenario NO: S2
       #}
-  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS
+  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS1
   Scenario Template: S2-Existing Patient Verify Medicine details and validate Add, edit, delete, change status, set reminder,privacy settings in My entries Alcohol Details
 
     Given As a Existing user I am on HomePage and I click the My Health Indicators
