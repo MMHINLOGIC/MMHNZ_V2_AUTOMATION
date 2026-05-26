@@ -20,7 +20,7 @@ Feature: My Health Records
       | Email Address | Password   |
       | &EMAIL&       | &PASSWORD& |
 
-  @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @HEALTH_RECORDS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template:S1-Patient to View Health Records & Verify the Prescription Entries from Health Centre Medicine Details
 
     Given As a user I am on HomePage
@@ -34,7 +34,7 @@ Feature: My Health Records
       | Prescription  |
       | Prescriptions |
 
-  @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @HEALTH_RECORDS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S2 -Verify Entries from Health Centre Medicine details and validate Add health Records in My entries Prescriptions Details
 
     Given As a user I am on HomePage
@@ -56,7 +56,7 @@ Feature: My Health Records
       | Header        |
       | Prescriptions |
 
-  @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @HEALTH_RECORDS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S2 -Patient validate edit and delete in My entries Prescriptions Details
 
     Given I am on "<Tab>" Prescriptions page
@@ -185,6 +185,17 @@ Feature: My Health Records
       | Immunisations | Comirnaty, COVID-19 mRNA (Pfizer-BioNTech) | &EDIT_ADDITIONAL& |
 
   @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  Scenario Template: User Successfully logs in to the MMH Portal.
+
+    Given As a user I am on MMH login Page
+    And I enter "<Email Address>" and "<Password>" For Beta
+    When I click SignIn button
+    Then I should see user successfully logs in to the MMH portal
+    Examples:
+      | Email Address | Password   |
+      | &EMAIL&       | &PASSWORD& |
+
+  @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S7-Patient to View Health Records & Verify the Conditions Entries from Health Centre Medicine Details
 
     Given As a user I am on HomePage
@@ -198,16 +209,7 @@ Feature: My Health Records
       | Conditions |
       | Conditions |
 
-  @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
-  Scenario Template: User Successfully logs in to the MMH Portal.
 
-    Given As a user I am on MMH login Page
-    And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
-    Then I should see user successfully logs in to the MMH portal
-    Examples:
-      | Email Address | Password   |
-      | &EMAIL&       | &PASSWORD& |
 
   @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S8-Verify Entries from Health Centre Medicine details and validate Add health Records in My entries Classifications Details
@@ -305,7 +307,7 @@ Feature: My Health Records
       | Clinician Notes | &CLINIC_NAME& | &CLINIC_LOCATION& |
 
 
-  @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+  @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE
   Scenario: S12-Patient to View Health Records & Verify the Recalls Entries from Health Centre Medicine Details
 
     Given As a user I am on HomePage

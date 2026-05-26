@@ -35,6 +35,8 @@ public class SharedDriver {
         strExecutionID = RandomGeneratorUtil.getRandomString();
         strExecutionNumber = RandomGeneratorUtil.getRandomNumber();
         TestDataUtil.loadData(Constants.TESTDATA_PATH, System.getProperty(Constants.ENV_VARIABLE_APPLICATION));
+//        TestDataUtil.loadMultipleSheets(Constants.TESTDATA_PATH,System.getProperty(Constants.ENV_VARIABLE_APPLICATION), "Sanity_Patient_Web");
+
         String strExecutionType = System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "");
         System.out.println("\n >> Execution String: " + strExecutionID);
         System.out.println("\n >> Execution String: " + strExecutionNumber);

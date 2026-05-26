@@ -1,6 +1,6 @@
 Feature: Goal_Tracking
 
-  @WEB  @SANITY_PATH @GOAL_TRACKING
+  @WEB  @SANITY_PATH1 @GOAL_TRACKING
   Scenario Template: Changing machines timezone
 
     Given I change Windows "<TimeZone>"
@@ -9,7 +9,7 @@ Feature: Goal_Tracking
       | TimeZone                  |
       | New Zealand Standard Time |
 
-  @WEB  @GOAL_TRACKING @SANITY_PATH
+  @WEB  @GOAL_TRACKING1 @SANITY_PATH1
   Scenario Template:Pref- User Successfully logs in to the beta v2 Portal.
     Given As a user I am on beta MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
@@ -32,7 +32,7 @@ Feature: Goal_Tracking
       #}
 
 
-  @WEB @GOAL_TRACKING @SANITY_PATH
+  @WEB @GOAL_TRACKING1 @SANITY_PATH1
   Scenario Template:S1-Existing Patient Verify Goal Tracking Details and validate enter subject, category, notes, start date, end date, schedule even, privacy settings, Not shared with the provider in Goal Tracking Details
 
     Given As a Existing user I am on HomePage and I click the Health Tools
@@ -65,7 +65,7 @@ Feature: Goal_Tracking
 
 
 
-  @WEB @GOAL_TRACKING @SANITY_PATH
+  @WEB @GOAL_TRACKING1 @SANITY_PATH1
   Scenario Template:S2-Existing Patient Verify Goal Tracking Details and validate enter subject, category, notes, start date, end date, schedule even, shared with the provider in Goal Tracking Details
 
     Given As a Existing user I am on HomePage and I click the Health Tools
@@ -96,7 +96,7 @@ Feature: Goal_Tracking
   #}
       #}
 
-  @WEB  @GOAL_TRACKING @SANITY_PATH
+  @WEB  @GOAL_TRACKING1 @SANITY_PATH1
   Scenario Template:S3-Existing Patient Verify Previous goal Details Not shared with the provider
 
     Given As a Existing user I am on HomePage and I click the Health Tools
@@ -121,7 +121,7 @@ Feature: Goal_Tracking
   #}
       #}
 
-  @WEB  @GOAL_TRACKING @SANITY_PATH
+  @WEB  @GOAL_TRACKING1 @SANITY_PATH1
   Scenario Template:S4-Existing Patient Verify Previous goal Details shared with the provider
 
     Given As a Existing user I am on HomePage and I click the Health Tools
@@ -147,7 +147,7 @@ Feature: Goal_Tracking
       #}
 
 
-  @WEB @GOAL_TRACKING @SANITY_PATH
+  @WEB @GOAL_TRACKING @SANITY_PATH1
   Scenario Template:S5-Existing Patient Verify Set Remainder Details and validate Set Reminder Save Button in Goal Tracking Details
 
     Given As a Existing user I am on HomePage and I click the Health Tools
@@ -172,7 +172,7 @@ Feature: Goal_Tracking
       #}
 
 
-  @WEB @GOAL_TRACKING @SANITY_PATH
+  @WEB @GOAL_TRACKING @SANITY_PATH1
   Scenario Template:S6-Existing Patient Verify Set Remainder Details and validate Set Reminder Preview Buttonin Goal Tracking Details
 
     Given As a Existing user I am on HomePage and I click the Health Tools
@@ -188,7 +188,7 @@ Feature: Goal_Tracking
       | &SET_REMINDER_PREVIEW_DATA& |
 
 
-  @WEB  @GOAL_TRACKING @SANITY_PATH
+  @WEB  @GOAL_TRACKING @SANITY_PATH1
   Scenario Template:Pref- User Successfully logs in to the beta v2 Portal.
     Given As a user I am on beta MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
@@ -209,7 +209,7 @@ Feature: Goal_Tracking
   #}
       #}
 
-  @WEB @GOAL_TRACKING @SANITY_PATH
+  @WEB @GOAL_TRACKING @SANITY_PATH1
   Scenario Template:S7-Existing Patient Verify Goal Tracking Details and validate Add Value Icon,Graph Icon,Export To download the excel file in Goal Tracking Details
 
     Given As a Existing user I am on HomePage and I click the Health Tools
@@ -238,7 +238,7 @@ Feature: Goal_Tracking
   #}
       #}
 
-  @WEB  @GOAL_TRACKING @SANITY_PATH
+  @WEB  @GOAL_TRACKING @SANITY_PATH1
   Scenario Template:Pref- User Successfully logs in to the beta v2 Portal.
     Given As a user I am on beta MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
@@ -249,7 +249,7 @@ Feature: Goal_Tracking
       | &EMAIL&       | &PASSWORD& |
 
 
-  @WEB @GOAL_TRACKING @SANITY_PATH
+  @WEB @GOAL_TRACKING @SANITY_PATH1
   Scenario Template:S8-Existing Patient Verify Goal Tracking Details and validate Add New Task,Future Task Details in Goal Tracking Details
 
     Given As a Existing user I am on HomePage and I click the Health Tools
@@ -286,7 +286,7 @@ Feature: Goal_Tracking
   #}
       #}
 
-  @WEB @GOAL_TRACKING @SANITY_PATH
+  @WEB @GOAL_TRACKING @SANITY_PATH1
   Scenario Template:S9-Existing Patient Verify Goal Tracking Details and validate Add New Task ,Previous Task Details in Goal Tracking Details
 
     Given As a Existing user I am on HomePage and I click the Health Tools
@@ -323,7 +323,7 @@ Feature: Goal_Tracking
       #}
 
 
-  @WEB @GOAL_TRACKING @SANITY_PATH
+  @WEB @GOAL_TRACKING @SANITY_PATH1
   Scenario Template:S10-Existing Patient Verify Goal Tracking Details and validate Add New Task ,Add Another Task in Goal Tracking Details
 
     Given As a Existing user I am on HomePage and I click the Health Tools

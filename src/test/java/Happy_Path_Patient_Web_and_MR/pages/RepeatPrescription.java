@@ -32,8 +32,11 @@ public class RepeatPrescription extends BasePage {
     @FindBy(how = How.XPATH, using = "//div[@class='navbar-header']")
     protected WebElement elmntLogo;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Repeat Prescriptions')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Prescriptions')]")
     protected WebElement elmntRepeatPrescriptions;
+
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Request New Script')])[1]")
+    protected WebElement elmntRequestNewScriptmenu;
 
     @FindBy(how = How.XPATH, using = "//mat-progress-spinner[@mode='indeterminate']")
     protected WebElement elmntLoadingSpinner;
@@ -519,7 +522,7 @@ public class RepeatPrescription extends BasePage {
 
     //span[contains(text(),'Chemist Warehouse Auckland')]
     protected String ddlSelectFileds = new StringBuilder()
-            .append(" //span[contains(text(),'")
+            .append(" //b[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')]").toString();
 
@@ -604,11 +607,17 @@ public class RepeatPrescription extends BasePage {
         boolean blResult = false;
         try {
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-//            waitForSeconds(3);
+                waitForSeconds(3);
                 waitForElementClickable(elmntRepeatPrescriptions);
                 jsClick(elmntRepeatPrescriptions);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
-//            waitForSeconds(3);
+                waitForSeconds(3);
+                if (verifyElement(elmntRequestNewScriptmenu)){
+                    waitForElement(elmntRequestNewScriptmenu);
+                    click(elmntRequestNewScriptmenu);
+                }
+
+                waitForSeconds(3);
                 waitForElementClickable(elmntRequestNewScript);
                 jsClick(elmntRequestNewScript);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -2191,8 +2200,9 @@ public class RepeatPrescription extends BasePage {
     public boolean enterCardDetails(String strCardNumber, String strNameOnCard, String strExpiryMonth, String strExpiryYear, String strCVC) {
         boolean blResult = false;
         try {
+            waitForSeconds(4);
             waitForElement(SelectCreditCardPayment);
-            click(SelectCreditCardPayment);
+            jsClick(SelectCreditCardPayment);
             waitForSeconds(2);
             waitForElement(txtCreditCardPayment);
             verifyElement(txtCreditCardPayment);
@@ -2504,7 +2514,7 @@ public class RepeatPrescription extends BasePage {
         return blResult;
     }
 
-    public boolean verifyThePrescriptionDetails() {
+    public boolean  verifyThePrescriptionDetails() {
         boolean blResult = false;
         try {
 //            driver.switchTo().defaultContent();

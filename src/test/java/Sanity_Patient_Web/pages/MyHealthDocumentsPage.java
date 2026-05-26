@@ -27,7 +27,7 @@ public class MyHealthDocumentsPage extends BasePage {
 
     public static String documentValidityDate;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'My Health Documents')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Health Documents')])[1]")
     protected WebElement elmntMyHealthDocuments;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'ATTACH DOCUMENT')]/i")
@@ -76,7 +76,7 @@ public class MyHealthDocumentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Success!')]/following-sibling::p[contains(text(),'Updated Successfully')]")
     protected WebElement updatedSuccessPopUp;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Close')])[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Close')]")
     protected WebElement btnClose;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Update')]")
@@ -169,9 +169,9 @@ public class MyHealthDocumentsPage extends BasePage {
 
     //div[contains(text(),'MMHtest.jpg')]
     public String moreInfoDetail = new StringBuilder()
-            .append("//div[contains(text(),'")
+            .append("//div[text()='")
             .append("<<Detail>>")
-            .append("')]").toString();
+            .append("']").toString();
 
     //tr[./td[contains(text(),'27 Aug 2022')]][./td[contains(text(),'Test-PKBFHFCO')]][./td[contains(text(),'Consent Form')]][./td//a[contains(text(),'MMHtest.jpg')]][./td[contains(text(),'CHRISTOPHER MICHAEL CLANCY')]][./td[contains(text(),'28 Aug 2022')]]
     public String verifyHealthDocument = new StringBuilder()
@@ -427,7 +427,7 @@ public class MyHealthDocumentsPage extends BasePage {
             System.out.println("strEnteredDate >>>> :: "+strEnteredDate);
             waitForSeconds(2);
             takeScreenshot(driver);
-            documentValidityDate = getDayAfterTommorrowDate("d MMM YYYY");
+            documentValidityDate = getDayAfterTommorrowDate("dd MMM YYYY");
             blResult = true;
 
 

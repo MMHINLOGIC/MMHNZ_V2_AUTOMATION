@@ -129,8 +129,13 @@ public class DashboardPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),' Previous Repeat Prescriptions')]")
     protected WebElement txtViewPreviousRequests;
 
+    @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'close')])[3]")
+    protected WebElement txtClose;
+
+
     @FindAll({
-    @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'close')])[2]"),
+            @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'close')])[1]"),
+            @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'close')])[2]"),
             @FindBy(how = How.XPATH, using = "(//mat-icon[contains(text(),'close')])[3]")
 
     })
@@ -233,7 +238,6 @@ public class DashboardPage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-
             waitForElement(elmntWelcomeMessage);
             waitForSeconds(2);
             jsScrollIntoView(elmntNewRepeatPrescription);
@@ -247,7 +251,6 @@ public class DashboardPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
             System.out.println("Navigated To Request Medication >>>>");
-
 
         } catch (Exception e) {
             System.out.println("Failed to navigate To New Repeat Prescription Page >>> :: ");
@@ -294,7 +297,7 @@ public class DashboardPage extends BasePage {
                 waitForElementClickable(elmntDeclineCovidPreScreening);
                 jsClick(elmntDeclineCovidPreScreening);
             }
-            if (!isElementDisplayed(elmntCovidPreScreeningPopup)){
+            if (!isElementDisplayed(elmntCovidPreScreeningPopup)) {
                 System.out.println("Covid Prescreening popup is not displayed");
             }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -334,8 +337,8 @@ public class DashboardPage extends BasePage {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
             waitForElement(elmntWelcomeMessage);
-waitForElement(elmntMyHealthCentre);
-click(elmntMyHealthCentre);
+            waitForElement(elmntMyHealthCentre);
+            click(elmntMyHealthCentre);
             jsScrollIntoView(elmntConnectHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntConnectHealthCentre);
@@ -389,7 +392,7 @@ click(elmntMyHealthCentre);
             jsClick(elmntViewHealthSummary);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForElement(txtMyHealthRecords);
-            blResult =true;
+            blResult = true;
             takeScreenshotSanity(driver);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 
@@ -633,11 +636,11 @@ click(elmntMyHealthCentre);
             waitForElement(data);
             waitForElementClickable(data);
             jsClick(data);
-            waitForSeconds(3);
+            waitForSeconds(5);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElement(btnMoreInfoClose);
-            waitForElementClickable(btnMoreInfoClose);
-            waitAndClick(btnMoreInfoClose);
+            waitForElement(txtClose);
+            waitForElementClickable(txtClose);
+            mouseClick(txtClose);
             waitForSeconds(3);
             waitForElement(txtViewPreviousRequests);
             isVerified = verifyElement(txtViewPreviousRequests);

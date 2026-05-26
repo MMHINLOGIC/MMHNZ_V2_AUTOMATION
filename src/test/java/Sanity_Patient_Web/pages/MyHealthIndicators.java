@@ -35,7 +35,7 @@ public class MyHealthIndicators extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//span[text()='ALL']")
     protected WebElement elmtAlltab;
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'My Health Indicators')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Health Indicators')]")
     protected WebElement elmtmyhealthindicators;
 
     @FindBy(how = How.XPATH, using = "//mat-icon[text()='menu']")
@@ -78,7 +78,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//h3[text()='Summary']")
     protected WebElement elmtSummary;
 
-    @FindBy(how = How.XPATH, using = "//div[text()='Blood Pressure']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Blood Pressure']")
     protected WebElement elmtBloodPressure;
 
     @FindBy(how = How.XPATH, using = "//span[text()='INACTIVE']")
@@ -166,7 +166,7 @@ public class MyHealthIndicators extends BasePage {
     protected WebElement getElmntReminderType;
 
     protected String elmntReminderType = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[3]").toString();
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     @FindBy(how = How.XPATH, using = "(//mat-label[text()='Frequency']//following::mat-select)[1]")
     protected WebElement getElmntFrequency;
@@ -187,10 +187,10 @@ public class MyHealthIndicators extends BasePage {
     protected WebElement btnReminderSave;
 
     protected String strMyEntriesBloodPressure = new StringBuilder()
-            .append("//td[contains(text(),'")
+            .append("(//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT2>>").append("')]//following::td[contains(text(),'")
-            .append("<<REPLACEMENT3>>").append("')]//following::span//child::mat-icon[contains(text(),'edit')]").toString();
+            .append("<<REPLACEMENT3>>").append("')]//following::mat-icon[contains(text(),'edit')])[1]").toString();
 
     protected String strMyEntriesShowthisentrytomycareproviders = new StringBuilder()
             .append("(//td[contains(text(),'")
@@ -201,22 +201,22 @@ public class MyHealthIndicators extends BasePage {
     protected String strMyEntriesBloodSugar = new StringBuilder()
             .append("//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::td[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')]//following::span//child::mat-icon[contains(text(),'edit')]").toString();
+            .append("<<REPLACEMENT2>>").append("')]//following::mat-icon[contains(text(),'edit')]").toString();
 
     protected String strMyEntriesAnxiety = new StringBuilder()
-            .append("//td[contains(text(),'")
+            .append("(//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::td[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')]//following::span//child::mat-icon[contains(text(),'edit')]").toString();
+            .append("<<REPLACEMENT2>>").append("')]//following::mat-icon[contains(text(),'edit')])[1]").toString();
 
     protected String strEditMyEntriesBloodPressure = new StringBuilder()
-            .append("//td[contains(text(),'")
+            .append("(//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::td//following::td[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')]//following::span//child::mat-icon[text()='edit']").toString();
+            .append("<<REPLACEMENT2>>").append("')]//following::mat-icon[text()='edit'])[1]").toString();
 
     protected String strEditMyEntriesAnxiety = new StringBuilder()
-            .append("//td[contains(text(),'")
+            .append("(//td[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::td[contains(text(),'")
-            .append("<<REPLACEMENT2>>").append("')]//following::span//child::mat-icon[text()='edit']").toString();
+            .append("<<REPLACEMENT2>>").append("')]//following::mat-icon[text()='edit'])[1]").toString();
 
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='measurement']")
     protected WebElement elmntEditSystolicMedicationName;
@@ -246,7 +246,7 @@ public class MyHealthIndicators extends BasePage {
             .append("<<REPLACEMENT1>>").append("')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT2>>").append("')]//following::span//following::button)[1]").toString();
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Yes')] ")
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes')]")
     protected WebElement btnBloodPressureyes;
 
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'LDL')]")
@@ -257,7 +257,7 @@ public class MyHealthIndicators extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'Anxiety')]")
     protected WebElement elmntAnxiety;
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Blood Sugar')]")
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'Blood Sugar')]")
     protected WebElement elmntBloodSugar;
 
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'Depression')]")
@@ -290,12 +290,12 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'Weight')]")
     protected WebElement elmntWeightCard;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Weight')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Weight')]")
     protected WebElement elmntsWeightCard;
 
     //mat-card-title[contains(text(),'Waist Size')]/parent::div/parent::mat-card-header//mat-icon
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'BMI')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'BMI')]")
     protected WebElement elmtBMI;
 
     @FindBy(how = How.XPATH, using = "//h3[text()='My Health Indicators']")
@@ -314,25 +314,25 @@ public class MyHealthIndicators extends BasePage {
     protected WebElement elmntBMIWeight;
 
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'HbA1c')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'HbA1c')]")
     protected WebElement elmtHBA1C;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'HDL')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'HDL')]")
     protected WebElement elmtHDL;
 
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'HbA1c')]")
     protected WebElement elmntHBA1C;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'HbA1c')]")
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'HbA1c')]")
     protected WebElement elmntsHBA1C;
 
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'HDL')]")
     protected WebElement elmntHDL;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'HDL')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'HDL')]")
     protected WebElement elmntsHDL;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'LDL')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'LDL')]")
     protected WebElement elmtLDL;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Alcohol')]")
     protected WebElement elmtAlcohol;
@@ -340,18 +340,18 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[text()='Mental Health and Addictions']")
     protected WebElement elmtMentalHealthAndAddictions;
 
-    @FindBy(how = How.XPATH, using = "//div[text()='Physical Health']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Physical Health']")
     protected WebElement elmtPhysicalHealth;
 
-    @FindBy(how = How.XPATH, using = "//div[text()='Heart Health']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Heart Health']")
     protected WebElement elmtHeartHealth;
 
-    @FindBy(how = How.XPATH, using = "//div[text()='Breathing']")
+    @FindBy(how = How.XPATH, using = "//span[text()='Breathing']")
     protected WebElement elmtBreathing;
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Anxiety')]")
     protected WebElement elmtAnxiety;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Blood Sugar')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Blood Sugar')]")
     protected WebElement elmtBloodSugar;
 
 
@@ -359,35 +359,35 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//h3[contains(text(),'Blood Sugar')]")
     protected WebElement elmntsBloodSugar;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Height')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Height')]")
     protected WebElement elmntsheight;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Depression')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Depression')]")
     protected WebElement elmtDepression;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Drinking Survey')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Drinking Survey')]")
     protected WebElement elmtDrinkingSurvey;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Peak Flow')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Peak Flow')]")
     protected WebElement elmtPeakFlow;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Smoking')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Smoking')]")
     protected WebElement elmtSmoking;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Total Cholesterol')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Total Cholesterol')]")
     protected WebElement elmtTotalCholesterol;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Triglycerides')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Triglycerides')]")
     protected WebElement elmtTriglycerides;
 
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Waist Size')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Waist Size')]")
     protected WebElement elmtWaistSize;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Height')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Height')]")
     protected WebElement elmtHeightCard;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Weight')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Weight')]")
     protected WebElement elmtWeightCard;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'HbA1c')]")
@@ -465,83 +465,83 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "(//p[text()='1. Feeling nervous, restless or stressed?']//following::label[contains(text(),'Not at all')])[1]")
     protected WebElement getElmntOverthelast2weeks;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been:']//following::label[contains(text(),'Not at all')])[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::label[contains(text(),'Not at all')])[1]")
     protected WebElement getElmntLittleinterestorpleasureindoingthing;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'Never')])[1]")
     protected WebElement getElmntHowoftendoyouhaveadrinkcontainingalcohol;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Next')]")
     protected WebElement getElmntNextbutton;
-    @FindBy(how = How.XPATH, using = "(//p[text()='2. Not being able to stop or control worrying?']//following::label[contains(text(),'Not at all')])[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='2. Not being able to stop or control worrying?']//following::label[contains(text(),'Not at all')])[1]")
     protected WebElement getElmntNotbeingabletostoporcontrolworrying;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[6]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::label[contains(text(),'Not at all')])[2]")
     protected WebElement getElmntFeelingdowndepressedorhopeless;
 
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[7]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'1 or 2')])[1]")
     protected WebElement getElmntHowmanyStandardDrinkscontainingalcohol;
-    @FindBy(how = How.XPATH, using = "(//p[text()='3. Worrying too much about different things?']//following::label[contains(text(),'Not at all')])[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='3. Worrying too much about different things?']//following::label[contains(text(),'Not at all')])[1]")
     protected WebElement getElmntWorryingtoomuchaboutdifferentthings;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[12]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'Never')])[2]")
     protected WebElement getElmntHowoftendoyouhavesixormoredrinksononeoccasion;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[10]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::label[contains(text(),'Not at all')])[3]")
     protected WebElement getElmntTroublefallingorstayingasleeporsleepingtoomuch;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='4. Trouble relaxing?']//following::label[contains(text(),'Not at all')])[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='4. Trouble relaxing?']//following::label[contains(text(),'Not at all')])[1]")
     protected WebElement getElmntTroublerelaxing;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[14]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::label[contains(text(),'Not at all')])[4]")
     protected WebElement getElmntFeelingtiredorhavinglittleenergy;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[17]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'Never')])[3]")
     protected WebElement getElmntHowoftenduringthelastyearhaveyoufound;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='5. Being so restless that its hard to sit still?']//following::label[contains(text(),'Not at all')])[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='5. Being so restless that its hard to sit still?']//following::label[contains(text(),'Not at all')])[1]")
     protected WebElement getElmntBeingsorestlessthatitshardtositstill;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[18]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::label[contains(text(),'Not at all')])[5]")
     protected WebElement getElmntPoorappetiteorovereating;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='6. Becoming easily annoyed or irritable?']//following::label[contains(text(),'Not at all')])[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='6. Becoming easily annoyed or irritable?']//following::label[contains(text(),'Not at all')])[1]")
     protected WebElement getElmntBecomingeasilyannoyedorirritable;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[22]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'Never')])[4]")
     protected WebElement getElmntHowofteninthelastyearhaveyoufailedtodo;
 
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[22]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::label[contains(text(),'Not at all')])[6]")
     protected WebElement getElmntFeelingbadaboutyourself;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[27]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'Never')])[5]")
     protected WebElement getHowofteninthelastyearhaveyouneededadrink;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='7. Feeling afraid as if something awful might happen?']//following::label[contains(text(),'Not at all')])[2]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='7. Feeling afraid as if something awful might happen?']//following::label[contains(text(),'Not at all')])[1]")
     protected WebElement getElmntFeelingafraidasifsomethingawfulmighthappen;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[26]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::label[contains(text(),'Not at all')])[7]")
     protected WebElement getElmntTroubleconcentratingonthingssuchasreadingthenewspaperorwatchingtelevision;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[32]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'Never')])[6]")
     protected WebElement getHowofteninthelastyearhaveyouhadafeeling;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[30]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::label[contains(text(),'Not at all')])[8]")
     protected WebElement getElmntMovingorspeakingsoslowly;
 
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[37]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'Never')])[7]")
     protected WebElement getHowofteninthelastyearhaveyoubeenunable;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[34]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='Over the last 2 weeks, how often have you been bothered by any of the following problems? ']//following::label[contains(text(),'Not at all')])[9]")
     protected WebElement getElmntThoughtsthatyouwouldBebetteroffdead;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[42]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'No')])[1]")
     protected WebElement getHaveyouorsomeoneelsebeeninjuredasaresult;
 
-    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::mat-radio-group[@role='radiogroup']//div[@class='mat-radio-container']//following-sibling::input)[45]")
+    @FindBy(how = How.XPATH, using = "(//p[text()='I would like to add an indicator for']//following::label[contains(text(),'No')])[2]")
     protected WebElement getHasarelativefriendordoctor;
     @FindBy(how = How.XPATH, using = "//h3[text()='NEW HEALTH INDICATOR']")
     protected WebElement getElmntNewHealthIndicator;
@@ -804,6 +804,7 @@ public class MyHealthIndicators extends BasePage {
         waitForElementClickable(btnAddnew);
         jsClick(btnAddnew);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
+        waitForSeconds(3);
         waitForElement(elmtVerifyAddnewHeader);
         return verifyElement(elmtVerifyAddnewHeader);
     }
@@ -1015,11 +1016,12 @@ public class MyHealthIndicators extends BasePage {
     public boolean ClickActiveCardBloodPressureData(List<String> lstDetails) {
         boolean blResult = false;
         try {
+            waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))));
             waitForSeconds(3);
             waitForElement(elmntActiveCardData);
-            click(elmntActiveCardData);
+            jsClick(elmntActiveCardData);
             waitForSeconds(3);
             blResult = verifyElement(elmtMyHealthIndicators);
         } catch (Exception e) {
@@ -1295,9 +1297,11 @@ public class MyHealthIndicators extends BasePage {
             WebElement elmntBloodPressureTableData = waitForElement(By.xpath(strEditMyEntriesAnxiety
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(currentDate))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails))));
+            System.out.println("elmntBloodPressureTableData >>>> "+elmntBloodPressureTableData);
             waitForElementClickable(elmntBloodPressureTableData);
             waitForSeconds(3);
             jsClick(elmntBloodPressureTableData);
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = verifyElement(elmntDrinkingSurvey);
         } catch (Exception e) {
@@ -1964,8 +1968,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            click(elmtActiveTab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -2031,7 +2035,7 @@ public class MyHealthIndicators extends BasePage {
         waitForElement(elmtHeartHealth);
         jsClick(elmtHeartHealth);
         waitForSeconds(3);
-        jsScrollIntoView(elmtHBA1C);
+//        jsScrollIntoView(elmtHBA1C);
         waitForElementClickable(elmtHBA1C);
         jsClick(elmtHBA1C);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -2310,8 +2314,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            click(elmtActiveTab);
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))));
@@ -2340,23 +2344,23 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            jsClick(elmtActiveTab);
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))));
             waitForSeconds(6);
             waitForElement(elmntActiveCardData);
-            click(elmntActiveCardData);
+            jsClick(elmntActiveCardData);
             waitForSeconds(3);
             waitForElementClickable(btnStatus);
-            click(btnStatus);
+            jsClick(btnStatus);
             waitForSeconds(3);
             waitForElementClickable(btnInActive);
             jsClick(btnInActive);
             waitForSeconds(3);
             waitForElementClickable(btnsave);
-            click(btnsave);
+            jsClick(btnsave);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = verifyElement(elmtMyHealthIndicators);
         } catch (Exception e) {
@@ -2911,7 +2915,7 @@ public class MyHealthIndicators extends BasePage {
     public boolean clickPeakFlowReminderSetting() {
         waitForSeconds(3);
         waitForElementClickable(elmtReminderSetting);
-        click(elmtReminderSetting);
+        jsClick(elmtReminderSetting);
         waitForSeconds(3);
         waitForElement(elmtPeakFlow);
         return verifyElement(elmtPeakFlow);
@@ -2920,7 +2924,7 @@ public class MyHealthIndicators extends BasePage {
     public boolean clickSmokingReminderSetting() {
         waitForSeconds(3);
         waitForElementClickable(elmtReminderSetting);
-        click(elmtReminderSetting);
+        jsClick(elmtReminderSetting);
         waitForSeconds(3);
         waitForElement(elmtSmoking);
         return verifyElement(elmtSmoking);
@@ -2929,7 +2933,7 @@ public class MyHealthIndicators extends BasePage {
     public boolean clickTotalCholesterolReminderSetting() {
         waitForSeconds(3);
         waitForElementClickable(elmtReminderSetting);
-        click(elmtReminderSetting);
+        jsClick(elmtReminderSetting);
         waitForSeconds(3);
         waitForElement(elmtTotalCholesterol);
         return verifyElement(elmtTotalCholesterol);
@@ -2938,7 +2942,7 @@ public class MyHealthIndicators extends BasePage {
     public boolean clickTriglyceridesReminderSetting() {
         waitForSeconds(3);
         waitForElementClickable(elmtReminderSetting);
-        click(elmtReminderSetting);
+        jsClick(elmtReminderSetting);
         waitForSeconds(3);
         waitForElement(elmtTriglycerides);
         return verifyElement(elmtTriglycerides);
@@ -2947,7 +2951,7 @@ public class MyHealthIndicators extends BasePage {
     public boolean clickWaistSizeReminderSetting() {
         waitForSeconds(3);
         waitForElementClickable(elmtReminderSetting);
-        click(elmtReminderSetting);
+        jsClick(elmtReminderSetting);
         waitForSeconds(3);
         waitForElement(elmtWaistSize);
         return verifyElement(elmtWaistSize);
@@ -3011,8 +3015,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            click(elmtActiveTab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -3993,7 +3997,7 @@ public class MyHealthIndicators extends BasePage {
             waitForSeconds(3);
             System.out.println(elmntActiveCardData);
             waitForElement(elmntActiveCardData);
-            click(elmntActiveCardData);
+            jsClick(elmntActiveCardData);
             waitForSeconds(3);
             blResult = verifyElement(elmtMyHealthIndicators);
         } catch (Exception e) {
@@ -4067,23 +4071,23 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            jsClick(elmtActiveTab);
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))));
             waitForSeconds(6);
             waitForElement(elmntActiveCardData);
-            click(elmntActiveCardData);
+            jsClick(elmntActiveCardData);
             waitForSeconds(3);
             waitForElementClickable(btnStatus);
-            click(btnStatus);
+            jsClick(btnStatus);
             waitForSeconds(3);
             waitForElementClickable(btnInActive);
             jsClick(btnInActive);
             waitForSeconds(3);
             waitForElementClickable(btnsave);
-            click(btnsave);
+            jsClick(btnsave);
             blResult = verifyElement(getNewHealthIndicator);
         } catch (Exception e) {
             e.printStackTrace();
@@ -4095,8 +4099,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            jsClick(elmtActiveTab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             String currentDate = getCurrentDate("dd MMM yyyy");
@@ -4127,8 +4131,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            jsClick(elmtActiveTab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -4157,8 +4161,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            click(elmtActiveTab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -4188,8 +4192,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            click(elmtActiveTab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -4219,8 +4223,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            jsClick(elmtActiveTab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -4250,8 +4254,8 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            click(elmtActiveTab);
             waitForSeconds(3);
             String currentDate = getCurrentDate("dd MMM yyyy");
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -4280,10 +4284,10 @@ public class MyHealthIndicators extends BasePage {
     public boolean ClickHeightCardInActiveIcon(List<String> lstDetails) {
         boolean blResult = false;
         try {
-            jsScrollIntoView(elmtInactiveAlltab);
+            jsScrollIntoView(elmtActiveTab);
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            jsClick(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            jsClick(elmtActiveTab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -4313,10 +4317,10 @@ public class MyHealthIndicators extends BasePage {
     public boolean ClickWeightCardInActiveIcon(List<String> lstDetails) {
         boolean blResult = false;
         try {
-            jsScrollIntoView(elmtInactiveAlltab);
+            jsScrollIntoView(elmtActiveTab);
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            jsClick(elmtInactiveAlltab);
+            waitForElementClickable(elmtActiveTab);
+            jsClick(elmtActiveTab);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
@@ -4347,24 +4351,25 @@ public class MyHealthIndicators extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(3);
-            waitForElementClickable(elmtInactiveAlltab);
-            click(elmtInactiveAlltab);
+            waitForElementClickable(btnactivetab);
+            jsClick(btnactivetab);
             waitForSeconds(3);
             String currentDate = getCurrentDate("dd MMM yyyy");
             WebElement elmntActiveCardData = waitForElement(By.xpath(ActiveCardElemnts
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))));
             waitForSeconds(6);
+            jsScrollIntoView(elmntActiveCardData);
             waitForElement(elmntActiveCardData);
-            click(elmntActiveCardData);
+            jsClick(elmntActiveCardData);
             waitForSeconds(3);
             waitForElementClickable(btnStatus);
-            click(btnStatus);
+            jsClick(btnStatus);
             waitForSeconds(3);
             waitForElementClickable(btnInActive);
             jsClick(btnInActive);
             waitForSeconds(3);
             waitForElementClickable(btnsave);
-            click(btnsave);
+            jsClick(btnsave);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = verifyElement(getNewHealthIndicator);
         } catch (Exception e) {

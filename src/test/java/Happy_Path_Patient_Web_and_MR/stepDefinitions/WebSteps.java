@@ -47,7 +47,7 @@ public class WebSteps {
 
     @When("I click login button")
     public void iClickLoginButton() {
-        demoPageContainer.homePage.clickSignInButton();
+        demoPageContainer.homePage.clickProviderSignInButton();
     }
 
 
@@ -5476,7 +5476,6 @@ public class WebSteps {
     @And("I select payment option {string} and I accept the terms & conditions and confirm my booking")
     public void iSelectPaymentOptionAndIAcceptTheTermsConditionsAndConfirmMyBooking(String strPaymentOption) {
         Assert.assertTrue(demoPageContainer.appointmentsPage.selectPaymentOption(TestDataUtil.getValue(strPaymentOption)));
-
         Assert.assertTrue(demoPageContainer.appointmentsPage.acceptTermsAndConditionsForAppointment());
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmYourBookingButton());
 
@@ -5488,8 +5487,6 @@ public class WebSteps {
 
         Assert.assertTrue(demoPageContainer.appointmentsPage.acceptThePaymentPopup());
         Assert.assertTrue(demoPageContainer.appointmentsPage.verifyPageNavigatedToPaymentWindow());
-
-
 
         Assert.assertTrue(demoPageContainer.appointmentsPage.vreifyAmount(TestDataUtil.getValue(lstPayOnlineDetails.get(0))));
         Assert.assertTrue(demoPageContainer.appointmentsPage.enterCardNumber(TestDataUtil.getValue(lstPayOnlineDetails.get(1))));

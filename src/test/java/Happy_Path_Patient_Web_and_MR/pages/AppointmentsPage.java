@@ -95,7 +95,7 @@ public class AppointmentsPage extends BasePage {
     protected WebElement elmntBlockAppointmentsForProviderHeader;
 
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'BOOK APPOINTMENT')]//i")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'BOOK APPOINTMENT')]//i)[1]")
     protected WebElement elmntBookAppointment;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Upcoming Appointments')]")
@@ -241,7 +241,7 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Video')]")
     protected WebElement elmntVideoAppointmentIcon;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Phone')])[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Phone')]")
     protected WebElement elmntPhoneAppointmentIcon;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'NO')]/parent::button")
@@ -308,7 +308,7 @@ public class AppointmentsPage extends BasePage {
 
 
     protected String elmntPhoneBookingType = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[2]").toString();
+            .append("<<REPLACEMENT>>").append("')])[1]").toString();
 
     protected String elmntSelectProvider = new StringBuilder().append("//div[@class='profile']//child::p[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
@@ -2160,7 +2160,7 @@ public class AppointmentsPage extends BasePage {
 
             String strConvertedTime = strTime;
 
-            strConvertedTime = "0" + strConvertedTime;
+//            strConvertedTime = "0" + strConvertedTime;
 
             String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
 
@@ -2191,7 +2191,10 @@ public class AppointmentsPage extends BasePage {
                 System.out.println("DATE" + strDateValue);
                 String strDateMonth = strDateValue;
                 String strTime = strSlotDate;
-                String strFinalOutDateTime1 = strDateMonth + " " + strTime;
+                String strConvertedTime = strTime;
+
+                strConvertedTime = "0" + strConvertedTime;
+                String strFinalOutDateTime1 = strDateMonth + " " + strConvertedTime;
                 System.out.println(strFinalOutDateTime1);
 
                 WebElement elmntAppointmentDetails1 = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime1).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
@@ -3991,6 +3994,7 @@ waitForSeconds(4);
                             waitForElement(cancelButton);
                             jsClick(cancelButton);
                             System.out.println("Button No" + i);
+                            waitForSeconds(2);
                             waitForElement(txtReasonForCancelAppointment);
                             verifyElement(txtReasonForCancelAppointment);
                             enterValue(txtReasonForCancelAppointment, "Cancelling My Appointment due to Unavailability");

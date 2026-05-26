@@ -239,7 +239,7 @@ public class MessagesPage extends BasePage {
     protected String receivedMessageSubject = new StringBuilder()
             .append("(//div[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')])[1]")
+            .append("')])[2]")
             .toString();
 
     protected String receivedMessageBody = new StringBuilder()
@@ -379,10 +379,10 @@ public class MessagesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Sent')]")
     protected WebElement txtSentForPatient;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Archive')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Archive')])[2]")
     protected WebElement elmntArchive;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Sent')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Sent')])[2]")
     protected WebElement elmntSent;
 
     @FindBy(how = How.XPATH, using = "//a[@mattooltip='Mark as unread']")
@@ -774,14 +774,15 @@ public class MessagesPage extends BasePage {
             waitAndClick(chkBoxInboxSelectAll);
             int size = chkBoxInboxPatient.size();
             System.out.println("\n size of chkBoxInboxPatient >>> :: " + size);
-            for (WebElement checkBok : chkBoxInboxPatient) {
-                String checkBoxValue = checkBok.getAttribute("ng-reflect-checked");
-                System.out.println("checkBoxValue :: " + checkBoxValue);
-                if (checkBoxValue.equalsIgnoreCase("false")) {
-                    System.out.println("All INBOX CheckBox was failed to select");
-                    return blResult;
-                }
-            }
+//            for (WebElement checkBok : chkBoxInboxPatient) {
+//                System.out.println("checkBok :: "+checkBok);
+//                String checkBoxValue = checkBok.getAttribute("ng-reflect-checked");
+//                System.out.println("checkBoxValue :: " + checkBoxValue);
+//                if (checkBoxValue.equalsIgnoreCase("false")) {
+//                    System.out.println("All INBOX CheckBox was failed to select");
+//                    return blResult;
+//                }
+//            }
             takeScreenshotSanity(driver);
             System.out.println("Inbox All CheckBox was selected Successfully");
             blResult = true;

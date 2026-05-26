@@ -1,5 +1,6 @@
 package Happy_Path_Patient_Web_and_MR.pages;
 
+import Sanity_Patient_Web.pages.DashboardPage;
 import cap.common.BasePage;
 import cap.helpers.Constants;
 import cap.utilities.DateUtil;
@@ -422,12 +423,90 @@ public class HomePage extends BasePage {
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
+
+    @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Two-step verification')]")
+    protected WebElement OTPPage;
+
+
+    @FindBy(how = How.XPATH, using = "//input[@placeholder=\"Enter verification code\"]")
+    protected WebElement EnterOTP;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'VERIFY & CONTINUE')]")
+    protected WebElement ClickVerifyandContinue;
+
+    protected String elmntLoginSuccessful = "//h4[contains(text(),'Success!')]//following::p[contains(text(),'Login Successful')]";
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'VERIFY & CONTINUE')]")
+    protected WebElement VerifyLoginSuccessful;
+
+    @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Trust This Device?')]")
+    protected WebElement VerifyTrustThisDevice;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'TRUST THIS DEVICE')]")
+    protected WebElement ClickTrustThisDevice;
+
+
     public void clickSignInButton() {
         waitForSeconds(3);
         if (verifyElement(SignInBtn)) {
             waitForElement(SignInBtn);
             jsClick(SignInBtn);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
+            if (verifyElement(OTPPage)) {
+                System.out.println("Verify OTP Page");
+                waitForElement(EnterOTP);
+                enterValue(EnterOTP, TestDataUtil.getValue("&OTP&"));
+                waitForSeconds(2);
+                waitForElement(ClickVerifyandContinue);
+                mouseClick(ClickVerifyandContinue);
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForSeconds(3);
+                if (verifyElement(VerifyTrustThisDevice)) {
+                    waitForElement(ClickTrustThisDevice);
+                    waitForSeconds(3);
+                    jsClick(ClickTrustThisDevice);
+                    waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                }
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElementToAppear(driver, By.xpath(elmntLoginSuccessful));
+                verifyElement(VerifyLoginSuccessful);
+                waitForElement(elmntDashboard);
+                jsClick(elmntDashboard);
+            }
+        } else if (!verifyElement(SignInBtn)) {
+            System.out.println("user already in the home page");
+        }
+    }
+
+    public void clickProviderSignInButton() {
+        waitForSeconds(3);
+        if (verifyElement(SignInBtn)) {
+            waitForElement(SignInBtn);
+            jsClick(SignInBtn);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(5);
+            if (verifyElement(OTPPage)) {
+                System.out.println("Verify OTP Page");
+                waitForElement(EnterOTP);
+                enterValue(EnterOTP, TestDataUtil.getValue("&PROVIDER_OTP&"));
+                waitForSeconds(2);
+                waitForElement(ClickVerifyandContinue);
+                mouseClick(ClickVerifyandContinue);
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForSeconds(4);
+                if (verifyElement(VerifyTrustThisDevice)) {
+                    waitForElement(ClickTrustThisDevice);
+                    waitForSeconds(3);
+                    jsClick(ClickTrustThisDevice);
+                    waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                }
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElementToAppear(driver, By.xpath(elmntLoginSuccessful));
+                verifyElement(VerifyLoginSuccessful);
+                waitForElement(elmntDashboard);
+                jsClick(elmntDashboard);
+            }
         } else if (!verifyElement(SignInBtn)) {
             System.out.println("user already in the home page");
         }

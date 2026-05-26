@@ -9,7 +9,7 @@ Feature:MyHealth_Indicators
       | TimeZone                  |
       | New Zealand Standard Time |
 
-  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS1
+  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS
   Scenario Template:Pref- User Successfully logs in to the beta v2 Portal.
     Given As a user I am on beta MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
@@ -17,14 +17,14 @@ Feature:MyHealth_Indicators
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address | Password   |
-      | &EMAIL_MMH&   | &PASSWORD& |
+      | &EMAIL&   | &PASSWORD& |
       #Note:{#142:Login as Existing patient & view/click on My Health Indicators
   #143:By default All tab is selected to view Active & Inactive indicators in card
   #144:Click on Active to view all active indicators in card view
   #145:Click on Inactive to view all inactive indicators in card view
    # These tests Case Covered The Scenario NO: S1
   #}
-  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS
+  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
   Scenario:S1-Patient can view all the Active & Inactive My Health Indicators Records in the card view.
 
     Given As a Existing user I am on HomePage and I click the My Health Indicators
@@ -43,7 +43,7 @@ Feature:MyHealth_Indicators
            #174:Click Edit/Delete in All/My Entries Records
            # These tests Case Covered The Scenario NO: S2
       #}
-  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS1
+  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS
   Scenario Template: S2-Existing Patient Verify Medicine details and validate Add, edit, delete, change status, set reminder,privacy settings in My entries Alcohol Details
 
     Given As a Existing user I am on HomePage and I click the My Health Indicators
@@ -112,7 +112,7 @@ Feature:MyHealth_Indicators
            #193:Click on Health Centre to view entries added by provider in grid
            # These tests Case Covered The Scenario NO: S4
         #}
-  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS
+  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
   Scenario: S4-Verify the Blood Pressure Health Centre Medicine Details in Existing Patient
 
     Given As a Existing user I am on HomePage and I click the My Health Indicators
@@ -194,7 +194,7 @@ Feature:MyHealth_Indicators
            #211:Click on Health Centre to view entries added by provider in grid
            # These tests Case Covered The Scenario NO: S7
         #}
-  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS
+  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
   Scenario: S7-Verify the BMI Health Centre Medicine Details in Existing Patient
 
     Given As a Existing user I am on HomePage and I click the My Health Indicators
@@ -276,7 +276,7 @@ Feature:MyHealth_Indicators
            #238:Click on Health Centre to view entries added by provider in grid
            # These tests Case Covered The Scenario NO: S10
         #}
-  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS
+  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
   Scenario: S10-Verify the HBA1C Health Centre Medicine Details in Existing Patient
 
     Given As a Existing user I am on HomePage and I click the My Health Indicators
@@ -355,7 +355,7 @@ Feature:MyHealth_Indicators
            #265:Click on Health Centre to view entries added by provider in grid
            # These tests Case Covered The Scenario NO: S13
         #}
-  @WEB  @SANITY_PATH  @MY_HEALTH_INDICATORS
+  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
   Scenario: S13-Verify the LDL Health Centre Medicine Details in Existing Patient
 
     Given As a Existing user I am on HomePage and I click the My Health Indicators

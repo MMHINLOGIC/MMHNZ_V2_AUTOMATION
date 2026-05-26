@@ -204,7 +204,7 @@ Feature: Messages
       | Message Details             | Automatic Reply Message   |
       | &AUTOMATIC_MESSAGE_DETAILS& | &AUTOMATIC REPLY MESSAGE& |
 
-  @WEB @Mobile @MESSAGES1 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: User Successfully logs in to the MMH v2 Portal as Patient.
 
     Given As a user I am on MMH login Page
@@ -252,7 +252,7 @@ Feature: Messages
       | Alert Type   |
       | &ALERT TYPE& |
 
-  @WEB @Mobile @MESSAGES1 @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
+  @WEB @Mobile @MESSAGES @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE @Mobile_Messages
   Scenario Template: S1- Patient Sending Message
 
     Given As a Existing user I am on HomePage and navigate to Compose Message

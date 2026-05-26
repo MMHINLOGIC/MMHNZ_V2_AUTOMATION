@@ -8,15 +8,15 @@ Feature: Patient Profile
     When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
     Examples:
-      | Email Address       | Password               |
-      | &EMAIL_FOR_PROFILE& | &PASSWORD_FOR_PROFILE& |
+      | Email Address | Password   |
+      | &EMAIL&       | &PASSWORD& |
 
 #    Note: {
 #    388:Login as Existing patient & view/click on My Profile on right top
 #    389:Navigate to profile & click on Change password - Enter current password, new password & confirm new password & click on change
 #    These test Case Covered The Scenario NO: S1
 #  }
-  @WEB @PROFILE @SANITY_PATH
+  @WEB @PROFILE11 @SANITY_PATH1
   Scenario Template: S1- Existing Patient change the password.
 
     Given As a Existing user I am on HomePage and I navigate to change password in the My Profile

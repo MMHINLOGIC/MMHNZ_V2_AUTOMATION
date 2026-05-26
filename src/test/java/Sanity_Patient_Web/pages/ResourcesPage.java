@@ -60,9 +60,9 @@ public class ResourcesPage extends BasePage {
             waitForSeconds(2);
 
 //            waitForElement(elmntHealthTools);
-            jsScrollIntoView(elmntHealthTools);
-            waitForElementClickable(elmntHealthTools);
-            jsClick(elmntHealthTools);
+//            jsScrollIntoView(elmntHealthTools);
+//            waitForElementClickable(elmntHealthTools);
+//            jsClick(elmntHealthTools);
 
             waitForSeconds(3);
 
@@ -89,7 +89,7 @@ public class ResourcesPage extends BasePage {
             waitForSeconds(2);
             waitForElement(elmntHealthNavigator);
 
-            waitForElement(elmntPatientSheets);
+//            waitForElement(elmntPatientSheets);
 
             blResult = verifyElement(elmntCovid19);
 
@@ -120,7 +120,7 @@ public class ResourcesPage extends BasePage {
 
                 String CurrentUrl = driver.getCurrentUrl();
                 System.out.println("CurrentUrl >>> : " + CurrentUrl);
-                CurrentUrl.equalsIgnoreCase("https://www.healthnavigator.org.nz/");
+                CurrentUrl.equalsIgnoreCase("https:https://healthify.nz/");
 
                 System.out.println("User on the Health Navigator and Verified the Health Navigator page >>>>");
                 closeWindow(2);

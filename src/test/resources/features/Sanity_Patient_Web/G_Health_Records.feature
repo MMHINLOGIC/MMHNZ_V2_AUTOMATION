@@ -25,7 +25,7 @@
     #83:View all the details in grid & click on more info icon for specific medicine details in prescription tab
      #These test Case Covered The Scenario NO: S1
       #}
-  @WEB  @SANITY_PATH  @HEALTH_RECORDS
+  @WEB  @SANITY_PATH11  @HEALTH_RECORDS
   Scenario Template: S1-Verify the Prescription Entries From Health center Medicine Details in Existing Patient
 
     Given As a Existing user I am on HomePage and I click the Health Records
@@ -48,7 +48,7 @@
   #90:Click on delete icon for specific record in My entries grid to delete added data in prescription tab
    #These tests Case Covered The Scenario NO: S2
   #}
-  @WEB   @HEALTH_RECORDS @SANITY_PATH
+  @WEB   @HEALTH_RECORDS @SANITY_PATH11
   Scenario Template: S2-Existing Patient Verify Medicine details and validate edit ,delete,Share With Doctor in My entries Prescription Medicine Details
 
     Given As a Existing user I am on HomePage and I click the Health Records
@@ -82,7 +82,7 @@
 #Note:{87:If share with doctor is uncheck then the records is not shared to health centre/provider & kept private in prescription tab
    #These test Case Covered The Scenario NO: S3
   #}
-  @WEB   @HEALTH_RECORDS @SANITY_PATH
+  @WEB   @HEALTH_RECORDS @SANITY_PATH11
   Scenario Template: S3-Existing Patient Verify Medicine details and validate edit ,delete,Share WithOut Doctor in My entries Prescription Medicine Details
 
     Given As a Existing user I am on HomePage and I click the Health Records

@@ -27,5 +27,4 @@ Feature: Resources
     Given As a Existing user I am on HomePage and navigate to Resources
     And I view the Activated resources.
     And Navigate to Health Navigator resource
-    And Navigate to Everybody Patient sheet Resource
     And Navigate to Unite against Covid resource

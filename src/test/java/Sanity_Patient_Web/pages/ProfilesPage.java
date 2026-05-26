@@ -31,13 +31,13 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[contains(text(),'Change Email Address')]")
     protected WebElement elmntChangeEmailAddress;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Change Phone Number')])[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Change Phone Number')]")
     protected WebElement elmntChangePhoneNumber;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Calendar')])[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Calendar')]")
     protected WebElement elmntCalendar;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Update Profile') or contains(text(),'View Profile')])[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Update Profile')]")
     protected WebElement elmntViewOrUpdateProfile;
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'My Health Centres')])[2]")
@@ -61,10 +61,10 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-button[@aria-label='Delete']")
     protected List<WebElement> btnDeleteIcon;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Change Address')])[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Change Address')]")
     protected WebElement elmntChangeAddress;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Change Password')])[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Change Password')]")
     protected WebElement elmntChangePassword;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Change Password')]")
@@ -152,7 +152,7 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Create')]")
     protected WebElement btnUpdate;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Update')])[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Update')]")
     protected WebElement btnPassWordUpdate;
 
 
@@ -281,6 +281,12 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Contact')]")
     protected WebElement btnAddContact;
 
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Information')]")
+    protected WebElement btnInformation;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'OK')]")
+    protected WebElement btnOk;
+
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'It looks like you are already registered with Manage My Health.')]")
     protected WebElement elmntError;
 
@@ -325,8 +331,6 @@ public class ProfilesPage extends BasePage {
 
     protected String elmntHealthcentreDrop = new StringBuilder().append("(//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')])[2]").toString();
-
-
 
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),' Search ')]")
@@ -532,9 +536,9 @@ public class ProfilesPage extends BasePage {
             waitForElementClickable(btnPassWordUpdate);
             jsClick(btnPassWordUpdate);
             waitForSeconds(2);
-            if (isElementDisplayed(successPopupForAddressChanged)){
-waitForElement(btnAddresschangedOkPopup);
-click(btnAddresschangedOkPopup);
+            if (isElementDisplayed(successPopupForAddressChanged)) {
+                waitForElement(btnAddresschangedOkPopup);
+                click(btnAddresschangedOkPopup);
             }
 //            waitForElement(successPopup);
             blResult = true;
@@ -592,9 +596,14 @@ click(btnAddresschangedOkPopup);
         waitForElement(btnAddContact);
         waitForElementClickable(btnAddContact);
         jsClick(btnAddContact);
-        waitForSeconds(4);
+        waitForSeconds(3);
+        waitForElement(btnInformation);
+        verifyElement(btnInformation);
+        waitForElement(btnOk);
+        jsClick(btnOk);
         waitForElement(successPopup);
         return verifyElement(successPopup);
+
     }
 
     public boolean clickGeneral() {
@@ -636,13 +645,14 @@ click(btnAddresschangedOkPopup);
         waitForElement(headerName);
         return headerName.isDisplayed();
     }
+
     public boolean deleteAllCategories() {
         waitForElement(elmntAddCategory);
         try {
             waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForElements(btnDeleteIcon);
-            for (WebElement delete: btnDeleteIcon) {
+            for (WebElement delete : btnDeleteIcon) {
                 waitForSeconds(3);
 //                waitForElement(delete);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -663,19 +673,19 @@ click(btnAddresschangedOkPopup);
 
             }
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return true;
     }
+
     public boolean deleteAllEmergencyContact() {
         waitForElement(txtEmergencyContacts);
         try {
 //            waitForElements(btnDeleteIcon);
-            int Value=btnDeleteIcon.size();
-            System.out.println("Value :: "+Value);
-            for (WebElement delete: btnDeleteIcon) {
+            int Value = btnDeleteIcon.size();
+            System.out.println("Value :: " + Value);
+            for (WebElement delete : btnDeleteIcon) {
                 waitForSeconds(4);
                 waitForElement(delete);
                 jsClick(delete);
@@ -691,8 +701,7 @@ click(btnAddresschangedOkPopup);
                 waitForSeconds(3);
             }
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return true;
@@ -741,8 +750,8 @@ click(btnAddresschangedOkPopup);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            waitForElement(chkBoxShow);
 //            if (!chkBoxShow.isSelected()) {
-                waitForElement(chkBoxShow);
-                jsClick(chkBoxShow);
+            waitForElement(chkBoxShow);
+            jsClick(chkBoxShow);
 //            }
             takeScreenshotSanity(driver);
             blResult = true;
@@ -762,8 +771,8 @@ click(btnAddresschangedOkPopup);
         boolean isVerified = false;
         try {
             String Phone = TestDataUtil.getValue(lstDetails.get(3));
-            String HomePhoneNumber="+64"+Phone;
-            System.out.println("HomePhoneNumber :: "+HomePhoneNumber);
+            String HomePhoneNumber = "+64" + Phone;
+            System.out.println("HomePhoneNumber :: " + HomePhoneNumber);
             waitForElement(txtEmergencyContacts);
             System.out.println("\nX-Path for Grid Emergency Information >>> :: " + elmntGridEmergencyInformation
                     .replace("<<FirstName>>", TestDataUtil.getValue(lstDetails.get(0)))
@@ -997,7 +1006,7 @@ click(btnAddresschangedOkPopup);
 //            waitForElementClickable(elmntViewOrUpdateProfile);
             waitAndClick(elmntViewOrUpdateProfile);
             waitForElement(elmntEmergencyContacts);
-            waitForElementClickable(elmntEmergencyContacts);
+//            waitForElementClickable(elmntEmergencyContacts);
             jsClick(elmntEmergencyContacts);
             waitForElement(txtEmergencyContacts);
             takeScreenshotSanity(driver);
@@ -1482,11 +1491,11 @@ click(btnAddresschangedOkPopup);
             jsClick(btnDay);
             waitForSeconds(3);
             waitForElement(elmntDayView);
-            String data=elmntDayView.getAttribute("aria-pressed").toString();
-            System.out.println("data :: "+data);
-            if (data.equals("true")){
+            String data = elmntDayView.getAttribute("aria-pressed").toString();
+            System.out.println("data :: " + data);
+            if (data.equals("true")) {
                 takeScreenshotSanity(driver);
-                blResult=true;
+                blResult = true;
 
             }
 
@@ -1505,11 +1514,11 @@ click(btnAddresschangedOkPopup);
             waitForElementClickable(btnWeek);
             jsClick(btnWeek);
             waitForSeconds(2);
-            String data=elmntDayView.getAttribute("aria-pressed");
-            System.out.println("data :: "+data);
-            if (data.equals("true")){
+            String data = elmntDayView.getAttribute("aria-pressed");
+            System.out.println("data :: " + data);
+            if (data.equals("true")) {
                 takeScreenshotSanity(driver);
-                blResult=true;
+                blResult = true;
 
             }
 
@@ -1528,11 +1537,11 @@ click(btnAddresschangedOkPopup);
             waitForElementClickable(btnMonth);
             jsClick(btnMonth);
             waitForSeconds(2);
-            String data=elmntDayView.getAttribute("aria-pressed");
-            System.out.println("data :: "+data);
-            if (data.equals("true")){
+            String data = elmntDayView.getAttribute("aria-pressed");
+            System.out.println("data :: " + data);
+            if (data.equals("true")) {
                 takeScreenshotSanity(driver);
-                blResult=true;
+                blResult = true;
 
             }
 
@@ -1765,10 +1774,10 @@ click(btnAddresschangedOkPopup);
         try {
             waitForSeconds(2);
             waitForElement(drpDownHealthCentre);
-           jsClick(drpDownHealthCentre);
+            jsClick(drpDownHealthCentre);
             waitForSeconds(2);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntHealthcentreDrop.replace("<<REPLACEMENT>>", strHealthCenter)));
-            System.out.printf(">>>>>>>>>>>>elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
+            System.out.printf(">>>>>>>>>>>>elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForSeconds(2);
             blResult = true;
@@ -1782,8 +1791,8 @@ click(btnAddresschangedOkPopup);
 
     public void SearchOrder(String strOrder) {
         waitForElement(txtSearchPatients);
-        System.out.println("X-path for rdoBtn >>> :: "+searchOrder.replace("<<REPLACEMENT>>",strOrder));
-        WebElement rdoBtn = waitForElement(By.xpath(searchOrder.replace("<<REPLACEMENT>>",strOrder)));
+        System.out.println("X-path for rdoBtn >>> :: " + searchOrder.replace("<<REPLACEMENT>>", strOrder));
+        WebElement rdoBtn = waitForElement(By.xpath(searchOrder.replace("<<REPLACEMENT>>", strOrder)));
         waitForElementClickable(rdoBtn);
         jsClick(rdoBtn);
 
@@ -1831,6 +1840,7 @@ click(btnAddresschangedOkPopup);
         }
         return blResult;
     }
+
     public boolean selectViewGoals() {
         boolean blResult = false;
         try {
@@ -1853,11 +1863,12 @@ click(btnAddresschangedOkPopup);
         }
         return blResult;
     }
+
     public boolean verifyWhoAccessedMyRecords(String strDetail) {
         boolean blResult = false;
         try {
             List<String> lstDetail = TestDataUtil.getListOfValue(strDetail);
-            System.out.println("lstDetail >>> :: "+lstDetail);
+            System.out.println("lstDetail >>> :: " + lstDetail);
             waitForSeconds(3);
             waitForElement(txtLoginHistory);
 
@@ -1877,13 +1888,13 @@ click(btnAddresschangedOkPopup);
 
             System.out.println("Xpath for Patient >>> :: " + verifyAccessRecords
                     .replace("<<DATE>>", strCurrentDate)
-                    .replace("<<NAME>>",lstDetail.get(0))
-                    .replace("<<DOCTOR>>",lstDetail.get(1)));
+                    .replace("<<NAME>>", lstDetail.get(0))
+                    .replace("<<DOCTOR>>", lstDetail.get(1)));
 
             WebElement record = waitForElement(By.xpath(verifyAccessRecords
                     .replace("<<DATE>>", strCurrentDate)
-                    .replace("<<NAME>>",lstDetail.get(0))
-                    .replace("<<DOCTOR>>",lstDetail.get(1))));
+                    .replace("<<NAME>>", lstDetail.get(0))
+                    .replace("<<DOCTOR>>", lstDetail.get(1))));
 
             waitForSeconds(2);
             waitForElement(record);
@@ -1900,18 +1911,17 @@ click(btnAddresschangedOkPopup);
     public static void main(String[] args) {
         String strCurrentDate = getCurrentDateByTimeZone("dd MMM YYYY", "GMT+12");
         System.out.println(strCurrentDate);
-        String st123 ="2209-1816-4257-0088";
+        String st123 = "2209-1816-4257-0088";
         StringBuffer st = new StringBuffer("2209-1816-4257-0088");
-        st123.replace("-","");
-        System.out.println(st123.replace("-",""));
+        st123.replace("-", "");
+        System.out.println(st123.replace("-", ""));
 
         String input_string = "$ 12.00(NS USD)";
-        String string_output=input_string.replaceAll("[A-Za-z]", "");
+        String string_output = input_string.replaceAll("[A-Za-z]", "");
 //        int number_output=Integer.parseInt(input_string.replaceAll("[^0-9]", ""));
-        System.out.println("string_output = "+string_output);
+        System.out.println("string_output = " + string_output);
 //        System.out.println("number_output = "+number_output);
     }
-
 
 
 }

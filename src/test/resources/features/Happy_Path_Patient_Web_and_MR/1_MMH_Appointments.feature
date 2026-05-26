@@ -412,7 +412,7 @@ Feature: Appointments
 #      | Email Address | Password   | ui         |
 #      | &EMAIL&       | &PASSWORD& | &UI_EMAIL& |
 #
-#  @WEB @Mobile @APPOINTMENTS1 @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
+#  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH1 @HAPPY_PATH_MOBILE_RESPONSE1
 #  Scenario Template: S1 Patient Booking Appointment - Visit Appointment
 #
 #    Given As a user I am on Patient HomePage
