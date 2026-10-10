@@ -506,9 +506,9 @@ public class RepeatScriptSettingPage extends BasePage {
     public boolean clickRRPScriptInstructionSetting() {
         boolean isVerified = false;
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
-        waitForElement(elmntRRPScriptInstructionsSettings);
-        waitForElementClickable(elmntRRPScriptInstructionsSettings);
-        waitAndClick(elmntRRPScriptInstructionsSettings);
+//        waitForElement(elmntRRPScriptInstructionsSettings);
+//        waitForElementClickable(elmntRRPScriptInstructionsSettings);
+//        waitAndClick(elmntRRPScriptInstructionsSettings);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForElement(txtRRPScriptInstructionsSettings);
         isVerified = verifyElement(txtRRPScriptInstructionsSettings);

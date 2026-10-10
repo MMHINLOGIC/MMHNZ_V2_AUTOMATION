@@ -578,7 +578,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT>>").append("')]//parent::tr//span[@class='k-button-text'])[1]").toString();
 
     protected String elmntCovidEdit = new StringBuilder().append("(//td[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')]//following::td//span[@class='k-button-text'])[1]").toString();
+            .append("<<REPLACEMENT>>").append("')]//following::td//span[@class='k-button-text']//i)[1]").toString();
 
     protected String elmntPrescriptionsEdit = new StringBuilder().append("(//td[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]//parent::tr//span[@class='k-button-text'])[1]").toString();
@@ -2288,8 +2288,8 @@ public class MyHealthRecordsPage extends BasePage {
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>"+btnEdit);
             jsScrollIntoView(btnEdit);
             waitForSeconds(3);
-            waitForElementClickable(btnEdit);
-            mouseClick(btnEdit);
+//            waitForElementClickable(btnEdit);
+            click(btnEdit);
             isVerified = verifyElement(btnEdit);
         }
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {

@@ -41,7 +41,7 @@ public class HomeScreen extends BaseScreen {
 
     By byconfirmPopUp = By.xpath("//android.widget.TextView[@text='Confirm!']");
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='YES']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='Yes']")
     @iOSXCUITFindBy(id = "Yes")
     protected WebElement btnYes;
 
@@ -74,7 +74,7 @@ public class HomeScreen extends BaseScreen {
     public boolean gotoAndVerifyMMHHomeScreen() {
         waitForSecond(1);
         int i = 1;
-        while (!(verifyElementWithoutWait(iconHome) && i <= 10)) {
+        while (!(verifyElement(iconHome) && i <= 10000)) {
             navigateToBack();
 //            waitForElement(NavigateToBack);
 //            click(NavigateToBack);

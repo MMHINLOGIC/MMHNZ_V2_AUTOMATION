@@ -30,7 +30,7 @@ Feature: Messages_Scenarios
 
     Given I am on MMH Login screen
     And I enter "<Username>" and "<Password>" in login screen
-    When I tap on Sign-In button
+    When I tap on Provider Sign-In button
     Then I should see MMH Home screen
 
     Examples:

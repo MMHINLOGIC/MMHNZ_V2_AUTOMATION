@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Codoidian-pc on 05/03/2022.
+ * Created by Gokul on 05/03/2022.
  */
 public class DemoScreenContainer extends SharedDriver {
     private WebDriver driver;
@@ -98,14 +98,14 @@ public class DemoScreenContainer extends SharedDriver {
         System.out.println("\n Scenario outline: " + scenario.getName());
         System.out.println("\n Scenario Status: " + scenario.getStatus());
 
-        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
-
-            if (scenario.getSourceTagNames().contains("@RELAUNCH")) {
-                homeScreen.appRelaunch();
-            } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
-                loginScreen.reLaunchAppIOS();
-            }
-        }
+//        if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
+//
+//            if (scenario.getSourceTagNames().contains("@RELAUNCH")) {
+//                homeScreen.appRelaunch();
+//            } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
+//                loginScreen.reLaunchAppIOS();
+//            }
+//        }
         if (scenario.isFailed()) {
             System.out.println("Scenario Failed");
             if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {

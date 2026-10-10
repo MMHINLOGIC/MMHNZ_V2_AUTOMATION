@@ -39,7 +39,7 @@ public class MyHealthRecordsPage extends BasePage {
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
-    @FindBy(how = How.XPATH, using = "(//a[@class='menu-header ng-star-inserted']/following::span[contains(text(),'Health Records')]//following::mat-icon)[1]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Health Records')]//following::mat-icon)[1]")
     protected WebElement btnMyHealthRecordsExpand;
 
     @FindBy(how = How.XPATH, using = "//mat-icon[text()='menu']")
@@ -167,7 +167,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT2>>").append("')]//following-sibling::td/div[contains(text(),'")
             .append("<<REPLACEMENT3>>").append("')]//following::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"])[1]").toString();
+            .append("<<REPLACEMENT5>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"])[1]").toString();
 
     //td[text()='21 Jan 2025']/following-sibling::td[contains(text(),'Kahler')]//following-sibling::td/div//following::td[text()='No']/following-sibling::td[text()='Automation1_Loc1']/following-sibling::td//following-sibling::span[@class="mat-mdc-focus-indicator"]
 //    (//td[text()='21 Jan 2025
@@ -205,7 +205,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
+            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
 
     @FindBy(how = How.XPATH, using = "//span[text()='Allergies']")
     protected WebElement elmntAllergies;
@@ -218,7 +218,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
+            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
 
     protected String strMobileAllergiesIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
@@ -240,7 +240,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
-            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
+            .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Lab Results')])[1]")
     protected WebElement elmntLabResults;
 
@@ -250,7 +250,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
-            .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
+            .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
 
     protected String strLabResultsCheckbox = new StringBuilder()
             .append("(//td[contains(.,'")
@@ -294,7 +294,7 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT1>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
-            .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-mdc-focus-indicator\"]").toString();
+            .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
 
     protected String strClinicalNotesDetails = new StringBuilder()
             .append("(//*[contains(text(),'")
@@ -825,7 +825,8 @@ public class MyHealthRecordsPage extends BasePage {
 
     public void clickMyHealthRecordsOptionFromMenu(String Strdata) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            waitForElementClickable(btnMyHealthRecordsExpand);
+            waitForSeconds(3);
+//            waitForElementClickable(btnMyHealthRecordsExpand);
             jsClick(btnMyHealthRecordsExpand);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -844,7 +845,7 @@ public class MyHealthRecordsPage extends BasePage {
 //            waitForSeconds(3);
             waitForElementClickable(btnMobileMenu);
             jsClick(btnMobileMenu);
-            waitForElementClickable(btnMyHealthRecordsExpand);
+//            waitForElementClickable(btnMyHealthRecordsExpand);
             jsClick(btnMyHealthRecordsExpand);
 //            waitForElementClickable(elmntPrescriptions);
 //            jsClick(elmntPrescriptions);
@@ -857,7 +858,7 @@ public class MyHealthRecordsPage extends BasePage {
 //            waitForSeconds(3);
             waitForElementClickable(btnMobileMenu);
             jsClick(btnMobileMenu);
-            waitForElementClickable(btnMyHealthRecordsExpand);
+//            waitForElementClickable(btnMyHealthRecordsExpand);
             jsClick(btnMyHealthRecordsExpand);
 //            waitForElementClickable(elmntPrescriptions);
 //            jsClick(elmntPrescriptions);
@@ -1086,8 +1087,9 @@ public class MyHealthRecordsPage extends BasePage {
 
     public void clickMyHealthRecordsOptionFromMenuClassifications(String strdata) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            waitForElement(btnMyHealthRecordsExpand);
-            click(btnMyHealthRecordsExpand);
+            waitForSeconds(3);
+//            waitForElement(btnMyHealthRecordsExpand);
+            jsClick(btnMyHealthRecordsExpand);
 //            waitForElementClickable(elmntConditions);
 //            jsClick(elmntConditions);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntFilterbyAllergiesDrop.replace("<<REPLACEMENT>>", strdata)));
@@ -1417,8 +1419,9 @@ public class MyHealthRecordsPage extends BasePage {
 
     public void clickMyHealthRecordsOptionFromMenuAllergies(String strdata) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
-            waitForElement(btnMyHealthRecordsExpand);
-            click(btnMyHealthRecordsExpand);
+            waitForSeconds(3);
+//            waitForElement(btnMyHealthRecordsExpand);
+            jsClick(btnMyHealthRecordsExpand);
 //            waitForElementClickable(elmntAllergies);
 //            jsClick(elmntAllergies);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntFilterbyAllergiesDrop.replace("<<REPLACEMENT>>", strdata)));

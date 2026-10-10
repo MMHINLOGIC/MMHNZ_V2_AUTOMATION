@@ -15,7 +15,7 @@ import static Happy_Path_Patient_Web_and_MR.pages.HomePage.*;
         glue = {"Happy_Path_Patient_Web_and_MR"},
         plugin = {
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-                "html:reports/WEB/index.html",
+                "html:reports/WEB/index.html", 
                 "json:reports/WEB/cucumber.json"
 
         })

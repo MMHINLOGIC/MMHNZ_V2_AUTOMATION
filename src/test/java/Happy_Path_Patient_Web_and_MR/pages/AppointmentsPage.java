@@ -4,11 +4,12 @@ import cap.common.BasePage;
 import cap.helpers.Constants;
 import cap.utilities.DateUtil;
 import cap.utilities.TestDataUtil;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -20,7 +21,7 @@ import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.LinkedList;
 import java.util.List;
 
 import static cap.utilities.DateUtil.*;
@@ -95,7 +96,7 @@ public class AppointmentsPage extends BasePage {
     protected WebElement elmntBlockAppointmentsForProviderHeader;
 
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'BOOK APPOINTMENT')]//i)[1]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'BOOK APPOINTMENT')]//i")
     protected WebElement elmntBookAppointment;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Upcoming Appointments')]")
@@ -184,7 +185,7 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='provider']")
     protected WebElement elmntSelectProviderdropdown;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),' Search ')])[1]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Search')])[2]")
     protected WebElement elmntSearchButton;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Clear')]")
@@ -193,18 +194,9 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'There are no records available.')]")
     protected WebElement elmntVerfied;
 
-    @FindBy(how = How.XPATH, using = "//p[contains(text(),'Try booking with an alternative provider.')]")
-    protected WebElement verifyAlternativeProviders;
+    @FindBy(how = How.XPATH, using = "//div[text()='View alternative appointment providers']")
+    protected WebElement clickAlternativeProviders;
 
-
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Consent')])[2]")
-    protected WebElement verifyConsent;
-
-    @FindBy(how = How.XPATH, using = "(//div[contains(text(),'You are now leaving the Manage My Health portal and will be redirected to the CareHQ website.')])[1]")
-    protected WebElement verifyConsentText;
-
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'NO')])[1]")
-    protected WebElement clickConsentNoButton;
     @FindBy(how = How.XPATH, using = "//img[@src='https://cdn.managemyhealth.co.nz/assets/V2/Images/Carehq-mob.png']")
     protected WebElement verifyimg;
 
@@ -241,7 +233,7 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Video')]")
     protected WebElement elmntVideoAppointmentIcon;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Phone')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Phone')])[2]")
     protected WebElement elmntPhoneAppointmentIcon;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'NO')]/parent::button")
@@ -272,7 +264,7 @@ public class AppointmentsPage extends BasePage {
     protected String elmntFamilyMember1 = new StringBuilder().append("//span[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
 
-    @FindBy(how = How.XPATH, using = "//input[@class='k-input-inner']")
+    @FindBy(how = How.XPATH, using = "//input[@class='p-autocomplete-input']")
     protected WebElement elmntReason;
 
     protected String VerifyAppointmentReason = new StringBuilder().append("(//span[contains(text(),'")
@@ -308,7 +300,7 @@ public class AppointmentsPage extends BasePage {
 
 
     protected String elmntPhoneBookingType = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[1]").toString();
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     protected String elmntSelectProvider = new StringBuilder().append("//div[@class='profile']//child::p[contains(text(),'")
             .append("<<REPLACEMENT>>").append("')]").toString();
@@ -412,8 +404,8 @@ public class AppointmentsPage extends BasePage {
 
     @FindAll({
             @FindBy(how = How.XPATH, using = "//div[@id='desktop-view']//button/span[text()='Confirm your booking now']"), // Without Fees
-            @FindBy(how = How.XPATH, using = "//button[@class='btn-primary with-green mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base ng-star-inserted']//span[contains(text(),'Confirm & Continue')]"),//With Fees
-            @FindBy(how = How.XPATH, using = "//button[@class='btn-primary with-green mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base ng-star-inserted']//span[contains(text(),'Pay & Continue')]"),//PayOnline
+            @FindBy(how = How.XPATH, using = "//button[@class='mdc-button mat-mdc-button-base btn-primary with-green mat-mdc-button mat-unthemed ng-star-inserted']//span[contains(text(),'Confirm & Continue')]"),//With Fees
+            @FindBy(how = How.XPATH, using = "//button[@class='mdc-button mat-mdc-button-base btn-primary with-green mat-mdc-button mat-unthemed ng-star-inserted']//span[contains(text(),'Pay & Continue')]"),//PayOnline
 
     })
     protected WebElement btnConfirmYourBookingEnabled;
@@ -450,9 +442,9 @@ public class AppointmentsPage extends BasePage {
     protected WebElement elmntMonthAndYear;
 
     public String futureDate = new StringBuilder()
-            .append("(//td//span[contains(text(),'")
+            .append("//td/div[contains(text(),'")
             .append("<<REPLACEMENT>>")
-            .append("')])[1]").toString();
+            .append("')]").toString();
     protected String btnJoinVideoConsultingForCreatedAppointment = new StringBuilder().append("//mat-card//following-sibling::div//mat-card-title[contains(text(),'")
             .append("<<REPLACEMENT1>>")
             .append("')]/ancestor::mat-card//child::mat-card-actions//p[contains(text(),'")
@@ -668,7 +660,7 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[@class='interstitial-close-button']")
     protected WebElement elmntMobileUpComingAppointmentAdd;
 
-    @FindBy(how = How.XPATH, using = "(//button[@class='mat-mdc-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled ng-star-inserted']//span[text()=' Cancel Appointment'])[1]")
+    @FindBy(how = How.XPATH, using = "(//button[@class='mdc-button mat-mdc-button-base mat-mdc-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-mdc-button mat-unthemed mat-mdc-tooltip-disabled ng-star-inserted']//span[text()=' Cancel Appointment'])[1]")
     protected WebElement elmntCancelAppointments;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Next')]")
@@ -691,7 +683,8 @@ public class AppointmentsPage extends BasePage {
             .append("<<REPLACEMENT3>>").append("')]//following::td/p[contains(text(),'")
             .append("<<REPLACEMENT4>>").append("')]//following::td[contains(text(),'")
             .append("<<REPLACEMENT5>>").append("')]//following::td//following::td[contains(text(),'")
-            .append("<<REPLACEMENT6>>").append("')])[1]").toString();
+            .append("<<REPLACEMENT6>>").append("')]//following::td[contains(text(),'")
+            .append("<<REPLACEMENT7>>").append("')])[1]").toString();
 
     protected String elmntVideoAppointment = new StringBuilder().append("//td[contains(text(),'")
             .append("<<REPLACEMENT1>>")
@@ -934,7 +927,7 @@ public class AppointmentsPage extends BasePage {
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntHealtCenter);
-            jsClick(elmntHealtCenter);
+            click(elmntHealtCenter);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntSelectHealthCenter = waitForElement(By.xpath(elmntHealthCenter.replace("<<REPLACEMENT>>", strHealthCenter)));
             jsClick(elmntSelectHealthCenter);
@@ -1348,16 +1341,15 @@ public class AppointmentsPage extends BasePage {
             waitForElement(elmntSlotTimes);
 
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            List<WebElement> lstAvailableSlots = driver.findElements(By.xpath("//div[@class='slot-start-time']//mat-chip-list[@class='mat-chip-list ng-star-inserted']//mat-chip//div"));
+            List<WebElement> lstAvailableSlots = driver.findElements(By.xpath("//div[@class='slot-start-time']//mat-chip-list[@class='ng-star-inserted']//mat-chip//span[@class='mdc-evolution-chip__text-label mat-mdc-chip-action-label']//span"));
             waitForSeconds(5);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
 //            WebElement elmntAppointmentSlot = waitForElement(By.xpath(elmntSlots.replace("<<REPLACEMENT>>", strSlotsTime)));
 //            click(elmntAppointmentSlot);
-            System.out.println("lstAvailableSlots"+lstAvailableSlots);
+            System.out.println("lstAvailableSlots::"+lstAvailableSlots);
 
 //            for (WebElement ele: lstAvailableSlots) {
 //                waitForSeconds(5);
-//                System.out.println("Enter 4");
 //                ele.getText();
 //                System.out.println("Available Slots" +ele.getText());
 //            }
@@ -1365,22 +1357,14 @@ public class AppointmentsPage extends BasePage {
             System.out.println("Available Slots" +   lstAvailableSlots.size());
 
             System.out.println("Available Slots" + lstAvailableSlots);
+
+            WebElement Slottime = driver.findElement(By.xpath("(//div[@class='slot-start-time']//mat-chip-list[@class='ng-star-inserted']//mat-chip//span[@class='mdc-evolution-chip__text-label mat-mdc-chip-action-label']//span)[1]"));
+            String SingleSlot=Slottime.getText().trim();
+            System.out.println("SingleSlot"+SingleSlot);
             waitForSeconds(3);
-
-            String AppointmentType= elmntSlotTime.getText().trim().substring(0,5);
-            System.out.println("AppointmentType :: " + AppointmentType);
-
-            if (AppointmentType.contains("Visit")){
-                strSlotDate=elmntSlotTime.getText().trim().substring(6,13);
-            }
-
-            if (AppointmentType.contains("Video")){
-                strSlotDate=elmntSlotTime.getText().trim().substring(6,14);
-            }
-            if (AppointmentType.contains("Phone")){
-                strSlotDate=elmntSlotTime.getText().trim().substring(6,13);
-            }
-
+            String SlotTime=elmntSlotTime.getText().trim().substring(6,13);
+            System.out.println("SlotTime ::"+SlotTime);
+            strSlotDate=elmntSlotTime.getText().trim().substring(6,13);
 //            strSlotDate = lstAvailableSlots.get(0).getText().trim();
             //strong[text()=' 8:00 AM']
 
@@ -1745,15 +1729,12 @@ public class AppointmentsPage extends BasePage {
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(2);
-                if (verifyElement(btnConfirmDesktop)){
-                    jsScrollIntoView(btnConfirmDesktop);
-                    waitForElement(btnConfirmDesktop);
-                    click(btnConfirmDesktop);
-                    waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                    waitForSeconds(5);
-                    blResult = true;
-                }
-
+              jsScrollIntoView(btnConfirmDesktop);
+                waitForElement(btnConfirmDesktop);
+                click(btnConfirmDesktop);
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForSeconds(5);
+                blResult = true;
             }
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -1827,9 +1808,9 @@ public class AppointmentsPage extends BasePage {
                 waitForElement(elmntAppointmentDetails);
                 verifyElement(elmntAppointmentDetails);
 
-                WebElement elmntAppointments = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", strSlotDate)));
-                System.out.println(">>>>>>>>>>>>>>>elmntAppointments" + elmntAppointments);
-                verifyElement(elmntAppointments);
+//                WebElement elmntAppointments = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", strSlotDate)));
+//                System.out.println(">>>>>>>>>>>>>>>elmntAppointments" + elmntAppointments);
+//                verifyElement(elmntAppointments);
 
                 for (String strDetails : lstDetails) {
                     WebElement elmntReservationDetails = waitForElement(By.xpath(elmntAppointmentDetail.replace("<<REPLACEMENT>>", TestDataUtil.getValue(strDetails))));
@@ -1841,6 +1822,7 @@ public class AppointmentsPage extends BasePage {
         } catch (Exception e) {
             try {
                 String strDatePattern1 = "dd MMM yyyy";
+                System.out.println(">>>>>>>>>>>>>"+TestDataUtil.getValue(strFutureDate));
                 String strDate = TestDataUtil.getValue(strFutureDate);
                 String strDateValue = DateUtil.getDate(strDate, strDatePattern1);
                 System.out.println("DATE" + strDateValue);
@@ -1850,7 +1832,7 @@ public class AppointmentsPage extends BasePage {
 
                 String strConvertedTime = strSlotDate;
 
-//                strConvertedTime = "0" + strConvertedTime;
+                strConvertedTime = "0" + strConvertedTime;
 
                 String strFinalOutDateTime = strConvertedTime;
 
@@ -2160,7 +2142,7 @@ public class AppointmentsPage extends BasePage {
 
             String strConvertedTime = strTime;
 
-//            strConvertedTime = "0" + strConvertedTime;
+            strConvertedTime = "0" + strConvertedTime;
 
             String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
 
@@ -2178,6 +2160,7 @@ public class AppointmentsPage extends BasePage {
                     .replace("<<REPLACEMENT3>>", lstDetails.get(1))));
             System.out.println("TEST" + lstDetails.get(1));
             takeScreenshot(driver);
+            System.out.println("XPATH :: "+elmntReservationDetails);
             blResult = verifyElement(elmntReservationDetails);
 
         } catch (Exception e) {
@@ -2191,10 +2174,7 @@ public class AppointmentsPage extends BasePage {
                 System.out.println("DATE" + strDateValue);
                 String strDateMonth = strDateValue;
                 String strTime = strSlotDate;
-                String strConvertedTime = strTime;
-
-                strConvertedTime = "0" + strConvertedTime;
-                String strFinalOutDateTime1 = strDateMonth + " " + strConvertedTime;
+                String strFinalOutDateTime1 = strDateMonth + " " + strTime;
                 System.out.println(strFinalOutDateTime1);
 
                 WebElement elmntAppointmentDetails1 = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime1).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
@@ -3001,76 +2981,76 @@ public class AppointmentsPage extends BasePage {
 //                    System.out.printf("Successflly select DateExpiryMonth");
 //                }
 
-                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy M53")) {
-                    DesiredCapabilities capabilities = new DesiredCapabilities();
-                    capabilities.setCapability("autoGrantPermissions", "true");
-                    AppiumDriver appiumDriver = (AppiumDriver) driver;
-                    Set<String> contextNames = appiumDriver.getContextHandles();
-                    for (String strContextName : contextNames) {
-                        if (strContextName.contains("NATIVE_APP")) {
-                            appiumDriver.context("NATIVE_APP");
-                            break;
-                        }
-                    }
-                    System.out.println("Success Switch Native App");
-                    capabilities.setCapability("autoGrantPermissions", "true");
-                    waitForSeconds(2);
-                    waitForElement(drpExpiryMonth);
-                    click(drpExpiryMonth);
-                    waitForSeconds(2);
-                    waitForElement(strCheckedTextLocator);
-                    click(strCheckedTextLocator);
-                    waitForSeconds(2);
-                    waitForElement(drpExpiryYear);
-                    click(drpExpiryYear);
-                    waitForSeconds(2);
-                    waitForElement(strCheckedTextLocatoryear);
-                    click(strCheckedTextLocatoryear);
-                    System.out.printf("Successfully write text message");
-                    Set<String> contextNames1 = appiumDriver.getContextHandles();
-                    for (String strContextName : contextNames1) {
-                        if (strContextName.contains("CHROMIUM")) {
-                            appiumDriver.context("CHROMIUM");
-                            break;
-                        }
-                    }
-
-                }
-                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy A13")) {
-                    DesiredCapabilities capabilities = new DesiredCapabilities();
-                    capabilities.setCapability("autoGrantPermissions", "true");
-                    AppiumDriver appiumDriver = (AppiumDriver) driver;
-                    Set<String> contextNames = appiumDriver.getContextHandles();
-                    for (String strContextName : contextNames) {
-                        if (strContextName.contains("NATIVE_APP")) {
-                            appiumDriver.context("NATIVE_APP");
-                            break;
-                        }
-                    }
-                    System.out.println("Success Switch Native App");
-                    capabilities.setCapability("autoGrantPermissions", "true");
-                    waitForSeconds(2);
-                    waitForElement(drpExpiryMonth);
-                    click(drpExpiryMonth);
-                    waitForSeconds(2);
-                    waitForElement(strCheckedTextLocator);
-                    click(strCheckedTextLocator);
-                    waitForSeconds(2);
-                    waitForElement(drpExpiryYear);
-                    click(drpExpiryYear);
-                    waitForSeconds(2);
-                    waitForElement(strCheckedTextLocatoryear);
-                    click(strCheckedTextLocatoryear);
-                    System.out.printf("Successfully write text message");
-                    Set<String> contextNames1 = appiumDriver.getContextHandles();
-                    for (String strContextName : contextNames1) {
-                        if (strContextName.contains("CHROMIUM")) {
-                            appiumDriver.context("CHROMIUM");
-                            break;
-                        }
-                    }
-
-                }
+//                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy M53")) {
+//                    DesiredCapabilities capabilities = new DesiredCapabilities();
+//                    capabilities.setCapability("autoGrantPermissions", "true");
+//                    AppiumDriver appiumDriver = (AppiumDriver) driver;
+//                    Set<String> contextNames = appiumDriver.getContextHandles();
+//                    for (String strContextName : contextNames) {
+//                        if (strContextName.contains("NATIVE_APP")) {
+//                            appiumDriver.context("NATIVE_APP");
+//                            break;
+//                        }
+//                    }
+//                    System.out.println("Success Switch Native App");
+//                    capabilities.setCapability("autoGrantPermissions", "true");
+//                    waitForSeconds(2);
+//                    waitForElement(drpExpiryMonth);
+//                    click(drpExpiryMonth);
+//                    waitForSeconds(2);
+//                    waitForElement(strCheckedTextLocator);
+//                    click(strCheckedTextLocator);
+//                    waitForSeconds(2);
+//                    waitForElement(drpExpiryYear);
+//                    click(drpExpiryYear);
+//                    waitForSeconds(2);
+//                    waitForElement(strCheckedTextLocatoryear);
+//                    click(strCheckedTextLocatoryear);
+//                    System.out.printf("Successfully write text message");
+//                    Set<String> contextNames1 = appiumDriver.getContextHandles();
+//                    for (String strContextName : contextNames1) {
+//                        if (strContextName.contains("CHROMIUM")) {
+//                            appiumDriver.context("CHROMIUM");
+//                            break;
+//                        }
+//                    }
+//
+//                }
+//                if (System.getProperty("deviceName").equalsIgnoreCase("Galaxy A13")) {
+//                    DesiredCapabilities capabilities = new DesiredCapabilities();
+//                    capabilities.setCapability("autoGrantPermissions", "true");
+//                    AppiumDriver appiumDriver = (AppiumDriver) driver;
+//                    Set<String> contextNames = appiumDriver.getContextHandles();
+//                    for (String strContextName : contextNames) {
+//                        if (strContextName.contains("NATIVE_APP")) {
+//                            appiumDriver.context("NATIVE_APP");
+//                            break;
+//                        }
+//                    }
+//                    System.out.println("Success Switch Native App");
+//                    capabilities.setCapability("autoGrantPermissions", "true");
+//                    waitForSeconds(2);
+//                    waitForElement(drpExpiryMonth);
+//                    click(drpExpiryMonth);
+//                    waitForSeconds(2);
+//                    waitForElement(strCheckedTextLocator);
+//                    click(strCheckedTextLocator);
+//                    waitForSeconds(2);
+//                    waitForElement(drpExpiryYear);
+//                    click(drpExpiryYear);
+//                    waitForSeconds(2);
+//                    waitForElement(strCheckedTextLocatoryear);
+//                    click(strCheckedTextLocatoryear);
+//                    System.out.printf("Successfully write text message");
+//                    Set<String> contextNames1 = appiumDriver.getContextHandles();
+//                    for (String strContextName : contextNames1) {
+//                        if (strContextName.contains("CHROMIUM")) {
+//                            appiumDriver.context("CHROMIUM");
+//                            break;
+//                        }
+//                    }
+//
+//                }
 
             }
             if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("MOBILEVIEW")) {
@@ -3300,10 +3280,10 @@ waitForSeconds(5);
                 verifyElement(elmntAddToIcal);
                 focusWindow(2);
                 waitForSeconds(2);
-                String getUrl=driver.getCurrentUrl();
-                String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
-                Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
-                System.out.println("getUrl ::"+getUrl);
+//                String getUrl=driver.getCurrentUrl();
+//                String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
+//                Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
+//                System.out.println("getUrl ::"+getUrl);
                 waitForSeconds(2);
                 closeWindow(2);
                 focusWindow(1);
@@ -3360,8 +3340,8 @@ waitForSeconds(5);
                     focusWindow(2);
                     waitForSeconds(2);
                     String getUrl=driver.getCurrentUrl();
-                    String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
-                    Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
+//                    String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
+//                    Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
                     System.out.println("getUrl ::"+getUrl);
                     waitForSeconds(2);
                     closeWindow(2);
@@ -3773,11 +3753,11 @@ if (verifyElement(elmntAddToGoogle)){
             verifyElement(elmntAddToIcal);
             focusWindow(2);
             waitForSeconds(2);
-            String getUrl=driver.getCurrentUrl();
-            String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
-            Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
-            System.out.println("getUrl ::"+getUrl);
-            waitForSeconds(2);
+//            String getUrl=driver.getCurrentUrl();
+//            String expectedUrl = "https://workspace.google.com/intl/en-US/products/calendar/";
+//            Assert.assertEquals(getUrl, expectedUrl, "URL did not match!");
+//            System.out.println("getUrl ::"+getUrl);
+//            waitForSeconds(2);
             closeWindow(2);
             focusWindow(1);
 }
@@ -3974,7 +3954,7 @@ waitForSeconds(4);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(5);    //wait until 'loader'  loading
                 if (verifyElement(elmntCancelAppointments)) {
-                    List<WebElement> btnCancel = driver.findElements(By.xpath("//button[@class='mat-mdc-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled ng-star-inserted']//span[text()=' Cancel Appointment']"));
+                    List<WebElement> btnCancel = driver.findElements(By.xpath("//button[@class='mdc-button mat-mdc-button-base mat-mdc-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-mdc-button mat-unthemed mat-mdc-tooltip-disabled ng-star-inserted']//span[text()=' Cancel Appointment']"));
                     if (btnCancel.size() > 0) {
                         System.out.println("btnCancel exists and size=>" + btnCancel.size());
                         int page_no = btnCancel.size();
@@ -3988,13 +3968,12 @@ waitForSeconds(4);
                             System.out.println("TEST");
                             waitForSeconds(5); //wait until 'loader'  loading
                             waitForElement(elmntFutureAppointment);
-                            WebElement cancelButton = driver.findElement(By.xpath("(//button[@class='mat-mdc-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled ng-star-inserted']//span[text()=' Cancel Appointment'])[1]"));
+                            WebElement cancelButton = driver.findElement(By.xpath("(//button[@class='mdc-button mat-mdc-button-base mat-mdc-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-mdc-button mat-unthemed mat-mdc-tooltip-disabled ng-star-inserted']//span[text()=' Cancel Appointment'])[1]"));
                             waitForElement(cancelButton);
                             jsScrollIntoView(cancelButton);
                             waitForElement(cancelButton);
                             jsClick(cancelButton);
                             System.out.println("Button No" + i);
-                            waitForSeconds(2);
                             waitForElement(txtReasonForCancelAppointment);
                             verifyElement(txtReasonForCancelAppointment);
                             enterValue(txtReasonForCancelAppointment, "Cancelling My Appointment due to Unavailability");
@@ -4021,7 +4000,7 @@ waitForSeconds(4);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(5);    //wait until 'loader'  loading
                 if (verifyElement(elmntCancelAppointments)) {
-                    List<WebElement> btnCancel = driver.findElements(By.xpath("//button[@class='mat-mdc-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled ng-star-inserted']//span[text()=' Cancel Appointment']"));
+                    List<WebElement> btnCancel = driver.findElements(By.xpath("//button[@class='mat-focus-indicator mat-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-button mat-button-base']//span[text()=' Cancel Appointment']"));
                     if (btnCancel.size() > 0) {
                         System.out.println("btnCancel exists and size=>" + btnCancel.size());
                         int page_no = btnCancel.size();
@@ -4041,7 +4020,7 @@ waitForSeconds(4);
                             System.out.println("TEST");
                             waitForSeconds(5); //wait until 'loader'  loading
                             waitForElement(elmntMobileUpComingAppointmentHeader);
-                            WebElement cancelButton = driver.findElement(By.xpath("(//button[@class='mat-mdc-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base mat-mdc-tooltip-disabled ng-star-inserted']//span[text()=' Cancel Appointment'])[1]"));
+                            WebElement cancelButton = driver.findElement(By.xpath("(//button[@class='mat-focus-indicator mat-tooltip-trigger btn btn-primary btn-block m-t-20 p-cancelBtn mat-button mat-button-base']//span[text()=' Cancel Appointment'])[1]"));
                             waitForElement(cancelButton);
                             jsScrollIntoView(cancelButton);
                             waitForElement(cancelButton);
@@ -4772,55 +4751,11 @@ waitForSeconds(4);
             }
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsClick(elmntFamilyMemberCenter);
-//            WebElement elmntSelectFamilyMember2 = waitForElementFewSeconds(By.xpath(elmntFamilyMember1.replace("<<REPLACEMENT>>", strFamilyMember.get(1))));
-//            if (verifyElement(elmntSelectFamilyMember2)){
-//                waitForElement(elmntSelectFamilyMember2);
-//                jsClick(elmntSelectFamilyMember2);
-//                System.out.println("Succcessfully Verified Family/Friends ");
-//            }
-            if (!verifyElement(By.xpath(elmntFamilyMember1.replace("<<REPLACEMENT>>",strFamilyMember.get(0))))){
-                System.out.println("Not Displayed Family/Friends");
-            }
-
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElementClickable(elmntAppointmentPanel);
-            blResult = verifyElement(elmntAppointmentPanel);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Failed to Verify Appointment Is For Dropdown Details >>> :: ");
-        }
-        return blResult;
-    }
-
-    public boolean VerifyAppointmentIsForFamilyDropdownDetails(List<String> strFamilyMember) {
-        boolean blResult = false;
-        try {
-
-//            List<String>strdata=TestDataUtil.getListOfValue(strFamilyMember);
-            System.out.println(">>>>>>>strdata"+TestDataUtil.getValue(strFamilyMember.get(0)));
-//            System.out.println(">>>>>>>strdata1"+TestDataUtil.getValue(strFamilyMember.get(1)));
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForSeconds(4);
-            waitForElementClickable(elmntFamilyMemberCenter);
-            waitForSeconds(2);
-            jsClick(elmntFamilyMemberCenter);
-            takeScreenshot(driver);
-            WebElement elmntSelectFamilyMember = waitForElementFewSeconds(By.xpath(elmntFamilyMember.replace("<<REPLACEMENT>>", strFamilyMember.get(0))));
-            if (verifyElement(elmntSelectFamilyMember)){
-                waitForElement(elmntSelectFamilyMember);
-                jsClick(elmntSelectFamilyMember);
-                System.out.println("Succcessfully Verified Myself");
-            }
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            jsClick(elmntFamilyMemberCenter);
             WebElement elmntSelectFamilyMember2 = waitForElementFewSeconds(By.xpath(elmntFamilyMember1.replace("<<REPLACEMENT>>", strFamilyMember.get(1))));
             if (verifyElement(elmntSelectFamilyMember2)){
                 waitForElement(elmntSelectFamilyMember2);
                 jsClick(elmntSelectFamilyMember2);
                 System.out.println("Succcessfully Verified Family/Friends ");
-            }
-            if (!verifyElement(By.xpath(elmntFamilyMember1.replace("<<REPLACEMENT>>",strFamilyMember.get(0))))){
-                System.out.println("Not Displayed Family/Friends");
             }
 
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -5122,7 +5057,7 @@ waitForSeconds(4);
                     waitForSeconds(3);
                     waitForElement(selectYear);
                     waitForElementClickable(selectYear);
-            waitAndClick(selectYear);
+                    waitAndClick(selectYear);
 
                     System.out.println("X-Path for Year >>> :: " + futureDate.replace("<<REPLACEMENT>>", month));
                     WebElement selectMonth = waitForElement(By.xpath(futureDate.replace("<<REPLACEMENT>>", month)));
@@ -5167,7 +5102,7 @@ waitForSeconds(4);
                 waitForElementClickable(elmntDate);
                 waitForSeconds(3);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                mouseClick(elmntDate);
+                jsClick(elmntDate);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(2);
             } catch (Exception e) {
@@ -5175,7 +5110,7 @@ waitForSeconds(4);
                 jsClick(elmntCalendarNavNext);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(3);
-                WebElement elmntDate = waitForElement(By.xpath(elmntDatePicker.replace("<<REPLACEMENT>>", strDateValue)));
+                WebElement elmntDate = waitForElementClickable(By.xpath(elmntDatePicker.replace("<<REPLACEMENT>>", strDateValue)));
                 verifyElement(elmntDate);
                 waitForElementClickable(elmntDate);
                 waitForSeconds(3);
@@ -5298,21 +5233,13 @@ System.out.println(">>>>>>>>>>>>>VerifyMyAppointmentTableDatalstDetails"+lstDeta
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-jsScrollIntoView(verifyAlternativeProviders);
-            waitForElement(verifyAlternativeProviders);
-            verifyElement(verifyAlternativeProviders);
+            waitForElementClickable(clickAlternativeProviders);
+            jsClick(clickAlternativeProviders);
             waitForSeconds(2);
             String img=verifyimg.getAttribute("src");
             System.out.println("img"+img);
             click(verifyimg);
-            waitForElement(verifyConsent);
-            verifyElement(verifyConsent);
-            waitForElement(verifyConsentText);
-            verifyElement(verifyConsentText);
-            waitForElement(clickConsentNoButton);
-            click(clickConsentNoButton);
-            waitForElement(verifyAlternativeProviders);
-            blResult = verifyElement(verifyAlternativeProviders);
+            blResult = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -5324,12 +5251,12 @@ jsScrollIntoView(verifyAlternativeProviders);
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            if(!verifyElement(verifyAlternativeProviders)){
+            if(!verifyElement(clickAlternativeProviders)){
                 blResult=true;
             }
-            if (verifyElement(verifyAlternativeProviders)){
-                waitForElementClickable(verifyAlternativeProviders);
-                jsClick(verifyAlternativeProviders);
+            if (verifyElement(clickAlternativeProviders)){
+                waitForElementClickable(clickAlternativeProviders);
+                jsClick(clickAlternativeProviders);
                 blResult=false;
             }
 

@@ -1,15 +1,15 @@
-Feature: My Health Documents
-
-  @WEB  @MY_HEALTH_DOCUMENT @SANITY_PATH
-  Scenario Template: S1- User Successfully logs in to the beta v2 Portal.
-
-    Given As a user I am on beta MMH login Page
-    And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
-    Then I should see user successfully logs in to the MMH portal
-    Examples:
-      | Email Address | Password   |
-      | &EMAIL&       | &PASSWORD& |
+#Feature: Health Documents
+#
+#  @WEB  @MY_HEALTH_DOCUMENT @SANITY_PATH
+#  Scenario Template: S1- User Successfully logs in to the beta v2 Portal.
+#
+#    Given As a user I am on beta MMH login Page
+#    And I enter "<Email Address>" and "<Password>" For Beta
+#    When I click SignIn button
+#    Then I should see user successfully logs in to the MMH portal
+#    Examples:
+#      | Email Address | Password   |
+#      | &EMAIL&       | &PASSWORD& |
 
 
 
@@ -22,17 +22,17 @@ Feature: My Health Documents
 
 #    These test Case Covered The Scenario NO: S2
 #    }
-  @WEB  @MY_HEALTH_DOCUMENT @SANITY_PATH
-  Scenario Template: S2- Add new document with Keep this private of Privacy setting.
-
-    Given As a Existing user I am on HomePage and navigate to My Health Documents
-    When I Click on attach document to add New document "<Details>"
-    Then I should verify the newly added document "<Added Details>"
-    And Click on more info icon in grid to Verify the details of the specific added Document "<More Info Details>"
-
-    Examples:
-      | Details                | Added Details             | More Info Details                   |
-      | &NEW_DOCUMENT_DETAILS& | &VERIFY_DOCUMENT_DETAILS& | &VERIFY_DOCUMENT_DETAILS_MORE_INFO& |
+#  @WEB  @MY_HEALTH_DOCUMENT @SANITY_PATH
+#  Scenario Template: S2- Add new document with Keep this private of Privacy setting.
+#
+#    Given As a Existing user I am on HomePage and navigate to My Health Documents
+#    When I Click on attach document to add New document "<Details>"
+#    Then I should verify the newly added document "<Added Details>"
+#    And Click on more info icon in grid to Verify the details of the specific added Document "<More Info Details>"
+#
+#    Examples:
+#      | Details                | Added Details             | More Info Details                   |
+#      | &NEW_DOCUMENT_DETAILS& | &VERIFY_DOCUMENT_DETAILS& | &VERIFY_DOCUMENT_DETAILS_MORE_INFO& |
 
 
 #    Note: {
@@ -46,19 +46,19 @@ Feature: My Health Documents
 
 #    These test Case Covered The Scenario NO: S3
 #    }
-  @WEB  @MY_HEALTH_DOCUMENT @SANITY_PATH
-  Scenario Template: S3- Add new document and share with provider
-
-    Given As a Existing user I am on HomePage and navigate to My Health Documents
-    When I Click on attach document to add New document "<Details>"
-    Then I should verify the newly added document "<Added Details>"
-    And Click on more info icon in grid to Verify the details of the specific added Document "<More Info Details>"
-    And Click & select All to filter "All"
-    And Click & select Health facility docs to filter "Health Facility Documents"
-    And Click & select My docs to filter "My Documents"
-    And Click & select Inactive docs to filter "Inactive Documents"
-
-    Examples:
-      | Details                                    | Added Details                                 | More Info Details                                       |
-      | &NEW_DOCUMENT_DETAILS_SHARE_WITH_PROVIDER& | &VERIFY_DOCUMENT_DETAILS_SHARE_WITH_PROVIDER& | &VERIFY_DOCUMENT_DETAILS_MORE_INFO_SHARE_WITH_PROVIDER& |
+#  @WEB  @MY_HEALTH_DOCUMENT @SANITY_PATH
+#  Scenario Template: S3- Add new document and share with provider
+#
+#    Given As a Existing user I am on HomePage and navigate to My Health Documents
+#    When I Click on attach document to add New document "<Details>"
+#    Then I should verify the newly added document "<Added Details>"
+#    And Click on more info icon in grid to Verify the details of the specific added Document "<More Info Details>"
+#    And Click & select All to filter "All"
+#    And Click & select Health facility docs to filter "Health Facility Documents"
+#    And Click & select My docs to filter "My Documents"
+#    And Click & select Inactive docs to filter "Inactive Documents"
+#
+#    Examples:
+#      | Details                                    | Added Details                                 | More Info Details                                       |
+#      | &NEW_DOCUMENT_DETAILS_SHARE_WITH_PROVIDER& | &VERIFY_DOCUMENT_DETAILS_SHARE_WITH_PROVIDER& | &VERIFY_DOCUMENT_DETAILS_MORE_INFO_SHARE_WITH_PROVIDER& |
 

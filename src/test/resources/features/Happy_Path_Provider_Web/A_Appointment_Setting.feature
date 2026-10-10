@@ -382,7 +382,7 @@ Feature: Appointment Setting
       | V1 Portal | Email Address        | Password              |
       | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING  @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @APPOINTMENTS_SETTING @PROVIDER_SINGLE_SCREEN
   Scenario Template: Prep- Canceling all the appointments
 
     Given As a user I am on HomePage

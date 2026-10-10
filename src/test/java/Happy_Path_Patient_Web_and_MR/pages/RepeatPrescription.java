@@ -2701,6 +2701,7 @@ public class RepeatPrescription extends BasePage {
     public boolean verifyProviderName(String strProvider) {
         boolean verifyProvider = false;
         try {
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
             waitForElement(inputProviderName);
             if (!verifyElement((By.xpath(selectedDrpDownOption.replace("<<REPLACEMENT>>", strProvider))))) {
                 waitForElementClickable(inputProviderName);
@@ -2792,7 +2793,7 @@ public class RepeatPrescription extends BasePage {
             System.out.println("Expected Script Urgencies >>>>" + ScriptUrgencies);
             waitForElementClickable(drpdwnScriptUrgency);
             click(drpdwnScriptUrgency);
-            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
+//            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
             List<String> lstActualScriptUrgencies = new ArrayList<>();
             for (WebElement strScriptUrgencies : lstscriptUrgencies) {
                 lstActualScriptUrgencies.add(strScriptUrgencies.getText());

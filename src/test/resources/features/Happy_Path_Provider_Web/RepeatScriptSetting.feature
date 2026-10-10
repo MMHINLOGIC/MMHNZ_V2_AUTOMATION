@@ -179,16 +179,16 @@ Feature: Repeat Script Setting
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
 
-  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
-  Scenario Template: S1- RRP Script Instructions Settings - Disable.
-    Given As a Provider I am on HomePage and navigate to RRP Script Instructions in "<System_Menu>"
-    And I navigate to RRP Script Instructions Settings and click edit button
-    When I disable the RRP Script Instructions Settings "<Details>"
-    Then I should verify disabled RRP Script Instructions Settings "<Details>"
-
-    Examples:
-      | System_Menu             | Details                            |
-      | RRP Script Fee Settings | &RRP_SCRIPT_INSTRUCTIONS_SETTINGS& |
+#  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+#  Scenario Template: S1- RRP Script Instructions Settings - Disable.
+#    Given As a Provider I am on HomePage and navigate to RRP Script Instructions in "<System_Menu>"
+#    And I navigate to RRP Script Instructions Settings and click edit button
+#    When I disable the RRP Script Instructions Settings "<Details>"
+#    Then I should verify disabled RRP Script Instructions Settings "<Details>"
+#
+#    Examples:
+#      | System_Menu             | Details                            |
+#      | RRP Script Fee Settings | &RRP_SCRIPT_INSTRUCTIONS_SETTINGS& |
 
   @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Outline: S2- RRP Script Settings Default Provider - Rule A

@@ -29,7 +29,7 @@ public class AppointmentsScreen extends BaseScreen {
 
     //    public static String strTransactionRef = null;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Appointments']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Appointments\"]")
     @iOSXCUITFindBy(id = "Appointments")
     protected WebElement elmntAppointments;
 
@@ -46,7 +46,7 @@ public class AppointmentsScreen extends BaseScreen {
     protected WebElement btnBookAppointment;
 
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Select Practice']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Select Practice\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Select Practice']")
     protected WebElement elmntSelectLocation;
 
@@ -70,7 +70,7 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='No']")
     protected WebElement btnNO;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Select Provider']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Select Provider\"]")
     @iOSXCUITFindBy(xpath= "//XCUIElementTypeButton[@name='Select Provider']")
     protected WebElement elmntSelectProvider;
 
@@ -101,7 +101,7 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='OK']")
     protected WebElement btnOk;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Confirm Appointment']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Confirm Appointment\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Confirm Appointment']")
     protected WebElement elmntConfirmAppointmentAppointment;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select Reason for appointment']")
@@ -116,23 +116,23 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select Reason for appointment']")
     protected WebElement SelectAppointmentReasonCheckbox;
 
-    @AndroidFindBy(xpath = "//android.view.View[@text='Select Reason']")
+    @AndroidFindBy(xpath = "(//android.widget.Button)[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Select Reason']")
     protected WebElement elmntAppointmentReasonDropdowm;
 
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Confirm Appointment']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Confirm Appointment\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Confirm Appointment']")
     protected WebElement elmntConfirmAppointment;
 
     @AndroidFindAll({
-            @AndroidBy(xpath = "(//android.widget.ToggleButton)[1]"),
-            @AndroidBy(xpath = "(//android.widget.ToggleButton)[2]")
+            @AndroidBy(xpath = "(//android.widget.Switch)[1]"),
+            @AndroidBy(xpath = "(//android.widget.Switch)[2]")
     })
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch")
     protected WebElement toggleTermsAndConditions;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='I AGREE']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='I Agree']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='I Agree']")
     protected WebElement btntermsiagreebutton;
     @AndroidFindBy(xpath = "//android.widget.Button[@text='SEND APPOINTMENT REQUEST']")
@@ -210,7 +210,7 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Payment Checkout'])[1]")
     protected WebElement elmntPaymentCheckout;
 
-    @AndroidFindBy(xpath = "//android.view.View[@text='Card Number: required']/following-sibling::android.view.View//android.widget.EditText")
+    @AndroidFindBy(xpath = "(//android.widget.EditText)[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Card Number:']/following::XCUIElementTypeTextField[1]")
     protected WebElement txtCardNumber;
 
@@ -286,7 +286,7 @@ public class AppointmentsScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strProviderTextLocator = new StringBuilder()
-            .append("//android.widget.Button[@text='")
+            .append("//android.widget.Button[@content-desc='")
             .append("<<TEXT>>").append("']").toString();
 
     String strButtonTextLocatorIOS = new StringBuilder()
@@ -306,8 +306,8 @@ public class AppointmentsScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strLocationLocator = new StringBuilder()
-            .append("(//android.view.View/android.widget.TextView[@text='")
-            .append("<<LOCATION>>").append("'])[2]").toString();
+            .append("//android.widget.TextView[@text='")
+            .append("<<LOCATION>>").append("']").toString();
 
     String strLocationLocator1 = new StringBuilder()
             .append("//android.view.View/android.widget.TextView[@text='")
@@ -416,7 +416,7 @@ public class AppointmentsScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name,'HEALTH SUMMARY')]")
     protected WebElement elmntHealthSummaryHeader;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='EXPORT']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='SHARE']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name,'Export')]")
     protected WebElement elmntExportButtonButton;
 
@@ -610,11 +610,11 @@ public class AppointmentsScreen extends BaseScreen {
      verifyElement(SelectAppointmentReason);
 //     waitForElement(SelectAppointmentReasonCheckbox);
 //     click(SelectAppointmentReasonCheckbox);
-        WebElement elmntReason = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strReason)));
-        click(elmntReason);
-//        waitForSecond(2);
-//        tapByCoordinates(354,1055);
-//        waitForSecond(2);
+//        WebElement elmntReason = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strReason)));
+//        click(elmntReason);
+        waitForSecond(2);
+        tapByCoordinates(362,1055);
+        waitForSecond(2);
         waitForElement(btnOk);
         click(btnOk);
     }
@@ -695,9 +695,12 @@ tapByCoordinates(189,479);
     }
 
     public void tapOK() {
-        waitForSecond(3);
-        waitForElement(popUpOk);
-        click(popUpOk);
+        waitForSecond(5);
+        tapByCoordinates(544,1489);
+//        waitForElement(popUpOk);
+//        click(popUpOk);
+//waitForSecond(5);
+//        tapByCoordinates(544,1489);
     }
 
     public void tapOKIOS() {
@@ -723,7 +726,8 @@ System.out.println(">>>>"+lstDetails);
 
         waitForSecond(180);
 
-        reLaunchAppAndroid();
+//        reLaunchAppAndroid();
+        navigateToBack();
         waitForSecond(10);
         waitForElement(elmntAppointmentBookIcon);
 //        performTapAction(elmntAppointmentBookIcon);
@@ -927,6 +931,7 @@ System.out.println(">>>>"+lstDetails);
         tapByCoordinates(194,610);
     }
     public boolean verifyTransactionApproved() {
+        waitForSecond(5);
         waitForElement(elmntTransactionApproved);
         takeScreenshot(driver);
         return verifyElement(elmntTransactionApproved);
@@ -964,7 +969,8 @@ System.out.println(">>>>"+lstDetails);
 
         waitForSecond(180);
 
-        reLaunchAppAndroid();
+//        reLaunchAppAndroid();
+        navigateToBack();
 
 
         waitForElement(elmntAppointmentBookIcon);

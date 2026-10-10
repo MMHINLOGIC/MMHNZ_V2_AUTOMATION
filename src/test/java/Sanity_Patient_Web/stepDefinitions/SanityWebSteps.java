@@ -3888,6 +3888,11 @@ public class SanityWebSteps {
     public void navigateToWomenSRefuge() {
         Assert.assertTrue(sanityPageContainer.resourcesPage.navigateToHealthNavigator());
     }
+
+    @When("I click Save Button")
+    public void iClickSaveButton() {
+        Assert.assertTrue(sanityPageContainer.profilesPage.clickSaveButton());
+    }
 }
 
 

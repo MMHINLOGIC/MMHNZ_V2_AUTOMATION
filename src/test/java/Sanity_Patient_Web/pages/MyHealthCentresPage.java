@@ -62,7 +62,7 @@ public class MyHealthCentresPage extends BasePage {
     protected WebElement txtBoxSearchForHealthCentre;
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Overview')])[2]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Overview')]")
     protected WebElement elmntOverview;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Next')]")

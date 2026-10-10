@@ -95,7 +95,7 @@ Feature: Messages
       | Reply           |
       | &REPLY MESSAGE& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
   Scenario Template: S5-  Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -107,7 +107,7 @@ Feature: Messages
       | V1 Portal | Email Address      | Password              |
       | &URL&     | &EMAIL FOR DOCTOR& | &PASSWORD FOR DOCTOR& |
 
-  @WEB @Mobile @MESSAGES @HAPPY_PATH
+  @WEB @Mobile @MESSAGES1 @HAPPY_PATH
   Scenario Template: S5- Preparation for Group Message, Sending a Group of E-Mail's to the Patient from provider login
 
     Given As a user I am on Doctor portal homepage and Navigate to GroupMessage
@@ -119,7 +119,7 @@ Feature: Messages
       | Message Details              |
       | &SENT_GROUP_MESSAGE_DETAILS& |
 
-  @WEB @MESSAGES @HAPPY_PATH
+  @WEB @MESSAGES1 @HAPPY_PATH
   Scenario Template: User Successfully logs in to the MMH v2 Portal as Patient.
 
     Given As a user I am on MMH login Page

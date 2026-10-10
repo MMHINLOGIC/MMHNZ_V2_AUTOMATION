@@ -106,7 +106,8 @@ public class HomePage extends BasePage {
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Testpreferred')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Megath Raj')]"),
     })
     protected WebElement txtProviderPortalWelcomePage;
 
@@ -116,13 +117,17 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'SIGN OUT')]")
     protected WebElement elmntSignOut;
 
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'My Account')]//following::mat-icon)[1]")
+    protected WebElement elmntmyacconnt;
+
 
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Harry Harry!')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Peter')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto Autochrisc1')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'14')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Chrisc4')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Chrisc4')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Test Pp_Automation')]")
 
     })
     protected WebElement txtPatientWelcomePage;
@@ -298,7 +303,8 @@ public class HomePage extends BasePage {
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Peter')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Auto Autochrisc1']"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'14')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Chrisc4']")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[text()=' Chrisc4']"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Test Pp_Automation')]")
 
     })
     protected WebElement txtWelcome;
@@ -321,7 +327,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@id='UserName']")
     protected WebElement txtEmail;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Join meeting')])[1]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Join meeting')])[2]")
     protected WebElement txtProviderPortal;
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'sign up')])[1]")
@@ -424,7 +430,7 @@ public class HomePage extends BasePage {
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
 
-    @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Two-step verification')]")
+    @FindBy(how = How.XPATH, using = "(//h4[contains(text(),'Two-Step Verification')])[1]")
     protected WebElement OTPPage;
 
 
@@ -442,7 +448,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h4[contains(text(),'Trust This Device?')]")
     protected WebElement VerifyTrustThisDevice;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'TRUST THIS DEVICE')]")
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'ASK FOR A CODE EVERY TIME')]")
     protected WebElement ClickTrustThisDevice;
 
 
@@ -455,17 +461,19 @@ public class HomePage extends BasePage {
             waitForSeconds(5);
             if (verifyElement(OTPPage)) {
                 System.out.println("Verify OTP Page");
+                System.out.println(TestDataUtil.getValue("&OTP&"));
                 waitForElement(EnterOTP);
                 enterValue(EnterOTP, TestDataUtil.getValue("&OTP&"));
                 waitForSeconds(2);
                 waitForElement(ClickVerifyandContinue);
                 mouseClick(ClickVerifyandContinue);
-                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForElementToAppear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(3);
                 if (verifyElement(VerifyTrustThisDevice)) {
+                    System.out.println("Trust Device Page");
                     waitForElement(ClickTrustThisDevice);
                     waitForSeconds(3);
-                    jsClick(ClickTrustThisDevice);
+                    mouseClick(ClickTrustThisDevice);
                     waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 }
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -473,6 +481,13 @@ public class HomePage extends BasePage {
                 verifyElement(VerifyLoginSuccessful);
                 waitForElement(elmntDashboard);
                 jsClick(elmntDashboard);
+//
+//                if (verifyElement(elmntmyacconnt)){
+//                    waitForElement(elmntmyacconnt);
+//                    jsClick(elmntmyacconnt);
+//                    waitForElement(elmntmyacconnt);
+//                    click(elmntDashboard);
+//                }
             }
         } else if (!verifyElement(SignInBtn)) {
             System.out.println("user already in the home page");
@@ -485,7 +500,8 @@ public class HomePage extends BasePage {
             waitForElement(SignInBtn);
             jsClick(SignInBtn);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForSeconds(5);
+            waitForSeconds(10);
+            System.out.println("Enter Otp Page");
             if (verifyElement(OTPPage)) {
                 System.out.println("Verify OTP Page");
                 waitForElement(EnterOTP);
@@ -1193,6 +1209,7 @@ public class HomePage extends BasePage {
 
     public void enterPasswordForBeta(String strPassword) {
         if (verifyElement(txtBoxPassword)) {
+            waitForSeconds(3);
             waitForElementClickable(txtBoxPassword);
             enterValue(txtBoxPassword, strPassword);
         }
@@ -1261,6 +1278,7 @@ public class HomePage extends BasePage {
     }
 
     public void enterpassword(String strPassword) {
+        System.out.println("Password"+TestDataUtil.getValue(strPassword));
         if (verifyElement(txtBoxPassword)) {
             waitForElementClickable(txtBoxPassword);
             enterValue(txtBoxPassword, strPassword);
@@ -1497,6 +1515,7 @@ public class HomePage extends BasePage {
                 System.out.println("user in Provider Home Page");
             }
             System.out.println("Try Block 1 executed");
+            blResult=true;
         } catch (Exception e) {
             try {
                 waitForElementClickable(elmntProfile);
@@ -1627,7 +1646,7 @@ public class HomePage extends BasePage {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        takeScreenshot(driver);
+//        takeScreenshot(driver);
         waitForElement(elmntVerifyHomePage);
         return verifyElement(elmntVerifyHomePage);
     }
@@ -1732,10 +1751,10 @@ public class HomePage extends BasePage {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForSeconds(3);
                 jsScrollIntoView(elmntDashboard);
-                waitForElement(elmntDashboard);
+//                waitForElement(elmntDashboard);
                 verifyElement(elmntDashboard);
                 waitForSeconds(3);
-                waitForElement(elmntDashboard);
+//                waitForElement(elmntDashboard);
                 jsClick(elmntDashboard);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 if (verifyElement(txtWelcome)) {
@@ -1952,6 +1971,7 @@ public class HomePage extends BasePage {
 
     public boolean clickDashBoard() {
         boolean isVerified = false;
+        waitForElementToAppear(driver, By.xpath(elmntSpinner));
         waitForSeconds(3);
         jsScrollIntoView(elmntDashboard);
         waitForElement(elmntDashboard);

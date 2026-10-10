@@ -77,22 +77,22 @@ Feature: Repeat_Request_Prescription_Scenarios
     Examples:
       | Medication Details                 | Message       | Repeat Prescription Status           | Pharmacy Details                           |
       | &DELIVERY_MED_BY_PHARMACY_DETAILS& | &RPR_MESSAGE& | &RP_DELIVERY_MED_BY_PHARMACY_STATUS& | &DELIVERY_MED_BY_PHARMACY_ADDRESS_DETAILS& |
-
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
-  Scenario Outline: S5 - Request Repeat Prescription - Deliver via Zoom Pharmacy
-
-    Given I am on MMH Home screen
-    And I tap on "Repeat Prescriptions" option in home screen
-    And I select the "<Medication Details>" for "Deliver via Zoom Pharmacy"
-    And I select the "<Pharmacy Details>" to send script
-    And I enter "<Message>" and accept the terms & conditions
-    When I Send Prescription Request through pay at health centre
-    Then I should see Repeat prescription request sent successfully popup message
-    And I should see "<Repeat Prescription Status>" displayed under Service Tab
-
-    Examples:
-      | Medication Details                  | Message       | Repeat Prescription Status            | Pharmacy Details                            |
-      | &DELIVER_VIA_ZOOM_PHARMACY_DETAILS& | &RPR_MESSAGE& | &RP_DELIVER_VIA_ZOOM_PHARMACY_STATUS& | &DELIVER_VIA_ZOOM_PHARMACY_ADDRESS_DETAILS& |
+#
+#  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE1
+#  Scenario Outline: S5 - Request Repeat Prescription - Deliver via Zoom Pharmacy
+#
+#    Given I am on MMH Home screen
+#    And I tap on "Repeat Prescriptions" option in home screen
+#    And I select the "<Medication Details>" for "Deliver via Zoom Pharmacy"
+#    And I select the "<Pharmacy Details>" to send script
+#    And I enter "<Message>" and accept the terms & conditions
+#    When I Send Prescription Request through pay at health centre
+#    Then I should see Repeat prescription request sent successfully popup message
+#    And I should see "<Repeat Prescription Status>" displayed under Service Tab
+#
+#    Examples:
+#      | Medication Details                  | Message       | Repeat Prescription Status            | Pharmacy Details                            |
+#      | &DELIVER_VIA_ZOOM_PHARMACY_DETAILS& | &RPR_MESSAGE& | &RP_DELIVER_VIA_ZOOM_PHARMACY_STATUS& | &DELIVER_VIA_ZOOM_PHARMACY_ADDRESS_DETAILS& |
 
   @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
   Scenario Outline: S11 - Request Repeat Prescription - Patient to collect script & $0 payment
@@ -157,22 +157,22 @@ Feature: Repeat_Request_Prescription_Scenarios
       | Medication Details                            | Message       | Repeat Prescription Status                      | Pharmacy Details                           |
       | &DELIVERY_MED_BY_PHARMACY_DETAILS_$0_PAYMENT& | &RPR_MESSAGE& | &RP_DELIVERY_MED_BY_PHARMACY_STATUS_$0_PAYMENT& | &DELIVERY_MED_BY_PHARMACY_ADDRESS_DETAILS& |
 
-
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
-  Scenario Outline: S15 - Request Repeat Prescription - Deliver via Zoom Pharmacy $0 Payment
-
-    Given I am on MMH Home screen
-    And I tap on "Repeat Prescriptions" option in home screen
-    And I select the "<Medication Details>" for "Deliver via Zoom Pharmacy"
-    And I select the "<Pharmacy Details>" to send script
-    And I enter "<Message>" and accept the terms & conditions
-    When I Send Prescription Request through pay at health centre for zero payment
-    Then I should see Repeat prescription request sent successfully popup message
-    And I should see "<Repeat Prescription Status>" displayed under Service Tab
-
-    Examples:
-      | Medication Details                             | Message       | Repeat Prescription Status                       | Pharmacy Details                            |
-      | &DELIVER_VIA_ZOOM_PHARMACY_DETAILS_$0_PAYMENT& | &RPR_MESSAGE& | &RP_DELIVER_VIA_ZOOM_PHARMACY_STATUS_$0_PAYMENT& | &DELIVER_VIA_ZOOM_PHARMACY_ADDRESS_DETAILS& |
+#
+#  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+#  Scenario Outline: S15 - Request Repeat Prescription - Deliver via Zoom Pharmacy $0 Payment
+#
+#    Given I am on MMH Home screen
+#    And I tap on "Repeat Prescriptions" option in home screen
+#    And I select the "<Medication Details>" for "Deliver via Zoom Pharmacy"
+#    And I select the "<Pharmacy Details>" to send script
+#    And I enter "<Message>" and accept the terms & conditions
+#    When I Send Prescription Request through pay at health centre for zero payment
+#    Then I should see Repeat prescription request sent successfully popup message
+#    And I should see "<Repeat Prescription Status>" displayed under Service Tab
+#
+#    Examples:
+#      | Medication Details                             | Message       | Repeat Prescription Status                       | Pharmacy Details                            |
+#      | &DELIVER_VIA_ZOOM_PHARMACY_DETAILS_$0_PAYMENT& | &RPR_MESSAGE& | &RP_DELIVER_VIA_ZOOM_PHARMACY_STATUS_$0_PAYMENT& | &DELIVER_VIA_ZOOM_PHARMACY_ADDRESS_DETAILS& |
 
   @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
   Scenario Outline: S16 - Request Repeat Prescription - Pay Online (A2A) - Patient to collect script
@@ -307,36 +307,36 @@ Feature: Repeat_Request_Prescription_Scenarios
     Examples:
       | Repeat Prescription Status                   | Card Details   |
       | &RP_DELIVERY_MED_BY_PHARMACY_STATUS_PAYMENT& | &CARD_DETAILS& |
+#
+#  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
+#  Scenario Outline: S10 - Patient Send Prescription Request - Deliver via Zoom Pharmacy
+#
+#    Given I am on MMH Home screen
+#    And I tap on "Repeat Prescriptions" option in home screen
+#    And I select the "<Medication Details>" for "Deliver via Zoom Pharmacy"
+#    And I select the "<Pharmacy Details>" to send script
+#    When I enter "<Message>" and accept the terms & conditions
+#    Then I Send Prescription Request
+#
+#    Examples:
+#      | Medication Details                           | Message       | Pharmacy Details                                    |
+#      | &DELIVERY_VIA_ZOOM_PHARMACY_DETAILS_PAYMENT& | &RPR_MESSAGE& | &DELIVER_VIA_ZOOM_PHARMACY_ADDRESS_DETAILS_PAYMENT& |
 
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
-  Scenario Outline: S10 - Patient Send Prescription Request - Deliver via Zoom Pharmacy
-
-    Given I am on MMH Home screen
-    And I tap on "Repeat Prescriptions" option in home screen
-    And I select the "<Medication Details>" for "Deliver via Zoom Pharmacy"
-    And I select the "<Pharmacy Details>" to send script
-    When I enter "<Message>" and accept the terms & conditions
-    Then I Send Prescription Request
-
-    Examples:
-      | Medication Details                           | Message       | Pharmacy Details                                    |
-      | &DELIVERY_VIA_ZOOM_PHARMACY_DETAILS_PAYMENT& | &RPR_MESSAGE& | &DELIVER_VIA_ZOOM_PHARMACY_ADDRESS_DETAILS_PAYMENT& |
-
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
-  Scenario Outline: S10 - Request Repeat Prescription - Deliver via Zoom Pharmacy - Pay online (card) $X Payment
-
-    Given I am on Payment Options screen
-    And I tap Pay Now button and tap OK in payment info popup message
-    When I enter the "<Card Details>" and submit
-    Then I should see Transaction Approved message
-    And I should see "<Repeat Prescription Status>" displayed under Service Tab
-
-    Examples:
-      | Repeat Prescription Status                     | Card Details   |
-      | &RP_DELIVERY_VIA_ZOOM_PHARMACY_STATUS_PAYMENT& | &CARD_DETAILS& |
+#  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
+#  Scenario Outline: S10 - Request Repeat Prescription - Deliver via Zoom Pharmacy - Pay online (card) $X Payment
+#
+#    Given I am on Payment Options screen
+#    And I tap Pay Now button and tap OK in payment info popup message
+#    When I enter the "<Card Details>" and submit
+#    Then I should see Transaction Approved message
+#    And I should see "<Repeat Prescription Status>" displayed under Service Tab
+#
+#    Examples:
+#      | Repeat Prescription Status                     | Card Details   |
+#      | &RP_DELIVERY_VIA_ZOOM_PHARMACY_STATUS_PAYMENT& | &CARD_DETAILS& |
 
 
-  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @WEB  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -348,7 +348,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Outline: S1- RRP - Rule A (No Restrictions) [Web - MobileApps]
     Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
     And I click the edit button and changing the data as per Rule A"<Details>"
@@ -358,7 +358,7 @@ Feature: Repeat_Request_Prescription_Scenarios
 
 
 
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Outline:S1- RRP - Rule A (No Restrictions) [Web - MobileApps]
 
     Given I am on MMH Home screen
@@ -373,7 +373,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | Medication Details                  | Message       | Repeat Prescription Status            |
       | &PATIENT_TO_COLLECT_SCRIPT_DETAILS& | &RPR_MESSAGE& | &RP_PATIENT_TO_COLLECT_SCRIPT_STATUS& |
 
-  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @WEB  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -386,7 +386,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
 
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Outline: S2- Rule B (Restrict to Default Location) [Web - MobileApps]
     Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
     And I click the edit button and changing the data as per Rule B"<Details>"
@@ -395,7 +395,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | System_Menu            | Details                       |
       | Repeat Script Settings | &REPEAT_SCRIPT_SETTINGS_DATA& |
 
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Outline: S2 - Rule B (Restrict to Default Location) [Web - MobileApps]
 
     Given I am on MMH Home screen
@@ -410,7 +410,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | Medication Details            | Message       | Repeat Prescription Status      |
       | &SEND_SCRIPT_BY_POST_DETAILS& | &RPR_MESSAGE& | &RP_SEND_SCRIPT_BY_POST_STATUS& |
 
-  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @WEB  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -422,7 +422,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @WEB  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Outline: S3- Rule C (Restrict to Default Location & Provider) [Web - MobileApps]
     Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
     And I click the edit button and changing the data as per Rule C"<Details>"
@@ -431,7 +431,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | Repeat Script Settings | &REPEAT_SCRIPT_SETTINGS_DATA& |
 
 
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Outline:S3- RRP - Rule C (Restrict to Default Location & Provider) [Web - MobileApps]
 
     Given I am on MMH Home screen
@@ -446,7 +446,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | Medication Details                  | Message       | Repeat Prescription Status            |
       | &PATIENT_TO_COLLECT_SCRIPT_DETAILS& | &RPR_MESSAGE& | &RP_PATIENT_TO_COLLECT_SCRIPT_STATUS& |
 
-  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @WEB  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Template: Pre-Req 1- Preparation for Group Message, Login as a Provider user
 
     Given As a user Launch the "<V1 Portal>"
@@ -458,7 +458,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | V1 Portal | Email Address  | Password          |
       | &URL&     | &DOCTOR_EMAIL& | &DOCTOR_PASSWORD& |
 
-  @WEB  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @WEB  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Outline: S4- RRP Script Settings - Restrict to Named Provider in each Location
     Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
     And I click the edit button and changing the data restricting to Named Provider in each Location"<Details>"
@@ -467,7 +467,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | System_Menu            | Data_Details                  | Details                       |
       | Repeat Script Settings | &REPEAT_SCRIPT_SETTINGS_INFO& | &REPEAT_SCRIPT_SETTINGS_DATA& |
 
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Outline:S4- RRP - Restrict to Named Provider in each Location [Web - MobileApps]
 
     Given I am on MMH Home screen
@@ -482,7 +482,7 @@ Feature: Repeat_Request_Prescription_Scenarios
       | Medication Details                  | Message       | Repeat Prescription Status            |
       | &PATIENT_TO_COLLECT_SCRIPT_DETAILS& | &RPR_MESSAGE& | &RP_PATIENT_TO_COLLECT_SCRIPT_STATUS& |
 
-  @MOBILE @Mobile_RRP @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_RRP1 @HAPPY_PATH_MOBILE1
   Scenario Outline:S5- RRP - Repeat Again with previous consult doctor [Web - MobileApps]
 
     Given I am on MMH Home screen

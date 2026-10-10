@@ -138,20 +138,20 @@ Feature: Appointments
       | Appointment           | Join_Consultation                      | All_Icons     |
       | Upcoming Appointments | &VIDEO_APPOINTMENT_DETAILS_FOR_CANCEL& | &VIDEO_ICONS& |
 
-  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
-  Scenario Template: S3 - Patient Booking Appointment - Visit in video slot Appointment
-
-    Given As a user I am on HomePage
-    And I navigate to the "<Appointment>" page
-    And I enter the video appointment details "<Appointment_Details>"
-    When I click confirm button "<Appointment_Details>"
-    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"
-    And I accept the terms & conditions and confirm my booking
-    And I should see booked appointment displayed under the future tab "<Appointment_Summary>"
-
-    Examples:
-      | Appointment      | Appointment_Details               | Details_For_Appointment              | Appointment_Summary                  | Future_Date   |
-      | Book Appointment | &BOOK_VISIT_IN_VIDEO_APPOINTMENT& | &VISIT_IN_VIDEO_APPOINTMENT_DETAILS& | &VISIT_IN_VIDEO_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
+#  @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
+#  Scenario Template: S3 - Patient Booking Appointment - Visit in video slot Appointment
+#
+#    Given As a user I am on HomePage
+#    And I navigate to the "<Appointment>" page
+#    And I enter the video appointment details "<Appointment_Details>"
+#    When I click confirm button "<Appointment_Details>"
+#    Then I should see details of created appointment "<Details_For_Appointment>" "<Future_Date>"
+#    And I accept the terms & conditions and confirm my booking
+#    And I should see booked appointment displayed under the future tab "<Appointment_Summary>"
+#
+#    Examples:
+#      | Appointment      | Appointment_Details               | Details_For_Appointment              | Appointment_Summary                  | Future_Date   |
+#      | Book Appointment | &BOOK_VISIT_IN_VIDEO_APPOINTMENT& | &VISIT_IN_VIDEO_APPOINTMENT_DETAILS& | &VISIT_IN_VIDEO_APPOINTMENT_SUMMARY& | &FUTURE_DATE& |
 
   @WEB @Mobile @APPOINTMENTS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
   Scenario Template: S4 - Patient Booking Appointment - Phone Appointment

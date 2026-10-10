@@ -41,7 +41,7 @@ public class MyHealthIndicators extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-icon[text()='menu']")
     protected WebElement btnMobileMenu;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Status')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Status')])[2]")
     protected WebElement btnStatus;
 
     protected String ActiveCardElemnts = new StringBuilder()
@@ -166,7 +166,7 @@ public class MyHealthIndicators extends BasePage {
     protected WebElement getElmntReminderType;
 
     protected String elmntReminderType = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[2]").toString();
+            .append("<<REPLACEMENT>>").append("')])[3]").toString();
 
     @FindBy(how = How.XPATH, using = "(//mat-label[text()='Frequency']//following::mat-select)[1]")
     protected WebElement getElmntFrequency;
@@ -945,6 +945,7 @@ public class MyHealthIndicators extends BasePage {
             waitForSeconds(2);
             jsClick(getElmntReminderType);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntReminderType.replace("<<REPLACEMENT>>", data)));
+            System.out.println("elmntEntriesFromHealthCentre ::"+elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             blResult = verifyElement(getElmntReminderType);
         } catch (Exception e) {

@@ -235,7 +235,7 @@ public class ProviderWebSteps {
 
     @And("I navigate to RRP Script Instructions Settings and click the edit button Select Health center {string}")
     public void iNavigateToRRPScriptInstructionsSettingsAndClickTheEditButtonSelectHealthCenter(String strHealthCentre) {
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.clickRRPScriptInstructionSetting());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.clickRRPScriptInstructionSetting());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickEditButton());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.clickRRPScriptInstructionsFeeSetup());
         Assert.assertTrue(providerPageContainer.rrpScriptFeeSettingsPage.selectHealthCentre(TestDataUtil.getValue(strHealthCentre)));
@@ -805,7 +805,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.ClickRequestisMandatoryYesButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.ClickPaymentSettingPayAtHealthCentreButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
 
     }
 

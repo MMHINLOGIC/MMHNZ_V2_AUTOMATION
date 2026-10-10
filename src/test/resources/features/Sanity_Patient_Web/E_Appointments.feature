@@ -164,8 +164,8 @@ Feature: Appointments
 #    Then I should see video consultation window with icons "<All_Icons>"
 
     Examples:
-      | Appointment           | Join_Consultation                | All_Icons     |
-      | Upcoming Appointments | &APPOINTMENT_DETAILS_FOR_CANCEL& | &VIDEO_ICONS& |
+      | Appointment           | Join_Consultation                      | All_Icons     |
+      | Upcoming Appointments | &APPOINTMENT_DETAILS_FOR_CANCEL_VIDEO& | &VIDEO_ICONS& |
 
 
 #    Note: {

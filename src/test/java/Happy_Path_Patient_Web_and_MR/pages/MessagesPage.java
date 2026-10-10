@@ -38,15 +38,23 @@ public class MessagesPage extends BasePage {
 //    protected WebElement elmntMessages;
 
     @FindAll({
-            @FindBy(how = How.XPATH, using = "//span[contains(text(),'Messages')]"),
+            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Messages')])[1]"),
             @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Messages')])[2]"),
 
     })
 
     protected WebElement elmntMessages;
 
+//    @FindAll({
+////            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Inbox')])[1]"),
+//            @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Inbox')])[2]"),
+//
+//    })
+//
+//    protected WebElement elmnInbox;
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Inbox']")
+
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Inbox')])[2]")
     protected WebElement elmnInbox;
 
     @FindAll({
@@ -57,20 +65,20 @@ public class MessagesPage extends BasePage {
 
     protected WebElement elmntDraft;
 
-    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Group Messages')])[2]")
-    protected WebElement elmntGroupMessagePatient;
+//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Group Messages')])[2]")
+//    protected WebElement elmntGroupMessagePatient;
 
 
-//    @FindAll({
-//            @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Group Messages')])[2]"),
-//            @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Group Messages')])[1]")
-//
-//    })
-//    protected WebElement txtGroupMessagePatient;
+    @FindAll({
+            @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Group Messages')])[1]"),
+            @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Group Messages')])[2]")
 
-
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Group Messages')]")
+    })
     protected WebElement txtGroupMessagePatient;
+
+
+//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Group Messages')])[2]")
+//    protected WebElement txtGroupMessagePatient;
 
     @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'COMPOSE MESSAGE')])[2]")
     protected WebElement txtComposeMailForMobile;
@@ -165,7 +173,8 @@ public class MessagesPage extends BasePage {
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Harry Harry!')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Arnold')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto Autochrisc1')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Auto Autochrisc1')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Test Pp_Automation')]")
 
     })
     protected WebElement txtPatientWelcomePage;
@@ -173,7 +182,9 @@ public class MessagesPage extends BasePage {
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),' Timprefer!')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Megath Raj')]")
+
     })
     protected WebElement txtProviderPortalWelcomePage;
 
@@ -574,7 +585,7 @@ public class MessagesPage extends BasePage {
     protected WebElement chkboxOutOfOfficeReply;
 
 
-    @FindBy(how = How.XPATH, using = "(//input[@placeholder='undefined'])[1]")
+    @FindBy(how = How.XPATH, using = "(//mat-checkbox[@class='mat-mdc-checkbox mat-accent ng-untouched ng-pristine ng-valid mat-mdc-checkbox-checked'])[1]")
     protected WebElement verifyOutOfOfficDate;
     @FindBy(how = How.XPATH, using = "//label[contains(text(),'Enable Auto reply')]")
     protected WebElement chkboxAutomaticReply;
@@ -996,7 +1007,8 @@ public class MessagesPage extends BasePage {
     @FindAll({
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome,')]//span[contains(text(),'Timprefer!')]"),
             @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Barry')]"),
-            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]")
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Gp2White')]"),
+            @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Welcome')]//span[contains(text(),'Megath Raj')]")
     })
     protected WebElement txtWelcome;
 
@@ -1015,15 +1027,15 @@ public class MessagesPage extends BasePage {
     public boolean navigateToMessageSetting() {
         boolean blResult = false;
         try {
-            waitForSeconds(2);
+            waitForSeconds(4);
             waitForElement(elmntMessages);
-            waitForElementClickable(elmntMessages);
+//            waitForElementClickable(elmntMessages);
             jsClick(elmntMessages);
-            waitForSeconds(1);
-            if (verifyElement(elmnInbox)) {
+            waitForSeconds(3);
+        /*    if (verifyElement(elmnInbox)) {*/
                 waitForElement(elmnInbox);
-                click(elmnInbox);
-            }
+                jsClick(elmnInbox);
+//            }
             waitForElementClickable(elmntMessagesSettings);
             jsClick(elmntMessagesSettings);
             waitForSeconds(1);
@@ -1192,7 +1204,7 @@ public class MessagesPage extends BasePage {
         try {
             waitForElementToAppear(driver,By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
             waitForElementClickable(elmntMessages);
             click(elmntMessages);
@@ -2588,9 +2600,9 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            jsScrollIntoView(elmntdashboard);
-            waitForElement(elmntdashboard);
-            click(elmntdashboard);
+//            jsScrollIntoView(elmntdashboard);
+//            waitForElement(elmntdashboard);
+//            click(elmntdashboard);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(3);
 //            waitForElement(txtMyHomePage);
@@ -2976,6 +2988,7 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
             jsClick(ProviderLocation);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(ProviderHealthCentre.replace("<<REPLACEMENT>>", strHealthCenterLocation)));
+            System.out.println(">> ::"+elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = true;
@@ -2992,6 +3005,7 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
         try {
             waitForSeconds(2);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElementToAppear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
             waitForElement(txtCompose);
             jsScrollIntoView(drpDownLocation);
@@ -3000,6 +3014,7 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
 //            healthCentre.selectByVisibleText(strHealthCenterLocation);
             jsClick(drpDownLocation);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(ProviderHealthCentre.replace("<<REPLACEMENT>>", strHealthCenterLocation)));
+            System.out.println(">>> ::"+elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blResult = true;
@@ -3074,6 +3089,7 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
     public boolean selectFrom(String strFamilyMember) {
         boolean blResult = false;
         try {
+            waitForElementToAppear(driver,By.xpath(elmntSpinner));
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForSeconds(2);
 //            waitForElement(txtComposeNewMessage);
@@ -3098,7 +3114,7 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
     public boolean selectProvider(String strFamilyMember) {
         boolean blResult = false;
         try {
-            waitForSeconds(2);
+            waitForSeconds(4);
 //            waitForElement(txtComposeNewMessage);
             waitForElementClickable(btnprovider);
             jsClick(btnprovider);
@@ -3215,7 +3231,9 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
             waitForSeconds(2);
             jsClick(btnRole);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            System.out.println(">>> Role ::"+strFamilyMember);
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntRole.replace("<<REPLACEMENT>>", strFamilyMember)));
+            System.out.println(">>> Role ::"+elmntEntriesFromHealthCentre);
             waitForSeconds(3);
             waitForElementClickable(elmntEntriesFromHealthCentre);
             jsClick(elmntEntriesFromHealthCentre);
@@ -4195,9 +4213,9 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
                 waitForElement(elmnInbox);
                 click(elmnInbox);
             }
-            jsScrollIntoView(elmntGroupMessagePatient);
-            waitForElement(elmntGroupMessagePatient);
-            jsClick(elmntGroupMessagePatient);
+            jsScrollIntoView(txtGroupMessagePatient);
+            waitForElement(txtGroupMessagePatient);
+            jsClick(txtGroupMessagePatient);
             String pageTitle = driver.getCurrentUrl();
             System.out.println("pageTitle >>> : " + pageTitle);
             if (pageTitle.contains("Groups")) {
@@ -4390,9 +4408,15 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
     public boolean navigateToProviderHomepage() {
         boolean blResult = false;
         try {
+//            waitForElementToAppear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
             jsScrollIntoView(elmntDashboard);
             waitForElement(elmntDashboard);
-            jsClick(elmntDashboard);
+            click(elmntDashboard);
+
+            waitForSeconds(3);
+            waitForElement(elmntDashboard);
+            click(elmntDashboard);
             if (isElementDisplayed(txtWelcome)) {
                 verifyElement(txtWelcome);
                 waitForSeconds(3);

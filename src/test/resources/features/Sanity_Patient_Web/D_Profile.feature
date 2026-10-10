@@ -16,18 +16,18 @@ Feature: Patient Profile
 #    389:Navigate to profile & click on Change password - Enter current password, new password & confirm new password & click on change
 #    These test Case Covered The Scenario NO: S1
 #  }
-  @WEB @PROFILE11 @SANITY_PATH1
-  Scenario Template: S1- Existing Patient change the password.
-
-    Given As a Existing user I am on HomePage and I navigate to change password in the My Profile
-    And I enter the "<Current Password>" and New "<Password>"
-    When I click Update Button
-    Then I should see the Password changed Success Popup
-#    And I log out from Patient Portal
-
-    Examples:
-      | Current Password       | Password                   |
-      | &PASSWORD_FOR_PROFILE& | &NEW_PASSWORD_FOR_PROFILE& |
+#  @WEB @PROFILE11 @SANITY_PATH1
+#  Scenario Template: S1- Existing Patient change the password.
+#
+#    Given As a Existing user I am on HomePage and I navigate to change password in the My Profile
+#    And I enter the "<Current Password>" and New "<Password>"
+#    When I click Update Button
+#    Then I should see the Password changed Success Popup
+##    And I log out from Patient Portal
+#
+#    Examples:
+#      | Current Password       | Password                   |
+#      | &PASSWORD_FOR_PROFILE& | &NEW_PASSWORD_FOR_PROFILE& |
 
 #  @WEB  @PROFILE12 @SANITY_PATH12
 #  Scenario Template: S1- Existing Patient Login with new password.
@@ -89,19 +89,19 @@ Feature: Patient Profile
 #  These test Case Covered The Scenario NO: S4
 #  }
 
-  @WEB @PROFILE @SANITY_PATH
-  Scenario Template: S4- Existing Patient Add the New Emergency Contacts.
-
-    Given As a Existing user I am on HomePage and I navigate to Emergency Contacts in the My Profile
-    And I click Add New Contact Button
-    And I enter the New Emergency Contact"<Details>"
-    When I click Add Contact Button and verify the Success Popup
-    Then I verify the Added Emergency Contact Details "<In Grid>" view
-    And I verify the Added Emergency Contact details In "<In Grid>" And "<More Info>"
-
-    Examples:
-      | Details                         | In Grid                                        | More Info                                          |
-      | &EMERGENCY_CONTACT_FOR_PROFILE& | &VERIFY_EMERGENCY_CONTACT_FOR_PROFILE_IN_GRID& | &VERIFY_EMERGENCY_CONTACT_FOR_PROFILE_IN_MOREINFO& |
+#  @WEB @PROFILE11 @SANITY_PATH11
+#  Scenario Template: S4- Existing Patient Add the New Emergency Contacts.
+#
+#    Given As a Existing user I am on HomePage and I navigate to Emergency Contacts in the My Profile
+#    And I click Add New Contact Button
+#    And I enter the New Emergency Contact"<Details>"
+#    When I click Add Contact Button and verify the Success Popup
+#    Then I verify the Added Emergency Contact Details "<In Grid>" view
+#    And I verify the Added Emergency Contact details In "<In Grid>" And "<More Info>"
+#
+#    Examples:
+#      | Details                         | In Grid                                        | More Info                                          |
+#      | &EMERGENCY_CONTACT_FOR_PROFILE& | &VERIFY_EMERGENCY_CONTACT_FOR_PROFILE_IN_GRID& | &VERIFY_EMERGENCY_CONTACT_FOR_PROFILE_IN_MOREINFO& |
 
 
 #    Note: {

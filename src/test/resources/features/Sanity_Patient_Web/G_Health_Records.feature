@@ -25,18 +25,18 @@
     #83:View all the details in grid & click on more info icon for specific medicine details in prescription tab
      #These test Case Covered The Scenario NO: S1
       #}
-  @WEB  @SANITY_PATH11  @HEALTH_RECORDS
-  Scenario Template: S1-Verify the Prescription Entries From Health center Medicine Details in Existing Patient
-
-    Given As a Existing user I am on HomePage and I click the Health Records
-    When I click on "<Prescription>" Prescription Page
-    Then I should see all the Prescription Entries From Health center Medicine Details in a grid view
-      | &PRESCRIPTION_TABLE_DATA& |
-    And I click on the more info icon to see all the Prescription Entries From the Health center Medicine details
-      | &PRESCRIPTION_TABLE_DATA& | &PRESCRIPTION_ICON_DATA& | &PRESCRIPTION_MOBILE_ICON_DATA& |
-    Examples:
-      | Prescription  |
-      | Prescriptions |
+#  @WEB  @SANITY_PATH11  @HEALTH_RECORDS
+#  Scenario Template: S1-Verify the Prescription Entries From Health center Medicine Details in Existing Patient
+#
+#    Given As a Existing user I am on HomePage and I click the Health Records
+#    When I click on "<Prescription>" Prescription Page
+#    Then I should see all the Prescription Entries From Health center Medicine Details in a grid view
+#      | &PRESCRIPTION_TABLE_DATA& |
+#    And I click on the more info icon to see all the Prescription Entries From the Health center Medicine details
+#      | &PRESCRIPTION_TABLE_DATA& | &PRESCRIPTION_ICON_DATA& | &PRESCRIPTION_MOBILE_ICON_DATA& |
+#    Examples:
+#      | Prescription  |
+#      | Prescriptions |
 
 
 
@@ -48,26 +48,26 @@
   #90:Click on delete icon for specific record in My entries grid to delete added data in prescription tab
    #These tests Case Covered The Scenario NO: S2
   #}
-  @WEB   @HEALTH_RECORDS @SANITY_PATH11
-  Scenario Template: S2-Existing Patient Verify Medicine details and validate edit ,delete,Share With Doctor in My entries Prescription Medicine Details
-
-    Given As a Existing user I am on HomePage and I click the Health Records
-    And I select My Entries "<My Entries>"
-    And I click on add record & Enter the Medicine Details
-      | &VISITED_NAME&                   |
-      | &VISITED_DOSE_NAME&              |
-      | &VISITED_PRESCRIPTION_DROPDOWN&  |
-      | &VISITED_PRESCRIPTION_DROPDOWN1& |
-      | &ADDITIONAL_INFORMATION&         |
-      | &VISITED_MOBILE_VALUE&           |
-    And I click on Confirm & Save Button
-    When I click on "<Edit Icon>"edit icon & I Edit Prescription of My Entries records "<Records>"
-    Then I should see all the Prescription My Entries Medicine details in more info
-      | &MY_ENTRIES_PRESCRIPTIONS_DATA& | &SHARE_WITH_DOCTOR_PRESCRIPTIONS_DATA& | &MOBILE_DATA_MY_ENTRIES_INSIDE_PRESCRIPTIONS& |
-    And I click on Delete Icon "<Edit Icon>"& I verify the Prescription My Entries Record is deleted
-    Examples:
-      | My Entries    | Edit Icon      | Records |
-      | Prescriptions | &VISITED_NAME& | 3 time  |
+#  @WEB   @HEALTH_RECORDS @SANITY_PATH11
+#  Scenario Template: S2-Existing Patient Verify Medicine details and validate edit ,delete,Share With Doctor in My entries Prescription Medicine Details
+#
+#    Given As a Existing user I am on HomePage and I click the Health Records
+#    And I select My Entries "<My Entries>"
+#    And I click on add record & Enter the Medicine Details
+#      | &VISITED_NAME&                   |
+#      | &VISITED_DOSE_NAME&              |
+#      | &VISITED_PRESCRIPTION_DROPDOWN&  |
+#      | &VISITED_PRESCRIPTION_DROPDOWN1& |
+#      | &ADDITIONAL_INFORMATION&         |
+#      | &VISITED_MOBILE_VALUE&           |
+#    And I click on Confirm & Save Button
+#    When I click on "<Edit Icon>"edit icon & I Edit Prescription of My Entries records "<Records>"
+#    Then I should see all the Prescription My Entries Medicine details in more info
+#      | &MY_ENTRIES_PRESCRIPTIONS_DATA& | &SHARE_WITH_DOCTOR_PRESCRIPTIONS_DATA& | &MOBILE_DATA_MY_ENTRIES_INSIDE_PRESCRIPTIONS& |
+#    And I click on Delete Icon "<Edit Icon>"& I verify the Prescription My Entries Record is deleted
+#    Examples:
+#      | My Entries    | Edit Icon      | Records |
+#      | Prescriptions | &VISITED_NAME& | 3 time  |
 
 #  @WEB  @HEALTH_RECORDS @SANITY_PATH
 #  Scenario Template: Changing machines timezone
@@ -82,26 +82,26 @@
 #Note:{87:If share with doctor is uncheck then the records is not shared to health centre/provider & kept private in prescription tab
    #These test Case Covered The Scenario NO: S3
   #}
-  @WEB   @HEALTH_RECORDS @SANITY_PATH11
-  Scenario Template: S3-Existing Patient Verify Medicine details and validate edit ,delete,Share WithOut Doctor in My entries Prescription Medicine Details
-
-    Given As a Existing user I am on HomePage and I click the Health Records
-    And I select My Entries "<My Entries>"
-    And I click on Add record & Enter the Medicine Details
-      | &VISITED_NAME&                   |
-      | &VISITED_DOSE_NAME&              |
-      | &VISITED_PRESCRIPTION_DROPDOWN&  |
-      | &VISITED_PRESCRIPTION_DROPDOWN1& |
-      | &ADDITIONAL_INFORMATION&         |
-      | &VISITED_MOBILE_VALUE&           |
-    And I click on Confirm & Save Button
-    When I click on "<Edit Icon>"edit icon & I Edit Prescription of My Entries records "<Records>"
-    Then I should see all the Prescription My Entries Medicine details in more info
-      | &MY_ENTRIES_PRESCRIPTIONS_DATA& | &SHARE_WITH_OUT_DOCTOR_PRESCRIPTIONS_DATA& | &MOBILE_DATA_MY_ENTRIES_INSIDE_PRESCRIPTIONS& |
-    And I click on Delete Icon "<Edit Icon>"& I verify the Prescription My Entries Record is deleted
-    Examples:
-      | My Entries    | Edit Icon      | Records |
-      | Prescriptions | &VISITED_NAME& | 3 time  |
+#  @WEB   @HEALTH_RECORDS @SANITY_PATH11
+#  Scenario Template: S3-Existing Patient Verify Medicine details and validate edit ,delete,Share WithOut Doctor in My entries Prescription Medicine Details
+#
+#    Given As a Existing user I am on HomePage and I click the Health Records
+#    And I select My Entries "<My Entries>"
+#    And I click on Add record & Enter the Medicine Details
+#      | &VISITED_NAME&                   |
+#      | &VISITED_DOSE_NAME&              |
+#      | &VISITED_PRESCRIPTION_DROPDOWN&  |
+#      | &VISITED_PRESCRIPTION_DROPDOWN1& |
+#      | &ADDITIONAL_INFORMATION&         |
+#      | &VISITED_MOBILE_VALUE&           |
+#    And I click on Confirm & Save Button
+#    When I click on "<Edit Icon>"edit icon & I Edit Prescription of My Entries records "<Records>"
+#    Then I should see all the Prescription My Entries Medicine details in more info
+#      | &MY_ENTRIES_PRESCRIPTIONS_DATA& | &SHARE_WITH_OUT_DOCTOR_PRESCRIPTIONS_DATA& | &MOBILE_DATA_MY_ENTRIES_INSIDE_PRESCRIPTIONS& |
+#    And I click on Delete Icon "<Edit Icon>"& I verify the Prescription My Entries Record is deleted
+#    Examples:
+#      | My Entries    | Edit Icon      | Records |
+#      | Prescriptions | &VISITED_NAME& | 3 time  |
 
 #Note:{91:Click on Allergies
   #92:Health centre entries displays all the allergies name given by provider/updated from pms

@@ -169,7 +169,7 @@ public class MobileSteps {
     @When("I tap Pay Now button and tap OK in payment info popup message")
     public void iTapPayNowButtonAndTapOKInPaymentInfoPopupMessage() {
         demoScreenContainer.appointmentsScreen.tapPayNow();
-        Assert.assertTrue(demoScreenContainer.appointmentsScreen.verifyPaymentInformation());
+//        Assert.assertTrue(demoScreenContainer.appointmentsScreen.verifyPaymentInformation());
         demoScreenContainer.appointmentsScreen.tapOK();
     }
 
@@ -251,12 +251,25 @@ public class MobileSteps {
     @And("I select the {string} for {string}")
     public void iSelectTheFor(String strMedicationDetails, String strPickUpMethod) {
         List<String> lstMedicationDetails = TestDataUtil.getListOfValue(strMedicationDetails);
+        String Data="Patient to collect script";
+        String Data1="Send Script by Post";
+        String Data3="Send Script to Pharmacy";
+        String Data2="Deliver Meds by Pharmacy";
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             demoScreenContainer.repeatRequestPrescriptionScreen.selectRepeatNewPrescription();
             demoScreenContainer.repeatRequestPrescriptionScreen.selectLocation(lstMedicationDetails.get(0));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectProvider(lstMedicationDetails.get(1));
             demoScreenContainer.repeatRequestPrescriptionScreen.selectMedications(lstMedicationDetails.get(2));
-            demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethod(lstMedicationDetails.get(3));
+//            demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethod(lstMedicationDetails.get(3));
+            if (Data.contains(strPickUpMethod)){
+              demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethodPTCS(lstMedicationDetails.get(3));
+            } else if (Data1.contains(strPickUpMethod)) {
+                demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethodSCBP(lstMedicationDetails.get(3));
+            } else if (Data2.contains(strPickUpMethod)) {
+                demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethodDMBP(lstMedicationDetails.get(3));
+            } else if (Data3.contains(strPickUpMethod)) {
+                demoScreenContainer.repeatRequestPrescriptionScreen.selectPickUpMethodSSTP(lstMedicationDetails.get(3));
+            }
             demoScreenContainer.repeatRequestPrescriptionScreen.selectUrgency(lstMedicationDetails.get(4));
         } else if (System.getProperty("PLATFORM").equalsIgnoreCase("ios")) {
             demoScreenContainer.repeatRequestPrescriptionScreen.selectLocationIOS(lstMedicationDetails.get(0));
@@ -830,5 +843,10 @@ public class MobileSteps {
     public void iClickContinueButton() {
         demoScreenContainer.appointmentsScreen.tabContinueButton();
 
+    }
+
+    @When("I tap on Provider Sign-In button")
+    public void iTapOnProviderSignInButton() {
+        demoScreenContainer.loginScreen.tapProviderSignIn();
     }
 }

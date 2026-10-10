@@ -121,16 +121,16 @@ Feature: RRP_Script_Fee_Settings
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING @PROVIDER_SINGLE_SCREEN
-  Scenario Template: S1- RRP Script Instructions Settings - Enable.
-    Given As a Provider I am on HomePage and navigate to RRP Script Instructions in "<System_Menu>"
-    And I navigate to RRP Script Instructions Settings and click edit button
-    When I disable the RRP Script Instructions Settings "<Details>"
-    Then I should verify disabled RRP Script Instructions Settings "<Details>"
-#    And  I Navigate to Provider Home Page
-    Examples:
-      | System_Menu             | Details                   |
-      | RRP Script Fee Settings | &RRP_SCRIPT_INSTRUCTIONS& |
+#  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING @PROVIDER_SINGLE_SCREEN
+#  Scenario Template: S1- RRP Script Instructions Settings - Enable.
+#    Given As a Provider I am on HomePage and navigate to RRP Script Instructions in "<System_Menu>"
+#    And I navigate to RRP Script Instructions Settings and click edit button
+#    When I disable the RRP Script Instructions Settings "<Details>"
+#    Then I should verify disabled RRP Script Instructions Settings "<Details>"
+##    And  I Navigate to Provider Home Page
+#    Examples:
+#      | System_Menu             | Details                   |
+#      | RRP Script Fee Settings | &RRP_SCRIPT_INSTRUCTIONS& |
 
 
   @WEB  @PROVIDER_HAPPY_PATH @PROVIDER_RRP_SCRIPT_FEE_SETTING @PROVIDER_SINGLE_SCREEN

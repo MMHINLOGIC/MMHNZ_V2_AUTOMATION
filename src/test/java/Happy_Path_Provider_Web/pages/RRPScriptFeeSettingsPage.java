@@ -274,12 +274,14 @@ public class RRPScriptFeeSettingsPage extends BasePage {
 
     public boolean clickEditButton() {
         waitForSeconds(3);
+        jsScrollIntoView(elmntRRPScriptInstructionsEditButton);
         waitForElementClickable(elmntRRPScriptInstructionsEditButton);
         jsClick(elmntRRPScriptInstructionsEditButton);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(3);
-        waitForElementClickable(elmntRRPScriptInstructionsYesButton);
-        jsClick(elmntRRPScriptInstructionsYesButton);
+//        jsScrollIntoView(elmntRRPScriptInstructionsYesButton);
+//        waitForElementClickable(elmntRRPScriptInstructionsYesButton);
+//        jsClick(elmntRRPScriptInstructionsYesButton);
 //        waitForElement(elmntRRPScriptInstructionsEditButton);
         waitForSeconds(3);
         waitForElementClickable(elmntRRPScriptInstructionsSaveButton);

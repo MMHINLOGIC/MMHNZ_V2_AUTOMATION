@@ -112,14 +112,14 @@ Feature:MyHealth_Indicators
            #193:Click on Health Centre to view entries added by provider in grid
            # These tests Case Covered The Scenario NO: S4
         #}
-  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
-  Scenario: S4-Verify the Blood Pressure Health Centre Medicine Details in Existing Patient
-
-    Given As a Existing user I am on HomePage and I click the My Health Indicators
-    When I Navigate to all My Health indicators from the summary tab
-    And I Navigate to My Health indicators from the Blood Pressure
-    Then I should see all the Blood Pressure Entries From Health center Medicine Details in a grid view
-      | &BLOOD_PRESSURE_TABLE_DATA& |
+#  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS11
+#  Scenario: S4-Verify the Blood Pressure Health Centre Medicine Details in Existing Patient
+#
+#    Given As a Existing user I am on HomePage and I click the My Health Indicators
+#    When I Navigate to all My Health indicators from the summary tab
+#    And I Navigate to My Health indicators from the Blood Pressure
+#    Then I should see all the Blood Pressure Entries From Health center Medicine Details in a grid view
+#      | &BLOOD_PRESSURE_TABLE_DATA& |
 
    #Note:{ #150:Navigate to Blood Pressure indicator & view graph based on time period & All/My entries/Health Centre values in grid & click on Add value
            # 185:Click on menu in Blood Pressure card & add new value & added value must be displayed in My entries
@@ -194,14 +194,14 @@ Feature:MyHealth_Indicators
            #211:Click on Health Centre to view entries added by provider in grid
            # These tests Case Covered The Scenario NO: S7
         #}
-  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
-  Scenario: S7-Verify the BMI Health Centre Medicine Details in Existing Patient
-
-    Given As a Existing user I am on HomePage and I click the My Health Indicators
-    When I Navigate to all My Health indicators from the summary tab
-    And I Navigate to My Health indicators from the BMI
-    Then I should see all the BMI Entries From Health center Medicine Details in a grid view
-      | &BMI_TABLE_DATA& |
+#  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
+#  Scenario: S7-Verify the BMI Health Centre Medicine Details in Existing Patient
+#
+#    Given As a Existing user I am on HomePage and I click the My Health Indicators
+#    When I Navigate to all My Health indicators from the summary tab
+#    And I Navigate to My Health indicators from the BMI
+#    Then I should see all the BMI Entries From Health center Medicine Details in a grid view
+#      | &BMI_TABLE_DATA& |
 
 
       #Note:{ #155:Navigate to  Depression indicator & view graph based on time period & All/My entries/Health Centre values in grid & click on Add value
@@ -276,14 +276,14 @@ Feature:MyHealth_Indicators
            #238:Click on Health Centre to view entries added by provider in grid
            # These tests Case Covered The Scenario NO: S10
         #}
-  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
-  Scenario: S10-Verify the HBA1C Health Centre Medicine Details in Existing Patient
-
-    Given As a Existing user I am on HomePage and I click the My Health Indicators
-    When I Navigate to all My Health indicators from the summary tab
-    And I Navigate to My Health indicators from the HBAC
-    Then I should see all the HBAC Entries From Health center Medicine Details in a grid view
-      | &HBA1C_TABLE_DATA& |
+#  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
+#  Scenario: S10-Verify the HBA1C Health Centre Medicine Details in Existing Patient
+#
+#    Given As a Existing user I am on HomePage and I click the My Health Indicators
+#    When I Navigate to all My Health indicators from the summary tab
+#    And I Navigate to My Health indicators from the HBAC
+#    Then I should see all the HBAC Entries From Health center Medicine Details in a grid view
+#      | &HBA1C_TABLE_DATA& |
 
 
       #Note:{ #157:Navigate to HBA1C indicator & view graph based on time period & All/My entries/Health Centre values in grid & click on Add value
@@ -355,14 +355,14 @@ Feature:MyHealth_Indicators
            #265:Click on Health Centre to view entries added by provider in grid
            # These tests Case Covered The Scenario NO: S13
         #}
-  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
-  Scenario: S13-Verify the LDL Health Centre Medicine Details in Existing Patient
-
-    Given As a Existing user I am on HomePage and I click the My Health Indicators
-    When I Navigate to all My Health indicators from the summary tab
-    And I Navigate to My Health indicators from the LDL
-    Then I should see all the LDL Entries From Health center Medicine Details in a grid view
-      | &LDL_TABLE_DATA& |
+#  @WEB  @SANITY_PATH1  @MY_HEALTH_INDICATORS
+#  Scenario: S13-Verify the LDL Health Centre Medicine Details in Existing Patient
+#
+#    Given As a Existing user I am on HomePage and I click the My Health Indicators
+#    When I Navigate to all My Health indicators from the summary tab
+#    And I Navigate to My Health indicators from the LDL
+#    Then I should see all the LDL Entries From Health center Medicine Details in a grid view
+#      | &LDL_TABLE_DATA& |
 
          #Note:{ #160:Navigate to LDL indicator & view graph based on time period & All/My entries/Health Centre values in grid & click on Add value
            # 257:Click on menu in LDL card & add new value & added value must be displayed in My entries

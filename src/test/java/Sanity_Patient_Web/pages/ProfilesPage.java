@@ -31,13 +31,13 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[contains(text(),'Change Email Address')]")
     protected WebElement elmntChangeEmailAddress;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Change Phone Number')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Change Phone Number')])[2]")
     protected WebElement elmntChangePhoneNumber;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Calendar')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Calendar')])[2]")
     protected WebElement elmntCalendar;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Update Profile')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Update Profile')])[2]")
     protected WebElement elmntViewOrUpdateProfile;
 
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'My Health Centres')])[2]")
@@ -61,10 +61,10 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//mat-button[@aria-label='Delete']")
     protected List<WebElement> btnDeleteIcon;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Change Address')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Change Address')])[2]")
     protected WebElement elmntChangeAddress;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Change Password')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Change Password')])[2]")
     protected WebElement elmntChangePassword;
 
     @FindBy(how = How.XPATH, using = "//h1[contains(text(),'Change Password')]")
@@ -152,7 +152,7 @@ public class ProfilesPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Create')]")
     protected WebElement btnUpdate;
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Update')]")
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Update')])[2]")
     protected WebElement btnPassWordUpdate;
 
 
@@ -532,8 +532,8 @@ public class ProfilesPage extends BasePage {
         boolean blResult = false;
         try {
             waitForSeconds(2);
+            jsScrollIntoView(btnPassWordUpdate);
             waitForElement(btnPassWordUpdate);
-            waitForElementClickable(btnPassWordUpdate);
             jsClick(btnPassWordUpdate);
             waitForSeconds(2);
             if (isElementDisplayed(successPopupForAddressChanged)) {

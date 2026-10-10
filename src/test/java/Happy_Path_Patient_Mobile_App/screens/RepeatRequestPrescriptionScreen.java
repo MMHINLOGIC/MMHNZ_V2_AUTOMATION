@@ -38,6 +38,11 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select Medications']")
     protected WebElement elmntSelectMedications;
 
+
+    @AndroidFindBy(xpath = "(//android.widget.CheckBox)[1]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select Medications']")
+    protected WebElement elmntSelectMedicationsCheckBox;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Continue']")
     @iOSXCUITFindBy(id = "Continue")
     protected WebElement btnContinue;
@@ -66,6 +71,24 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select pickup method']")
     protected WebElement elmntSelectPickupMethod;
 
+    @AndroidFindBy(xpath = "(//android.widget.RadioButton)[1]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select pickup method']")
+    protected WebElement elmntSelectPickupMethodSSTP;
+
+    @AndroidFindBy(xpath = "(//android.widget.RadioButton)[3]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select pickup method']")
+    protected WebElement elmntSelectPickupMethodDMBP;
+
+    @AndroidFindBy(xpath = "(//android.widget.RadioButton)[5]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select pickup method']")
+    protected WebElement elmntSelectPickupMethodPTCS;
+
+
+    @AndroidFindBy(xpath = "(//android.widget.RadioButton)[7]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select pickup method']")
+    protected WebElement elmntSelectPickupMethodSSBP;
+
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select script urgency']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Select script urgency']")
     protected WebElement elmntSelectScriptUrgency;
@@ -79,8 +102,9 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     protected WebElement txtMessage;
 
     @AndroidFindAll({
-            @AndroidBy(xpath = "(//android.widget.ToggleButton[contains(@text,'terms and conditions')])[1]"),
-            @AndroidBy(xpath = "(//android.widget.CheckBox[contains(@text,'terms and conditions')])[1]")
+//            @AndroidBy(xpath = "(//android.widget.Switch[contains(@text,'I have read and accept the terms and conditions for this service.')])[1]"),
+//            @AndroidBy(xpath = "(//android.widget.CheckBox[contains(@text,'terms and conditions')])[1]"),
+            @AndroidBy(xpath = "//android.view.View/android.widget.Switch")
     })
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[contains(@name,'terms and conditions')]")
     protected WebElement toggleTermsAndConditions;
@@ -97,11 +121,11 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     @iOSXCUITFindBy(id = "Services")
     protected WebElement elmntServicesHeader;
 
-    @AndroidFindBy(xpath = "//android.widget.Image[@text='sync']")
+    @AndroidFindBy(xpath = "//android.widget.Image[@content-desc=\"sync\"]")
     @iOSXCUITFindBy(id = "sync")
     protected WebElement elmntSyncView;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Repeat prescription status']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Repeat prescription status\"]")
     @iOSXCUITFindBy(id = "Repeat prescription status")
     protected WebElement elmntRepeatPrescriptionStatus;
 
@@ -141,6 +165,14 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Back to pharmacy list']")
     @iOSXCUITFindBy(id = "Back to pharmacy list")
     protected WebElement elmntPharmacyList;
+
+    @AndroidFindBy(xpath = "(//android.widget.Image)[1]")
+    @iOSXCUITFindBy(id = "Back to pharmacy list")
+    protected WebElement elmntFindAPharmacydata;
+
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='arrow back outline']")
+    @iOSXCUITFindBy(id = "Back to pharmacy list")
+    protected WebElement elmntBacktoPharmacyListBachArrow;
 
     @AndroidFindBy(xpath = "(//android.widget.CheckBox)[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[1]")
@@ -208,7 +240,7 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
 //    protected WebElement elmntStatusApproved;
 
     @AndroidFindAll({
-            @AndroidBy(xpath = " //android.widget.TextView[contains(@text,'Payment Status: APPROVED')]"),
+            @AndroidBy(xpath = "//android.widget.TextView[contains(@text,'Payment Status: APPROVED')]"),
             @AndroidBy(xpath = "//android.widget.TextView[contains(@text,'Payment Status: Approved')]")
     })
     @iOSXCUITFindAll({
@@ -218,7 +250,7 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
 
 
 
-    @AndroidFindBy(xpath = "//android.widget.CheckBox[contains(@text,'I have read and accepted the')]")
+    @AndroidFindBy(xpath = "//android.widget.CheckBox")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='I have read and accepted the']")
     protected WebElement chkBoxTermsAndCondition;
 
@@ -277,7 +309,7 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
             .append("//android.widget.CheckedTextView[contains(@text,'")
             .append("<<TEXT>>").append("')]").toString();
 
-    @AndroidFindBy(xpath = "(//android.view.View[contains(@text,'Available Banks: required')])[2]")
+    @AndroidFindBy(xpath = "(//android.view.View[@resource-id='PxPayAccount2AccountAuth_1']/android.view.View/android.view.View/android.view.View)[2]")
     @iOSXCUITFindBy(id = "Please enter the A2A test credentials:")
     protected WebElement SelectAvailableBank;
 
@@ -385,8 +417,9 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
         System.out.println("Medications: " + strMedications);
         attachStepLog("Medications", strMedications);
         waitForElement(elmntSelectMedications);
-        WebElement elmntMedications = waitForElement(By.xpath(strContainsCheckedTextLocator.replace("<<TEXT>>", strMedications)));
-        click(elmntMedications);
+//        WebElement elmntMedications = waitForElement(By.xpath(strContainsCheckedTextLocator.replace("<<TEXT>>", strMedications)));
+//        click(elmntMedications);
+        click(elmntSelectMedicationsCheckBox);
         waitForElement(btnContinue);
         click(btnContinue);
     }
@@ -411,6 +444,55 @@ public class RepeatRequestPrescriptionScreen extends BaseScreen {
         click(elmntPickUpMethod);
         waitForSecond(3);
     }
+
+    public void selectPickUpMethodPTCS(String strPickUpMethod) {
+        System.out.println("PickUpMethod: " + strPickUpMethod);
+        attachStepLog("PickUpMethod", strPickUpMethod);
+        waitForElement(elmntSelectPickupMethod);
+//        waitForElement(elmntPickupMethodUrgency);
+//        WebElement elmntPickUpMethod = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strPickUpMethod)));
+//        click(elmntPickUpMethod);
+        waitForElement(elmntSelectPickupMethodPTCS);
+        click(elmntSelectPickupMethodPTCS);
+        waitForSecond(3);
+    }
+
+    public void selectPickUpMethodSCBP(String strPickUpMethod) {
+        System.out.println("PickUpMethod: " + strPickUpMethod);
+        attachStepLog("PickUpMethod", strPickUpMethod);
+        waitForElement(elmntSelectPickupMethod);
+//        waitForElement(elmntPickupMethodUrgency);
+//        WebElement elmntPickUpMethod = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strPickUpMethod)));
+//        click(elmntPickUpMethod);
+        waitForElement(elmntSelectPickupMethodSSBP);
+        click(elmntSelectPickupMethodSSBP);
+        waitForSecond(3);
+    }
+
+    public void selectPickUpMethodDMBP(String strPickUpMethod) {
+        System.out.println("PickUpMethod: " + strPickUpMethod);
+        attachStepLog("PickUpMethod", strPickUpMethod);
+        waitForElement(elmntSelectPickupMethod);
+//        waitForElement(elmntPickupMethodUrgency);
+//        WebElement elmntPickUpMethod = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strPickUpMethod)));
+//        click(elmntPickUpMethod);
+        waitForElement(elmntSelectPickupMethodDMBP);
+        click(elmntSelectPickupMethodDMBP);
+        waitForSecond(3);
+    }
+
+    public void selectPickUpMethodSSTP(String strPickUpMethod) {
+        System.out.println("PickUpMethod: " + strPickUpMethod);
+        attachStepLog("PickUpMethod", strPickUpMethod);
+        waitForElement(elmntSelectPickupMethod);
+//        waitForElement(elmntPickupMethodUrgency);
+//        WebElement elmntPickUpMethod = waitForElement(By.xpath(strRadioButtonTextLocator.replace("<<TEXT>>", strPickUpMethod)));
+//        click(elmntPickUpMethod);
+        waitForElement(elmntSelectPickupMethodSSTP);
+        click(elmntSelectPickupMethodSSTP);
+        waitForSecond(3);
+    }
+
 
     public void selectPickUpMethodIOS(String strPickUpMethod) {
         System.out.println("PickUpMethod: " + strPickUpMethod);
@@ -637,6 +719,9 @@ tapByCoordinates(88,1578);
 
         System.out.println("City: " + lstPharmacy.get(0));
 
+        waitForElement(elmntBacktoPharmacyListBachArrow);
+        click(elmntBacktoPharmacyListBachArrow);
+
         WebElement elmntCity = waitForElement(By.xpath(strTextViewLocator.replace("<<TEXT>>", lstPharmacy.get(0))));
         click(elmntCity);
         waitForElement(elmntSelectSuburbTown);
@@ -692,18 +777,20 @@ tapByCoordinates(88,1578);
 
         System.out.println("City: " + lstPharmacy.get(0));
         waitForSecond(2);
-        WebElement elmntCity = waitForElement(By.xpath(strTextViewLocator.replace("<<TEXT>>", lstPharmacy.get(0))));
+//        WebElement elmntCity = waitForElement(By.xpath(strTextViewLocator.replace("<<TEXT>>", lstPharmacy.get(0))));
 //        waitForSecond(2);
-        System.out.println("elmntCity>>>>>>>>>>"+elmntCity);
+//        System.out.println("elmntCity>>>>>>>>>>"+elmntCity);
 //        waitForElementIgnoreStale(elmntCity);
-        waitForElement(elmntCity);
-        click(elmntCity);
+//        waitForElement(elmntCity);
+//        click(elmntCity);
 
+waitForElement(elmntFindAPharmacydata);
+click(elmntFindAPharmacydata);
 
-        waitForElement(elmntPharmacyList);
-        waitForElement(chkPharmacy);
-        takeScreenshot(driver);
-        click(chkPharmacy);
+//        waitForElement(elmntPharmacyList);
+//        waitForElement(chkPharmacy);
+//        takeScreenshot(driver);
+//        click(chkPharmacy);
         waitForElement(btnContinueInPharmacy);
         click(btnContinueInPharmacy);
         waitForSecond(2);

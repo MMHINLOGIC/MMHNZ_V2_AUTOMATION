@@ -112,7 +112,7 @@ public class MessageScreen extends BaseScreen {
     @iOSXCUITFindBy(id = "archive outline Archive")
     protected WebElement iconArchive;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='YES']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='Yes']")
     @iOSXCUITFindBy(id = "Yes")
     protected WebElement btnYes;
 
@@ -152,11 +152,11 @@ public class MessageScreen extends BaseScreen {
     //XCUIElementTypeStaticText[@name='Gp2White']// following::XCUIElementTypeOther[@name='Lab Result enquiry']//following::XCUIElementTypeStaticText[@name='Test-Message-QCGFLGCESignature Testing-JMQFCWWE']
 
     String strReceivedMessageLocator = new StringBuilder()
-            .append("//android.view.View[contains(@text,'")
+            .append("(//android.widget.TextView[contains(@text,'")
             .append("<<SERVICE>>")
             .append("')]/following-sibling::android.widget.TextView[@text='")
             .append("<<MESSAGE>>")
-            .append("']").toString();
+            .append("'])[1]").toString();
 
     String strReceivedMessageLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeStaticText[contains(@name,'")
@@ -218,7 +218,7 @@ public class MessageScreen extends BaseScreen {
 
     public void tapTabInInbox(String strTab) {
         waitForSecond(6);
-        waitForElement(elmntInbox);
+//        waitForElement(elmntInbox);
         WebElement elmntTab = null;
         if (System.getProperty("PLATFORM").equalsIgnoreCase("android")) {
             elmntTab = waitForElement(By.xpath(strInboxTabLocator.replace("<<TEXT>>", strTab)));
@@ -276,7 +276,7 @@ public class MessageScreen extends BaseScreen {
     }
 
     public boolean verifyDetails(List<String> lstMessageDetails) {
-        waitForElement(elmntRequest);
+//        waitForElement(elmntRequest);
         boolean blResult = false;
         for (String strMessageDetail : lstMessageDetails) {
             WebElement elmntMessageDetail = waitForElement(By.xpath(strContainsTextViewLocator.replace("<<TEXT>>", strMessageDetail)));

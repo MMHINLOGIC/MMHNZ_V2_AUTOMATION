@@ -16,7 +16,7 @@ public class HealthRecordsScreen extends BaseScreen {
         super(driver);
     }
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Health Records']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Health Records\"]")
     @iOSXCUITFindBy(id = "Health Records")
     protected WebElement elmntHealthRecords;
 
@@ -46,8 +46,9 @@ public class HealthRecordsScreen extends BaseScreen {
             .append("<<TEXT>>").append("']").toString();
 
     String strButtonTextLocator = new StringBuilder()
-            .append("//android.widget.Button[contains(@text,'")
+            .append("//android.widget.Button[contains(@content-desc,'")
             .append("<<TEXT>>").append("')]").toString();
+
 
     String strButtonTextLocatorIOS = new StringBuilder()
             .append("//XCUIElementTypeButton[@name='")

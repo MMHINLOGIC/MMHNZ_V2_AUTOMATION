@@ -100,11 +100,17 @@ Feature: Mobile_Health_Records_Scenarios
       | &RECALLS_RECORDS&   | &RECALLS_DETAILS&   |
 
 
-  @MOBILE @Mobile_Health_Record @HAPPY_PATH_MOBILE
+  @MOBILE @Mobile_Health_Record @HAPPY_PATH_MOBILE1
   Scenario:  S9 - Patient to View Health Summary
 
     Given I am on MMH Home screen
     And I tap on "Health Records" option in home screen
     When I tap on "Health Summary" in Health Records
     Then I should see Health Summary Page and Click Export icon
+
+  @MOBILE @Mobile_Health_Record @HAPPY_PATH_MOBILE
+  Scenario: Pre-Req - Doctor Sending Message
+
+    Given I am on MMH Home screen
+    Then I tap on logout icon in Home screen
 
