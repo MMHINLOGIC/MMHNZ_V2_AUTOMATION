@@ -69,16 +69,16 @@ public class MessagesPage extends BasePage {
 //    protected WebElement elmntGroupMessagePatient;
 
 
-    @FindAll({
-            @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Group Messages')])[1]"),
-            @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Group Messages')])[2]")
-
-    })
-    protected WebElement txtGroupMessagePatient;
-
-
-//    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Group Messages')])[2]")
+//    @FindAll({
+//            @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Group Messages')])[1]"),
+//            @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'Group Messages')])[2]")
+//
+//    })
 //    protected WebElement txtGroupMessagePatient;
+
+
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Group Messages')])[2]")
+    protected WebElement txtGroupMessagePatient;
 
     @FindBy(how = How.XPATH, using = "(//h1[contains(text(),'COMPOSE MESSAGE')])[2]")
     protected WebElement txtComposeMailForMobile;
@@ -1039,7 +1039,7 @@ public class MessagesPage extends BasePage {
             waitForElementClickable(elmntMessagesSettings);
             jsClick(elmntMessagesSettings);
             waitForSeconds(1);
-            waitForElement(btnSave);
+             waitForElement(btnSave);
             blResult = verifyElement(btnSave);
             System.out.println("Successfully navigated to messages settings >>>>> :: ");
         } catch (Exception e) {

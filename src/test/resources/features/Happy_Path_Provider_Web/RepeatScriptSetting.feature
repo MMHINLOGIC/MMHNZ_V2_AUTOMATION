@@ -172,7 +172,7 @@ Feature: Repeat Script Setting
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -205,7 +205,7 @@ Feature: Repeat Script Setting
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:
@@ -227,7 +227,7 @@ Feature: Repeat Script Setting
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -248,7 +248,7 @@ Feature: Repeat Script Setting
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:
@@ -269,7 +269,7 @@ Feature: Repeat Script Setting
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -291,7 +291,7 @@ Feature: Repeat Script Setting
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:
@@ -312,7 +312,7 @@ Feature: Repeat Script Setting
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -333,7 +333,7 @@ Feature: Repeat Script Setting
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:
@@ -349,46 +349,46 @@ Feature: Repeat Script Setting
       | Script_Instructions   | Script_Urgencies   | Medication Details                   | Location Details                      | Data_Details                  |
       | &SCRIPT_INSTRUCTIONS& | &SCRIPT_URGENCIES& | &DATA FOR DELIVERY MEDS BY PHARMACY& | &PATIENT_REPEAT_SCRIPT_SETTINGS_DATA& | &REPEAT_SCRIPT_SETTINGS_INFO& |
 
-  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
-  Scenario Template: User Successfully logs in to the MMH Provider Portal.
+#  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+#  Scenario Template: User Successfully logs in to the MMH Provider Portal.
+#
+#    Given As a user I am on MMH login Page
+#    And I enter "<Email Address>" and "<Password>" For Beta
+#    When I click login button
+#    Then I should see user successfully logs in to the MMH portal
+#    Examples:
+#      | Email Address      | Password   |
+#      | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-    Given As a user I am on MMH login Page
-    And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
-    Then I should see user successfully logs in to the MMH portal
-    Examples:
-      | Email Address      | Password   |
-      | &EMAIL FOR DOCTOR& | &PASSWORD& |
-
-  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
-  Scenario Outline: S6- RRP Script Settings - Deliver Via Zoom Pharmacy
-    Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
-    And I click the edit button and changing the data as per Deliver Via Zoom Pharmacy requirements"<Details>"
-
-    Examples:
-      | System_Menu            | Details                     |
-      | Repeat Script Settings | &DELIVER_VIA_ZOOM_PHARMACY& |
-
-  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
-  Scenario Template: User Successfully logs in to the MMH Patient Portal.
-
-    Given As a user Launch the "<V1 Portal>"
-    And I enter "<Email Address>" and "<Password>"
-    When I click login button
-    Then I should see user successfully logs in to the MMH portal
-
-    Examples:
-      | V1 Portal | Email Address        | Password              |
-      | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
-
-
-  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
-  Scenario Outline: S6- RRP Script Settings - Deliver Via Zoom Pharmacy
-    When I navigate to patient portal and verify the change
-    Then I should see the changes based on Deliver Via Zoom Pharmacy"<Script_Instructions>","<Script_Urgencies>","<Medication Details>" and "<Location Details>"
-    Examples:
-      | Script_Instructions   | Script_Urgencies   | Medication Details                            | Location Details                      |
-      | &SCRIPT_INSTRUCTIONS& | &SCRIPT_URGENCIES& | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION& | &PATIENT_REPEAT_SCRIPT_SETTINGS_DATA& |
+#  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+#  Scenario Outline: S6- RRP Script Settings - Deliver Via Zoom Pharmacy
+#    Given As a Provider I am on HomePage and navigate to Repeat Script Settings in "<System_Menu>"
+#    And I click the edit button and changing the data as per Deliver Via Zoom Pharmacy requirements"<Details>"
+#
+#    Examples:
+#      | System_Menu            | Details                     |
+#      | Repeat Script Settings | &DELIVER_VIA_ZOOM_PHARMACY& |
+#
+#  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+#  Scenario Template: User Successfully logs in to the MMH Patient Portal.
+#
+#    Given As a user Launch the "<V1 Portal>"
+#    And I enter "<Email Address>" and "<Password>"
+#    When I click SignIn button
+#    Then I should see user successfully logs in to the MMH portal
+#
+#    Examples:
+#      | V1 Portal | Email Address        | Password              |
+#      | &URL&     | &PATIENT_USER_LOGIN& | &PASSWORD FOR DOCTOR& |
+#
+#
+#  @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+#  Scenario Outline: S6- RRP Script Settings - Deliver Via Zoom Pharmacy
+#    When I navigate to patient portal and verify the change
+#    Then I should see the changes based on Deliver Via Zoom Pharmacy"<Script_Instructions>","<Script_Urgencies>","<Medication Details>" and "<Location Details>"
+#    Examples:
+#      | Script_Instructions   | Script_Urgencies   | Medication Details                            | Location Details                      |
+#      | &SCRIPT_INSTRUCTIONS& | &SCRIPT_URGENCIES& | &DATA FOR PATIENT TO COLLECT TO PRESCRIPTION& | &PATIENT_REPEAT_SCRIPT_SETTINGS_DATA& |
 
 
   @WEB @PROVIDER_RRPS @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN

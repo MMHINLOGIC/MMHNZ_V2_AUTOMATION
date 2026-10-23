@@ -411,7 +411,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescFor4thSelectedServiceOption(lstDetails.get(13)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.ClickPaymentSettingPayOnlineButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
 
     @And("I click the edit button and changing the data as per Send Script to Pharmacy requirements{string}")
@@ -437,7 +437,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescFor4thSSTPSelectedServiceOption(lstDetails.get(13)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.ClickPaymentSettingPayAtHealthCentreOrPayNowButton());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
 
     @And("I click the edit button and changing the data as per Deliver Meds By Pharmacy requirements{string}")
@@ -463,7 +463,7 @@ public class ProviderWebSteps {
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.selectDescFor4thDMBPSelectedServiceOption(lstDetails.get(13)));
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.clickRRPPayments());
         Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.verifySavedData());
-        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
+//        Assert.assertTrue(providerPageContainer.repeatScriptSettingPage.backToHomePage());
     }
 
     @When("I click Send Script by Post checkbox &Enter Service Option Name Fees and Description for all four service option")

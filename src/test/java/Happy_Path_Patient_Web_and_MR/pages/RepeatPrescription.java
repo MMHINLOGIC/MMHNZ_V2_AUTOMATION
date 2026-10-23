@@ -108,10 +108,16 @@ public class RepeatPrescription extends BasePage {
             .append("<<REPLACEMENT>>")
             .append("')]").toString();
 
+    protected String ddLocation1 = new StringBuilder()
+            .append("//div[contains(text(),'")
+            .append("<<REPLACEMENT>>")
+            .append("')]").toString();
+
+
     @FindBy(how = How.XPATH, using = "//mat-select[@formcontrolname='ScriptUrgency']")
     protected WebElement drpdwnScriptUrgency;
 
-    @FindBy(how = How.XPATH, using = "//mat-option/following::span[not(contains(.,' Select Script Urgency'))]")
+    @FindBy(how = How.XPATH, using = "//span[@class='mdc-list-item__primary-text']")
     protected List<WebElement> lstscriptUrgencies;
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Select from my saved list')]")
@@ -133,7 +139,7 @@ public class RepeatPrescription extends BasePage {
     protected WebElement getDrpdownSelectAddress;
 
 
-    @FindBy(how = How.XPATH, using = "//*[contains(text(),'ZOOM Pharmacy home delivery,Ground Floor/11 Westhaven Drive, Auckland,Phone:0508 966 622,Fax:0508 966 696')]")
+    @FindBy(how = How.XPATH, using = "( //div[contains(text(),'Ground Floor/11 Westhaven Drive, Auckland ')])[1]")
     protected WebElement drpOptionZoomAddress;
 
     @FindBy(how = How.XPATH, using = "//*[contains(text(),'Addington Pharmacy,348 Lincoln Road, Addington, Christchurch ,Phone:(03) 338 5805,Fax:(03) 338 5218')]")
@@ -242,6 +248,11 @@ public class RepeatPrescription extends BasePage {
             .append("//tr//td[contains(text(),'")
             .append("<<REPLACEMENT>>")
             .append("')]//preceding-sibling::td//input").toString();
+
+    protected String chkSendScripttoPharmacyMedication = new StringBuilder()
+            .append("//b[contains(text(),'")
+            .append("<<REPLACEMENT>>")
+            .append("')]").toString();
 
 
     @FindBy(how = How.XPATH, using = "//textarea[@formcontrolname='MessageBody']")
@@ -2792,7 +2803,7 @@ public class RepeatPrescription extends BasePage {
         try {
             System.out.println("Expected Script Urgencies >>>>" + ScriptUrgencies);
             waitForElementClickable(drpdwnScriptUrgency);
-            click(drpdwnScriptUrgency);
+            jsClick(drpdwnScriptUrgency);
 //            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
             List<String> lstActualScriptUrgencies = new ArrayList<>();
             for (WebElement strScriptUrgencies : lstscriptUrgencies) {
@@ -2801,6 +2812,10 @@ public class RepeatPrescription extends BasePage {
             for (int i = 0; i < lstActualScriptUrgencies.size(); i++) {
                 System.out.println("Now the actual items inside the webPage is " + lstActualScriptUrgencies.get(i));
             }
+            int Count=ScriptUrgencies.size();
+            System.out.println("ScriptUrgencies Count ::"+Count);
+            int Count1=lstActualScriptUrgencies.size();
+            System.out.println("lstActualScriptUrgencies Count ::"+Count1);
             if (ScriptUrgencies.size() == lstActualScriptUrgencies.size()) {
                 for (int i = 0; i < ScriptUrgencies.size(); i++) {
                     System.out.println("Entered into the For Loop");
@@ -2825,7 +2840,7 @@ public class RepeatPrescription extends BasePage {
         try {
             waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
             WebElement ddlScriptInstruction = waitForElement(By.xpath(selectLocation.replace("<<REPLACEMENT>>", strScriptUrgency)));
-            click(ddlScriptInstruction);
+            jsClick(ddlScriptInstruction);
             waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
             String currentScriptUrgency = drpdwnScriptUrgency.getText();
             String expectedScriptUrgency = "Urgent/Same day - Std Fee: $1,022.00 (Incl. GST)";
@@ -2850,16 +2865,16 @@ public class RepeatPrescription extends BasePage {
         try {
             System.out.println("savedListAddress :: "+savedListAddress);
             waitForElementClickable(optionSavedList);
-            click(optionSavedList);
+            jsClick(optionSavedList);
             waitForSeconds(2);
             waitForElement(drpdownSelectPharmacy);
             btnSavedList = verifyElement(drpdownSelectPharmacy);
             waitForElementClickable(drpdwnSelectPharmacy);
-            click(drpdwnSelectPharmacy);
-            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
+            jsClick(drpdwnSelectPharmacy);
+//            waitForPresenceOfElement(By.xpath("//div[@role='listbox']"));
 
-            WebElement currentScriptDetails = waitForElement(By.xpath(ddLocation.replace("<<REPLACEMENT>>", savedListAddress)));
-            click(currentScriptDetails);
+            WebElement currentScriptDetails = waitForElement(By.xpath(ddLocation1.replace("<<REPLACEMENT>>", savedListAddress)));
+            jsClick(currentScriptDetails);
 //            click(SendScripttoPharmacydrpOptionZoomAddress);
             waitForElementDisappear(driver, By.xpath("//mat-progress-spinner[@role='progressbar']"));
             waitForElement(addressBoxValue);

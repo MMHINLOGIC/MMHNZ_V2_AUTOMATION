@@ -241,15 +241,19 @@ public class OnlinePaymentSettingsPage extends BasePage {
             jsScrollIntoView(elmntAppointments);
             waitForElement(elmntAppointments);
             jsClick(elmntAppointments);
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmntAppointmentSetting);
-            waitForElement(elmntAppointmentSetting);
+            jsScrollIntoView(elmntAppointmentSetting);
+//            waitForElement(elmntAppointmentSetting);
+            waitForSeconds(3);
             jsClick(elmntAppointmentSetting);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForSeconds(2);
-            jsScrollIntoView(clickAppointmentSettingHeader);
-            waitForElement(clickAppointmentSettingHeader);
-            jsClick(clickAppointmentSettingHeader);
+            waitForSeconds(3);
+//            jsScrollIntoView(clickAppointmentSettingHeader);
+//            waitForElement(clickAppointmentSettingHeader);
+//            jsClick(clickAppointmentSettingHeader);
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(elmntAppointmentSettingHeader);
             blresult = verifyElement(elmntAppointmentSettingHeader);
@@ -495,15 +499,16 @@ public class OnlinePaymentSettingsPage extends BasePage {
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             jsScrollIntoView(elmtSecureMessaging);
-            waitForSeconds(2);
-            waitForElementClickable(elmtSecureMessaging);
+            waitForSeconds(5);
+            waitForElement(elmtSecureMessaging);
             System.out.println("Systems Menu is available to click");
             jsClick(elmtSecureMessaging);
+            waitForSeconds(3);
             jsScrollIntoView(elmtRepeatScriptSettings);
             System.out.println("scrolled ");
             takeScreenshot(driver);
             if (!verifyElement(elmtRepeatScriptSettings)) {
-                click(elmtSecureMessaging);
+                jsClick(elmtSecureMessaging);
             }
             jsScrollIntoView(elmtRepeatScriptSettings);
             blResult = verifyElement(elmtRepeatScriptSettings);

@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import javax.servlet.ServletOutputStream;
+
 public class VideoConsultationsSettingPage extends BasePage {
 
     public VideoConsultationsSettingPage(WebDriver driver) {
@@ -53,6 +55,9 @@ public class VideoConsultationsSettingPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Save')]")
     protected WebElement elmntVideoConsultationSaveButton;
+
+    @FindBy(xpath = "//span[contains(text(),'Setup Modules')]")
+    protected WebElement elmtSecureMessaging;
 
     @FindBy(how = How.XPATH, using = "//p[contains(text(),'Changes saved successfully')]")
     protected WebElement elmntSavedSuccessfulyPopup;
@@ -122,13 +127,14 @@ public class VideoConsultationsSettingPage extends BasePage {
         boolean blresult = false;
         try {
             waitForElement(elmntHealthCentre);
-            click(elmntHealthCentre);
+            jsClick(elmntHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntHealthCentreDrop.replace("<<REPLACEMENT>>", Strdata)));
             System.out.printf("elmntEntriesFromHealthCentre" + elmntEntriesFromHealthCentre);
             mouseClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult = verifyElement(elmntHealthCentre);
+            System.out.println("click HealthCenter Location");
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -224,6 +230,7 @@ public class VideoConsultationsSettingPage extends BasePage {
             jsClick(elmntfacetofaceappointmentVideoConsultationNoButton);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult = verifyElement(elmntfacetofaceappointmentVideoConsultationNoButton);
+            System.out.println("DisablefacetofaceappointmentVideoConsultationNoButton");
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -242,6 +249,8 @@ public class VideoConsultationsSettingPage extends BasePage {
             waitForSeconds(2);
             waitForElement(elmntSavedSuccessfulyPopup);
             blresult = verifyElement(elmntSavedSuccessfulyPopup);
+//            waitForElement(elmtSecureMessaging);
+//            jsClick(elmtSecureMessaging);
         } catch (Exception e) {
 
             e.printStackTrace();
