@@ -19,7 +19,7 @@ public class AppointmentReasonPage extends BasePage {
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
     protected String elmntAppointmentReasonHealthCentreDrop = new StringBuilder().append("(//span[contains(text(),'")
-            .append("<<REPLACEMENT>>").append("')])[3]").toString();
+            .append("<<REPLACEMENT>>").append("')])[2]").toString();
 
     @FindBy(xpath = "(//img[@mattooltip='Edit'])[1]")
     protected WebElement verifyEditButton;
@@ -124,6 +124,7 @@ public class AppointmentReasonPage extends BasePage {
             String Data = Strdata.concat(strExecutionID);
             waitForElement(elmtAppointmentReason);
             jsClick(elmtAppointmentReason);
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             enterValue(elmtAppointmentReason, Data);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));

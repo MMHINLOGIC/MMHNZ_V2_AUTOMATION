@@ -156,7 +156,7 @@ public class AppointmentRemainderSettingsPage extends BasePage {
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntHealthCentreDrop.replace("<<REPLACEMENT>>", Strdata)));
             System.out.printf("elmntEntriesFromHealthCentre"+elmntEntriesFromHealthCentre);
-            jsClick(elmntEntriesFromHealthCentre);
+            mouseClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult =verifyElement(elmntHealthCenterDropDown);
         } catch (Exception e) {
@@ -285,7 +285,7 @@ public class AppointmentRemainderSettingsPage extends BasePage {
         try {
             jsScrollIntoView(elmntSaveButton);
             waitForElement(elmntSaveButton);
-            click(elmntSaveButton);
+            jsClick(elmntSaveButton);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             waitForElement(elmntAppointmentReminderSettingSavedPopUp);
             blresult1 =  verifyElement(elmntAppointmentReminderSettingSavedPopUp);
@@ -359,10 +359,11 @@ blresult=true;
         boolean blresult = false;
         try {
             waitForElement(elmntSecondNumberDropDown);
-            click(elmntSecondNumberDropDown);
+            mouseClick(elmntSecondNumberDropDown);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelectNumberDropDown.replace("<<REPLACEMENT>>", StrNumber)));
-            jsClick(elmntEntriesFromHealthCentre);
+            mouseClick(elmntEntriesFromHealthCentre);
+            waitForSeconds(3);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult = true;
         } catch (Exception e) {
@@ -376,14 +377,14 @@ blresult=true;
     public boolean SelectHoursSecondAppoinmentReminder(String StrHours) {
         boolean blresult = false;
         try {
-            waitForSeconds(2);
+            waitForSeconds(3);
             waitForElement(elmntSecondHoursDropDown);
-            jsClick(elmntSecondHoursDropDown);
+             mouseClick(elmntSecondHoursDropDown);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             WebElement elmntEntriesFromHealthCentre = waitForElement(By.xpath(elmntSelect2HoursDropDown.replace("<<REPLACEMENT>>", StrHours)));
             System.out.println(">>>>>>>>>"+elmntEntriesFromHealthCentre);
-            waitForSeconds(2);
-            jsClick(elmntEntriesFromHealthCentre);
+            waitForSeconds(3);
+            mouseClick(elmntEntriesFromHealthCentre);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
             blresult =true;
         } catch (Exception e) {

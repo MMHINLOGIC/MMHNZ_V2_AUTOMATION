@@ -30,7 +30,7 @@ public class RRPScriptFeeSettingsPage extends BasePage {
 
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
-    @FindBy(xpath = "//span[contains(text(),'RRP Script Instructions Fee Setup')]")
+    @FindBy(xpath = "//label[contains(text(),'Health Centre - Multiple Locations')]")
     protected WebElement elmntRRPScriptInstructionsFeeSetup;
 
     @FindBy(xpath = "//mat-label[contains(text(),'Health centre')]//following::mat-select")
@@ -41,8 +41,8 @@ public class RRPScriptFeeSettingsPage extends BasePage {
 
 
     protected String strRRPScriptInstructionsFeeSetupEditAction = new StringBuilder()
-            .append("//td[contains(text(),'")
-            .append("<<REPLACEMENT1>>").append("')]//following::td//following::td//i").toString();
+            .append("(//td[contains(text(),'")
+            .append("<<REPLACEMENT1>>").append("')]//following::td//following::td//i)[1]").toString();
 
     //mat-label[contains(text(),'Health Centre')]//preceding::mat-select
 
@@ -284,15 +284,16 @@ public class RRPScriptFeeSettingsPage extends BasePage {
 //        jsClick(elmntRRPScriptInstructionsYesButton);
 //        waitForElement(elmntRRPScriptInstructionsEditButton);
         waitForSeconds(3);
-        waitForElementClickable(elmntRRPScriptInstructionsSaveButton);
-        click(elmntRRPScriptInstructionsSaveButton);
+//        waitForElementClickable(elmntRRPScriptInstructionsSaveButton);
+//        click(elmntRRPScriptInstructionsSaveButton);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         waitForSeconds(3);
-        return verifyElement(elmntRRPScriptInstructionsEditButton);
+        return verifyElement(elmntRRPScriptInstructionsSaveButton);
     }
 
     public boolean clickRRPScriptInstructionsFeeSetup() {
         waitForSeconds(3);
+        jsScrollIntoView(elmntRRPScriptInstructionsFeeSetup);
         waitForElementClickable(elmntRRPScriptInstructionsFeeSetup);
         jsClick(elmntRRPScriptInstructionsFeeSetup);
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -325,6 +326,7 @@ public class RRPScriptFeeSettingsPage extends BasePage {
             WebElement elmntPrescriptionTableData =  waitForElement(By.xpath(strRRPScriptInstructionsFeeSetupEditAction
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))));
             System.out.printf(">>>>>>>>>>>"+elmntPrescriptionTableData);
+            jsScrollIntoView(elmntPrescriptionTableData);
             waitForElement(elmntPrescriptionTableData);
             verifyElement(elmntPrescriptionTableData);
             waitForSeconds(3);

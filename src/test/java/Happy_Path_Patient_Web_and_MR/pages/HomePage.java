@@ -479,6 +479,7 @@ public class HomePage extends BasePage {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForElementToAppear(driver, By.xpath(elmntLoginSuccessful));
                 verifyElement(VerifyLoginSuccessful);
+                waitForSeconds(3);
                 waitForElement(elmntDashboard);
                 jsClick(elmntDashboard);
 //
@@ -520,8 +521,17 @@ public class HomePage extends BasePage {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForElementToAppear(driver, By.xpath(elmntLoginSuccessful));
                 verifyElement(VerifyLoginSuccessful);
+                waitForSeconds(3);
                 waitForElement(elmntDashboard);
                 jsClick(elmntDashboard);
+                if (verifyElement(txtProviderPortalWelcomePage)){
+                    System.out.println("User Navigate to Dashboard Page");
+                }
+                else {
+                    System.out.println("User Not Navigate to Dashboard Page");
+                    waitForElement(elmntDashboard);
+                    jsClick(elmntDashboard);
+                }
             }
         } else if (!verifyElement(SignInBtn)) {
             System.out.println("user already in the home page");

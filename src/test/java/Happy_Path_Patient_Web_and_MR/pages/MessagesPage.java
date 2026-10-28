@@ -2600,11 +2600,11 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-//            jsScrollIntoView(elmntdashboard);
+            jsScrollIntoView(elmntdashboard);
 //            waitForElement(elmntdashboard);
 //            click(elmntdashboard);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForSeconds(3);
+
 //            waitForElement(txtMyHomePage);
 //            waitForElement(elmntsMenu);
 //            waitForElement(elmntPraticeMenuDoctor);
@@ -2614,6 +2614,7 @@ if (verifyElement(verifyAutomaticReplyTextbox)){
             waitForElement(elmntInboxDoctor);
             jsClick(elmntInboxDoctor);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(3);
             waitForElementClickable(elmntComposeDoctor);
             jsClick(elmntComposeDoctor);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));

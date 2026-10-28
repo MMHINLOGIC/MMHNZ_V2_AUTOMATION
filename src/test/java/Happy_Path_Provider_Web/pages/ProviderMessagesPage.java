@@ -78,6 +78,11 @@ public class ProviderMessagesPage extends BasePage {
     @FindBy(xpath = "//a[@class='navbar-brand']")
     protected WebElement elmtMMHLogo;
 
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
+    protected WebElement elmntdashboard;
+
+
+
     protected String elmntDoctorSentSubject = new StringBuilder()
             .append("(//mat-card-title[contains(text(),'")
             .append("<<REPLACEMENT>>")
@@ -458,9 +463,9 @@ public class ProviderMessagesPage extends BasePage {
             if (isElementDisplayed(txtProviderPortalWelcomePage)) {
                 waitForElement(txtProviderPortalWelcomePage);
                 verifyElement(txtProviderPortalWelcomePage);
-                waitForElement(elmtMMHLogo);
-                waitForElementClickable(elmtMMHLogo);
-                jsClick(elmtMMHLogo);
+                waitForElement(elmntdashboard);
+                waitForElementClickable(elmntdashboard);
+                jsClick(elmntdashboard);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
               waitForElement(txtProviderPortalWelcomePage);
                 blResult = verifyElement(txtProviderPortalWelcomePage);
@@ -468,9 +473,10 @@ public class ProviderMessagesPage extends BasePage {
             if (!isElementDisplayed(txtProviderPortalWelcomePage)){
                 focusWindow(1);
                 System.out.println("Successfully switch to doctor portal");
-                waitForElement(elmtMMHLogo);
-                waitForElementClickable(elmtMMHLogo);
-                jsClick(elmtMMHLogo);
+                waitForElement(elmntdashboard);
+                waitForElementClickable(elmntdashboard);
+                jsClick(elmntdashboard);
+                waitForSeconds(3);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
             waitForElement(txtProviderPortalWelcomePage);
                 blResult=verifyElement(txtProviderPortalWelcomePage);

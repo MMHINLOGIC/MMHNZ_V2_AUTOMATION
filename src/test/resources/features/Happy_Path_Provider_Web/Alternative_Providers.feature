@@ -55,7 +55,7 @@ Feature: Appointment Reminder Setting Page
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:
@@ -79,7 +79,7 @@ Feature: Appointment Reminder Setting Page
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -96,12 +96,12 @@ Feature: Appointment Reminder Setting Page
       | Location   |
       | &LOCATION& |
 
-  @WEB @ALTERNATIVE_PROVIDER @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @ALTERNATIVE_PROVIDER  @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Patient Portal.
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:
@@ -124,7 +124,7 @@ Feature: Appointment Reminder Setting Page
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -145,7 +145,7 @@ Feature: Appointment Reminder Setting Page
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:

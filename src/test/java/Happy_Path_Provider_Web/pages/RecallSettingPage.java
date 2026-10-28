@@ -31,6 +31,9 @@ public class RecallSettingPage extends BasePage {
     @FindBy(xpath = "//a[@class='navbar-brand']")
     protected WebElement elmtMMHLogo;
 
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
+    protected WebElement elmntdashboard;
+
     protected String elmntSpinner = "//mat-progress-spinner[@role='progressbar']";
 
     @FindBy(xpath = "//span[contains(text(),'Setup Modules')]")
@@ -85,9 +88,9 @@ public class RecallSettingPage extends BasePage {
                 waitForElement(txtProviderPortalWelcomePage);
                 verifyElement(txtProviderPortalWelcomePage);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                waitForElement(elmtMMHLogo);
-                waitForElementClickable(elmtMMHLogo);
-                jsClick(elmtMMHLogo);
+                waitForElement(elmntdashboard);
+                waitForElementClickable(elmntdashboard);
+                jsClick(elmntdashboard);
                 waitForSeconds(2);
                 driver.navigate().refresh();
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -96,13 +99,15 @@ public class RecallSettingPage extends BasePage {
             }
             if (!isElementDisplayed(txtProviderPortalWelcomePage)){
                 focusWindow(1);
-                if (verifyElement(elmntLogoutPopup)){
-                    click(elmntLogoutPopupButton);
-                }
+//                if (verifyElement(elmntLogoutPopup)){
+//                    click(elmntLogoutPopupButton);
+//                }
+                waitForSeconds(2);
                 System.out.println("Successfully switch to doctor portal");
-                waitForElement(elmtMMHLogo);
-                waitForElementClickable(elmtMMHLogo);
-                jsClick(elmtMMHLogo);
+                jsScrollIntoView(elmntdashboard);
+                waitForElement(elmntdashboard);
+                jsClick(elmntdashboard);
+                waitForSeconds(2);
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
               waitForElement(txtProviderPortalWelcomePage);
                 blResult=verifyElement(txtProviderPortalWelcomePage);
@@ -116,12 +121,13 @@ public class RecallSettingPage extends BasePage {
     public boolean clickSecureMessaging() {
         boolean blResult = false;
         try {
-            waitForSeconds(3);
+            waitForSeconds(5);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmtSecureMessaging);
-      waitForElement(elmtSecureMessaging);
+//      waitForElement(elmtSecureMessaging);
 //            waitForElementClickable(elmtSecureMessaging);
-            click(elmtSecureMessaging);
+            mouseClick(elmtSecureMessaging);
+            waitForSeconds(3);
             waitForElementDisappear(driver,By.xpath(elmntSpinner));
             jsScrollIntoView(elmtRepeatScriptSettings);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
@@ -166,7 +172,7 @@ public class RecallSettingPage extends BasePage {
         waitForElementDisappear(driver, By.xpath(elmntSpinner));
         try {jsScrollIntoView(elmntRecallSetting);
             waitForElement(elmntRecallSetting);
-            click(elmntRecallSetting);
+            jsClick(elmntRecallSetting);
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
              waitForElement(elmntRecallSettingPageHeader);
             blresult =verifyElement(elmntRecallSettingPageHeader);

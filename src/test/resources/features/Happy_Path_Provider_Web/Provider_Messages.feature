@@ -163,12 +163,12 @@ Feature: Provider_Messages
   ##################################################################################################################################################################################################################################################################
 
 
-  @WEB @PROVIDER_MESSAGES1 @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_MESSAGES @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
   Scenario Template: User Successfully logs in to the MMH Provider Portal.
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -203,7 +203,7 @@ Feature: Provider_Messages
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:
@@ -228,7 +228,7 @@ Feature: Provider_Messages
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -261,7 +261,7 @@ Feature: Provider_Messages
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:
@@ -282,13 +282,13 @@ Feature: Provider_Messages
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
       | &EMAIL FOR DOCTOR& | &PASSWORD& |
 
-  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES @PROVIDER_SINGLE_SCREEN
   Scenario Outline: S5- Provider Alert Settings
     Given As a user I am on Doctor portal HomePage and navigate to Messages Setting
     And I click the Alert Setting and select the "<Alert Type>"
@@ -298,7 +298,7 @@ Feature: Provider_Messages
       | Alert Type            |
       | &PROVIDER_ALERT TYPE& |
 
-  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES1 @PROVIDER_SINGLE_SCREEN
+  @WEB @PROVIDER_HAPPY_PATH @PROVIDER_MESSAGES @PROVIDER_SINGLE_SCREEN
   Scenario Outline: S6- Provider Signature Settings
     Given As a user I am on Doctor portal HomePage and navigate to Messages Setting
     And I click the Signature Setting and Enter the "<Signature Message>"
@@ -340,7 +340,7 @@ Feature: Provider_Messages
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:

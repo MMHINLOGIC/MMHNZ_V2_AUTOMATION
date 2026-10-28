@@ -31,7 +31,7 @@ Feature: Manage Providers
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -53,7 +53,7 @@ Feature: Manage Providers
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:

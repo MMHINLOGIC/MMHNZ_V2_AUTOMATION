@@ -207,6 +207,12 @@ public class AppointmentsPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//img[@src='https://cdn.managemyhealth.co.nz/assets/V2/Images/Carehq-mob.png']")
     protected WebElement verifyimg;
 
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Consent')])[1]")
+    protected WebElement verifyConsentHeader;
+
+    @FindBy(how = How.XPATH, using = "(//span[contains(text(),'YES')])[1]")
+    protected WebElement ClickYesButton;
+
     @FindBy(how = How.XPATH, using = "//input[@formcontrolname='searchValue']")
     protected WebElement elmntSearchTextBox;
 
@@ -469,12 +475,16 @@ public class AppointmentsPage extends BasePage {
 
 
     @FindAll({
-            @FindBy(how = How.XPATH, using = "//div[@id='desktop-view']//button/span[text()='Confirm your booking now']"), // Without Fees
-            @FindBy(how = How.XPATH, using = "//button[@class='mdc-button mat-mdc-button-base btn-primary with-green mat-mdc-button mat-unthemed ng-star-inserted']//span[contains(text(),'Confirm & Continue')]"),//With Fees
-            @FindBy(how = How.XPATH, using = "//button[@class='mdc-button mat-mdc-button-base btn-primary with-green mat-mdc-button mat-unthemed ng-star-inserted']//span[contains(text(),'Pay & Continue')]"),//PayOnline
+            @FindBy(how = How.XPATH, using = "//span[text()='Confirm your booking now']"), // Without Fees
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'Confirm & Continue')]"),//With Fees
+            @FindBy(how = How.XPATH, using = "//span[contains(text(),'Pay & Continue')]"),//PayOnline
 
     })
     protected WebElement btnConfirmYourBookingEnabled;
+//
+//    //            @FindBy(how = How.XPATH, using = "//div[@id='desktop-view']//button/span[text()='Confirm your booking now']"), // Without Fees
+//    @FindBy(how = How.XPATH, using = "//button[@class='mdc-button mat-mdc-button-base btn-primary with-green mat-mdc-button mat-unthemed ng-star-inserted']//span[contains(text(),'Confirm & Continue')]"),//With Fees
+//    @FindBy(how = How.XPATH, using = "//button[@class='mdc-button mat-mdc-button-base btn-primary with-green mat-mdc-button mat-unthemed ng-star-inserted']//span[contains(text(),'Pay & Continue')]"),//PayOnline
 
     @FindBy(how = How.XPATH, using = "//button[@class='mat-focus-indicator btn-primary with-green mat-button mat-button-base ng-star-inserted mat-button-disabled']")
     protected WebElement btnConfirmYourBookingDiabled;
@@ -537,11 +547,11 @@ public class AppointmentsPage extends BasePage {
             .append("')])[1]").toString();
 
 
-    protected String elmntFutureAppointmentDetail = new StringBuilder().append("//mat-card//following-sibling::div//mat-card-title[contains(text(),'")
+    protected String elmntFutureAppointmentDetail = new StringBuilder().append("(//mat-card//following-sibling::div//mat-card-title[contains(text(),'")
             .append("<<REPLACEMENT1>>")
             .append("')]/ancestor::mat-card//child::mat-card-actions//p[contains(text(),'")
             .append("<<REPLACEMENT2>>")
-            .append("')]").toString();
+            .append("')])[1]").toString();
 
     protected String elmntFlexiableAppointmentDetailInFutureAppoinments = new StringBuilder().append("//mat-card//following-sibling::div//mat-card-title[contains(text(),'")
             .append("<<REPLACEMENT1>>")
@@ -567,6 +577,14 @@ public class AppointmentsPage extends BasePage {
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Upcoming Appointments')]")
     protected WebElement clickMobileFutureAppointmentTab;
+
+
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Dashboard')]")
+    protected WebElement elmntDashboard;
+
+    @FindBy(how = How.XPATH, using = "//a[contains(@class,'header')]//span[text()='Appointments']")
+    protected WebElement btnAppointmentExpand;
 
     @FindBy(how = How.XPATH, using = "//span[text()=' OK ']/parent::button")
     protected WebElement btnCancel;
@@ -2920,6 +2938,7 @@ public class AppointmentsPage extends BasePage {
         boolean isVerified = false;
         waitForSeconds(5);    //wait until 'loader'  loading
         List<WebElement> pagination = driver.findElements(By.xpath("//kendo-pager-numeric-buttons/ul/li"));
+
         if (pagination.size() > 0) {
             System.out.println("pagination exists and size=>" + pagination.size());
             int page_no = pagination.size();
@@ -3376,11 +3395,14 @@ public class AppointmentsPage extends BasePage {
 //                String strTime = strSlotDate;
                 String strTime = TemporarySlotCheck;
 
-                System.out.println("CANCEL TIME : " + strTime);
-                String strConvertedTime = strTime;
-                strConvertedTime = "0" + strConvertedTime;
-                String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
+                String strFinalOutDateTime = strDateMonth + " " + strTime;
                 System.out.println(strFinalOutDateTime);
+
+//                System.out.println("CANCEL TIME : " + strTime);
+//                String strConvertedTime = strTime;
+//                strConvertedTime = "0" + strConvertedTime;
+//                String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
+//                System.out.println(strFinalOutDateTime);
                 WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
                 verifyElement(elmntAppointmentDetails);
                 jsScrollIntoView(elmntAppointmentDetails);
@@ -3408,8 +3430,13 @@ public class AppointmentsPage extends BasePage {
                     String strDateMonth = strDateValue;
 //                    String strTime = strSlotDate;
                     String strTime = TemporarySlotCheck;
-                    String strFinalOutDateTime = strDateMonth + " " + strTime;
+                    System.out.println("CANCEL TIME : " + strTime);
+                    String strConvertedTime = strTime;
+                    strConvertedTime = "0" + strConvertedTime;
+                    String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
                     System.out.println(strFinalOutDateTime);
+//                    String strFinalOutDateTime = strDateMonth + " " + strTime;
+//                    System.out.println(strFinalOutDateTime);
                     WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
                     verifyElement(elmntAppointmentDetails);
                     jsScrollIntoView(elmntAppointmentDetails);
@@ -3672,7 +3699,7 @@ waitForSeconds(5);
         boolean blResult = false;
         try {
             verifyElement(btnConfirmCancellAppointment);
-            click(btnConfirmCancellAppointment);
+            jsClick(btnConfirmCancellAppointment);
             waitForElement(elmntAppoinmentCancelMessage);
             driver.navigate().refresh();
             blResult = true;
@@ -3692,6 +3719,14 @@ waitForSeconds(5);
             }else {
                 System.out.println("User already upcomming Appoinments page");
             }
+
+            if(!verifyElement(elmntWebFutureAppointment)){
+                System.out.println("Verified Dashboard Page Displayed");
+                jsScrollIntoView(elmntDashboard);
+                verifyElement(elmntDashboard);
+                waitForElement(btnAppointmentExpand);
+                jsClick(btnAppointmentExpand);
+            }
             waitForSeconds(2);
 //            waitForElement(elmntFutureAppointmentTab);
             String strDatePattern1 = "dd MMM yyyy";
@@ -3705,11 +3740,14 @@ waitForSeconds(5);
 
             System.out.println("CANCEL TIME" + strTime);
 
-            String strConvertedTime = strTime;
+            String strFinalOutDateTime = strDateMonth + " " + strTime;
+            System.out.println(strFinalOutDateTime);
 
-            strConvertedTime = "0" + strConvertedTime;
-
-            String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
+//            String strConvertedTime = strTime;
+//
+//            strConvertedTime = "0" + strConvertedTime;
+//
+//            String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
 
             System.out.println(strFinalOutDateTime);
 
@@ -3745,8 +3783,14 @@ waitForSeconds(5);
                 String strDateMonth = strDateValue;
 //                String strTime = strSlotDate;
                 String strTime = TemporarySlotCheck;
-                String strFinalOutDateTime = strDateMonth + " " + strTime;
-                System.out.println(strFinalOutDateTime);
+//                String strFinalOutDateTime = strDateMonth + " " + strTime;
+//                System.out.println(strFinalOutDateTime);
+
+                String strConvertedTime = strTime;
+
+                strConvertedTime = "0" + strConvertedTime;
+
+                String strFinalOutDateTime = strDateMonth + " " + strConvertedTime;
 
                 WebElement elmntAppointmentDetails = waitForElement(By.xpath(elmntFutureAppointmentDetail.replace("<<REPLACEMENT1>>", strFinalOutDateTime).replace("<<REPLACEMENT2>>", lstDetails.get(0))));
                 verifyElement(elmntAppointmentDetails);
@@ -5500,13 +5544,18 @@ System.out.println(">>>>>>>>>>>>>VerifyMyAppointmentTableDatalstDetails"+lstDeta
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            waitForElementClickable(clickAlternativeProviders);
-            jsClick(clickAlternativeProviders);
+//            waitForElementClickable(clickAlternativeProviders);
+//            jsClick(clickAlternativeProviders);
             waitForSeconds(2);
             String img=verifyimg.getAttribute("src");
             System.out.println("img"+img);
             click(verifyimg);
-            blResult = true;
+            waitForElement(verifyConsentHeader);
+            blResult = verifyElement(verifyConsentHeader);
+            waitForElement(ClickYesButton);
+            jsClick(ClickYesButton);
+            String AlterNativeProviderURL= driver.getCurrentUrl();
+            System.out.println("AlterNativeProviderURL ::" +AlterNativeProviderURL);
         } catch (Exception e) {
             e.printStackTrace();
         }

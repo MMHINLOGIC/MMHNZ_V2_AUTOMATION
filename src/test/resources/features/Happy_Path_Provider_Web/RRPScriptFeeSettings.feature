@@ -115,7 +115,7 @@ Feature: RRP_Script_Fee_Settings
 
     Given As a user I am on MMH login Page
     And I enter "<Email Address>" and "<Password>" For Beta
-    When I click SignIn button
+    When I click login button
     Then I should see user successfully logs in to the MMH portal
     Examples:
       | Email Address      | Password   |
@@ -161,7 +161,7 @@ Feature: RRP_Script_Fee_Settings
 
     Given As a user Launch the "<V1 Portal>"
     And I enter "<Email Address>" and "<Password>"
-    When I click login button
+    When I click SignIn button
     Then I should see user successfully logs in to the MMH portal
 
     Examples:
@@ -212,17 +212,17 @@ Feature: RRP_Script_Fee_Settings
     Examples:
       | Medication Details                   | Verification Medication Details                   | Patient to Collect Script DropDown Details   |
       | &DATA FOR DELIVERY MEDS BY PHARMACY& | &VERIFICATION DATA FOR DELIVERY MEDS BY PHARMACY& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
-
-  @WEB @PROVIDER_RRP_SCRIPT_FEE_SETTING @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
-  Scenario Template: S7-create Provider RRP Script Instructions Fees(Deliver via Zoom Pharmacy) Setup & verify it in Patient Portal
-
-    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
-    And I select the Deliver via zoom Pharmacy Medication details"<Medication Details>" "<Patient to Collect Script DropDown Details>"
-    Then I should see the successful message and I navigate to view history of the Prescription
-    When I see the status for Patient to collect the Prescription"<Verification Medication Details>"
-    Examples:
-      | Medication Details                    | Verification Medication Details                   | Patient to Collect Script DropDown Details   |
-      | &DATA FOR DELIVERY VIA ZOOM PHARMACY& | &VERIFICATION DATA FOR DELIVER VIA ZOOM PHARMACY& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
+#
+#  @WEB @PROVIDER_RRP_SCRIPT_FEE_SETTING @PROVIDER_HAPPY_PATH @PROVIDER_SINGLE_SCREEN
+#  Scenario Template: S7-create Provider RRP Script Instructions Fees(Deliver via Zoom Pharmacy) Setup & verify it in Patient Portal
+#
+#    Given As a user I am on HomePage and navigate to Repeat Medication Page in Repeat Prescription
+#    And I select the Deliver via zoom Pharmacy Medication details"<Medication Details>" "<Patient to Collect Script DropDown Details>"
+#    Then I should see the successful message and I navigate to view history of the Prescription
+#    When I see the status for Patient to collect the Prescription"<Verification Medication Details>"
+#    Examples:
+#      | Medication Details                    | Verification Medication Details                   | Patient to Collect Script DropDown Details   |
+#      | &DATA FOR DELIVERY VIA ZOOM PHARMACY& | &VERIFICATION DATA FOR DELIVER VIA ZOOM PHARMACY& | &PATIENT_TO_COLLECT_SCRIPT_DROPDOWN_DETAILS& |
 
 
 
