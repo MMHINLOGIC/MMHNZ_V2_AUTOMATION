@@ -29,6 +29,8 @@ Feature: My Health Records
       | &PRESCRIPTION_TABLE_DATA& |
     And I click on the more info icon on the grid & view the details of the prescription added
       | &PRESCRIPTION_TABLE_DATA& | &PRESCRIPTION_ICON_DATA& | &PRESCRIPTION_MOBILE_ICON_DATA& |
+    And I click on the Check Download PDF and Excel Button and I verify that both files are downloaded correctly
+      | &PRESCRIPTION_TABLE_DATA& | &PRESCRIPTION_ICON_DATA& | &PRESCRIPTION_MOBILE_ICON_DATA& |
     And I navigate to the Homepage
     Examples:
       | Prescription  |
@@ -80,6 +82,8 @@ Feature: My Health Records
       | &ALLERGIES_TABLE_DATA& |
     And I click on the more info icon on the grid & view the details of the Allergies added
       | &ALLERGIES_TABLE_DATA& | &ALLERGIES_ICON_DATA& | &ALLERGIES_MOBILE_ICON_DATA& |
+    And I click on the Check Download PDF and Excel Button and I verify that both files are downloaded correctly
+      | &ALLERGIES_TABLE_DATA& | &ALLERGIES_ICON_DATA& | &ALLERGIES_MOBILE_ICON_DATA& |
     And I navigate to the Homepage
 
     Examples:
@@ -127,6 +131,8 @@ Feature: My Health Records
     Then I should see all the Immunisations Entries From Health center Medicine Details in a grid view
       | &IMMUNISATIONS_TABLE_DATA& |
     And I click on the more info icon on the grid & view the details of the Immunisations added
+      | &IMMUNISATIONS_TABLE_DATA& | &IMMUNISATIONS_ICON_DATA& | &IMMUNISATION_MOBILE_ICON_DATA& |
+    And I click on the Immunisations Check Download PDF and Excel Button and I verify that both files are downloaded correctly
       | &IMMUNISATIONS_TABLE_DATA& | &IMMUNISATIONS_ICON_DATA& | &IMMUNISATION_MOBILE_ICON_DATA& |
     And I navigate to the Homepage
     Examples:
@@ -204,6 +210,8 @@ Feature: My Health Records
       | &CONDITIONS_TABLE_DATA& |
     And I click on the more info icon on the grid & view the details of the Conditions added
       | &CONDITIONS_TABLE_DATA& | &CONDITIONS_ICON_DATA& | &CONDITIONS_MOBILE_ICON_DATA& |
+    And I click on the Conditions Check Download PDF and Excel Button and I verify that both files are downloaded correctly
+      | &CONDITIONS_TABLE_DATA& | &CONDITIONS_ICON_DATA& | &CONDITIONS_MOBILE_ICON_DATA& |
     And I navigate to the Homepage
     Examples:
       | Conditions |
@@ -256,6 +264,8 @@ Feature: My Health Records
       | &LAB_RESULT_TABLE_DATA& | &LAB_RESULT_ICON_DATA& | &LAB_RESULT_ICON_DATA& |
     And I click on the more info icon on the grid & view the details of the Test Results added
       | &LAB_RESULT_TABLE_DATA& | &TEST_RESULT_ICON_DATA& | &TEST_RESULT_ICON_DATA& |
+    And I click on the Lab Results Check Download PDF and Excel Button and I verify that both files are downloaded correctly
+      | &LAB_RESULT_TABLE_DATA& | &TEST_RESULT_ICON_DATA& | &TEST_RESULT_ICON_DATA& |
     And I navigate to the Homepage
 
   @WEB @Mobile @HEALTH_RECORDS @HAPPY_PATH @HAPPY_PATH_MOBILE_RESPONSE
@@ -266,6 +276,8 @@ Feature: My Health Records
     Then I should see all the Clinic Notes Entries From Health center Medicine Details in a grid view
       | &CLINIC_TABLE_DATA& |
     And I click on the more info icon on the grid & view the details of the Clinic Notes added
+      | &CLINIC_TABLE_DATA& | &CLINIC_ICON_DATA& | &CLINIC_MOBILE_ICON_DATA& |
+    And I click on the Clinic Notes Check Download PDF and Excel Button and I verify that both files are downloaded correctly
       | &CLINIC_TABLE_DATA& | &CLINIC_ICON_DATA& | &CLINIC_MOBILE_ICON_DATA& |
     And I navigate to the Homepage
 
@@ -315,6 +327,8 @@ Feature: My Health Records
     When I should see all the Recalls Entries From Health center Medicine Details in a grid view
       | &RECALLS_TABLE_DATA& |
     And I click on the more info icon on the grid & view the details of the Recalls added
+      | &RECALLS_TABLE_DATA& | &RECALLS_ICON_DATA& | &RECALLS_ICON_DATA& |
+    And I click on the Recalls Check Download PDF and Excel Button and I verify that both files are downloaded correctly
       | &RECALLS_TABLE_DATA& | &RECALLS_ICON_DATA& | &RECALLS_ICON_DATA& |
     Then I should see all the Recalls Remainder Entries From Health center Medicine Details in a grid view
       | &RECALLS_REMAINDER_TABLE_DATA& |

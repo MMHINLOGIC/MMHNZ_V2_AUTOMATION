@@ -177,6 +177,14 @@ public class MyHealthRecordsPage extends BasePage {
 //    No']/following-sibling::td[text()='
 //    Automation1_Loc1']/following-sibling::td//following-sibling::span[@class="mat-mdc-focus-indicator"])[1]
 
+    protected String strClassificationsCheckBox = new StringBuilder()
+            .append("(//td[text()='")
+            .append("<<REPLACEMENT1>>").append("']//following::td[contains(text(),'")
+            .append("<<REPLACEMENT2>>").append("')]//following-sibling::td/div[contains(text(),'")
+            .append("<<REPLACEMENT3>>").append("')]//following::td[text()='")
+            .append("<<REPLACEMENT4>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT5>>").append("']/preceding::div[@class='mdc-checkbox'])[2]").toString();
+
     @FindBy(how = How.XPATH, using = "//span[text()='Clinician Notes']")
     protected WebElement elmntClinicalNotes;
 
@@ -207,6 +215,13 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
 
+    protected String strClinicalNotesCheckBox = new StringBuilder()
+            .append("(//td[text()='")
+            .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT4>>").append("']/preceding::div[@class='mdc-checkbox'])[2]").toString();
+
     @FindBy(how = How.XPATH, using = "//span[text()='Allergies']")
     protected WebElement elmntAllergies;
 
@@ -220,6 +235,13 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
 
+    protected String strAllergiesCheckBox = new StringBuilder()
+            .append("(//td[text()='")
+            .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT4>>").append("']/preceding-sibling::td//mat-checkbox//div)[1]").toString();
+
     protected String strMobileAllergiesIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
             .append("<<REPLACEMENT1>>").append("')]//following::p[contains(text(),'")
@@ -231,8 +253,18 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT2>>").append("')])[2]").toString();
 
 
-    @FindBy(how = How.XPATH, using = "//span[text()='Immunisations']")
-    protected WebElement elmntImmunisations;
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'EXPORT')]/i")
+    protected WebElement elmntExportIcon;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Export to PDF')]")
+    protected WebElement elmntExportPDFIcon;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Export to Excel')]")
+    protected WebElement elmntExportExcelIcon;
+
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'File downloaded successfully')]")
+    protected WebElement verifyFiledowloadSuccessfullyPopup;
+
 
 
     protected String strImmunisationsIconLocator = new StringBuilder()
@@ -241,6 +273,14 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
             .append("<<REPLACEMENT4>>").append("']/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
+
+
+    protected String strImmunisationsCheckbox = new StringBuilder()
+            .append("(//td[text()='")
+            .append("<<REPLACEMENT1>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT2>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT3>>").append("']/following-sibling::td[text()='")
+            .append("<<REPLACEMENT4>>").append("']/preceding-sibling::td//mat-checkbox//div)[1]").toString();
     @FindBy(how = How.XPATH, using = "(//span[contains(text(),'Lab Results')])[1]")
     protected WebElement elmntLabResults;
 
@@ -252,12 +292,19 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
 
+    protected String getStrLabResultsCheckbox = new StringBuilder()
+            .append("(//td[contains(.,'")
+            .append("<<REPLACEMENT1>>").append("')]/following-sibling::td[contains(.,'")
+            .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[contains(.,'")
+            .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
+            .append("<<REPLACEMENT4>>").append("')]/preceding-sibling::td//mat-checkbox//div)[1]").toString();
+
     protected String strLabResultsCheckbox = new StringBuilder()
             .append("(//td[contains(.,'")
             .append("<<REPLACEMENT1>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
-            .append("<<REPLACEMENT4>>").append("')]//preceding::div[@class='mdc-checkbox'])[2]").toString();
+            .append("<<REPLACEMENT4>>").append("')]/preceding-sibling::td//mat-checkbox//div)[1]").toString();
 
     protected String strMobileLabResultIconContentLocator = new StringBuilder()
             .append("(//h2[contains(text(),'")
@@ -295,6 +342,13 @@ public class MyHealthRecordsPage extends BasePage {
             .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
             .append("<<REPLACEMENT4>>").append("')]/following-sibling::td//following-sibling::span[@class=\"mat-focus-indicator\"]").toString();
+
+    protected String strRecallsCheckBox = new StringBuilder()
+            .append("(//td[contains(.,'")
+            .append("<<REPLACEMENT1>>").append("')]/following-sibling::td[contains(.,'")
+            .append("<<REPLACEMENT2>>").append("')]/following-sibling::td[contains(.,'")
+            .append("<<REPLACEMENT3>>").append("')]/following-sibling::td[contains(.,'")
+            .append("<<REPLACEMENT4>>").append("')]/preceding-sibling::td//mat-checkbox//div)[1]").toString();
 
     protected String strClinicalNotesDetails = new StringBuilder()
             .append("(//*[contains(text(),'")
@@ -1194,6 +1248,26 @@ public class MyHealthRecordsPage extends BasePage {
         return blResult;
     }
 
+    public boolean ClickClassificationsCheckBox(List<String> lstDetails, List<String> lstDetails1) {
+        boolean blResult = false;
+        try {
+            WebElement elmntClassificationIconData = waitForElement(By.xpath(strClassificationsCheckBox
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
+                    .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
+                    .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))
+                    .replace("<<REPLACEMENT5>>", TestDataUtil.getValue(lstDetails.get(4)))));
+            waitForElementClickable(elmntClassificationIconData);
+            jsClick(elmntClassificationIconData);
+            waitForSeconds(3);
+            blResult = verifyElement(headerConditions);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
+
     public boolean ClickMobileClassificationIcon(List<String> lstDetails, List<String> lstDetails1) {
         boolean blResult = false;
         try {
@@ -1372,6 +1446,31 @@ public class MyHealthRecordsPage extends BasePage {
         boolean blResult = false;
         try {
             WebElement elmntClinicNotesIconData = waitForElement(By.xpath(strClinicalNotesIconLocator
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
+                    .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
+                    .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
+            waitForElementClickable(elmntClinicNotesIconData);
+            jsClick(elmntClinicNotesIconData);
+            for (String str : lstDetails1) {
+                WebElement elmntPaitientDetails = waitForElement(By.xpath(strClinicalNotesDetails.replace("<<REPLACEMENT>>", str)));
+                verifyElement(elmntPaitientDetails);
+            }
+            waitForElementClickable(elmntIcon);
+            jsClick(elmntIcon);
+            waitForSeconds(3);
+            blResult = verifyElement(headerClinicanNotes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
+
+    public boolean ClickClinicNotesCheckBox(List<String> lstDetails, List<String> lstDetails1) {
+        boolean blResult = false;
+        try {
+            WebElement elmntClinicNotesIconData = waitForElement(By.xpath(strClinicalNotesCheckBox
                     .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))
                     .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
                     .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
@@ -1593,14 +1692,102 @@ waitForSeconds(3);
                 WebElement elmntPaitientDetails = waitForElement(By.xpath(strAllergiesNotesDetails.replace("<<REPLACEMENT>>", str)));
                 verifyElement(elmntPaitientDetails);
             }
+            waitForSeconds(5);
             waitForElementClickable(elmntIcon);
-            jsClick(elmntIcon);
+            mouseClick(elmntIcon);
             waitForSeconds(3);
             blResult = verifyElement(headerAllergies);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        return blResult;
+    }
+
+    public boolean ClickAllergiesCheckBox(List<String> lstDetails, List<String> lstDetails1) {
+        boolean blResult = false;
+        try {
+            waitForSeconds(5);
+            WebElement elmntAllergiesIconData = waitForElement(By.xpath(strAllergiesCheckBox
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
+                    .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
+                    .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
+            System.out.println("elmntAllergiesIconData ::"+elmntAllergiesIconData);
+            waitForSeconds(2);
+//            waitForElement(elmntAllergiesIconData);
+            mouseClick(elmntAllergiesIconData);
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            blResult = verifyElement(headerAllergies);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
+
+    public boolean ClickExportButton() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForSeconds(2);
+            waitForElement(elmntExportIcon);
+          verifyElement(elmntExportIcon);
+          jsClick(elmntExportIcon);
+          waitForSeconds(3);
+          waitForElement(elmntExportPDFIcon);
+          verifyElement(elmntExportPDFIcon);
+            waitForElement(elmntExportExcelIcon);
+          blResult=verifyElement(elmntExportExcelIcon);
+
+        } catch (Exception e) {
+            System.out.println("Failed to Verify Elements>>> :: ");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean DownloadPDFFile() {
+        boolean blResult = false;
+        try {
+//            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+//            waitForElement(elmntExportIcon);
+//            verifyElement(elmntExportIcon);
+//            jsClick(elmntExportIcon);
+            waitForSeconds(2);
+            waitForElement(elmntExportPDFIcon);
+            verifyElement(elmntExportPDFIcon);
+            jsClick(elmntExportPDFIcon);
+            waitForSeconds(3);
+//            waitForElement(verifyFiledowloadSuccessfullyPopup);
+            blResult=verifyElement(verifyFiledowloadSuccessfullyPopup);
+
+        } catch (Exception e) {
+            System.out.println("Failed to Verify Elements>>> :: ");
+            e.printStackTrace();
+        }
+        return blResult;
+    }
+
+    public boolean DownloadExcelFile() {
+        boolean blResult = false;
+        try {
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(elmntExportIcon);
+            verifyElement(elmntExportIcon);
+            jsClick(elmntExportIcon);
+            waitForSeconds(2);
+            waitForElement(elmntExportExcelIcon);
+            verifyElement(elmntExportExcelIcon);
+            jsClick(elmntExportExcelIcon);
+            waitForSeconds(3);
+//            waitForElement(verifyFiledowloadSuccessfullyPopup);
+            blResult=verifyElement(verifyFiledowloadSuccessfullyPopup);
+
+        } catch (Exception e) {
+            System.out.println("Failed to Verify Elements>>> :: ");
+            e.printStackTrace();
+        }
         return blResult;
     }
 
@@ -1681,6 +1868,26 @@ waitForSeconds(3);
             }
             waitForElementClickable(elmntIcon);
             jsClick(elmntIcon);
+            waitForSeconds(3);
+            blResult = verifyElement(headerImmunisatoin);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
+
+    public boolean ClickImmunisationsIconCheckBox(List<String> lstDetails, List<String> lstDetails1) {
+        boolean blResult = false;
+        try {
+            waitForSeconds(3);
+            WebElement elmntImmunisationIconData = waitForElement(By.xpath(strImmunisationsCheckbox
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
+                    .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
+                    .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
+            waitForElementClickable(elmntImmunisationIconData);
+            jsClick(elmntImmunisationIconData);
             waitForSeconds(3);
             blResult = verifyElement(headerImmunisatoin);
         } catch (Exception e) {
@@ -1809,6 +2016,27 @@ waitForSeconds(3);
             waitForElementClickable(elmntlabIcon);
             jsClick(elmntlabIcon);
             waitForSeconds(3);
+            blResult = verifyElement(headerLabResults);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
+
+    public boolean ClickLabResultsCheckBox(List<String> lstDetails, List<String> lstDetails1) {
+        boolean blResult = false;
+        try {
+            waitForSeconds(3);
+            WebElement elmntLabResultIconData = waitForElement(By.xpath(getStrLabResultsCheckbox
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
+                    .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
+                    .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
+            waitForElement(elmntLabResultIconData);
+            waitForSeconds(3);
+            System.out.println("elmntLabResultIconData ::" + elmntLabResultIconData);
+            jsClick(elmntLabResultIconData);
             blResult = verifyElement(headerLabResults);
         } catch (Exception e) {
             e.printStackTrace();
@@ -2055,6 +2283,25 @@ waitForSeconds(3);
             }
             waitForElementClickable(elmntIcon);
             jsClick(elmntIcon);
+            waitForSeconds(3);
+            blResult = verifyElement(headerRecalls);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return blResult;
+    }
+
+    public boolean ClickIconLocatorCheckBox(List<String> lstDetails, List<String> lstDetails1) {
+        boolean blResult = false;
+        try {
+            WebElement elmntRecallsIconData = waitForElement(By.xpath(strRecallsCheckBox
+                    .replace("<<REPLACEMENT1>>", TestDataUtil.getValue(lstDetails.get(0)))
+                    .replace("<<REPLACEMENT2>>", TestDataUtil.getValue(lstDetails.get(1)))
+                    .replace("<<REPLACEMENT3>>", TestDataUtil.getValue(lstDetails.get(2)))
+                    .replace("<<REPLACEMENT4>>", TestDataUtil.getValue(lstDetails.get(3)))));
+            waitForElementClickable(elmntRecallsIconData);
+            jsClick(elmntRecallsIconData);
             waitForSeconds(3);
             blResult = verifyElement(headerRecalls);
         } catch (Exception e) {

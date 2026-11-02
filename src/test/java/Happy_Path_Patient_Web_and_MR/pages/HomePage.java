@@ -479,16 +479,18 @@ public class HomePage extends BasePage {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForElementToAppear(driver, By.xpath(elmntLoginSuccessful));
                 verifyElement(VerifyLoginSuccessful);
-                waitForSeconds(3);
-                waitForElement(elmntDashboard);
-                jsClick(elmntDashboard);
-//
-//                if (verifyElement(elmntmyacconnt)){
-//                    waitForElement(elmntmyacconnt);
-//                    jsClick(elmntmyacconnt);
-//                    waitForElement(elmntmyacconnt);
-//                    click(elmntDashboard);
-//                }
+                waitForElementToAppear(driver, By.xpath(elmntSpinner));
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+                waitForSeconds(5);
+                if (verifyElement(txtProviderPortalWelcomePage)){
+                    System.out.println("User Navigate to Dashboard Page");
+                }
+                else {
+                    System.out.println("User Not Navigate to Dashboard Page");
+                    waitForElement(elmntDashboard);
+                    jsClick(elmntDashboard);
+                    verifyElement(txtProviderPortalWelcomePage);
+                }
             }
         } else if (!verifyElement(SignInBtn)) {
             System.out.println("user already in the home page");
@@ -521,9 +523,10 @@ public class HomePage extends BasePage {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForElementToAppear(driver, By.xpath(elmntLoginSuccessful));
                 verifyElement(VerifyLoginSuccessful);
-                waitForSeconds(3);
-                waitForElement(elmntDashboard);
-                jsClick(elmntDashboard);
+                waitForSeconds(5);
+                waitForElementToAppear(driver, By.xpath(elmntSpinner));
+                waitForElementDisappear(driver, By.xpath(elmntSpinner));
+
                 if (verifyElement(txtProviderPortalWelcomePage)){
                     System.out.println("User Navigate to Dashboard Page");
                 }

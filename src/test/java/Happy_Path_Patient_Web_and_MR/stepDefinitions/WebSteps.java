@@ -372,7 +372,7 @@ public class WebSteps {
     public void iEnterTheVideoAppointmentDetails(String strVideoAppointmentDetails) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
             List<String> lstAppointmentDetails = TestDataUtil.getListOfValue(strVideoAppointmentDetails);
-            System.out.println("TEST DATA :: "+TestDataUtil.getListOfValue(strVideoAppointmentDetails));
+            System.out.println("TEST DATA :: " + TestDataUtil.getListOfValue(strVideoAppointmentDetails));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
             Assert.assertTrue(demoPageContainer.appointmentsPage.selectHealthCenter(TestDataUtil.getValue(lstAppointmentDetails.get(0))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
@@ -4232,7 +4232,7 @@ public class WebSteps {
 
     @When("I navigate to Book Appointment select Default Location {string}")
     public void iNavigateToBookAppointmentSelectDefaultLocation(String strLocation) {
-        List<String>data=TestDataUtil.getListOfValue(strLocation);
+        List<String> data = TestDataUtil.getListOfValue(strLocation);
         Assert.assertTrue(demoPageContainer.homePage.clickDashBoard());
         Assert.assertTrue(demoPageContainer.homePage.clickPatientBookAppointment());
         Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
@@ -5474,6 +5474,7 @@ public class WebSteps {
 
         }
     }
+
     @And("I select payment option {string} and I accept the terms & conditions and confirm my booking")
     public void iSelectPaymentOptionAndIAcceptTheTermsConditionsAndConfirmMyBooking(String strPaymentOption) {
         Assert.assertTrue(demoPageContainer.appointmentsPage.selectPaymentOption(TestDataUtil.getValue(strPaymentOption)));
@@ -5481,6 +5482,7 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickConfirmYourBookingButton());
 
     }
+
     @Then("I see page navigated to the payment option and I enter the card details and confirm payment {string}")
     public void iSeePageNavigatedToThePaymentOptionAndIEnterTheCardDetailsAndConfirmPayment(String strPayOnlineDetails) {
 
@@ -5498,6 +5500,7 @@ public class WebSteps {
 
 
     }
+
     @And("I enter the visit appointment details {string} and Verify Restricted providers are displayed Check Payments {string}")
     public void iEnterTheVisitAppointmentDetailsAndVerifyRestrictedProvidersAreDisplayedCheckPayments(String strHealthCenter, String VM03ProviderNames) {
         if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
@@ -5545,7 +5548,6 @@ public class WebSteps {
 //            Assert.assertTrue(demoPageContainer.appointmentsPage.selectPhoneCode(TestDataUtil.getValue(lstAppointmentDetails.get(7))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.enterPhoneNumber(TestDataUtil.getValue(lstAppointmentDetails.get(8))));
             Assert.assertTrue(demoPageContainer.appointmentsPage.verifyZeroPayments());
-
 
 
         }
@@ -5609,7 +5611,6 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.repeatPrescription.clickPayAtHealthCentre());
         Assert.assertTrue(demoPageContainer.repeatPrescription.clickYesButton());
         Assert.assertTrue(demoPageContainer.homePage.navigateToHomePage());
-
 
 
     }
@@ -5938,6 +5939,138 @@ public class WebSteps {
         Assert.assertTrue(demoPageContainer.appointmentsPage.clickBookButton());
         Assert.assertTrue(demoPageContainer.appointmentsPage.declineCovidPreScreeningPopup());
 //        Assert.assertTrue(demoPageContainer.appointmentsPage.selectTypeOfVideoAppointment(TestDataUtil.getValue(lstAppointmentDetails.get(6))));
+    }
+
+    @And("I click on the Check Download PDF and Excel Button and I verify that both files are downloaded correctly")
+    public void iClickOnTheCheckDownloadPDFAndExcelButtonAndIVerifyThatBothFilesAreDownloadedCorrectly(DataTable dataTable) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+            List<List<String>> tableData = dataTable.asLists(String.class);
+            for (int i = 0; i < tableData.size(); i++) {
+                String strKey = tableData.get(i).get(0).trim();
+                String strKey2 = tableData.get(i).get(1).trim();
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+//            System.out.println(">> TestDataUtil list2 : "+list2);
+                Assert.assertTrue(demoPageContainer.myHealthRecordsPage.ClickAllergiesCheckBox(list1, list2));
+            }
+
+
+        }
+
+        demoPageContainer.myHealthRecordsPage.ClickExportButton();
+        demoPageContainer.myHealthRecordsPage.DownloadPDFFile();
+        demoPageContainer.myHealthRecordsPage.DownloadExcelFile();
+        demoPageContainer.myHealthRecordsPage.DeleteFile();
+
+
+    }
+
+    @And("I click on the Immunisations Check Download PDF and Excel Button and I verify that both files are downloaded correctly")
+    public void iClickOnTheImmunisationsCheckDownloadPDFAndExcelButtonAndIVerifyThatBothFilesAreDownloadedCorrectly(DataTable dataTable) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+            List<List<String>> tableData = dataTable.asLists(String.class);
+            for (int i = 0; i < tableData.size(); i++) {
+                String strKey = tableData.get(i).get(0).trim();
+                String strKey2 = tableData.get(i).get(1).trim();
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+//            System.out.println(">> TestDataUtil list2 : "+list2);
+                Assert.assertTrue(demoPageContainer.myHealthRecordsPage.ClickImmunisationsIconCheckBox(list1, list2));
+            }
+        }
+
+        demoPageContainer.myHealthRecordsPage.ClickExportButton();
+        demoPageContainer.myHealthRecordsPage.DownloadPDFFile();
+        demoPageContainer.myHealthRecordsPage.DownloadExcelFile();
+    }
+
+    @And("I click on the Conditions Check Download PDF and Excel Button and I verify that both files are downloaded correctly")
+    public void iClickOnTheConditionsCheckDownloadPDFAndExcelButtonAndIVerifyThatBothFilesAreDownloadedCorrectly(DataTable dataTable) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+            List<List<String>> tableData = dataTable.asLists(String.class);
+            for (int i = 0; i < tableData.size(); i++) {
+                String strKey = tableData.get(i).get(0).trim();
+                String strKey2 = tableData.get(i).get(1).trim();
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+//            System.out.println(">> TestDataUtil list2 : "+list2);
+                Assert.assertTrue(demoPageContainer.myHealthRecordsPage.ClickClassificationsCheckBox(list1, list2));
+            }
+
+
+        }
+
+        demoPageContainer.myHealthRecordsPage.ClickExportButton();
+        demoPageContainer.myHealthRecordsPage.DownloadPDFFile();
+        demoPageContainer.myHealthRecordsPage.DownloadExcelFile();
+        demoPageContainer.myHealthRecordsPage.DeleteFile();
+    }
+
+    @And("I click on the Lab Results Check Download PDF and Excel Button and I verify that both files are downloaded correctly")
+    public void iClickOnTheLabResultsCheckDownloadPDFAndExcelButtonAndIVerifyThatBothFilesAreDownloadedCorrectly(DataTable dataTable) {
+
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+            List<List<String>> tableData = dataTable.asLists(String.class);
+            for (int i = 0; i < tableData.size(); i++) {
+                String strKey = tableData.get(i).get(0).trim();
+                String strKey2 = tableData.get(i).get(1).trim();
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+//            System.out.println(">> TestDataUtil list2 : "+list2);
+                Assert.assertTrue(demoPageContainer.myHealthRecordsPage.ClickLabResultsCheckBox(list1, list2));
+            }
+
+            demoPageContainer.myHealthRecordsPage.ClickExportButton();
+            demoPageContainer.myHealthRecordsPage.DownloadPDFFile();
+            demoPageContainer.myHealthRecordsPage.DownloadExcelFile();
+            demoPageContainer.myHealthRecordsPage.DeleteFile();
+        }
+    }
+
+    @And("I click on the Clinic Notes Check Download PDF and Excel Button and I verify that both files are downloaded correctly")
+    public void iClickOnTheClinicNotesCheckDownloadPDFAndExcelButtonAndIVerifyThatBothFilesAreDownloadedCorrectly(DataTable dataTable) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue();
+            List<List<String>> tableData = dataTable.asLists(String.class);
+            for (int i = 0; i < tableData.size(); i++) {
+                String strKey = tableData.get(i).get(0).trim();
+                String strKey2 = tableData.get(i).get(1).trim();
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+//            System.out.println(">> TestDataUtil list2 : "+list2);
+                Assert.assertTrue(demoPageContainer.myHealthRecordsPage.ClickClinicNotesCheckBox(list1, list2));
+            }
+
+            demoPageContainer.myHealthRecordsPage.ClickExportButton();
+            demoPageContainer.myHealthRecordsPage.DownloadPDFFile();
+            demoPageContainer.myHealthRecordsPage.DownloadExcelFile();
+            demoPageContainer.myHealthRecordsPage.DeleteFile();
+        }
+
+    }
+
+    @And("I click on the Recalls Check Download PDF and Excel Button and I verify that both files are downloaded correctly")
+    public void iClickOnTheRecallsCheckDownloadPDFAndExcelButtonAndIVerifyThatBothFilesAreDownloadedCorrectly(DataTable dataTable) {
+        if (System.getProperty(Constants.ENV_VARIABLE_EXECUTION_TYPE, "").equalsIgnoreCase("BROWSER")) {
+//            demoPageContainer.myHealthRecordsPage.clickMaxvalue1();
+            List<List<String>> tableData = dataTable.asLists(String.class);
+            for (int i = 0; i < tableData.size(); i++) {
+                String strKey = tableData.get(i).get(0).trim();
+                String strKey2 = tableData.get(i).get(1).trim();
+                List<String> list1 = TestDataUtil.getListOfValue(strKey);
+                List<String> list2 = TestDataUtil.getListOfValue(strKey2);
+                System.out.println(">> TestDataUtil list2 : " + list2);
+                Assert.assertTrue(demoPageContainer.myHealthRecordsPage.ClickIconLocatorCheckBox(list1, list2));
+            }
+            demoPageContainer.myHealthRecordsPage.ClickExportButton();
+            demoPageContainer.myHealthRecordsPage.DownloadPDFFile();
+            demoPageContainer.myHealthRecordsPage.DownloadExcelFile();
+            demoPageContainer.myHealthRecordsPage.DeleteFile();
+        }
     }
 }
 

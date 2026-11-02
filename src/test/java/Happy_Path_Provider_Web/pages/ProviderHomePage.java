@@ -510,29 +510,19 @@ public class ProviderHomePage extends BasePage {
     public boolean navigateToProviderHomepage() {
         boolean blResult = false;
         try {
-//            if(verifyElement(elmntDashboard)) {
-//                waitForElement(elmntDashboard);
-//                mouseClick(elmntDashboard);
-//                waitForSeconds(6);
-//                waitForElement(elmntmyacconnt);
-//                jsClick(elmntmyacconnt);
-//            }
+
             if (verifyElement(txtProviderPortalWelcomePage)) {
                 jsScrollIntoView(elmntDashboard);
                 waitForElement(elmntDashboard);
                 jsClick(elmntDashboard);
                 verifyElement(txtProviderPortalWelcomePage);
-                waitForElement(elmtMMHLogo);
-                waitForElementClickable(elmtMMHLogo);
-                jsClick(elmtMMHLogo);
+
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 blResult = verifyElement(txtProviderPortalWelcomePage);
             }
             if (!verifyElement(txtProviderPortalWelcomePage)) {
                 focusWindow(1);
-//                if (verifyElement(elmntLogoutPopup)){
-//                    click(elmntLogoutPopupButton);
-//                }
+
                 jsScrollIntoView(elmntDashboard);
                 waitForElement(elmntDashboard);
                 jsClick(elmntDashboard);
@@ -544,9 +534,6 @@ public class ProviderHomePage extends BasePage {
                     waitForElement(elmntDashboard);
                     jsClick(elmntDashboard);
                     waitForSeconds(3);
-//                waitForElement(elmtMMHLogo);
-//                waitForElementClickable(elmtMMHLogo);
-//                jsClick(elmtMMHLogo);
                 }
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForElement(txtProviderPortalWelcomePage);
@@ -865,9 +852,7 @@ public class ProviderHomePage extends BasePage {
         boolean blResult = false;
         try {
             waitForElementDisappear(driver, By.xpath(elmntSpinner));
-            jsScrollIntoView(elmntDashboard);
-            waitForElement(elmntDashboard);
-            jsClick(elmntDashboard);
+
             if (verifyElement(txtHarryHarryWelcome)) {
                 verifyElement(elmntDashboard);
                 waitForElementClickable(elmntDashboard);
@@ -875,18 +860,31 @@ public class ProviderHomePage extends BasePage {
                 waitForElementDisappear(driver, By.xpath(elmntSpinner));
                 waitForElement(txtHarryHarryWelcome);
                 blResult = verifyElement(txtHarryHarryWelcome);
-            } else {
-                focusWindow(2);
-                jsScrollIntoView(elmntDashboard);
-                waitForElementClickable(elmntDashboard);
-                jsClick(elmntDashboard);
-                waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                refreshPage();
-                waitForElementDisappear(driver, By.xpath(elmntSpinner));
-                blResult = verifyElement(txtHarryHarryWelcome);
             }
 
-        } catch (Exception e) {
+
+            if (!verifyElement(txtHarryHarryWelcome)) {
+                focusWindow(1);
+                jsScrollIntoView(elmntDashboard);
+                waitForElement(elmntDashboard);
+                jsClick(elmntDashboard);
+                System.out.println("Successfully switch to Patient portal");
+                if (verifyElement(elmntverificationSettings)) {
+                    waitForElement(elmntmyacconnt);
+                    jsClick(elmntmyacconnt);
+                    waitForSeconds(3);
+                    waitForElement(elmntDashboard);
+                    jsClick(elmntDashboard);
+                    waitForSeconds(3);
+                }
+
+            }
+
+            waitForElementDisappear(driver, By.xpath(elmntSpinner));
+            waitForElement(txtHarryHarryWelcome);
+            blResult = verifyElement(txtHarryHarryWelcome);
+        }
+        catch (Exception e) {
             System.out.println("User not Navigated to Patient Portal");
             e.printStackTrace();
         }
